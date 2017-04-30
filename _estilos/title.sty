@@ -1,0 +1,63 @@
+%% Titlepage Package Information
+\ProvidesPackage{title}[2017/08/10 Thesis Titlepage]
+\RequirePackage{sphinx}
+
+
+
+%r'\tituloTesina{%s}' % tituloTesina ,
+%    r'\autores{%s}' % autores ,
+%    r'\tutores{%s}' % tutores ,
+%    r'\facultad{%s}' % facultad,
+%    r'\universidad{%s}' % universidad
+
+\newcommand*{\tituloTesina}[1]{\gdef\@tituloTesina{#1}}%
+\newcommand*{\@tituloTesina}{}
+\newcommand*{\autores}[1]{\gdef\@autores{#1}}%
+\newcommand*{\@autores}{}
+
+\newcommand*{\tutores}[1]{\gdef\@tutores{#1}}%
+\newcommand*{\@tutores}{}
+
+\newcommand*{\facultad}[1]{\gdef\@facultad{#1}}%
+\newcommand*{\@facultad}{}
+
+\newcommand*{\universidad}[1]{\gdef\@universidad{#1}}%
+\newcommand*{\@universidad}{}
+
+\newcommand*{\justificacion}[1]{\gdef\@justificacion{#1}}%
+\newcommand*{\@justificacion}{}
+
+
+\newcommand*{\fechaActual}[1]{\gdef\@fechaActual{#1}}%
+\newcommand*{\@fechaActual}{}
+
+
+%% Maketitle
+\renewcommand*{\maketitle}{%
+\begin{titlepage}
+
+    %\renewcommand*{\familydefault}{\sffamily}
+
+    \begin{center}
+	    %% Sphinx-Logo
+	    %\centering{\resizebox{.35\textwidth}{!}{logo_uni}}%
+
+	    \huge{\@tituloTesina\par}
+	    \vspace{2cm}
+	    \begin{minipage}{\linewidth}% to keep image and caption on one page
+			\makebox[\linewidth]{%        to center the image
+			\includegraphics[keepaspectratio=true, width=8cm, height=10cm]{logo_uni}}
+		\end{minipage}
+	    
+	    \vspace{2cm}
+	    \Large{\@autores\par}
+	    \Large{\@tutores\par}
+	    \Large{\@justificacion\par}
+	    \Large{\@facultad\par}
+	    \Large{\@universidad\par}
+	    \Large{\@fechaActual\par}
+    \end{center}
+
+\end{titlepage}
+}
+\endinput
