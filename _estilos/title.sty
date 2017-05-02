@@ -36,17 +36,15 @@
 \renewcommand*{\maketitle}{%
 \begin{titlepage}
 
-    %\renewcommand*{\familydefault}{\sffamily}
+    %\renewcommand{\familydefault}{\sffamily}
 
     \begin{center}
-	    %% Sphinx-Logo
-	    %\centering{\resizebox{.35\textwidth}{!}{logo_uni}}%
-
-	    \huge{\@tituloTesina\par}
+    	% Azul normalizado
+	    \textcolor[rgb]{0.0, 0.24313725490196078, 0.6}{\textsc{ \fontseries{ub}\huge{\@tituloTesina}}}\par
 	    \vspace{2cm}
 	    \begin{minipage}{\linewidth}% to keep image and caption on one page
 			\makebox[\linewidth]{%        to center the image
-			\includegraphics[keepaspectratio=true, width=8cm, height=10cm]{logo_uni}}
+			\includegraphics[keepaspectratio=true, width=6cm, height=8cm]{logo_uni}}
 		\end{minipage}
 	    
 	    \vspace{2cm}

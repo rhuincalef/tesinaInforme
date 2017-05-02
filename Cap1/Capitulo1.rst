@@ -1,7 +1,7 @@
 Titulo principal del capítulo
 =====
 
-COMIENZO DEL TEMA
+Comienzo del tema con algun sentido
 ------------
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et augue vel nibh pharetra cursus et vel mauris. Integer a ante in leo fermentum tincidunt quis vitae mauris. In vitae bibendum lectus. Curabitur porttitor, sapien et tincidunt suscipit, nisl ligula euismod nisi, ut suscipit dui metus vel eros. Nullam consectetur erat quam, in sollicitudin lacus lobortis eget. Proin felis diam, pellentesque eu finibus dapibus, congue a ligula. Donec gravida quam ante, ac rutrum mauris pharetra ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur malesuada metus nec gravida sollicitudin. Morbi a semper ex. Sed sollicitudin lobortis dolor quis mattis. Sed vel feugiat erat.

@@ -10,7 +10,8 @@
    :titlesonly:
    
    Introduccion/Introduccion
-   Cap1/Capitulo1   
+   :numbered:
+   Cap*/*   
    Bibliografia/bibliografia
 
 

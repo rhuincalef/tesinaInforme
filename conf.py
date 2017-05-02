@@ -132,7 +132,8 @@ latex_elements = {
 import datetime
 from babel.dates import format_date
 
-tituloTesina = ("Sistema para detección y reconocimiento de irregularidades sobre circuitos viales utilizando el sensor Kinect").decode("utf-8")
+#tituloTesina = ("Sistema para detección y reconocimiento de irregularidades sobre circuitos viales utilizando el sensor Kinect").decode("utf-8")
+tituloTesina = ("SISTEMA PARA DETECCIÓN Y RECONOCIMIENTO DE IRREGULARIDADES SOBRE CIRCUITOS VIALES UTILIZANDO EL SENSOR KINECT").decode("utf-8")
 # Imagen obtenida con graphics
 autores = "Autores: Huincalef Rodrigo A. , Urrutia Guillermo G."
 tutores = "Director de tesina: Ingravallo Gabriel"
@@ -162,24 +163,28 @@ latex_elements['preamble'] += r"""
 \usepackage{amssymb}
 \usepackage{microtype}
 \usepackage{graphicx}
-\graphicspath{ {//home//rodrigo//TESINA-2016-KINECT//DOCUMENTO_TESINA_FORMAL//prueba-sphinx//Sphinx-Thesis-Template//docs//figs/} }
+\usepackage{titlesec}
+\usepackage{lmodern}
 \usepackage{lastpage} 
 \usepackage{color} 
 \usepackage{etoolbox}
 \usepackage[titles]{tocloft}
-\makeatletter
+\usepackage{tikz}
 
+% Sobreescritura de los comandos de latex generados por Sphinx automaticamente
+\makeatletter
 \setcounter{page}{5}
 
 \fancypagestyle{normal}{
     %Con este comando se limpia la configuracion para los encabezados por defecto
     \fancyhf{}
-    \definecolor{azul-oscuro}{RGB}{0, 39, 102}
+    \definecolor{azul-oscuro}{RGB}{76, 85, 255}
 
-    %LE=Left Even Page,RO=Right Odd page
-    \fancyfoot[LE,LO,RO,RE]{\center{\py@HeaderFamily\thepage}} 
-    \fancyhead[RE,RO]{{\py@HeaderFamily \center{\rightmark} }} % here's the change
-    \renewcommand{\headrulewidth}{1pt}   % Definicion de las lineas de decorado encima
+    \fancyfoot[LE,LO,RO,RE]{\center{\py@HeaderFamily\thepage}} % Cambio de footer
+    %\fancyhead[RE,RO]{{\py@HeaderFamily \center{\rightmark} }} % Cambio de header
+    
+    \fancyhead[RE,RO]{ \center{ \begin{flushright} \textsl{\rightmark} \end{flushright}  }} % Cambio de header
+    \renewcommand{\headrulewidth}{2pt}   % Definicion de las lineas de decorado encima
     \renewcommand{\headrule}{\hbox to\headwidth{%
         \color{azul-oscuro}\leaders\hrule height \headrulewidth\hfill}}
 
@@ -198,12 +203,87 @@ latex_elements['preamble'] += r"""
   \fancyhf{}%
 }
 \tocloftpagestyle{mi-toc}
-
-%\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{normal}}{}{}
-
 \pagestyle{normal}
+
+% Removiendo el numero de capitulo del inicio de c/u
+%\titleformat{\chapter}[display]
+%    {\bfseries}{}{10pt}{\Large}
+\titleformat{\chapter}[display]{\bfseries\Large}
+    {\thechapter.}{20pt}{}
+
+%Se sobreecribe el estilo por default del capitulo
+\definecolor{myblue}{RGB}{0,82,155}
+
+%\ifnum \pdfstrcmp{'0'}{\thechapter}<=0
+
+%\ifnum \thesection>0
+%\ifnum \thechapter<0
+%  \titleformat{\chapter}[display]
+%    {\normalfont\bfseries\color{myblue}}{}{10pt}{
+%      \titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily{\textls[180]{\textsc{ }}}}
+%\else  
+  \titleformat{\chapter}[display]
+   {\normalfont\bfseries\color{myblue}}
+    {\filleft%
+      \begin{tikzpicture}
+      \node[
+        outer sep=0pt,
+        text width=2.5cm,
+        minimum height=3cm,
+        fill=myblue,
+        font=\color{white}\fontsize{80}{90}\selectfont,
+        align=center
+        ] (num) {\thechapter};
+      \node[
+        rotate=90,
+        anchor=south,
+        font=\color{black}\Large\normalfont
+        ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};  
+      \end{tikzpicture}%
+    }
+  {10pt}
+  {\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily}
+  [
+    \vspace{-0.5ex} 
+    \textcolor{myblue}{\rule{\textwidth}{0.9pt}}
+  ]
+%\fi
+
 \makeatother"""
 
+
+#\titleformat{\chapter}[display]
+#  {\normalfont\bfseries\color{myblue}}
+#  {\filleft%
+#    \begin{tikzpicture}
+#    \node[
+#      outer sep=0pt,
+#      text width=2.5cm,
+#      minimum height=3cm,
+#      fill=myblue,
+#      font=\color{white}\fontsize{80}{90}\selectfont,
+#      alin=center
+##      ] (num) {\thechapter};
+#    \node[
+#      rotate=90,
+#      anchor=south,
+##      font=\color{black}\Large\normalfont
+#      ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};  
+#    \end{tikzpicture}%
+#  }
+#  {10pt}
+#  {\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily}
+
+
+
+pathRaiz = os.getcwd()
+imgPath = pathRaiz + "/figs/"
+latex_elements['preamble'] += r'\graphicspath{ {%s} }' % imgPath
+
+
+#% Cambiando el formato del inicio de los capitulos
+#\titleformat{\chapter}[display]
+#  {\normalfont\bfseries}{}{0pt}{\Large}   
 
 # Extension instalada con $ sudo pip install sphinxcontrib-bibtex para soportar 
 # el formato BibTex.
