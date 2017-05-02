@@ -175,11 +175,11 @@ latex_elements['preamble'] += r"""
 \makeatletter
 \setcounter{page}{5}
 
+\definecolor{azul-oscuro}{RGB}{76, 85, 255}
 \fancypagestyle{normal}{
     %Con este comando se limpia la configuracion para los encabezados por defecto
     \fancyhf{}
-    \definecolor{azul-oscuro}{RGB}{76, 85, 255}
-
+    
     \fancyfoot[LE,LO,RO,RE]{\center{\py@HeaderFamily\thepage}} % Cambio de footer
     %\fancyhead[RE,RO]{{\py@HeaderFamily \center{\rightmark} }} % Cambio de header
     
@@ -190,6 +190,18 @@ latex_elements['preamble'] += r"""
 
     \renewcommand{\footrulewidth}{0pt}   % y debajo de los encabezados y footers
 }
+
+%Cambiar el formato de las secciones, subsecciones y subsubsecciones
+\definecolor{miazul}{RGB}{0,82,155}
+\titleformat{\section}[block]{\Large\bfseries\sffamily\color{miazul}} 
+              {\thesection.}{1pt}{}
+
+\titleformat{\subsection}[block]{\Large\bfseries\sffamily\color{miazul}} 
+              {\thesubsection.}{1pt}{}
+
+\titleformat{\subsubsection}[block]{\Large\bfseries\sffamily\color{miazul}} 
+              {\thesubsubsection.}{1pt}{}
+
 
 % Se redefine el estilo de pagina "plain" usado por los comandos chapter,part y maketitle
 \fancypagestyle{plain}{%
