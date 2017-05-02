@@ -10,8 +10,8 @@
    :titlesonly:
    
    Introduccion/Introduccion
+   Abstract/*
+   Reconocimientos/*
    :numbered:
    Cap*/*   
    Bibliografia/bibliografia
-
-

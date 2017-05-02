@@ -123,7 +123,11 @@ latex_elements = {
     # Latex figure (float) alignment
     #
      'figure_align': 'htbp',
-     'fncychap':'\\usepackage[Glenn]{fncychap}'
+     'fncychap':'\\usepackage[Glenn]{fncychap}',
+     #Opciones de clase para latex para iniciar los caps en cualquier pagina(par e impar)
+     #Mas opciones en -->
+     #https://es.wikibooks.org/wiki/Manual_de_LaTeX/La_estructura_de_un_documento_en_LaTeX/Pre%C3%A1mbulo/Clases_de_documento
+     'classoptions': ',openany'
 }
 
 ############################################################################
