@@ -227,6 +227,11 @@ latex_elements['preamble'] += r"""
 \titleformat{\chapter}[display]{\bfseries\Large}
     {\thechapter.}{20pt}{}
 
+
+%Identacion para cada parrafo
+\setlength\parindent{1.7cm}
+
+
 %Se sobreecribe el estilo por default del capitulo
 \definecolor{myblue}{RGB}{0,82,155}
 
@@ -266,29 +271,6 @@ latex_elements['preamble'] += r"""
 %\fi
 
 \makeatother"""
-
-
-#\titleformat{\chapter}[display]
-#  {\normalfont\bfseries\color{myblue}}
-#  {\filleft%
-#    \begin{tikzpicture}
-#    \node[
-#      outer sep=0pt,
-#      text width=2.5cm,
-#      minimum height=3cm,
-#      fill=myblue,
-#      font=\color{white}\fontsize{80}{90}\selectfont,
-#      alin=center
-##      ] (num) {\thechapter};
-#    \node[
-#      rotate=90,
-#      anchor=south,
-##      font=\color{black}\Large\normalfont
-#      ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};  
-#    \end{tikzpicture}%
-#  }
-#  {10pt}
-#  {\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily}
 
 
 
