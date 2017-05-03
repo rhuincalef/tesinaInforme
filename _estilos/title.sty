@@ -39,8 +39,15 @@
     %\renewcommand{\familydefault}{\sffamily}
 
     \begin{center}
-    	% Azul normalizado
-	    \textcolor[rgb]{0.0, 0.24313725490196078, 0.6}{\textsc{ \fontseries{ub}\huge{\@tituloTesina}}}\par
+    	\newfontfamily\titulofont{Linux Biolinum O}
+    	\newenvironment{tituloprincipal}{\titulofont}
+
+    	\begin{tituloprincipal}
+			% Azul normalizado
+	    	%\textcolor[rgb]{0.0, 0.24313725490196078, 0.6}{\textsc{ \fontseries{ub}\huge{\@tituloTesina}}}\par
+	    	\textcolor[rgb]{0.0, 0.24313725490196078, 0.6}{\textsc{ \fontseries{ub}\huge{\@tituloTesina}}}\par
+    	\end{tituloprincipal}
+	    		
 	    \vspace{2cm}
 	    \begin{minipage}{\linewidth}% to keep image and caption on one page
 			\makebox[\linewidth]{%        to center the image

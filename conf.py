@@ -152,6 +152,8 @@ justificacion = """Tesina presentada a la Facultad de Ingeniería de la Universi
 Patagonia San Juan Bosco como parte de los requisitos para la obtención del título de Licenciado en Sistemas""".decode("utf-8")
 
 
+latex_engine = 'lualatex'
+
 # CAMPOS USADOS POR \FANCYHDR -->
 #E: Even page
 #O: Odd page
@@ -174,6 +176,10 @@ latex_elements['preamble'] += r"""
 \usepackage{etoolbox}
 \usepackage[titles]{tocloft}
 \usepackage{tikz}
+
+\usepackage{fontspec}
+
+%\setmainfont{Linux Libertine Mono O}
 
 % Sobreescritura de los comandos de latex generados por Sphinx automaticamente
 \makeatletter
