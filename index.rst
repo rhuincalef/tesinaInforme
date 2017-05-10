@@ -4,14 +4,17 @@
    contain the root `toctree` directive.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Índice:
    :glob:
    :titlesonly:
-   
-   Introduccion/Introduccion
-   Abstract/*
+
    Reconocimientos/*
+   Resumen/*
+   Abstract/*
+   OrganizacionContenidos/*
+   
    :numbered:
+   Introduccion/*
    Cap*/*   
    Bibliografia/bibliografia
