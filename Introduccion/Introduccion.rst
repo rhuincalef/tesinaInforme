@@ -1,13 +1,13 @@
 Introducción
-=====
+============
 
 Objetivo general
-------------
+----------------
 
 Extender un sistema de notificación y administración de información pertinente a irregularidades en superficies viales, por medio del censado visual tridimensional semiautomático de información vial, con el fin de contribuir a la toma de decisiones respecto del estado de los circuitos viales.
 
 Objetivos específicos
-------------
+---------------------
 
 * Desarrollar un servicio web para el almacenamiento de capturas realizadas por el sensor desde el aplicativo de captura.
 * Procesar la información tridimensional contenida en un archivo con el fin de identificar las diferentes propiedades  y clasificar el tipo de falla capturada.
@@ -20,7 +20,7 @@ Motivación
 
 El sensor Kinect desarrollado por Microsoft, es un sensor de detección de movimiento que permite la interacción usuario-dispositivo sin la necesidad de controles adicionales. Este sensor, ofrece una amplia gama de características entre las que se destacan una cámara RGB de 640x480 px a 30 FPS, un emisor y un  sensor infrarrojos, que le permiten obtener información acerca de la profundidad, capacidades de reconocimiento de voz y reconocimiento facial.  Esta amplia variedad de características, sumadas al bajo costo de adquisición, y la disponibilidad de paquetes de código abierto disponibles,  hacen que este dispositivo sea apropiado para la explotación en innovaciones.
 
-Las nuevas tecnologías web y la amplia variedad de dispositivos y conectividad  actual, hacen  de  internet una  plataforma computacional  con una gran incidencia en la operación y acceso a la información por parte de las personas. Estas características, sumadas al crecimiento en el uso de estas tecnologías en dispositivos móviles actuales, permiten aumentar la facilidad con la que los usuarios pueden acceder e informar de manera intuitiva, acerca de problemas relacionados a irregularidades en las calles de la ciudad.
+Las nuevas tecnologías web y la amplia variedad de dispositivos y conectividad  actual, hacen de Internet una  plataforma computacional  con una gran incidencia en la operación y acceso a la información por parte de las personas. Estas características, sumadas al crecimiento en el uso de estas tecnologías en dispositivos móviles actuales, permiten aumentar la facilidad con la que los usuarios pueden acceder e informar de manera intuitiva, acerca de problemas relacionados a irregularidades en las calles de la ciudad.
 
 La librería Point Cloud Library (PCL), es una herramienta libre, potente y con un gran conjunto de algoritmos para el procesamiento de imágenes y nubes de puntos en 2D/3D. Esta librería reúne investigadores, universidades, compañías e individuos de todo el mundo y se está convirtiendo rápidamente en una referencia para cualquier interesado en el procesamiento 3D y robótica. 
 
@@ -32,9 +32,17 @@ La reciente introducción de programación de aplicaciones web en la carrera, re
 
 La falta de innovación con respecto al registro y análisis del estado de las vías de circulación de la ciudad y la necesidad de un mecanismo de análisis y clasificación de distintos tipos de fallas en el proyecto de investigación, conforman la principal motivación de esta tesina, que busca extender la funcionalidad de éste, agregando la visualización de las dimensiones de la falla, incluyendo el procesamiento de nubes de puntos para las irregularidades, la clasificación y extracción de sus propiedades relevantes.
 
+Marco teórico
+-------------
+
+PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
 Desarrollos propuestos
-------------
+----------------------
 
 Se propone el desarrollo de una aplicación que haciendo uso de las tecnologías web actuales, permitirá a los actores involucrados en el proceso de mantenimiento de vías de circulación recolectar, procesar y visualizar los diferentes tipos de fallas sobre las distintas calles de la ciudad. Así como, permitir a los habitantes de la ciudad informar y mantenerse informados respecto del estado de las calles.
 
@@ -44,7 +52,7 @@ Por último, con respecto a los mecanismos de notificación y visualización, se
 
 
 Resultados esperados
-------------
+--------------------
 
 Con el desarrollo de la presente tesina, se espera obtener una plataforma que permita mantener informados a los habitantes locales con respecto al estado de las calles de la ciudad a través del acceso a una aplicación web que indique la ubicación de las fallas y el estado actual en el que se encuentran las mismas. Esta a su vez, permitirá a los habitantes informar la localización falla sobre una calle determinada.
 
@@ -52,7 +60,7 @@ Por otro lado, se producirá un módulo de software, que mediante el procesamien
 
 
 Cronograma de actividades
-------------
+-------------------------
 
 Las actividades que se efectuarán para cumplir con el objetivo de la tesina se detallan enumeradas junto a su número de tarea:
 
@@ -70,4 +78,4 @@ Las actividades que se efectuarán para cumplir con el objetivo de la tesina se 
 12. Integrar la funcionalidad de la aplicación web con los módulos de procesamiento de nubes de puntos desarrollados.
 13. Defensa de la tesina ante mesa examinadora.
 
-El diagrama de Gantt con las actividades se encuentra incluido en la sección de anexos del documento.
+El diagrama de Gantt con las actividades se encuentra incluido en la sección de anexos del documento????. 
