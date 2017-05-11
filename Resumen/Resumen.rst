@@ -9,7 +9,7 @@ El objetivo de la presente tesina consiste en estudiar el software disponible pa
 Con respecto al software para el registro de fallas sobre senderos viales, se expondrá de manera breve la terminología relacionada a los distintos tipos de fallas, y  desarrollos software relacionados con el sensado y registro de fallas en sistemas de información.
 
 En cuanto a dispositivos hardware, se estudiarán distintos tipos de sensores para el relevamiento de superficies, características principales y funcionamiento.
-Asimismo,se investigarán los lenguajes de programación disponibles, librerías, herramientas y disponibilidad en distintos sistemas operativos.       
+Asimismo,se investigarán los lenguajes de programación disponibles, librerías, herramientas y disponibilidad en distintos sistemas operativos.Adicionalmente, se incluirán las utilidades de software para obtención de latitud y longitud con un dispositivo compatible con GPS, y las librerías web que permiten obtener datos de la dirección estimada asociada a dichas coordenadas.
 
 Además, se expondrán las técnicas de filtrado y clasificación empleadas para el análisis de distintos tipos de falla, antecedentes históricos, y proyectos de similares características.      
 
