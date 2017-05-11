@@ -15,7 +15,7 @@ Capítulo 7.Dispositivos hardware y herramientas software para el sensado de fal
 ----------------------------------------------------------------------------------
 
 El objetivo de este capítulo es enumerar los distintos tipos de dispositivos y sensores que pueden utilizarse para realizar la captura de irregularidades viales, sus principales características y funcionamiento. 
-Por otro lado, se expondrán los entornos de desarrollo software, paquetes y librerías en distintos lenguajes de programación, y métodos de almacenamiento de las fallas empleados por los mismos. Finalmente, se realizará una comparación entre los mismos.
+Por otro lado, se expondrán librerías en distintos lenguajes de programación, y métodos de almacenamiento de las fallas empleados por los mismos.
 
 Capítulo 8.Técnicas de reconocimiento y procesamiento de fallas
 ---------------------------------------------------------------
@@ -26,7 +26,7 @@ Capítulo 9. Herramientas GPS y Geocoding
 -----------------------------------------
 
 El objetivo de este capítulo consiste en explicar el concepto de GPS, latitud, longitud, funcionamiento, dispositivos GPS disponibles y utilidades software para compartir conexiones GPS entre sistemas operativos Android y Linux.
-Además, se explicará el concepto de Geocoding y Reverse Geocoding, librerías disponibles en PHP y servicios web ofrecidos por terceros compatibles con éstas. Finalmente, se hará una comparación general de los servicios y sus tasas de transferencia de datos.
+Además, se explicará el concepto de Geocoding y Reverse Geocoding, librerías disponibles en PHP y Python y, servicios web ofrecidos por terceros compatibles con éstas.
 
 Capítulo 10. Caso de aplicación
 ------------------------------
