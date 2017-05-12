@@ -48,13 +48,114 @@ Tipos de fallas sobre pavimentos rígidos y flexibles
 Fallas sobre pavimentos rígidos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encuentran los siguientes:
+
+* Deficiencia de sellado: Este tipo de falla se ocasiona cuando se deterioran el sello de las juntas, por ejemplo, cuando existe fluencia fuera de la caja, despegado de ambas paredes, incrustación de materiales ajenos. El método de reparación de este tipo de falla consiste en realizar un sellado de juntas y de las grietas. 
+
+.. figure:: ../figs/Cap6/pav-rigido-deficiencia-sellado.png
+   :scale: 70 %
+
+   Deficiencia de sellado
 
 
+* Losas desniveladas:  Ocurre cuando se desintegran las aristas de una junta, ya sea de manera longitudinal o transversal, con pérdida de trozos. Para este tipo de falla el método de reparación consiste en un sellado de juntas y grietas, o reparación de espesor parcial, que consiste en reponer las saltaduras de material superficial en juntas y grietas.
+  
+.. figure:: ../figs/Cap6/pav-rigido-losas-desniveladas.png
+   :scale: 50 %
+
+   Losas desniveladas
+
+  
+* Grietas: Una grieta se define como una abertura larga y estrecha en una losa de material, y ésta dependiendo de su ubicación en la losa, puede ser una grieta de esquina, longitudinal (si se extiende a lo largo de una losa) o transversal (si se extiende de manera perpendicular al volcado del material de la losa). El método de reparación para este tipo de falla, consiste en el sellado de juntas y grietas, y la reparación en todo el espesor. 
+  
+
+.. figure:: ../figs/Cap6/pav-rigido-grieta-longitudinal.png
+   :scale: 50 %
+
+   Grieta longitudinal
+  
+
+* Desintegración: Esta falla se produce cuando ocurre un desgaste progresivo de la superficie, dejando al material árido expuesto. El método de reparación de este tipo de falla, consiste en realizar una reparación de espesor parcial, en la que se corta la porción de la zona a reparar con una profundidad de corte preestablecida, se limpia la zona y se rellena la zona con un material especial de sellado de juntas.
+
+
+.. figure:: ../figs/Cap6/pav-rigido-desintegracion.png
+   :scale: 50 %
+
+	Desintegración
+
+
+* Baches: Un bache se define como una cabidad, generalmente de forma redondeada producto de la pérdida o hundimiento del pavimento en una parte de la superficie. El método de reparación para este tipo de falla depende del deterioro del mismo, y es especial para cada caso.
+  
+
+.. figure:: ../figs/Cap6/pav-rigido-bache.png
+   :scale: 60 %
+
+	Bache
+  
+
+* Levantamiento: Es el levantamiento de una porción de la losa, localizado en ambos lados de una junta transversal o grieta. El método de reparación consiste en realizar una reparación en todo el espesor, en la que se remueve y reemplaza una porción de la losa en todo su espesor, con el fin de reparar aquellas partes de la losa con un alto grado de daño.
+
+
+.. figure:: ../figs/Cap6/pav-rigido-levantamiento.png
+   :scale: 70 %
+
+	Losas desniveladas
+
+
+
+  
+* Escalonamiento de juntas o grietas: Este tipo de falla ocurre cuando existe un desnivel entre dos superficies del pavimento, separadas por una junta transversal o grieta. El método de reparación para este tipo de falla es el fresado de la superficie, donde se separan las partes defectuosas del pavimento, de las que se encuentran en buen estado.
+  
+
+.. figure:: ../figs/Cap6/pav-rigido-escalonamiento-juntas.png
+   :scale: 70 %
+
+	Escalonamiento de juntas
+
+
+* Descenso de banquinas: Es la diferencia de alturas que existe entre el borde del pavimento y la banquina. El método de reparación de este tipo de falla, consiste en realizar el nivelamiento de las banquinas no revestidas.
+
+
+
+
+.. figure:: ../figs/Cap6/pav-rigido-descenso-banquinas.png
+   :scale: 70 %
+
+	Descenso de banquinas
+  
+
+* Separación banquina-pavimento: Consiste en una rajadura entre el borde del pavimento y la banquina del sendero vial. El método de reparación consiste en realizar un sellado de juntas y grietas.
+  
+
+.. figure:: ../figs/Cap6/pav-rigido-separacion-banquina-pavimento.png
+   :scale: 70 %
+
+	Separación banquina-pavimento
+
+
+
+* Parches deteriorados: Este tipo de falla surge cuando una porción de la superficie del asfalto ha sido removido y reemplazado por otro (como hormigón o asfalto), y ésta se ha dañado. El método de reparación de este tipo de falla, varía según el deterioro, y requiere una reparación especial.
+  
+
+.. figure:: ../figs/Cap6/pav-rigido-parche-deteriorado.png
+   :scale: 70 %
+
+	Parches deteriorados
 
 
 
 Fallas sobre pavimentos flexibles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Exudación:
+* Ahuellamiento y drepresiones:
+* Grietas:
+* Hundimiento del borde y ahuellamiento:
+* Baches:
+* Pérdida local de áridos:
+* Pulimiento o peladuras:
+* Deformación:
+  
 
 
 
