@@ -28,7 +28,16 @@ Tipos de juntas
 
 Los senderos viales, tales como calles, autopistas, se encuentran sometidos a diversos cambios de temperatura durante el día, a diferencias de temperatura considerables entre las distintas estaciones del año, a cambios de humedad constante, y durante su construcción, a los tiempos de parada debido a las jornadas de trabajo con horas fijas, provocan que el material sufra dilataciones y contracciones y, si este material se encuentra extendido en una porción considerable de terreno, se producirá el agrietamiento aleatorio e irregular del mismo, a corto plazo. Para evitar ésto, se emplean juntas en el pavimento,como mecanismo de control de fisuras, que consisten en cortes realizada con maquinaria especial a lo largo y ancho del material, a una profundidad establecida según las propiedades de éste y de la calle, que lo divide en losas. Estas divisiones, se realizan a una distancia aproximada a la que aparecerían las fisuras, ya que en caso contrario, se fisurarían aquellas losas con dimensiones excesivas.
 
-En base a la posición de éstas respecto del avance del hormigonado, las juntas en el pavimento se pueden clasificar en juntas longitudinales, que son aquellas paralelas a dicho avance, o juntas transversales, que son aquellas perpendiculares según el avance del mismo. Por otro lado, las juntas se pueden clasificar respecto del tipo de función que cumplen como: Juntas de contracción, juntas de construcción y juntas de dilatación.
+En base a la posición de las juntas respecto del avance del hormigonado, las juntas en el pavimento se pueden clasificar en juntas longitudinales, que son aquellas paralelas a dicho avance, o juntas transversales, que son aquellas perpendiculares según el avance del mismo. Por otro lado, las juntas se pueden clasificar respecto del tipo de función que cumplen como:
+
+* Juntas de contracción: Pueden ser juntas tanto transversales como longitudinales, y su fin es limitar el tamaño de las losas, disminuyendo hasta valores aceptables, el nivel de tensión producida por fenómenos de retracción como por la variación de temperatura por distancia(gradiente térmico), de manera de evitar roturas en el material.
+   
+* Juntas de construcción: Son las juntas que se producen entre bandas del pavimento, o también en una misma banda, entre losas que se encuentran de manera contigua que se construyen con un tiempo de parada prolongado.
+
+* Juntas de dilatación: Son las juntas que se realizan con el fin de absorber las expansiones del material como consecuencia de los aumentos de temperatura, evitando empujes sobre éste que podrían producir la rotura del mismo. En este tipo de junta,se emplea un material compresible (madera, poliestireno expandido, laminas de poliuretano,etc.) entre las losas con contacto, o entre la losa y otros elementos, como muros y arquetas. 
+  
+  
+
 
 
 
