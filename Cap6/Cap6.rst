@@ -147,15 +147,69 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 Fallas sobre pavimentos flexibles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Exudación:
-* Ahuellamiento y drepresiones:
-* Grietas:
-* Hundimiento del borde y ahuellamiento:
-* Baches:
-* Pérdida local de áridos:
-* Pulimiento o peladuras:
-* Deformación:
+* Exudación: Este tipo de falla se presenta cuando el asfalto pierde sus agregados pétreos en la superficie. El tipo de reparación para esta falla consiste en enarenar y realizar una reparación superficial.
   
+
+.. figure:: ../figs/Cap6/pav-flexible-exudacion.png
+   :scale: 70 %
+
+	Exudación
+
+
+* Ahuellamiento y depresiones: El ahuellamiento es producido por el hundimiento de manera longitudinal del pavimento, y éste coincide con el área donde la mayor parte de los vehículos circula. Mientras que depresión, se considera un ahuellamiento de longitud menor al del ahuellamiento.
+Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza perfilado del pavimento, si la profundidad máxima es mayor a 20 mm pero inferior a 40 mm se realiza relleno de la rodadera, y si ésta es superior a 40 mm, se realiza una reparación local del pavimento.  
+
+.. figure:: ../figs/Cap6/pav-flexible-ahuellamiento.png
+   :scale: 70 %
+
+	Ahuellamiento y depresión
+
+
+* Grietas: Este tipo de falla tiene las mismas características que para pavimento rígido.
+  
+
+* Hundimiento del borde y ahuellamiento: Ocurre cuando se hunde el borde del material que limita con el margen.El método de reparación depende de la profunidad máxima del mismo, si ésta es menor a 20 mm se emplea perfilado del pavimento, si es superior a 20 mm pero inferior a 40 mm se emplea la técnica de relleno de rodadera, si es mayor a 40 mm se realiza una reparación local de la estructura del pavimento.
+
+.. figure:: ../figs/Cap6/pav-flexible-ahuellamiento-borde.png
+   :scale: 70 %
+
+	Hundimiento del borde y ahuellamiento
+
+
+* Baches: Este tipo de falla produce un hundimiento local del sendero vial, con agrietamiento  en malla cerrada y generalmente pérdida parcial de bloques de la capa de rodadura.Las técnicas de reparación de este tipo de falla consisten en restauración local de la estructura del pavimento, o bacheo sobre la base.
+  
+.. figure:: ../figs/Cap6/pav-flexible-baches.png
+   :scale: 70 %
+
+	Baches
+
+
+* Pérdida local de áridos: Este tipo de falla se presenta cuando ocurre una pérdida de una porción de la capa superficial. El método de reparación para este tipo de falla consiste en reemplazar el material afirmado.
+  
+
+.. figure:: ../figs/Cap6/pav-flexible-perdida-aridos.png
+   :scale: 70 %
+
+	Pérdida local de áridos
+
+
+* Pulimiento o peladuras: Produce desprendimientos de la última capa de tratamientos superficiales. El método de reparación varía según la severidad, siendo un método de tratamiento superficial simple con una profundidad menor a 25 mm y área menor a 0,8 m2, y siendo nivelación con sobrecarpeta para profundidad o área mayores a 25 mm y 0,8 m2 respectivamente.
+
+
+.. figure:: ../figs/Cap6/pav-flexible-pulimiento.png
+   :scale: 70 %
+
+	Pulimiento o peladuras
+
+
+* Deformación: Se visualiza en pavimentos donde se produce una desviación longitudinal del material con respecto a su perfil original (asentamientos en el pavimento). El método de reparación con profundidad de la flecha de 13 a 25 mm o entre 25 mm y 50 mm es tratamiento superficial con medida preventiva, mientras que si se superan los 50 mm, se emplea bacheo seguido por aplicación de tratamiento superficial.  
+  
+
+
+.. figure:: ../figs/Cap6/pav-flexible-deformacion.png
+   :scale: 70 %
+
+	Deformación
 
 
 
