@@ -92,7 +92,6 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Levantamiento: Es el levantamiento de una porción de la losa, localizado en ambos lados de una junta transversal o grieta.El método de reparación consiste en realizar una reparación en todo el espesor, en la que se remueve y reemplaza una porción de la losa en todo su espesor, con el fin de reparar aquellas partes de la losa con un alto grado de daño.
 |
-|
    
 .. figure:: ../figs/Cap6/pav-rigido-levantamiento.png
    :scale: 50 %
@@ -114,11 +113,11 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
    Descenso de banquinas
 
+.. raw:: latex
+	
+	\newpage
 
 * Separación banquina-pavimento: Consiste en una rajadura entre el borde del pavimento y la banquina del sendero vial.El método de reparación consiste en realizar un sellado de juntas y grietas.
-|
-|
-|
 
 .. figure:: ../figs/Cap6/pav-rigido-separacion-banquina-pavimento.png
    :scale: 50 %
@@ -147,8 +146,9 @@ Fallas sobre pavimentos flexibles
 * Ahuellamiento y depresiones: El ahuellamiento es producido por el hundimiento de manera longitudinal del pavimento, y éste coincide con el área donde la mayor parte de los vehículos circula. Mientras que depresión, se considera un ahuellamiento de longitud menor al del ahuellamiento.
 Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza perfilado del pavimento, si la profundidad máxima es mayor a 20 mm pero inferior a 40 mm se realiza relleno de la rodadera, y si ésta es superior a 40 mm, se realiza una reparación local del pavimento.
 
-|
-|
+.. raw:: latex
+	
+	\newpage
 
 .. figure:: ../figs/Cap6/pav-flexible-ahuellamiento.png
    :scale: 50 %
@@ -174,10 +174,11 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 
    Baches
 
+.. raw:: latex
+	
+	\newpage
 
 * Pérdida local de áridos: Este tipo de falla se presenta cuando ocurre una pérdida de una porción de la capa superficial. El método de reparación para este tipo de falla consiste en reemplazar el material afirmado.
-|
-|
 
 .. figure:: ../figs/Cap6/pav-flexible-perdida-aridos.png
    :scale: 50 %
@@ -193,9 +194,11 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
    Pulimiento o peladuras
 
 
-* Deformación: Se visualiza en pavimentos donde se produce una desviación longitudinal del material con respecto a su perfil original (asentamientos en el pavimento). El método de reparación con profundidad de la flecha de 13 a 25 mm o entre 25 mm y 50 mm es tratamiento superficial con medida preventiva, mientras que si se superan los 50 mm, se emplea bacheo seguido por aplicación de tratamiento superficial.  
-|
-|
+* Deformación: Se visualiza en pavimentos donde se produce una desviación longitudinal del material con respecto a su perfil original (asentamientos en el pavimento). El método de reparación con profundidad de la flecha de 13 a 25 mm o entre 25 mm y 50 mm es tratamiento superficial con medida preventiva, mientras que si se superan los 50 mm, se emplea bacheo seguido por aplicación de tratamiento superficial.
+  
+.. raw:: latex
+	
+	\newpage
 
 .. figure:: ../figs/Cap6/pav-flexible-deformacion.png
    :scale: 50 %

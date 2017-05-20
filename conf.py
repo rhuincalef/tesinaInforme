@@ -185,6 +185,7 @@ latex_elements['preamble'] += r"""
 \makeatletter
 \setcounter{page}{5}
 
+
 \definecolor{azul-oscuro}{RGB}{76, 85, 255}
 \fancypagestyle{normal}{
     %Con este comando se limpia la configuracion para los encabezados por defecto
