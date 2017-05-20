@@ -50,21 +50,19 @@ Fallas sobre pavimentos rígidos
 
 Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encuentran los siguientes:
 
-* Deficiencia de sellado: Este tipo de falla se ocasiona cuando se deterioran el sello de las juntas, por ejemplo, cuando existe fluencia fuera de la caja, despegado de ambas paredes, incrustación de materiales ajenos. El método de reparación de este tipo de falla consiste en realizar un sellado de juntas y de las grietas. 
+* Deficiencia de sellado: Este tipo de falla se ocasiona cuando se deterioran el sello de las juntas, por ejemplo, cuando existe fluencia fuera de la caja, despegado de ambas paredes, incrustación de materiales ajenos. El método de reparación de este tipo de falla consiste en realizar un sellado de juntas y de las grietas.
 
 .. figure:: ../figs/Cap6/pav-rigido-deficiencia-sellado.png
    :scale: 70 %
 
    Deficiencia de sellado
 
-
 * Losas desniveladas:  Ocurre cuando se desintegran las aristas de una junta, ya sea de manera longitudinal o transversal, con pérdida de trozos. Para este tipo de falla el método de reparación consiste en un sellado de juntas y grietas, o reparación de espesor parcial, que consiste en reponer las saltaduras de material superficial en juntas y grietas.
-  
+
 .. figure:: ../figs/Cap6/pav-rigido-losas-desniveladas.png
-   :scale: 50 %
+   :scale: 30 %
 
    Losas desniveladas
-
 
 * Grietas: Una grieta se define como una abertura larga y estrecha en una losa de material, y ésta dependiendo de su ubicación en la losa, puede ser una grieta de esquina, longitudinal (si se extiende a lo largo de una losa) o transversal (si se extiende de manera perpendicular al volcado del material de la losa). El método de reparación para este tipo de falla, consiste en el sellado de juntas y grietas, y la reparación en todo el espesor. 
   
@@ -79,121 +77,130 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 .. figure:: ../figs/Cap6/pav-rigido-desintegracion.png
    :scale: 50 %
 
-	Desintegración
+   Desintegración
+
+
 
 
 * Baches: Un bache se define como una cabidad, generalmente de forma redondeada producto de la pérdida o hundimiento del pavimento en una parte de la superficie. El método de reparación para este tipo de falla depende del deterioro del mismo, y es especial para cada caso.
   
 .. figure:: ../figs/Cap6/pav-rigido-bache.png
-   :scale: 60 %
+   :scale: 40 %
 
-	Bache
+   Bache
 
 
-* Levantamiento: Es el levantamiento de una porción de la losa, localizado en ambos lados de una junta transversal o grieta. El método de reparación consiste en realizar una reparación en todo el espesor, en la que se remueve y reemplaza una porción de la losa en todo su espesor, con el fin de reparar aquellas partes de la losa con un alto grado de daño.
-
+* Levantamiento: Es el levantamiento de una porción de la losa, localizado en ambos lados de una junta transversal o grieta.El método de reparación consiste en realizar una reparación en todo el espesor, en la que se remueve y reemplaza una porción de la losa en todo su espesor, con el fin de reparar aquellas partes de la losa con un alto grado de daño.
+|
+|
+   
 .. figure:: ../figs/Cap6/pav-rigido-levantamiento.png
-   :scale: 70 %
+   :scale: 50 %
 
-	Levantamiento de juntas
-
+   Levantamiento de juntas
 
 * Escalonamiento de juntas o grietas: Este tipo de falla ocurre cuando existe un desnivel entre dos superficies del pavimento, separadas por una junta transversal o grieta. El método de reparación para este tipo de falla es el fresado de la superficie, donde se separan las partes defectuosas del pavimento, de las que se encuentran en buen estado.
   
 .. figure:: ../figs/Cap6/pav-rigido-escalonamiento-juntas.png
    :scale: 70 %
 
-	Escalonamiento de juntas
+   Escalonamiento de juntas
 
 
 * Descenso de banquinas: Es la diferencia de alturas que existe entre el borde del pavimento y la banquina. El método de reparación de este tipo de falla, consiste en realizar el nivelamiento de las banquinas no revestidas.
 
 .. figure:: ../figs/Cap6/pav-rigido-descenso-banquinas.png
-   :scale: 70 %
+   :scale: 40 %
 
-	Descenso de banquinas
+   Descenso de banquinas
 
 
-* Separación banquina-pavimento: Consiste en una rajadura entre el borde del pavimento y la banquina del sendero vial. El método de reparación consiste en realizar un sellado de juntas y grietas.
+* Separación banquina-pavimento: Consiste en una rajadura entre el borde del pavimento y la banquina del sendero vial.El método de reparación consiste en realizar un sellado de juntas y grietas.
+|
+|
+|
 
 .. figure:: ../figs/Cap6/pav-rigido-separacion-banquina-pavimento.png
-   :scale: 70 %
+   :scale: 50 %
 
-	Separación banquina-pavimento
+   Separación banquina-pavimento
 
 
 * Parches deteriorados: Este tipo de falla surge cuando una porción de la superficie del asfalto ha sido removido y reemplazado por otro (como hormigón o asfalto), y ésta se ha dañado. El método de reparación de este tipo de falla, varía según el deterioro, y requiere una reparación especial.
 
 .. figure:: ../figs/Cap6/pav-rigido-parche-deteriorado.png
-   :scale: 70 %
+   :scale: 40 %
 
-	Parches deteriorados
+   Parches deteriorados
 
 Fallas sobre pavimentos flexibles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Exudación: Este tipo de falla se presenta cuando el asfalto pierde sus agregados pétreos en la superficie. El tipo de reparación para esta falla consiste en enarenar y realizar una reparación superficial.
-  
 
 .. figure:: ../figs/Cap6/pav-flexible-exudacion.png
-   :scale: 70 %
+   :scale: 50 %
 
-	Exudación
+   Exudación
 
 
 * Ahuellamiento y depresiones: El ahuellamiento es producido por el hundimiento de manera longitudinal del pavimento, y éste coincide con el área donde la mayor parte de los vehículos circula. Mientras que depresión, se considera un ahuellamiento de longitud menor al del ahuellamiento.
-Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza perfilado del pavimento, si la profundidad máxima es mayor a 20 mm pero inferior a 40 mm se realiza relleno de la rodadera, y si ésta es superior a 40 mm, se realiza una reparación local del pavimento.  
+Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza perfilado del pavimento, si la profundidad máxima es mayor a 20 mm pero inferior a 40 mm se realiza relleno de la rodadera, y si ésta es superior a 40 mm, se realiza una reparación local del pavimento.
+
+|
+|
 
 .. figure:: ../figs/Cap6/pav-flexible-ahuellamiento.png
-   :scale: 70 %
+   :scale: 50 %
 
-	Ahuellamiento y depresión
+   Ahuellamiento y depresión
 
 
 * Grietas: Este tipo de falla tiene las mismas características que para pavimento rígido.
+
   
-* Hundimiento del borde y ahuellamiento: Ocurre cuando se hunde el borde del material que limita con el margen.El método de reparación depende de la profunidad máxima del mismo, si ésta es menor a 20 mm se emplea perfilado del pavimento, si es superior a 20 mm pero inferior a 40 mm se emplea la técnica de relleno de rodadera, si es mayor a 40 mm se realiza una reparación local de la estructura del pavimento.
+* Hundimiento del borde y ahuellamiento: Ocurre cuando se hunde el borde del material que limita con el margen.El método de reparación depende de la profundidad máxima del mismo, si ésta es menor a 20 mm se emplea perfilado del pavimento, si es superior a 20 mm pero inferior a 40 mm se emplea la técnica de relleno de rodadera, si es mayor a 40 mm se realiza una reparación local de la estructura del pavimento.
 
 .. figure:: ../figs/Cap6/pav-flexible-ahuellamiento-borde.png
-   :scale: 70 %
+   :scale: 50 %
 
-	Hundimiento del borde y ahuellamiento
+   Hundimiento del borde y ahuellamiento
 
 
 * Baches: Este tipo de falla produce un hundimiento local del sendero vial, con agrietamiento  en malla cerrada y generalmente pérdida parcial de bloques de la capa de rodadura.Las técnicas de reparación de este tipo de falla consisten en restauración local de la estructura del pavimento, o bacheo sobre la base.
   
 .. figure:: ../figs/Cap6/pav-flexible-baches.png
-   :scale: 70 %
+   :scale: 50 %
 
-	Baches
+   Baches
 
 
 * Pérdida local de áridos: Este tipo de falla se presenta cuando ocurre una pérdida de una porción de la capa superficial. El método de reparación para este tipo de falla consiste en reemplazar el material afirmado.
-  
+|
+|
 
 .. figure:: ../figs/Cap6/pav-flexible-perdida-aridos.png
-   :scale: 70 %
+   :scale: 50 %
 
-	Pérdida local de áridos
+   Pérdida local de áridos
 
 
 * Pulimiento o peladuras: Produce desprendimientos de la última capa de tratamientos superficiales. El método de reparación varía según la severidad, siendo un método de tratamiento superficial simple con una profundidad menor a 25 mm y área menor a 0,8 m2, y siendo nivelación con sobrecarpeta para profundidad o área mayores a 25 mm y 0,8 m2 respectivamente.
 
-
 .. figure:: ../figs/Cap6/pav-flexible-pulimiento.png
-   :scale: 70 %
+   :scale: 50 %
 
-	Pulimiento o peladuras
+   Pulimiento o peladuras
 
 
 * Deformación: Se visualiza en pavimentos donde se produce una desviación longitudinal del material con respecto a su perfil original (asentamientos en el pavimento). El método de reparación con profundidad de la flecha de 13 a 25 mm o entre 25 mm y 50 mm es tratamiento superficial con medida preventiva, mientras que si se superan los 50 mm, se emplea bacheo seguido por aplicación de tratamiento superficial.  
-  
-
+|
+|
 
 .. figure:: ../figs/Cap6/pav-flexible-deformacion.png
-   :scale: 70 %
+   :scale: 50 %
 
-	Deformación
+   Deformación
 
 
 Proyectos de software anteriores para la detección de fallas sobre el pavimento
