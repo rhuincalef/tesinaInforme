@@ -219,7 +219,7 @@ Debido a que la recolección manual de fallas es una tarea costosa con respecto 
 Proyectos basados en procesamiento de video e imagen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-En lo que respecta al procesamiento de imágenes, uno de los primeros papers publicados en :cite:`antecedentesProcesamientoImg1`  laldmskamdksamdkas dkmaskdmaskd sakmdksamdkas    
+En lo que respecta al procesamiento de imágenes, uno de los primeros estudios publicados en :cite:`antecedentesProcesamientoImg1`  laldmskamdksamdkas dkmaskdmaskd sakmdksamdkas    
 
 
 Proyectos basados en sensores de vibración
