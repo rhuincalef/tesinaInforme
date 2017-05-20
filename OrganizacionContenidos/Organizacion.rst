@@ -9,7 +9,7 @@ En este capitulo se introducen los objetivos de la tesina, el marco teórico y l
 Capítulo 6.Antecedentes de software para la gestión de fallas viales
 --------------------------------------------------------------------
 
-Este capítulo comienza definiendo el concepto de falla, los tipos de material, tipos de reparación que se pueden efectuar sobre cada uno, y los tipos de falla sobre los distintos tipos de material. Durante este capítulo también se debaten antecedentes históricos, software y proyectos de investigación relativos al sensado de fallas en distintos contextos.
+Este capítulo comienza definiendo el concepto de falla, los tipos de material, tipos de reparación que se pueden efectuar sobre cada uno, y los tipos de falla que se corresponden sobre los distintos tipos de material. Durante este capítulo también se debaten antecedentes históricos, software y proyectos de investigación, relativos al sensado de fallas en distintos contextos.
 
 Capítulo 7.Dispositivos hardware y herramientas software para el sensado de fallas
 ----------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ Capítulo 10. Caso de aplicación
 
 El objetivo de este capítulo es explicar tanto la arquitectura general de la aplicación cliente como de la aplicación web, los objetivos de las mismas, el ciclo de trabajo y las formas de interacción con ambas aplicaciones. 
 Por un lado, se expondrá el funcionamiento de la aplicación cliente, librerías empleadas para su desarrollo, formas de interacción de ésta con el sensor Kinect y diseño.
-Por otro lado, se presentará la funcionalidad base que la aplicación web ofrecía anteriormente, diseño y la funcionalidad incluida como parte del desarrollo de la presente investigación. 
+Por otro lado, se presentará la funcionalidad base que la aplicación web ofrecía anteriormente, diseño, la funcionalidad incluida como parte del desarrollo de la presente investigación y librerías relacionadas al funcionamiento agregado a la misma. 
 
 Capítulo 11. Conclusiones y líneas futuras
 ------------------------------------------
