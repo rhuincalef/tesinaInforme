@@ -219,7 +219,10 @@ Debido a que la recolección manual de fallas es una tarea costosa con respecto 
 Proyectos basados en procesamiento de video e imagen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-En lo que respecta al procesamiento de imágenes, uno de los primeros estudios publicados en :cite:`antecedentesProcesamientoImg1`  laldmskamdksamdkas dkmaskdmaskd sakmdksamdkas    
+En lo que respecta al procesamiento de imágenes, una de las aproximaciones que se han empleado dentro de esta área es la de Korch y Brikalis :cite:`antecedentesProcImg1`, donde el reconocimiento de los tipos de falla consiste caracterizar los distintos tipos de falla  por medio de sus propiedades visuales (como las sombras alrededor de la misma, la forma aproximada, la apariencia visual de la textura dentro de la falla) y emplearlas en conjunto con un modelo que cuenta con tres fases de procesamiento: Segmentación de la imagen, extracción de forma y comparación de texturas.
+
+
+
 
 
 Proyectos basados en sensores de vibración
@@ -227,8 +230,10 @@ Proyectos basados en sensores de vibración
 
 AGREGAR INFO DE 2 O 3 PAPERS
 
+
 Proyectos basados en el uso de reconstrucción 3D
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 AGREGAR INFO DE 2 O 3 PAPERS
 
