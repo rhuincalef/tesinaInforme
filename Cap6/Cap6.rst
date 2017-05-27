@@ -221,7 +221,9 @@ Proyectos basados en procesamiento de video e imagen
 
 En lo que respecta al procesamiento de imágenes, una de las aproximaciones que se han empleado dentro de esta área es la de Korch y Brikalis :cite:`antecedentesProcImg1`, donde el reconocimiento de los tipos de falla consiste caracterizar los distintos tipos de falla  por medio de sus propiedades visuales (como las sombras alrededor de la misma, la forma aproximada, la apariencia visual de la textura dentro de la falla) y emplearlas en conjunto con un modelo que cuenta con tres fases de procesamiento: Segmentación de la imagen, extracción de forma y comparación de texturas.
 
+En general, las imágenes se encuentran compuestas por zonas homogéneas con características similares (texturas,tonalidad de gris,etc),que identifican distintos objetos en la misma.
 
+La segmentación de una imagen consiste en descomponer , asignando a cada pixel que la conforma una etiqueta, en grupos de pixeles u objetos, de manera que se agrupen aquellos pixeles que comparten características similares. Ésto permite que  
 
 
 
