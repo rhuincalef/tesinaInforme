@@ -219,11 +219,92 @@ Debido a que la recolección manual de fallas es una tarea costosa con respecto 
 Proyectos basados en procesamiento de video e imagen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Conceptos de procesamiento de imágenes
+""""""""""""""""""""""""""""""""""""""
+
+Procesamiento de imágenes
++++++++++++++++++++++++++
+
+El mundo percibido diariamente por las personas se manifiesta en una variedad de formas, colores y texturas que la visión humana puede adquirir, integrar e interpretar con relativa facilidad, como así también, reconocer éstas en sus representaciones asociadas en textos, presentaciones multimedia, imágenes o video digital. No obstante, existe una gran cantidad de radiación que puede ser sensada y ésta se encuentra delimitada por el espectro electromagnético, descubierto por Sir Isaac Newton en 1666, cuando un rayo de luz atravesó un a través de un prisma, y Newton observó que el haz de luz es blanco, sino que se compone de un espectro continuo de colores desde violeta en un extremo (0.43 micrometros) hasta rojo en el otro(0.79 micrometros). 
+
+
+|
+.. figure:: figs/Cap6/espectroElectromagnetico.png
+   :scale:	80 %
+
+   El espectro electromagnético dividido y ampliado.
+|
+
+Como se puede observar en la figura anterior, en un extremo del espectro se encuentran las ondas de radio que se caracterizan por poseer longitudes de onda millones de veces mas largas a las de la luz visible, mientras que en el otro extremo se encuentran los rayos gamma con longitudes de onda millones de veces más pequeñas. El espectro electromagnético se puede expresar en función de la energía, la frecuencia o la longitud de onda (wavelength, LAMBDA). La longitud de onda (LAMBDA) y la frecuencia se encuentran relacionadas por la expresión:
+|
+LAMBDA = c/v
+
+donde c es la velocidad de la luz (2.988 x 10 ^8 m/s). Por otro lado, la energía de varios componentes del espectro electromagnético se define en la expresion:
+|
+E = h*v(eq1)
+
+donde h es la constante de Planck. Las unidades de las longitudes de onda se miden en metros, empleándose las medidas micrometros y nanómetros frecuentemente. La frecuencia se mide en Hertz(Hz), con 1 Hertz siendo igual a un ciclo de onda sinusoidal por segundo. Una unidad de medida para la energía en el espectro electromagnético es el electron-volt.
+
+Por lo tanto, las ondas electromagnéticas pueden ser vistas como ondas sinusoidales con longitud de onda LAMBDA, o pueden ser consideradas como un flujo de partículas sin masa, cada una viajando en un patrón con forma de onda y moviéndose a la velocidad de la luz. Cada partícula sin masa, contiene una cierta cantidad de energía denominada fotón(photon). De la ecuación eq1 , se puede observar que la energía es proporcional a la frecuencia, por lo que cuanto más alta sea la frecuencia el fenómeno electromagnético llevará mas energía por fotón. Así las ondas de radio tienen fotones con baja energía, las microondas tienen más energía que las ondas de radio, las infrarojas aún más, siendo la luz visible, luz ultravioleta,los rayos X y finalmente los rayos gamma los que tienen mayor cantidad de energía de todos. Esta es la razón por la cual los rayos gamma son los más dañinos para los organismos vivientes.
+
+|
+
+.. figure:: figs/Cap6/ondaSinusoidal.png
+   :scale:	80 %
+
+   Representación gráfica de la longitud de onda (LAMDA)
+
+
+Sin embargo, el ojo humano sólo puede capturar la luz visible de la radiación electromagnética, que representa una porción mínima de la radiación que puede ser percibida, y aunque esta banda es óptima ya que el volumen de información se encuentra reducido, es altamente confiable y disponible (ya que se encuentra fuertemente proyectada por el Sol y la atmósfera de la tierra es lo suficientemente transparente como para percibirla), la radiación de otras bandas puede ser igualmente útil para ciertas ramas de la ciencia, que graban y hacen uso de casi todo el espectro y emplean esta información con el objetivo de obtener un mejor concepto de la realidad física. Un ejemplo de esto son las ondas de sonido de alta frecuencia o ultrasonido, que son usadas para crear imágenes del cuerpo humano mientras que las imágenes de baja frecuencia son empleadas por compañías, para crear imágenes de la superficie de la tierra. Aunque la captura de imágenes se basa principalmente en la energía generadas por las ondas electromagnéticas, existen otros métodos para la generación de imágenes, tales como capturar el sonido reflejado desde un objeto con el fin de obtener imágenes ultrasónicas, o rayos de electrones como los que emplean los microscopios de electrones para obtener imágenes que permitan recolectar información respecto de especímenes biologicos e inorgánicos, incluyendo microorganismos, muestras de biopsias, metales y cristales. 
+
+Para que un sensor pueda captar un objeto de determinado tamaño, es necesario que la longitud de onda del sensor sea igual o menor al tamaño de del objeto, por lo que este requerimiento junto con el material del sensor, establecen los límites de la capacidad de captura del sensor de imagen y su clasificación en distintos tipos, tales como sensores infrarojos, de luz visible,etc. Así, con el fin de capturar imágenes digitales en las distintas bandas del espectro electromagnético, es necesario emplear sensores que puedan captar la energía irradiada en cierto rango y produzcan una señal eléctrica de salida (generada por una combinación entre el material sensible a la radiación del sensor y la fuente de alimentación del mismo), que permita la representación de una imagen del mundo tridimensional de interés en formato digital.
+
+
+.. figure:: figs/Cap6/sensorCaptura.png
+   :scale: 90%
+   
+   Sensor invidivual de captura
+
+
+Las imágenes,aunque tengan distintas fuentes, comparten el hecho de que existe una radiación que es emitida desde alguna fuente para posteriormente interactuar con algún tipo de material, luego es sensada y trasladada en una señal eléctrica que puede ser digitalizada. Las imágenes se pueden clasificar según la forma en la que la interacción con el dispositivo de sensado ocurre en 3 categorías generales:
+
+* Las imágenes de reflexión son aquellas en que la radiación ha sido reflejada desde la superficie de un objeto. Ésta puede ser del ambiente o artificial, y puede provenir desde una fuente localizada o desde fuentes múltiples. Este tipo de imágenes son las que se perciben día a día por las personas por medio de la vista, mientras que algunos ejemplos de imágenes no visibles de este tipo incluyen imágenes por radar, imágenes por sonar y algunos tipos de imágenes por microscopio. El tipo de información que puede ser extraída desde este tipo de imagen es generalmente respecto de la superficie de los objetos, su forma, color, textura y reflectividad.
+* Las imágenes de emisión son aquellas cuya radiación es emitida por el objeto que se desea capturar, como las imágenes térmicas o infrarojas, y que son usadas por áreas como la medicina, pruebas militares, o en objetos luminosos como bombillas de luz, estrellas, imágenes de resonancia magnética (MRI), las cuales obtienen información en base a la capacidad de emisión de las partículas. Cuando se emplea este tipo de imágenes se desea obtener información respecto de la estructura interna del objeto, aunque también pueden ser empleadas para información externa, por ejemplo, una cámara térmica utilizada en situaciones con baja iluminación, con el fin de producir una imagen que capture los objetos que producen calor en una escena.
+* Las imágenes de absorción donde la radiación atraviesa el material que compone el objeto y es absorbida o atenuada por éste parcialmente, lo que proporciona información relacionada con la estructura interna del mismo. El grado de absorción determina el nivel de la imagen registrada. Ejemplos de este tipo de imágenes son los rayos X, imágenes de transmisión microscópicas y ciertos tipos de imágenes sónicas.   
+|
+
+.. figure:: figs/Cap6/tiposInteraccionImagenes.png
+   :scale:	80 %
+
+   Tipos de interacción para el sensado de imágenes
+
+
+Una imagen digital se define por medio de una función de dos dimensiones f(x,y), donde x e y se consideran coordenadas espaciales del plano y, donde la amplitud de una función f() en cualquier par de coordenadas es llamado intensidad de la imagen en ese punto.
+CONTINUAR CON PIXELES ACA E INCLUIR ALGUNA FIGURA!!
+
+
+
+El procesamiento de imágenes digitales, es un conjunto de técnicas que toman una imagen como parámetro de entrada y producen una imagen como resultado, utilizando algoritmos que permiten extraer atributos y características en las mismas y/o reconocer objetos en éstas.
+
+Operaciones sobre imágenes
+++++++++++++++++++++++++++
+
+Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen, entre los que se encuentran aquellas operaciones entre las que se encuentran: Las operaciones que se aplican a los pixeles individualmente, y las operaciones que se aplican entre dos o más imágenes.
+
+Segmentación
+~~~~~~~~~~~~
+
+La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.
+Este proceso es uno de los más importantes elementos en análisis de imágenes automatizado, principalmente porque posibilita extraer aquellas entidades de interés en la imagen para aplicar otros métodos de procesamiento, como la descripción y el reconocimiento.
+
+
+
+
+Estudios relativos a la detección de fallas
+"""""""""""""""""""""""""""""""""""""""""""
+
 En lo que respecta al procesamiento de imágenes, una de las aproximaciones que se han empleado dentro de esta área es la de Korch y Brikalis :cite:`antecedentesProcImg1`, donde el reconocimiento de los tipos de falla consiste caracterizar los distintos tipos de falla  por medio de sus propiedades visuales (como las sombras alrededor de la misma, la forma aproximada, la apariencia visual de la textura dentro de la falla) y emplearlas en conjunto con un modelo que cuenta con tres fases de procesamiento: Segmentación de la imagen, extracción de forma y comparación de texturas.
 
-En general, las imágenes se encuentran compuestas por zonas homogéneas con características similares (texturas,tonalidad de gris,etc),que identifican distintos objetos en la misma.
-
-La segmentación de una imagen consiste en descomponer , asignando a cada pixel que la conforma una etiqueta, en grupos de pixeles u objetos, de manera que se agrupen aquellos pixeles que comparten características similares. Ésto permite que  
 
 
 
