@@ -325,8 +325,8 @@ Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común
    Representación del proceso de muestreo y cuantificación.Imagen continua captada por un dipositivo de sensado(a).Imagen muestreada y cuantificada(b).
 
 
-Tipos de imágenes
-+++++++++++++++++
+Tipos de imágenes digitales
++++++++++++++++++++++++++++
 
 Existen distintos tipos de imágenes digitales según la metodología seleccionada para representar la intensidad, entre los que se destacan los siguientes tipos: Imágenes binarias, imágenes por escalas de grises, imágenes a color e imágenes indexadas.
 
@@ -334,7 +334,45 @@ Existen distintos tipos de imágenes digitales según la metodología selecciona
 Imágenes binarias
 ~~~~~~~~~~~~~~~~~
 
+En este tipo de imagen digital la intensidad de los pixeles sólo puede asumir dos valores 0 o 1, por lo que sólo se requiere un bit para su representación, siendo estas imágenes las que requieren menos espacio de almacenamiento y tiempo de procesamiento. Estas imágenes contienen suficiente información respecto de los objetos en la imagen y permiten que éstos se reconozcan fácilmente.
+Este tipo de imágenes se emplean en distintos tipos de aplicaciones de visión por computadora, como el reconocimiento de objetos, el rastreo,etc. aunque su aplicabilidad es limitada debido al contenido limitado de información que brindan.
+Las imágenes binarias surgen de una variedad de fuentes, generalmente son creadas por medio del procesamiento de imágenes de escala de grises, aunque algunos tipos de sensores entregan una imagen binaria como salida, como los dispositivos que se emplean para obtener dibujos o texto escrito a mano con un pad resistivo, un lápiz de luz. Generalmente estos dispositivos, inicializan todas las coordenadas de la imagen binaria en cero, y al detectar la presión o un cambio de resistencia, o luz sensada en una coordenada, entonces se le asigna a la misma el valor 1.Ejemplos de imágenes binarias, son los dibujos de líneas, texto escrito o impreso, siluetas, huellas digitales,o planos empleados por arquitectos.
+|
 
+.. figure:: figs/Cap6/imagenBinaria.png
+
+   Imagen binaria
+
+
+Un objeto en una imágen binaria se considera como un conjunto de pixeles con nivel 1 conectados, y algunas de las propiedades que definen la conectividad entre pixeles en una imagen binaria son las siguientes:
+
+* Pixeles conectados: Un pixel en un punto P0 en (i0,j0) se conecta a otro pixel Pn en (in,jn) si y sólo si existe un camino desde P0 hasta Pn, que es una secuencia de puntos (i0,j0),(i1,j1)...(in,jn) tal que el pixel (ik,jk) es un vecino del pixel en (ik+1,jk+1) y Pk= Pk+1 para todos los k, 0 < k < n-1. La secuencia de pixeles distintos de un pixel a otro también se denomina camino digital (digital path) y si el primer pixel del camino se encuentra conectado con el primer pixel, se denomina un camino cerrado.
+* 4-vecinos(4-connected pixel): Cuando un pixel en la ubicación (i,j) tiene cuatro vecinos en (i+1,j), (i-1,j), (i,j+1) e (i,j-1) se conocen como 4-vecinos.
+* 8-vecinos(8-connected pixel): Cuando un pixel en la ubicación (i,j) tiene una conexión de 4-vecinos  y además tiene una conexión 4-diagonal con otros pixeles, esto es que tenga conexión con los pixeles en (i+1,j+1),(i+1,j-1),(i-1,j+1) e (i-1,j-1), se conocen como una conexión de 8-vecinos.
+* m-vecinos(m-connected). Dos pixeles P0 y P1 con niveles de la escala L, son m-vecinos si: (a) P0 es un 4-vecino de P1, o (b) si P0 esta en una conexión 4-diagonal de P1 y el conjunto de 4-vecinos de P0 y P1 no tienen valores en común de la escala L de niveles. 
+* Componente conectado: Un conjunto de pixeles conectados (4 u 8 pixeles) forman un componente conectado,que representa un objeto en escena.
+* Fondo(background): El conjunto de componentes conectados de 0 pixeles forma el fondo de la imagen.
+|
+
+.. figure:: figs/Cap6/tiposConexionesImgBinaria.png
+  
+    Tipos de conexiones entre pixeles. 4-vecinos(a). 8-vecinos(b). Componente conectado y fondo(c).
+
+Una vez que un objeto es identificado algunos de sus atributos se pueden definir de la siguiente manera:
+
+* Área del objeto: El área de un objeto se da como la sumatoria de todos los pixeles i,j que forman el objeto(pixeles con valor 1).
+* Ubicación del objeto: La ubicación del objeto se define como el centro del objeto en X e Y, calculados por medio de la sumatoria de las coordenadas del objeto dividido por el área del mismo. En la siguiente ecuación se puede observar la forma de calcular los centroides Xc e Yc:
+|
+|
+
+.. figure:: figs/Cap6/calculoCentroide.png
+   :scale: 80%
+   
+   Fórmula para el cálculo del objeto
+
+* Orientación de un objeto: Cuando el objeto tiene una forma alargada, los ejes de la elongación producen la orientación del mismo.El eje de elongación es una línea recta tal que la suma de las distancias al cuadrado, de todos los puntos del objeto desde esta línea es mínimo(distancia perpendicular de un punto del objeto hacia la línea).
+* Perímetro de un objeto: El perímetro de un objeto se obtiene sumando los pixeles que forman parte del límite del objeto y que son parte del área. El límite o contorno de un objeto esta formado por aquellos pixeles que tienen uno o más vecinos que no están en el área.
+  
 
 
 
@@ -350,10 +388,6 @@ Existen distintos mecanismos que se emplean para la manipulación de imágenes, 
 .. figure:: path
 
    Histograma de imagen
-
-
-
-
 
 
 
