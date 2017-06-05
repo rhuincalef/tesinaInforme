@@ -257,15 +257,6 @@ Por lo tanto, las ondas electromagnéticas pueden ser vistas como ondas sinusoid
 
 Sin embargo, el ojo humano sólo puede capturar la luz visible de la radiación electromagnética, que representa una porción mínima de la radiación que puede ser percibida, y aunque esta banda es óptima ya que el volumen de información se encuentra reducido, es altamente confiable y disponible (ya que se encuentra fuertemente proyectada por el Sol y la atmósfera de la tierra es lo suficientemente transparente como para percibirla), la radiación de otras bandas puede ser igualmente útil para ciertas ramas de la ciencia, que graban y hacen uso de casi todo el espectro y emplean esta información con el objetivo de obtener un mejor concepto de la realidad física. Un ejemplo de esto son las ondas de sonido de alta frecuencia o ultrasonido, que son usadas para crear imágenes del cuerpo humano mientras que las imágenes de baja frecuencia son empleadas por compañías, para crear imágenes de la superficie de la tierra. Aunque la captura de imágenes se basa principalmente en la energía generadas por las ondas electromagnéticas, existen otros métodos para la generación de imágenes, tales como capturar el sonido reflejado desde un objeto con el fin de obtener imágenes ultrasónicas, o rayos de electrones como los que emplean los microscopios de electrones para obtener imágenes que permitan recolectar información respecto de especímenes biologicos e inorgánicos, incluyendo microorganismos, muestras de biopsias, metales y cristales. 
 
-Para que un sensor pueda captar un objeto de determinado tamaño, es necesario que la longitud de onda del sensor sea igual o menor al tamaño de del objeto, por lo que este requerimiento junto con el material del sensor, establecen los límites de la capacidad de captura del sensor de imagen y su clasificación en distintos tipos, tales como sensores infrarojos, de luz visible,etc. Así, con el fin de capturar imágenes digitales en las distintas bandas del espectro electromagnético, es necesario emplear sensores que puedan captar la energía irradiada en cierto rango y produzcan una señal eléctrica de salida (generada por una combinación entre el material sensible a la radiación del sensor y la fuente de alimentación del mismo), que permita la representación de una imagen del mundo tridimensional de interés en formato digital.
-
-
-.. figure:: figs/Cap6/sensorCaptura.png
-   :scale: 90%
-   
-   Sensor invidivual de captura
-
-
 Las imágenes,aunque tengan distintas fuentes, comparten el hecho de que existe una radiación que es emitida desde alguna fuente para posteriormente interactuar con algún tipo de material, luego es sensada y trasladada en una señal eléctrica que puede ser digitalizada. Las imágenes se pueden clasificar según la forma en la que la interacción con el dispositivo de sensado ocurre en 3 categorías generales:
 
 * Las imágenes de reflexión son aquellas en que la radiación ha sido reflejada desde la superficie de un objeto. Ésta puede ser del ambiente o artificial, y puede provenir desde una fuente localizada o desde fuentes múltiples. Este tipo de imágenes son las que se perciben día a día por las personas por medio de la vista, mientras que algunos ejemplos de imágenes no visibles de este tipo incluyen imágenes por radar, imágenes por sonar y algunos tipos de imágenes por microscopio. El tipo de información que puede ser extraída desde este tipo de imagen es generalmente respecto de la superficie de los objetos, su forma, color, textura y reflectividad.
@@ -279,8 +270,48 @@ Las imágenes,aunque tengan distintas fuentes, comparten el hecho de que existe 
    Tipos de interacción para el sensado de imágenes
 
 
-Una imagen digital se define por medio de una función de dos dimensiones f(x,y), donde x e y se consideran coordenadas espaciales del plano y, donde la amplitud de una función f() en cualquier par de coordenadas es llamado intensidad de la imagen en ese punto.
-CONTINUAR CON PIXELES ACA E INCLUIR ALGUNA FIGURA!!
+Para que un sensor pueda captar un objeto de determinado tamaño, es necesario que la longitud de onda del sensor sea igual o menor al tamaño de del objeto, por lo que este requerimiento junto con el material del sensor, establecen los límites de la capacidad de captura del sensor de imagen y su clasificación en distintos tipos, tales como sensores infrarojos, de luz visible,etc. Así, con el fin de capturar imágenes digitales en las distintas bandas del espectro electromagnético, es necesario emplear sensores que puedan captar la energía irradiada en cierto rango y produzcan una señal eléctrica de salida (generada por una combinación entre el material sensible a la radiación del sensor y la fuente de alimentación del mismo), que permita la representación de una imagen del mundo tridimensional de interés en formato digital.
+
+
+.. figure:: figs/Cap6/sensorCaptura.png
+   :scale: 90%
+   
+   Sensor invidivual de captura
+
+
+Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación obtenida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una convertir estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas. 
+|
+
+.. figure:: figs/Cap6/imagenPixels.jpg
+
+   Representación de un array de imagen de 10 x 10
+
+
+
+El siguiente paso consiste en realizar la cuantificación o quantization, donde se realiza la conversión de las intensidades analogicas captadas por los sensores a valores numéricos discretos, asignando un valor a cada pixel muestreado, de manera que la imagen reconstruida de los valores muestreados sean de una calidad lo más aproximada a la real y el error introducido por la cuantificación sea mínimo.
+Con el fin de cuantificar, el rango de valores dinámicos que puede adoptar los pixeles de una imagen se dividide en un rango finito de intervalos, y a cada intervalo se le asigna un valor.Cuanto mayores sean los intervalos disponibles para cuantificación, la imagen digitalizada se aproximará con más fidelidad a la imagen real.
+La cuantificación se puede realizar de manera uniforme, cuando los valores de intensidad tienen mayor probabilidad de caer en intervalos regulares y se opta por dividir el rango de niveles en intervalos igualmente espaciados. Por otro lado, cuando la imagen adopta valores en un rango con una frecuencia prolongada y otros valores de manera infrecuente, es preferible emplear la cuantificación no uniforme. 
+
+
+
+
+.. figure:: figs/Cap6/cuantificacionUniformeNoUniforme.png
+   :scale: 70%
+   Cuantificación de imagen de 2 dimensiones.Cuantificación uniforme(a).Cuantificación no uniforme (b)
+
+
+
+
+.. figure:: resultadoDelProcesoCuantificacion.png
+
+   Representación del proceso de muestreo y cuantificación.Imagen continua captada por un dipositivo de sensado(a).Imagen muestreada y cuantificada(b).
+
+
+
+TIPOS DE IMAGENES
+
+
+FORMATOS DE IMAGENES
 
 
 
