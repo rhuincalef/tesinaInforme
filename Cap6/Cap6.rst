@@ -222,8 +222,8 @@ Proyectos basados en procesamiento de video e imagen
 Conceptos de procesamiento de imágenes
 """"""""""""""""""""""""""""""""""""""
 
-Procesamiento de imágenes
-+++++++++++++++++++++++++
+Digitalización de imágenes
+++++++++++++++++++++++++++
 
 El mundo percibido diariamente por las personas se manifiesta en una variedad de formas, colores y texturas que la visión humana puede adquirir, integrar e interpretar con relativa facilidad, como así también, reconocer éstas en sus representaciones asociadas en textos, presentaciones multimedia, imágenes o video digital. No obstante, existe una gran cantidad de radiación que puede ser sensada y ésta se encuentra delimitada por el espectro electromagnético, descubierto por Sir Isaac Newton en 1666, cuando un rayo de luz atravesó un a través de un prisma, y Newton observó que el haz de luz es blanco, sino que se compone de un espectro continuo de colores desde violeta en un extremo (0.43 micrometros) hasta rojo en el otro(0.79 micrometros). 
 
@@ -279,17 +279,25 @@ Para que un sensor pueda captar un objeto de determinado tamaño, es necesario q
    Sensor invidivual de captura
 
 
-Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación obtenida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una convertir estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas. 
+Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación obtenida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una convertir estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas.
+Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como para representar la imagen, se produce un efecto denominado aliasing, que produce que la imagen visual pierda el patrón de la imagen original que intenta representar, produciendo un falso patrón. Como se observa en la siguiente imágen de una huella digital, a medida que la densidad de pixeles muestreados disminuye, la calidad de la imagen empeora y se produce éste efecto:
+
+
+.. figure:: figs/Cap6/aliasing.png
+   :scale: 80%
+   
+   Efecto de aliasing. 256x256 (2^8*2^8=65,536 muestras). 128x128(2^7*2^7=16,384 muestras).64x64(2^6*2^6=4,096 muestras)
 |
 
 .. figure:: figs/Cap6/imagenPixels.jpg
 
    Representación de un array de imagen de 10 x 10
 
+.. NOTA: VER SI AGREGAR ACA LAS PROPIEDADES DE LOS PIXELES. PAG 83.Pretince Hall Gonzales 2 ed.
 
 
 El siguiente paso consiste en realizar la cuantificación o quantization, donde se realiza la conversión de las intensidades analogicas captadas por los sensores a valores numéricos discretos, asignando un valor a cada pixel muestreado, de manera que la imagen reconstruida de los valores muestreados sean de una calidad lo más aproximada a la real y el error introducido por la cuantificación sea mínimo.
-Con el fin de cuantificar, el rango de valores dinámicos que puede adoptar los pixeles de una imagen se dividide en un rango finito de intervalos, y a cada intervalo se le asigna un valor.Cuanto mayores sean los intervalos disponibles para cuantificación, la imagen digitalizada se aproximará con más fidelidad a la imagen real.
+Con el fin de cuantificar, el rango de valores dinámicos que puede adoptar los pixeles de una imagen se dividide en un rango finito de intervalos, y a cada intervalo se le asigna un valor.Cuanto mayores sean los intervalos disponibles para cuantificación, la imagen digitalizada se aproximará con más fidelidad a la imagen real. 
 La cuantificación se puede realizar de manera uniforme, cuando los valores de intensidad tienen mayor probabilidad de caer en intervalos regulares y se opta por dividir el rango de niveles en intervalos igualmente espaciados. Por otro lado, cuando la imagen adopta valores en un rango con una frecuencia prolongada y otros valores de manera infrecuente, es preferible emplear la cuantificación no uniforme. 
 
 
@@ -297,9 +305,19 @@ La cuantificación se puede realizar de manera uniforme, cuando los valores de i
 
 .. figure:: figs/Cap6/cuantificacionUniformeNoUniforme.png
    :scale: 70%
-   Cuantificación de imagen de 2 dimensiones.Cuantificación uniforme(a).Cuantificación no uniforme (b)
+   Cuantificación de imagen de 2 dimensiones.Cuantificación uniforme (a).Cuantificación no uniforme (b).
 
 
+De esta forma, el proceso de digitalización requiere los valores de M,N y la cantidad de niveles de gris L(en el caso de las imágenes con escala de grises o de valores en las bandas roja,verde y azul para las imágenes a color) como valores positivos, permitidos para cada pixel. No obstante, debido a las consideraciones de hardware, procesamiento y almacenamiento, el número de niveles es típicamente una potencia de 2:
+
+.. math:: L = 2^k
+   :label: Formula para cálculo de niveles
+
+
+Donde k es el número de bits empleados para representar el nivel de cada pixel. En general, el número de bits k se encuentra entre 1<=k<=8, empleándose k=1 para imágenes binarias, k=8 para imágenes por escala de grises (donde cada nivel ocupa cun byte) y, para el caso de las imágenes a color, con múltiples valores, cada nivel de color ocupa 8 bits usando los colores rojo,verde y azul (RGB), empleándose 24 bits por pixel con el fin de representar el color de éste. 
+Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común referirse a la imágen como una "imagen de k-bits".Por ejemplo, una imágen con 256 niveles posibles es llamada una imágen de 8 bits.Por lo tanto, la cantidad de bits requeridos para almacenar una imagen será:
+
+.. math:: b = M x N x k
 
 
 .. figure:: resultadoDelProcesoCuantificacion.png
@@ -307,20 +325,61 @@ La cuantificación se puede realizar de manera uniforme, cuando los valores de i
    Representación del proceso de muestreo y cuantificación.Imagen continua captada por un dipositivo de sensado(a).Imagen muestreada y cuantificada(b).
 
 
+Tipos de imágenes
++++++++++++++++++
 
-TIPOS DE IMAGENES
-
-
-FORMATOS DE IMAGENES
-
+Existen distintos tipos de imágenes digitales según la metodología seleccionada para representar la intensidad, entre los que se destacan los siguientes tipos: Imágenes binarias, imágenes por escalas de grises, imágenes a color e imágenes indexadas.
 
 
-El procesamiento de imágenes digitales, es un conjunto de técnicas que toman una imagen como parámetro de entrada y producen una imagen como resultado, utilizando algoritmos que permiten extraer atributos y características en las mismas y/o reconocer objetos en éstas.
+Imágenes binarias
+~~~~~~~~~~~~~~~~~
 
-Operaciones sobre imágenes
-++++++++++++++++++++++++++
+
+
+
+
+Imágenes por escala de grises
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Existen distintos mecanismos que se emplean para la manipulación de imágenes, sin embargo el histograma de imagen es uno de los más utilizados en este tipo de imagen. Un histograma de imagen, es una representación gráfica de una imagen empleada para las operaciones que son pixel por pixel en la imagen, que agrupa los niveles de gris en el eje X, y cuenta la cantidad de ocurrencias (en eje Y) de pixeles por cada uno de los niveles de gris en la imagen.
+
+
+
+.. figure:: path
+
+   Histograma de imagen
+
+
+
+
+
+
+
+Imágenes a color
+~~~~~~~~~~~~~~~~
+
+
+
+Imágenes indexadas	
+~~~~~~~~~~~~~~~~~~
+
+
+
+
+Procesamiento de imágenes
++++++++++++++++++++++++++
+
+
+El procesamiento de imágenes digitales, es un conjunto de técnicas que toman una imagen como parámetro de entrada y producen una imagen como resultado, utilizando algoritmos que permiten extraer características de las mismas y/o reconocer objetos.
+
 
 Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen, entre los que se encuentran aquellas operaciones entre las que se encuentran: Las operaciones que se aplican a los pixeles individualmente, y las operaciones que se aplican entre dos o más imágenes.
+
+
+CLASIFICACION DE OPERACIONES SOBRE IMAGENES DIGITALES SEGUN FUNCION(MEJORA,COMPRESION,ACLARADO)
+
 
 Segmentación
 ~~~~~~~~~~~~
