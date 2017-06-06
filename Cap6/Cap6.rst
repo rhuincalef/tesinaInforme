@@ -331,6 +331,41 @@ Tipos de imágenes digitales
 Existen distintos tipos de imágenes digitales según la metodología seleccionada para representar la intensidad, entre los que se destacan los siguientes tipos: Imágenes binarias, imágenes por escalas de grises, imágenes a color e imágenes indexadas.
 
 
+
+Imágenes por escala de grises
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Este tipo de imágenes se representa por medio de un conjunto de valores, que abarcan distintas tonalidades de grises desde blanco hasta negro, representándose cada pixel con 8 bits.
+|
+
+.. figure:: figs/Cap6/grescaleImg.png
+	:scale: 50%
+   Representación de imagen en escala de grises
+
+
+Existen distintos tipos de operaciones que pueden realizarse sobre imágenes con escalas de grises, aunque se pueden clasificar de manera general en: Operaciones de puntos, operaciones aritméticas y operaciones geométricas.
+Las operaciones de puntos son aplicadas a los pixeles individuales de una imagen, por lo que las interacciones y las dependencias entre pixeles vecinos no son consideradas, ni las operaciones que toman un conjunto de pixeles, sino que se basan en el procesamiento de las intensidades de los pixeles. Por lo tanto, este tipo de operación no altera la posición de los objetos en la imagen, sino que modifican la apariencia general de la imagen, cambiando la distribución de grises de la misma ,obteniendo el negativo o, desplazando los niveles de grises para aclarar la imagen.
+
+La herramienta básica para este tipo de operaciones es el histograma de imágen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de gris en los pixeles de la imagen. De esta manera, si se cuenta con K niveles de gris {0,1,...,K-1} y una cantidad NxM de pixeles, el histograma se define matemáticamente de la siguiente manera:
+
+.. math:: Hf(k) = J
+   :label: Formula para cálculo de niveles
+
+Donde f() es la función que mapea el nivel de gris a cada pixel P(x,y), y J representa la cantidad de ocurrencias de ese nivel en los pixeles, con K niveles. Aunque este tipo de histograma no contiene información espacial con respecto a la imagen, sigue siendo una herramienta valiosa que permite visualizar si la distribución de niveles de gris en una imagen es correcta, o si la imagen tiene tonalidades de gris mas oscuras o más claras. En la siguiente figura se puede observar, que la figura de la izquierda presenta niveles de gris más oscuros, mientras que la figura de la derecha presenta niveles de grises con más brillo, lo que indica que han estado expuestas a condiciones de luz excesiva y escasa. 
+|
+
+
+.. figure:: figs/Cap6/histogramaImagen.png
+
+   Histograma de imagen.
+|
+
+Las operaciones aritméticas se realizan entre imágenes de las mismas dimensiones espaciales, este tipo de operaciones es similar  a las operaciones por puntos debido a que la información espacial no es considerada, sino que la información se comparte entre imágenes y  se ejecutan pixel por pixel. Este tipo de operaciones se emplea para para la reducción del ruido en la imagen (distorciones aleatorias en la imagen producidas por radiación antes de capturar la misma o por fallos eléctricos en el dispositivo de sensado ), donde se realiza un promediado de las tonalidades de grises de un conjunto de frames y el resultado final es una imagen cuyo nivel de ruido ha sido reducido considerablemente.
+Otra área donde se emplean operaciones de éste tipo es en la detección de movimiento en sistemas de vigilancia, o en sistemas automatizados de inspección visual, donde se realiza la diferencia entre las matrices que representan las imágenes y luego se computa el histograma de imagen, que mostrará variaciones importantes en el intensidad (valores de brillo mayores) si cambios significativos han ocurrido entre dos frames.
+
+Finalmente, las operaciones geométricas que son operaciones complementarias a las operaciones por puntos debido a que no modifican los valores de los niveles de gris, sino que modifican la imagen modificando cambiando las posiciones de los elementos de la imagen. Este tipo de operaciones se emplea para realizar la rotación, traslación o zoom-in o zoom-out en la imágen.
+
+
 Imágenes binarias
 ~~~~~~~~~~~~~~~~~
 
@@ -373,22 +408,32 @@ Una vez que un objeto es identificado algunos de sus atributos se pueden definir
 * Orientación de un objeto: Cuando el objeto tiene una forma alargada, los ejes de la elongación producen la orientación del mismo.El eje de elongación es una línea recta tal que la suma de las distancias al cuadrado, de todos los puntos del objeto desde esta línea es mínimo(distancia perpendicular de un punto del objeto hacia la línea).
 * Perímetro de un objeto: El perímetro de un objeto se obtiene sumando los pixeles que forman parte del límite del objeto y que son parte del área. El límite o contorno de un objeto esta formado por aquellos pixeles que tienen uno o más vecinos que no están en el área.
   
+Existen diversas técnicas que se emplean para el procesamiento de imágenes binarias, entre las que se encuentran:
 
+* Delimitación de la imagen(Image thresholding). Esta técnica se emplea cuando se desea abstraer información desde una imagen con escala de grises, con el fin de obtener una imagen binaria, y consiste en definir un límite T de nivel de gris máximo que un pixel puede adoptar, y luego filtrar aquellos pixeles en la imagen (estableciéndolos a 1 en la imagen binaria), cuyo límite sea menor que el establecido. De esta forma, T permite controlar el nivel de detalle que la imagen resultante poseerá y, variando este límite se puede obtener una imagen que sea más eficiente para procesar, analizar o interpretar.
+Sin embargo, éste método aplicado a imágenes cuyos histogramas de intensidad sean planos o que varios objetos con un brillo promedio diferente sobre un fondo uniforme, puede provocar que algunos objetos se dejen afuera de la imagen final. 
+|
 
+.. figure:: figs/Cap6/delimitacionImgBinaria.png
+	:scale: 60%
+   Situaciones donde la delimitación de imagen puede encontrar problema. Histograma multimodal(varios objetos de distintos promedios de brillo) (a). Histograma plano(b)
 
-Imágenes por escala de grises
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|
+|
+* Etiquetado de regiones(Region labeling). Esta es empleada para identificar y localizar objetos en una imagen y, posteriormente éstos pueden ser modificados, mostrados o manipulados por separado. Éste procedimiento busca encontrar regiones en la imagen a través de pixeles conectados con el mismo valor, escaneando la imagen desde el origen (posición superior izquierda) y buscando pixeles que tengan el mismo valor binario y estén conectados en las direcciones horizontales y verticales. Un registro de los grupos de pixeles encontrados se mantiene en un arreglo separado de labels, con las mismas dimensiones de la imagen. 
 
+* Filtros de imágenes binarias. Existen diversos filtros que pueden emplearse con el fin de mejorar o cambiar la forma de los objetos en imagen binaria. Estos consisten en ventanas de pixeles, que son un conjunto de reglas que permiten definir la forma que un conjunto de pixeles adoptará y, así permiten delimitar que pixeles vecinos (con sus niveles de gris) serán empleados para la aplicación del filtro. Estas ventanas se emplean en combinación con operaciones lógicas AND,OR,NOT y XOR (delimitación de borde de imagen) y se desplazan a la lo largo de toda la imagen, modificando así el valor binario por medio de éstas operaciones lógicas. En general, ésto se realiza fila por fila, columna por columna aunque puede ser logrado procesando varios grupos a la vez, si se realiza de forma concurrente.
+Las ventanas se definen por medio de una ecuación matemática, que permite definir formalmente la forma que tendrá, según se adopten distintas cantidad de pixeles. Por ejemplo, si se desea generar una columna la ecuación podría estar dada por: 2P + 1, generando una columna de 3 pixeles si P=1, o de 5 pixeles si P=2. 
 
+|
 
-Existen distintos mecanismos que se emplean para la manipulación de imágenes, sin embargo el histograma de imagen es uno de los más utilizados en este tipo de imagen. Un histograma de imagen, es una representación gráfica de una imagen empleada para las operaciones que son pixel por pixel en la imagen, que agrupa los niveles de gris en el eje X, y cuenta la cantidad de ocurrencias (en eje Y) de pixeles por cada uno de los niveles de gris en la imagen.
+.. figure:: figs/Cap6/ventanasImgBinaria.png
+	:scale: 70%
+   Tipos de ventanas.
 
+Dependiendo del tipo de operación lógica que se aplique con la ventana, se logrará un efecto distinto en la imagen. Así, si se emplea la operación OR se producirá un efecto de dilatación de aquellos pixeles donde sus valores sean distintos o iguales, mientras que si se aplica la operación AND se producirá un efecto de erosión, donde aquellos pixeles vecinos que tengan un valor distinto al del pixel sobre el que esta la ventana, serán filtrados.
 
-
-.. figure:: path
-
-   Histograma de imagen
-
+.. Nombres de conexiones en español --> http://scfi.uaemex.mx/hamontes/files/TI04%20-%20Relaciones%20basicas%20entre%20pixeles.pdf
 
 
 Imágenes a color
