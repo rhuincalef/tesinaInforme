@@ -439,12 +439,48 @@ Dependiendo del tipo de operación lógica que se aplique con la ventana, se log
 Imágenes a color
 ~~~~~~~~~~~~~~~~
 
+En las imágenes a color cada pixel tiene asociadas los tres colores primarios (Red,Green,Blue) donde para cada color se emplea una representación de 8 bits, por lo que una imagen a color emplea 24 bits por cada pixel, necesitándose un total de (2^8)^3 = 16,777,216 valores posibles de color.El número de colores que se emplean para representar cada pixel en el espacio RGB, se denomina profundidad de pixel y si se emplea una profundidad de 24 bits para representar cada pixel, se dice que la imagen es full-color.
+De esta forma, para una imagen con N x M elementos, existen un vector para los colores rojo, verde y azul que se corresponde con las coordenadas (x,y) de la siguiente forma:
+
+|
+|
+.. figure:: figs/Cap6/formulaVectorColor.png
+
+   Vector de color para una coordenada en la imágen
+|
+
+
+Por lo tanto, la representación de una imagen de colores se reduce a realizar combinaciones entre el vector RGB de cada pixel: 
+
+|
+|
+.. figure:: figs/Cap6/imagenColor.png
+	:scale: 60%
+
+   Representación de una imagen digital a color
+|
+|
+
+.. figure:: figs/Cap6/imagenColorvsGreyScale.png
+
+   Representaciones de imagen en escala de grises vs imagen de color
+|
+
+Existen varias aproximaciones para afrontar el procesamiento de imágenes de color, aunque se pueden clasificar en 2 grupos generales: Aquellas aproximaciones que procesan cada componente de la imagen individualmente, para luego formar la imagen de salida con éstos, pudiéndose utilizar en este caso los métodos de procesamiento de imágenes con escala de grises ; Y aquellas aproximaciones que trabajan con los colores de los pixeles en la imagen directamente.
 
 
 Imágenes indexadas	
 ~~~~~~~~~~~~~~~~~~
 
+En general las imágenes indexadas solo emplean un subconjunto pequeño de los 16 millones de colores, por lo que para mejorar la eficiencia de almacenamiento, la imagen puede tener asociado un mapa de color o paleta de colores, la cual es solamente un listado de todos los colores en la imagen. Así, cada pixel tiene un valor que no da su color, como en la imagen RGB, sino que es un índice al color en el mapa.
+Este tipo de imágenes digitales, se emplea en algunos formatos donde la cantidad de colores permitidos para una imagen es de 56 colores o menos, como en el formato GIF.
+|
 
+.. figure:: figs/Cap6/imagenIndexada.png
+	:scale: 50%
+
+   Imagen de color indexada
+|
 
 
 Procesamiento de imágenes
