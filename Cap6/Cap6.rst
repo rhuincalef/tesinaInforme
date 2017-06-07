@@ -466,7 +466,7 @@ Por lo tanto, la representación de una imagen de colores se reduce a realizar c
    Representaciones de imagen en escala de grises vs imagen de color
 |
 
-Existen varias aproximaciones para afrontar el procesamiento de imágenes de color, aunque se pueden clasificar en 2 grupos generales: Aquellas aproximaciones que procesan cada componente de la imagen individualmente, para luego formar la imagen de salida con éstos, pudiéndose utilizar en este caso los métodos de procesamiento de imágenes con escala de grises ; Y aquellas aproximaciones que trabajan con los colores de los pixeles en la imagen directamente.
+Existen varias aproximaciones para afrontar el procesamiento de imágenes de color, aunque se pueden clasificar en 2 grupos generales: Aquellas aproximaciones que procesan cada componente de la imagen individualmente, para luego formar la imagen de salida con éstos; Y aquellas aproximaciones que trabajan con los colores de los pixeles en la imagen directamente. Este tipo de imágenes pueden ser procesadas con algunos los tipos de técnicas que se emplean con las imágenes de escala de grises, mientras que algunas tienen que ser modificadas para ser aplicadas sobre las bandas de color individuales.
 
 
 Imágenes indexadas	
@@ -488,12 +488,28 @@ Procesamiento de imágenes
 
 
 El procesamiento de imágenes digitales, es un conjunto de técnicas que toman una imagen como parámetro de entrada y producen una imagen como resultado, utilizando algoritmos que permiten extraer características de las mismas y/o reconocer objetos.
+Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen según el objetivo que se persiga, aunque los tipos más frecuentes son los siguientes:
+
+.. pagina 49 gonzales, image processing.
+
+* Mejora la imagen. Estas técnicas buscan manipular la imagen, de manera que el resultado sea mas adaptable que la original para una aplicación específica. Esto se hace   con el fin de recuperar detalles que no se visualizan debido al bajo nivel de brillo, o simplemente subrayar ciertas características de interés en una imagen. Un ejemplo de este tipo de operaciones es cuando se aumenta el contraste para mejorar visualmente los objetos que se perciben en la imagen.
+
+* Restauración y reconstrucción de la imagen. Este tipo busca mejorar la apariencia la imagen, sin embargo a diferencia de la mejora de imagen, esta técnica es objetiva debido a que se basan en modelos probabilísticos de degradación de imagen, mientras que la primera se basa en la subjetividad del observador para establecer una mejora adecuada. La restauración intenta recuperar una imágen que ha sido degradada empleando un conocimiento previo del fenómeno de degradación, por lo que estos procesos se encuentran orientados hacia el modelado de la degradación y la aplicación del proceso inverso, para recuperar la imágen original.
 
 
-Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen, entre los que se encuentran aquellas operaciones entre las que se encuentran: Las operaciones que se aplican a los pixeles individualmente, y las operaciones que se aplican entre dos o más imágenes.
+* Procesamiento de color de imagen. Debido a que el color se considera como un descriptor potente para el reconocimiento y extracción de objetos de una escena, se han desarrollado métodos que permiten emplearlo en el procesamiento de imágenes. El procesamiento de color se divide en dos grandes áreas: el procesamiento de color completo (full-color processing) y el procesamiento de pseucolores(pseudocolor processing). En la primer categoría, las imágenes son adquiridas  con un sensor que soporta el color, mientras que en la segunda categoría se enfoca en asignar un color a una intensidad o rango de intensidades en escala de grises.
+   
+* Wavelets. Este mecanismo permite representar imágenes en varios grados de resolución y se emplea ampliamente para la compresión y la representación piramidal de una imagen, en la cual las imágenes se subdividen sucesivamente en pequeñas regiones.
+  
+* Compresión. Las técnicas de compresión estan relacionadas a la reducción del almacenamiento requerido para mantener una imagen o, al ancho de banda necesario para transmitirla. Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
+  
 
+* Procesamiento morfológico. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen, que son útiles en la representación y descripción de la forma.
+  
 
-CLASIFICACION DE OPERACIONES SOBRE IMAGENES DIGITALES SEGUN FUNCION(MEJORA,COMPRESION,ACLARADO)
+* Segmentación.
+* Representación y descripción.
+* Reconocimiento.
 
 
 Segmentación
