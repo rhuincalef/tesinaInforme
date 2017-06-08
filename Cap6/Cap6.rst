@@ -325,6 +325,17 @@ Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común
    Representación del proceso de muestreo y cuantificación.Imagen continua captada por un dipositivo de sensado(a).Imagen muestreada y cuantificada(b).
 
 
+
+Conceptos y herramientas relacionados al procesamiento de imágenes
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.. NOTA: ACA PONER LAS RELACIONES ENTRE PIXELES, DISTANCIA ENTRE LOS MISMOS, FILTROS, E HISTOGRAMA DE FRECUENCIAS!!! 
+
+
+
+
+
 Tipos de imágenes digitales
 +++++++++++++++++++++++++++
 
@@ -486,37 +497,60 @@ Este tipo de imágenes digitales, se emplea en algunos formatos donde la cantida
 Procesamiento de imágenes
 +++++++++++++++++++++++++
 
+Debido a que el procesamiento de imágenes abarca varios tipos de imágenes, comprendidas a lo largo de todo el espectro electromagnético, éste tiende a solaparse con otras áreas como el análisis de imágenes,basado en la extracción de información de utilidad desde la imagen, y la visión artificial, que es un área de la inteligencia artificial cuyo objetivo es lograr que una computadora adquiera conocimiento y pueda efectuar decisiones, basada en imágenes o video de entrada.
+Así,el procesamiento de imágenes digitales, es un conjunto de técnicas que toman una imagen como entrada y, por medio de una computadora, producen una imagen de salida y adicionalmente posibilitan, extraer información y reconocer objetos en ésta.
 
-El procesamiento de imágenes digitales, es un conjunto de técnicas que toman una imagen como parámetro de entrada y producen una imagen como resultado, utilizando algoritmos que permiten extraer características de las mismas y/o reconocer objetos.
+Dependiendo del nivel de abstracción que manejan los procedimientos del procesamiento de imágenes, se pueden clasificar éstos en distintos tipos:
+
+* Procesos de bajo nivel, que aceptan imagen como entrada, y ejecuta operaciones primitivas sobre ésta como la reducción de ruido, mejora del contraste y aplicación de filtros sobre la imagen para mejorar alguna característica (como aumentar el brillo entre áreas oscuras y con brillo), y producen una imagen modificada como salida.
+* Procesos de nivel medio, que abarcan tareas como la segmentación (división de la imagen en partes), descripción de dichos objetos para reducirlos a una forma aceptable para el procesamiento por computadora, y el reconocimiento de objetos individuales(o clasificación de objetos). Estos procesos se caracterizan por el hecho de que las entradas son generalmente imágenes, pero sus atributos son atributos extraídos de una imagen, tales como: bordes, contornos, objetos individuales,etc.
+* Procesos de alto nivel, que involucran  generar conocimiento a partir de éstos objetos ensamblados, y efectuar operaciones relacionadas con el  análisis de imágenes y algunas operaciones relacionadas con el campo de visión por computadora.
+ 
 Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen según el objetivo que se persiga, aunque los tipos más frecuentes son los siguientes:
 
 .. pagina 49 gonzales, image processing.
 
-* Mejora la imagen. Estas técnicas buscan manipular la imagen, de manera que el resultado sea mas adaptable que la original para una aplicación específica. Esto se hace   con el fin de recuperar detalles que no se visualizan debido al bajo nivel de brillo, o simplemente subrayar ciertas características de interés en una imagen. Un ejemplo de este tipo de operaciones es cuando se aumenta el contraste para mejorar visualmente los objetos que se perciben en la imagen.
+* Aplicación de filtros y mejora la imagen. Estas técnicas buscan manipular la imagen, de manera que el resultado sea mas adaptable que la original para una aplicación específica. Esto se hace   con el fin de recuperar detalles que no se visualizan debido al bajo nivel de brillo, o simplemente subrayar ciertas características de interés en una imagen. Un ejemplo de este tipo de operaciones es cuando se aumenta el contraste para mejorar visualmente los objetos que se perciben en la imagen.
 
 * Restauración y reconstrucción de la imagen. Este tipo busca mejorar la apariencia la imagen, sin embargo a diferencia de la mejora de imagen, esta técnica es objetiva debido a que se basan en modelos probabilísticos de degradación de imagen, mientras que la primera se basa en la subjetividad del observador para establecer una mejora adecuada. La restauración intenta recuperar una imágen que ha sido degradada empleando un conocimiento previo del fenómeno de degradación, por lo que estos procesos se encuentran orientados hacia el modelado de la degradación y la aplicación del proceso inverso, para recuperar la imágen original.
 
 
 * Procesamiento de color de imagen. Debido a que el color se considera como un descriptor potente para el reconocimiento y extracción de objetos de una escena, se han desarrollado métodos que permiten emplearlo en el procesamiento de imágenes. El procesamiento de color se divide en dos grandes áreas: el procesamiento de color completo (full-color processing) y el procesamiento de pseucolores(pseudocolor processing). En la primer categoría, las imágenes son adquiridas  con un sensor que soporta el color, mientras que en la segunda categoría se enfoca en asignar un color a una intensidad o rango de intensidades en escala de grises.
    
-* Wavelets. Este mecanismo permite representar imágenes en varios grados de resolución y se emplea ampliamente para la compresión y la representación piramidal de una imagen, en la cual las imágenes se subdividen sucesivamente en pequeñas regiones.
-  
-* Compresión. Las técnicas de compresión estan relacionadas a la reducción del almacenamiento requerido para mantener una imagen o, al ancho de banda necesario para transmitirla. Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
+* Wavelets. Las Wavelets son un conjunto transformaciónes que se emplean en conjunto con pequeñas ondas digitales de frecuencia variable y duración limitada. Estas forman parte del área de procesamiento de señales e imágenes denominado teoría de multiresolución, que abarca un conjunto de técnicas, incluyendo la división de bandas de una señal (subbanding), filtrado de voz digital y representación piramidal de una imagen. Esta rama se relaciona con la representación de imágenes (o señales) en más de una resolución, con el fin de obtener a una resolución específica, características que no se podrían identificar en otra resolución. Este tipo de herramienta es utilizada ampliamente para la compresión y la representación piramidal de una imagen, en la cual las imágenes se subdividen sucesivamente en pequeñas regiones.
   
 
-* Procesamiento morfológico. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen, que son útiles en la representación y descripción de la forma.
+  
+.. figure:: path
+
+   Representación piramidal
+
+
+
+
+
+  
+* Compresión. Las técnicas de compresión están relacionadas a la reducción del almacenamiento requerido para representar una imagen o, al ancho de banda necesario para transmitirla. Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
   
 
-* Segmentación.
-* Representación y descripción.
+* Procesamiento morfológico. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen, que son útiles en la representación y descripción de la forma, esto es atributos tales como bordes, contornos e identidad de los objetos.
+  
+
+* Segmentación.La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.
+Este proceso es uno de los más importantes elementos en análisis de imágenes automatizado, principalmente porque posibilita extraer aquellas entidades de interés en la imagen para aplicar otros métodos de procesamiento, como la descripción y el reconocimiento.
+
+
+* Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, donde la entrada producida es el límite de una región (los pixeles que separan una imagen de otra) o todos los puntos de la misma, y consiste en transformar éstos en una representación conveniente para su procesamiento.
+  
+
 * Reconocimiento.
 
 
 Segmentación
 ~~~~~~~~~~~~
 
-La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.
-Este proceso es uno de los más importantes elementos en análisis de imágenes automatizado, principalmente porque posibilita extraer aquellas entidades de interés en la imagen para aplicar otros métodos de procesamiento, como la descripción y el reconocimiento.
+
+
 
 
 
