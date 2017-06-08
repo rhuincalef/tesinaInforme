@@ -517,40 +517,37 @@ Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen seg
 
 * Procesamiento de color de imagen. Debido a que el color se considera como un descriptor potente para el reconocimiento y extracción de objetos de una escena, se han desarrollado métodos que permiten emplearlo en el procesamiento de imágenes. El procesamiento de color se divide en dos grandes áreas: el procesamiento de color completo (full-color processing) y el procesamiento de pseucolores(pseudocolor processing). En la primer categoría, las imágenes son adquiridas  con un sensor que soporta el color, mientras que en la segunda categoría se enfoca en asignar un color a una intensidad o rango de intensidades en escala de grises.
    
-* Wavelets. Las Wavelets son un conjunto transformaciónes que se emplean en conjunto con pequeñas ondas digitales de frecuencia variable y duración limitada. Estas forman parte del área de procesamiento de señales e imágenes denominado teoría de multiresolución, que abarca un conjunto de técnicas, incluyendo la división de bandas de una señal (subbanding), filtrado de voz digital y representación piramidal de una imagen. Esta rama se relaciona con la representación de imágenes (o señales) en más de una resolución, con el fin de obtener a una resolución específica, características que no se podrían identificar en otra resolución. Este tipo de herramienta es utilizada ampliamente para la compresión y la representación piramidal de una imagen, en la cual las imágenes se subdividen sucesivamente en pequeñas regiones.
+* Wavelets. Las Wavelets son un conjunto transformaciones que forman parte del área de procesamiento de señales e imágenes denominado teoría de multiresolución, que abarca un conjunto de técnicas, incluyendo la división de bandas de una señal (subbanding), filtrado de voz digital y representación piramidal de una imagen. Esta rama se relaciona con la representación de imágenes (o señales) en más de una resolución, con el fin de obtener a una resolución específica, características que no se podrían identificar en otra resolución. Este tipo de herramienta es utilizada ampliamente para la compresión y la representación piramidal de una imagen. Esta última fue originalmente aplicada para la visión artificial y la compresión de imágenes, y consiste en subdivide subdividir una imagen con el fin de obtener una colección de imágenes de menor resolución organizadas en forma de imagen para su posterior procesamiento.
   
+.. figure:: figs/Cap6/piramideImagen.png
 
-  
-.. figure:: path
-
-   Representación piramidal
-
+   Representación piramidal para un arreglo de imagen de 2-Dimensiones de N x N
+|
 
 
-
-
-  
 * Compresión. Las técnicas de compresión están relacionadas a la reducción del almacenamiento requerido para representar una imagen o, al ancho de banda necesario para transmitirla. Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
   
 
-* Procesamiento morfológico. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen, que son útiles en la representación y descripción de la forma, esto es atributos tales como bordes, contornos e identidad de los objetos.
+* Procesamiento morfológico. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma, esto es atributos tales como componentes conectados, límites, skeletons (conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites) y el convex hull (el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma). 
+Además, el procesamiento morfológico abarca las técnicas pre-procesamiento y post-procesamiento complementarias que se emplean junto a los procedimientos descritas anteriormente, tales como filtrado o filtering, thinning, region filling(rellenado con información de los elementos que componen una región) y pruning(método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning).
   
 
 * Segmentación.La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.
 Este proceso es uno de los más importantes elementos en análisis de imágenes automatizado, principalmente porque posibilita extraer aquellas entidades de interés en la imagen para aplicar otros métodos de procesamiento, como la descripción y el reconocimiento.
 
 
-* Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, donde la entrada producida es el límite de una región (los pixeles que separan una imagen de otra) o todos los puntos de la misma, y consiste en transformar éstos en una representación conveniente para su procesamiento.
-  
+* Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los pixeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores.
+Estas técnicas, consisten en transformar los pixeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: Representar la región en términos de sus características externas (su límite o boundary), describiéndose el limite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite; O representarla según sus características internas, es decir, los pixeles que comprenden la región. En este caso, se emplean características propias de la región tales como el color y la textura.  
+
 
 * Reconocimiento.
 
 
+
+
+
 Segmentación
 ~~~~~~~~~~~~
-
-
-
 
 
 
