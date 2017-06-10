@@ -332,6 +332,17 @@ Conceptos y herramientas relacionados al procesamiento de imágenes
 .. NOTA: Nivel h6 de identación.
 .. NOTA: ACA PONER LAS RELACIONES ENTRE PIXELES, DISTANCIA ENTRE LOS MISMOS, FILTROS, E HISTOGRAMA DE FRECUENCIAS!!! 
 
+.. CONTENIDOS A INCLUIR: 
+..	-Relaciones entre pixeles, background,foreground, region,interpolacion,neirbourhood o ventana, mascara.
+..	-Tipos de operaciones que se realizan sobre una imagen (SUMA,RESTA,DIVISION,MULTIPLICACION y sus efectos a nivel de imagen, a nivel de pixel transformaciones espaciales),
+
+.. -Dominio espacial:
+..					- Operaciones de transformacion con pixeles, vecindarios(windows, o mask) e imagenes. Cap 3. Relacionado con 2 tipos de categorias de transformaciones: filtrado espacial(filtros de suavizado y sharpening) y transformaciones de intensidad.
+.. 
+.. -Dominio de transformaciones:
+..					-Son metodos que se basan en transformar una imagen a un dominio de interes, procesarla en ese dominio y luego regresarla de vuelta al dominio inicial(imagen de salida). 
+..					-Formula de Fourier y dominio de frecuencia, que son paralelos a las tecnicas descritas con el dominio espacial pero empleando las frecuencias de la imagen.
+
 
 
 Histograma de imagen
@@ -455,7 +466,7 @@ Dependiendo del tipo de operación lógica que se aplique con la ventana, se log
 Imágenes a color
 ~~~~~~~~~~~~~~~~
 
-En las imágenes a color cada pixel tiene asociadas los tres colores primarios (Red,Green,Blue) donde para cada color se emplea una representación de 8 bits, por lo que una imagen a color emplea 24 bits por cada pixel, necesitándose un total de (2^8)^3 = 16,777,216 valores posibles de color.El número de colores que se emplean para representar cada pixel en el espacio RGB, se denomina profundidad de pixel y si se emplea una profundidad de 24 bits para representar cada pixel, se dice que la imagen es full-color.
+En las imágenes a color cada pixel tiene asociadas las intensidades correspondientes tres colores primarios (RGB) donde, para cada color se emplea una representación de 8 bits, por lo que una imagen a color emplea 24 bits por cada pixel, necesitándose un total de (2^8)^3 = 16,777,216 valores posibles de color.El número de colores que se emplean para representar cada pixel en el espacio RGB, se denomina profundidad de pixel y si se emplea una profundidad de 24 bits para representar cada pixel, se dice que la imagen es full-color.
 De esta forma, para una imagen con N x M elementos, existen un vector para los colores rojo, verde y azul que se corresponde con las coordenadas (x,y) de la siguiente forma:
 
 |
@@ -530,10 +541,9 @@ Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen seg
 |
 
 
-* Compresión.El objetivo de la compresión (o coding) es representar una imagen digital con la cantidad mínima de bits sin pérdida de información, persiguiendo así, la acelaración de la velocidad de transmición y reducción del ancho de banda necesaria para transmitir las mismas y la minimización del espacio requerido para almacenarlas, manteniendo a la vez en la fidelidad de la misma. La compresión es posible porque existe una redundancia presente en las imágenes, que es proporcional a la cantidad de correlación entre las muestras de datos. Por ejemplo, en imágenes estáticas existe un alto grado de correlación en los alrededores de un pixel, mientras que en los videos ésta se encuentra presente entre frames sucesivos del mismo. De esta forma para lograr un grado eficiente de compresión, estos métodos intentan remover los datos redudantes como así también, aquellos que se perciben pero son irrelevantes, produciendo que las imágenes de entrada y salida sean visualmente iguales, y no necesariamente numéricamente iguales.Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
+* Compresión.El objetivo de la compresión (o coding) es representar una imagen digital con la cantidad mínima de bits sin pérdida de información, persiguiendo así, la aceleración de la velocidad de transmición y reducción del ancho de banda necesaria para transmitir las mismas y la minimización del espacio requerido para almacenarlas, manteniendo a la vez en la fidelidad de la misma. La compresión es posible porque existe una redundancia presente en las imágenes, que es proporcional a la cantidad de correlación entre las muestras de datos. Por ejemplo, en imágenes estáticas existe un alto grado de correlación en los alrededores de un pixel, mientras que en los videos ésta se encuentra presente entre frames sucesivos del mismo. De esta forma para lograr un grado eficiente de compresión, estos métodos intentan remover los datos redudantes como así también, aquellos que se perciben pero son irrelevantes, produciendo que las imágenes de entrada y salida sean visualmente iguales, y no necesariamente numéricamente iguales.Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
   
-
-* Procesamiento morfológico. La morfología se relaciona con la forma y las relaciones entre las partes de una imágen. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma, esto es atributos tales como componentes conectados, límites, skeletons (conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites) y el convex hull (el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma). 
+* Procesamiento morfológico. La morfología se relaciona con la forma y las relaciones entre las partes de una imagen. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma, esto es atributos tales como componentes conectados, límites, skeletons (conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites) y el convex hull (el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma). 
 Además, el procesamiento morfológico abarca las técnicas pre-procesamiento y post-procesamiento complementarias que se emplean junto a los procedimientos descritas anteriormente, tales como filtrado o filtering, thinning, region filling(rellenado con información de los elementos que componen una región) y pruning(método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning).
   
 
@@ -552,13 +562,8 @@ En este caso, se emplean características propias de la región tales como el co
 
 
 
-
-
-
-
 Segmentación
 ~~~~~~~~~~~~
-
 
 
 
