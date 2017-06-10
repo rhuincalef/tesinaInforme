@@ -211,8 +211,8 @@ Proyectos de software anteriores para la detección de fallas sobre el pavimento
 
 Debido a que la recolección manual de fallas es una tarea costosa con respecto al tiempo y al esfuerzo, durante años se  han publicado varios papers y tesis con el fin de automatizar esta tarea, a través del uso de distintos dispositivos para el sensado, combinados con distintas técnicas de localización, registro de fallas y análisis de la información sensada. Los papers y tesis publicados hasta la fecha se pueden clasificar según el tipo de sensor que emplean, en tres grandes grupos:
 
-* Detección de fallas por medio de sensores de vibración(acelerómetro)
 * Detección de fallas utilizando técnicas basadas en procesamiento de video/imagen
+* Detección de fallas por medio de sensores de vibración(acelerómetro)
 * Detección de fallas empleando reconstrucción 3D
 
 
@@ -225,7 +225,7 @@ Conceptos de procesamiento de imágenes
 Digitalización de imágenes
 ++++++++++++++++++++++++++
 
-El mundo percibido diariamente por las personas se manifiesta en una variedad de formas, colores y texturas que la visión humana puede adquirir, integrar e interpretar con relativa facilidad, como así también, reconocer éstas en sus representaciones asociadas en textos, presentaciones multimedia, imágenes o video digital. No obstante, existe una gran cantidad de radiación que puede ser sensada y ésta se encuentra delimitada por el espectro electromagnético, descubierto por Sir Isaac Newton en 1666, cuando un rayo de luz atravesó un a través de un prisma, y Newton observó que el haz de luz es blanco, sino que se compone de un espectro continuo de colores desde violeta en un extremo (0.43 micrometros) hasta rojo en el otro(0.79 micrometros). 
+El mundo percibido diariamente por las personas se manifiesta en una variedad de formas, colores y texturas que la visión humana puede adquirir, integrar e interpretar con relativa facilidad, como así también, reconocer éstas en sus representaciones asociadas en textos, presentaciones multimedia, imágenes o video digital. No obstante, existe una gran cantidad de radiación que puede ser sensada, que se encuentra delimitada por el espectro electromagnético, descubierto por Sir Isaac Newton en 1666, cuando un rayo de luz atravesó un a través de un prisma, y Newton observó que el haz de luz es blanco, sino que se compone de un espectro continuo de colores desde violeta en un extremo (0.43 micrometros) hasta rojo en el otro(0.79 micrometros). 
 
 
 |
@@ -239,7 +239,7 @@ Como se puede observar en la figura anterior, en un extremo del espectro se encu
 |
 LAMBDA = c/v
 
-donde c es la velocidad de la luz (2.988 x 10 ^8 m/s). Por otro lado, la energía de varios componentes del espectro electromagnético se define en la expresion:
+donde c es la velocidad de la luz (2.988 x 10 ^8 m/s). Por otro lado, la energía de varios componentes del espectro electromagnético se define en la expresión:
 |
 E = h*v(eq1)
 
@@ -279,8 +279,8 @@ Para que un sensor pueda captar un objeto de determinado tamaño, es necesario q
    Sensor invidivual de captura
 
 
-Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación obtenida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una convertir estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas.
-Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como para representar la imagen, se produce un efecto denominado aliasing, que produce que la imagen visual pierda el patrón de la imagen original que intenta representar, produciendo un falso patrón. Como se observa en la siguiente imágen de una huella digital, a medida que la densidad de pixeles muestreados disminuye, la calidad de la imagen empeora y se produce éste efecto:
+Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación emitida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una conversión estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas.
+Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como para representar la imagen, se produce un efecto denominado aliasing, que produce que la imagen visual pierda el patrón de la imagen original que intenta representar, produciendo una falso patrón y una imagen distorcionada. Como se observa en la siguiente imagen de una huella digital, a medida que la densidad de pixeles muestreados disminuye, la calidad de la imagen empeora y se produce éste efecto:
 
 
 .. figure:: figs/Cap6/aliasing.png
@@ -296,7 +296,7 @@ Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como p
 .. NOTA: VER SI AGREGAR ACA LAS PROPIEDADES DE LOS PIXELES. PAG 83.Pretince Hall Gonzales 2 ed.
 
 
-El siguiente paso consiste en realizar la cuantificación o quantization, donde se realiza la conversión de las intensidades analogicas captadas por los sensores a valores numéricos discretos, asignando un valor a cada pixel muestreado, de manera que la imagen reconstruida de los valores muestreados sean de una calidad lo más aproximada a la real y el error introducido por la cuantificación sea mínimo.
+El siguiente paso consiste en realizar la cuantificación o quantization, donde se realiza la conversión de las intensidades analógicas captadas por los sensores a valores numéricos discretos, asignando un valor a cada pixel muestreado, de manera que la imagen reconstruida de los valores muestreados sean de una calidad lo más aproximada a la real y el error introducido por la cuantificación sea mínimo.
 Con el fin de cuantificar, el rango de valores dinámicos que puede adoptar los pixeles de una imagen se dividide en un rango finito de intervalos, y a cada intervalo se le asigna un valor.Cuanto mayores sean los intervalos disponibles para cuantificación, la imagen digitalizada se aproximará con más fidelidad a la imagen real. 
 La cuantificación se puede realizar de manera uniforme, cuando los valores de intensidad tienen mayor probabilidad de caer en intervalos regulares y se opta por dividir el rango de niveles en intervalos igualmente espaciados. Por otro lado, cuando la imagen adopta valores en un rango con una frecuencia prolongada y otros valores de manera infrecuente, es preferible emplear la cuantificación no uniforme. 
 
@@ -308,14 +308,14 @@ La cuantificación se puede realizar de manera uniforme, cuando los valores de i
    Cuantificación de imagen de 2 dimensiones.Cuantificación uniforme (a).Cuantificación no uniforme (b).
 
 
-De esta forma, el proceso de digitalización requiere los valores de M,N y la cantidad de niveles de gris L(en el caso de las imágenes con escala de grises o de valores en las bandas roja,verde y azul para las imágenes a color) como valores positivos, permitidos para cada pixel. No obstante, debido a las consideraciones de hardware, procesamiento y almacenamiento, el número de niveles es típicamente una potencia de 2:
+De esta forma, el proceso de digitalización requiere los valores de M,N y la cantidad de niveles de intensidad L( niveles de gris en el caso de las imágenes con escala de grises o de valores en las bandas roja,verde y azul para las imágenes a color) como valores positivos, permitidos para cada pixel. No obstante, debido a las consideraciones de hardware, procesamiento y almacenamiento, el número de niveles es típicamente una potencia de 2:
 
 .. math:: L = 2^k
    :label: Formula para cálculo de niveles
 
 
 Donde k es el número de bits empleados para representar el nivel de cada pixel. En general, el número de bits k se encuentra entre 1<=k<=8, empleándose k=1 para imágenes binarias, k=8 para imágenes por escala de grises (donde cada nivel ocupa cun byte) y, para el caso de las imágenes a color, con múltiples valores, cada nivel de color ocupa 8 bits usando los colores rojo,verde y azul (RGB), empleándose 24 bits por pixel con el fin de representar el color de éste. 
-Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común referirse a la imágen como una "imagen de k-bits".Por ejemplo, una imágen con 256 niveles posibles es llamada una imágen de 8 bits.Por lo tanto, la cantidad de bits requeridos para almacenar una imagen será:
+Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común referirse a la imagen como una "imagen de k-bits".Por ejemplo, una imagen con 256 niveles posibles es llamada una imagen de 8 bits.Por lo tanto, la cantidad de bits requeridos para almacenar una imagen será:
 
 .. math:: b = M x N x k
 
@@ -329,10 +329,28 @@ Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común
 Conceptos y herramientas relacionados al procesamiento de imágenes
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
+.. NOTA: Nivel h6 de identación.
 .. NOTA: ACA PONER LAS RELACIONES ENTRE PIXELES, DISTANCIA ENTRE LOS MISMOS, FILTROS, E HISTOGRAMA DE FRECUENCIAS!!! 
 
 
+
+Histograma de imagen
+~~~~~~~~~~~~~~~~~~~~
+
+
+La herramienta básica para este tipo de operaciones es el histograma de imágen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de gris en los pixeles de la imagen. De esta manera, si se cuenta con K niveles de gris {0,1,...,K-1} y una cantidad NxM de pixeles, el histograma se define matemáticamente de la siguiente manera:
+
+.. math:: Hf(k) = J
+   :label: Formula para cálculo de niveles
+
+Donde f() es la función que mapea el nivel de gris a cada pixel P(x,y), y J representa la cantidad de ocurrencias de ese nivel en los pixeles, con K niveles. Aunque este tipo de histograma no contiene información espacial con respecto a la imagen, sigue siendo una herramienta valiosa que permite visualizar si la distribución de niveles de gris en una imagen es correcta, o si la imagen tiene tonalidades de gris mas oscuras o más claras. En la siguiente figura se puede observar, que la figura de la izquierda presenta niveles de gris más oscuros, mientras que la figura de la derecha presenta niveles de grises con más brillo, lo que indica que han estado expuestas a condiciones de luz excesiva y escasa. 
+|
+
+
+.. figure:: figs/Cap6/histogramaImagen.png
+
+   Histograma de imagen.
+|
 
 
 
@@ -357,19 +375,6 @@ Este tipo de imágenes se representa por medio de un conjunto de valores, que ab
 Existen distintos tipos de operaciones que pueden realizarse sobre imágenes con escalas de grises, aunque se pueden clasificar de manera general en: Operaciones de puntos, operaciones aritméticas y operaciones geométricas.
 Las operaciones de puntos son aplicadas a los pixeles individuales de una imagen, por lo que las interacciones y las dependencias entre pixeles vecinos no son consideradas, ni las operaciones que toman un conjunto de pixeles, sino que se basan en el procesamiento de las intensidades de los pixeles. Por lo tanto, este tipo de operación no altera la posición de los objetos en la imagen, sino que modifican la apariencia general de la imagen, cambiando la distribución de grises de la misma ,obteniendo el negativo o, desplazando los niveles de grises para aclarar la imagen.
 
-La herramienta básica para este tipo de operaciones es el histograma de imágen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de gris en los pixeles de la imagen. De esta manera, si se cuenta con K niveles de gris {0,1,...,K-1} y una cantidad NxM de pixeles, el histograma se define matemáticamente de la siguiente manera:
-
-.. math:: Hf(k) = J
-   :label: Formula para cálculo de niveles
-
-Donde f() es la función que mapea el nivel de gris a cada pixel P(x,y), y J representa la cantidad de ocurrencias de ese nivel en los pixeles, con K niveles. Aunque este tipo de histograma no contiene información espacial con respecto a la imagen, sigue siendo una herramienta valiosa que permite visualizar si la distribución de niveles de gris en una imagen es correcta, o si la imagen tiene tonalidades de gris mas oscuras o más claras. En la siguiente figura se puede observar, que la figura de la izquierda presenta niveles de gris más oscuros, mientras que la figura de la derecha presenta niveles de grises con más brillo, lo que indica que han estado expuestas a condiciones de luz excesiva y escasa. 
-|
-
-
-.. figure:: figs/Cap6/histogramaImagen.png
-
-   Histograma de imagen.
-|
 
 Las operaciones aritméticas se realizan entre imágenes de las mismas dimensiones espaciales, este tipo de operaciones es similar  a las operaciones por puntos debido a que la información espacial no es considerada, sino que la información se comparte entre imágenes y  se ejecutan pixel por pixel. Este tipo de operaciones se emplea para para la reducción del ruido en la imagen (distorciones aleatorias en la imagen producidas por radiación antes de capturar la misma o por fallos eléctricos en el dispositivo de sensado ), donde se realiza un promediado de las tonalidades de grises de un conjunto de frames y el resultado final es una imagen cuyo nivel de ruido ha sido reducido considerablemente.
 Otra área donde se emplean operaciones de éste tipo es en la detección de movimiento en sistemas de vigilancia, o en sistemas automatizados de inspección visual, donde se realiza la diferencia entre las matrices que representan las imágenes y luego se computa el histograma de imagen, que mostrará variaciones importantes en el intensidad (valores de brillo mayores) si cambios significativos han ocurrido entre dos frames.
@@ -380,7 +385,7 @@ Finalmente, las operaciones geométricas que son operaciones complementarias a l
 Imágenes binarias
 ~~~~~~~~~~~~~~~~~
 
-En este tipo de imagen digital la intensidad de los pixeles sólo puede asumir dos valores 0 o 1, por lo que sólo se requiere un bit para su representación, siendo estas imágenes las que requieren menos espacio de almacenamiento y tiempo de procesamiento. Estas imágenes contienen suficiente información respecto de los objetos en la imagen y permiten que éstos se reconozcan fácilmente.
+En este tipo de imagen digital la intensidad de los pixeles sólo puede asumir dos valores 0 o 1, por lo que sólo se requiere un bit para su representación, siendo estas imágenes las que requieren menos espacio y tiempo de almacenamiento. Estas imágenes contienen suficiente información respecto de los objetos en la imagen y permiten que éstos se reconozcan fácilmente.
 Este tipo de imágenes se emplean en distintos tipos de aplicaciones de visión por computadora, como el reconocimiento de objetos, el rastreo,etc. aunque su aplicabilidad es limitada debido al contenido limitado de información que brindan.
 Las imágenes binarias surgen de una variedad de fuentes, generalmente son creadas por medio del procesamiento de imágenes de escala de grises, aunque algunos tipos de sensores entregan una imagen binaria como salida, como los dispositivos que se emplean para obtener dibujos o texto escrito a mano con un pad resistivo, un lápiz de luz. Generalmente estos dispositivos, inicializan todas las coordenadas de la imagen binaria en cero, y al detectar la presión o un cambio de resistencia, o luz sensada en una coordenada, entonces se le asigna a la misma el valor 1.Ejemplos de imágenes binarias, son los dibujos de líneas, texto escrito o impreso, siluetas, huellas digitales,o planos empleados por arquitectos.
 |
@@ -506,7 +511,7 @@ Dependiendo del nivel de abstracción que manejan los procedimientos del procesa
 * Procesos de nivel medio, que abarcan tareas como la segmentación (división de la imagen en partes), descripción de dichos objetos para reducirlos a una forma aceptable para el procesamiento por computadora, y el reconocimiento de objetos individuales(o clasificación de objetos). Estos procesos se caracterizan por el hecho de que las entradas son generalmente imágenes, pero sus atributos son atributos extraídos de una imagen, tales como: bordes, contornos, objetos individuales,etc.
 * Procesos de alto nivel, que involucran  generar conocimiento a partir de éstos objetos ensamblados, y efectuar operaciones relacionadas con el  análisis de imágenes y algunas operaciones relacionadas con el campo de visión por computadora.
  
-Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen según el objetivo que se persiga, aunque los tipos más frecuentes son los siguientes:
+Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen según el objetivo que se persiga, aunque los tipos más frecuentes son las siguientes:
 
 .. pagina 49 gonzales, image processing.
 
@@ -525,10 +530,10 @@ Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen seg
 |
 
 
-* Compresión. Las técnicas de compresión están relacionadas a la reducción del almacenamiento requerido para representar una imagen o, al ancho de banda necesario para transmitirla. Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
+* Compresión.El objetivo de la compresión (o coding) es representar una imagen digital con la cantidad mínima de bits sin pérdida de información, persiguiendo así, la acelaración de la velocidad de transmición y reducción del ancho de banda necesaria para transmitir las mismas y la minimización del espacio requerido para almacenarlas, manteniendo a la vez en la fidelidad de la misma. La compresión es posible porque existe una redundancia presente en las imágenes, que es proporcional a la cantidad de correlación entre las muestras de datos. Por ejemplo, en imágenes estáticas existe un alto grado de correlación en los alrededores de un pixel, mientras que en los videos ésta se encuentra presente entre frames sucesivos del mismo. De esta forma para lograr un grado eficiente de compresión, estos métodos intentan remover los datos redudantes como así también, aquellos que se perciben pero son irrelevantes, produciendo que las imágenes de entrada y salida sean visualmente iguales, y no necesariamente numéricamente iguales.Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
   
 
-* Procesamiento morfológico. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma, esto es atributos tales como componentes conectados, límites, skeletons (conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites) y el convex hull (el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma). 
+* Procesamiento morfológico. La morfología se relaciona con la forma y las relaciones entre las partes de una imágen. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma, esto es atributos tales como componentes conectados, límites, skeletons (conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites) y el convex hull (el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma). 
 Además, el procesamiento morfológico abarca las técnicas pre-procesamiento y post-procesamiento complementarias que se emplean junto a los procedimientos descritas anteriormente, tales como filtrado o filtering, thinning, region filling(rellenado con información de los elementos que componen una región) y pruning(método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning).
   
 
@@ -537,10 +542,15 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 
 
 * Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los pixeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores.
-Estas técnicas, consisten en transformar los pixeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: Representar la región en términos de sus características externas (su límite o boundary), describiéndose el limite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite; O representarla según sus características internas, es decir, los pixeles que comprenden la región. En este caso, se emplean características propias de la región tales como el color y la textura.  
+Estas técnicas, consisten en transformar los pixeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: Representar la región en términos de sus características externas (su límite o boundary), describiéndose el limite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite; O representarla según sus características internas, es decir, los pixeles que comprenden la región. 
+En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región.Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o, en la distribución estadística de los elementos del patrón.
+|
+
+.. figure:: figs/Cap6/ejemplosTexturas.png
+
+   Ejemplos de texturas artificiales (a-b) y texturas naturales(c-e)
 
 
-* Reconocimiento.
 
 
 
