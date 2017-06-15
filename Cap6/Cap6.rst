@@ -255,7 +255,7 @@ Por lo tanto, las ondas electromagnéticas pueden ser vistas como ondas sinusoid
    Representación gráfica de la longitud de onda (LAMDA)
 
 
-Sin embargo, el ojo humano sólo puede capturar la luz visible de la radiación electromagnética, que representa una porción mínima de la radiación que puede ser percibida, y aunque esta banda es óptima ya que el volumen de información se encuentra reducido, es altamente confiable y disponible (ya que se encuentra fuertemente proyectada por el Sol y la atmósfera de la tierra es lo suficientemente transparente como para percibirla), la radiación de otras bandas puede ser igualmente útil para ciertas ramas de la ciencia, que graban y hacen uso de casi todo el espectro y emplean esta información con el objetivo de obtener un mejor concepto de la realidad física. Un ejemplo de esto son las ondas de sonido de alta frecuencia o ultrasonido, que son usadas para crear imágenes del cuerpo humano mientras que las imágenes de baja frecuencia son empleadas por compañías, para crear imágenes de la superficie de la tierra. Aunque la captura de imágenes se basa principalmente en la energía generadas por las ondas electromagnéticas, existen otros métodos para la generación de imágenes, tales como capturar el sonido reflejado desde un objeto con el fin de obtener imágenes ultrasónicas, o rayos de electrones como los que emplean los microscopios de electrones para obtener imágenes que permitan recolectar información respecto de especímenes biologicos e inorgánicos, incluyendo microorganismos, muestras de biopsias, metales y cristales. 
+Sin embargo, el ojo humano sólo puede capturar la luz visible de la radiación electromagnética, que representa una porción mínima de la radiación que puede ser percibida, y aunque esta banda es óptima ya que el volumen de información se encuentra reducido, es altamente confiable y disponible (ya que se encuentra fuertemente proyectada por el Sol y la atmósfera de la tierra es lo suficientemente transparente como para percibirla), la radiación de otras bandas puede ser igualmente útil para ciertas ramas de la ciencia, que graban y hacen uso de casi todo el espectro y emplean esta información con el objetivo de obtener un mejor concepto de la realidad física. Un ejemplo de esto son las ondas de sonido de alta frecuencia o ultrasonido, que son usadas para crear imágenes del cuerpo humano mientras que las imágenes de baja frecuencia son empleadas por compañías, para crear imágenes de la superficie de la tierra. Aunque la captura de imágenes se basa principalmente en la energía generadas por las ondas electromagnéticas, existen otros métodos para la generación de imágenes, tales como capturar el sonido reflejado desde un objeto con el fin de obtener imágenes ultrasónicas, o rayos de electrones como los que emplean los microscopios de electrones para obtener imágenes que permitan recolectar información respecto de especímenes biológicos e inorgánicos, incluyendo microorganismos, muestras de biopsias, metales y cristales. 
 
 Las imágenes,aunque tengan distintas fuentes, comparten el hecho de que existe una radiación que es emitida desde alguna fuente para posteriormente interactuar con algún tipo de material, luego es sensada y trasladada en una señal eléctrica que puede ser digitalizada. Las imágenes se pueden clasificar según la forma en la que la interacción con el dispositivo de sensado ocurre en 3 categorías generales:
 
@@ -276,7 +276,7 @@ Para que un sensor pueda captar un objeto de determinado tamaño, es necesario q
 .. figure:: figs/Cap6/sensorCaptura.png
    :scale: 90%
    
-   Sensor invidivual de captura
+   Sensor individual de captura
 
 
 Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación emitida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una conversión estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas.
@@ -322,18 +322,78 @@ Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común
 
 .. figure:: resultadoDelProcesoCuantificacion.png
 
-   Representación del proceso de muestreo y cuantificación.Imagen continua captada por un dipositivo de sensado(a).Imagen muestreada y cuantificada(b).
+   Representación del proceso de muestreo y cuantificación.Imagen continua captada por un dispositivo de sensado(a).Imagen muestreada y cuantificada(b).
 
 
 
-Conceptos y herramientas relacionados al procesamiento de imágenes
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. NOTA: Nivel h6 de identación.
-.. NOTA: ACA PONER LAS RELACIONES ENTRE PIXELES, DISTANCIA ENTRE LOS MISMOS, FILTROS, E HISTOGRAMA DE FRECUENCIAS!!! 
-
+Relaciones entre pixeles
+++++++++++++++++++++++++
 .. CONTENIDOS A INCLUIR: 
-..	-Relaciones entre pixeles, background,foreground, region,interpolacion,neirbourhood o ventana, mascara.
+..	-Relaciones entre pixeles y DISTANCIA ENTRE LOS MISMOS, background,foreground, region,interpolacion,neirbourhood o ventana, mascara.
+
+Los pixeles Pk en la coordenada (i,j), con k siendo la cantidad total de pixeles con los indices i=1,2,...,n y j=1,2,...,m, que componen una imagen digital cuentan con distintas propiedades entre las que se encuentran las siguientes:
+
+* Pixeles conectados: Un pixel en un punto P0 en (i0,j0) se conecta a otro pixel Pn en (in,jn) si y sólo si existe un camino desde P0 hasta Pn, que es una secuencia de puntos (i0,j0),(i1,j1)...(in,jn) tal que el pixel (ik,jk) es un vecino del pixel en (ik+1,jk+1) y Pk= Pk+1 para todos los k, 0 < k < n-1. La secuencia de pixeles distintos de un pixel a otro también se denomina camino digital (digital path) y, si el primer pixel del camino se encuentra conectado con el primer pixel, se denomina un camino cerrado.
+  
+* 4-vecinos(4-connected pixel): Cuando un pixel P en la ubicación (i,j) tiene cuatro vecinos en las coordenadas (i+1,j), (i-1,j), (i,j+1) e (i,j-1) se conocen como 4-vecinos.Es decir, que cada pixel esta a una unidad de distancia' de (i,j) y algunas de las ubicaciones de P yacen fuera de la imagen digital en el borde la imagen.
+
+
+* 8-vecinos(8-connected pixel): Se dice que un pixel P ubicado en (i,j) tiene una conexión diagonal de 4 pixeles, cuando tiene pixeles en las coordenadas (i+1,j+1),(i+1,j-1),(i-1,j+1) e (i-1,j-1). Si además este pixel tiene 4-vecinos, se dice que estos pixeles son 8-vecinos de P. 
+
+
+Otra propiedad de los pixeles es la adyacencia que se define en términos de los niveles de intensidad, siendo V el conjunto de valores de intensidad que un pixel puede adoptar, con V = {1} en imágenes binarias (considerandose adayacentes dos pixeles que tienen intensidad 1) y V siendo un subconjunto de todos los niveles de la imagen (para el caso de imagenes por escala de grises) y considerándose adyacentes dos pixeles cuyos valores de intensidad están en ese subconjunto. Existen 3 tipos de adyacencia:
+
+* 4-adyacentes(4-adjacency). Dos pixeles P y Q con valores del conjunto V son 4-adyacentes si Q esta en el conjunto de los 4-vecinos de P.
+
+* 8-adyacentes(8-adjacency).Dos pixeles P y Q con valores del conjunto V son 8-adyacentes si Q esta en el conjunto de los 8-vecinos de P.
+
+* adyacencia mixta(m-adjacency o mixed-adjacency). Dos pixeles P0 y P1 con valores del conjunto V son m-adyacentes si: 
+
+	* P0 es un 4-vecino de P1, o
+	* Si P0 esta en una conexión diagonal de P1 y el conjunto de 4-vecinos de P0 y de P1 no tienen valores en común con el conjunto V de niveles.
+ 
+* Componente conectado: Si dado un subconjunto de pixeles S en una imagen, dos pixeles P0 y P1 se dicen conectados si existe un camino digital que se compone de los pixeles en S.Así, para cualquier pixel P que este en S, el conjunto de pixeles que están conectados a él es llamado un componente conectado de S. Un conjunto de pixeles conectados (4 u 8 pixeles) forman un componente conectado,que representa un objeto en escena.
+
+* Región. Dado un subconjunto de pixeles R en una imagen, R se denomina una región si es un componente conectado, y dos regiones R1 y R2 se dicen adyacentes si su unión forma un conjunto conectado, o disjuntas en caso contrario.
+
+
+* Fondo(background) y Frente(foreground). Si una imagen contiene Rk regiones con k=1,2,...,N, la unión de todas las regiones se considera el frente, mientras que el resto de los pixeles que no esta en ninguna región se considera el complemento.
+
+* Borde o Contorno(boundary,border,contour). El contorno de una región R es el conjunto de los puntos que son adyacentes a los puntos que no estan R(complemento), es decir, que éste se compone de aquellos pixeles en la región que tienen al menos un vecino que forma parte del fondo.Si R es una imagen entera(matriz de pixeles), entonces su contorno se define como el conjunto de pixeles en la primera y ultima fila y columna de la imagen, ya que una imagen no contiene más vecinos más alla de los bordes.
+
+|
+
+.. figure:: figs/Cap6/tiposConexionesImgBinaria.png
+  
+    Tipos de conexiones entre pixeles. 4-vecinos(a). 8-vecinos(b). Componente conectado y fondo(c).
+
+Una vez que un objeto es identificado algunos de sus atributos se pueden definir de la siguiente manera:
+
+* Área del objeto: El área de un objeto se da como la sumatoria de todos los pixeles i,j que forman el objeto(pixeles con valor 1).
+* Ubicación del objeto: La ubicación del objeto se define como el centro del objeto en X e Y, calculados por medio de la sumatoria de las coordenadas del objeto dividido por el área del mismo. En la siguiente ecuación se puede observar la forma de calcular los centroides Xc e Yc:
+|
+|
+
+.. figure:: figs/Cap6/calculoCentroide.png
+   :scale: 80%
+   
+   Fórmula para el cálculo del objeto
+
+* Orientación de un objeto: Cuando el objeto tiene una forma alargada, los ejes de la elongación producen la orientación del mismo.El eje de elongación es una línea recta tal que la suma de las distancias al cuadrado, de todos los puntos del objeto desde esta línea es mínimo(distancia perpendicular de un punto del objeto hacia la línea).
+* Perímetro de un objeto: El perímetro de un objeto se obtiene sumando los pixeles que forman parte del límite del objeto y que son parte del área. El límite o contorno de un objeto esta formado por aquellos pixeles que tienen uno o más vecinos que no están en el área.
+
+.. Nombres de conexiones en español --> http://scfi.uaemex.mx/hamontes/files/TI04%20-%20Relaciones%20basicas%20entre%20pixeles.pdf
+
+
+
+Operaciones y técnicas sobre imágenes digitales
++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. COMANDO PARA CAMBIAR DIRECTORIO SCREENPRINT --> 
+.. gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/figs/Cap6/"
+
+
 ..	-Tipos de operaciones que se realizan sobre una imagen (SUMA,RESTA,DIVISION,MULTIPLICACION y sus efectos a nivel de imagen, a nivel de pixel transformaciones espaciales),
 
 .. -Dominio espacial:
@@ -342,19 +402,52 @@ Conceptos y herramientas relacionados al procesamiento de imágenes
 .. -Dominio de transformaciones:
 ..					-Son metodos que se basan en transformar una imagen a un dominio de interes, procesarla en ese dominio y luego regresarla de vuelta al dominio inicial(imagen de salida). 
 ..					-Formula de Fourier y dominio de frecuencia, que son paralelos a las tecnicas descritas con el dominio espacial pero empleando las frecuencias de la imagen.
+.. NOTA: Nivel h6 de identación.
+.. NOTA:  FILTROS, E HISTOGRAMA DE FRECUENCIAS!!! 
 
+
+De forma general, existen dos tipos de aproximaciones que pueden emplearse en una imagen para aplicar técnicas de mejora de imagen y transformación: Emplear técnicas que actúen dominio espacial de la imagen, es decir modificando ciertas características sobre los pixeles de la imagen directamente; O Emplear técnicas que se ejecutan sobre el dominio de frecuencias de la imagen, que consisten en realizar una conversión de los valores de la imagen para llevarla a otro dominio, ejecutar transformaciones sobre ese dominio y finalmente, realizar la transformación inversa para obtener la imagen de salida.      
+
+Técnicas que sobre el dominio espacial
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Debido a que las imágenes se representan como matrices, es posible tanto aplicar operaciones aritméticas y lógicas entre matrices, como ejecutar operaciones que modifiquen características de los pixeles, con el fin de modificar ciertas características de éstas. Los tipos principales de operaciones que se pueden emplear se pueden clasificar en 3 tipos generales:
+
+* Operaciones de manipulación de intensidad (modificación de pixeles individuales).
+* Operaciones aritméticas entre matrices de la misma dimensión (estas operaciones incluyen suma,resta, multiplicación y división entre matrices).
+* Operaciones geométricas de transformación (interpolación,traslación,rotación, filtrado espacial).
+
+
+Operaciones de manipulación de intensidad
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+En este tipo de técnicas las operaciones se aplican a pixeles individuales, por lo que las relaciones entre pixeles vecinos no se consideran, como así tampoco la localización de los pixeles sino que se modifican las intensidades de los pixeles.
+En esta sección, se describen algunas de las herramientas que se emplean para modificar los valores de intensidad de una imagen y su principal utilidad.
 
 
 Histograma de imagen
-~~~~~~~~~~~~~~~~~~~~
+####################
+.. NOTA: Identacion h8
 
-
-La herramienta básica para este tipo de operaciones es el histograma de imágen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de gris en los pixeles de la imagen. De esta manera, si se cuenta con K niveles de gris {0,1,...,K-1} y una cantidad NxM de pixeles, el histograma se define matemáticamente de la siguiente manera:
+La herramienta básica para este tipo de operaciones es el histograma de imagen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de intensidad (nivel de gris en imagenes por escala de grises) en los pixeles de la imagen. De esta manera, si se cuenta con K niveles de intensidad {0,1,...,K-1} y una cantidad NxM de pixeles, el histograma se define matemáticamente de la siguiente manera:
 
 .. math:: Hf(k) = J
    :label: Formula para cálculo de niveles
 
-Donde f() es la función que mapea el nivel de gris a cada pixel P(x,y), y J representa la cantidad de ocurrencias de ese nivel en los pixeles, con K niveles. Aunque este tipo de histograma no contiene información espacial con respecto a la imagen, sigue siendo una herramienta valiosa que permite visualizar si la distribución de niveles de gris en una imagen es correcta, o si la imagen tiene tonalidades de gris mas oscuras o más claras. En la siguiente figura se puede observar, que la figura de la izquierda presenta niveles de gris más oscuros, mientras que la figura de la derecha presenta niveles de grises con más brillo, lo que indica que han estado expuestas a condiciones de luz excesiva y escasa. 
+
+.. PAGINA 142 Image processing 3rd edition. Gonzales.
+
+Donde f() es la función que mapea el nivel de intensidad a cada pixel P(x,y), y J representa la cantidad de ocurrencias de ese nivel en los pixeles, con K niveles.Aunque este tipo de histograma no contiene información espacial con respecto a la imagen, es una herramienta valiosa que permite visualizar si la distribución de niveles de intensidad en una imagen es correcta, o si la imagen tiene tonalidades mas oscuras o más claras. Por ejemplo, en un histograma que corresponde a una imagen con escala de grises los niveles más oscuros se concentran sobre la parte más baja de la escala del histograma, mientras que los niveles más brillantes están en la parte alta del diagrama. Así, una imagen por escala de grises con bajo contraste, tendrá un histograma cuyos puntos se encuentran centrados en la escala y abarcan pocos valores en el rango, mientras que si ésta tiene un contraste alto, los valores del histograma abarcarán un rango amplio de la escala y, su distribución tenderá a ser uniforme.
+
+
+
+.. figure:: figs/Cap6/variosNivelesContraste.png
+	:scale: 60%
+	   
+	Imágenes con distintos niveles de contraste y sus histogramas asociados
+
+
+En la siguiente figura se puede observar, que la figura de la izquierda presenta niveles de gris más oscuros, mientras que la figura de la derecha presenta niveles de grises con más brillo, lo que indica que han estado expuestas a condiciones de luz excesiva y escasa. 
 |
 
 
@@ -362,6 +455,128 @@ Donde f() es la función que mapea el nivel de gris a cada pixel P(x,y), y J rep
 
    Histograma de imagen.
 |
+
+Algunas veces el histograma de imagen se normaliza, dividiendo la cantidad de ocurrencias en cada nivel de intensidad, por el número total de pixeles en la imagen(N*M), de manera que la sumatoria de los componentes de un histograma normalizado sea 1. 
+
+El histograma de imagen es una herramienta básica empleada por varias técnicas de procesamiento de imágenes con intensidad como la mejora de imagen,además de proveer información de utilidad para la compresión y la segmentación de imágenes.  
+
+
+
+Escalado de histograma
+######################
+
+El escalado de histograma consiste modificar el rango de niveles de intensidad que se consideran para representar un histograma.Este procedimiento dada una función f(n) que representa el histograma para cada uno de los n pixeles, consiste en multiplicar cada uno de estos valores por una constante numérica P (mayor o menor a 1):
+
+
+.. math:: g(n) = P*f(n)
+   :label: Formula para escalado de histograma
+
+Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante P > 1, los niveles de gris cubriran un rango mas amplio que aquellos de la función del histograma f(), mientras que si P < 1 se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez. A continuación se pueden observar imágenes originales y los efectos de aplicar el histograma de imagen con dos escalas distintas: 
+
+
+.. figure:: figs/Cap6/efectoEscaladoHistograma.png
+	:scale: 80%
+
+   Efectos del escalado de histograma entre dos puntos A-B.
+|
+|
+.. figure:: figs/Cap6/estudiantesOriginal.png
+	:scale: 70%
+
+   Imagen de estudiantes original (izquierda) y su histograma de imagen asociado(derecha).
+|
+|
+.. figure:: figs/Cap6/estudiantesEscalaHistograma.png
+	:scale: 70%
+
+   Modificación de la escala del histograma con P=0.75. En este caso los niveles de gris de la imagen tienden a juntarse, provocando que la imagen disminuya su calidad.
+|
+|
+.. figure:: figs/Cap6/imagenOriginalLibros.png
+	:scale: 70%
+
+   Imagen de libros(izquierda) y su histograma(derecha)
+|
+.. figure:: figs/Cap6/librosEscalaHistograma.png
+
+   Modificación de la escala del histograma con P=2. En este caso, la expansión de los valores del histograma de imagen, produce que se haga un mejor uso de los niveles de gris, produciendo una mejora en la nitidez de la misma.
+
+
+Negativo de imagen
+##################
+
+El negativo de una imagen consiste en escalar éstos con P=-1 revirtiendo el signo de los valores y  sumar un desplazamiento a los valores de intensidad de cada pixel K-1 con el fin de que estos se encuentren en el rango del histograma:
+
+.. math:: g(n) = -f(n) + (K-1)
+	:label: Formula para obtener la imagen inversa
+|
+|
+
+.. figure:: figs/Cap6/imagenNegativa.png
+
+   Imagen negativa con su histograma modificado
+|
+
+Esta técnica se emplea para mejorar imágenes donde se pierde el nivel de detalle en las regiones con niveles blanco y negro, percibiéndose ésta como demasiado oscura. Un ejemplo de esta operación es la inspección de imágenes telescópicas con campos de estrellas y galaxias, donde con una imagen negativa los objetos brillantes, aparecen con una tonalidad oscura sobre un fondo brillante que es mas sencillo de apreciar.   
+
+Igualación de histograma(Histogram Equalization)
+################################################
+
+
+
+Especificación(Histogram Matching o Specification)
+##################################################
+
+.. pag 150. Image processing 3rd edition Gonzales.
+
+
+
+Shaping de histograma
+#####################
+
+
+
+Operaciones aritméticas entre matrices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+Operaciones geométricas de transformación
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Interpolación
+#############
+
+.. NOTA: Identacion h8
+
+Una herramienta relacionada con las imágenes digitales es la interpolación, empleada en tareas como hacer zoom, reducción(shrinking), rotación y correcciones geométricas. Esta herramienta consiste en emplear datos conocidos de la imagen para estimar valores en coordenadas desconocidas. Por ejemplo, si se necesitara convertir una imagen a una escala mayor, la cantidad de pixeles y la correspondencia entre las intensidades diferirían por lo que sería necesario contar con un método que permita la asignación aproximada de intensidades. Un método para realizar ésto es asignar a cada pixel en la imagen mayor, el valor del pixel vecino más cercano si se superpone, esta imagen con la imagen de entrada, este metodo se conoce como interpolación de vecino más cercano.
+Existen otros métodos para asignar intensidades que consideran más vecinos y, la forma en que consideran estos sigue alguna fórmula matemática, entre los que se encuentran la interpolación bilinear (donde se emplean los 4 vecinos mas cercanos para estimar la intensidad) y la interpolación bicubica (que toma los 16 vecinos más cercanos):
+
+|
+
+.. figure:: interpolacionBilinear.png
+      
+         Fórmula de interpolación bilinear
+|
+|
+
+Donde v(x,y) es la intensidad del pixel en la coordenada(x,y), los coeficientes a,b,c y d se emplean para determinar los vecinos que de los que se obtendrá la intensidad. 
+
+
+.. figure:: interpolacionBicubica.png
+      
+         Fórmula de interpolación bicubica
+|
+
+
+
+Técnicas sobre el dominio de las transformaciones
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TRANSFORMADA DE FOURIER
+
+
 
 
 
@@ -406,36 +621,7 @@ Las imágenes binarias surgen de una variedad de fuentes, generalmente son cread
    Imagen binaria
 
 
-Un objeto en una imágen binaria se considera como un conjunto de pixeles con nivel 1 conectados, y algunas de las propiedades que definen la conectividad entre pixeles en una imagen binaria son las siguientes:
-
-* Pixeles conectados: Un pixel en un punto P0 en (i0,j0) se conecta a otro pixel Pn en (in,jn) si y sólo si existe un camino desde P0 hasta Pn, que es una secuencia de puntos (i0,j0),(i1,j1)...(in,jn) tal que el pixel (ik,jk) es un vecino del pixel en (ik+1,jk+1) y Pk= Pk+1 para todos los k, 0 < k < n-1. La secuencia de pixeles distintos de un pixel a otro también se denomina camino digital (digital path) y si el primer pixel del camino se encuentra conectado con el primer pixel, se denomina un camino cerrado.
-* 4-vecinos(4-connected pixel): Cuando un pixel en la ubicación (i,j) tiene cuatro vecinos en (i+1,j), (i-1,j), (i,j+1) e (i,j-1) se conocen como 4-vecinos.
-* 8-vecinos(8-connected pixel): Cuando un pixel en la ubicación (i,j) tiene una conexión de 4-vecinos  y además tiene una conexión 4-diagonal con otros pixeles, esto es que tenga conexión con los pixeles en (i+1,j+1),(i+1,j-1),(i-1,j+1) e (i-1,j-1), se conocen como una conexión de 8-vecinos.
-* m-vecinos(m-connected). Dos pixeles P0 y P1 con niveles de la escala L, son m-vecinos si: (a) P0 es un 4-vecino de P1, o (b) si P0 esta en una conexión 4-diagonal de P1 y el conjunto de 4-vecinos de P0 y P1 no tienen valores en común de la escala L de niveles. 
-* Componente conectado: Un conjunto de pixeles conectados (4 u 8 pixeles) forman un componente conectado,que representa un objeto en escena.
-* Fondo(background): El conjunto de componentes conectados de 0 pixeles forma el fondo de la imagen.
-|
-
-.. figure:: figs/Cap6/tiposConexionesImgBinaria.png
-  
-    Tipos de conexiones entre pixeles. 4-vecinos(a). 8-vecinos(b). Componente conectado y fondo(c).
-
-Una vez que un objeto es identificado algunos de sus atributos se pueden definir de la siguiente manera:
-
-* Área del objeto: El área de un objeto se da como la sumatoria de todos los pixeles i,j que forman el objeto(pixeles con valor 1).
-* Ubicación del objeto: La ubicación del objeto se define como el centro del objeto en X e Y, calculados por medio de la sumatoria de las coordenadas del objeto dividido por el área del mismo. En la siguiente ecuación se puede observar la forma de calcular los centroides Xc e Yc:
-|
-|
-
-.. figure:: figs/Cap6/calculoCentroide.png
-   :scale: 80%
-   
-   Fórmula para el cálculo del objeto
-
-* Orientación de un objeto: Cuando el objeto tiene una forma alargada, los ejes de la elongación producen la orientación del mismo.El eje de elongación es una línea recta tal que la suma de las distancias al cuadrado, de todos los puntos del objeto desde esta línea es mínimo(distancia perpendicular de un punto del objeto hacia la línea).
-* Perímetro de un objeto: El perímetro de un objeto se obtiene sumando los pixeles que forman parte del límite del objeto y que son parte del área. El límite o contorno de un objeto esta formado por aquellos pixeles que tienen uno o más vecinos que no están en el área.
-  
-Existen diversas técnicas que se emplean para el procesamiento de imágenes binarias, entre las que se encuentran:
+Un objeto en una imagen binaria se considera como un conjunto de pixeles con nivel 1 conectados.Existen diversas técnicas que se emplean para el procesamiento de imágenes binarias, entre las que se encuentran:
 
 * Delimitación de la imagen(Image thresholding). Esta técnica se emplea cuando se desea abstraer información desde una imagen con escala de grises, con el fin de obtener una imagen binaria, y consiste en definir un límite T de nivel de gris máximo que un pixel puede adoptar, y luego filtrar aquellos pixeles en la imagen (estableciéndolos a 1 en la imagen binaria), cuyo límite sea menor que el establecido. De esta forma, T permite controlar el nivel de detalle que la imagen resultante poseerá y, variando este límite se puede obtener una imagen que sea más eficiente para procesar, analizar o interpretar.
 Sin embargo, éste método aplicado a imágenes cuyos histogramas de intensidad sean planos o que varios objetos con un brillo promedio diferente sobre un fondo uniforme, puede provocar que algunos objetos se dejen afuera de la imagen final. 
@@ -460,20 +646,26 @@ Las ventanas se definen por medio de una ecuación matemática, que permite defi
 
 Dependiendo del tipo de operación lógica que se aplique con la ventana, se logrará un efecto distinto en la imagen. Así, si se emplea la operación OR se producirá un efecto de dilatación de aquellos pixeles donde sus valores sean distintos o iguales, mientras que si se aplica la operación AND se producirá un efecto de erosión, donde aquellos pixeles vecinos que tengan un valor distinto al del pixel sobre el que esta la ventana, serán filtrados.
 
-.. Nombres de conexiones en español --> http://scfi.uaemex.mx/hamontes/files/TI04%20-%20Relaciones%20basicas%20entre%20pixeles.pdf
 
 
 Imágenes a color
 ~~~~~~~~~~~~~~~~
 
-En las imágenes a color cada pixel tiene asociadas las intensidades correspondientes tres colores primarios (RGB) donde, para cada color se emplea una representación de 8 bits, por lo que una imagen a color emplea 24 bits por cada pixel, necesitándose un total de (2^8)^3 = 16,777,216 valores posibles de color.El número de colores que se emplean para representar cada pixel en el espacio RGB, se denomina profundidad de pixel y si se emplea una profundidad de 24 bits para representar cada pixel, se dice que la imagen es full-color.
-De esta forma, para una imagen con N x M elementos, existen un vector para los colores rojo, verde y azul que se corresponde con las coordenadas (x,y) de la siguiente forma:
+Con la finalidad de incluir el color en el procesamiento de imágenes, se debe emplear un modelo de color que permita la especificación de las intensidades de los colores en un sistema de coordenadas y un rango de valores dentro de ese sistema de coordenadas, donde cada color sea representado por un único valor. Debido a la variedad de campos de aplicación del color, existen diferentes esquemas de representación según el objetivo, entre los que se encuentran:
+
+* RGB(Red,Green,Blue). Emplea diversas combinaciones de colores primarios(normalizados entre [0,1] o sino valores en el rango 0-255) para la representación de colores en imágenes. Este modelo es utilizado principalmente por monitores a color y cámaras de video y para la manipulación y generación de imágenes digitales.
+* CMY(Cyan,Magenta,Amarillo) y CMYK(Cyan,Magenta,Amarillo,Negro). Hace uso de los colores secundarios para representar el color, y es empleado para la impresión de imágenes color, realizándose una conversión interna del esquema RGB a CMY/K.
+* HSI(Tonalidad,Saturación,Intensidad). La tonalidad es un valor que describe el nivel de pureza de un color (rojo,verde o azul) percibido por un observador, la saturación brinda una medida del grado en que la luz blanca esta mezclado con la tonalidad de un color y, el brillo es una medida subjetiva que abarca la noción de la intensidad en imágenes sin color.Este modelo hace uso de estas características y además permite desacoplar la información de color y el componente de intensidad.
+
+
+El esquema empleado para la representación de imágenes digitales es RGB donde se emplea un vector para representar la composición de colores, de manera que cada pixel tenga asociadas las combinaciones correspondientes tres colores primarios (RGB), utilizando para cada color una representación de 8 bits.Por lo tanto, una imagen a color emplea 24 bits por cada pixel, necesitándose un total de (2^8)^3 = 16,777,216 valores posibles de color.
+De esta forma, para una imagen con N x M elementos, existe un vector que contiene la intensidad asociada a cada color primario, que se corresponde con las coordenadas (x,y) de la siguiente forma:
 
 |
 |
 .. figure:: figs/Cap6/formulaVectorColor.png
 
-   Vector de color para una coordenada en la imágen
+   Vector de color para una coordenada en la imagen
 |
 
 
@@ -559,11 +751,6 @@ En este caso, se emplean características propias de la región tales como el co
 .. figure:: figs/Cap6/ejemplosTexturas.png
 
    Ejemplos de texturas artificiales (a-b) y texturas naturales(c-e)
-
-
-
-Segmentación
-~~~~~~~~~~~~
 
 
 
