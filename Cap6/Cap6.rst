@@ -12,7 +12,7 @@ Los pavimentos se pueden clasificar en dos tipos diferentes:
 Los pavimentos rígidos se integran por una losa de concreto de cemento portland, que se encuentra situada por encima de una capa base de grava, y ésta a la vez descansa en una capa de suelo compactado, denominada subrasante.
 
 
-.. figure:: ../figs/Cap6/pav-rigido.png
+.. figure:: pav-rigido.png
    :scale:	80 %
 
    Estructura del pavimento rígido
@@ -21,7 +21,7 @@ Los pavimentos rígidos se integran por una losa de concreto de cemento portland
 * Pavimento flexible: Es una estructura compuesta por capas donde uno de los materiales presentes es el asfalto, lo que permite la deflexión (la deformación que del material como producto de una fuerza externa) bajo las cargas.
 Los pavimentos flexibles se componen de una capa de mezcla asfáltica u hormigón asfáltico, que consiste en un agregado de asfalto y materiales minerales (como áridos) compactados y extendidos. ;Ésta se expone a las condiciones más severas debido al clima y tráfico, una capa base que se compone de materiales áridos (conjunto de materiales obtenidos de la fragmentación de rocas y arenas, tales como la grava, la gravilla y la arena), una capa de sub-base con materiales de calidad inferior a los empleados en la capa base.
 
-.. figure:: ../figs/Cap6/pav-flexible.png
+.. figure:: pav-flexible.png
    :scale:	80 %
 
    Estructura de pavimento flexible
@@ -52,21 +52,21 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Deficiencia de sellado: Este tipo de falla se ocasiona cuando se deterioran el sello de las juntas, por ejemplo, cuando existe fluencia fuera de la caja, despegado de ambas paredes, incrustación de materiales ajenos. El método de reparación de este tipo de falla consiste en realizar un sellado de juntas y de las grietas.
 
-.. figure:: ../figs/Cap6/pav-rigido-deficiencia-sellado.png
+.. figure:: pav-rigido-deficiencia-sellado.png
    :scale: 70 %
 
    Deficiencia de sellado
 
 * Losas desniveladas:  Ocurre cuando se desintegran las aristas de una junta, ya sea de manera longitudinal o transversal, con pérdida de trozos. Para este tipo de falla el método de reparación consiste en un sellado de juntas y grietas, o reparación de espesor parcial, que consiste en reponer las saltaduras de material superficial en juntas y grietas.
 
-.. figure:: ../figs/Cap6/pav-rigido-losas-desniveladas.png
+.. figure:: pav-rigido-losas-desniveladas.png
    :scale: 30 %
 
    Losas desniveladas
 
 * Grietas: Una grieta se define como una abertura larga y estrecha en una losa de material, y ésta dependiendo de su ubicación en la losa, puede ser una grieta de esquina, longitudinal (si se extiende a lo largo de una losa) o transversal (si se extiende de manera perpendicular al volcado del material de la losa). El método de reparación para este tipo de falla, consiste en el sellado de juntas y grietas, y la reparación en todo el espesor. 
   
-.. figure:: ../figs/Cap6/pav-rigido-grieta-longitudinal.png
+.. figure:: pav-rigido-grieta-longitudinal.png
    :scale: 50 %
 
    Grieta longitudinal
@@ -74,7 +74,7 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Desintegración: Esta falla se produce cuando ocurre un desgaste progresivo de la superficie, dejando al material árido expuesto. El método de reparación de este tipo de falla, consiste en realizar una reparación de espesor parcial, en la que se corta la porción de la zona a reparar con una profundidad de corte preestablecida, se limpia la zona y se rellena la zona con un material especial de sellado de juntas.
 
-.. figure:: ../figs/Cap6/pav-rigido-desintegracion.png
+.. figure:: pav-rigido-desintegracion.png
    :scale: 50 %
 
    Desintegración
@@ -84,7 +84,7 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Baches: Un bache se define como una cabidad, generalmente de forma redondeada producto de la pérdida o hundimiento del pavimento en una parte de la superficie. El método de reparación para este tipo de falla depende del deterioro del mismo, y es especial para cada caso.
   
-.. figure:: ../figs/Cap6/pav-rigido-bache.png
+.. figure:: pav-rigido-bache.png
    :scale: 40 %
 
    Bache
@@ -93,14 +93,14 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 * Levantamiento: Es el levantamiento de una porción de la losa, localizado en ambos lados de una junta transversal o grieta.El método de reparación consiste en realizar una reparación en todo el espesor, en la que se remueve y reemplaza una porción de la losa en todo su espesor, con el fin de reparar aquellas partes de la losa con un alto grado de daño.
 |
    
-.. figure:: ../figs/Cap6/pav-rigido-levantamiento.png
+.. figure:: pav-rigido-levantamiento.png
    :scale: 50 %
 
    Levantamiento de juntas
 
 * Escalonamiento de juntas o grietas: Este tipo de falla ocurre cuando existe un desnivel entre dos superficies del pavimento, separadas por una junta transversal o grieta. El método de reparación para este tipo de falla es el fresado de la superficie, donde se separan las partes defectuosas del pavimento, de las que se encuentran en buen estado.
   
-.. figure:: ../figs/Cap6/pav-rigido-escalonamiento-juntas.png
+.. figure:: pav-rigido-escalonamiento-juntas.png
    :scale: 70 %
 
    Escalonamiento de juntas
@@ -108,7 +108,7 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Descenso de banquinas: Es la diferencia de alturas que existe entre el borde del pavimento y la banquina. El método de reparación de este tipo de falla, consiste en realizar el nivelamiento de las banquinas no revestidas.
 
-.. figure:: ../figs/Cap6/pav-rigido-descenso-banquinas.png
+.. figure:: pav-rigido-descenso-banquinas.png
    :scale: 40 %
 
    Descenso de banquinas
@@ -119,7 +119,7 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Separación banquina-pavimento: Consiste en una rajadura entre el borde del pavimento y la banquina del sendero vial.El método de reparación consiste en realizar un sellado de juntas y grietas.
 
-.. figure:: ../figs/Cap6/pav-rigido-separacion-banquina-pavimento.png
+.. figure:: pav-rigido-separacion-banquina-pavimento.png
    :scale: 50 %
 
    Separación banquina-pavimento
@@ -127,7 +127,7 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Parches deteriorados: Este tipo de falla surge cuando una porción de la superficie del asfalto ha sido removido y reemplazado por otro (como hormigón o asfalto), y ésta se ha dañado. El método de reparación de este tipo de falla, varía según el deterioro, y requiere una reparación especial.
 
-.. figure:: ../figs/Cap6/pav-rigido-parche-deteriorado.png
+.. figure:: pav-rigido-parche-deteriorado.png
    :scale: 40 %
 
    Parches deteriorados
@@ -137,7 +137,7 @@ Fallas sobre pavimentos flexibles
 
 * Exudación: Este tipo de falla se presenta cuando el asfalto pierde sus agregados pétreos en la superficie. El tipo de reparación para esta falla consiste en enarenar y realizar una reparación superficial.
 
-.. figure:: ../figs/Cap6/pav-flexible-exudacion.png
+.. figure:: pav-flexible-exudacion.png
    :scale: 50 %
 
    Exudación
@@ -150,7 +150,7 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 	
 	\newpage
 
-.. figure:: ../figs/Cap6/pav-flexible-ahuellamiento.png
+.. figure:: pav-flexible-ahuellamiento.png
    :scale: 50 %
 
    Ahuellamiento y depresión
@@ -161,7 +161,7 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
   
 * Hundimiento del borde y ahuellamiento: Ocurre cuando se hunde el borde del material que limita con el margen.El método de reparación depende de la profundidad máxima del mismo, si ésta es menor a 20 mm se emplea perfilado del pavimento, si es superior a 20 mm pero inferior a 40 mm se emplea la técnica de relleno de rodadera, si es mayor a 40 mm se realiza una reparación local de la estructura del pavimento.
 
-.. figure:: ../figs/Cap6/pav-flexible-ahuellamiento-borde.png
+.. figure:: pav-flexible-ahuellamiento-borde.png
    :scale: 50 %
 
    Hundimiento del borde y ahuellamiento
@@ -169,7 +169,7 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 
 * Baches: Este tipo de falla produce un hundimiento local del sendero vial, con agrietamiento  en malla cerrada y generalmente pérdida parcial de bloques de la capa de rodadura.Las técnicas de reparación de este tipo de falla consisten en restauración local de la estructura del pavimento, o bacheo sobre la base.
   
-.. figure:: ../figs/Cap6/pav-flexible-baches.png
+.. figure:: pav-flexible-baches.png
    :scale: 50 %
 
    Baches
@@ -180,7 +180,7 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 
 * Pérdida local de áridos: Este tipo de falla se presenta cuando ocurre una pérdida de una porción de la capa superficial. El método de reparación para este tipo de falla consiste en reemplazar el material afirmado.
 
-.. figure:: ../figs/Cap6/pav-flexible-perdida-aridos.png
+.. figure:: pav-flexible-perdida-aridos.png
    :scale: 50 %
 
    Pérdida local de áridos
@@ -188,7 +188,7 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 
 * Pulimiento o peladuras: Produce desprendimientos de la última capa de tratamientos superficiales. El método de reparación varía según la severidad, siendo un método de tratamiento superficial simple con una profundidad menor a 25 mm y área menor a 0,8 m2, y siendo nivelación con sobrecarpeta para profundidad o área mayores a 25 mm y 0,8 m2 respectivamente.
 
-.. figure:: ../figs/Cap6/pav-flexible-pulimiento.png
+.. figure:: pav-flexible-pulimiento.png
    :scale: 50 %
 
    Pulimiento o peladuras
@@ -200,7 +200,7 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 	
 	\newpage
 
-.. figure:: ../figs/Cap6/pav-flexible-deformacion.png
+.. figure:: pav-flexible-deformacion.png
    :scale: 50 %
 
    Deformación
@@ -229,7 +229,7 @@ El mundo percibido diariamente por las personas se manifiesta en una variedad de
 
 
 |
-.. figure:: figs/Cap6/espectroElectromagnetico.png
+.. figure:: espectroElectromagnetico.png
    :scale:	80 %
 
    El espectro electromagnético dividido y ampliado.
@@ -249,7 +249,7 @@ Por lo tanto, las ondas electromagnéticas pueden ser vistas como ondas sinusoid
 
 |
 
-.. figure:: figs/Cap6/ondaSinusoidal.png
+.. figure:: ondaSinusoidal.png
    :scale:	80 %
 
    Representación gráfica de la longitud de onda (LAMDA)
@@ -264,7 +264,7 @@ Las imágenes,aunque tengan distintas fuentes, comparten el hecho de que existe 
 * Las imágenes de absorción donde la radiación atraviesa el material que compone el objeto y es absorbida o atenuada por éste parcialmente, lo que proporciona información relacionada con la estructura interna del mismo. El grado de absorción determina el nivel de la imagen registrada. Ejemplos de este tipo de imágenes son los rayos X, imágenes de transmisión microscópicas y ciertos tipos de imágenes sónicas.   
 |
 
-.. figure:: figs/Cap6/tiposInteraccionImagenes.png
+.. figure:: tiposInteraccionImagenes.png
    :scale:	80 %
 
    Tipos de interacción para el sensado de imágenes
@@ -273,7 +273,7 @@ Las imágenes,aunque tengan distintas fuentes, comparten el hecho de que existe 
 Para que un sensor pueda captar un objeto de determinado tamaño, es necesario que la longitud de onda del sensor sea igual o menor al tamaño de del objeto, por lo que este requerimiento junto con el material del sensor, establecen los límites de la capacidad de captura del sensor de imagen y su clasificación en distintos tipos, tales como sensores infrarojos, de luz visible,etc. Así, con el fin de capturar imágenes digitales en las distintas bandas del espectro electromagnético, es necesario emplear sensores que puedan captar la energía irradiada en cierto rango y produzcan una señal eléctrica de salida (generada por una combinación entre el material sensible a la radiación del sensor y la fuente de alimentación del mismo), que permita la representación de una imagen del mundo tridimensional de interés en formato digital.
 
 
-.. figure:: figs/Cap6/sensorCaptura.png
+.. figure:: sensorCaptura.png
    :scale: 90%
    
    Sensor individual de captura
@@ -283,13 +283,13 @@ Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, est
 Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como para representar la imagen, se produce un efecto denominado aliasing, que produce que la imagen visual pierda el patrón de la imagen original que intenta representar, produciendo una falso patrón y una imagen distorcionada. Como se observa en la siguiente imagen de una huella digital, a medida que la densidad de pixeles muestreados disminuye, la calidad de la imagen empeora y se produce éste efecto:
 
 
-.. figure:: figs/Cap6/aliasing.png
+.. figure:: aliasing.png
    :scale: 80%
    
    Efecto de aliasing. 256x256 (2^8*2^8=65,536 muestras). 128x128(2^7*2^7=16,384 muestras).64x64(2^6*2^6=4,096 muestras)
 |
 
-.. figure:: figs/Cap6/imagenPixels.jpg
+.. figure:: imagenPixels.png
 
    Representación de un array de imagen de 10 x 10
 
@@ -303,7 +303,7 @@ La cuantificación se puede realizar de manera uniforme, cuando los valores de i
 
 
 
-.. figure:: figs/Cap6/cuantificacionUniformeNoUniforme.png
+.. figure:: cuantificacionUniformeNoUniforme.png
    :scale: 70%
    Cuantificación de imagen de 2 dimensiones.Cuantificación uniforme (a).Cuantificación no uniforme (b).
 
@@ -364,7 +364,7 @@ Otra propiedad de los pixeles es la adyacencia que se define en términos de los
 
 |
 
-.. figure:: figs/Cap6/tiposConexionesImgBinaria.png
+.. figure:: tiposConexionesImgBinaria.png
   
     Tipos de conexiones entre pixeles. 4-vecinos(a). 8-vecinos(b). Componente conectado y fondo(c).
 
@@ -375,7 +375,7 @@ Una vez que un objeto es identificado algunos de sus atributos se pueden definir
 |
 |
 
-.. figure:: figs/Cap6/calculoCentroide.png
+.. figure:: calculoCentroide.png
    :scale: 80%
    
    Fórmula para el cálculo del objeto
@@ -391,7 +391,7 @@ Operaciones y técnicas sobre imágenes digitales
 +++++++++++++++++++++++++++++++++++++++++++++++
 
 .. COMANDO PARA CAMBIAR DIRECTORIO SCREENPRINT --> 
-.. gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/figs/Cap6/"
+.. gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/"
 
 
 ..	-Tipos de operaciones que se realizan sobre una imagen (SUMA,RESTA,DIVISION,MULTIPLICACION y sus efectos a nivel de imagen, a nivel de pixel transformaciones espaciales),
@@ -441,17 +441,16 @@ Donde f() es la función que mapea el nivel de intensidad a cada pixel P(x,y), y
 
 
 
-.. figure:: figs/Cap6/variosNivelesContraste.png
-	:scale: 60%
-	   
-	Imágenes con distintos niveles de contraste y sus histogramas asociados
+.. figure:: variosNivelesContraste.png
+   :scale: 60%
 
+   Imágenes con distintos niveles de contraste y sus histogramas asociados
 
 En la siguiente figura se puede observar, que la figura de la izquierda presenta niveles de gris más oscuros, mientras que la figura de la derecha presenta niveles de grises con más brillo, lo que indica que han estado expuestas a condiciones de luz excesiva y escasa. 
 |
 
 
-.. figure:: figs/Cap6/histogramaImagen.png
+.. figure:: histogramaImagen.png
 
    Histograma de imagen.
 |
@@ -461,45 +460,45 @@ Algunas veces el histograma de imagen se normaliza, dividiendo la cantidad de oc
 El histograma de imagen es una herramienta básica empleada por varias técnicas de procesamiento de imágenes con intensidad como la mejora de imagen,además de proveer información de utilidad para la compresión y la segmentación de imágenes.  
 
 
-
 Escalado de histograma
 ######################
 
 El escalado de histograma consiste modificar el rango de niveles de intensidad que se consideran para representar un histograma.Este procedimiento dada una función f(n) que representa el histograma para cada uno de los n pixeles, consiste en multiplicar cada uno de estos valores por una constante numérica P (mayor o menor a 1):
 
-
 .. math:: g(n) = P*f(n)
    :label: Formula para escalado de histograma
 
-Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante P > 1, los niveles de gris cubriran un rango mas amplio que aquellos de la función del histograma f(), mientras que si P < 1 se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez. A continuación se pueden observar imágenes originales y los efectos de aplicar el histograma de imagen con dos escalas distintas: 
+Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante P > 1, los niveles de gris cubrirán un rango mas amplio que aquellos de la función del histograma f(), mientras que si P < 1 se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez.
+| A continuación se pueden observar imágenes originales y los efectos de aplicar el histograma de imagen con dos escalas distintas:
 
-
-.. figure:: figs/Cap6/efectoEscaladoHistograma.png
+.. figure:: efectoEscaladoHistograma.png
 	:scale: 80%
 
-   Efectos del escalado de histograma entre dos puntos A-B.
-|
-|
-.. figure:: figs/Cap6/estudiantesOriginal.png
+	Efectos del escalado de histograma entre dos puntos A-B.
+
+| 
+.. figure:: estudiantesOriginal.png
 	:scale: 70%
 
-   Imagen de estudiantes original (izquierda) y su histograma de imagen asociado(derecha).
-|
-|
-.. figure:: figs/Cap6/estudiantesEscalaHistograma.png
+	Imagen de estudiantes original (izquierda) y su histograma de imagen asociado(derecha).
+
+| 
+.. figure:: estudiantesEscalaHistograma.png
 	:scale: 70%
 
-   Modificación de la escala del histograma con P=0.75. En este caso los niveles de gris de la imagen tienden a juntarse, provocando que la imagen disminuya su calidad.
-|
-|
-.. figure:: figs/Cap6/imagenOriginalLibros.png
+	Modificación de la escala del histograma con P=0,75, en este caso los niveles de gris de la imagen tienden a juntarse, provocando que la imagen disminuya su calidad.
+
+| 
+.. figure:: imagenOriginalLibros.png
 	:scale: 70%
 
-   Imagen de libros(izquierda) y su histograma(derecha)
-|
-.. figure:: figs/Cap6/librosEscalaHistograma.png
+	Imagen de libros(izquierda) y su histograma(derecha)
 
-   Modificación de la escala del histograma con P=2. En este caso, la expansión de los valores del histograma de imagen, produce que se haga un mejor uso de los niveles de gris, produciendo una mejora en la nitidez de la misma.
+| 
+.. figure:: librosEscalaHistograma.png
+
+   Modificación de la escala del histograma con P=2. En este caso, la expansión de los valores del histograma de imagen, produce que se haga un mejor uso de los niveles de gris, produciendo una mejora en la nitidez de la misma
+
 
 
 Negativo de imagen
@@ -512,7 +511,7 @@ El negativo de una imagen consiste en escalar éstos con P=-1 revirtiendo el sig
 |
 |
 
-.. figure:: figs/Cap6/imagenNegativa.png
+.. figure:: imagenNegativa.png
 
    Imagen negativa con su histograma modificado
 |
@@ -593,9 +592,10 @@ Imágenes por escala de grises
 Este tipo de imágenes se representa por medio de un conjunto de valores, que abarcan distintas tonalidades de grises desde blanco hasta negro, representándose cada pixel con 8 bits.
 |
 
-.. figure:: figs/Cap6/grescaleImg.png
+.. figure:: greyscaleImg.png
 	:scale: 50%
-   Representación de imagen en escala de grises
+   
+	Representación de imagen en escala de grises
 
 
 Existen distintos tipos de operaciones que pueden realizarse sobre imágenes con escalas de grises, aunque se pueden clasificar de manera general en: Operaciones de puntos, operaciones aritméticas y operaciones geométricas.
@@ -605,7 +605,7 @@ Las operaciones de puntos son aplicadas a los pixeles individuales de una imagen
 Las operaciones aritméticas se realizan entre imágenes de las mismas dimensiones espaciales, este tipo de operaciones es similar  a las operaciones por puntos debido a que la información espacial no es considerada, sino que la información se comparte entre imágenes y  se ejecutan pixel por pixel. Este tipo de operaciones se emplea para para la reducción del ruido en la imagen (distorciones aleatorias en la imagen producidas por radiación antes de capturar la misma o por fallos eléctricos en el dispositivo de sensado ), donde se realiza un promediado de las tonalidades de grises de un conjunto de frames y el resultado final es una imagen cuyo nivel de ruido ha sido reducido considerablemente.
 Otra área donde se emplean operaciones de éste tipo es en la detección de movimiento en sistemas de vigilancia, o en sistemas automatizados de inspección visual, donde se realiza la diferencia entre las matrices que representan las imágenes y luego se computa el histograma de imagen, que mostrará variaciones importantes en el intensidad (valores de brillo mayores) si cambios significativos han ocurrido entre dos frames.
 
-Finalmente, las operaciones geométricas que son operaciones complementarias a las operaciones por puntos debido a que no modifican los valores de los niveles de gris, sino que modifican la imagen modificando cambiando las posiciones de los elementos de la imagen. Este tipo de operaciones se emplea para realizar la rotación, traslación o zoom-in o zoom-out en la imágen.
+Finalmente, las operaciones geométricas que son operaciones complementarias a las operaciones por puntos debido a que no modifican los valores de los niveles de gris, sino que modifican la imagen modificando cambiando las posiciones de los elementos de la imagen. Este tipo de operaciones se emplea para realizar la rotación, traslación o zoom-in o zoom-out en la imagen.
 
 
 Imágenes binarias
@@ -616,7 +616,7 @@ Este tipo de imágenes se emplean en distintos tipos de aplicaciones de visión 
 Las imágenes binarias surgen de una variedad de fuentes, generalmente son creadas por medio del procesamiento de imágenes de escala de grises, aunque algunos tipos de sensores entregan una imagen binaria como salida, como los dispositivos que se emplean para obtener dibujos o texto escrito a mano con un pad resistivo, un lápiz de luz. Generalmente estos dispositivos, inicializan todas las coordenadas de la imagen binaria en cero, y al detectar la presión o un cambio de resistencia, o luz sensada en una coordenada, entonces se le asigna a la misma el valor 1.Ejemplos de imágenes binarias, son los dibujos de líneas, texto escrito o impreso, siluetas, huellas digitales,o planos empleados por arquitectos.
 |
 
-.. figure:: figs/Cap6/imagenBinaria.png
+.. figure:: imagenBinaria.png
 
    Imagen binaria
 
@@ -627,9 +627,10 @@ Un objeto en una imagen binaria se considera como un conjunto de pixeles con niv
 Sin embargo, éste método aplicado a imágenes cuyos histogramas de intensidad sean planos o que varios objetos con un brillo promedio diferente sobre un fondo uniforme, puede provocar que algunos objetos se dejen afuera de la imagen final. 
 |
 
-.. figure:: figs/Cap6/delimitacionImgBinaria.png
+.. figure:: delimitacionImgBinaria.png
 	:scale: 60%
-   Situaciones donde la delimitación de imagen puede encontrar problema. Histograma multimodal(varios objetos de distintos promedios de brillo) (a). Histograma plano(b)
+
+	Situaciones donde la delimitación de imagen puede encontrar problema. Histograma multimodal(varios objetos de distintos promedios de brillo) (a). Histograma plano(b)
 
 |
 |
@@ -640,9 +641,10 @@ Las ventanas se definen por medio de una ecuación matemática, que permite defi
 
 |
 
-.. figure:: figs/Cap6/ventanasImgBinaria.png
+.. figure:: ventanasImgBinaria.png
 	:scale: 70%
-   Tipos de ventanas.
+   
+	Tipos de ventanas.
 
 Dependiendo del tipo de operación lógica que se aplique con la ventana, se logrará un efecto distinto en la imagen. Así, si se emplea la operación OR se producirá un efecto de dilatación de aquellos pixeles donde sus valores sean distintos o iguales, mientras que si se aplica la operación AND se producirá un efecto de erosión, donde aquellos pixeles vecinos que tengan un valor distinto al del pixel sobre el que esta la ventana, serán filtrados.
 
@@ -663,9 +665,9 @@ De esta forma, para una imagen con N x M elementos, existe un vector que contien
 
 |
 |
-.. figure:: figs/Cap6/formulaVectorColor.png
+.. figure:: formulaVectorColor.png
 
-   Vector de color para una coordenada en la imagen
+	Vector de color para una coordenada en la imagen
 |
 
 
@@ -673,16 +675,16 @@ Por lo tanto, la representación de una imagen de colores se reduce a realizar c
 
 |
 |
-.. figure:: figs/Cap6/imagenColor.png
+.. figure:: imagenColor.png
 	:scale: 60%
 
-   Representación de una imagen digital a color
+	Representación de una imagen digital a color
 |
 |
 
-.. figure:: figs/Cap6/imagenColorvsGreyScale.png
+.. figure:: imagenColorvsGreyScale.png
 
-   Representaciones de imagen en escala de grises vs imagen de color
+	Representaciones de imagen en escala de grises vs imagen de color
 |
 
 Existen varias aproximaciones para afrontar el procesamiento de imágenes de color, aunque se pueden clasificar en 2 grupos generales: Aquellas aproximaciones que procesan cada componente de la imagen individualmente, para luego formar la imagen de salida con éstos; Y aquellas aproximaciones que trabajan con los colores de los pixeles en la imagen directamente. Este tipo de imágenes pueden ser procesadas con algunos los tipos de técnicas que se emplean con las imágenes de escala de grises, mientras que algunas tienen que ser modificadas para ser aplicadas sobre las bandas de color individuales.
@@ -695,10 +697,10 @@ En general las imágenes indexadas solo emplean un subconjunto pequeño de los 1
 Este tipo de imágenes digitales, se emplea en algunos formatos donde la cantidad de colores permitidos para una imagen es de 56 colores o menos, como en el formato GIF.
 |
 
-.. figure:: figs/Cap6/imagenIndexada.png
+.. figure:: imagenIndexada.png
 	:scale: 50%
 
-   Imagen de color indexada
+	Imagen de color indexada
 |
 
 
@@ -727,9 +729,9 @@ Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen seg
    
 * Wavelets. Las Wavelets son un conjunto transformaciones que forman parte del área de procesamiento de señales e imágenes denominado teoría de multiresolución, que abarca un conjunto de técnicas, incluyendo la división de bandas de una señal (subbanding), filtrado de voz digital y representación piramidal de una imagen. Esta rama se relaciona con la representación de imágenes (o señales) en más de una resolución, con el fin de obtener a una resolución específica, características que no se podrían identificar en otra resolución. Este tipo de herramienta es utilizada ampliamente para la compresión y la representación piramidal de una imagen. Esta última fue originalmente aplicada para la visión artificial y la compresión de imágenes, y consiste en subdivide subdividir una imagen con el fin de obtener una colección de imágenes de menor resolución organizadas en forma de imagen para su posterior procesamiento.
   
-.. figure:: figs/Cap6/piramideImagen.png
+.. figure:: piramideImagen.png
 
-   Representación piramidal para un arreglo de imagen de 2-Dimensiones de N x N
+	Representación piramidal para un arreglo de imagen de 2-Dimensiones de N x N
 |
 
 
@@ -748,9 +750,9 @@ Estas técnicas, consisten en transformar los pixeles que forman una región en 
 En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región.Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o, en la distribución estadística de los elementos del patrón.
 |
 
-.. figure:: figs/Cap6/ejemplosTexturas.png
+.. figure:: ejemplosTexturas.png
 
-   Ejemplos de texturas artificiales (a-b) y texturas naturales(c-e)
+	Ejemplos de texturas artificiales (a-b) y texturas naturales(c-e)
 
 
 
