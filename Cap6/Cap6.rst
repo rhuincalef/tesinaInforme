@@ -15,7 +15,7 @@ Los pavimentos rígidos se integran por una losa de concreto de cemento portland
 .. figure:: pav-rigido.png
    :scale:	80 %
 
-   Estructura del pavimento rígido
+	Estructura del pavimento rígido
 
 
 * Pavimento flexible: Es una estructura compuesta por capas donde uno de los materiales presentes es el asfalto, lo que permite la deflexión (la deformación que del material como producto de una fuerza externa) bajo las cargas.
@@ -24,7 +24,7 @@ Los pavimentos flexibles se componen de una capa de mezcla asfáltica u hormigó
 .. figure:: pav-flexible.png
    :scale:	80 %
 
-   Estructura de pavimento flexible
+	Estructura de pavimento flexible
 
 
 
@@ -232,7 +232,7 @@ El mundo percibido diariamente por las personas se manifiesta en una variedad de
 .. figure:: espectroElectromagnetico.png
    :scale:	80 %
 
-   El espectro electromagnético dividido y ampliado.
+	El espectro electromagnético dividido y ampliado.
 |
 
 Como se puede observar en la figura anterior, en un extremo del espectro se encuentran las ondas de radio que se caracterizan por poseer longitudes de onda millones de veces mas largas a las de la luz visible, mientras que en el otro extremo se encuentran los rayos gamma con longitudes de onda millones de veces más pequeñas. El espectro electromagnético se puede expresar en función de la energía, la frecuencia o la longitud de onda (wavelength, LAMBDA). La longitud de onda (LAMBDA) y la frecuencia se encuentran relacionadas por la expresión:
@@ -252,7 +252,7 @@ Por lo tanto, las ondas electromagnéticas pueden ser vistas como ondas sinusoid
 .. figure:: ondaSinusoidal.png
    :scale:	80 %
 
-   Representación gráfica de la longitud de onda (LAMDA)
+	Representación gráfica de la longitud de onda (LAMDA)
 
 
 Sin embargo, el ojo humano sólo puede capturar la luz visible de la radiación electromagnética, que representa una porción mínima de la radiación que puede ser percibida, y aunque esta banda es óptima ya que el volumen de información se encuentra reducido, es altamente confiable y disponible (ya que se encuentra fuertemente proyectada por el Sol y la atmósfera de la tierra es lo suficientemente transparente como para percibirla), la radiación de otras bandas puede ser igualmente útil para ciertas ramas de la ciencia, que graban y hacen uso de casi todo el espectro y emplean esta información con el objetivo de obtener un mejor concepto de la realidad física. Un ejemplo de esto son las ondas de sonido de alta frecuencia o ultrasonido, que son usadas para crear imágenes del cuerpo humano mientras que las imágenes de baja frecuencia son empleadas por compañías, para crear imágenes de la superficie de la tierra. Aunque la captura de imágenes se basa principalmente en la energía generadas por las ondas electromagnéticas, existen otros métodos para la generación de imágenes, tales como capturar el sonido reflejado desde un objeto con el fin de obtener imágenes ultrasónicas, o rayos de electrones como los que emplean los microscopios de electrones para obtener imágenes que permitan recolectar información respecto de especímenes biológicos e inorgánicos, incluyendo microorganismos, muestras de biopsias, metales y cristales. 
@@ -267,7 +267,7 @@ Las imágenes,aunque tengan distintas fuentes, comparten el hecho de que existe 
 .. figure:: tiposInteraccionImagenes.png
    :scale:	80 %
 
-   Tipos de interacción para el sensado de imágenes
+	Tipos de interacción para el sensado de imágenes
 
 
 Para que un sensor pueda captar un objeto de determinado tamaño, es necesario que la longitud de onda del sensor sea igual o menor al tamaño de del objeto, por lo que este requerimiento junto con el material del sensor, establecen los límites de la capacidad de captura del sensor de imagen y su clasificación en distintos tipos, tales como sensores infrarojos, de luz visible,etc. Así, con el fin de capturar imágenes digitales en las distintas bandas del espectro electromagnético, es necesario emplear sensores que puedan captar la energía irradiada en cierto rango y produzcan una señal eléctrica de salida (generada por una combinación entre el material sensible a la radiación del sensor y la fuente de alimentación del mismo), que permita la representación de una imagen del mundo tridimensional de interés en formato digital.
@@ -276,7 +276,7 @@ Para que un sensor pueda captar un objeto de determinado tamaño, es necesario q
 .. figure:: sensorCaptura.png
    :scale: 90%
    
-   Sensor individual de captura
+	Sensor individual de captura
 
 
 Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación emitida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una conversión estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas.
@@ -286,12 +286,12 @@ Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como p
 .. figure:: aliasing.png
    :scale: 80%
    
-   Efecto de aliasing. 256x256 (2^8*2^8=65,536 muestras). 128x128(2^7*2^7=16,384 muestras).64x64(2^6*2^6=4,096 muestras)
+	Efecto de aliasing. 256x256 (2^8*2^8=65,536 muestras). 128x128(2^7*2^7=16,384 muestras).64x64(2^6*2^6=4,096 muestras)
 |
 
 .. figure:: imagenPixels.png
 
-   Representación de un array de imagen de 10 x 10
+	Representación de un array de imagen de 10 x 10
 
 .. NOTA: VER SI AGREGAR ACA LAS PROPIEDADES DE LOS PIXELES. PAG 83.Pretince Hall Gonzales 2 ed.
 
@@ -305,20 +305,26 @@ La cuantificación se puede realizar de manera uniforme, cuando los valores de i
 
 .. figure:: cuantificacionUniformeNoUniforme.png
    :scale: 70%
-   Cuantificación de imagen de 2 dimensiones.Cuantificación uniforme (a).Cuantificación no uniforme (b).
+
+	Cuantificación de imagen de 2 dimensiones.Cuantificación uniforme (a).Cuantificación no uniforme (b).
 
 
 De esta forma, el proceso de digitalización requiere los valores de M,N y la cantidad de niveles de intensidad L( niveles de gris en el caso de las imágenes con escala de grises o de valores en las bandas roja,verde y azul para las imágenes a color) como valores positivos, permitidos para cada pixel. No obstante, debido a las consideraciones de hardware, procesamiento y almacenamiento, el número de niveles es típicamente una potencia de 2:
 
+
 .. math:: L = 2^k
-   :label: Formula para cálculo de niveles
+	:label: formulaNivelIntensidad
+.. .. math:: e^{i\pi} + 1 = 0
+   :label: euler
+.. Euler's identity, equation :eq:`euler`, was elected one of the most
+.. beautiful mathematical formulas.
 
 
 Donde k es el número de bits empleados para representar el nivel de cada pixel. En general, el número de bits k se encuentra entre 1<=k<=8, empleándose k=1 para imágenes binarias, k=8 para imágenes por escala de grises (donde cada nivel ocupa cun byte) y, para el caso de las imágenes a color, con múltiples valores, cada nivel de color ocupa 8 bits usando los colores rojo,verde y azul (RGB), empleándose 24 bits por pixel con el fin de representar el color de éste. 
 Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común referirse a la imagen como una "imagen de k-bits".Por ejemplo, una imagen con 256 niveles posibles es llamada una imagen de 8 bits.Por lo tanto, la cantidad de bits requeridos para almacenar una imagen será:
 
 .. math:: b = M x N x k
-
+	:label: cantBitsNecesarios
 
 .. figure:: resultadoDelProcesoCuantificacion.png
 
@@ -432,7 +438,7 @@ Histograma de imagen
 La herramienta básica para este tipo de operaciones es el histograma de imagen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de intensidad (nivel de gris en imagenes por escala de grises) en los pixeles de la imagen. De esta manera, si se cuenta con K niveles de intensidad {0,1,...,K-1} y una cantidad NxM de pixeles, el histograma se define matemáticamente de la siguiente manera:
 
 .. math:: Hf(k) = J
-   :label: Formula para cálculo de niveles
+   :label: formulaHistogramaImagen
 
 
 .. PAGINA 142 Image processing 3rd edition. Gonzales.
@@ -466,7 +472,7 @@ Escalado de histograma
 El escalado de histograma consiste modificar el rango de niveles de intensidad que se consideran para representar un histograma.Este procedimiento dada una función f(n) que representa el histograma para cada uno de los n pixeles, consiste en multiplicar cada uno de estos valores por una constante numérica P (mayor o menor a 1):
 
 .. math:: g(n) = P*f(n)
-   :label: Formula para escalado de histograma
+   :label: formulaEscaladoImagen
 
 Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante P > 1, los niveles de gris cubrirán un rango mas amplio que aquellos de la función del histograma f(), mientras que si P < 1 se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez.
 | A continuación se pueden observar imágenes originales y los efectos de aplicar el histograma de imagen con dos escalas distintas:
@@ -507,7 +513,7 @@ Negativo de imagen
 El negativo de una imagen consiste en escalar éstos con P=-1 revirtiendo el signo de los valores y  sumar un desplazamiento a los valores de intensidad de cada pixel K-1 con el fin de que estos se encuentren en el rango del histograma:
 
 .. math:: g(n) = -f(n) + (K-1)
-	:label: Formula para obtener la imagen inversa
+	:label: formulaImgInversa
 |
 |
 
