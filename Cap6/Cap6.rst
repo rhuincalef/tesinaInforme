@@ -583,6 +583,8 @@ Así para obtener un histograma igualado, primero se debe computar la función d
 
    Imagen de libros y su histograma luego de aplicar la igualación
 
+Así, este método se aplica cuando se desea una implementación simple que produzca una mejora automática en la imagen.  
+
 
 Limitado de imagen(Image thresholding)
 ######################################
@@ -607,7 +609,7 @@ Existen varias estrategias para la elección acerca de donde colocar el límite 
 
 Por otro lado, también se pueden emplear aproximaciones que usen un modelo estadístico sobre el histograma, con una función de distribución de probabilidad (pdf), donde se plantee la decisión de asignar 0 o 1 a cada pixel, como una prueba estadística. De esta manera, se puede seleccionar la función de distribución que mejor se adapte a las ubicaciones de los modos del histograma(picos de intensidad en éste), el ancho de cada modo y la decisión acerca de donde termina un modo y comienza otro; Pudiendo aplicarse un modelo probabilístico, dependiendo de la forma de los modos, como por ejemplo, una pdf Gaussiana. Esta alternativa puede producir resultados aceptables con respecto a la colocación de límites, sin embargo cualquier modelo probabilístico simple no tiene en cuenta factores importantes como la continuidad del fondo o de los objetos, apariencia visual, e iluminación no uniforme, por lo que un modelo estadístico no produciría resultados visuales tan eficientes, como los que generaría una persona manualmente.
 
-Un ejemplo de aplicación de esta técnica, son las aplicaciones biomedicas, que permiten la iluminación de los objetos y el fondo, o imágenes microscópicas de una o múltiples células que contienen objetos brillantes sobre un fondo oscuro.
+Un ejemplo de aplicación de esta técnica, son las aplicaciones biomedicas, que permiten la iluminación de los objetos y el fondo, o imágenes microscópicas de una o múltiples células que contienen objetos brillantes sobre un fondo oscuro. 
 
 
 
@@ -616,6 +618,20 @@ Especificación(Histogram Matching o Specification)
 
 .. pag 150. Image processing 3rd edition Gonzales.
 
+Este método consiste realizar un mapeo entre los valores de un histograma de imagen igualado y una función de transformación(con una función de densidad de probabilidad ), de forma que se puedan obtener los valores aproximados de la imagen de entrada, en el dominio de la transformación. El primer paso consiste en aplicar la técnica de igualación (descrita anteriormente) para obtener valores distribuidos uniformemente, y redondearlos al rango de [0, K-1], con K niveles. 
+A continuación, se debe realizar la computación de la función de transformación G(), para cada uno de los q-niveles de intensidad, q=0,1,...,K-1. Los valores resultantes, son escalados y redondeados a sus valores más cercanos en el rango [0, K-1] y almacenados en una tabla.Esta fórmula define  una función de densidad de probabilidad pz(zi), que es la función de densidad de probabilidad que se desea que la imagen de salida adopte, sobre una variable aleatoria z:
+
+
+.. figure:: formulaEspecificacionHistograma.png
+
+   Fórmula de transformación G
+
+Posteriormente, para cada valor de intensidad en cada pixel del histograma igualado, sk, se emplean los valores almacenados (luego de aplicar G()), para encontrar el valor más próximo zq a sk, dentro del dominio de los valores producidos por G(), de manera que G(zq) es el valor más cercano y almacenar este mapeo de s a z. Si ocurre que más de un valor de zq satisface la condición de sk (con un mapeo no único), se elige el valor más pequeño por convención. Finalemente, con estos valores obtenidos se produce el nuevo histograma de imagen con los zq valores obtenidos, empleando los mapeos almacenados con anterioridad.
+
+
+.. figure:: ejemploEspecificacionHistograma.png
+
+   Ejemplo de especificación de histograma. Se realiza la especificación de histograma de libros para que se aproxime a una "V" centrada en los niveles de gris y que se extiende a lo largo de la escala de grises, produciendo una imagen con un alto contraste. 
 
 
 Operaciones aritméticas entre matrices
