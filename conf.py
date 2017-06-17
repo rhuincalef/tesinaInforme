@@ -309,7 +309,7 @@ latex_elements['preamble'] += '\n'.join((
 
 latex_additional_files += [mystyle + '.sty']
 
-extensions = ['sphinxcontrib.bibtex','sphinx.ext.imgmath']
+extensions = ['sphinxcontrib.bibtex','sphinx.ext.imgmath','numfig']
 
 
 # Grouping the document tree into LaTeX files. List of tuples

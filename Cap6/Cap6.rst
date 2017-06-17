@@ -477,6 +477,8 @@ El escalado de histograma consiste modificar el rango de niveles de intensidad q
 Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante P > 1, los niveles de gris cubrirán un rango mas amplio que aquellos de la función del histograma f(), mientras que si P < 1 se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez.
 | A continuación se pueden observar imágenes originales y los efectos de aplicar el histograma de imagen con dos escalas distintas:
 
+.. _fig_efectoEscaladoHistograma:
+
 .. figure:: efectoEscaladoHistograma.png
 	:scale: 80%
 
@@ -495,6 +497,8 @@ Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el 
 	Modificación de la escala del histograma con P=0,75, en este caso los niveles de gris de la imagen tienden a juntarse, provocando que la imagen disminuya su calidad.
 
 | 
+.. _fig_librosOriginal:
+
 .. figure:: imagenOriginalLibros.png
 	:scale: 70%
 
@@ -524,8 +528,86 @@ El negativo de una imagen consiste en escalar éstos con P=-1 revirtiendo el sig
 
 Esta técnica se emplea para mejorar imágenes donde se pierde el nivel de detalle en las regiones con niveles blanco y negro, percibiéndose ésta como demasiado oscura. Un ejemplo de esta operación es la inspección de imágenes telescópicas con campos de estrellas y galaxias, donde con una imagen negativa los objetos brillantes, aparecen con una tonalidad oscura sobre un fondo brillante que es mas sencillo de apreciar.   
 
+Estiramiento de contraste(Contrast Stretching,Histogram Stretching)
+###################################################################
+
+Este procedimiento consiste en distribuir las frecuencias de los niveles de intensidad,por medio de una fórmula matemática, en un nuevo histograma donde éstos se encuentren distribuidos de manera uniforme y abarquen la escala completa de niveles de intensidad. Por ejemplo si se emplea un histograma de una imagen de escala de grises, como el de la figura :numref:`fig_efectoEscaladoHistograma`, donde los niveles de intensidad de toda la escala están en el rango [0,K-1] y los niveles empleados por la figura se encuentran en el rango [A,B] con A y B siendo los valores máximos y mínimos de intensidad respectivamente, se puede emplear la siguiente fórmula matemática que mapee los valores en el nuevo histograma:
+
+
+.. figure:: estiramientoContrasteFormula.png
+	:scale: 70%
+
+   Fórmula de estiramiento de contraste
+
+De esta forma, este procedimiento modifica el contraste de la imagen en general si sus niveles de grises no están distribuidos adecuadamente, aunque si ésta abarca varios valores en la escala de grises del histograma, esta técnica puede producir poca o ninguna diferencia con respecto a la imagen original. A continuación se puede observar un ejemplo que contrastado con la figura :numref:`fig_librosOriginal`, tiene una mejora en el contraste de la misma:
+
+
+.. figure:: estiramientoContrasteFormula.png
+	:scale: 70%
+ 
+	Ejemplo de estiramiento de contraste
+ 
+Este tipo de técnica se emplea en aquellas imágenes con bajo contraste, o con poca iluminación, o con una configuración inapropiada del dispositivo de captura durante la adquisición de la misma, con el fin de lograr una mejor visualización de los detalles en ésta. 
+
+
 Igualación de histograma(Histogram Equalization)
 ################################################
+
+Este procedimiento consiste en normalizar los niveles de intensidad del histograma de imagen, de manera que éstos sigan una distribución uniforme, y luego realizar un estiramiento de contraste para los niveles abarquen la mayoría de los valores en la escala del histograma. Este procedimiento provoca que el histograma se estire en el eje de las abscisas y tiende a aplanarlo de manera que se adapte a la distribución.
+Si se considera el caso para el histograma de imagen de una imagen con escala de grises, el primer paso consiste en realizar la normalización del histograma, obteniendo la función de densidad de probabilidad (PDF) de los niveles de gris, pf(k) para cada uno de los K niveles de intensidad:
+
+.. figure:: formulaNormalizacion.png
+
+   Formula de normalización de histograma
+
+
+Donde la imgen digital tiene N x M pixeles,Hf(k) es el nivel de intensidad para un nivel k y k = 0,1,...,K-1. Éstas deben cumplir con la siguiente propiedad de sumatoria:
+
+
+.. figure:: propiedadFormulaNormalizacion.png
+
+   Propiedad de sumatoria de los valores normalizados
+
+En base a esta función, se define la función de distribución acumulada, Pf(r) para r niveles, con r= 0,1,...,K-1:
+
+
+.. figure:: formulaDistribucionAcumulada.png
+ 
+    Función de distribución acumulada
+ 
+Así para obtener un histograma igualado, primero se debe computar la función de distribución acumulada del histograma de imagen Pf(k) de la imagen digital, para cada uno de los niveles del histograma, lo que provocará que éste tienda a aplanarse gráficamente, y luego aplicar la función de estiramiento de contraste para cada uno de los elementos, con el fin de distribuirlos a lo largo de la escala. Esto provocará que la imagen final sea más impactante y visibles que la original, sin embargo este proceso no eliminará aquellos picos resultantes del proceso de cuantificación.A continuación se observa el proceso de igualación de histograma aplicado a la imagen de libros:
+
+
+.. figure:: igualacionLibros.png
+	:scale: 70%
+
+   Imagen de libros y su histograma luego de aplicar la igualación
+
+
+Limitado de imagen(Image thresholding)
+######################################
+
+Esta técnica se emplea principalmente en imágenes con escala de grises, con el fin de abstraer información relevante respecto de los objetos en una imagen y optimizar el procesamiento y análisis subsecuente de la imagen. Este proceso consiste en, dada una imagen con K-1 niveles de gris, definir un limite entero T dentro del rango de niveles y comparar cada pixel con el límite T, y si la intensidad del pixel p(x,y) supera ese límite asignarle la intensidad 0, y en caso contrario asignarle el valor de intensidad 1.De esta forma, modificando el nivel del límite T se controla la abstracción de información que se generará en la imagen de salida, y dependiendo de las características del histograma de imagen, se abstraerá la cantidad de información relevante de ésta.
+ 
+Este procedimiento es útil en imágenes que cuentan con histogramas bimodales, es decir, aquellos histogramas donde los promedios de brillo entre el fondo y los objetos de la imagen se encuentran claramente delimitados, como en aquellas imágenes que contienen objetos oscuros con fondo brillante, u objetos brillantes sobre un fondo oscuro. De esta forma, el objeto consiste en separar concisamente los objetos del fondo de la imagen, para luego etiquetarlos.
+
+
+.. figure:: limiteImagen.png
+    
+       Limite de la imagen. En la izquierda se puede apreciar una imagen con niveles de intensidad correctamente delimitados, mientras que en la imagen de la derecha, se puede observar una imagen con un límite poco claro entre objetos y fondo.
+    
+
+Existen varias estrategias para la elección acerca de donde colocar el límite T: Si el histograma de imagen es bimodal, el límite se tiende a colocar entre medio de los modos de la imagen, como en la figura anterior. Sin embargo, esta aproximación tiene problemas si la imagen contiene multiples objetos de un brillo promedio diferente en un fondo uniforme(histograma multimodal), excluyéndose algunos objetos. También es difícil asignar un límite si el histograma es plano, conteniendo imágenes complejas, con variaciones de gris significativas, detalles, iluminación no uniforme, etc.
+
+
+.. figure:: imagenMultimodal.png
+
+   (a)Histograma multimodal que señala la dificultad de seleccionar un límite.(b) Histograma plano, para el que la selección de un límite es dificil o imposible.
+
+
+Por otro lado, también se pueden emplear aproximaciones que usen un modelo estadístico sobre el histograma, con una función de distribución de probabilidad (pdf), donde se plantee la decisión de asignar 0 o 1 a cada pixel, como una prueba estadística. De esta manera, se puede seleccionar la función de distribución que mejor se adapte a las ubicaciones de los modos del histograma(picos de intensidad en éste), el ancho de cada modo y la decisión acerca de donde termina un modo y comienza otro; Pudiendo aplicarse un modelo probabilístico, dependiendo de la forma de los modos, como por ejemplo, una pdf Gaussiana. Esta alternativa puede producir resultados aceptables con respecto a la colocación de límites, sin embargo cualquier modelo probabilístico simple no tiene en cuenta factores importantes como la continuidad del fondo o de los objetos, apariencia visual, e iluminación no uniforme, por lo que un modelo estadístico no produciría resultados visuales tan eficientes, como los que generaría una persona manualmente.
+
+Un ejemplo de aplicación de esta técnica, son las aplicaciones biomedicas, que permiten la iluminación de los objetos y el fondo, o imágenes microscópicas de una o múltiples células que contienen objetos brillantes sobre un fondo oscuro.
 
 
 
@@ -533,11 +615,6 @@ Especificación(Histogram Matching o Specification)
 ##################################################
 
 .. pag 150. Image processing 3rd edition Gonzales.
-
-
-
-Shaping de histograma
-#####################
 
 
 
