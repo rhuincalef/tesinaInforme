@@ -419,6 +419,8 @@ Técnicas que sobre el dominio espacial
 
 Debido a que las imágenes se representan como matrices, es posible tanto aplicar operaciones aritméticas y lógicas entre matrices, como ejecutar operaciones que modifiquen características de los pixeles, con el fin de modificar ciertas características de éstas. Los tipos principales de operaciones que se pueden emplear se pueden clasificar en 3 tipos generales:
 
+.. NOTA: VER pag. 55. Introduction to digital image processing with MATLAB. Filtrado espacial en realidad es una funcion de manipulacion de intensidad, pero produce un valor de intensidad tomando el valor de varios pixeles(neirbourhood pixel operation)???
+
 * Operaciones de manipulación de intensidad (modificación de pixeles individuales).
 * Operaciones aritméticas entre matrices de la misma dimensión (estas operaciones incluyen suma,resta, multiplicación y división entre matrices).
 * Operaciones geométricas de transformación (interpolación,traslación,rotación, filtrado espacial).
@@ -673,6 +675,35 @@ Debido a que las imágenes se representan como matrices de números, pueden apli
 Operaciones geométricas de transformación
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Las operaciones geométricas modifican la relación espacial entre pixeles, realizando como primer paso la transformación espacial de las coordenadas de éstos a una nueva coordenada, y posteriormente emplear la técnica de interpolación para asignar valores de intensidad a los pixeles transformados espacialmente. Debido a que la   
+
+
+Transformaciones espaciales
+###########################
+
+Traslación
+##########
+
+La traslación es la operación mas sencilla y consiste en dada una imagen g(x,y), desplazar ésta en dirección horizontal y vertical, por medio de la suma de un valor tanto en el eje x como en el eje y.
+
+
+
+
+Rotación
+########
+
+La rotación consiste en realizar 
+
+
+Zoom
+####
+
+
+Escalado
+########
+
+
+
 Interpolación
 #############
 
@@ -696,19 +727,6 @@ Donde v(x,y) es la intensidad del pixel en la coordenada(x,y), los coeficientes 
       
          Fórmula de interpolación bicubica
 |
-
-
-
-Rotación
-########
-
-
-Traslación
-##########
-
-
-Zoom
-####
 
 
 
@@ -747,7 +765,7 @@ Las operaciones de puntos son aplicadas a los pixeles individuales de una imagen
 Las operaciones aritméticas se realizan entre imágenes de las mismas dimensiones espaciales, este tipo de operaciones es similar  a las operaciones por puntos debido a que la información espacial no es considerada, sino que la información se comparte entre imágenes y  se ejecutan pixel por pixel. Este tipo de operaciones se emplea para para la reducción del ruido en la imagen (distorciones aleatorias en la imagen producidas por radiación antes de capturar la misma o por fallos eléctricos en el dispositivo de sensado ), donde se realiza un promediado de las tonalidades de grises de un conjunto de frames y el resultado final es una imagen cuyo nivel de ruido ha sido reducido considerablemente.
 Otra área donde se emplean operaciones de éste tipo es en la detección de movimiento en sistemas de vigilancia, o en sistemas automatizados de inspección visual, donde se realiza la diferencia entre las matrices que representan las imágenes y luego se computa el histograma de imagen, que mostrará variaciones importantes en el intensidad (valores de brillo mayores) si cambios significativos han ocurrido entre dos frames.
 
-Finalmente, las operaciones geométricas que son operaciones complementarias a las operaciones por puntos debido a que no modifican los valores de los niveles de gris, sino que modifican la imagen modificando cambiando las posiciones de los elementos de la imagen. Este tipo de operaciones se emplea para realizar la rotación, traslación o zoom-in o zoom-out en la imagen.
+Finalmente, las operaciones geométricas son operaciones complementarias a las operaciones por puntos debido a que no modifican los valores de los niveles de gris, sino que modifican la imagen modificando cambiando las posiciones de los elementos de la imagen. Este tipo de operaciones se emplea para realizar la rotación, traslación o zoom-in o zoom-out en la imagen.
 
 
 Imágenes binarias
