@@ -637,6 +637,34 @@ Posteriormente, para cada valor de intensidad en cada pixel del histograma igual
 Operaciones aritméticas entre matrices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Debido a que las imágenes se representan como matrices de números, pueden aplicarse operaciones aritméticas entre matrices que operen con los pixeles de éstas, siempre y cuando estas sean de la misma dimensión. Dadas dos imágenes con N x M pixeles y representándose los niveles de intensidad de éstas por medio de las funciones f(x,y) y g(x,y) con x=0,1,...,M-1 e y=0,1,...,N-1 y siendo M(x,y) la matriz resultante, las operaciones que se pueden aplicar a las matrices se pueden definir de la siguiente manera:
+
+* Suma: M(x,y) = f(x,y) + g(x,y). Un ejemplo de aplicación de la operación de suma es la corrección de la imágenes que se encuentran con degradaciones aleatorias o ruido, debido a diversas factores en el ambiente. La técnica mas sencilla para eliminarlo, es el modelo de ruido aditivo, donde se considera que una imagen con ruido es la suma de una imagen original y una imagen con ruido, y se supone que el ruido en cada par de coordenadas no esta correlacionado y que la media de éste es cero. Así, se puede afirmar que al calcular un promedio de N imágenes con ruido, tomadas en una rápida sucesión y sin ruido en la escena, la media de este calculo tenderá a cero (una matriz N x M con valores cercanos a cero), lo que mejorará el grado de fidelidad con respecto a la imagen original por un factor de N. Sin embargo, si existen diferencias en la escena o, si existen dependencias entre las imágenes con ruido (en caso de que todas éstas sean casi idénticas), entonces la reducción de ruido será limitada.
+  
+
+.. figure:: ejemploSumaMatrices.png
+	:scale: 70%
+     
+	Ejemplo de promediado de imágenes. La imagen de la izquierda es una imagen individual con ruido. La imagen del centro es un promedio de 4 imágenes. La imagen de la derecha es un promedio de 16 imágenes.
+     
+* Resta: M(x,y) = f(x,y) - g(x,y). La diferencia de imágenes es una técnica que se emplea para detectar cambios en imágenes tomadas sobre la misma escena en diferentes momentos, esto permite que se le pueda aplicar para el rastreo de objetos, reconocer el movimiento de objetos, para computar información 3-D del movimiento 2D, en cámaras de vigilancia, y campos de la astronomía donde los bajos niveles de frecuencia introducen ruido en el dispositivo de sensado. De esta forma, para detectar si existe un cambio de imagen significativo se realiza la sustracción de las mismas, y se analiza el histograma de imagen: Si los niveles de intensidad del histograma en el nivel n no son significativos, significa que no existe una diferencia considerable entre ambas; Por el contrario, si los valores en un intervalo de niveles n o en un nivel n es significativa, se podrá percibir que el histograma tendrá un nivel de intensidad(más brillo) en ese punto. A continuación, se puede observar el histograma luego de realizar la resta entre dos imágenes:
+  
+  .. figure:: diferenciaHistograma.png
+  	:scale: 60%
+
+  Las figuras (a) y (b) son las imágenes originales, la figura (c) es la imagen resultante de la diferencia y la figura (d) es su histograma asociado.
+  
+
+* Multiplicación: M(x,y)=f(x,y) * g(x,y). Este tipo de operación se emplea con el uso de una mascara para aislar regiones de interés(ROI) en la imagen final. Este proceso consiste en multiplicar una imagen por una mascara de imagen que tiene unos en la región de interés y cero en cualquier otra coordenada. Pueden existir más de una ROI en la máscara de imagen, con una forma arbitraria, aunque las formas rectangulares son usadas frecuentemente por la facilidad de implementación. En la siguiente imagen se puede observar el proceso de enmascarado de muelas en una imagen de rayos X:
+  
+
+  .. figure:: multiplicacionHistograma.png
+  	:scale: 70%
+
+     Multiplicación de histograma.La figura de la izquierda es la imagen original, la imagen del centro es la mascara de la ROI que aísla muelas (donde blanco corresponde a 1 y negro corresponde a 0), y la figura de la derecha es el producto entre estas dos imágenes.
+  
+  
+* División: M(x,y) = f(x,y) / g(x,y). Este tipo de operación (en conjunto con la multiplicación) se emplea para la corrección de sombras, ya que si se tiene un sensor que captura una imagen g(x,y) que puede ser descompuesta en una imagen perfecta f(x,y) y una función de sombreado h(x,y) esto es: g(x,y) = f(x,y) * h(x,y) ;Entonces, se puede obtener la imagen ideal dividiendo: g(x,y)/h(x,y).
 
 
 
@@ -722,17 +750,6 @@ Las imágenes binarias surgen de una variedad de fuentes, generalmente son cread
 
 Un objeto en una imagen binaria se considera como un conjunto de pixeles con nivel 1 conectados.Existen diversas técnicas que se emplean para el procesamiento de imágenes binarias, entre las que se encuentran:
 
-* Delimitación de la imagen(Image thresholding). Esta técnica se emplea cuando se desea abstraer información desde una imagen con escala de grises, con el fin de obtener una imagen binaria, y consiste en definir un límite T de nivel de gris máximo que un pixel puede adoptar, y luego filtrar aquellos pixeles en la imagen (estableciéndolos a 1 en la imagen binaria), cuyo límite sea menor que el establecido. De esta forma, T permite controlar el nivel de detalle que la imagen resultante poseerá y, variando este límite se puede obtener una imagen que sea más eficiente para procesar, analizar o interpretar.
-Sin embargo, éste método aplicado a imágenes cuyos histogramas de intensidad sean planos o que varios objetos con un brillo promedio diferente sobre un fondo uniforme, puede provocar que algunos objetos se dejen afuera de la imagen final. 
-|
-
-.. figure:: delimitacionImgBinaria.png
-	:scale: 60%
-
-	Situaciones donde la delimitación de imagen puede encontrar problema. Histograma multimodal(varios objetos de distintos promedios de brillo) (a). Histograma plano(b)
-
-|
-|
 * Etiquetado de regiones(Region labeling). Esta es empleada para identificar y localizar objetos en una imagen y, posteriormente éstos pueden ser modificados, mostrados o manipulados por separado. Éste procedimiento busca encontrar regiones en la imagen a través de pixeles conectados con el mismo valor, escaneando la imagen desde el origen (posición superior izquierda) y buscando pixeles que tengan el mismo valor binario y estén conectados en las direcciones horizontales y verticales. Un registro de los grupos de pixeles encontrados se mantiene en un arreglo separado de labels, con las mismas dimensiones de la imagen. 
 
 * Filtros de imágenes binarias. Existen diversos filtros que pueden emplearse con el fin de mejorar o cambiar la forma de los objetos en imagen binaria. Estos consisten en ventanas de pixeles, que son un conjunto de reglas que permiten definir la forma que un conjunto de pixeles adoptará y, así permiten delimitar que pixeles vecinos (con sus niveles de gris) serán empleados para la aplicación del filtro. Estas ventanas se emplean en combinación con operaciones lógicas AND,OR,NOT y XOR (delimitación de borde de imagen) y se desplazan a la lo largo de toda la imagen, modificando así el valor binario por medio de éstas operaciones lógicas. En general, ésto se realiza fila por fila, columna por columna aunque puede ser logrado procesando varios grupos a la vez, si se realiza de forma concurrente.
