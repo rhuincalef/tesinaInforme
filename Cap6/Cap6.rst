@@ -554,14 +554,16 @@ Igualación de histograma(Histogram Equalization)
 ################################################
 
 Este procedimiento consiste en normalizar los niveles de intensidad del histograma de imagen, de manera que éstos sigan una distribución uniforme, y luego realizar un estiramiento de contraste para los niveles abarquen la mayoría de los valores en la escala del histograma. Este procedimiento provoca que el histograma se estire en el eje de las abscisas y tiende a aplanarlo de manera que se adapte a la distribución.
-Si se considera el caso para el histograma de imagen de una imagen con escala de grises, el primer paso consiste en realizar la normalización del histograma, obteniendo la función de densidad de probabilidad (PDF) de los niveles de gris, pf(k) para cada uno de los K niveles de intensidad:
+Si se considera el caso para el histograma de imagen de una imagen con escala de grises, el primer paso consiste en realizar la normalización del histograma, obteniendo la función de densidad de probabilidad (PDF) de los niveles de gris, pf(k) para cada uno de los K niveles de intensidad.
+La función de densidad de probabilidad trata los valores de los niveles de intensidad como cantidades aleatorias, y definiéndose la probabilidad pf(k) de un nivel k ocurriendo en una imagen como:
 
 .. figure:: formulaNormalizacion.png
 
    Formula de normalización de histograma
 
 
-Donde la imgen digital tiene N x M pixeles,Hf(k) es el nivel de intensidad para un nivel k y k = 0,1,...,K-1. Éstas deben cumplir con la siguiente propiedad de sumatoria:
+
+Donde la imagen digital tiene N x M pixeles,Hf(k) es el nivel de intensidad para un nivel k y k = 0,1,...,K-1. Éstas deben cumplir con la siguiente propiedad de sumatoria:
 
 
 .. figure:: propiedadFormulaNormalizacion.png
@@ -676,7 +678,7 @@ Interpolación
 
 .. NOTA: Identacion h8
 
-Una herramienta relacionada con las imágenes digitales es la interpolación, empleada en tareas como hacer zoom, reducción(shrinking), rotación y correcciones geométricas. Esta herramienta consiste en emplear datos conocidos de la imagen para estimar valores en coordenadas desconocidas. Por ejemplo, si se necesitara convertir una imagen a una escala mayor, la cantidad de pixeles y la correspondencia entre las intensidades diferirían por lo que sería necesario contar con un método que permita la asignación aproximada de intensidades. Un método para realizar ésto es asignar a cada pixel en la imagen mayor, el valor del pixel vecino más cercano si se superpone, esta imagen con la imagen de entrada, este metodo se conoce como interpolación de vecino más cercano.
+Una herramienta relacionada con las imágenes digitales es la interpolación, empleada en tareas como hacer zoom, reducción(shrinking), rotación y correcciones geométricas. Esta herramienta consiste en emplear datos conocidos de la imagen para estimar valores en coordenadas desconocidas. Por ejemplo, si se necesitara convertir una imagen a una escala mayor, la cantidad de pixeles y la correspondencia entre las intensidades diferirían por lo que sería necesario contar con un método que permita la asignación aproximada de intensidades. Un método para realizar ésto es asignar a cada pixel en la imagen mayor, el valor del pixel vecino más cercano si se superpone, esta imagen con la imagen de entrada, este método se conoce como interpolación de vecino más cercano.
 Existen otros métodos para asignar intensidades que consideran más vecinos y, la forma en que consideran estos sigue alguna fórmula matemática, entre los que se encuentran la interpolación bilinear (donde se emplean los 4 vecinos mas cercanos para estimar la intensidad) y la interpolación bicubica (que toma los 16 vecinos más cercanos):
 
 |
@@ -694,6 +696,19 @@ Donde v(x,y) es la intensidad del pixel en la coordenada(x,y), los coeficientes 
       
          Fórmula de interpolación bicubica
 |
+
+
+
+Rotación
+########
+
+
+Traslación
+##########
+
+
+Zoom
+####
 
 
 
