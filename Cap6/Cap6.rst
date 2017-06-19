@@ -674,33 +674,96 @@ Debido a que las imágenes se representan como matrices de números, pueden apli
 
 Operaciones geométricas de transformación
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. Links utiles -->
+.. http://www.nibcode.com/es/blog/14/linear-algebra-and-digital-image-processing-part-III-affine-transformations
+.. https://www.cis.rit.edu/class/simg782/lectures/lecture_02/lec782_05_02.pdf
+.. http://eeweb.poly.edu/~yao/EL5123/lecture12_ImageWarping.pdf
 
-Las operaciones geométricas modifican la relación espacial entre pixeles, realizando como primer paso la transformación espacial de las coordenadas de éstos a una nueva coordenada, y posteriormente emplear la técnica de interpolación para asignar valores de intensidad a los pixeles transformados espacialmente. Debido a que la   
+
+Las operaciones geométricas modifican la relación espacial entre pixeles, realizando como primer paso la transformación espacial de las coordenadas de éstos a nuevas coordenadas en otro sistema de coordenadas, y posteriormente empleando la técnica de interpolación de intensidad, para asignar valores de intensidad a los pixeles transformados espacialmente. El esquema más empleado para definición de los métodos de la transformación de imágenes son las transformaciones afines (affine transformation) que son aquellas transformaciones que conservan la colinearidad entre puntos, lineas rectas y planos, es decir que todos aquellos puntos que yacen en una linea recta inicialmente aún lo hacen luego de aplicar la transformación, y las proporciones en las distancias entre los puntos, lo que significa que si un punto en una línea es el centro en la imagen digital de entrada, lo seguirá siendo en la imagen digital de salida. De esta forma, la combinación de estas transformaciones permite generar operaciones geométricas que actúan sobre cada pixel y producen una nueva imagen de salida.
+
+Dada la coordenada de un pixel en una imagen digital de entrada (v,w) definida como una coordenada proyectada, es decir representado como un vector de tres valores (v,w,1) y siendo la coordenada para un pixel en el nuevo espacio (x,y), las transformaciones afines se pueden definir como una matriz de 3x3 T, donde dependiendo los valores definidos para los ente t11 y t32, se puede cambiar el tipo de transformación:
 
 
-Transformaciones espaciales
-###########################
+.. figure:: transformacionAfineMatriz.png
+
+   Fórmula de la transformación afin T definida de manera genérica. 
+
+En las siguientes secciones, se detallan las definiciones y efectos de las transformaciones afines principales.
+
 
 Traslación
 ##########
 
 La traslación es la operación mas sencilla y consiste en dada una imagen g(x,y), desplazar ésta en dirección horizontal y vertical, por medio de la suma de un valor tanto en el eje x como en el eje y.
 
+.. figure:: traslacion1.png
+
+	Definición matricial traslación
+
+|
+|
+
+.. figure:: traslacion2.png
+
+	Traslación gráficamente
 
 
 
 Rotación
 ########
 
-La rotación consiste en realizar 
+La rotación consiste en girar una imagen por un ángulo 0 relativo al eje x, empleando la siguiente matriz de transformación:
 
+.. figure:: rotacion1.png
 
-Zoom
-####
+	Definición matricial de la rotación
+
+|
+|
+
+.. figure:: rotacion2.png
+
+	Rotación gráficamente
 
 
 Escalado
 ########
+
+El escalado consiste ampliar o reducir la escala de una imagen, empleando para ello los valores cx y cy como factores de escala del eje X y del eje Y respectivamente. Si los factores son menores a 1, la imagen se reducirá, mientras que si éstos son mayores a 1 la imagen aumentará su tamaño. Cuando se escala una imagen se modifica tanto la escala como la posición en el plano, por lo que si se desea volverla a posicionar sobre el origen se debe aplicar una traslación.
+
+
+.. figure:: escalado1.png
+
+	Definición matricial del escalado
+
+|
+|
+
+.. figure:: escalado2.png
+
+	Escalado gráficamente. Esta imagen fue escalada por un factor de escala de 1.4 en el eje X y por un factor de escala de 0.8 en el eje Y.
+
+Un ejemplo de la aplicación de esta transformación es la técnica de zoom, donde simplemente se escalan cada coordenada de pixel por un valor para el eje X y otro para el eje Y, y luego se aplica la interpolación para obtener los niveles de  intensidad en la imagen resultante.
+
+
+
+Inclinación o transvección(Shearing)
+####################################
+
+La inclinación o transvección, consiste en desplazar los puntos en un eje de manera lineal, por una cantidad proporcional a la coordenada en el eje perpendicular a ese. Esta transformación puede realizarse de manera horizontal sobre el eje X (en cuyo caso se desplaza cada punto de este eje por un valor proporcional a su coordenada en Y, quedando intactos los valores en y de cada punto),o de manera vertical sobre el eje Y (en este caso las líneas en verticales paralelas al eje Y se mantienen inalterables, modificándose las líneas paralelas al eje X). A continuación se muestra su definición matemática horizontal y verticalmente y un ejemplo de inclinación horizontal: 
+
+
+.. figure:: inclinacion1.png
+
+	Definición matricial de la inclinación
+
+|
+|
+
+.. figure:: inclinacion2.png
+
+	Inclinación horizontal gráficamente. 
 
 
 
@@ -709,7 +772,7 @@ Interpolación
 
 .. NOTA: Identacion h8
 
-Una herramienta relacionada con las imágenes digitales es la interpolación, empleada en tareas como hacer zoom, reducción(shrinking), rotación y correcciones geométricas. Esta herramienta consiste en emplear datos conocidos de la imagen para estimar valores en coordenadas desconocidas. Por ejemplo, si se necesitara convertir una imagen a una escala mayor, la cantidad de pixeles y la correspondencia entre las intensidades diferirían por lo que sería necesario contar con un método que permita la asignación aproximada de intensidades. Un método para realizar ésto es asignar a cada pixel en la imagen mayor, el valor del pixel vecino más cercano si se superpone, esta imagen con la imagen de entrada, este método se conoce como interpolación de vecino más cercano.
+Una herramienta relacionada con las imágenes digitales es la interpolación, empleada en tareas como hacer zoom, reducción(shrinking), rotación y correcciones geométricas. Esta herramienta consiste en emplear datos conocidos de la imagen de entrada para estimar valores en coordenadas desconocidas. Por ejemplo, si se necesitara convertir una imagen a una escala mayor, la cantidad de pixeles y la correspondencia entre las intensidades diferirían por lo que sería necesario contar con un método que permita la asignación aproximada de intensidades. Un método para realizar ésto es asignar a cada pixel en la imagen mayor, el valor del pixel vecino más cercano si se superpone, esta imagen con la imagen de entrada, este método se conoce como interpolación de vecino más cercano.
 Existen otros métodos para asignar intensidades que consideran más vecinos y, la forma en que consideran estos sigue alguna fórmula matemática, entre los que se encuentran la interpolación bilinear (donde se emplean los 4 vecinos mas cercanos para estimar la intensidad) y la interpolación bicubica (que toma los 16 vecinos más cercanos):
 
 |
