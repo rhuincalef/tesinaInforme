@@ -336,7 +336,7 @@ Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común
 Relaciones entre pixeles
 ++++++++++++++++++++++++
 .. CONTENIDOS A INCLUIR: 
-..	-Relaciones entre pixeles y DISTANCIA ENTRE LOS MISMOS, background,foreground, region,interpolacion,neirbourhood o ventana, mascara.
+..	-Relaciones entre pixeles y DISTANCIA ENTRE LOS MISMOS, background,foreground, region,interpolacion,neirbourhood o ventana o mascara(masking).
 
 Los pixeles Pk en la coordenada (i,j), con k siendo la cantidad total de pixeles con los indices i=1,2,...,n y j=1,2,...,m, que componen una imagen digital cuentan con distintas propiedades entre las que se encuentran las siguientes:
 
@@ -421,7 +421,7 @@ Debido a que las imágenes se representan como matrices, es posible tanto aplica
 
 .. NOTA: VER pag. 55. Introduction to digital image processing with MATLAB. Filtrado espacial en realidad es una funcion de manipulacion de intensidad, pero produce un valor de intensidad tomando el valor de varios pixeles(neirbourhood pixel operation)???
 
-* Operaciones de manipulación de intensidad (modificación de pixeles individuales).
+* Operaciones de manipulación de intensidad (modificación del nivel de intesidad de uno o varios pixeles).
 * Operaciones aritméticas entre matrices de la misma dimensión (estas operaciones incluyen suma,resta, multiplicación y división entre matrices).
 * Operaciones geométricas de transformación (interpolación,traslación,rotación, filtrado espacial).
 
@@ -429,8 +429,16 @@ Debido a que las imágenes se representan como matrices, es posible tanto aplica
 Operaciones de manipulación de intensidad
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-En este tipo de técnicas las operaciones se aplican a pixeles individuales, por lo que las relaciones entre pixeles vecinos no se consideran, como así tampoco la localización de los pixeles sino que se modifican las intensidades de los pixeles.
-En esta sección, se describen algunas de las herramientas que se emplean para modificar los valores de intensidad de una imagen y su principal utilidad.
+En este tipo de técnicas las operaciones las relaciones entre pixeles vecinos no se consideran, como así tampoco la localización de los pixeles, sino que se modifican las intensidades de los pixeles. Estas operaciones pueden realizarse sobre pixeles individuales, tomando como entrada el valor de intensidad de un pixel y produciendo el valor de intensidad transformado para ese pixel; O sobre un vecindario de pixeles(neighborhood), donde dada la coordenada de un pixel en la imagen de entrada f(x,y), se toman los valores de intensidad de un conjunto de pixeles vecinos y, por medio del procesamiento de estos valores, se obtiene el valor de intensidad para ese pixel en la imagen de salida g(x,y).
+
+|
+.. figure:: operacionesNeighborhood.png
+	:scale: 70%
+
+	Vecindario de pixeles
+
+
+En la parte restante de la sección, se describen algunas de las herramientas que se emplean para modificar los valores de intensidad de una imagen asociadas al histograma de imagen (operaciones por pixeles individuales) y la operación de filtrado espacial (operación que abarca un conjunto de pixeles) y sus principales utilidades.
 
 
 Histograma de imagen
@@ -709,7 +717,6 @@ La traslación es la operación mas sencilla y consiste en dada una imagen g(x,y
 	Traslación gráficamente
 
 
-
 Rotación
 ########
 
@@ -792,11 +799,38 @@ Donde v(x,y) es la intensidad del pixel en la coordenada(x,y), los coeficientes 
 |
 
 
+Técnicas de filtrado espacial
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. filtrado espacial(filtros de suavizado y sharpening)
+
+El filtrado espacial consiste en, por medio filtros (también llamados mascaras, kernels, templates y ventanas o windows), rechazar aquellos elementos en una imagen que no son de interés para el proceso en que se aplica. 
+El filtrado consiste en emplear un filtro, que se define como un conjunto de pixeles o vecindario sobre un pixel con una coordenada (x,y) y aplicar diferentes operaciones sobre ese conjunto de pixeles (pueden ser operaciones estadísticas para filtros no lineales, como la media,mediana,etc. u operaciones lógicas AND,OR,NOT,XOR), de manera que se obtenga un nuevo valor de intensidad para el pixel en la coordenada (x,y).
+
+
+
+Frecuencia y filtros de banda alta y baja(Introduction to digital image processing with MATLAB. pag 88)
+
+
+Tipos de mascaras(Handbook of image processing pag. 63)
+
+Correlación y convolucion.
+
+
+Filtros lineales (obedecen a una operacion lineal) y filtros no lineales (estadisticos. seccion 5.3 image processing gonzales 3rd edition).
+
+Existen distintas aplicaciones de los filtros entre las que se encuentran: Las de mejora de la imagen donde intenta mejorar la calidad de imagen  en algún aspecto para interpretación humana, por medio del suavizado de imagen, y la restauración de imágenes, donde se intenta recuperar información de una imagen degradada con conocimiento del proceso de degradado, empleando filtros que conociendo emplean técnicas para contrarestar éste.
+
 
 Técnicas sobre el dominio de las transformaciones
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TRANSFORMADA DE FOURIER
+
+
+.. figure:: esquemaDominioFrecuencias.png
+
+   Esquema de las transformaciones
 
 
 
