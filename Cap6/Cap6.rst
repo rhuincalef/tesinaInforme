@@ -803,23 +803,56 @@ Técnicas de filtrado espacial
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. filtrado espacial(filtros de suavizado y sharpening)
+.. Frecuencia y filtros de banda alta y baja(Introduction to digital image processing with MATLAB. pag 88)
 
-El filtrado espacial consiste en, por medio filtros (también llamados mascaras, kernels, templates y ventanas o windows), rechazar aquellos elementos en una imagen que no son de interés para el proceso en que se aplica. 
-El filtrado consiste en emplear un filtro, que se define como un conjunto de pixeles o vecindario sobre un pixel con una coordenada (x,y) y aplicar diferentes operaciones sobre ese conjunto de pixeles (pueden ser operaciones estadísticas para filtros no lineales, como la media,mediana,etc. u operaciones lógicas AND,OR,NOT,XOR), de manera que se obtenga un nuevo valor de intensidad para el pixel en la coordenada (x,y).
-
-
-
-Frecuencia y filtros de banda alta y baja(Introduction to digital image processing with MATLAB. pag 88)
+El filtrado espacial consiste en rechazar aquellos elementos en una imagen que no son de interés y conservar aquellos necesarios para el proceso en que se aplica. El filtrado se basa en emplear un filtro(también llamado mascara, kernel, template y ventana o window) que se define como un conjunto de pixeles (o vecindario) sobre un pixel con una coordenada (x,y) y luego aplicar diferentes operaciones sobre ese conjunto de pixeles (pueden ser operaciones estadísticas para filtros no lineales, como la media,mediana,etc. u operaciones lógicas AND,OR,NOT,XOR), de manera que se obtenga un nuevo valor de intensidad para el pixel del centro en la coordenada (x,y).Generalmente, en la práctica el valor del pixel filtrado se asigna a una ubicación en una nueva imagen que se crea para mantener los resultados filtrados, de manera que el contenido de la imagen de entrada no cambie mientras se esta realizando el filtrado. La forma en que se organizan los pixeles que forman el filtro dependen del objetivo que se persigue al aplicar éste y se define generalmente por una regla que dependiendo de la cantidad de vecinos que se desea abarcar, aumenta esta cantidad manteniendo la forma original del filtro.
 
 
-Tipos de mascaras(Handbook of image processing pag. 63)
+.. figure:: tiposFiltros.png
+	:scale: 80%
 
-Correlación y convolucion.
+	Tipos de filtros. (a) Filtros de una sola dimensión con una formula de fila ROW=2P + 1 y de columna COL=2P + 1 para pixeles P=1,2. (b) Filtros de dos dimensiones con formulas cuadrado SQUARE = (2P + 1)^² y cruz CROSS = 4P + 1, para P=1,2.
 
 
-Filtros lineales (obedecen a una operacion lineal) y filtros no lineales (estadisticos. seccion 5.3 image processing gonzales 3rd edition).
+De esta forma, el proceso de filtrado consiste en realizar un desplazamiento de la máscara de filtrado por cada uno de los pixeles de ésta, y obtener el valor del pixel central producto de la operación efectuada; Matemáticamente este proceso se puede definir como: Dado un pixel con coordenada (x,y) en la imagen de entrada de tamaño M x N, variando x,y en el rango de los pixeles de la imagen, una máscara de m x n, con una mascara de filtrado rectangular con m= 2a + 1, n = 2b + 1 y, siendo los coeficientes de filtrado los valores wi que se aplican a las intensidades f(x,y)  de cada pixel de la imagen:
 
-Existen distintas aplicaciones de los filtros entre las que se encuentran: Las de mejora de la imagen donde intenta mejorar la calidad de imagen  en algún aspecto para interpretación humana, por medio del suavizado de imagen, y la restauración de imágenes, donde se intenta recuperar información de una imagen degradada con conocimiento del proceso de degradado, empleando filtros que conociendo emplean técnicas para contrarestar éste.
+
+.. figure:: defMatematicaFiltrado.png
+ 
+	Definición matemática de la operación de filtrado
+
+
+La mascara de filtrado requiere que se especifiquen coeficientes de filtrado para cada una de las intesidades del filtrado, lo que puede hacerse especificando valores  iguales para todos los pixeles de la mascara,estar estos ponderados para asignar mas prioridad a ciertos pixeles en la imagen, o cuando se tiene una función estadística obtener la mascara de filtrado en base a ésta, aplicando la formula al vecindario de un pixel y obteniendo como salida, el nivel de intensidad del pixel en la imagen de salida. Con ésta ultima aproximación, solamente se requiere especificar la fórmula matemática y las dimensiones del vecindario para aplicarla. Un ejemplo de esta ultima aproximación, es aplicar la distribución de Gauss en un pixel, donde se considera la varianza de los pixeles y las coordenadas del pixel central (x,y), de forma que la aplicación de la mascara de filtrado consiste en tomar muestras y aplicar la formula en distintas ubicaciones:
+
+
+.. figure:: formulaGauss.png
+
+   Fórmula de Gauss aplicada a un pixel de imagen.
+
+|
+|
+
+.. figure:: filtradoEspacialEsquema.png
+
+	Representación gráfica de los elementos considerados para el filtrado espacial
+
+
+Existen dos tipos de filtros según el tipo de operación que se realiza en ellos: Los filtros lineales que son aquellos donde la operación que se aplica sobre los pixeles de una imagen es una operación lineal, y los filtros no lineales donde se aplican operaciones no lineales sobre éstos.Una operación lineal es aquella donde se cumplen las propiedades de homogeneidad y adición para una imagen de entada f(x,y) y una imagen de salida g(x,y):
+
+* La homogeneidad ocurre cuando al multiplicar la salida de un operador aplicado a la imagen produce el mismo resultado, que multiplicar esa constante en la imagen de entrada y luego aplicar el operador. 
+* La adición que consiste en que la salida de una operación lineal a la suma de dos entradas, es lo mismo que aplicar la operación lineal a las entradas y luego realizar la suma de las mismas. 
+
+
+Los filtros pueden ser aplicados tanto en el dominio espacial o en el dominio de las frecuencias, abarcando un diverso rango de aplicaciones, aunque principalmente se destacan: La mejora de la imagen, donde se intenta mejorar la calidad de imagen en algún aspecto para interpretación artificial o humana por medio del suavizado de imagen; Y la restauración de imágenes, donde se intenta recuperar información de una imagen degradada con conocimiento del proceso de degradado, empleando filtros que se pueden aplicar en el dominio espacial y en el dominio de las frecuencias.
+
+
+
+
+.. Filtros lineales (obedecen a una operacion lineal) y filtros no lineales (estadisticos. seccion 5.3 image processing gonzales 3rd edition).
+
+.. Filtros lineales --> Correlación y convolucion.
+.. Dos conceptos asociados a la forma de aplicar la máscara son el de correlación y convolución, donde la correlación consiste en despalazar la mascara de filtrado sobre la imagen y computar la operación  
+
 
 
 Técnicas sobre el dominio de las transformaciones
