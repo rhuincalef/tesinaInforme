@@ -845,7 +845,21 @@ Existen dos tipos de filtros según el tipo de operación que se realiza en ello
 
 Los filtros pueden ser aplicados tanto en el dominio espacial o en el dominio de las frecuencias, abarcando un diverso rango de aplicaciones, aunque principalmente se destacan: La mejora de la imagen, donde se intenta mejorar la calidad de imagen en algún aspecto para interpretación artificial o humana por medio del suavizado de imagen; Y la restauración de imágenes, donde se intenta recuperar información de una imagen degradada con conocimiento del proceso de degradado, empleando filtros que se pueden aplicar en el dominio espacial y en el dominio de las frecuencias.
 
+El suavizado de imagen, aplicado en técnicas de pre-procesamiento de imagen (como remover detalles antes de la segmentación de objetos), es un ejemplo del uso tanto de filtros lineales como no lineales, ya que durante esta tarea se busca reducir el ruido y en suavizar la imagen (blurring). Un ejemplo de filtro lineal para la reducción de ruido, es aplicar el promediado de los pixeles vecinos definidos por la máscara en una imagen de entrada. Debido a que el ruido en una imagen ocurre cuando existen transiciones abruptas en niveles de intensidad entre pixeles vecinos, el promediado provoca una disminución en la diferencia de niveles, sin embargo, debido a que los contornos de las figuras se caracterizan por ésto, también produce que los bordes se vean poco nítidos. Otras aplicaciones de este tipo de filtro de suavizado, es reducir el detalle irrelevante, o la disminución de contornos falsos producto de niveles de intensidad insuficientes. A continuación, se puede observar el efecto de suavizado empleando el filtro de promedio de vecinos:
 
+
+.. figure:: ejemploSuavizadoImagen.png
+
+   Efecto de suavizado. La imagen original se sitúa en la parte superior izquierda. La imagen superior derecha tiene un filtro rectangular con una mascara de m=3. La imagen inferior izquierda con un filtro rectangular con m=5. La imagen inferior derecha tiene un filtro rectangular con m=9.
+
+
+
+Alternativamente, se pueden emplear filtros no lineales estadísticos para el suavizado de imagen, cuya respuesta se basa en ordenar los pixeles contenidos en el área de la imagen abarcada por el filtro, y reemplazar el valor del pixel del centro con el valor determinado por el resultado del ordenamiento.Existen varios tipos de filtros para suavizado que se basan en distintos valores (maximo,minimo), no obstante el ejemplo más relevante es el filtro que emplea la mediana (valor del conjunto para el cual la mitad de los valores son mayores o iguales a la misma y la otra mitad son menores o iguales) de los valores de intensidad en el pixel (incluyendo el valor del pixel en el cálculo), donde se lo obtiene y luego se asigna este valor como el valor de intensidad del pixel de salida. Este tipo de filtro es empleado debido a que produce excelentes resultados para la reducción de ruido aleatorio, con respecto filtros lineales del mismo tamaño. A continuación se destaca el efecto del suavizado de imagen empleando un filtro de mediana y un filtro de promediado lineal:
+
+
+.. figure:: ejemploFiltroMediana.png
+
+   Filtro de mediana vs filtro lineal. La imagen izquierda es un circuito electrónico con ruido. La imagen central es el resultado de la aplicación de un filtro lineal de 3x3. La imagen derecha es el resultado de aplicar un filtro no lineal de mediana de 3x3.
 
 
 .. Filtros lineales (obedecen a una operacion lineal) y filtros no lineales (estadisticos. seccion 5.3 image processing gonzales 3rd edition).
