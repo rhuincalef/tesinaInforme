@@ -959,9 +959,15 @@ De la misma forma, el producto en el dominio espacial de una imagen f(x,y) y una
 		:label: formulaConvolucion1
 
 
+Cuando se quiere convertir una imagen digital al dominio de las frecuencias, como primera medida se debe aplicar una función de centrado del espectro, multiplicando cada uno de las coordenadas de la imagen por (-1)^x+y, esto permite que el espectro de la imagen este centrado;Adicionalmente, se puede aplicar una transformación logarítmica (1 + log(|F(u,v)|)) con el fin de aumentar la intensidad de los valores de la matriz de magnitud. Luego, se procede a aplicar la fórmula de Fourier discreta para cada una de las coordenadas en el dominio de la imagen digital con M x N pixeles, para obtener las matrices de magnitud y de fase, que tendrán las mismas dimensiones que la imagen de entrada. Aunque estas no contienen fácilmente asociable a las coordenadas de la imagen digital, se pueden visualizar igual que las anteriores:
 
 
-De esta forma, cuando se quiere transformar una imagen digital al dominio de la formula de Fourier, se debe aplicar la fórmula para cada uno de los valores de frecuencia de la imagen
+.. figure:: graficoMagnitudFourier.png
+
+   Gráficos correspondientes a un rectangulo y su matriz de magnitud. Imagen superior derecha: Imagen original de un rectangulo. Imagen superior izquierda: Magnitud con las frecuencias. Imagen inferior izquierda: Imagen original rotada. Imagen inferior derecha: Efecto de la rotación en el dominio de las frecuencias.
+
+
+Debido a que los valores de frecuencia F(u,v) son modificaciones de los valores de intensidad de la imagen con términos exponenciales, la correspondencia entre objetos y sus frecuencias es compleja, sin embargo observando el gráfico anterior se puede observar que la frecuencia esta directamente asociada a las tasas de cambios de intensidad en el dominio espacial, por lo que se las puede relacionar con los patrones de intensidad de una imagen. De esta forma, aquellos componentes con una frecuencia que varíen más lentamente son proporcionales al promedio de valores de frecuencia y se encuentran localizados en el centro del gráfico, y a medida que se desplazan los puntos desde este origen, las bajas frecuencias representan componentes cuya variación de intensidad es lenta en la imagen, pudiendo corresponderse éstos por ejemplo con las variaciones asociadas a paredes o pisos; Mientras que aquellas frecuencias que se encuentran más alejadas del origen, y poseen un valor más alto, se corresponden con a cambios de intensidad más altos en la imagen, como los bordes de los objetos.
 
 
 Proceso de filtrado con transformada de fourier aplicado al suavizado.
