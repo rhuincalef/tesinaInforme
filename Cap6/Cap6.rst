@@ -822,7 +822,7 @@ De esta forma, el proceso de filtrado consiste en realizar un desplazamiento de 
 	Definición matemática de la operación de filtrado
 
 
-La mascara de filtrado requiere que se especifiquen coeficientes de filtrado para cada una de las intesidades del filtrado, lo que puede hacerse especificando valores  iguales para todos los pixeles de la mascara,estar estos ponderados para asignar mas prioridad a ciertos pixeles en la imagen, o cuando se tiene una función estadística obtener la mascara de filtrado en base a ésta, aplicando la formula al vecindario de un pixel y obteniendo como salida, el nivel de intensidad del pixel en la imagen de salida. Con ésta ultima aproximación, solamente se requiere especificar la fórmula matemática y las dimensiones del vecindario para aplicarla. Un ejemplo de esta ultima aproximación, es aplicar la distribución de Gauss en un pixel, donde se considera la varianza de los pixeles y las coordenadas del pixel central (x,y), de forma que la aplicación de la mascara de filtrado consiste en tomar muestras y aplicar la formula en distintas ubicaciones:
+La mascara de filtrado requiere que se especifiquen coeficientes de filtrado para cada una de las intensidades del filtrado, lo que puede hacerse especificando valores  iguales para todos los pixeles de la mascara,estar estos ponderados para asignar mas prioridad a ciertos pixeles en la imagen, o cuando se tiene una función estadística obtener la mascara de filtrado en base a ésta, aplicando la formula al vecindario de un pixel y obteniendo como salida, el nivel de intensidad del pixel en la imagen de salida. Con ésta ultima aproximación, solamente se requiere especificar la fórmula matemática y las dimensiones del vecindario para aplicarla. Un ejemplo de esta ultima aproximación, es aplicar la distribución de Gauss en un pixel, donde se considera la varianza de los pixeles y las coordenadas del pixel central (x,y), de forma que la aplicación de la mascara de filtrado consiste en tomar muestras y aplicar la formula en distintas ubicaciones:
 
 
 .. figure:: formulaGauss.png
@@ -853,7 +853,6 @@ El suavizado de imagen, aplicado en técnicas de pre-procesamiento de imagen (co
    Efecto de suavizado. La imagen original se sitúa en la parte superior izquierda. La imagen superior derecha tiene un filtro rectangular con una mascara de m=3. La imagen inferior izquierda con un filtro rectangular con m=5. La imagen inferior derecha tiene un filtro rectangular con m=9.
 
 
-
 Alternativamente, se pueden emplear filtros no lineales estadísticos para el suavizado de imagen, cuya respuesta se basa en ordenar los pixeles contenidos en el área de la imagen abarcada por el filtro, y reemplazar el valor del pixel del centro con el valor determinado por el resultado del ordenamiento.Existen varios tipos de filtros para suavizado que se basan en distintos valores (maximo,minimo), no obstante el ejemplo más relevante es el filtro que emplea la mediana (valor del conjunto para el cual la mitad de los valores son mayores o iguales a la misma y la otra mitad son menores o iguales) de los valores de intensidad en el pixel (incluyendo el valor del pixel en el cálculo), donde se lo obtiene y luego se asigna este valor como el valor de intensidad del pixel de salida. Este tipo de filtro es empleado debido a que produce excelentes resultados para la reducción de ruido aleatorio, con respecto filtros lineales del mismo tamaño. A continuación se destaca el efecto del suavizado de imagen empleando un filtro de mediana y un filtro de promediado lineal:
 
 
@@ -872,13 +871,103 @@ Alternativamente, se pueden emplear filtros no lineales estadísticos para el su
 Técnicas sobre el dominio de las transformaciones
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TRANSFORMADA DE FOURIER
+Las operaciones que se ejecutan sobre el dominio de las transformaciones hacen uso de la transformada de Fourier para llevar las funciones al dominio de las frecuencias, efectuar operaciones sobre este dominio y finalmente, obtener la imagen de salida aplicando la función inversa a esta transformación.La transformada de Fourier es una técnica altamente empleada en el procesamiento de imágenes, ya que permiten realizar operaciones que de alta complejidad que requerirían un alto tiempo de procesamiento si no se empleara esta técnica, y realizar tareas asociadas al procesamiento imagen de manera más eficiente que empleando filtros lineales (cuando estos son de grandes dimensiones). Esta técnica se emplea en un amplio espectro de tareas tales como la mejora de video, restauración, compresión, segmentación y métodos que emplean la técnica de wavelets. La transformada de Fourier se desprende de las series de Fourier, propuestas por el matemático Frances Jean Baptiste Joseph Fourier 1822 para ser aplicadas en el campo del flujo del calor, donde se expresa que sin importar lo compleja que sea una función, si ésta es periódica se puede expresar matemáticamente como la suma de senos y cosenos de diferentes frecuencias, multiplicados cada uno por un coeficiente diferente. De esta forma, la transformada de Fourier(FT) extiende este concepto afirmando que, aquellas funciones cuya área debajo de la curva es finita y no necesariamente son periódicas, puede expresarse para las variables continuas, como la integral de los senos y/o cosenos multiplicados por una función de ponderación; Pudiendo ser ésta, reconstruida o recuperada completamente por el proceso inverso, sin pérdida de información. Esta característica permite trabajar sobre el dominio de Fourier y luego retornar al dominio espacial de una imagen sin perder información.
 
 
 .. figure:: esquemaDominioFrecuencias.png
+	:scale: 70%
 
-   Esquema de las transformaciones
+	Esquema del dominio de las transformaciones
 
+
+Debido a que para representar una imagen digital se debe trabajar con valores discretos, la transformada de Fourier se debe definir de manera discreta (DFT Discrete Fourier Transform), donde ésta se define como una función F(u,v) sobre los valores (u,v) que representan las frecuencias con que se representará la imagen definiendo u como la frecuencia de oscilación a lo largo del eje X y la frecuencia de oscilación a lo largo del eje Y(expresadas en ciclos por pixel) que se emplearan para representar la imagen definida en el dominio dominio espacial sobre éste dominio: 
+
+
+.. figure:: formulaFTD.png
+
+	Formula de la Transformada de Fourier Discreta
+
+Además, esta función toma valores discretos x,y que son las coordenadas de los pixeles para una imagen digital de M x N, con u=0,1,2,...,M-1, v=0,1,2,...,N-1 y, su inversa, que permite obtener la imagen en el dominio espacial partiendo de la matriz de frecuencias, se define:  
+
+.. figure:: formulaIFTD.png
+
+	Formula de la Transformada  de Fourier Inversa
+
+.. Teorema de la convolución. Propiedades, matriz de angulos de fase, de espectro de frecuencias y de potencias.
+
+Esta formula cuenta con distintas propiedades entre las que se destacan:
+
+* Magnitud o espectro(Espectro de frecuencias): El espectro consiste en aplicar para cada uno de los elementos de la frecuencia de la matriz la siguiente formula:
+  
+.. figure:: formulaEspectro.png
+
+   Fórmula para el calculo del espectro
+
+De manera que se obtenga una matriz de magnitud de frecuencias de la imagen del mismo tamaño de la imagen digital M x N (con la amplitud de las mismas), donde los vectores se representan con números complejos C= R + jI, correspondiendo R a la parte real del mismo y, siendo I la parte imaginaria (donde j es la raíz cuadrada de -1) y donde el conjunto de números reales se representan como números complejos con I=0.
+Los componentes del espectro de la DFT determinan las amplitudes de las sinusoidales que componen la imagen, almacenando información acerca de las intensidades en la imagen, por lo que en cualquier frecuencia dada de una imagen, una gran amplitud implica una mayor relevancia de la onda sinusoidal para esa frecuencia; Mientras que si se cuenta con una pequeña amplitud, implica en menor medida la presencia de una onda sinusoidal en esa frecuencia.
+
+
+* Angulo de fase (Fase). El ángulo de fase para cada elemento de la matriz se obtiene por medio de la siguiente fórmula:
+  
+.. figure:: formulaAnguloFase.png
+
+   Fórmula para el cálculo del ángulo de fase
+
+El angulo de fase o fase, es una medida del desplazamiento de varias ondas sinusoidales con respecto al origen, por lo que este arreglo contiene los ángulos que contienen información respecto de donde los objetos se encuentran localizados en la imagen.
+
+
+
+
+* Espectro potencia. El espectro potencia se calcula para cada elemento de la imagen con la siguiente fórmula:
+  
+.. figure:: formulaPotencia.png
+
+   Fórmula para el espectro potencia
+
+
+* Simetría. La simetría con respecto a la transformada de Fourier discreta, enuncia que la magnitud del espectro es simétrica par respecto del punto central por lo que se cumple la siguiente igualdad:
+  
+.. figure:: formulaSimetria.png
+
+	Formula simétrica par en el espectro de magnitud
+
+Mientras que el angulo de fase es simétrica impar con respecto al origen, lo que significa que se cumple la siguiente igualdad:
+
+
+.. figure:: formularAsimetria.png
+
+   	Formula simétrica par en la fase
+
+
+* Traslación. La propiedad de traslación implica que al multiplicar la imagen f(x,y) por la parte exponencial de la transformada de Fourier en coordenadas (u0,v0), provoca un desplazamiento de la transformada al punto (u0,v0), y en consecuencia, multiplicar F(u,v) por el negativo de esa exponencial cambia el origen de f(x,y) hacia (x0,y0).
+  
+  .. figure:: formulaTraslacionDFT.png
+  
+	Formulas de traslación DFT. 
+  
+* Rotación. La rotación implica que al multiplicar la imagen en el dominio espacial f(x,y) por un angulo A, rota la función en el dominio de las frecuencias F(u,v) por el mismo ángulo. Del mismo modo, rotar F(u,v) por A, rota la imagen en el dominio espacial f(x,y) por el mismo ángulo.  
+  
+
+* Teorema de la convolución. La convolución (representada por **) se emplea en el filtrado de imágenes, y consiste en rotar el filtro 180º y luego aplicarlo pixel a pixel por la imagen digital de entrada. De esta forma, la convolución en el dominio espacial entre una imagen f(x,y) y una transformación g(x,y) equivale a realizar la convolución en el dominio de las frecuencias de las funciones F(x,y) y H(x,y) respectivamente.
+
+	.. math::  f(x,y)**g(x,y) <---> F(u,v)*H(u,v)
+		:label: formulaConvolucion1
+
+De la misma forma, el producto en el dominio espacial de una imagen f(x,y) y una transformación g(x,y), es equivalente a aplicar la convolución entre las funciones del dominio de frecuencias F(x,y) y G(x,y).
+	
+	.. math::  f(x,y)*g(x,y) <---> F(u,v)**H(u,v)
+		:label: formulaConvolucion1
+
+
+
+
+De esta forma, cuando se quiere transformar una imagen digital al dominio de la formula de Fourier, se debe aplicar la fórmula para cada uno de los valores de frecuencia de la imagen
+
+
+Proceso de filtrado con transformada de fourier aplicado al suavizado.
+
+
+Ejemplo de filtrado en el dominio de las frecuencias.
 
 
 
@@ -915,7 +1004,7 @@ Finalmente, las operaciones geométricas son operaciones complementarias a las o
 Imágenes binarias
 ~~~~~~~~~~~~~~~~~
 
-En este tipo de imagen digital la intensidad de los pixeles sólo puede asumir dos valores 0 o 1, por lo que sólo se requiere un bit para su representación, siendo estas imágenes las que requieren menos espacio y tiempo de almacenamiento. Estas imágenes contienen suficiente información respecto de los objetos en la imagen y permiten que éstos se reconozcan fácilmente.
+En este tipo de imagen digital la intensidad de los pixeles sólo puede asumir dos valores 0 o 1, por lo que sólo se requiere un bit para su representación y los objetos se representan como una secuencia de 1 conectados, siendo éstas las que requieren menos espacio y tiempo de almacenamiento. Estas imágenes contienen suficiente información respecto de los objetos en la imagen y permiten que éstos se reconozcan fácilmente.
 Este tipo de imágenes se emplean en distintos tipos de aplicaciones de visión por computadora, como el reconocimiento de objetos, el rastreo,etc. aunque su aplicabilidad es limitada debido al contenido limitado de información que brindan.
 Las imágenes binarias surgen de una variedad de fuentes, generalmente son creadas por medio del procesamiento de imágenes de escala de grises, aunque algunos tipos de sensores entregan una imagen binaria como salida, como los dispositivos que se emplean para obtener dibujos o texto escrito a mano con un pad resistivo, un lápiz de luz. Generalmente estos dispositivos, inicializan todas las coordenadas de la imagen binaria en cero, y al detectar la presión o un cambio de resistencia, o luz sensada en una coordenada, entonces se le asigna a la misma el valor 1.Ejemplos de imágenes binarias, son los dibujos de líneas, texto escrito o impreso, siluetas, huellas digitales,o planos empleados por arquitectos.
 |
@@ -924,22 +1013,6 @@ Las imágenes binarias surgen de una variedad de fuentes, generalmente son cread
 
    Imagen binaria
 
-
-Un objeto en una imagen binaria se considera como un conjunto de pixeles con nivel 1 conectados.Existen diversas técnicas que se emplean para el procesamiento de imágenes binarias, entre las que se encuentran:
-
-* Etiquetado de regiones(Region labeling). Esta es empleada para identificar y localizar objetos en una imagen y, posteriormente éstos pueden ser modificados, mostrados o manipulados por separado. Éste procedimiento busca encontrar regiones en la imagen a través de pixeles conectados con el mismo valor, escaneando la imagen desde el origen (posición superior izquierda) y buscando pixeles que tengan el mismo valor binario y estén conectados en las direcciones horizontales y verticales. Un registro de los grupos de pixeles encontrados se mantiene en un arreglo separado de labels, con las mismas dimensiones de la imagen. 
-
-* Filtros de imágenes binarias. Existen diversos filtros que pueden emplearse con el fin de mejorar o cambiar la forma de los objetos en imagen binaria. Estos consisten en ventanas de pixeles, que son un conjunto de reglas que permiten definir la forma que un conjunto de pixeles adoptará y, así permiten delimitar que pixeles vecinos (con sus niveles de gris) serán empleados para la aplicación del filtro. Estas ventanas se emplean en combinación con operaciones lógicas AND,OR,NOT y XOR (delimitación de borde de imagen) y se desplazan a la lo largo de toda la imagen, modificando así el valor binario por medio de éstas operaciones lógicas. En general, ésto se realiza fila por fila, columna por columna aunque puede ser logrado procesando varios grupos a la vez, si se realiza de forma concurrente.
-Las ventanas se definen por medio de una ecuación matemática, que permite definir formalmente la forma que tendrá, según se adopten distintas cantidad de pixeles. Por ejemplo, si se desea generar una columna la ecuación podría estar dada por: 2P + 1, generando una columna de 3 pixeles si P=1, o de 5 pixeles si P=2. 
-
-|
-
-.. figure:: ventanasImgBinaria.png
-	:scale: 70%
-   
-	Tipos de ventanas.
-
-Dependiendo del tipo de operación lógica que se aplique con la ventana, se logrará un efecto distinto en la imagen. Así, si se emplea la operación OR se producirá un efecto de dilatación de aquellos pixeles donde sus valores sean distintos o iguales, mientras que si se aplica la operación AND se producirá un efecto de erosión, donde aquellos pixeles vecinos que tengan un valor distinto al del pixel sobre el que esta la ventana, serán filtrados.
 
 
 
