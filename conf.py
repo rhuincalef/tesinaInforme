@@ -2,10 +2,9 @@
 #
 # Instalacion de paquetes -->
 # 1. Instalar sphinx latex
-# 2. Instalar numfig del siguiente link  
+# 2. Instalar numfig del siguiente link --> https://sourceforge.net/p/numfig/wiki/Home/  
 # Y ejecutar --> python -c 'import sphinx' .
 # Descomprimir, y ejecutar python setup.py install
-
 
 
 #
