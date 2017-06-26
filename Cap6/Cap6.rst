@@ -487,7 +487,7 @@ El escalado de histograma consiste modificar el rango de niveles de intensidad q
 Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante P > 1, los niveles de gris cubrirán un rango mas amplio que aquellos de la función del histograma f(), mientras que si P < 1 se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez.
 | A continuación se pueden observar imágenes originales y los efectos de aplicar el histograma de imagen con dos escalas distintas:
 
-.. _fig_efectoEscaladoHistograma:
+.. _escaladohistograma:
 
 .. figure:: efectoEscaladoHistograma.png
 	:scale: 80%
@@ -507,7 +507,7 @@ Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el 
 	Modificación de la escala del histograma con P=0,75, en este caso los niveles de gris de la imagen tienden a juntarse, provocando que la imagen disminuya su calidad.
 
 | 
-.. _fig_librosOriginal:
+.. _librosoriginal:
 
 .. figure:: imagenOriginalLibros.png
 	:scale: 70%
@@ -541,15 +541,16 @@ Esta técnica se emplea para mejorar imágenes donde se pierde el nivel de detal
 Estiramiento de contraste(Contrast Stretching,Histogram Stretching)
 ###################################################################
 
-Este procedimiento consiste en distribuir las frecuencias de los niveles de intensidad,por medio de una fórmula matemática, en un nuevo histograma donde éstos se encuentren distribuidos de manera uniforme y abarquen la escala completa de niveles de intensidad. Por ejemplo si se emplea un histograma de una imagen de escala de grises, como el de la figura :numref:`fig_efectoEscaladoHistograma`, donde los niveles de intensidad de toda la escala están en el rango [0,K-1] y los niveles empleados por la figura se encuentran en el rango [A,B] con A y B siendo los valores máximos y mínimos de intensidad respectivamente, se puede emplear la siguiente fórmula matemática que mapee los valores en el nuevo histograma:
+Este procedimiento consiste en distribuir las frecuencias de los niveles de intensidad,por medio de una fórmula matemática, en un nuevo histograma donde éstos se encuentren distribuidos de manera uniforme y abarquen la escala completa de niveles de intensidad. Por ejemplo si se emplea un histograma de una imagen de escala de grises, como el de la figura :num:`Fig. #escaladohistograma`, donde los niveles de intensidad de toda la escala están en el rango [0,K-1] y los niveles empleados por la figura se encuentran en el rango [A,B] con A y B siendo los valores máximos y mínimos de intensidad respectivamente, se puede emplear la siguiente fórmula matemática que mapee los valores en el nuevo histograma:
 
+.. _alfa:
 
 .. figure:: estiramientoContrasteFormula.png
 	:scale: 70%
 
-   Fórmula de estiramiento de contraste
+	Fórmula de estiramiento de contraste
 
-De esta forma, este procedimiento modifica el contraste de la imagen en general si sus niveles de grises no están distribuidos adecuadamente, aunque si ésta abarca varios valores en la escala de grises del histograma, esta técnica puede producir poca o ninguna diferencia con respecto a la imagen original. A continuación se puede observar un ejemplo que contrastado con la figura :numref:`fig_librosOriginal`, tiene una mejora en el contraste de la misma:
+De esta forma, este procedimiento modifica el contraste de la imagen en general si sus niveles de grises no están distribuidos adecuadamente, aunque si ésta abarca varios valores en la escala de grises del histograma, esta técnica puede producir poca o ninguna diferencia con respecto a la imagen original. A continuación se puede observar un ejemplo que contrastado con la figura :num:`Fig. #librosoriginal`, tiene una mejora en el contraste de la misma:
 
 
 .. figure:: estiramientoContrasteFormula.png
@@ -593,7 +594,7 @@ Así para obtener un histograma igualado, primero se debe computar la función d
 .. figure:: igualacionLibros.png
 	:scale: 70%
 
-   Imagen de libros y su histograma luego de aplicar la igualación
+	Imagen de libros y su histograma luego de aplicar la igualación
 
 Así, este método se aplica cuando se desea una implementación simple que produzca una mejora automática en la imagen.  
 
@@ -608,7 +609,7 @@ Este procedimiento es útil en imágenes que cuentan con histogramas bimodales, 
 
 .. figure:: limiteImagen.png
     
-       Limite de la imagen. En la izquierda se puede apreciar una imagen con niveles de intensidad correctamente delimitados, mientras que en la imagen de la derecha, se puede observar una imagen con un límite poco claro entre objetos y fondo.
+	Límite de la imagen. En la izquierda se puede apreciar una imagen con niveles de intensidad correctamente delimitados, mientras que en la imagen de la derecha, se puede observar una imagen con un límite poco claro entre objetos y fondo.
     
 
 Existen varias estrategias para la elección acerca de donde colocar el límite T: Si el histograma de imagen es bimodal, el límite se tiende a colocar entre medio de los modos de la imagen, como en la figura anterior. Sin embargo, esta aproximación tiene problemas si la imagen contiene multiples objetos de un brillo promedio diferente en un fondo uniforme(histograma multimodal), excluyéndose algunos objetos. También es difícil asignar un límite si el histograma es plano, conteniendo imágenes complejas, con variaciones de gris significativas, detalles, iluminación no uniforme, etc.
@@ -616,7 +617,7 @@ Existen varias estrategias para la elección acerca de donde colocar el límite 
 
 .. figure:: imagenMultimodal.png
 
-   (a)Histograma multimodal que señala la dificultad de seleccionar un límite.(b) Histograma plano, para el que la selección de un límite es dificil o imposible.
+	(a)Histograma multimodal que señala la dificultad de seleccionar un límite.(b) Histograma plano, para el que la selección de un límite es dificil o imposible.
 
 
 Por otro lado, también se pueden emplear aproximaciones que usen un modelo estadístico sobre el histograma, con una función de distribución de probabilidad (pdf), donde se plantee la decisión de asignar 0 o 1 a cada pixel, como una prueba estadística. De esta manera, se puede seleccionar la función de distribución que mejor se adapte a las ubicaciones de los modos del histograma(picos de intensidad en éste), el ancho de cada modo y la decisión acerca de donde termina un modo y comienza otro; Pudiendo aplicarse un modelo probabilístico, dependiendo de la forma de los modos, como por ejemplo, una pdf Gaussiana. Esta alternativa puede producir resultados aceptables con respecto a la colocación de límites, sin embargo cualquier modelo probabilístico simple no tiene en cuenta factores importantes como la continuidad del fondo o de los objetos, apariencia visual, e iluminación no uniforme, por lo que un modelo estadístico no produciría resultados visuales tan eficientes, como los que generaría una persona manualmente.
@@ -636,14 +637,14 @@ A continuación, se debe realizar la computación de la función de transformaci
 
 .. figure:: formulaEspecificacionHistograma.png
 
-   Fórmula de transformación G
+	Fórmula de transformación G
 
 Posteriormente, para cada valor de intensidad en cada pixel del histograma igualado, sk, se emplean los valores almacenados (luego de aplicar G()), para encontrar el valor más próximo zq a sk, dentro del dominio de los valores producidos por G(), de manera que G(zq) es el valor más cercano y almacenar este mapeo de s a z. Si ocurre que más de un valor de zq satisface la condición de sk (con un mapeo no único), se elige el valor más pequeño por convención. Finalemente, con estos valores obtenidos se produce el nuevo histograma de imagen con los zq valores obtenidos, empleando los mapeos almacenados con anterioridad.
 
 
 .. figure:: ejemploEspecificacionHistograma.png
 
-   Ejemplo de especificación de histograma. Se realiza la especificación de histograma de libros para que se aproxime a una "V" centrada en los niveles de gris y que se extiende a lo largo de la escala de grises, produciendo una imagen con un alto contraste. 
+	Ejemplo de especificación de histograma. Se realiza la especificación de histograma de libros para que se aproxime a una "V" centrada en los niveles de gris y que se extiende a lo largo de la escala de grises, produciendo una imagen con un alto contraste. 
 
 
 Operaciones aritméticas entre matrices
@@ -664,7 +665,7 @@ Debido a que las imágenes se representan como matrices de números, pueden apli
   .. figure:: diferenciaHistograma.png
   	:scale: 60%
 
-  Las figuras (a) y (b) son las imágenes originales, la figura (c) es la imagen resultante de la diferencia y la figura (d) es su histograma asociado.
+	Las figuras (a) y (b) son las imágenes originales, la figura (c) es la imagen resultante de la diferencia y la figura (d) es su histograma asociado.
   
 
 * Multiplicación: M(x,y)=f(x,y) * g(x,y). Este tipo de operación se emplea con el uso de una mascara para aislar regiones de interés(ROI) en la imagen final. Este proceso consiste en multiplicar una imagen por una mascara de imagen que tiene unos en la región de interés y cero en cualquier otra coordenada. Pueden existir más de una ROI en la máscara de imagen, con una forma arbitraria, aunque las formas rectangulares son usadas frecuentemente por la facilidad de implementación. En la siguiente imagen se puede observar el proceso de enmascarado de muelas en una imagen de rayos X:
@@ -673,7 +674,7 @@ Debido a que las imágenes se representan como matrices de números, pueden apli
   .. figure:: multiplicacionHistograma.png
   	:scale: 70%
 
-     Multiplicación de histograma.La figura de la izquierda es la imagen original, la imagen del centro es la mascara de la ROI que aísla muelas (donde blanco corresponde a 1 y negro corresponde a 0), y la figura de la derecha es el producto entre estas dos imágenes.
+	Multiplicación de histograma.La figura de la izquierda es la imagen original, la imagen del centro es la mascara de la ROI que aísla muelas (donde blanco corresponde a 1 y negro corresponde a 0), y la figura de la derecha es el producto entre estas dos imágenes.
   
   
 * División: M(x,y) = f(x,y) / g(x,y). Este tipo de operación (en conjunto con la multiplicación) se emplea para la corrección de sombras, ya que si se tiene un sensor que captura una imagen g(x,y) que puede ser descompuesta en una imagen perfecta f(x,y) y una función de sombreado h(x,y) esto es: g(x,y) = f(x,y) * h(x,y) ;Entonces, se puede obtener la imagen ideal dividiendo: g(x,y)/h(x,y).
@@ -695,7 +696,7 @@ Dada la coordenada de un pixel en una imagen digital de entrada (v,w) definida c
 
 .. figure:: transformacionAfineMatriz.png
 
-   Fórmula de la transformación afin T definida de manera genérica. 
+	Fórmula de la transformación afin T definida de manera genérica. 
 
 En las siguientes secciones, se detallan las definiciones y efectos de las transformaciones afines principales.
 
@@ -786,7 +787,7 @@ Existen otros métodos para asignar intensidades que consideran más vecinos y, 
 
 .. figure:: interpolacionBilinear.png
       
-         Fórmula de interpolación bilinear
+	Fórmula de interpolación bilinear
 |
 |
 
@@ -795,7 +796,7 @@ Donde v(x,y) es la intensidad del pixel en la coordenada(x,y), los coeficientes 
 
 .. figure:: interpolacionBicubica.png
       
-         Fórmula de interpolación bicubica
+	Fórmula de interpolación bicubica
 |
 
 
@@ -827,7 +828,7 @@ La mascara de filtrado requiere que se especifiquen coeficientes de filtrado par
 
 .. figure:: formulaGauss.png
 
-   Fórmula de Gauss aplicada a un pixel de imagen.
+	Fórmula de Gauss aplicada a un pixel de imagen.
 
 |
 |
@@ -850,7 +851,7 @@ El suavizado de imagen, aplicado en técnicas de pre-procesamiento de imagen (co
 
 .. figure:: ejemploSuavizadoImagen.png
 
-   Efecto de suavizado. La imagen original se sitúa en la parte superior izquierda. La imagen superior derecha tiene un filtro rectangular con una mascara de m=3. La imagen inferior izquierda con un filtro rectangular con m=5. La imagen inferior derecha tiene un filtro rectangular con m=9.
+	Efecto de suavizado. La imagen original se sitúa en la parte superior izquierda. La imagen superior derecha tiene un filtro rectangular con una mascara de m=3. La imagen inferior izquierda con un filtro rectangular con m=5. La imagen inferior derecha tiene un filtro rectangular con m=9.
 
 
 Alternativamente, se pueden emplear filtros no lineales estadísticos para el suavizado de imagen, cuya respuesta se basa en ordenar los pixeles contenidos en el área de la imagen abarcada por el filtro, y reemplazar el valor del pixel del centro con el valor determinado por el resultado del ordenamiento.Existen varios tipos de filtros para suavizado que se basan en distintos valores (maximo,minimo), no obstante el ejemplo más relevante es el filtro que emplea la mediana (valor del conjunto para el cual la mitad de los valores son mayores o iguales a la misma y la otra mitad son menores o iguales) de los valores de intensidad en el pixel (incluyendo el valor del pixel en el cálculo), donde se lo obtiene y luego se asigna este valor como el valor de intensidad del pixel de salida. Este tipo de filtro es empleado debido a que produce excelentes resultados para la reducción de ruido aleatorio, con respecto filtros lineales del mismo tamaño. A continuación se destaca el efecto del suavizado de imagen empleando un filtro de mediana y un filtro de promediado lineal:
@@ -858,7 +859,7 @@ Alternativamente, se pueden emplear filtros no lineales estadísticos para el su
 
 .. figure:: ejemploFiltroMediana.png
 
-   Filtro de mediana vs filtro lineal. La imagen izquierda es un circuito electrónico con ruido. La imagen central es el resultado de la aplicación de un filtro lineal de 3x3. La imagen derecha es el resultado de aplicar un filtro no lineal de mediana de 3x3.
+	Filtro de mediana vs filtro lineal. La imagen izquierda es un circuito electrónico con ruido. La imagen central es el resultado de la aplicación de un filtro lineal de 3x3. La imagen derecha es el resultado de aplicar un filtro no lineal de mediana de 3x3.
 
 
 .. Filtros lineales (obedecen a una operacion lineal) y filtros no lineales (estadisticos. seccion 5.3 image processing gonzales 3rd edition).
@@ -901,7 +902,7 @@ Esta formula cuenta con distintas propiedades entre las que se destacan:
   
 .. figure:: formulaEspectro.png
 
-   Fórmula para el calculo del espectro
+	Fórmula para el calculo del espectro
 
 De manera que se obtenga una matriz de magnitud de frecuencias de la imagen del mismo tamaño de la imagen digital M x N (con la amplitud de las mismas), donde los vectores se representan con números complejos C= R + jI, correspondiendo R a la parte real del mismo y, siendo I la parte imaginaria (donde j es la raíz cuadrada de -1) y donde el conjunto de números reales se representan como números complejos con I=0.
 Los componentes del espectro de la DFT determinan las amplitudes de las sinusoidales que componen la imagen, almacenando información acerca de las intensidades en la imagen, por lo que en cualquier frecuencia dada de una imagen, una gran amplitud implica una mayor relevancia de la onda sinusoidal para esa frecuencia; Mientras que si se cuenta con una pequeña amplitud, implica en menor medida la presencia de una onda sinusoidal en esa frecuencia.
@@ -927,16 +928,16 @@ El angulo de fase o fase, es una medida del desplazamiento de varias ondas sinus
 
 * Simetría. La simetría con respecto a la transformada de Fourier discreta, enuncia que la magnitud del espectro es simétrica par respecto del punto central por lo que se cumple la siguiente igualdad:
   
-.. figure:: formulaSimetria.png
+.. figure:: formulaSimetrica.png
 
 	Formula simétrica par en el espectro de magnitud
 
 Mientras que el angulo de fase es simétrica impar con respecto al origen, lo que significa que se cumple la siguiente igualdad:
 
 
-.. figure:: formularAsimetria.png
+.. figure:: formulaAsimetrica.png
 
-   	Formula simétrica par en la fase
+   	Formula asimétrica par en la fase
 
 
 * Traslación. La propiedad de traslación implica que al multiplicar la imagen f(x,y) por la parte exponencial de la transformada de Fourier en coordenadas (u0,v0), provoca un desplazamiento de la transformada al punto (u0,v0), y en consecuencia, multiplicar F(u,v) por el negativo de esa exponencial cambia el origen de f(x,y) hacia (x0,y0).
@@ -964,7 +965,7 @@ Cuando se quiere convertir una imagen digital al dominio de las frecuencias, com
 
 .. figure:: graficoMagnitudFourier.png
 
-   Gráficos correspondientes a un rectangulo y su matriz de magnitud. Imagen superior derecha: Imagen original de un rectangulo. Imagen superior izquierda: Magnitud con las frecuencias. Imagen inferior izquierda: Imagen original rotada. Imagen inferior derecha: Efecto de la rotación en el dominio de las frecuencias.
+	Gráficos correspondientes a un rectangulo y su matriz de magnitud. Imagen superior derecha: Imagen original de un rectangulo. Imagen superior izquierda: Magnitud con las frecuencias. Imagen inferior izquierda: Imagen original rotada. Imagen inferior derecha: Efecto de la rotación en el dominio de las frecuencias.
 
 
 Debido a que los valores de frecuencia F(u,v) son modificaciones de los valores de intensidad de la imagen con términos exponenciales, la correspondencia entre objetos y sus frecuencias es compleja, sin embargo observando el gráfico anterior se puede observar que la frecuencia esta directamente asociada a las tasas de cambios de intensidad en el dominio espacial, por lo que se las puede relacionar con los patrones de intensidad de una imagen. De esta forma, aquellos componentes con una frecuencia que varíen más lentamente son proporcionales al promedio de valores de frecuencia y se encuentran localizados en el centro del gráfico, y a medida que se desplazan los puntos desde este origen, las bajas frecuencias representan componentes cuya variación de intensidad es lenta en la imagen, pudiendo corresponderse éstos por ejemplo con las variaciones asociadas a paredes o pisos; Mientras que aquellas frecuencias que se encuentran más alejadas del origen, y poseen un valor más alto, se corresponden con a cambios de intensidad más altos en la imagen, como los bordes de los objetos.
@@ -974,7 +975,7 @@ Un ejemplo de aplicación del proceso de la transformada Fourier es el filtrado 
 
 .. figure:: ejemploTFDCompleto.png
 
-   Ejemplo de transformada de Fourier aplicada al suavizado de imagen.
+	Ejemplo de transformada de Fourier aplicada al suavizado de imagen.
 
 
 
@@ -1018,7 +1019,7 @@ Las imágenes binarias surgen de una variedad de fuentes, generalmente son cread
 
 .. figure:: imagenBinaria.png
 
-   Imagen binaria
+	Imagen binaria
 
 
 

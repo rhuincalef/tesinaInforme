@@ -1,5 +1,19 @@
 # -*- coding: utf-8 -*-
 #
+# Instalacion de paquetes -->
+# 1. Instalar sphinx latex
+# 2. Instalar numfig del siguiente link  
+# Y ejecutar --> python -c 'import sphinx' .
+# Descomprimir, y ejecutar python setup.py install
+
+
+
+#
+# INSTRUCCIONES PARA COMPILAR -->
+# 1. Ejecutar el siguiente comando para compilar
+# $ make latexpdf
+# 2. El documento final se encuentra en _build/ con el nombre prueba.pdf.
+#
 # prueba documentation build configuration file, created by
 # sphinx-quickstart on Sat Apr 29 16:57:03 2017.
 #
@@ -309,14 +323,21 @@ latex_elements['preamble'] += '\n'.join((
 
 latex_additional_files += [mystyle + '.sty']
 
-extensions = ['sphinxcontrib.bibtex','sphinx.ext.imgmath','numfig']
+extensions = ['sphinxcontrib.bibtex','sphinx.ext.imgmath','sphinx.ext.numfig']
+#extensions = ['sphinxcontrib.bibtex','sphinx.ext.imgmath']
 
+numfig_number_figures = True
+numfig_figure_caption_prefix = "Fig."
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
+#latex_documents = [
+#    (master_doc, 'prueba.tex', '','', 'manual'),
+#]
+
 latex_documents = [
-    (master_doc, 'prueba.tex', '','', 'manual'),
+    (master_doc, 'Tesina-Huincalef-Urrutia.tex', '','', 'manual'),
 ]
 
 
@@ -325,7 +346,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'prueba', u'',
+    (master_doc, 'Tesina-Huincalef-Urrutia', u'',
      [], 1)
 ]
 
@@ -336,8 +357,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'prueba', u'prueba Documentation',
-     author, 'prueba', 'One line description of project.',
+    (master_doc, 'Tesina-Huincalef-Urrutia', u'prueba Documentation',
+     author, 'Tesina-Huincalef-Urrutia', 'One line description of project.',
      'Miscellaneous'),
 ]
 
