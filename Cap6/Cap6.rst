@@ -683,11 +683,6 @@ Debido a que las imágenes se representan como matrices de números, pueden apli
 
 Operaciones geométricas de transformación
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. Links utiles -->
-.. http://www.nibcode.com/es/blog/14/linear-algebra-and-digital-image-processing-part-III-affine-transformations
-.. https://www.cis.rit.edu/class/simg782/lectures/lecture_02/lec782_05_02.pdf
-.. http://eeweb.poly.edu/~yao/EL5123/lecture12_ImageWarping.pdf
-
 
 Las operaciones geométricas modifican la relación espacial entre pixeles, realizando como primer paso la transformación espacial de las coordenadas de éstos a nuevas coordenadas en otro sistema de coordenadas, y posteriormente empleando la técnica de interpolación de intensidad, para asignar valores de intensidad a los pixeles transformados espacialmente. El esquema más empleado para definición de los métodos de la transformación de imágenes son las transformaciones afines (affine transformation) que son aquellas transformaciones que conservan la colinearidad entre puntos, lineas rectas y planos, es decir que todos aquellos puntos que yacen en una linea recta inicialmente aún lo hacen luego de aplicar la transformación, y las proporciones en las distancias entre los puntos, lo que significa que si un punto en una línea es el centro en la imagen digital de entrada, lo seguirá siendo en la imagen digital de salida. De esta forma, la combinación de estas transformaciones permite generar operaciones geométricas que actúan sobre cada pixel y producen una nueva imagen de salida.
 
@@ -1127,7 +1122,6 @@ En este caso, se emplean características propias de la región tales como el co
 .. figure:: ejemplosTexturas.png
 
 	Ejemplos de texturas artificiales (a-b) y texturas naturales(c-e)
-
 
 
 Estudios relativos a la detección de fallas
