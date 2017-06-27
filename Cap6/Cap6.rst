@@ -393,8 +393,8 @@ Una vez que un objeto es identificado algunos de sus atributos se pueden definir
 
 
 
-Operaciones y técnicas sobre imágenes digitales
-+++++++++++++++++++++++++++++++++++++++++++++++
+Herramientas y técnicas sobre imágenes digitales
+++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. COMANDO PARA CAMBIAR DIRECTORIO SCREENPRINT --> 
 .. gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/"
@@ -1077,24 +1077,27 @@ Procesamiento de imágenes
 +++++++++++++++++++++++++
 
 Debido a que el procesamiento de imágenes abarca varios tipos de imágenes, comprendidas a lo largo de todo el espectro electromagnético, éste tiende a solaparse con otras áreas como el análisis de imágenes,basado en la extracción de información de utilidad desde la imagen, y la visión artificial, que es un área de la inteligencia artificial cuyo objetivo es lograr que una computadora adquiera conocimiento y pueda efectuar decisiones, basada en imágenes o video de entrada.
-Así,el procesamiento de imágenes digitales, es un conjunto de técnicas que toman una imagen como entrada y, por medio de una computadora, producen una imagen de salida y adicionalmente posibilitan, extraer información y reconocer objetos en ésta.
+Así,el procesamiento de imágenes digitales, es un conjunto de técnicas que toman una imagen como entrada y, por medio de una computadora, producen una imagen de salida con el objetivo de extraer información y reconocer objetos en ésta.
 
-Dependiendo del nivel de abstracción que manejan los procedimientos del procesamiento de imágenes, se pueden clasificar éstos en distintos tipos:
+
+Las herramientas y técnicas definidas anteriormente, se emplean en distintos tipos de operaciones que se pueden clasificar según:
+* El nivel de abstracción
+* El objetivo perseguido 
+
+Dependiendo del nivel de abstracción los procedimientos de procesamiento de imágenes se pueden clasificar en distintos tipos:
 
 * Procesos de bajo nivel, que aceptan imagen como entrada, y ejecuta operaciones primitivas sobre ésta como la reducción de ruido, mejora del contraste y aplicación de filtros sobre la imagen para mejorar alguna característica (como aumentar el brillo entre áreas oscuras y con brillo), y producen una imagen modificada como salida.
 * Procesos de nivel medio, que abarcan tareas como la segmentación (división de la imagen en partes), descripción de dichos objetos para reducirlos a una forma aceptable para el procesamiento por computadora, y el reconocimiento de objetos individuales(o clasificación de objetos). Estos procesos se caracterizan por el hecho de que las entradas son generalmente imágenes, pero sus atributos son atributos extraídos de una imagen, tales como: bordes, contornos, objetos individuales,etc.
-* Procesos de alto nivel, que involucran  generar conocimiento a partir de éstos objetos ensamblados, y efectuar operaciones relacionadas con el  análisis de imágenes y algunas operaciones relacionadas con el campo de visión por computadora.
+* Procesos de alto nivel, que involucran  generar conocimiento a partir de éstos objetos ensamblados (empleando mecanismos de machine learning) y efectuar operaciones relacionadas con el análisis de imágenes y, algunas operaciones relacionadas con el campo de visión por computadora.
  
-Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen según el objetivo que se persiga, aunque los tipos más frecuentes son las siguientes:
+Alternativamente,los tipos de operaciones en el procesamiento de imagen según el objetivo que se persiga se pueden clasificar en:
 
 .. pagina 49 gonzales, image processing.
 
-* Aplicación de filtros y mejora la imagen. Estas técnicas buscan manipular la imagen, de manera que el resultado sea mas adaptable que la original para una aplicación específica. Esto se hace   con el fin de recuperar detalles que no se visualizan debido al bajo nivel de brillo, o simplemente subrayar ciertas características de interés en una imagen. Un ejemplo de este tipo de operaciones es cuando se aumenta el contraste para mejorar visualmente los objetos que se perciben en la imagen.
+* Aplicación de filtros y mejora la imagen. Estas técnicas buscan manipular la imagen, de manera que el resultado sea mas adaptable que la original para una aplicación específica. Esto se hace con el fin de recuperar detalles que no se visualizan debido al bajo nivel de brillo, o simplemente subrayar ciertas características de interés en una imagen. Un ejemplo de este tipo de operaciones es cuando se aumenta el contraste para mejorar visualmente los objetos que se perciben en la imagen.
 
-* Restauración y reconstrucción de la imagen. Este tipo busca mejorar la apariencia la imagen, sin embargo a diferencia de la mejora de imagen, esta técnica es objetiva debido a que se basan en modelos probabilísticos de degradación de imagen, mientras que la primera se basa en la subjetividad del observador para establecer una mejora adecuada. La restauración intenta recuperar una imágen que ha sido degradada empleando un conocimiento previo del fenómeno de degradación, por lo que estos procesos se encuentran orientados hacia el modelado de la degradación y la aplicación del proceso inverso, para recuperar la imágen original.
+* Restauración y reconstrucción de la imagen. Este tipo busca mejorar la apariencia la imagen, sin embargo a diferencia de la mejora de imagen, esta técnica es objetiva debido a que se basan en modelos probabilísticos de degradación de imagen, mientras que la primera se basa en la subjetividad del observador para establecer una mejora adecuada. La restauración intenta recuperar una imagen que ha sido degradada empleando un conocimiento previo del fenómeno de degradación, por lo que estos procesos se encuentran orientados hacia el modelado de la degradación y la aplicación del proceso inverso, para recuperar la imagen original.
 
-
-* Procesamiento de color de imagen. Debido a que el color se considera como un descriptor potente para el reconocimiento y extracción de objetos de una escena, se han desarrollado métodos que permiten emplearlo en el procesamiento de imágenes. El procesamiento de color se divide en dos grandes áreas: el procesamiento de color completo (full-color processing) y el procesamiento de pseucolores(pseudocolor processing). En la primer categoría, las imágenes son adquiridas  con un sensor que soporta el color, mientras que en la segunda categoría se enfoca en asignar un color a una intensidad o rango de intensidades en escala de grises.
    
 * Wavelets. Las Wavelets son un conjunto transformaciones que forman parte del área de procesamiento de señales e imágenes denominado teoría de multiresolución, que abarca un conjunto de técnicas, incluyendo la división de bandas de una señal (subbanding), filtrado de voz digital y representación piramidal de una imagen. Esta rama se relaciona con la representación de imágenes (o señales) en más de una resolución, con el fin de obtener a una resolución específica, características que no se podrían identificar en otra resolución. Este tipo de herramienta es utilizada ampliamente para la compresión y la representación piramidal de una imagen. Esta última fue originalmente aplicada para la visión artificial y la compresión de imágenes, y consiste en subdivide subdividir una imagen con el fin de obtener una colección de imágenes de menor resolución organizadas en forma de imagen para su posterior procesamiento.
   
@@ -1104,14 +1107,72 @@ Existen distintos tipos de operaciones que pueden aplicarse sobre una imagen seg
 |
 
 
-* Compresión.El objetivo de la compresión (o coding) es representar una imagen digital con la cantidad mínima de bits sin pérdida de información, persiguiendo así, la aceleración de la velocidad de transmición y reducción del ancho de banda necesaria para transmitir las mismas y la minimización del espacio requerido para almacenarlas, manteniendo a la vez en la fidelidad de la misma. La compresión es posible porque existe una redundancia presente en las imágenes, que es proporcional a la cantidad de correlación entre las muestras de datos. Por ejemplo, en imágenes estáticas existe un alto grado de correlación en los alrededores de un pixel, mientras que en los videos ésta se encuentra presente entre frames sucesivos del mismo. De esta forma para lograr un grado eficiente de compresión, estos métodos intentan remover los datos redudantes como así también, aquellos que se perciben pero son irrelevantes, produciendo que las imágenes de entrada y salida sean visualmente iguales, y no necesariamente numéricamente iguales.Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
+* Compresión.El objetivo de la compresión (o coding) es representar una imagen digital con la cantidad mínima de bits sin pérdida de información, persiguiendo así, la aceleración de la velocidad de transmición y reducción del ancho de banda necesaria para transmitir las mismas y la minimización del espacio requerido para almacenarlas, manteniendo a la vez en la fidelidad de la misma. La compresión es posible porque existe una redundancia presente en las imágenes, que es proporcional a la cantidad de correlación entre las muestras de datos. Por ejemplo, en imágenes estáticas existe un alto grado de correlación en los alrededores de un pixel, mientras que en los videos ésta se encuentra presente entre frames sucesivos del mismo. De esta forma para lograr un grado eficiente de compresión, estos métodos intentan remover los datos redundantes como así también, aquellos que se perciben pero son irrelevantes, produciendo que las imágenes de entrada y salida sean visualmente iguales, y no necesariamente numéricamente iguales.Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
   
+
+.. AGREGAR INFO A PROC. MORFOLOGICO EN IMAGE PROCESSING GONZALES. PAG. 459.
+
 * Procesamiento morfológico. La morfología se relaciona con la forma y las relaciones entre las partes de una imagen. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma, esto es atributos tales como componentes conectados, límites, skeletons (conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites) y el convex hull (el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma). 
-Además, el procesamiento morfológico abarca las técnicas pre-procesamiento y post-procesamiento complementarias que se emplean junto a los procedimientos descritas anteriormente, tales como filtrado o filtering, thinning, region filling(rellenado con información de los elementos que componen una región) y pruning(método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning).
+Además, el procesamiento morfológico abarca las técnicas pre-procesamiento y post-procesamiento complementarias que se emplean junto a los procedimientos descritos anteriormente, tales como son: Filtrado, thinning, region filling(rellenado con información de los elementos que componen una región) y pruning(método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning).
   
 
 * Segmentación.La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.
 Este proceso es uno de los más importantes elementos en análisis de imágenes automatizado, principalmente porque posibilita extraer aquellas entidades de interés en la imagen para aplicar otros métodos de procesamiento, como la descripción y el reconocimiento.
+
+.. cap 6. pag. 416. Image Digital Processing. Gonzales 3rd edition.
+* Procesamiento de color de imagen. Debido a que el color se considera como un descriptor potente para el reconocimiento y extracción de objetos de una escena, se han desarrollado métodos que permiten emplearlo en el procesamiento de imágenes. En general, este tipo de procesamiento consiste en trabajar con los componentes de color (o espacios de color) RGB por separado y asociar las componentes de cada uno de los pixeles de entrada para generar el pixel a color en la imagen de salida. Las tareas de procesamiento de imágenes digitales con color son variadas, aunque se distinguen las siguientes:
+
+
+	*Asignación de colores basado en tonalidades de grises. Este tipo de operación s realiza con el fin de lograr un mejor entendimiento de la imagen por parte del observador. Existen diferentes aproximaciones para realizar esta tarea, destacádonse el rebanado por intensidad y la transformación intensidad-color.
+	El rebanado por intensidad consiste en dividir los L-1 valores de la escala de grises en P planos, de manera que los pixeles cuyas intensidades se encuentren entre dos distintos planos sean representados por diferentes colores y, aquellos elementos que caigan en la división de un plano se le asigne el color del plano. 
+
+	.. figure:: slicingIntensidad.png
+		:scale: 60%
+
+	   Rebanado por intensidad
+	
+	La asignación de colores empleando transformaciones de intensidad a color se basa en aplicar tres transformaciones independientes a las intensidades para producir cada uno de los campos de color de los pixel a color de la imagen de salida, de manera que los colores de la imagen resultante, se asignan según las características del tipo de transformación que se aplique. Las transformaciones aplicables con este método pueden ser transformaciones matemáticas, o basadas en filtros de suavizado y funciones no lineales, lo que brinda flexibilidad. A continuación, se puede apreciar un ejemplo donde se aplica una transformación que produce una onda sinusoidal para cada elemento, asignando colores más intensos para los elementos cuyo valor de onda sinusoidal se encuentre con mayor inclinación:
+
+
+	.. figure:: transformacionColorIntensidad1.png
+		:scale: 50%
+
+	    Ejemplo de transformación intensidad a color para una imagen. La imagen de la izquierda pertenece a una maleta sin explosivos, mientras que la de la derecha pertenece a una maleta con un explosivo simulado.
+	 
+	  
+	 .. figure:: transformacionColorIntensidad1.png
+	 
+	    Onda sinusoidal para cada componente que representa los valores de los diferentes objetos.
+	 
+	Alternativamente, este procedimiento también se puede emplear aplicando transformaciones sobre varias imágenes monocromáticas de distintas bandas del espectro electromagnético (capturadas por distintos sensores) y posteriormente combinarlas en una sola, de manera que se puedan visualizar características en imágenes que complejas, que sería imposible visualizar en caso contrario. Ésta variación de la técnica se emplea en el procesamiento de imágenes multiespectrales captadas por satélites. A continuación se puede visualizar un ejemplo, donde las imágenes superior-izquierda,superior-derecha y media-izquierda se tratan como los componentes RGB para formar la imagen media-izquierda. Y la imagen inferior-derecha, se produce como resultado de combinar el campo rojo de la imagen infraroja inferior-izquierda, sobre la imagen RGB obtenida anteriormente:  
+
+
+	.. figure:: imagenMultiespectral.png
+		:scale: 50%
+	
+		Ejemplo de imagen multiespectral
+	
+	
+
+	.. pag 448. Gonzales.
+	* Transformaciones de intensidad. Las transformaciones de intensidad como el suavizado de imagen con filtros, se pueden aplicar de igual manera a los componentes de color de una imagen considerando el vector de intensidades como la entrada.
+	
+	* Procesamiento de Histograma. Esta tarea emplea el mecanismo de histograma de imagen y sus herramientas asociadas, aunque para procesar imágenes a color considera cada uno de los componentes de color rojo,verde y azul como un histograma separado, y emplea los niveles de intensidad de éstos para generar la imagen de salida.
+
+	* Complementos de color. El complemento de color es equivalente al negativo en las imágenes con escala de grises, y para obtenerlo se debe modificar la tonalidad de la imagen cambiando cada uno de los componentes por su opuesto, de manera que el opuesto para un color de entrada se define en función de este por la rueda de colores que se detalle en la siguiente figura:
+	 
+	 .. figure:: ruedaComplementoColor.png
+	 	:scale: 60%
+
+	    Ilustración de los complementos de cada color
+	 
+	* Color Slicing(Rebanado por color).
+	* Correcciones de tonalidad de imagen.
+	
+	* Suavizado de colores(Color Smoothing). El suavizado de imagen al igual que en imágenes representadas por escala de grises, consiste en aplicar un filtro a la imagen digital de entrada con el fin producir los pixeles de salida, aunque en este las operaciones se aplican sobre los vectores que representan los componentes de color. De esta forma, la intensidad del pixel de salida se compone de procesar cada uno de los componentes de color por separado.
+	  
+	 
+	* Segmentación por colores.
 
 
 * Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los pixeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores.

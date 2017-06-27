@@ -29,7 +29,7 @@ El objetivo de este capítulo consiste en explicar el concepto de GPS, latitud, 
 Además, se explicará el concepto de Geocoding y Reverse Geocoding, librerías disponibles en PHP y Python y, servicios web ofrecidos por terceros compatibles con éstas.
 
 Capítulo 10. Caso de aplicación
-------------------------------
+-------------------------------
 
 El objetivo de este capítulo es explicar tanto la arquitectura general de la aplicación cliente como de la aplicación web, los objetivos de las mismas, el ciclo de trabajo y las formas de interacción con ambas aplicaciones. 
 Por un lado, se expondrá el funcionamiento de la aplicación cliente, librerías empleadas para su desarrollo, formas de interacción de ésta con el sensor Kinect y diseño.
