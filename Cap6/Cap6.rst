@@ -1166,13 +1166,35 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 
 	    Ilustración de los complementos de cada color
 	 
-	* Color Slicing(Rebanado por color).
-	* Correcciones de tonalidad de imagen.
+
+	.. http://slideplayer.com/slide/6875110/
+	.. https://www.slideshare.net/RevanthChimmani1/color-image-processing-presentation
+
+	* Color Slicing(Rebanado por color). Esta transformación se emplea con el objetivo de separar objetos en la imagen del fondo, para ello se define un vector que representa el color neutral y posteriormente, se verifica para cada pixel si éste se encuentra dentro de un área (centrada en una coordenada de la imagen) determinada aplicando una fórmula matemática (que define la forma de ésta, si es un radio o un rectángulo por ejemplo), si es así se conserva el pixel con el color que posee. Por el contrario, si no es así se le asigna el valor del color neutral. A continuación se puede observar el efecto de esta operación sobre una imagen que contiene un bowl con frutillas:
+	  
+
+	.. figure:: colorSlicing.png
+		:scale: 60%
+
+		Color slicing ejemplos.
 	
 	* Suavizado de colores(Color Smoothing). El suavizado de imagen al igual que en imágenes representadas por escala de grises, consiste en aplicar un filtro a la imagen digital de entrada con el fin producir los pixeles de salida, aunque en este las operaciones se aplican sobre los vectores que representan los componentes de color. De esta forma, la intensidad del pixel de salida se compone de procesar cada uno de los componentes de color por separado.
 	  
 	 
-	* Segmentación por colores.
+	* Segmentación por colores. Dependiendo de si el modelo de representación de la imagen es HSI o RGB se puede realizar esta operación de dos maneras diferentes: Si la imagen es HSI, la segmentación consiste en  crear una máscara binaria generada a partir de aplicar el thresholding para un valor dado, estableciendo los valores que no estan sobre ese limite a negro y conservando el resto en 1, y luego aplicarla a la imagen de saturación. La salida de este procedimiento es una imagen cuyos componentes han sido filtrados.
+	  
+
+
+	  .. figure:: segmentacionColor.png
+	   
+	      Ejemplo de segmentación a color para imagen con HSI.
+
+	Si la imagen emplea RGB, la segmentación de objetos en rangos de color específicos simplemente consiste en tomar un conjunto de puntos que cuyo color es representativo de los colores de interés, y obtener el promedio de color para cada componente y almacenar esto como un vector. Luego por medio de una fórmula de distancia, se realiza una comparación de los componentes de color de cada pixel con el vector y si se encuentra dentro de ésta distancia se lo conserva, y en caso contrario se lo descarta. La fórmula de distancia más común para realizar la medida de distancia es la Euclidiana, donde si la distancia entre el vector del pixel,z,y el vector promedio,a, se encuentra a menos de un límite,D0, se considera un color válido. 
+
+
+		.. figure:: formulaDistanciaEcludiana.png
+
+			Fórmula de distancia Euclidiana
 
 
 * Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los pixeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores.
