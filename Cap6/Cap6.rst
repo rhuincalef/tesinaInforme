@@ -1110,10 +1110,37 @@ Alternativamente,los tipos de operaciones en el procesamiento de imagen según e
 * Compresión.El objetivo de la compresión (o coding) es representar una imagen digital con la cantidad mínima de bits sin pérdida de información, persiguiendo así, la aceleración de la velocidad de transmición y reducción del ancho de banda necesaria para transmitir las mismas y la minimización del espacio requerido para almacenarlas, manteniendo a la vez en la fidelidad de la misma. La compresión es posible porque existe una redundancia presente en las imágenes, que es proporcional a la cantidad de correlación entre las muestras de datos. Por ejemplo, en imágenes estáticas existe un alto grado de correlación en los alrededores de un pixel, mientras que en los videos ésta se encuentra presente entre frames sucesivos del mismo. De esta forma para lograr un grado eficiente de compresión, estos métodos intentan remover los datos redundantes como así también, aquellos que se perciben pero son irrelevantes, produciendo que las imágenes de entrada y salida sean visualmente iguales, y no necesariamente numéricamente iguales.Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
   
 
-.. AGREGAR INFO A PROC. MORFOLOGICO EN IMAGE PROCESSING GONZALES. PAG. 459.
+.. AGREGAR INFO A PROC. MORFOLOGICO EN IMAGE PROCESSING GONZALES. PAG. 649.
 
-* Procesamiento morfológico. La morfología se relaciona con la forma y las relaciones entre las partes de una imagen. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma, esto es atributos tales como componentes conectados, límites, skeletons (conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites) y el convex hull (el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma). 
-Además, el procesamiento morfológico abarca las técnicas pre-procesamiento y post-procesamiento complementarias que se emplean junto a los procedimientos descritos anteriormente, tales como son: Filtrado, thinning, region filling(rellenado con información de los elementos que componen una región) y pruning(método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning).
+* Procesamiento morfológico. La morfología se relaciona con la forma y las relaciones entre las partes de una imagen. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma. El procesamiento morfológico utiliza los mecanismos de la teoría de conjuntos y considera cada uno de los elementos que componen una imagen digital como conjuntos. Por lo tanto, si se emplea una imagen binaria cada pixel con coordenada (x,y) se define como un conjunto de dos dimensiones que representa el pixel blanco o negro de la misma, mientras que si se emplea una imagen con escala de grises, los dos primeros elementos del conjunto representan las coordenadas y el tercero corresponde al nivel de intensidad, e imágenes con distintos modelos de color se representan con conjuntos de mayores dimensiones.
+
+Así, el procesamiento morfológico consiste en aplicar a las imágenes representadas por conjuntos elementos de estructurado (ESs), que son pequeños conjuntos o sub-imágenes, que pueden adoptar distintas formas(aunque se rellenan con elementos para que adopten formas rectangulares),utilizadas con el fin de probar una imagen bajo estudio para propiedades de interés. A continuación se pueden observar distintos ES, con un origen se encuentra marcado por un punto negro, aunque si éste no se encuentra marcado se considera que es el centro del elemento de estructurado:
+
+
+.. figure:: ESProcMorfologico.png
+
+	Ejemplos de ES de procesamiento morfológico 
+ 
+
+Por lo tanto el procesamiento morfológico, consiste en crear un nuevo conjunto que representará la imagen de salida, aplicando el origen de los elementos de estructurado B a cada uno de los pixeles de la imagen A, conservando aquellos en los que los elementos de B pertenezcan a la vez, al conjunto A que representa un pixel asociado a un objeto en la imagen. En la siguiente figura se puede observar un ejemplo donde para la imagen A con un objeto sombreado, y un ES denominado B, B se aplica la imagen y se genera una nueva imagen con el objeto original reducido en tamaño:
+
+
+
+.. figure:: ejemploProcMorfologico.png
+	:scale: 60%
+
+	Ejemplo de procesamiento morfológico. En la fila superior se observa la imagen y el ES asociado.En la parte inferior-izquierda se visualiza la imagen original, en la parte inferior-central se encuentra el ES, ampliado para adoptar una forma rectangular (donde la parte sombreada representa los pixeles de interés que deben tenerse en cuenta con respecto a la pertenencia), y la parte inferior-derecha representa el objeto sombreado luego de haber aplicado el ES.  
+ 
+
+
+
+esto es atributos tales como componentes conectados, límites(boundary extraction), skeletons (conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites) y el convex hull (el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma). 
+Además, el procesamiento morfológico abarca las técnicas pre-procesamiento y post-procesamiento complementarias que se emplean junto a los procedimientos descritos anteriormente, tales como son: Filtrado, thinning, region filling(rellenado con información de los elementos que componen una región), pruning(método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning) y thickering.
+
+
+
+
+
   
 
 * Segmentación.La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.
