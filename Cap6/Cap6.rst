@@ -1156,18 +1156,31 @@ Por otro lado, la dilatación de una imagen A por B dentro de un espacio Z^2, co
    Fórmula de dilatación
 
 
-Las operaciones principales asociadas este tipo de procesamiento son aquellas asociadas tanto a la extracción de características de la imagen, como aquellas que se emplean antes y después de los procedimientos mencionados anteriormente. A continuación se detallan las operaciones relacionadas a la extracción de características: 
+.. NOTA: La transformación hit-or-miss que es empleada para la detección de objetos basados en su forma, consiste en aplicar la erosión a una imagen A por un objeto B1, y aplicar la erosión al complemento de A del fondo del objeto B2, y luego si existe una intersección entre estos dos conjuntos resultantes, el objeto se encuentra contenido en A. Esta técnica se basa en afirmar que dos o mas objetos son distintos si forman un conjunto disjunto la aplicación de la erosion de A por B1 y B2, requiriendo que el objeto tenga al menos un pixel de grosor en la imagen. Esto es empleado en algunas aplicaciones donde existe interés en detectar patrones de 1s y 0s en imagenes binarias, en cuyo caso el borde el objeto no se requiere, por lo que esta operación se transforma en una erosión entre A y B. 
 
-	* Extracción de componentes conectados.
-	* Extracción de límites(boundary extraction).
-	* Esqueletos(Skeletons). Un esqueleto es conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites
+.. LINK UTIL --> 
+.. https://www.slideshare.net/LalSaid/07-b-morphological-orperations
+
+Por lo tanto, las operaciones principales asociadas este tipo de procesamiento, se definen como operaciones sobre conjuntos que combinan las propiedades de traslación, la erosión y dilatación, y abarcan tanto procedimientos relativos a la extracción de características de la misma, como aquellos que se emplean antes y después de los mismos. A continuación se detallan las operaciones relacionadas a la extracción de características: 
+
+	* Extracción de límites(boundary extraction) y componentes conectados. La extracción de limites consiste en extraer el contorno de un objeto representado en una imagen binaria, mientras que la extracción del componente conectado abarca la obtención del contorno y los pixeles que conforman la forma del objeto. Las fórmulas para estas operaciones se definen de la siguiente manera:
+	  
+		.. figure:: formulaExtraccionLimite.png
+		
+			Fórmula para la extracción de borde.
+		
+		.. figure:: formulaComponenteConectado.png
+		
+			Fórmula para la extracción de componentes conectados. Los valores Xk representan los elementos de una nueva imagen (con las mismas dimensiones que la imagen de entrada A) resultante de aplicar B sobre A.
+		
+
+	* Esqueletos(Skeletons). Un esqueleto es conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites.
 	* Convex Hull. Un convex hull consiste en el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma. 
 
-A continuación se describen las técnicas que se emplean en conjunto con la extracción de características:
+Las técnicas que se emplean en conjunto con la extracción de características son las siguientes:
 
-
-	* Filtrado
-	* Thinning,
+	* Opening y Closing.
+	* Thinning.
 	* Region filling. rellenado con información de los elementos que componen una región., 
 	* Pruning. método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning.
 	* Thickering.
@@ -1186,7 +1199,7 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 	.. figure:: slicingIntensidad.png
 		:scale: 60%
 
-	   Rebanado por intensidad
+		Rebanado por intensidad
 	
 	La asignación de colores empleando transformaciones de intensidad a color se basa en aplicar tres transformaciones independientes a las intensidades para producir cada uno de los campos de color de los pixel a color de la imagen de salida, de manera que los colores de la imagen resultante, se asignan según las características del tipo de transformación que se aplique. Las transformaciones aplicables con este método pueden ser transformaciones matemáticas, o basadas en filtros de suavizado y funciones no lineales, lo que brinda flexibilidad. A continuación, se puede apreciar un ejemplo donde se aplica una transformación que produce una onda sinusoidal para cada elemento, asignando colores más intensos para los elementos cuyo valor de onda sinusoidal se encuentre con mayor inclinación:
 
@@ -1194,12 +1207,12 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 	.. figure:: transformacionColorIntensidad1.png
 		:scale: 50%
 
-	    Ejemplo de transformación intensidad a color para una imagen. La imagen de la izquierda pertenece a una maleta sin explosivos, mientras que la de la derecha pertenece a una maleta con un explosivo simulado.
+		Ejemplo de transformación intensidad a color para una imagen. La imagen de la izquierda pertenece a una maleta sin explosivos, mientras que la de la derecha pertenece a una maleta con un explosivo simulado.
 	 
 	  
 	 .. figure:: transformacionColorIntensidad1.png
-	 
-	    Onda sinusoidal para cada componente que representa los valores de los diferentes objetos.
+
+		Onda sinusoidal para cada componente que representa los valores de los diferentes objetos.
 	 
 	Alternativamente, este procedimiento también se puede emplear aplicando transformaciones sobre varias imágenes monocromáticas de distintas bandas del espectro electromagnético (capturadas por distintos sensores) y posteriormente combinarlas en una sola, de manera que se puedan visualizar características en imágenes que complejas, que sería imposible visualizar en caso contrario. Ésta variación de la técnica se emplea en el procesamiento de imágenes multiespectrales captadas por satélites. A continuación se puede visualizar un ejemplo, donde las imágenes superior-izquierda,superior-derecha y media-izquierda se tratan como los componentes RGB para formar la imagen media-izquierda. Y la imagen inferior-derecha, se produce como resultado de combinar el campo rojo de la imagen infraroja inferior-izquierda, sobre la imagen RGB obtenida anteriormente:  
 
@@ -1208,7 +1221,6 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 		:scale: 50%
 	
 		Ejemplo de imagen multiespectral
-	
 	
 
 	.. pag 448. Gonzales.
@@ -1242,16 +1254,16 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 	  
 
 
-	  .. figure:: segmentacionColor.png
+	.. figure:: segmentacionColor.png
 	   
-	      Ejemplo de segmentación a color para imagen con HSI.
+		Ejemplo de segmentación a color para imagen con HSI.
 
 	Si la imagen emplea RGB, la segmentación de objetos en rangos de color específicos simplemente consiste en tomar un conjunto de puntos que cuyo color es representativo de los colores de interés, y obtener el promedio de color para cada componente y almacenar esto como un vector. Luego por medio de una fórmula de distancia, se realiza una comparación de los componentes de color de cada pixel con el vector y si se encuentra dentro de ésta distancia se lo conserva, y en caso contrario se lo descarta. La fórmula de distancia más común para realizar la medida de distancia es la Euclidiana, donde si la distancia entre el vector del pixel,z,y el vector promedio,a, se encuentra a menos de un límite,D0, se considera un color válido. 
 
 
-		.. figure:: formulaDistanciaEcludiana.png
+	.. figure:: formulaDistanciaEcludiana.png
 
-			Fórmula de distancia Euclidiana
+		Fórmula de distancia Euclidiana
 
 
 * Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los pixeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores.
