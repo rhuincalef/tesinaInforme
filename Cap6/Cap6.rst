@@ -1122,26 +1122,56 @@ Así, el procesamiento morfológico consiste en aplicar a las imágenes represen
 	Ejemplos de ES de procesamiento morfológico 
  
 
-Por lo tanto el procesamiento morfológico, consiste en crear un nuevo conjunto que representará la imagen de salida, aplicando el origen de los elementos de estructurado B a cada uno de los pixeles de la imagen A, conservando aquellos en los que los elementos de B pertenezcan a la vez, al conjunto A que representa un pixel asociado a un objeto en la imagen. En la siguiente figura se puede observar un ejemplo donde para la imagen A con un objeto sombreado, y un ES denominado B, B se aplica la imagen y se genera una nueva imagen con el objeto original reducido en tamaño:
-
-
+Por lo tanto el procesamiento morfológico, consiste en crear un nuevo conjunto que representará la imagen de salida, aplicando el origen de los elementos de estructurado B a cada uno de los pixeles de la imagen A, conservando el pixel que esta en el origen, en aquellos casos en los que todos los elementos del conjunto B pertenezcan a la vez al conjunto A. Esto quiere decir, que al aplicar B sobre A, se conserva el elemento en el origen solo si todos los pixeles de B se encuentran superpuestos con pixeles de A que representan un objeto.En la siguiente figura se puede observar un ejemplo donde para la imagen A con un objeto sombreado, y un ES denominado B, B se aplica la imagen y se genera una nueva imagen con el objeto original reducido en tamaño:
 
 .. figure:: ejemploProcMorfologico.png
 	:scale: 60%
 
 	Ejemplo de procesamiento morfológico. En la fila superior se observa la imagen y el ES asociado.En la parte inferior-izquierda se visualiza la imagen original, en la parte inferior-central se encuentra el ES, ampliado para adoptar una forma rectangular (donde la parte sombreada representa los pixeles de interés que deben tenerse en cuenta con respecto a la pertenencia), y la parte inferior-derecha representa el objeto sombreado luego de haber aplicado el ES.  
  
+Las operaciones morfológicas que se aplican en una imagen, emplean los elementos de estructurado en conjunto con las propiedades de reflección y de traslación, y operaciones primitivas de erosión y dilatación. La propiedad de reflección consiste en reemplazar las coordenadas de la imagen por sus opuestas modificando el signo de cada uno de los elementos del conjunto. Mientras que la traslación consiste en desplazar los elementos del conjunto por un valor z, cuya dimensión dependerá de la cantidad de elementos del conjunto.
+
+.. figure:: formulaReflexionMorfologia.png
+
+   Fórmula de reflexión para un conjunto B.
+|
+|
+
+.. figure:: formulaTraslacionMorfologia.png
+
+   Fórmula de traslación para un conjunto B para un valor z.  
 
 
+Por una lado la erosión de una imagen A por B dentro de un espacio Z^2, es el conjunto de todos los puntos z tales que B, trasladado por z esta contenido en A, es decir,que elimina todos aquellos puntos que desplazados por z estan localizados dentro de A. Esto en una imagen binaria hace mas finos los objetos de la imagen, removiendo de la misma aquellos elementos que son mas pequeños que el elemento de estructurado.  
 
-esto es atributos tales como componentes conectados, límites(boundary extraction), skeletons (conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites) y el convex hull (el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma). 
-Además, el procesamiento morfológico abarca las técnicas pre-procesamiento y post-procesamiento complementarias que se emplean junto a los procedimientos descritos anteriormente, tales como son: Filtrado, thinning, region filling(rellenado con información de los elementos que componen una región), pruning(método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning) y thickering.
+.. figure:: formulaErosionMorfologia.png
+
+   Fórmula de erosión
+
+Por otro lado, la dilatación de una imagen A por B dentro de un espacio Z^2, consiste en realizar la reflección de la imagen alrededor del origen de ésta y luego aplicar la traslación a la reflección por un valor z. De esta manera, la dilatación consiste en mantener aquellos z para los que la reflexión de B y los valores de A se superponen por al menos un elemento. Esta técnica a diferencia de la erosión, provoca que los objetos se vuelvan más gruesos (crezcan de grosor), dependiendo la medida en que estos se modificarán según la forma del elemento de estructurado aplicado a la imagen.
 
 
+.. figure:: formulaDilatacionMorfologia.png
+
+   Fórmula de dilatación
 
 
+Las operaciones principales asociadas este tipo de procesamiento son aquellas asociadas tanto a la extracción de características de la imagen, como aquellas que se emplean antes y después de los procedimientos mencionados anteriormente. A continuación se detallan las operaciones relacionadas a la extracción de características: 
 
-  
+	* Extracción de componentes conectados.
+	* Extracción de límites(boundary extraction).
+	* Esqueletos(Skeletons). Un esqueleto es conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites
+	* Convex Hull. Un convex hull consiste en el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma. 
+
+A continuación se describen las técnicas que se emplean en conjunto con la extracción de características:
+
+
+	* Filtrado
+	* Thinning,
+	* Region filling. rellenado con información de los elementos que componen una región., 
+	* Pruning. método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning.
+	* Thickering.
+
 
 * Segmentación.La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.
 Este proceso es uno de los más importantes elementos en análisis de imágenes automatizado, principalmente porque posibilita extraer aquellas entidades de interés en la imagen para aplicar otros métodos de procesamiento, como la descripción y el reconocimiento.
