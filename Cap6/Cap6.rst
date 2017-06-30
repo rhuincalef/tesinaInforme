@@ -1174,16 +1174,51 @@ Por lo tanto, las operaciones principales asociadas este tipo de procesamiento, 
 			Fórmula para la extracción de componentes conectados. Los valores Xk representan los elementos de una nueva imagen (con las mismas dimensiones que la imagen de entrada A) resultante de aplicar B sobre A.
 		
 
-	* Esqueletos(Skeletons). Un esqueleto es conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites.
-	* Convex Hull. Un convex hull consiste en el conjunto mínimo de puntos o elementos de la imagen, que unidos por líneas rectas, representan la misma. 
+	* Esqueletos(Skeletons). Un esqueleto es conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites.Los esqueletos en una imagen representan los objetos con el menor número de pixeles, siendo cada uno de éstos parte de la estructura básica y siendo completamente necesarios. Por lo tanto los esqueletos permiten obtener información respecto de la imagen original tales como la posición, la orientación y la longitud de los segmentos que lo conforman.
+	
+	El proceso para la obtención de esqueletos, consiste en aplicar una sucesión de operaciones de erosión a una imagen con un elemento ES, hasta el punto donde si se aplicara la siguiente erosión se eliminarían los objetos que pertenecen a ésta. Luego, se puede aplicar la diferencia entre las múltiples erosiones menos las múltiples erosiones aplicadas a la operación de opening, de manera que se consideren aquellos elementos no suavizados como parte del esqueleto. Finalmente, la unión de todos los esqueletos de las figuras en la imagen constituyen la imagen final. 
+
+	 .. figure:: ejemploEsqueleto1.png
+	 
+	 	Ejemplo de la imagen binaria original 
+	 |
+	 .. figure:: ejemploEsqueleto2.png
+	 
+	 	Ejemplo de la imagen luego de la obtención del esqueleto
+	 
+	 
+	* Convex Hull. Un conjunto de elementos A se dice que es convexo si, contiene al menos dos puntos de un objeto de imagen que pueden ser vinculados por una línea recta dentro de él. Un convex hull H de un conjunto A por lo tanto, es el conjunto convexo más pequeño que contiene a A.
+	  
+	.. figure:: ejemploDefinicionConvexHull1.png
+
+		Ejemplos de convex hull convexo y no convexo. A el conjunto R1 la izquierda es convexo debido a que se puede vincular p y q, mientras que en la figura de la derecha no es convexo, sino concavo.
+
+	|
+	.. figure:: ejemploDefinicionConvexHull3.png
+	
+		Ejemplo de convex hull aplicado a una imagen.
+	
+	El funcionamiento para la extracción del convex hull, consiste en emplear varios elementos de estructurado e iterativamente, aplicar una operación de detección de forma(shape detection) entre cada uno de los ES una imagen de entrada.Esta operación consiste en emplear la erosión entre la imagen de entrada y un ES y su complemento y el ES, con el fin de obtener resultados intermedios. De esta forma, el resultado final se obtiene uniendo cada uno de los conjuntos producto de la detección de forma. 
+
 
 Las técnicas que se emplean en conjunto con la extracción de características son las siguientes:
 
-	* Opening y Closing.
-	* Thinning.
-	* Region filling. rellenado con información de los elementos que componen una región., 
-	* Pruning. método empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning.
-	* Thickering.
+	* Opening y Closing. La técnica de opening se emplea con el objetivo de suavizar el contorno de los objetos, eliminando conexiones entre elementos que contengan un número bajo de pixeles, y eliminando protuberancias finas. Por el contrario, closing tiende a suvizar los contornos de las figuras, pero fusiona lineas que no se encuentran completamente unidas en la figura y golfos largos y finos de pixeles, y rellena espacios en el contorno y elimina pequeños hoyos en la imagen.
+	  
+	.. figure:: formulaOpening.png
+	
+		Fórmula de opening
+	|
+	.. figure:: formulaClosing.png
+	
+		Fórmula de closing
+	
+	 
+	* Thinning.Esta técnica consiste en eliminar elementos de una imagen A por medio de la aplicación de la operación de shape detection, aplicando una secuencia de n elementos de estructurado que se encuentran en diferentes ángulos. De esta forma el resultado final es una imagen donde los elementos que pertenecen a ésta han reducido su grosor y se ha ampliado la cantidad de pixeles que representan el fondo de ésta. 
+ 
+	* Region filling. Esta operación consiste en efectuar el rellenado con información de los elementos que componen una región.
+ 
+	* Pruning. Este método es empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning.
 
 
 * Segmentación.La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.
