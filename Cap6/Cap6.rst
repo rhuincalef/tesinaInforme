@@ -209,11 +209,11 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 Proyectos de software anteriores para la detección de fallas sobre el pavimento
 -------------------------------------------------------------------------------
 
-Debido a que la recolección manual de fallas es una tarea costosa con respecto al tiempo y al esfuerzo, durante años se  han publicado varios papers y tesis con el fin de automatizar esta tarea, a través del uso de distintos dispositivos para el sensado, combinados con distintas técnicas de localización, registro de fallas y análisis de la información sensada. Los papers y tesis publicados hasta la fecha se pueden clasificar según el tipo de sensor que emplean, en tres grandes grupos:
+Debido a que la recolección manual de fallas es una tarea costosa con respecto al tiempo y al esfuerzo, durante años se  han publicado varios papers y tesis con el fin de automatizar esta tarea a través del uso de distintos dispositivos para el sensado, combinados con distintas técnicas de localización, registro de fallas y análisis de la información sensada. Los papers y tesis publicados hasta la fecha se pueden clasificar según el tipo de sensor que emplean, en tres grandes grupos:
 
-* Detección de fallas utilizando técnicas basadas en procesamiento de video/imagen
-* Detección de fallas por medio de sensores de vibración(acelerómetro)
-* Detección de fallas empleando reconstrucción 3D
+* Detección de fallas utilizando técnicas basadas en procesamiento 2D con imágenes o video.
+* Detección de fallas por medio de sensores de vibración(acelerómetros).
+* Detección de fallas empleando modelos de reconstrucción 3D (stereovision o dispositivos equipados con laser lasers).
 
 
 Proyectos basados en procesamiento de video e imagen
@@ -569,8 +569,9 @@ Si se considera el caso para el histograma de imagen de una imagen con escala de
 La función de densidad de probabilidad trata los valores de los niveles de intensidad como cantidades aleatorias, y definiéndose la probabilidad pf(k) de un nivel k ocurriendo en una imagen como:
 
 .. figure:: formulaNormalizacion.png
+	:scale: 60%
 
-   Formula de normalización de histograma
+	Fórmula de normalización de histograma
 
 
 
@@ -578,15 +579,17 @@ Donde la imagen digital tiene N x M pixeles,Hf(k) es el nivel de intensidad para
 
 
 .. figure:: propiedadFormulaNormalizacion.png
+	:scale: 60%
 
-   Propiedad de sumatoria de los valores normalizados
+	Propiedad de sumatoria de los valores normalizados
 
 En base a esta función, se define la función de distribución acumulada, Pf(r) para r niveles, con r= 0,1,...,K-1:
 
 
 .. figure:: formulaDistribucionAcumulada.png
+	:scale: 60%
  
-    Función de distribución acumulada
+	Función de distribución acumulada
  
 Así para obtener un histograma igualado, primero se debe computar la función de distribución acumulada del histograma de imagen Pf(k) de la imagen digital, para cada uno de los niveles del histograma, lo que provocará que éste tienda a aplanarse gráficamente, y luego aplicar la función de estiramiento de contraste para cada uno de los elementos, con el fin de distribuirlos a lo largo de la escala. Esto provocará que la imagen final sea más impactante y visibles que la original, sin embargo este proceso no eliminará aquellos picos resultantes del proceso de cuantificación.A continuación se observa el proceso de igualación de histograma aplicado a la imagen de libros:
 
@@ -822,6 +825,7 @@ La mascara de filtrado requiere que se especifiquen coeficientes de filtrado par
 
 
 .. figure:: formulaGauss.png
+	:scale: 60%
 
 	Fórmula de Gauss aplicada a un pixel de imagen.
 
@@ -880,12 +884,14 @@ Debido a que para representar una imagen digital se debe trabajar con valores di
 
 
 .. figure:: formulaFTD.png
+	:scale: 60%
 
-	Formula de la Transformada de Fourier Discreta
+	Fórmula de la Transformada de Fourier Discreta
 
 Además, esta función toma valores discretos x,y que son las coordenadas de los pixeles para una imagen digital de M x N, con u=0,1,2,...,M-1, v=0,1,2,...,N-1 y, su inversa, que permite obtener la imagen en el dominio espacial partiendo de la matriz de frecuencias, se define:  
 
 .. figure:: formulaIFTD.png
+	:scale: 60%
 
 	Formula de la Transformada  de Fourier Inversa
 
@@ -896,6 +902,7 @@ Esta formula cuenta con distintas propiedades entre las que se destacan:
 * Magnitud o espectro(Espectro de frecuencias): El espectro consiste en aplicar para cada uno de los elementos de la frecuencia de la matriz la siguiente formula:
   
 .. figure:: formulaEspectro.png
+	:scale: 60%
 
 	Fórmula para el calculo del espectro
 
@@ -906,8 +913,9 @@ Los componentes del espectro de la DFT determinan las amplitudes de las sinusoid
 * Angulo de fase (Fase). El ángulo de fase para cada elemento de la matriz se obtiene por medio de la siguiente fórmula:
   
 .. figure:: formulaAnguloFase.png
+	:scale: 60%
 
-   Fórmula para el cálculo del ángulo de fase
+	Fórmula para el cálculo del ángulo de fase
 
 El angulo de fase o fase, es una medida del desplazamiento de varias ondas sinusoidales con respecto al origen, por lo que este arreglo contiene los ángulos que contienen información respecto de donde los objetos se encuentran localizados en la imagen.
 
@@ -917,13 +925,15 @@ El angulo de fase o fase, es una medida del desplazamiento de varias ondas sinus
 * Espectro potencia. El espectro potencia se calcula para cada elemento de la imagen con la siguiente fórmula:
   
 .. figure:: formulaPotencia.png
+	:scale: 60%
 
-   Fórmula para el espectro potencia
+	Fórmula para el espectro potencia
 
 
 * Simetría. La simetría con respecto a la transformada de Fourier discreta, enuncia que la magnitud del espectro es simétrica par respecto del punto central por lo que se cumple la siguiente igualdad:
   
 .. figure:: formulaSimetrica.png
+	:scale: 60%
 
 	Formula simétrica par en el espectro de magnitud
 
@@ -931,6 +941,7 @@ Mientras que el angulo de fase es simétrica impar con respecto al origen, lo qu
 
 
 .. figure:: formulaAsimetrica.png
+	:scale: 60%
 
    	Formula asimétrica par en la fase
 
@@ -938,6 +949,7 @@ Mientras que el angulo de fase es simétrica impar con respecto al origen, lo qu
 * Traslación. La propiedad de traslación implica que al multiplicar la imagen f(x,y) por la parte exponencial de la transformada de Fourier en coordenadas (u0,v0), provoca un desplazamiento de la transformada al punto (u0,v0), y en consecuencia, multiplicar F(u,v) por el negativo de esa exponencial cambia el origen de f(x,y) hacia (x0,y0).
   
   .. figure:: formulaTraslacionDFT.png
+  	:scale: 60%
   
 	Formulas de traslación DFT. 
   
@@ -1035,6 +1047,7 @@ De esta forma, para una imagen con N x M elementos, existe un vector que contien
 |
 |
 .. figure:: formulaVectorColor.png
+	:scale: 60%
 
 	Vector de color para una coordenada en la imagen
 |
@@ -1132,28 +1145,32 @@ Por lo tanto el procesamiento morfológico, consiste en crear un nuevo conjunto 
 Las operaciones morfológicas que se aplican en una imagen, emplean los elementos de estructurado en conjunto con las propiedades de reflección y de traslación, y operaciones primitivas de erosión y dilatación. La propiedad de reflección consiste en reemplazar las coordenadas de la imagen por sus opuestas modificando el signo de cada uno de los elementos del conjunto. Mientras que la traslación consiste en desplazar los elementos del conjunto por un valor z, cuya dimensión dependerá de la cantidad de elementos del conjunto.
 
 .. figure:: formulaReflexionMorfologia.png
+	:scale: 50%
 
-   Fórmula de reflexión para un conjunto B.
+	Fórmula de reflexión para un conjunto B.
 |
 |
 
 .. figure:: formulaTraslacionMorfologia.png
+	:scale: 50%
 
-   Fórmula de traslación para un conjunto B para un valor z.  
+	Fórmula de traslación para un conjunto B para un valor z.  
 
 
 Por una lado la erosión de una imagen A por B dentro de un espacio Z^2, es el conjunto de todos los puntos z tales que B, trasladado por z esta contenido en A, es decir,que elimina todos aquellos puntos que desplazados por z estan localizados dentro de A. Esto en una imagen binaria hace mas finos los objetos de la imagen, removiendo de la misma aquellos elementos que son mas pequeños que el elemento de estructurado.  
 
 .. figure:: formulaErosionMorfologia.png
+	:scale: 50%
 
-   Fórmula de erosión
+	Fórmula de erosión
 
 Por otro lado, la dilatación de una imagen A por B dentro de un espacio Z^2, consiste en realizar la reflección de la imagen alrededor del origen de ésta y luego aplicar la traslación a la reflección por un valor z. De esta manera, la dilatación consiste en mantener aquellos z para los que la reflexión de B y los valores de A se superponen por al menos un elemento. Esta técnica a diferencia de la erosión, provoca que los objetos se vuelvan más gruesos (crezcan de grosor), dependiendo la medida en que estos se modificarán según la forma del elemento de estructurado aplicado a la imagen.
 
 
 .. figure:: formulaDilatacionMorfologia.png
+	:scale: 50%
 
-   Fórmula de dilatación
+	Fórmula de dilatación
 
 
 .. NOTA: La transformación hit-or-miss que es empleada para la detección de objetos basados en su forma, consiste en aplicar la erosión a una imagen A por un objeto B1, y aplicar la erosión al complemento de A del fondo del objeto B2, y luego si existe una intersección entre estos dos conjuntos resultantes, el objeto se encuentra contenido en A. Esta técnica se basa en afirmar que dos o mas objetos son distintos si forman un conjunto disjunto la aplicación de la erosion de A por B1 y B2, requiriendo que el objeto tenga al menos un pixel de grosor en la imagen. Esto es empleado en algunas aplicaciones donde existe interés en detectar patrones de 1s y 0s en imagenes binarias, en cuyo caso el borde el objeto no se requiere, por lo que esta operación se transforma en una erosión entre A y B. 
@@ -1166,10 +1183,12 @@ Por lo tanto, las operaciones principales asociadas este tipo de procesamiento, 
 	* Extracción de límites(boundary extraction) y componentes conectados. La extracción de limites consiste en extraer el contorno de un objeto representado en una imagen binaria, mientras que la extracción del componente conectado abarca la obtención del contorno y los pixeles que conforman la forma del objeto. Las fórmulas para estas operaciones se definen de la siguiente manera:
 	  
 		.. figure:: formulaExtraccionLimite.png
-		
+			:scale: 50%
+
 			Fórmula para la extracción de borde.
 		
 		.. figure:: formulaComponenteConectado.png
+			:scale: 50%
 		
 			Fórmula para la extracción de componentes conectados. Los valores Xk representan los elementos de una nueva imagen (con las mismas dimensiones que la imagen de entrada A) resultante de aplicar B sobre A.
 		
@@ -1179,22 +1198,27 @@ Por lo tanto, las operaciones principales asociadas este tipo de procesamiento, 
 	El proceso para la obtención de esqueletos, consiste en aplicar una sucesión de operaciones de erosión a una imagen con un elemento ES, hasta el punto donde si se aplicara la siguiente erosión se eliminarían los objetos que pertenecen a ésta. Luego, se puede aplicar la diferencia entre las múltiples erosiones menos las múltiples erosiones aplicadas a la operación de opening, de manera que se consideren aquellos elementos no suavizados como parte del esqueleto. Finalmente, la unión de todos los esqueletos de las figuras en la imagen constituyen la imagen final. 
 
 	 .. figure:: ejemploEsqueleto1.png
-	 
-	 	Ejemplo de la imagen binaria original 
+	 	:scale: 60%
+
+		Ejemplo de la imagen binaria original 
 	 |
+
 	 .. figure:: ejemploEsqueleto2.png
+		:scale: 60%
 	 
-	 	Ejemplo de la imagen luego de la obtención del esqueleto
+		Ejemplo de la imagen luego de la obtención del esqueleto
 	 
 	 
 	* Convex Hull. Un conjunto de elementos A se dice que es convexo si, contiene al menos dos puntos de un objeto de imagen que pueden ser vinculados por una línea recta dentro de él. Un convex hull H de un conjunto A por lo tanto, es el conjunto convexo más pequeño que contiene a A.
 	  
 	.. figure:: ejemploDefinicionConvexHull1.png
+		:scale: 60%
 
 		Ejemplos de convex hull convexo y no convexo. A el conjunto R1 la izquierda es convexo debido a que se puede vincular p y q, mientras que en la figura de la derecha no es convexo, sino concavo.
 
 	|
 	.. figure:: ejemploDefinicionConvexHull3.png
+		:scale: 60%
 	
 		Ejemplo de convex hull aplicado a una imagen.
 	
@@ -1206,11 +1230,13 @@ Las técnicas que se emplean en conjunto con la extracción de características 
 	* Opening y Closing. La técnica de opening se emplea con el objetivo de suavizar el contorno de los objetos, eliminando conexiones entre elementos que contengan un número bajo de pixeles, y eliminando protuberancias finas. Por el contrario, closing tiende a suvizar los contornos de las figuras, pero fusiona lineas que no se encuentran completamente unidas en la figura y golfos largos y finos de pixeles, y rellena espacios en el contorno y elimina pequeños hoyos en la imagen.
 	  
 	.. figure:: formulaOpening.png
-	
+		:scale: 50%
+
 		Fórmula de opening
 	|
 	.. figure:: formulaClosing.png
-	
+		:scale: 50%
+
 		Fórmula de closing
 	
 	 
@@ -1232,7 +1258,7 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 	El rebanado por intensidad consiste en dividir los L-1 valores de la escala de grises en P planos, de manera que los pixeles cuyas intensidades se encuentren entre dos distintos planos sean representados por diferentes colores y, aquellos elementos que caigan en la división de un plano se le asigne el color del plano. 
 
 	.. figure:: slicingIntensidad.png
-		:scale: 60%
+		:scale: 50%
 
 		Rebanado por intensidad
 	
@@ -1243,9 +1269,11 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 		:scale: 50%
 
 		Ejemplo de transformación intensidad a color para una imagen. La imagen de la izquierda pertenece a una maleta sin explosivos, mientras que la de la derecha pertenece a una maleta con un explosivo simulado.
-	 
-	  
-	 .. figure:: transformacionColorIntensidad1.png
+	
+	|
+
+	.. figure:: transformacionColorIntensidad1.png
+		:scale: 50%
 
 		Onda sinusoidal para cada componente que representa los valores de los diferentes objetos.
 	 
@@ -1264,23 +1292,22 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 	* Procesamiento de Histograma. Esta tarea emplea el mecanismo de histograma de imagen y sus herramientas asociadas, aunque para procesar imágenes a color considera cada uno de los componentes de color rojo,verde y azul como un histograma separado, y emplea los niveles de intensidad de éstos para generar la imagen de salida.
 
 	* Complementos de color. El complemento de color es equivalente al negativo en las imágenes con escala de grises, y para obtenerlo se debe modificar la tonalidad de la imagen cambiando cada uno de los componentes por su opuesto, de manera que el opuesto para un color de entrada se define en función de este por la rueda de colores que se detalle en la siguiente figura:
-	 
-	 .. figure:: ruedaComplementoColor.png
-	 	:scale: 60%
+	
+	.. figure:: ruedaComplementoColor.png
+		:scale: 40%
 
-	    Ilustración de los complementos de cada color
-	 
+		Ilustración de los complementos de cada color
 
 	.. http://slideplayer.com/slide/6875110/
 	.. https://www.slideshare.net/RevanthChimmani1/color-image-processing-presentation
 
-	* Color Slicing(Rebanado por color). Esta transformación se emplea con el objetivo de separar objetos en la imagen del fondo, para ello se define un vector que representa el color neutral y posteriormente, se verifica para cada pixel si éste se encuentra dentro de un área (centrada en una coordenada de la imagen) determinada aplicando una fórmula matemática (que define la forma de ésta, si es un radio o un rectángulo por ejemplo), si es así se conserva el pixel con el color que posee. Por el contrario, si no es así se le asigna el valor del color neutral. A continuación se puede observar el efecto de esta operación sobre una imagen que contiene un bowl con frutillas:
+	* Color Slicing(Rebanado por color). Esta transformación se emplea con el objetivo de separar objetos en la imagen del fondo, para ello se define un vector que representa el color neutral y posteriormente, se verifica para cada pixel si éste se encuentra dentro de un área (centrada en una coordenada de la imagen) determinada aplicando una fórmula matemática (que define la forma de ésta, si es un radio o un rectángulo por ejemplo), si es así se conserva el pixel con el color que posee. Por el contrario, si no es así se le asigna el valor del color neutral. En la siguiente figura se puede observar el efecto de esta operación sobre una imagen que contiene un bowl con frutillas:
 	  
 
 	.. figure:: colorSlicing.png
 		:scale: 60%
 
-		Color slicing ejemplos.
+		Color slicing ejemplos. En el ejemplo de la izquierda se empleo un cubo centrado en el punto (0,6863, 0,1608,0,1922) y en la de la derecha se empleo una esfera centrada en la misma coordenada.
 	
 	* Suavizado de colores(Color Smoothing). El suavizado de imagen al igual que en imágenes representadas por escala de grises, consiste en aplicar un filtro a la imagen digital de entrada con el fin producir los pixeles de salida, aunque en este las operaciones se aplican sobre los vectores que representan los componentes de color. De esta forma, la intensidad del pixel de salida se compone de procesar cada uno de los componentes de color por separado.
 	  
@@ -1290,20 +1317,28 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 
 
 	.. figure:: segmentacionColor.png
-	   
+
 		Ejemplo de segmentación a color para imagen con HSI.
 
 	Si la imagen emplea RGB, la segmentación de objetos en rangos de color específicos simplemente consiste en tomar un conjunto de puntos que cuyo color es representativo de los colores de interés, y obtener el promedio de color para cada componente y almacenar esto como un vector. Luego por medio de una fórmula de distancia, se realiza una comparación de los componentes de color de cada pixel con el vector y si se encuentra dentro de ésta distancia se lo conserva, y en caso contrario se lo descarta. La fórmula de distancia más común para realizar la medida de distancia es la Euclidiana, donde si la distancia entre el vector del pixel,z,y el vector promedio,a, se encuentra a menos de un límite,D0, se considera un color válido. 
 
 
 	.. figure:: formulaDistanciaEcludiana.png
-
+		:scale: 50%
 		Fórmula de distancia Euclidiana
 
 
 * Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los pixeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores.
-Estas técnicas, consisten en transformar los pixeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: Representar la región en términos de sus características externas (su límite o boundary), describiéndose el limite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite; O representarla según sus características internas, es decir, los pixeles que comprenden la región. 
-En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región.Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o, en la distribución estadística de los elementos del patrón.
+Estas técnicas, consisten en transformar los pixeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: Representar la región en términos de sus características externas (su límite o boundary por ejemplo), describiéndose el limite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite;
+O representarla según sus características internas, es decir, los pixeles que comprenden la región. En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región.Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o, en la distribución estadística de los elementos del patrón.
+Con respecto a la descripción de una textura, existen 3 aproximaciones para esta tarea: 
+	
+	* La aproximación estadística. La aproximación estadística consiste en emplear medidas cuantitativas estadísticas(media aritmética, varianza, desvío estándar y otras) respecto a la distribución de los niveles de intensidad a una imagen, asociando distintas combinaciones de estos valores a características a tales como la suavidad, la aspereza, la granularidad, etc.; Y descriptores que, en base una operación que define relaciones entre pixeles y que se organiza en forma de matriz de N x N siendo N los niveles de intensidad(matriz de co-ocurrencias), permiten encontrar y describir patrones tales como la uniformidad, homogeneidad, contraste y correlación. 
+	
+	* La aproximación estructural. Esta técnica consiste en describir una textura por medio de un conjunto de reglas(o primitivas) que representan el patrón de la misma, que se repite de manera constante.
+	
+	* La aproximación espectral. Esta aproximación se basa en las propiedades de la  transformada de Fourier, y son usadas primariamente para detectar periodicidad en la totalidad de la imagen a través de picos en el espectro de las frecuencias de la imagen. 
+
 |
 
 .. figure:: ejemplosTexturas.png
