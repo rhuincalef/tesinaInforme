@@ -1333,8 +1333,15 @@ Estas técnicas, consisten en transformar los pixeles que forman una región en 
 O representarla según sus características internas, es decir, los pixeles que comprenden la región. En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región.Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o, en la distribución estadística de los elementos del patrón.
 Con respecto a la descripción de una textura, existen 3 aproximaciones para esta tarea: 
 	
-	* La aproximación estadística. La aproximación estadística consiste en emplear medidas cuantitativas estadísticas(media aritmética, varianza, desvío estándar y otras) respecto a la distribución de los niveles de intensidad a una imagen, asociando distintas combinaciones de estos valores a características a tales como la suavidad, la aspereza, la granularidad, etc.; Y descriptores que, en base una operación que define relaciones entre pixeles y que se organiza en forma de matriz de N x N siendo N los niveles de intensidad(matriz de co-ocurrencias), permiten encontrar y describir patrones tales como la uniformidad, homogeneidad, contraste y correlación. 
-	
+	* La aproximación estadística. La aproximación estadística consiste en emplear medidas cuantitativas estadísticas(media aritmética, varianza, desvío estándar y otras) respecto a la distribución de los niveles de intensidad a una imagen, asociando distintas combinaciones de estos valores a características a tales como la suavidad, la aspereza, la granularidad, etc.; Y descriptores que, en base una operación que define relaciones entre pixeles y las frecuencias de esas relaciones entre pixeles en la imagen, organizados en forma de matriz de N x N siendo N los niveles de intensidad(matriz de co-ocurrencias), permiten encontrar y describir patrones tales como la uniformidad, homogeneidad, contraste y correlación. 
+	  
+	  .. figure:: ejemploMatrizCoOcurrencias.png
+	  	:scale: 50%
+	  
+		Ejemplo de matriz de co-ocurrencias(derecha) de una imagen (izquierda),para 8 niveles de intensidad, definiendo la relación entre pixeles como aquel pixel que se encuentra inmediatamente a la derecha. 
+	  
+	  
+
 	* La aproximación estructural. Esta técnica consiste en describir una textura por medio de un conjunto de reglas(o primitivas) que representan el patrón de la misma, que se repite de manera constante.
 	
 	* La aproximación espectral. Esta aproximación se basa en las propiedades de la  transformada de Fourier, y son usadas primariamente para detectar periodicidad en la totalidad de la imagen a través de picos en el espectro de las frecuencias de la imagen. 
