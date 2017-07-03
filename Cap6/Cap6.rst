@@ -864,7 +864,7 @@ Alternativamente, se pueden emplear filtros no lineales estadísticos para el su
 .. Filtros lineales (obedecen a una operacion lineal) y filtros no lineales (estadisticos. seccion 5.3 image processing gonzales 3rd edition).
 
 .. Filtros lineales --> Correlación y convolucion.
-.. Dos conceptos asociados a la forma de aplicar la máscara son el de correlación y convolución, donde la correlación consiste en despalazar la mascara de filtrado sobre la imagen y computar la operación  
+.. Dos conceptos asociados a la forma de aplicar la máscara son el de correlación y convolución, donde la correlación consiste en despalazar la mascara de filtrado sobre la imagen y computar la operación, mientras que la convolución consiste en rotar 180º la máscara y luego realizar la correlación.  
 
 
 
@@ -1362,11 +1362,17 @@ Durante la segmentación de la imagen, se realiza la conversión de la imagen de
 
 Finalmente, en la fase de comparación de texturas se caracterizan las mismas por medio de la aproximación estadística, y se emplea un vector de características que se genera con una serie de filtros para cada región interna y externa y, finalmente estas se comparan empleando un mecanismo de machine learning de MATLAB, en combinación con el set de herramientas de procesamiento de imágenes integrados. De esta forma, el entrenamiento se realizó con 50 muestras de imágenes seleccionadas aleatoriamente, y la prueba fue llevada a cabo con 70 muestras, que contenían no solo hoyos, sino también elementos típicos que se pueden encontrar en caminos pavimentados, como son grietas,reparaciones y juntas. El resultado de este estudio fue favorable, ya que se lograron valores de precisión cercanos al 80%, sin embargo, este modelo tiene la desventaja de depender fuertemente de condiciones de luz solar óptimas,por la naturaleza de su funcionamiento. Además, si el angulo del sol con respecto al suelo es perpendicular, la cantidad de sombra generada en la imagen es mínima por lo que algunos baches pueden pasar inadvertidos.
 
+
+.. figure:: modeloBrikalis.png
+	:scale: 60%
+
+	Modelo de procesamiento propuesto por Brikalis y Koch
+
+
 Posteriormente, la aproximación de Koch y Brikalis definida en :cite:`antecedentesProcImg2` se extendió para incluir el procesamiento de frames de video, debido a que en el estudio anterior el procesamiento completo se debe aplicar a cada imagen individual, lo que resulta computacionalmente ineficiente, ya que el bache tiene que ser detectado sucesivamente dentro de cada cuadro de video. Con este método, empleando las características de la textura en un bache, la forma elíptica y la sombra que se forma alrededor de ésta, el procesamiento consiste en subdividir la región de obtención de texturas a un área central con una cierta cantidad de pixeles, y aplicar filtros a cada una de las regiones, con el fin de obtener vectores de características para cada región. Este procedimiento se emplea en el primer frame sobre un área de pavimento no dañada, obteniendo así un valor de vector de características para un sector intacto. Después, a medida que se obtienen los subsecuentes frames se compara el promedio de los vectores de características anterior con el nuevo promedio, si no existe una diferencia significativa se actualiza y en caso contrario se produce la detección de un hoyo. Adicionalmente, este método, una vez que detecta un bache procede a detener el algoritmo de comparación de texturas, e inicia un algoritmo de tracking de objetos basado en valores de texturas para efectuar el seguimiento de éste, hasta que ya no figura en la imagen. En este punto, se procede a reanudar el algoritmo de detección de fallas hasta detectar un nuevo bache en el pavimento.
-Este experimento, fue testeado capturando el video desde un robot equipado con una cámara, con un total de 39 videos (10180 frames), logrando una precisión del 75%.
+Este experimento, fue testeado capturando el video desde un robot equipado con una cámara, con un total de 39 videos (10180 frames), logrando una precisión del 75% y un recall 84%(ver machine learning). Sin embargo, esta aproximación tiene el inconveniente de que unicamente se considera que solamente un único hoyo entrará en el campo de visión a la vez.
 
-
-
+.. paper 2012,2013,2015 ver
 
 
 
