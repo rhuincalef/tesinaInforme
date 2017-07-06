@@ -1367,7 +1367,7 @@ Finalmente, en la fase de comparación de texturas se caracterizan las mismas po
 .. figure:: modeloBrikalis.png
 	:scale: 60%
 
-	Modelo de procesamiento propuesto por Brikalis y Koch
+	Modelo de procesamiento propuesto por Brikalis y Koch.Figura extaída desde :cite:`antecedentesProcImg2`.
 
 
 Posteriormente, la aproximación de Koch y Brikalis definida en :cite:`antecedentesProcImg2` se extendió para incluir el procesamiento de frames de video, debido a que en el estudio anterior el procesamiento completo se debe aplicar a cada imagen individual, lo que resulta computacionalmente ineficiente, ya que el bache tiene que ser detectado sucesivamente dentro de cada cuadro de video. Con este método, empleando las características de la textura en un bache, la forma elíptica y la sombra que se forma alrededor de ésta, el procesamiento consiste en subdividir la región de obtención de texturas a un área central con una cierta cantidad de pixeles, y aplicar filtros a cada una de las regiones, con el fin de obtener vectores de características para cada región. Este procedimiento se emplea en el primer frame sobre un área de pavimento no dañada, obteniendo así un valor de vector de características para un sector intacto. Después, a medida que se obtienen los subsecuentes frames se compara el promedio de los vectores de características anterior con el nuevo promedio, si no existe una diferencia significativa se actualiza y en caso contrario se produce la detección de un hoyo. Adicionalmente, este método, una vez que detecta un bache procede a detener el algoritmo de comparación de texturas, e inicia un algoritmo de tracking de objetos basado en valores de texturas para efectuar el seguimiento de éste, hasta que ya no figura en la imagen. En este punto, se procede a reanudar el algoritmo de detección de fallas hasta detectar un nuevo bache en el pavimento.
@@ -1377,21 +1377,36 @@ Este experimento, fue testeado capturando el video desde un robot equipado con u
 .. figure:: brilakisMejora.png
    :scale: 60%
 
-   Método anterior de Brikalis y Korch, con mejoras subrayadas 
+   Método anterior de Brikalis y Korch, con mejoras subrayadas.Figura extaída desde :cite:`antecedentesProcImg2`.
 
 
 
 .. VER PAPER 2012,2013,2015. 
 .. https://en.wikipedia.org/wiki/Similarity_measure
 
-Otra aproximación que se ha empleado para la detección de fallas, es la expuesta por Buza, Omanovic y Huseinovic en :cite:`antecedentesProcImg3`, que consiste en realizar la obtención de imagenes o frames de video a partir de grabaciones realizadas con cámaras digitales montadas exteriormente a vehículos. El primer paso en esta aproximación consiste en transformar la imagen a color (en RGB) a escala de grises, para luego continuar con la segmentación de la imagen a través del thresholding (o limitado) de los valores en el histograma de imagen. Así, el límite de la imagen se calcula por medio del método de Otsu para el clustering en imágenes, que consiste en aplicar una fórmula matemática (ecuación (2) de :cite:`antecedentesProcImg3`) que realiza la división entre los valores de intensidad del histograma de manera que, se realice la división entre los pixeles del fondo y de los objetos, obteniendo una variación mínima de intensidad dentro de los elementos que componen cada una de estas clases y una variación considerable entre elementos de distintas clases. Luego, se extraen aquellas formas de la imagen que son lineales, por medio del valor de curvatura (eccentricity) y aquellas formas en la imagen que se encuentran conectadas al límite de ésta. Como salida, se obtiene una imagen intermedia con formas lineales, figuras conectadas al borde la imagen y, que no satisfacen el límite de Otsu removidas.  
+Otra aproximación que se ha empleado para la detección de fallas, es la expuesta por Buza, Omanovic y Huseinovic en :cite:`antecedentesProcImg3`, que consiste en realizar la obtención de imagenes o frames de video a partir de grabaciones realizadas con cámaras digitales montadas exteriormente a vehículos. El primer paso en esta aproximación consiste en transformar la imagen a color (en RGB) a escala de grises, para luego continuar con la segmentación de la imagen a través del thresholding (o limitado) de los valores en el histograma de imagen. Así, el límite de la imagen se calcula por medio del método de Otsu para el clustering en imágenes, que consiste en aplicar una fórmula matemática (ecuación (2) de :cite:`antecedentesProcImg3`) que realiza la división entre los valores de intensidad del histograma de manera que, se realice la división entre los pixeles del fondo y de los objetos, obteniendo una variación mínima de intensidad dentro de los elementos que componen cada una de estas clases y una variación considerable entre elementos de distintas clases. Luego, se extraen aquellas formas de la imagen que son lineales, por medio del valor de curvatura (eccentricity) y aquellas formas en la imagen que se encuentran conectadas al límite de ésta. Como salida, se obtiene una imagen intermedia con formas lineales, figuras conectadas al borde la imagen y que no satisfacen el límite de Otsu removidas.  
 
 
-Posteriormente, se procede a realizar la extracción de forma aplicando un algoritmo de clustering, donde se realiza la agrupación de los elementos en k clusters (definidos por el usuario) según su similitud en conjuntos o clusters de pixeles. El método seleccionado fue el Spectral Clustering, que se basa en aceptar como entrada una matriz de similitud, donde cada uno de los elementos (i,j) de ésta representa el grado de similitud de los puntos i y j, empleando para medir éste una fórmula de distancia Euclidiana normalizada por un factor de escala (ecuación (4) de :cite:`antecedentesProcImg3`). El factor de escala se calcula en base a los valores del histograma de imagen(ecuación 5 de :cite:`antecedentesProcImg3`). El funcionamiento de este método consiste en realizar una reducción de dimensionalidad, computando los eigen valores en la matriz de similitud, para luego realizar el clustering en menos dimensiones.
-
-
-.. Continuar con "Identificacion y extraccion de potholes" PAPER 2013.
 .. DEFINIR EIGEN VALUES Y EIGEN VECTORS!!
+Posteriormente, se procede a realizar la extracción de forma aplicando un algoritmo de clustering, donde se realiza la agrupación de los elementos en k clusters (definidos por el usuario) según su similitud en conjuntos o clusters de pixeles. El método seleccionado fue el Spectral Clustering, que se basa en aceptar como entrada una matriz de similitud, donde cada uno de los elementos (i,j) de ésta representa el grado de similitud de los puntos i y j, empleando para medir éste una fórmula de distancia Euclidiana normalizada por un factor de escala (ecuación (4) de :cite:`antecedentesProcImg3`). El factor de escala se calcula en base a los valores del histograma de imagen(ecuación 5 de :cite:`antecedentesProcImg3`). El funcionamiento de este método consiste en realizar una reducción de dimensionalidad, computando los eigen valores en la matriz de similitud, para luego realizar el clustering con menos dimensiones.
+
+El próximo paso consiste en seleccionar de la imagen intermedia un conjunto de "semillas" o puntos, tales que cada uno de esos puntos se emplea como una representación de otros 50 puntos para el próximo paso; Ésto se realiza con el fin de reducir el tiempo de cómputo. Estas semillas se emplean para la extracción de la región del bache vertical, donde se considera cada una de éstas eligiendo aquellas cuyas coordenadas tengan el valor mayor y menor en Y y por medio de la inspección de la imagen clusterizada, se procede a seleccionar los pixeles cuyos valores de intensidad sean mas proximos al valor de la semilla, obtieniendo así la región vertical del bache. El procedimiento anterior, se realiza de manera análoga para definir una región horizontal del hoyo, a excepción de que se seleccionan las semillas que tienen una coordenada con valor X mayor y menor (dentro del conjunto de las semillas), seleccionando aquellos pixeles más a la derecha y mas a la izquierda. Como pas final, se procede a unir los pixeles que componen la región del bache con líneas a fin de identificar su área y posición en la imagen. Este método fue testeado en MATLAB con la suit de imagenes integrada, con 50 imagenes seleccionadas de Google, donde 25 imágenes son hoyos, 10 grietas y el resto imagenes con reparaciones y areas sin defectos, lográndose una precisión del 80%.
+
+.. figure:: procesoIdentificacionPotholes.png
+
+   Proceso de extracción de potholes. Extraído desde :cite:`antecedentesProcImg3`.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
