@@ -289,6 +289,7 @@ Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como p
 	Efecto de aliasing. 256x256 (2^8*2^8=65,536 muestras). 128x128(2^7*2^7=16,384 muestras).64x64(2^6*2^6=4,096 muestras)
 |
 
+
 .. figure:: imagenPixels.png
 
 	Representación de un array de imagen de 10 x 10
@@ -1358,7 +1359,7 @@ Estudios relativos a la detección de fallas
 
 En lo que respecta al procesamiento de imágenes, una de las aproximaciones que se han empleado dentro de esta área es la de Koch y Brikalis :cite:`antecedentesProcImg1`, que se centra en el reconocimiento de hoyos en el pavimento por medio de una variedad de imágenes provenientes de distintas fuentes (tomadas manualmente, Google o capturas de videos con calles), tomadas desde una distancia menor al metro del suelo y en distintos ángulos. En este estudio se emplea un modelo que utiliza las sombras en las imágenes para detectar la ubicación del hoyo dentro del pavimento, y posteriormente aislarlo de éste. Este modelo consiste de 3 fases: Segmentación de la imagen, extracción de forma y comparación de texturas. 
 
-Durante la segmentación de la imagen, se realiza la conversión de la imagen desde el modelo de color RGB a una escala de grises, se obtiene el histograma de imagen y se aplica la técnica de limitado de imagen para un valor, y se la convierte a una imagen binaria. Luego, en la etapa de extracción de forma se procede a aplicar thinning hasta obtener el esqueleto de imagen y a conectar las ramificaciones empleando un algoritmo de regresión elíptica, ya que debido a que el ángulo de captura de las imágenes no es perpendicular al suelo. En este estudio, se definieron parámetros para determinar el grado de curvatura de los elementos en la imagen (eccentricity o e, donde cuando más próximo a 0 es e, mayor es su curvatura), la posición del centroide (centro de gravedad de la imagen, que representa la posición promedio de todos los puntos en un plano) y el tamaño de la región. De esta manera, por medio de estos parámetros obtenidos experimentalmente se clasificaron las regiones en cada imagen como candidatas a un hoyo o, como una región externa al mismo. 
+Durante la segmentación de la imagen, se realiza la conversión de la imagen desde el modelo de color RGB a una escala de grises, se obtiene el histograma de imagen y se aplica la técnica de limitado de imagen para un valor, y se la convierte a una imagen binaria. Luego, en la etapa de extracción de forma se procede a aplicar thinning hasta obtener el esqueleto de imagen y a conectar las ramificaciones empleando un algoritmo de regresión elíptica,debido a que el ángulo de captura de las imágenes no es perpendicular al suelo. En este estudio, se definieron parámetros para determinar el grado de curvatura de los elementos en la imagen (eccentricity o e, donde cuando más próximo a 0 es e, mayor es su curvatura), la posición del centroide (centro de gravedad de la imagen, que representa la posición promedio de todos los puntos en un plano) y el tamaño de la región. De esta manera, por medio de estos parámetros obtenidos experimentalmente se clasificaron las regiones en cada imagen como candidatas a un hoyo o, como una región externa al mismo. 
 
 Finalmente, en la fase de comparación de texturas se caracterizan las mismas por medio de la aproximación estadística, y se emplea un vector de características que se genera con una serie de filtros para cada región interna y externa y, finalmente estas se comparan empleando un mecanismo de machine learning de MATLAB, en combinación con el set de herramientas de procesamiento de imágenes integrados. De esta forma, el entrenamiento se realizó con 50 muestras de imágenes seleccionadas aleatoriamente, y la prueba fue llevada a cabo con 70 muestras, que contenían no solo hoyos, sino también elementos típicos que se pueden encontrar en caminos pavimentados, como son grietas,reparaciones y juntas. El resultado de este estudio fue favorable, ya que se lograron valores de precisión cercanos al 80%, sin embargo, este modelo tiene la desventaja de depender fuertemente de condiciones de luz solar óptimas,por la naturaleza de su funcionamiento. Además, si el angulo del sol con respecto al suelo es perpendicular, la cantidad de sombra generada en la imagen es mínima por lo que algunos baches pueden pasar inadvertidos.
 
@@ -1372,14 +1373,29 @@ Finalmente, en la fase de comparación de texturas se caracterizan las mismas po
 Posteriormente, la aproximación de Koch y Brikalis definida en :cite:`antecedentesProcImg2` se extendió para incluir el procesamiento de frames de video, debido a que en el estudio anterior el procesamiento completo se debe aplicar a cada imagen individual, lo que resulta computacionalmente ineficiente, ya que el bache tiene que ser detectado sucesivamente dentro de cada cuadro de video. Con este método, empleando las características de la textura en un bache, la forma elíptica y la sombra que se forma alrededor de ésta, el procesamiento consiste en subdividir la región de obtención de texturas a un área central con una cierta cantidad de pixeles, y aplicar filtros a cada una de las regiones, con el fin de obtener vectores de características para cada región. Este procedimiento se emplea en el primer frame sobre un área de pavimento no dañada, obteniendo así un valor de vector de características para un sector intacto. Después, a medida que se obtienen los subsecuentes frames se compara el promedio de los vectores de características anterior con el nuevo promedio, si no existe una diferencia significativa se actualiza y en caso contrario se produce la detección de un hoyo. Adicionalmente, este método, una vez que detecta un bache procede a detener el algoritmo de comparación de texturas, e inicia un algoritmo de tracking de objetos basado en valores de texturas para efectuar el seguimiento de éste, hasta que ya no figura en la imagen. En este punto, se procede a reanudar el algoritmo de detección de fallas hasta detectar un nuevo bache en el pavimento.
 Este experimento, fue testeado capturando el video desde un robot equipado con una cámara, con un total de 39 videos (10180 frames), logrando una precisión del 75% y un recall 84%(ver machine learning). Sin embargo, esta aproximación tiene el inconveniente de que unicamente se considera que solamente un único hoyo entrará en el campo de visión a la vez.
 
-.. paper 2012,2013,2015 ver
+
+.. figure:: brilakisMejora.png
+   :scale: 60%
+
+   Método anterior de Brikalis y Korch, con mejoras subrayadas 
 
 
 
+.. VER PAPER 2012,2013,2015. 
+.. https://en.wikipedia.org/wiki/Similarity_measure
+
+Otra aproximación que se ha empleado para la detección de fallas, es la expuesta por Buza, Omanovic y Huseinovic en :cite:`antecedentesProcImg3`, que consiste en realizar la obtención de imagenes o frames de video a partir de grabaciones realizadas con cámaras digitales montadas exteriormente a vehículos. El primer paso en esta aproximación consiste en transformar la imagen a color (en RGB) a escala de grises, para luego continuar con la segmentación de la imagen a través del thresholding (o limitado) de los valores en el histograma de imagen. Así, el límite de la imagen se calcula por medio del método de Otsu para el clustering en imágenes, que consiste en aplicar una fórmula matemática (ecuación (2) de :cite:`antecedentesProcImg3`) que realiza la división entre los valores de intensidad del histograma de manera que, se realice la división entre los pixeles del fondo y de los objetos, obteniendo una variación mínima de intensidad dentro de los elementos que componen cada una de estas clases y una variación considerable entre elementos de distintas clases. Luego, se extraen aquellas formas de la imagen que son lineales, por medio del valor de curvatura (eccentricity) y aquellas formas en la imagen que se encuentran conectadas al límite de ésta. Como salida, se obtiene una imagen intermedia con formas lineales, figuras conectadas al borde la imagen y, que no satisfacen el límite de Otsu removidas.  
+
+
+Posteriormente, se procede a realizar la extracción de forma aplicando un algoritmo de clustering, donde se realiza la agrupación de los elementos en k clusters (definidos por el usuario) según su similitud en conjuntos o clusters de pixeles. El método seleccionado fue el Spectral Clustering, que se basa en aceptar como entrada una matriz de similitud, donde cada uno de los elementos (i,j) de ésta representa el grado de similitud de los puntos i y j, empleando para medir éste una fórmula de distancia Euclidiana normalizada por un factor de escala (ecuación (4) de :cite:`antecedentesProcImg3`). El factor de escala se calcula en base a los valores del histograma de imagen(ecuación 5 de :cite:`antecedentesProcImg3`). El funcionamiento de este método consiste en realizar una reducción de dimensionalidad, computando los eigen valores en la matriz de similitud, para luego realizar el clustering en menos dimensiones.
+
+
+.. Continuar con "Identificacion y extraccion de potholes" PAPER 2013.
+.. DEFINIR EIGEN VALUES Y EIGEN VECTORS!!
 
 
 
-
+ 
 
 
 
@@ -1406,6 +1422,6 @@ AGREGAR INFO DE 2 O 3 PAPERS
 Aplicaciones web y móviles existentes para la notificación de fallas
 --------------------------------------------------------------------
 
-ACA INCLUIR LOS SISTEMAS WEB EN "Ejemplos de otros sistemas para el registro de fallas.txt"
+.. ACA INCLUIR LOS SISTEMAS WEB EN "Ejemplos de otros sistemas para el registro de fallas.txt"
 
 

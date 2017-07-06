@@ -1,0 +1,30 @@
+
+@misc{libroProcesamientoImg8,
+    author    = "Nibcode Solutions",
+    title     = "El algebra lineal y el procesamiento digital de imágenes",
+    url       = "http://www.nibcode.com/es/blog/14/linear-algebra-and-digital-image-processing-part-III-affine-transformations"
+}
+
+@misc{libroProcesamientoImg9,
+    author    = "Harvey Rhody{,} Chester F. Carlson",
+    title     = "Geometric Image Transformations",
+    url       = "https://www.math.hkbu.edu.hk/~zeng/Teaching/math3615/ls.pdf"
+}
+
+@misc{libroProcesamientoImg10,
+    author    = "Yao Wang{,} Zhu Liu{,} Onur Gulerzyuz",
+    title     = "Image processing. Geometric transformations,warping,registration,morphing",
+    url       = "http://eeweb.poly.edu/~yao/EL5123/lecture12_ImageWarping.pdf"
+}
+
+@misc{libroProcesamientoImg11,
+    author    = "-",
+    title     = "Color image processing slides",
+    url       = "https://www.slideshare.net/lineking/10-color-image-processing-dip"
+}
+
+@misc{libroProcesamientoImg12,
+    author    = "-",
+    title     = "Otsu's método (técnica para la segmentación de imágenes)",
+    url       = "https://en.wikipedia.org/wiki/Otsu%27s_method"
+}

@@ -4,9 +4,12 @@
    :glob:
    :titlesonly:
 
-   Abstract/*
    Reconocimientos/*
    Resumen/*
+   Abstract/*
    OrganizacionContenidos/*
+
+   :numbered:
+   Introduccion/*
    Cap*/*
-   Bibliografia/*
+   Bibliografia/bibliografia
