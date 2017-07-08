@@ -1397,20 +1397,30 @@ El próximo paso consiste en seleccionar de la imagen intermedia un conjunto de 
    Proceso de extracción de potholes. Extraído desde :cite:`antecedentesProcImg3`.
 
 
+En otros estudios como :cite:`antecedentesProcImg4`,se especifica un sistema inteligente de transporte(ITS) para la advertencia de fallas, donde se integran métodos deterministas para el recononcimiento y ponderación de la gravedad de los baches, basados en su localización y características. Este sistema consiste en en emplear un vehículo con dipsotivo de sensado estacionario, que agrupa elementos tales como: una cámara de video digital CCD, GPS para la obtención de la ubicación, espacio de almacenamiento para las capturas, y comunicación Wi-Fi. Este dispositivo permite obtener muestras del pavimento que son enviadas a un algoritmo de detección de baches para análisis, y en caso de detectar una falla, se estima su criticidad por medio de un valor establecido y ésta junto con su ubicación puede ser enviada por medio de dispositivos ubicados al costado del camino, a un sistema para la administración de fallas por medio de Comunicaicón de corto Rango Dedicada(DSRC), WAVE o Wi-Fi. Así, cuando otro vehículo que emplee el mismo sistema circule cerca de la misma zona, el conductor puede ser advertido acerca de una falla.
 
 
+.. figure:: antecedenteSistemaDeteccionFallas.png
+
+   Sistema propuesto para la detección de fallas. Extraído desde :cite:`antecedentesProcImg4`.
 
 
-
-
-
-
-
-
+Con respecto al método de detección de hoyos en imágenes, el primer paso consiste segmentar la imagen aplicando para ésto el limitado de histograma basado en forma(HST,Histogram Shape-based thresholding) lo que produce una imagen binaria con las regiones segmentadas, y luego aplicar un filtro 9x9 a la imagen para reducir el ruido y la operación morfológica de closing, lo que permite eliminar el ruido producido por la segmentación y cerrar las regiones candidatas. A continuación, se computan las características para la selección de regiones candidatas, tales como: la linearidad, el tamaño, el nivel de compactación (definida en base al area y el perímetro de la región), la elipcidad, los centroides y el convex hull y se definen límites para éstos de manera de filtrar solo aquelals regiones que cumplan con éstos requisitos. Posteriormente, se aplica la técnica de intersección de histograma ordenado (OHI), cuya ecuación se encuentra definida en (4) de :cite:`antecedentesProcImg4`, donde se computa un valor producto de la comparación de los mínimos valores de histograma entre el histograma de una región candidata y el fondo de la imagen. Finalmente, si el desvío estándar entre ambos histogramas (region y fondo) es inferior a un valor límite, o si el valor de OHI es cercano a 1 y aplicando la operación de Sobel (operador para el la detección de bordes que computa la pendiente de la función de intensidad de la imagen) es cercano a 1, se considera que la región candidata y el fondo son parte de la misma superficie, por lo que la región no es hoyo. Las pruebas para este método se realizaron con la cámara del dispositivo de captura en Korea, implementando el algoritmo de selección de regiones en C++, capturando un total de 90 imagenes en 100 experimentos, logrando valor de accuracy de 73%, con una precisión del 80% y 73.3% de recall.
 
 
 
  
+
+
+
+
+
+
+
+
+
+.. NOTA: VER EL PAPER DE PROCESAMIENTO  DE IMAGENES HYPERESPECTRALES...
+.. NOTA: PONER 2 PAPERS PARA TRATAMIENTO DE GRIETAS
 
 
 
