@@ -1408,20 +1408,18 @@ En otros estudios como :cite:`antecedentesProcImg4`,se especifica un sistema int
 Con respecto al método de detección de hoyos en imágenes, el primer paso consiste segmentar la imagen aplicando para ésto el limitado de histograma basado en forma(HST,Histogram Shape-based thresholding) lo que produce una imagen binaria con las regiones segmentadas, y luego aplicar un filtro 9x9 a la imagen para reducir el ruido y la operación morfológica de closing, lo que permite eliminar el ruido producido por la segmentación y cerrar las regiones candidatas. A continuación, se computan las características para la selección de regiones candidatas, tales como: la linearidad, el tamaño, el nivel de compactación (definida en base al area y el perímetro de la región), la elipcidad, los centroides y el convex hull y se definen límites para éstos de manera de filtrar solo aquelals regiones que cumplan con éstos requisitos. Posteriormente, se aplica la técnica de intersección de histograma ordenado (OHI), cuya ecuación se encuentra definida en (4) de :cite:`antecedentesProcImg4`, donde se computa un valor producto de la comparación de los mínimos valores de histograma entre el histograma de una región candidata y el fondo de la imagen. Finalmente, si el desvío estándar entre ambos histogramas (region y fondo) es inferior a un valor límite, o si el valor de OHI es cercano a 1 y aplicando la operación de Sobel (operador para el la detección de bordes que computa la pendiente de la función de intensidad de la imagen) es cercano a 1, se considera que la región candidata y el fondo son parte de la misma superficie, por lo que la región no es hoyo. Las pruebas para este método se realizaron con la cámara del dispositivo de captura en Korea, implementando el algoritmo de selección de regiones en C++, capturando un total de 90 imagenes en 100 experimentos, logrando valor de accuracy de 73%, con una precisión del 80% y 73.3% de recall.
 
 
-
- 
-
+Otras investigaciones plantean un método mas directo, sin emplear machine learning o clasificación  para el procesamiento de baches, como en :cite:`antecedentesProcImg6` donde se creó una librería de imágenes empleando un vehículo con una cámara GoPro montada en el parabrisas y extrayendo frames de estas filmaciones. En esta metodología no se consideran otros elementos del camino como vehículos, arbustos o árboles al costado del camino, por lo que con cada imagen se calcula el desvío estandar de los canales de de color de la imagen, se filtran aquellos elementos que se encuentran en el rango de valores del color del asfalto (justo en frente del vehículo) y, se obtiene el convex hull del camino, para obtener una forma uniforme. Una vez aislado el camino, se convirte la imagen de color a escala de grises, se remueve el ruido aplicado una técnica de filtrado Gaussiano, y finalmente, se aplica el algoritmo de Canny (empleado para la detección de bordes en imágenes) que produce una imagen binaria, y se refina la imagen con el método de dilatación para eliminar contornos sobrantes producto de éste algoritmo. Este experimento se implementó en Visual C++ con OpenCV, empleando 53 imagenes en total con 97 fallas de la librería bajo distintos escenarios, a una velocidad de 40 km/h, logrando una precisión de 81.8% y un recall 74.4%. No obstante, este algoritmo tiene el inconveniente de que los baches que se encuentran en el borde del campo de visión del vehículo son mayormente ignorados por el algoritmo de Canny, y que ciertos tipos de bordes en el campo de visión del vehículo no son captados debido a la rigidez de el algoritmo de detección de bordes.   
 
 
+.. figure:: ejemploAntecedenteAlgoritCanny.png
+
+   Ejemplo de los pasos realizados en el método propuesto. Extraído de :cite:`antecedentesProcImg6`.
 
 
-
-
-
+Además de baches, también se han efectuado estudios donde se intentan aislar del pavimento como :cite:`antecedentesProcImg5`,donde la métodología elegida consiste en realizar un pre-procesamiento de la imagen, escalando ésta a una resolución pre establecida y aplicando una normalización de los valores de intensidad de la imagen y realizando una saturación de pixeles (donde se ajustan los valores de pixeles para que no superen un determinado límite). Luego, se subdivide la imagen en bloques de imagen no solapados y se generan las características de cada bloque, considerando solamente el desvío estandar y la media aritmética, y se aplica el algoritmo de K-Means para estas características. Así, la matriz de desvío estandar de cada uno de los bloques de la imagen de entrada, se resta contra una matriz de desvíos estándar perteneciente a una imagen con pavimento sano, y si la diferencia entre ámbos es significativa se este bloque se guarda en una imagen binaria nueva con cada uno de sus valores en 1(blanco), en caso contrario se le asigna 0 (negro).Finalizado el procedimiento anterior, se procede a asignar un nivel de severidad a la grieta calculando se realiza el thresholding con el método de Otsu a la imagen de entrada, seleccionando como límite el menor valor del limite de Otsu para el asfalto sano y la imagen con la grieta, obteniendo como salida el componente conectado. Luego la forma de la grieta se aproxima obteniendo el esqueleto, y eliminando los valores sobrantes con region opening. Por último, se calcula el grosor la grieta como el numero total de pixeles en una grieta dividido por el número de pixeles en el esqueleto de la grieta. 
 
 .. NOTA: VER EL PAPER DE PROCESAMIENTO  DE IMAGENES HYPERESPECTRALES...
 .. NOTA: PONER 2 PAPERS PARA TRATAMIENTO DE GRIETAS
-
 
 
 
@@ -1431,7 +1429,6 @@ Proyectos basados en sensores de vibración
 AGREGAR INFO DE 2 O 3 PAPERS
 
 PROYECTO "BUSNET" Y "POTHOLE PATROL" que emplean GPS con sensores de vibración.
-
 
 
 
