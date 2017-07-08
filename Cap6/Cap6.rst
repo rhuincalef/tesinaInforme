@@ -1421,6 +1421,12 @@ Además de baches, también se han efectuado estudios donde se intentan aislar d
 .. NOTA: VER EL PAPER DE PROCESAMIENTO  DE IMAGENES HYPERESPECTRALES...
 .. NOTA: PONER 2 PAPERS PARA TRATAMIENTO DE GRIETAS
 
+Alternativamente a este estudio, otra aproximación  definida en :cite:`antecedentesProcImg7` propone emplear los niveles de intensidad de una imagen en escala de grises para detectar la diferencia con el fondo, teniendo en consideración que la forma de la grieta es fina y que, existe una diferencia considerable de intensidades entre ésta y el resto de la imagen. Esta técnica consiste en aplicar una máscara de filtrado (o ventana) en varias iteraciones, filtrando aquellos pixeles cuyas intensidades sean mayores que un valor límite T establecido, cuyo valor se actualiza si el brillo de un pixel es mayor que el límite actual e ir modificando el tamaño de la mascara de filtrado que se aplica sobre la imagen de entrada. 
+
+Sin embargo, a medida que la máscara se aplica sobre la imagen se calcula un valor de circularidad Fc a través de una fórmula matemática (definido en (2) en :cite:`antecedentesProcImg7`) en base a la cantidad de pixeles filtrados en la zona actual de la imagen, que cuanto más próximo a 1 este indicará que la grieta tiende en mayor medida a ser una elipse. Así, a medida que este valor se modifica debido al proceso de filtrado aplicado iterativamente, éste es empleado para modificar el límite de intensidad que se utiliza para filtrar los pixeles.
+
+
+
 
 
 Proyectos basados en sensores de vibración
