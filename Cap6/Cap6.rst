@@ -1429,9 +1429,21 @@ Adicionalmente, a medida que la máscara se aplica sobre la imagen, se calcula u
 Proyectos basados en sensores de vibración
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-AGREGAR INFO DE 2 O 3 PAPERS
+.. PROYECTO "BUSNET" Y "POTHOLE PATROL" que emplean GPS con sensores de vibración.
 
-PROYECTO "BUSNET" Y "POTHOLE PATROL" que emplean GPS con sensores de vibración.
+Una de las investigaciones que hace empleo de acelerómetros es la de Eriksson,Girod,Hull,Newton,Madden y Balakrishnan :cite:`antecedentesProcImg8` donde se diseña un sistema para la detección de baches que captura elementos en el camino (pudiendo ser éstos:cruces de peatón, ), determina la localización del mismo con GPS y envía estos datos a un servidor para clasificación. De esta forma, la arquitectura general del sistema consiste en 3 módulos: El módulo de sensado, el módulo de detección de hoyos y el módulo de clasificación;
+El primer módulo, se compone por 3 acelerómetros 380-Hz de tres ejes, ubicados 2 en la parte delantera y uno en la parte trasera de la cabina del vehículo, de manera que las mediciones se capturen por éstos 3 y se reduzca la posibilidad de detectar incorrectamente un cierre de puertas, frenada brusca del chofer, el paso por puentes (entre otras) como un hoyo. De ésta manera, cuando en el recorrido por un sendero vial se atraviesa un bache, se capturan los abruptos cambios de energía entre los ejes X y Z, y el stream se envía directamente al módulo de sensado. Este módulo, divide cada uno de los streams con las vibraciones en 256 muestras o windows, y posteriormente aplica una serie de filtros (definidos en la sección :cite:`antecedentesProcImg8`) a cada uno de éstas muestras por medio de la aplicación de una fórmula matemática que hace uso de un valor límite "t", que permite regular la tolerancia de éstos para considerar algo como bache o no. Estos filtros permiten filtrar sólo aquellos frames que cumplan las características de interés tales como: frames donde existan diferencias de energía en los sensores pero el vehículo se encuentre en marcha, o aquellas muestras donde la variación sea mímina (de acuerdo con el límite fijado para el filtro). Para este estudio, estos filtros se calibraron a través de varias pruebas para asignar un valor t a cada uno de los filtros, de manera que se maximice la precisión en la detección de baches.
+
+Posteriormente, los datos filtrados junto con la fecha y la localización obtenida por GPS, cuando se tiene una conexión de interner disponible, pueden ser enviados a través de una red Wifi abierta o, de la red de paquetes de datos de una compañía celular, al servidor central. En este servidor se mantiene una base de datos de las detecciones, realiza un clustering de las muestras enviadas, considerando que solamente K eventos pueden ocurrir en una localización dada mientras el vehículo se mueve en una dirección, de manera que se restringan por esta frecuencia de ocurrencias aquellos eventos que no son fallas (tales como la vibración dentro del vehículo en movimiento).
+
+.. figure:: arquitecturaAntecSensor.png
+
+   Arquitectura propuesta por Eriksson,Girod,Hull,Newton,Madden y Balakrishnan. Extraído desde :cite:`antecedentesProcImg8`.
+
+En este estudio, se entrenaron los filtros por medio de muestras tomadas manualmente y algunos datos semi-automáticos (sólo contienen las variaciones del sensor de vibración, sin especificar ubicación o fecha) evaluando los valores para t que brindan el mayor valor en la fórmula, para despues validar este algoritmo con otro conjunto de datos recolectados de manera semi-automática. Los resultados obtenidos fueron satisfactorios, aunque este método tiene el defecto de detectar algunos elementos (como bocas de tormenta) que producen variaciones similares a baches como baches, y que para esta técnica funcione las ruedas del vehículo deben circular sobre el bache, por lo que si éste se ubica entre medio de las ruedas, no es sensado.
+
+
+
 
 
 
