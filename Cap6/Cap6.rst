@@ -1440,11 +1440,19 @@ Posteriormente, los datos filtrados junto con la fecha y la localización obteni
 
    Arquitectura propuesta por Eriksson,Girod,Hull,Newton,Madden y Balakrishnan. Extraído desde :cite:`antecedentesProcImg8`.
 
-En este estudio, se entrenaron los filtros por medio de muestras tomadas manualmente y algunos datos semi-automáticos (sólo contienen las variaciones del sensor de vibración, sin especificar ubicación o fecha) evaluando los valores para t que brindan el mayor valor en la fórmula, para despues validar este algoritmo con otro conjunto de datos recolectados de manera semi-automática. Los resultados obtenidos fueron satisfactorios, aunque este método tiene el defecto de detectar algunos elementos (como bocas de tormenta) que producen variaciones similares a baches como baches, y que para esta técnica funcione las ruedas del vehículo deben circular sobre el bache, por lo que si éste se ubica entre medio de las ruedas, no es sensado.
+En este estudio, se entrenaron los filtros por medio de muestras tomadas manualmente (donde se registraba el tipo de evento que produce la variación en el acelerómetro, además de su fecha y posición) y algunos datos semi-automáticos (sólo contienen las variaciones del sensor de vibración, sin especificar ubicación o fecha) evaluando los valores para t que brindan el mayor valor en la fórmula, para despues validar este algoritmo con otro conjunto de datos recolectados de manera semi-automática. Los resultados obtenidos fueron satisfactorios, aunque este método tiene el defecto de detectar algunos elementos (como bocas de tormenta) que producen variaciones similares a baches como baches, y que para esta técnica funcione las ruedas del vehículo deben circular sobre el bache, por lo que si éste se ubica entre medio de las ruedas, no es sensado.
 
 
+.. MOMENTO ESTADISTICO -->
+.. https://es.wikibooks.org/wiki/Apuntes_matem%C3%A1ticos/Estad%C3%ADstica/Cap%C3%ADtulo_3/Momentos
 
-
+.. PAPERS TENTATIVOS:
+..                   -2011, Mednis, Strazdins,Zviedris "Real time pothole detection using Android"
+..                   -2011, "Road Condition monitoring using on-board three-axis acelerometer"
+..                   -2013, "Assessment of vehicular transportation quality via smartphones"
+..                    
+..                   -2014, "Detection and localization of potholes in roadways using smartphones"
+..                   -
 
 
 Proyectos basados en el uso de reconstrucción 3D
