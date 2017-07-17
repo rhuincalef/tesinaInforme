@@ -28,3 +28,70 @@
     title     = "Otsu's método (técnica para la segmentación de imágenes)",
     url       = "https://en.wikipedia.org/wiki/Otsu%27s_method"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@misc{libroProcesamientoImg13,
+    title     = { Otsu's Method },
+    howpublished  = {\url{ https://en.wikipedia.org/wiki/Otsu's_method }}
+}
+
+
+@misc{libroProcesamientoImg13,
+    author    = "Wikipedia",
+    title     = "Otsu's Method",
+    url       = "https://en.wikipedia.org/wiki/Otsu%27s_method"
+}
+
+
+
+@misc{libroProcesamientoImg14,
+    author    = "",
+    title     = "Similarity Measure.",
+    url       = "https://en.wikipedia.org/wiki/Similarity_measure"
+}
+
+
+@misc{libroProcesamientoImg15,
+    author    = "",
+    title     = "Spectral Clustering",
+    url       = "https://en.wikipedia.org/wiki/Spectral_clustering"
+}
+
+
+
+
+
+
+
