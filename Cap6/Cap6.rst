@@ -1460,14 +1460,14 @@ En otros estudios como :cite:`antecedentesProcImg9` se han centrado en clasifica
 
 .. TODO: COMPLETAR ESTE PARRAFO!!!
 
-Sin embargo, con el avance de la tecnología móvil se han efectuado estudios como :cite:`antecedentesProcImg10` y :cite:`antecedentesProcImg11` que hacen uso de un acelerómetro embebido en dispositivos Android, en combinación con otros sensores en éste, para la captura de datos relativos a un bache en el pavimento. En :cite:`antecedentesProcImg10` ....
+Sin embargo, con el avance de la tecnología móvil se han efectuado estudios como :cite:`antecedentesProcImg10` y :cite:`antecedentesProcImg11` que hacen uso de un acelerómetro embebido en dispositivos Android, en combinación con otros sensores en éste, para el sensado de hoyos sobre el pavimento. En :cite:`antecedentesProcImg10`, se emplean no solo los datos del acelerómetro, sino también del giróscopo y del compas digital. En esta aproximación, se realizó un análisis de las características que proporcionarían mayor precisión donde se  emplearon dos aplicaciones existentes para los dispositivos Android: "Sensor Logger" que permite obtener los datos de los tres sensores y "Event Timestamper" que permite registrar la fecha y hora de ocurrencia de los eventos con el fin asignar un label a cada uno de los eventos capturados. Posteriormente, se les aplico un filtro a las muestras para acotar el rango de frecuencias y, para reducir el uso de memoria, se realizó la suma de la información vectorial de los sensores para la extracción de features. Luego, durante la extracción de características se empleo el framework para la extracción de features de señales de una dimensión jAudio, se seleccionaron las características con mayor grado de correlación y, se probaron varios modelos de clasificación de Machine Learning de la herramienta WEKA seleccionando una red neuronal Bayesiana. Durante la selección del modelo Machine Learning, se realizaron distintas pruebas y se agruparon los eventos de ciruclación en distintas clases entre las que se encuentran: Eventos de Caminos, eventos de conducción(aquellos relativos al giro en ambas direcciones o frenadas ), movimiento del celular o conducción suave. 
 
-
+Finalmente, durante la etapa de prueba se ejecutó la aplicación de logging de eventos y el algoritmo de clasificación en el dispositivo y, en lugar de emplear un timestamping, se dividió la señal del sensor en segmentos o ventanas de 5 segundos,  realizando la clasificación tan pronto como el tiempo de la ventana se complete. De esta forma, se adquirieron 1196 ventanas para testeo, y los resultados se superponieron sobre el video del recorrido captado por una cámara de video, produciendo como resultado final la grabación que marca los instantes en los que se circula por un bache. La precisión obtenidas este método fue de 86% con muestras reales.
 
 
 Mientras que el sistema RSMS(Roadway State Monitoring System) de información geográfica (GIS) en :cite:`antecedentesProcImg11` se empleó una aplicación local en el dispositivo para la captura de datos, programada en Java con Android SDK, que se comunica por medio del estándar SOAP (empleando XML) con una aplicación web.  En este sistema, el dipositivo de captura se encuentra colocado de forma horizontal sobre el suelo para que el eje Y del acelerómetro coincida con el sentido circulación, siendo el eje Z perpendicular a éste. Los datos sensados durante la captura, son leídos por la aplicación local en Java, la cual aplica un filtro para reducir el ruido en la señal y, junto con la información provista por un GPS(localización, velocidad,latitud y longitud) y la información relativa al compás digital del dispositivo (grados azimuth que miden la orientación del dispotivo) se envían al servidor web, por medio de una conexión Wifi si esta disponible o una red GPRS.
 
-El servidor al recibir esta información, realiza el cálculo del valor VIZIR (:cite:`antecedentesProcImg101`) que asigna un índice a la muestra, que permite estimar el daño en la superficie del pavimento y clasificarlo en base a una escala en éste. Una vez clasificada la muestra, se registra en una base de datos local en MySql, y se emplea la API de Google Maps (servidor LBS ) para indicar la ubicación de las fallas en un mapa y, además se añade funcionalidad para filtrado de fallas por fecha y por estación.
+El servidor al recibir esta información, realiza el cálculo del valor VIZIR (:cite:`antecedentesProcImg101`) que asigna un índice a la muestra,con el fin de estimar el daño en la superficie del pavimento y asignarle una categoría a los valores en la escala de éste. Una vez clasificada la muestra, se registra en una base de datos local en MySql, y se emplea la API de Google Maps (servidor LBS ) para indicar la ubicación de las fallas en un mapa y, además se añade funcionalidad para filtrado de fallas por fecha y por estación.
 
 
 .. figure:: arquitecturaRSMS.png
@@ -1475,8 +1475,6 @@ El servidor al recibir esta información, realiza el cálculo del valor VIZIR (:
 
    Arquitectura del sistema propuesto. Extraído desde :cite:`antecedentesProcImg11`.
      
-
-
 
 
 Proyectos basados en el uso de reconstrucción 3D
