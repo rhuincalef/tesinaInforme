@@ -1431,8 +1431,8 @@ Proyectos basados en sensores de vibración
 
 .. PROYECTO "BUSNET" Y "POTHOLE PATROL" que emplean GPS con sensores de vibración.
 
-Una de las investigaciones que hace empleo de acelerómetros es la de Eriksson,Girod,Hull,Newton,Madden y Balakrishnan :cite:`antecedentesProcImg8` donde se diseña un sistema para la detección de baches que captura elementos en el camino (pudiendo ser éstos:cruces de peatón, ), determina la localización del mismo con GPS y envía estos datos a un servidor para clasificación. De esta forma, la arquitectura general del sistema consiste en 3 módulos: El módulo de sensado, el módulo de detección de hoyos y el módulo de clasificación;
-El primer módulo, se compone por 3 acelerómetros 380-Hz de tres ejes, ubicados 2 en la parte delantera y uno en la parte trasera de la cabina del vehículo, de manera que las mediciones se capturen por éstos 3 y se reduzca la posibilidad de detectar incorrectamente un cierre de puertas, frenada brusca del chofer, el paso por puentes (entre otras) como un hoyo. De ésta manera, cuando en el recorrido por un sendero vial se atraviesa un bache, se capturan los abruptos cambios de energía entre los ejes X y Z, y el stream se envía directamente al módulo de sensado. Este módulo, divide cada uno de los streams con las vibraciones en 256 muestras o windows, y posteriormente aplica una serie de filtros (definidos en la sección :cite:`antecedentesProcImg8`) a cada uno de éstas muestras por medio de la aplicación de una fórmula matemática que hace uso de un valor límite "t", que permite regular la tolerancia de éstos para considerar algo como bache o no. Estos filtros permiten filtrar sólo aquellos frames que cumplan las características de interés tales como: frames donde existan diferencias de energía en los sensores pero el vehículo se encuentre en marcha, o aquellas muestras donde la variación sea mímina (de acuerdo con el límite fijado para el filtro). Para este estudio, estos filtros se calibraron a través de varias pruebas para asignar un valor t a cada uno de los filtros, de manera que se maximice la precisión en la detección de baches.
+Una de las investigaciones que hace empleo de acelerómetros es la de Eriksson,Girod,Hull,Newton,Madden y Balakrishnan :cite:`antecedentesProcImg8` donde se diseña un sistema para la detección de baches que captura elementos en el camino (pudiendo ser éstos:cruces de peatón, ), determina la localización del mismo con GPS y envía estos datos a un servidor para clasificación. De esta forma, la arquitectura general del sistema consiste en 3 módulos: El módulo de sensado, el módulo de detección de baches y el módulo de clasificación;
+El primer módulo, se compone por 3 acelerómetros 380-Hz que sensan en tres ejes X,Y,Z, ubicados 2 en la parte delantera y uno en la parte trasera de la cabina del vehículo, de manera que las mediciones se capturen por éstos 3 y se reduzca la posibilidad de detectar incorrectamente un cierre de puertas, frenada brusca del chofer, el paso por puentes (entre otras) como un hoyo. De ésta manera, cuando en el recorrido por un sendero vial se atraviesa un bache, se capturan los abruptos cambios de energía entre los ejes X y Z, la fecha y la aceleración, que posteriormente son enviados directamente al módulo de sensado. Este módulo, divide cada uno de los streams de información de los 3 ejes con las vibraciones, en 256 muestras o windows, y posteriormente aplica una serie de filtros (definidos en la sección :cite:`antecedentesProcImg8`) a cada uno de éstas muestras por medio de la aplicación de una fórmula matemática que hace uso de un valor límite "t", que permite regular la tolerancia de éstos para considerar algo como bache o no. Estos filtros permiten filtrar sólo aquellos frames que cumplan las características de interés tales como: frames donde existan diferencias de energía en los sensores pero el vehículo se encuentre en marcha, o aquellas muestras donde la variación sea mímina (de acuerdo con el límite fijado para el filtro). Para este estudio, estos filtros se calibraron a través de varias pruebas para asignar un valor t a cada uno de los filtros, de manera que se maximice la precisión en la detección de baches.
 
 Posteriormente, los datos filtrados junto con la fecha y la localización obtenida por GPS, cuando se tiene una conexión de interner disponible, pueden ser enviados a través de una red Wifi abierta o, de la red de paquetes de datos de una compañía celular, al servidor central. En este servidor se mantiene una base de datos de las detecciones, realiza un clustering de las muestras enviadas, considerando que solamente K eventos pueden ocurrir en una localización dada mientras el vehículo se mueve en una dirección, de manera que se restringan por esta frecuencia de ocurrencias aquellos eventos que no son fallas (tales como la vibración dentro del vehículo en movimiento).
 
@@ -1442,17 +1442,41 @@ Posteriormente, los datos filtrados junto con la fecha y la localización obteni
 
 En este estudio, se entrenaron los filtros por medio de muestras tomadas manualmente (donde se registraba el tipo de evento que produce la variación en el acelerómetro, además de su fecha y posición) y algunos datos semi-automáticos (sólo contienen las variaciones del sensor de vibración, sin especificar ubicación o fecha) evaluando los valores para t que brindan el mayor valor en la fórmula, para despues validar este algoritmo con otro conjunto de datos recolectados de manera semi-automática. Los resultados obtenidos fueron satisfactorios, aunque este método tiene el defecto de detectar algunos elementos (como bocas de tormenta) que producen variaciones similares a baches como baches, y que para esta técnica funcione las ruedas del vehículo deben circular sobre el bache, por lo que si éste se ubica entre medio de las ruedas, no es sensado.
 
-
 .. MOMENTO ESTADISTICO -->
 .. https://es.wikibooks.org/wiki/Apuntes_matem%C3%A1ticos/Estad%C3%ADstica/Cap%C3%ADtulo_3/Momentos
 
 .. PAPERS TENTATIVOS:
-..                   -2011, Mednis, Strazdins,Zviedris "Real time pothole detection using Android"
+..                   -2011, Mednis, Strazdins,Zviedris "Real time pothole detection using Android" (No USADO)
 ..                   -2011, "Road Condition monitoring using on-board three-axis acelerometer"
 ..                   -2013, "Assessment of vehicular transportation quality via smartphones"
-..                    
+    
 ..                   -2014, "Detection and localization of potholes in roadways using smartphones"
-..                   -
+
+..                   -2016, "Pothole detection through IoT" y "Automatic detection of Potholes and Humps on Roads to aid drivers",("Pothole detection and inter vehicular communication(2014)") son exprimentos con sensores ultrasonicos.
+
+En otros estudios como :cite:`antecedentesProcImg9` se han centrado en clasificar los baches según distintas métricas obtenidas a partir de las mediciones de un sensor acelerómetro, siguiendo algún estándar. En este sistema, se emplea un acelerómetro MEMS (dispositivo microscópico con partes mecanicas desplazables) modelo LIS33DE  en combinación con un GPS para capturar la aceleración de los hoyos y, estos valores son limpiados eliminando datos de encendido del sensor, aplicando interpolación para obtener los datos de aceleración faltantes y se remueven aquellos valores extremos que superan un cierto límite. La información  saneada de los ejes X,Y,Z, junto con la velocidad, la fecha y la ubicación se suben a un servidor central donde se calculan el Índice de Calidad de Circulación (RQI) (en base al desvío estandar de una métrica para medir el nivel de aspereza del pavimento calculada empleando la Transformada de Fourier) y en base a éste y a la velocidad estimada, se asigna un nivel de aspereza al pavimento según el código técnico de mantenimiento CJJ36 empleado en la República China. Para el expermiento se emplearon varios acelerómetros, ubicados de manera fija en la cabina del conductor, colocando el eje X para que concida con dirección en que se maneja, correspondiendo el eje Z a la dirección vertical y el eje Y a la horizontal (respecto al suelo), a lo largo de distintos tipos de caminos, obteniendo medidas sin variaciones de aspereza bruscas en caminos suaves y, fluctuaciones considerables en al circular por caminos con fallas viales. 
+
+.. http://www.gsmarena.com/glossary.php3?term=sensors
+
+.. TODO: COMPLETAR ESTE PARRAFO!!!
+
+Sin embargo, con el avance de la tecnología móvil se han efectuado estudios como :cite:`antecedentesProcImg10` y :cite:`antecedentesProcImg11` que hacen uso de un acelerómetro embebido en dispositivos Android, en combinación con otros sensores en éste, para la captura de datos relativos a un bache en el pavimento. En :cite:`antecedentesProcImg10` ....
+
+
+
+
+Mientras que el sistema RSMS(Roadway State Monitoring System) de información geográfica (GIS) en :cite:`antecedentesProcImg11` se empleó una aplicación local en el dispositivo para la captura de datos, programada en Java con Android SDK, que se comunica por medio del estándar SOAP (empleando XML) con una aplicación web.  En este sistema, el dipositivo de captura se encuentra colocado de forma horizontal sobre el suelo para que el eje Y del acelerómetro coincida con el sentido circulación, siendo el eje Z perpendicular a éste. Los datos sensados durante la captura, son leídos por la aplicación local en Java, la cual aplica un filtro para reducir el ruido en la señal y, junto con la información provista por un GPS(localización, velocidad,latitud y longitud) y la información relativa al compás digital del dispositivo (grados azimuth que miden la orientación del dispotivo) se envían al servidor web, por medio de una conexión Wifi si esta disponible o una red GPRS.
+
+El servidor al recibir esta información, realiza el cálculo del valor VIZIR (:cite:`antecedentesProcImg101`) que asigna un índice a la muestra, que permite estimar el daño en la superficie del pavimento y clasificarlo en base a una escala en éste. Una vez clasificada la muestra, se registra en una base de datos local en MySql, y se emplea la API de Google Maps (servidor LBS ) para indicar la ubicación de las fallas en un mapa y, además se añade funcionalidad para filtrado de fallas por fecha y por estación.
+
+
+.. figure:: arquitecturaRSMS.png
+   :scale: 50%  
+
+   Arquitectura del sistema propuesto. Extraído desde :cite:`antecedentesProcImg11`.
+     
+
+
 
 
 Proyectos basados en el uso de reconstrucción 3D
