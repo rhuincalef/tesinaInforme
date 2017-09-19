@@ -192,7 +192,8 @@ latex_elements['preamble'] += r"""
 \usepackage{fontspec}
 %Paquete usado para la impresion de los numeros de capitulo
 \usepackage{ifthen}
-
+%\usepackage{calc}
+\usepackage{pgf}
 %\setmainfont{Linux Libertine Mono O}
 
 % Sobreescritura de los comandos de latex generados por Sphinx automaticamente
@@ -260,14 +261,26 @@ latex_elements['preamble'] += r"""
 \def\capOrganizacion{4}
 \def\capBibliografia{12}
 
-%A partir de la introduccion se comienzan a numerar los capitulos
+%Constante para la cantidad de capitulos previos a la introduccion,
+%que no cuentan como capitulos enumerables en al tesis
+%NOTA:Este valor se decrementa al valor \thechapter para comenzar
+%numerando los contenidos de la tesina desde 1
+\def\cantCapitulosSinContenido{4}
+
+%A partir de la introduccion se comienzan a numerar los capitulos que son exclusivos
+% de contenido de la tesina
 \def\capIntroduccion{5}
+
+%\pgfmathsetmacro{\var}{20 + 4}
+%\message{Restando con PG : \var}  
 
 
 
 %Definiendo macro para agregar el nombre de capitulo al principio 
 \newcommand{\imprimirCapitulo}{
                 \message{ Capitulo de contenido }
+                \pgfmathsetmacro{\calcularCapitulo}{int(\thechapter - \cantCapitulosSinContenido) }
+                \message{Restando con PG : \calcularCapitulo}  
                 \node[
                     outer sep=0pt,
                     text width=2.5cm,
@@ -275,7 +288,7 @@ latex_elements['preamble'] += r"""
                     fill=myblue,
                     font=\color{white}\fontsize{80}{90}\selectfont,
                     align=center
-                ] (num) {\thechapter};
+                ] (num) {\calcularCapitulo};
                 \node[
                     rotate=90,
                     anchor=south,
@@ -293,10 +306,7 @@ latex_elements['preamble'] += r"""
  {\filleft
   \begin{tikzpicture}
       \message{Imprimiendo el nombre del capitulo \chaptertitlename : \thechapter : \value{chapter}--- }
-      \message{abstract : \capAbstract}
       %Si el capitulo no es contenido general se lo imprime con el numero al inicio
-      %\ifnum\thechapter>\capitulosgenerales
-      %\ifnum\thechapter=\capAbstract \imprimirCapitulo\else\ifnum\thechapter=\capReconocimientos \imprimirCapitulo\else\ifnum\thechapter=\capResumen \imprimirCapitulo\else\ifnum\thechapter=\capOrganizacion \imprimirCapitulo\else\ifnum\thechapter=\capBibliografia\fi\fi\fi\fi\fi
       \ifthenelse{\thechapter=\capAbstract \OR \thechapter=\capReconocimientos \OR \thechapter=\capResumen \OR \thechapter=\capOrganizacion \OR \thechapter=\capBibliografia}{ \message{No es capitulo contenido} }{\imprimirCapitulo}
   \end{tikzpicture}%
   }

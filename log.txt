@@ -443,7 +443,7 @@ zlibrarytopaths.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/luaotfload.sty(using write 
 cache: /home/rodrigo/.texmf-var/luatex-cache/generic)(using read cache: /var/lib
 /texmf/luatex-cache/generic /home/rodrigo/.texmf-var/luatex-cache/generic)
-luaotfload | main : initialization completed in 0.058 seconds)
+luaotfload | main : initialization completed in 0.054 seconds)
 (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2enc.def)
@@ -506,12 +506,12 @@ tf/linbiolinum-ri.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/f
 onts/otf/linbiolinum-ri.luc)
 
 LaTeX Font Warning: Font shape `EU2/LinuxBiolinumO(0)/ub/sc' undefined
-(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 203.
+(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 213.
 
 
 
 </home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/figs/lo
-go_uni.jpg, id=8, 830.10126pt x 1018.80624pt>
+go_uni.jpg, id=92, 830.10126pt x 1018.80624pt>
 <use /home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/fig
 s/logo_uni.jpg> (/usr/share/texmf/tex/latex/lm/ot1lmr.fd)<<ot1.cmap>>
 (/usr/share/texmf/tex/latex/lm/omllmm.fd)<<oml.cmap>>
@@ -532,29 +532,29 @@ g luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/lmsans10-bold.luc)(load luc
 (./Tesina-Huincalef-Urrutia.toc)
 
 LaTeX Font Warning: Font shape `EU2/lmss/bx/sc' undefined
-(Font)              using `EU2/lmss/bx/n' instead on input line 204.
+(Font)              using `EU2/lmss/bx/n' instead on input line 214.
 
 
 Package spanish Warning: Replacing `EU2/lmss/bx/sc' by 
-(spanish)                faked small caps on input line 204.
+(spanish)                faked small caps on input line 214.
 
 [1]
 Capítulo 1.
-Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter --- 
 No es capitulo contenidoLuaTeX warning (ext4): destination with the same identif
 ier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
 \relax 
-l.220 \chapter
+l.230 \chapter
             {Reconocimientos} [1]
 Capítulo 2.
-Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter --- 
 No es capitulo contenido [2]
 Capítulo 3.
-Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter --- 
 No es capitulo contenido [3]
 Capítulo 4.
-Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter --- 
 No es capitulo contenido [4]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -564,11 +564,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5]
 Capítulo 5.
-Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter ---  abstract : 1
- Capitulo de contenido (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts
-/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/
-generic/fonts/otf/lmromancaps10-regular.luc) [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
+Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter --- 
+ Capitulo de contenido  Restando con PG : 1(compiling luc: /var/lib/texmf/luatex
+-cache/generic/fonts/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.tex
+mf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc) [6] [7]
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 423--425
 [][]\EU2/lmr/m/n/10 -. Co-lor ima-ge pro-ces-sing sli-des. URL: [][]$https : / 
 / www . slideshare . net / lineking /
 [9] (./Tesina-Huincalef-Urrutia.ind)
@@ -578,37 +579,26 @@ Package sphinx Warning:
 ******** THIS VERSION SWALLOWS SECTION NUMBERS.********.
 
 
-Package lastpage Warning: Rerun to get the references right on input line 502.
-
-
 AED: lastpage setting LastPage
 [10] (./Tesina-Huincalef-Urrutia.aux)
 
-Package rerunfilecheck Warning: File `Tesina-Huincalef-Urrutia.out' has changed.
-
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 )
 (see the transcript file for additional information)
  594 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 5 attribute, 80 glue_spec, 5 attrib
 ute_list, 8 action, 2 write nodes
-   avail lists: 1:5,2:742,3:332,4:1263,5:214,6:4889,7:207,8:62,9:177,10:829
+   avail lists: 1:6,2:742,3:332,4:1263,5:215,6:4890,7:207,8:62,9:195,10:828
 </usr/share/texmf/fonts/opentype/public/lm/lmroman10-italic.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/share/texmf/fonts/ope
 ntype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lm
 romanslant10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-re
-gular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></usr/sha
-re/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texlive/texm
-f-dist/fonts/opentype/public/libertine/LinBiolinum_R.otf>
-Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 266755 bytes).
+gular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/sh
+are/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf/fonts/ope
+ntype/public/lm/lmroman12-regular.otf></usr/share/texlive/texmf-dist/fonts/opent
+ype/public/libertine/LinBiolinum_R.otf>
+Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 274480 bytes).
 Transcript written on Tesina-Huincalef-Urrutia.log.
 lualatex  'Tesina-Huincalef-Urrutia.tex'
 This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238) 
@@ -823,7 +813,7 @@ zlibrarytopaths.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/luaotfload.sty(using write 
 cache: /home/rodrigo/.texmf-var/luatex-cache/generic)(using read cache: /var/lib
 /texmf/luatex-cache/generic /home/rodrigo/.texmf-var/luatex-cache/generic)
-luaotfload | main : initialization completed in 0.062 seconds)
+luaotfload | main : initialization completed in 0.055 seconds)
 (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2enc.def)
@@ -886,7 +876,7 @@ tf/linbiolinum-ri.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/f
 onts/otf/linbiolinum-ri.luc)
 
 LaTeX Font Warning: Font shape `EU2/LinuxBiolinumO(0)/ub/sc' undefined
-(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 203.
+(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 213.
 
 
 
@@ -912,29 +902,29 @@ g luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/lmsans10-bold.luc)(load luc
 (./Tesina-Huincalef-Urrutia.toc)
 
 LaTeX Font Warning: Font shape `EU2/lmss/bx/sc' undefined
-(Font)              using `EU2/lmss/bx/n' instead on input line 204.
+(Font)              using `EU2/lmss/bx/n' instead on input line 214.
 
 
 Package spanish Warning: Replacing `EU2/lmss/bx/sc' by 
-(spanish)                faked small caps on input line 204.
+(spanish)                faked small caps on input line 214.
 
 [1]
 Capítulo 1.
-Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter --- 
 No es capitulo contenidoLuaTeX warning (ext4): destination with the same identif
 ier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
 \relax 
-l.220 \chapter
+l.230 \chapter
             {Reconocimientos} [1]
 Capítulo 2.
-Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter --- 
 No es capitulo contenido [2]
 Capítulo 3.
-Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter --- 
 No es capitulo contenido [3]
 Capítulo 4.
-Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter --- 
 No es capitulo contenido [4]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -944,11 +934,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5]
 Capítulo 5.
-Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter ---  abstract : 1
- Capitulo de contenido (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts
-/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/
-generic/fonts/otf/lmromancaps10-regular.luc) [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
+Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter --- 
+ Capitulo de contenido  Restando con PG : 1(compiling luc: /var/lib/texmf/luatex
+-cache/generic/fonts/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.tex
+mf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc) [6] [7]
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 423--425
 [][]\EU2/lmr/m/n/10 -. Co-lor ima-ge pro-ces-sing sli-des. URL: [][]$https : / 
 / www . slideshare . net / lineking /
 [9] (./Tesina-Huincalef-Urrutia.ind)
@@ -977,7 +968,7 @@ gular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/sh
 are/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf/fonts/ope
 ntype/public/lm/lmroman12-regular.otf></usr/share/texlive/texmf-dist/fonts/opent
 ype/public/libertine/LinBiolinum_R.otf>
-Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 274615 bytes).
+Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 274480 bytes).
 Transcript written on Tesina-Huincalef-Urrutia.log.
 lualatex  'Tesina-Huincalef-Urrutia.tex'
 This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238) 
@@ -1192,7 +1183,7 @@ zlibrarytopaths.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/luaotfload.sty(using write 
 cache: /home/rodrigo/.texmf-var/luatex-cache/generic)(using read cache: /var/lib
 /texmf/luatex-cache/generic /home/rodrigo/.texmf-var/luatex-cache/generic)
-luaotfload | main : initialization completed in 0.061 seconds)
+luaotfload | main : initialization completed in 0.050 seconds)
 (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2enc.def)
@@ -1255,7 +1246,7 @@ tf/linbiolinum-ri.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/f
 onts/otf/linbiolinum-ri.luc)
 
 LaTeX Font Warning: Font shape `EU2/LinuxBiolinumO(0)/ub/sc' undefined
-(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 203.
+(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 213.
 
 
 
@@ -1281,29 +1272,29 @@ g luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/lmsans10-bold.luc)(load luc
 (./Tesina-Huincalef-Urrutia.toc)
 
 LaTeX Font Warning: Font shape `EU2/lmss/bx/sc' undefined
-(Font)              using `EU2/lmss/bx/n' instead on input line 204.
+(Font)              using `EU2/lmss/bx/n' instead on input line 214.
 
 
 Package spanish Warning: Replacing `EU2/lmss/bx/sc' by 
-(spanish)                faked small caps on input line 204.
+(spanish)                faked small caps on input line 214.
 
 [1]
 Capítulo 1.
-Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter --- 
 No es capitulo contenidoLuaTeX warning (ext4): destination with the same identif
 ier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
 \relax 
-l.220 \chapter
+l.230 \chapter
             {Reconocimientos} [1]
 Capítulo 2.
-Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter --- 
 No es capitulo contenido [2]
 Capítulo 3.
-Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter --- 
 No es capitulo contenido [3]
 Capítulo 4.
-Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter --- 
 No es capitulo contenido [4]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1313,11 +1304,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5]
 Capítulo 5.
-Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter ---  abstract : 1
- Capitulo de contenido (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts
-/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/
-generic/fonts/otf/lmromancaps10-regular.luc) [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
+Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter --- 
+ Capitulo de contenido  Restando con PG : 1(compiling luc: /var/lib/texmf/luatex
+-cache/generic/fonts/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.tex
+mf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc) [6] [7]
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 423--425
 [][]\EU2/lmr/m/n/10 -. Co-lor ima-ge pro-ces-sing sli-des. URL: [][]$https : / 
 / www . slideshare . net / lineking /
 [9] (./Tesina-Huincalef-Urrutia.ind)
@@ -1346,7 +1338,7 @@ gular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/sh
 are/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf/fonts/ope
 ntype/public/lm/lmroman12-regular.otf></usr/share/texlive/texmf-dist/fonts/opent
 ype/public/libertine/LinBiolinum_R.otf>
-Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 274615 bytes).
+Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 274480 bytes).
 Transcript written on Tesina-Huincalef-Urrutia.log.
 makeindex -s python.ist 'Tesina-Huincalef-Urrutia.idx'
 This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
@@ -1354,375 +1346,6 @@ Scanning style file ./python.ist.......done (7 attributes redefined, 0 ignored).
 Scanning input file Tesina-Huincalef-Urrutia.idx...done (0 entries accepted, 0 rejected).
 Nothing written in Tesina-Huincalef-Urrutia.ind.
 Transcript written in Tesina-Huincalef-Urrutia.ilg.
-lualatex  'Tesina-Huincalef-Urrutia.tex'
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238) 
- restricted \write18 enabled.
-(./Tesina-Huincalef-Urrutia.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 1 language(s) loaded.
-(/usr/share/texlive/texmf-dist/tex/generic/luatex85/luatex85.sty)
-(./sphinxmanual.cls
-Document Class: sphinxmanual 2017/03/26 v1.5.4 Document class (Sphinx manual)
-(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
-Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo)))
-(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def)<<t1.cmap>>)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-(/usr/share/texlive/texmf-dist/tex/generic/babel/luababel.def)
-(/usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-(/usr/share/texlive/texmf-dist/tex/generic/babel/luababel.def))
-(/usr/share/texlive/texmf-dist/tex/generic/hyph-utf8/loadhyph/loadhyph-es.tex
-UTF-8 Spanish hyphenation patterns
-(/usr/share/texlive/texmf-dist/tex/generic/hyph-utf8/patterns/tex/hyph-es.tex)))
-) (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty) (./sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty))))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
-(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg))
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
-(/usr/share/texlive/texmf-dist/tex/latex/threeparttable/threeparttable.sty)
-(./footnotehyper-sphinx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/mdwtools/footnote.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty) (./needspace.sty)
-(./sphinxhighlight.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty))))
-(/usr/share/texlive/texmf-dist/tex/generic/pdftex/pdfcolor.tex)
-** (sphinx) defining (legacy) text style macros without \sphinx prefix
-** if clashes with packages, set latex_keep_old_macro_names=False in conf.py
-) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/eqparbox/eqparbox.sty
-(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
-(/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-(/usr/share/texlive/texmf-dist/scripts/oberdiek/oberdiek.luatex.lua)))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty))
-
-Package hyperref Message: Driver (autodetected): hpdftex.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypcap.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-
-Package inputenc Warning: inputenc package ignored with utf8 based engines.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-luatex.def
-(/usr/share/texlive/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
-(/usr/share/texlive/texmf-dist/tex/luatex/ctablestack/ctablestack.sty)))
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg))
-(/usr/share/texmf/tex/latex/lm/lmodern.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
-ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex))
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
-f)))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
-tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
-tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
-.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
-ric.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
-e.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
-.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
-tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
-.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
-tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
-thmetics.code.tex)))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
-x)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
-code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
-.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
-x)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
-ode.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
-s.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
-ex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
-.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
-x)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
-tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
-x)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
-ode.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
-tex)))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-)
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
-.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
-.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
-.code.tex)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarytopaths.code.tex)))
-(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex)
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3pdfmode.def))
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
-(/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/luaotfload.sty(using write 
-cache: /home/rodrigo/.texmf-var/luatex-cache/generic)(using read cache: /var/lib
-/texmf/luatex-cache/generic /home/rodrigo/.texmf-var/luatex-cache/generic)
-luaotfload | main : initialization completed in 0.063 seconds)
-(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2enc.def)
-(/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2lmr.fd)(compiling luc: /var/li
-b/texmf/luatex-cache/generic/fonts/otf/lmroman10-regular.luc)(load luc: /home/ro
-drigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman10-regular.luc))
-(/usr/share/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
-*** you should *not* be loading the inputenc package
-*** XeTeX expects the source to be in UTF8 encoding
-*** some features of other encodings may conflict, resulting in poor output.
-(/usr/share/texmf/tex/latex/tipa/t3enc.def(compiling luc: /var/lib/texmf/luatex-
-cache/generic/fonts/otf/lmromanslant10-regular.luc)(load luc: /home/rodrigo/.tex
-mf-var/luatex-cache/generic/fonts/otf/lmromanslant10-regular.luc)(compiling luc:
- /var/lib/texmf/luatex-cache/generic/fonts/otf/lmroman10-italic.luc)(load luc: /
-home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman10-italic.luc)(com
-piling luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/lmroman10-bold.luc)(lo
-ad luc: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman10-bold.l
-uc) (/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2lmss.fd)(compiling luc: /v
-ar/lib/texmf/luatex-cache/generic/fonts/otf/lmsans10-regular.luc)(load luc: /hom
-e/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmsans10-regular.luc)))
-(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/block.tss)
- Captiulos de contenido general: 4+++  Antes del ifnum
-(/home//rodrigo//TESINA-2016-KINECT//DOCUMENTO_TESINA_FORMAL//tesinaInforme//_e
-stilos//title.sty
-
-LaTeX Warning: You have requested package `//home//rodrigo//TESINA-2016-KINECT//
-DOCUMENTO_TESINA_FORMAL//tesinaInforme//_estilos//title',
-               but the package provides `title'.
-
-)
-Writing index file Tesina-Huincalef-Urrutia.idx
-(./Tesina-Huincalef-Urrutia.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
-(/usr/share/texmf/tex/latex/tipa/t3cmr.fd)
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
-(./Tesina-Huincalef-Urrutia.out) (./Tesina-Huincalef-Urrutia.out)
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
-ABD: EveryShipout initializing macros
-*** you should *not* be loading the inputenc package
-*** XeTeX expects the source to be in UTF8 encoding
-*** some features of other encodings may conflict, resulting in poor output.
-(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/linbiolinum-r.luc)
-(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/linbiolinum-r
-.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/linbiolinum-r
-bo.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/linbio
-linum-rbo.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/linb
-iolinum-rb.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/ot
-f/linbiolinum-rb.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/o
-tf/linbiolinum-ri.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/f
-onts/otf/linbiolinum-ri.luc)
-
-LaTeX Font Warning: Font shape `EU2/LinuxBiolinumO(0)/ub/sc' undefined
-(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 203.
-
-
-
-</home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/figs/lo
-go_uni.jpg, id=92, 830.10126pt x 1018.80624pt>
-<use /home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/fig
-s/logo_uni.jpg> (/usr/share/texmf/tex/latex/lm/ot1lmr.fd)<<ot1.cmap>>
-(/usr/share/texmf/tex/latex/lm/omllmm.fd)<<oml.cmap>>
-(/usr/share/texmf/tex/latex/lm/omslmsy.fd)<<oms.cmap>>
-(/usr/share/texmf/tex/latex/lm/omxlmex.fd)<<omx.cmap>>
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)(compiling luc: /v
-ar/lib/texmf/luatex-cache/generic/fonts/otf/lmroman12-regular.luc)(load luc: /ho
-me/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman12-regular.luc)
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}</home/rodrigo/TESINA-2016-
-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/figs/logo_uni.jpg>](compiling luc: 
-/var/lib/texmf/luatex-cache/generic/fonts/otf/lmroman12-bold.luc)(load luc: /hom
-e/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman12-bold.luc)(compilin
-g luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/lmsans10-bold.luc)(load luc
-: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmsans10-bold.luc)
-(./Tesina-Huincalef-Urrutia.toc)
-
-LaTeX Font Warning: Font shape `EU2/lmss/bx/sc' undefined
-(Font)              using `EU2/lmss/bx/n' instead on input line 204.
-
-
-Package spanish Warning: Replacing `EU2/lmss/bx/sc' by 
-(spanish)                faked small caps on input line 204.
-
-[1]
-Capítulo 1.
-Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter ---  abstract : 1
-No es capitulo contenidoLuaTeX warning (ext4): destination with the same identif
-ier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-\relax 
-l.220 \chapter
-            {Reconocimientos} [1]
-Capítulo 2.
-Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter ---  abstract : 1
-No es capitulo contenido [2]
-Capítulo 3.
-Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter ---  abstract : 1
-No es capitulo contenido [3]
-Capítulo 4.
-Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter ---  abstract : 1
-No es capitulo contenido [4]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 33.09pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[5]
-Capítulo 5.
-Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter ---  abstract : 1
- Capitulo de contenido (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts
-/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/
-generic/fonts/otf/lmromancaps10-regular.luc) [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
-[][]\EU2/lmr/m/n/10 -. Co-lor ima-ge pro-ces-sing sli-des. URL: [][]$https : / 
-/ www . slideshare . net / lineking /
-[9] (./Tesina-Huincalef-Urrutia.ind)
-
-Package sphinx Warning: 
-******** ERROR !! PLEASE UPDATE titlesec.sty !!********
-******** THIS VERSION SWALLOWS SECTION NUMBERS.********.
-
-
-AED: lastpage setting LastPage
-[10] (./Tesina-Huincalef-Urrutia.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-)
-(see the transcript file for additional information)
- 594 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 5 attribute, 80 glue_spec, 5 attrib
-ute_list, 8 action, 2 write nodes
-   avail lists: 1:6,2:742,3:332,4:1263,5:215,6:4890,7:207,8:62,9:195,10:828
-</usr/share/texmf/fonts/opentype/public/lm/lmroman10-italic.otf></usr/share/texm
-f/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/share/texmf/fonts/ope
-ntype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lm
-romanslant10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-re
-gular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/sh
-are/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf/fonts/ope
-ntype/public/lm/lmroman12-regular.otf></usr/share/texlive/texmf-dist/fonts/opent
-ype/public/libertine/LinBiolinum_R.otf>
-Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 274615 bytes).
-Transcript written on Tesina-Huincalef-Urrutia.log.
 lualatex  'Tesina-Huincalef-Urrutia.tex'
 This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238) 
  restricted \write18 enabled.
@@ -1999,7 +1622,7 @@ tf/linbiolinum-ri.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/f
 onts/otf/linbiolinum-ri.luc)
 
 LaTeX Font Warning: Font shape `EU2/LinuxBiolinumO(0)/ub/sc' undefined
-(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 203.
+(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 213.
 
 
 
@@ -2025,29 +1648,29 @@ g luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/lmsans10-bold.luc)(load luc
 (./Tesina-Huincalef-Urrutia.toc)
 
 LaTeX Font Warning: Font shape `EU2/lmss/bx/sc' undefined
-(Font)              using `EU2/lmss/bx/n' instead on input line 204.
+(Font)              using `EU2/lmss/bx/n' instead on input line 214.
 
 
 Package spanish Warning: Replacing `EU2/lmss/bx/sc' by 
-(spanish)                faked small caps on input line 204.
+(spanish)                faked small caps on input line 214.
 
 [1]
 Capítulo 1.
-Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter --- 
 No es capitulo contenidoLuaTeX warning (ext4): destination with the same identif
 ier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
 \relax 
-l.220 \chapter
+l.230 \chapter
             {Reconocimientos} [1]
 Capítulo 2.
-Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter --- 
 No es capitulo contenido [2]
 Capítulo 3.
-Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter --- 
 No es capitulo contenido [3]
 Capítulo 4.
-Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter ---  abstract : 1
+Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter --- 
 No es capitulo contenido [4]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2057,11 +1680,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5]
 Capítulo 5.
-Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter ---  abstract : 1
- Capitulo de contenido (compiling luc: /var/lib/texmf/luatex-cache/generic/fonts
-/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/
-generic/fonts/otf/lmromancaps10-regular.luc) [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
+Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter --- 
+ Capitulo de contenido  Restando con PG : 1(compiling luc: /var/lib/texmf/luatex
+-cache/generic/fonts/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.tex
+mf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc) [6] [7]
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 423--425
 [][]\EU2/lmr/m/n/10 -. Co-lor ima-ge pro-ces-sing sli-des. URL: [][]$https : / 
 / www . slideshare . net / lineking /
 [9] (./Tesina-Huincalef-Urrutia.ind)
@@ -2090,6 +1714,376 @@ gular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/sh
 are/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf/fonts/ope
 ntype/public/lm/lmroman12-regular.otf></usr/share/texlive/texmf-dist/fonts/opent
 ype/public/libertine/LinBiolinum_R.otf>
-Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 274615 bytes).
+Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 274480 bytes).
+Transcript written on Tesina-Huincalef-Urrutia.log.
+lualatex  'Tesina-Huincalef-Urrutia.tex'
+This is LuaTeX, Version beta-0.80.0 (TeX Live 2015/Debian) (rev 5238) 
+ restricted \write18 enabled.
+(./Tesina-Huincalef-Urrutia.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 1 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/generic/luatex85/luatex85.sty)
+(./sphinxmanual.cls
+Document Class: sphinxmanual 2017/03/26 v1.5.4 Document class (Sphinx manual)
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo)))
+(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def)<<t1.cmap>>)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/luababel.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+(/usr/share/texlive/texmf-dist/tex/generic/babel/luababel.def))
+(/usr/share/texlive/texmf-dist/tex/generic/hyph-utf8/loadhyph/loadhyph-es.tex
+UTF-8 Spanish hyphenation patterns
+(/usr/share/texlive/texmf-dist/tex/generic/hyph-utf8/patterns/tex/hyph-es.tex)))
+) (/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty) (./sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty))))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/threeparttable/threeparttable.sty)
+(./footnotehyper-sphinx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/mdwtools/footnote.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty) (./needspace.sty)
+(./sphinxhighlight.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty))))
+(/usr/share/texlive/texmf-dist/tex/generic/pdftex/pdfcolor.tex)
+** (sphinx) defining (legacy) text style macros without \sphinx prefix
+** if clashes with packages, set latex_keep_old_macro_names=False in conf.py
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/eqparbox/eqparbox.sty
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
+(/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+(/usr/share/texlive/texmf-dist/scripts/oberdiek/oberdiek.luatex.lua)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypcap.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-luatex.def
+(/usr/share/texlive/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+(/usr/share/texlive/texmf-dist/tex/luatex/ctablestack/ctablestack.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/share/texmf/tex/latex/lm/lmodern.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3pdfmode.def))
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/luaotfload.sty(using write 
+cache: /home/rodrigo/.texmf-var/luatex-cache/generic)(using read cache: /var/lib
+/texmf/luatex-cache/generic /home/rodrigo/.texmf-var/luatex-cache/generic)
+luaotfload | main : initialization completed in 0.053 seconds)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2enc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2lmr.fd)(compiling luc: /var/li
+b/texmf/luatex-cache/generic/fonts/otf/lmroman10-regular.luc)(load luc: /home/ro
+drigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman10-regular.luc))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+(/usr/share/texmf/tex/latex/tipa/t3enc.def(compiling luc: /var/lib/texmf/luatex-
+cache/generic/fonts/otf/lmromanslant10-regular.luc)(load luc: /home/rodrigo/.tex
+mf-var/luatex-cache/generic/fonts/otf/lmromanslant10-regular.luc)(compiling luc:
+ /var/lib/texmf/luatex-cache/generic/fonts/otf/lmroman10-italic.luc)(load luc: /
+home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman10-italic.luc)(com
+piling luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/lmroman10-bold.luc)(lo
+ad luc: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman10-bold.l
+uc) (/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2lmss.fd)(compiling luc: /v
+ar/lib/texmf/luatex-cache/generic/fonts/otf/lmsans10-regular.luc)(load luc: /hom
+e/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmsans10-regular.luc)))
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/block.tss)
+ Captiulos de contenido general: 4+++  Antes del ifnum
+(/home//rodrigo//TESINA-2016-KINECT//DOCUMENTO_TESINA_FORMAL//tesinaInforme//_e
+stilos//title.sty
+
+LaTeX Warning: You have requested package `//home//rodrigo//TESINA-2016-KINECT//
+DOCUMENTO_TESINA_FORMAL//tesinaInforme//_estilos//title',
+               but the package provides `title'.
+
+)
+Writing index file Tesina-Huincalef-Urrutia.idx
+(./Tesina-Huincalef-Urrutia.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd)
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Tesina-Huincalef-Urrutia.out) (./Tesina-Huincalef-Urrutia.out)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+ABD: EveryShipout initializing macros
+*** you should *not* be loading the inputenc package
+*** XeTeX expects the source to be in UTF8 encoding
+*** some features of other encodings may conflict, resulting in poor output.
+(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/linbiolinum-r.luc)
+(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/linbiolinum-r
+.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/linbiolinum-r
+bo.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/linbio
+linum-rbo.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/linb
+iolinum-rb.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/ot
+f/linbiolinum-rb.luc)(compiling luc: /var/lib/texmf/luatex-cache/generic/fonts/o
+tf/linbiolinum-ri.luc)(load luc: /home/rodrigo/.texmf-var/luatex-cache/generic/f
+onts/otf/linbiolinum-ri.luc)
+
+LaTeX Font Warning: Font shape `EU2/LinuxBiolinumO(0)/ub/sc' undefined
+(Font)              using `EU2/LinuxBiolinumO(0)/m/n' instead on input line 213.
+
+
+
+</home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/figs/lo
+go_uni.jpg, id=92, 830.10126pt x 1018.80624pt>
+<use /home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/fig
+s/logo_uni.jpg> (/usr/share/texmf/tex/latex/lm/ot1lmr.fd)<<ot1.cmap>>
+(/usr/share/texmf/tex/latex/lm/omllmm.fd)<<oml.cmap>>
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd)<<oms.cmap>>
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd)<<omx.cmap>>
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)(compiling luc: /v
+ar/lib/texmf/luatex-cache/generic/fonts/otf/lmroman12-regular.luc)(load luc: /ho
+me/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman12-regular.luc)
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}</home/rodrigo/TESINA-2016-
+KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/figs/logo_uni.jpg>](compiling luc: 
+/var/lib/texmf/luatex-cache/generic/fonts/otf/lmroman12-bold.luc)(load luc: /hom
+e/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmroman12-bold.luc)(compilin
+g luc: /var/lib/texmf/luatex-cache/generic/fonts/otf/lmsans10-bold.luc)(load luc
+: /home/rodrigo/.texmf-var/luatex-cache/generic/fonts/otf/lmsans10-bold.luc)
+(./Tesina-Huincalef-Urrutia.toc)
+
+LaTeX Font Warning: Font shape `EU2/lmss/bx/sc' undefined
+(Font)              using `EU2/lmss/bx/n' instead on input line 214.
+
+
+Package spanish Warning: Replacing `EU2/lmss/bx/sc' by 
+(spanish)                faked small caps on input line 214.
+
+[1]
+Capítulo 1.
+Imprimiendo el nombre del capitulo Capítulo: 1: \c@chapter --- 
+No es capitulo contenidoLuaTeX warning (ext4): destination with the same identif
+ier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+\relax 
+l.230 \chapter
+            {Reconocimientos} [1]
+Capítulo 2.
+Imprimiendo el nombre del capitulo Capítulo: 2: \c@chapter --- 
+No es capitulo contenido [2]
+Capítulo 3.
+Imprimiendo el nombre del capitulo Capítulo: 3: \c@chapter --- 
+No es capitulo contenido [3]
+Capítulo 4.
+Imprimiendo el nombre del capitulo Capítulo: 4: \c@chapter --- 
+No es capitulo contenido [4]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 33.09pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[5]
+Capítulo 5.
+Imprimiendo el nombre del capitulo Capítulo: 5: \c@chapter --- 
+ Capitulo de contenido  Restando con PG : 1(compiling luc: /var/lib/texmf/luatex
+-cache/generic/fonts/otf/lmromancaps10-regular.luc)(load luc: /home/rodrigo/.tex
+mf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc) [6] [7]
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 423--425
+[][]\EU2/lmr/m/n/10 -. Co-lor ima-ge pro-ces-sing sli-des. URL: [][]$https : / 
+/ www . slideshare . net / lineking /
+[9] (./Tesina-Huincalef-Urrutia.ind)
+
+Package sphinx Warning: 
+******** ERROR !! PLEASE UPDATE titlesec.sty !!********
+******** THIS VERSION SWALLOWS SECTION NUMBERS.********.
+
+
+AED: lastpage setting LastPage
+[10] (./Tesina-Huincalef-Urrutia.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+)
+(see the transcript file for additional information)
+ 594 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 5 attribute, 80 glue_spec, 5 attrib
+ute_list, 8 action, 2 write nodes
+   avail lists: 1:6,2:742,3:332,4:1263,5:215,6:4890,7:207,8:62,9:195,10:828
+</usr/share/texmf/fonts/opentype/public/lm/lmroman10-italic.otf></usr/share/texm
+f/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/share/texmf/fonts/ope
+ntype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lm
+romanslant10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-re
+gular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-bold.otf></usr/sh
+are/texmf/fonts/opentype/public/lm/lmsans10-bold.otf></usr/share/texmf/fonts/ope
+ntype/public/lm/lmroman12-regular.otf></usr/share/texlive/texmf-dist/fonts/opent
+ype/public/libertine/LinBiolinum_R.otf>
+Output written on Tesina-Huincalef-Urrutia.pdf (12 pages, 274480 bytes).
 Transcript written on Tesina-Huincalef-Urrutia.log.
 make[1]: se sale del directorio '/home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/_build/latex'
