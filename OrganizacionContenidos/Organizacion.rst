@@ -1,23 +1,23 @@
 Organización de los contenidos
 ==============================
 
-Capítulo 5.Introducción
+Capítulo 1.Introducción
 -----------------------
 
 En este capitulo se introducen los objetivos de la tesina, el marco teórico y los desarrollos propuestos.
 
-Capítulo 6.Antecedentes de software para la gestión de fallas viales
+Capítulo 2.Antecedentes de software para la gestión de fallas viales
 --------------------------------------------------------------------
 
 Este capítulo comienza definiendo el concepto de falla, los tipos de material, tipos de reparación que se pueden efectuar sobre cada uno, y los tipos de falla que se corresponden sobre los distintos tipos de material. Durante este capítulo también se debaten antecedentes históricos, software y proyectos de investigación, relativos al sensado de fallas en distintos contextos.
 
-Capítulo 7.Dispositivos hardware y herramientas software para el sensado de fallas
+Capítulo 3.Dispositivos hardware y herramientas software para el sensado de fallas
 ----------------------------------------------------------------------------------
 
 El objetivo de este capítulo es enumerar los distintos tipos de dispositivos y sensores que pueden utilizarse para realizar la captura de irregularidades viales, sus principales características y funcionamiento. 
 Por otro lado, se expondrán librerías en distintos lenguajes de programación, y métodos de almacenamiento de las fallas empleados por los mismos.
 
-Capítulo 8.Técnicas de reconocimiento y procesamiento de fallas
+Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
 ---------------------------------------------------------------
 
 Durante el desarrollo de este capítulo se definirá el concepto de Machine Learning, sus usos, contextos de aplicación y algoritmos que brinda para el reconocimiento de patrones en conjuntos datos.Posteriormente, se expondrán aquellas técnicas empleadas para realizar la identificación, el saneamiento y la clasificación de los datos de una nube de puntos con datos de una falla.

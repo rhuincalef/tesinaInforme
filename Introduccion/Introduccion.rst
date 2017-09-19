@@ -35,10 +35,7 @@ La falta de innovación con respecto al registro y análisis del estado de las v
 Marco teórico
 -------------
 
-PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+.. PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 Desarrollos propuestos
@@ -77,5 +74,3 @@ Las actividades que se efectuarán para cumplir con el objetivo de la tesina se 
 11. Investigar el renderizado de archivos de nubes de puntos con WebGL.
 12. Integrar la funcionalidad de la aplicación web con los módulos de procesamiento de nubes de puntos desarrollados.
 13. Defensa de la tesina ante mesa examinadora.
-
-El diagrama de Gantt con las actividades se encuentra incluido en la sección de anexos del documento????. 

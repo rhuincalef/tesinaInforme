@@ -189,9 +189,8 @@ latex_elements['preamble'] += r"""
 \usepackage{etoolbox}
 \usepackage[titles]{tocloft}
 \usepackage{tikz}
+
 \usepackage{fontspec}
-%Paquete usado para la impresion de los numeros de capitulo
-\usepackage{ifthen}
 
 %\setmainfont{Linux Libertine Mono O}
 
@@ -243,76 +242,59 @@ latex_elements['preamble'] += r"""
 \pagestyle{normal}
 
 
-%Definiendo variables y logueando a consola
-%\def\foo{bar}
-%\message{Imprimiendo el nombre del capitulo \the\foo}
-
-% Los capitulos, secciones no numeradas llevan asterisco delante
-%\chapter*{Acknowledgements}%
-
-%Capitulos anteriores al contenido de la tesis (que no se numeran) 
-\def\capitulosgenerales{4}
-
-%Numeros de capitulos que no deben ser numerados
-\def\capAbstract{1}
-\def\capReconocimientos{2}
-\def\capResumen{3}
-\def\capOrganizacion{4}
-\def\capBibliografia{12}
-
-%A partir de la introduccion se comienzan a numerar los capitulos
-\def\capIntroduccion{5}
-
-
-
-%Definiendo macro para agregar el nombre de capitulo al principio 
-\newcommand{\imprimirCapitulo}{
-                \message{ Capitulo de contenido }
-                \node[
-                    outer sep=0pt,
-                    text width=2.5cm,
-                    minimum height=3cm,
-                    fill=myblue,
-                    font=\color{white}\fontsize{80}{90}\selectfont,
-                    align=center
-                ] (num) {\thechapter};
-                \node[
-                    rotate=90,
-                    anchor=south,
-                    font=\color{black}\Large\normalfont
-                ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};
-            }
-
-
 % Removiendo el numero de capitulo del inicio de c/u
-\message{ Captiulos de contenido general: \capitulosgenerales  +++ }
-\message{Antes del ifnum}
+%\usepackage{titlesec}
+%\titleformat{\chapter}[display]
+%  {\normalfont\bfseries}{}{0pt}{\Large}
 
-\titleformat{\chapter}[display]
-{\normalfont\bfseries\color{myblue}}
- {\filleft
-  \begin{tikzpicture}
-      \message{Imprimiendo el nombre del capitulo \chaptertitlename : \thechapter : \value{chapter}--- }
-      \message{abstract : \capAbstract}
-      %Si el capitulo no es contenido general se lo imprime con el numero al inicio
-      %\ifnum\thechapter>\capitulosgenerales
-      %\ifnum\thechapter=\capAbstract \imprimirCapitulo\else\ifnum\thechapter=\capReconocimientos \imprimirCapitulo\else\ifnum\thechapter=\capResumen \imprimirCapitulo\else\ifnum\thechapter=\capOrganizacion \imprimirCapitulo\else\ifnum\thechapter=\capBibliografia\fi\fi\fi\fi\fi
-      \ifthenelse{\thechapter=\capAbstract \OR \thechapter=\capReconocimientos \OR \thechapter=\capResumen \OR \thechapter=\capOrganizacion \OR \thechapter=\capBibliografia}{ \message{No es capitulo contenido} }{\imprimirCapitulo}
-  \end{tikzpicture}%
-  }
-{10pt}
-{\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily}
-[
-\vspace{-0.5ex} 
-\textcolor{myblue}{\rule{\textwidth}{0.9pt}}
-]
+\titleformat{\chapter}[display]{\bfseries\Large}
+    {\thechapter.}{20pt}{}
+
+
 
 %Identacion para cada parrafo
 \setlength\parindent{1.7cm}
+
+
 %Se sobreecribe el estilo por default del capitulo
 \definecolor{myblue}{RGB}{0,82,155}
-\makeatother
-"""
+
+%\ifnum \pdfstrcmp{'0'}{\thechapter}<=0
+
+%\ifnum \thesection>0
+%\ifnum \thechapter<0
+%  \titleformat{\chapter}[display]
+%    {\normalfont\bfseries\color{myblue}}{}{10pt}{
+%      \titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily{\textls[180]{\textsc{ }}}}
+%\else  
+  \titleformat{\chapter}[display]
+   {\normalfont\bfseries\color{myblue}}
+    {\filleft%
+      \begin{tikzpicture}
+      \node[
+        outer sep=0pt,
+        text width=2.5cm,
+        minimum height=3cm,
+        fill=myblue,
+        font=\color{white}\fontsize{80}{90}\selectfont,
+        align=center
+        ] (num) {\thechapter};
+      \node[
+        rotate=90,
+        anchor=south,
+        font=\color{black}\Large\normalfont
+        ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};  
+      \end{tikzpicture}%
+    }
+  {10pt}
+  {\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\LARGE\sffamily}
+  [
+    \vspace{-0.5ex} 
+    \textcolor{myblue}{\rule{\textwidth}{0.9pt}}
+  ]
+%\fi
+
+\makeatother"""
 
 
 

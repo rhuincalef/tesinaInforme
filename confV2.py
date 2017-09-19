@@ -189,9 +189,8 @@ latex_elements['preamble'] += r"""
 \usepackage{etoolbox}
 \usepackage[titles]{tocloft}
 \usepackage{tikz}
+
 \usepackage{fontspec}
-%Paquete usado para la impresion de los numeros de capitulo
-\usepackage{ifthen}
 
 %\setmainfont{Linux Libertine Mono O}
 
@@ -253,38 +252,13 @@ latex_elements['preamble'] += r"""
 %Capitulos anteriores al contenido de la tesis (que no se numeran) 
 \def\capitulosgenerales{4}
 
-%Numeros de capitulos que no deben ser numerados
-\def\capAbstract{1}
-\def\capReconocimientos{2}
-\def\capResumen{3}
-\def\capOrganizacion{4}
-\def\capBibliografia{12}
-
-%A partir de la introduccion se comienzan a numerar los capitulos
-\def\capIntroduccion{5}
-
-
-
-%Definiendo macro para agregar el nombre de capitulo al principio 
-\newcommand{\imprimirCapitulo}{
-                \message{ Capitulo de contenido }
-                \node[
-                    outer sep=0pt,
-                    text width=2.5cm,
-                    minimum height=3cm,
-                    fill=myblue,
-                    font=\color{white}\fontsize{80}{90}\selectfont,
-                    align=center
-                ] (num) {\thechapter};
-                \node[
-                    rotate=90,
-                    anchor=south,
-                    font=\color{black}\Large\normalfont
-                ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};
-            }
-
 
 % Removiendo el numero de capitulo del inicio de c/u
+%\usepackage{titlesec}
+%\titleformat{\chapter}[display]
+%  {\normalfont\bfseries}{}{0pt}{\Large}
+%\ifnum\value{chapter}>\capitulosgenerales
+
 \message{ Captiulos de contenido general: \capitulosgenerales  +++ }
 \message{Antes del ifnum}
 
@@ -293,11 +267,25 @@ latex_elements['preamble'] += r"""
  {\filleft
   \begin{tikzpicture}
       \message{Imprimiendo el nombre del capitulo \chaptertitlename : \thechapter : \value{chapter}--- }
-      \message{abstract : \capAbstract}
       %Si el capitulo no es contenido general se lo imprime con el numero al inicio
-      %\ifnum\thechapter>\capitulosgenerales
-      %\ifnum\thechapter=\capAbstract \imprimirCapitulo\else\ifnum\thechapter=\capReconocimientos \imprimirCapitulo\else\ifnum\thechapter=\capResumen \imprimirCapitulo\else\ifnum\thechapter=\capOrganizacion \imprimirCapitulo\else\ifnum\thechapter=\capBibliografia\fi\fi\fi\fi\fi
-      \ifthenelse{\thechapter=\capAbstract \OR \thechapter=\capReconocimientos \OR \thechapter=\capResumen \OR \thechapter=\capOrganizacion \OR \thechapter=\capBibliografia}{ \message{No es capitulo contenido} }{\imprimirCapitulo}
+      \ifnum\thechapter>\capitulosgenerales
+          \message{NUmero de capitulo mayor }
+          \node[
+            outer sep=0pt,
+            text width=2.5cm,
+            minimum height=3cm,
+            fill=myblue,
+            font=\color{white}\fontsize{80}{90}\selectfont,
+            align=center
+            ] (num) {\thechapter};
+           \node[
+            rotate=90,
+            anchor=south,
+            font=\color{black}\Large\normalfont
+            ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};
+        \else
+            \message{ NO ES CAPITULO}  
+       \fi
   \end{tikzpicture}%
   }
 {10pt}
