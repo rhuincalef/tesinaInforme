@@ -200,6 +200,13 @@ latex_elements['preamble'] += r"""
 \makeatletter
 \setcounter{page}{5}
 
+%Constante para la cantidad de capitulos previos a la introduccion,
+%que no cuentan como capitulos enumerables en al tesis
+%NOTA:Este valor se decrementa al valor \thechapter para comenzar
+%numerando los contenidos de la tesina desde 1
+\def\cantCapitulosSinContenido{4}
+
+
 
 \definecolor{azul-oscuro}{RGB}{76, 85, 255}
 \fancypagestyle{normal}{
@@ -259,13 +266,8 @@ latex_elements['preamble'] += r"""
 \def\capReconocimientos{2}
 \def\capResumen{3}
 \def\capOrganizacion{4}
-\def\capBibliografia{12}
+\def\capBibliografia{8}
 
-%Constante para la cantidad de capitulos previos a la introduccion,
-%que no cuentan como capitulos enumerables en al tesis
-%NOTA:Este valor se decrementa al valor \thechapter para comenzar
-%numerando los contenidos de la tesina desde 1
-\def\cantCapitulosSinContenido{4}
 
 %A partir de la introduccion se comienzan a numerar los capitulos que son exclusivos
 % de contenido de la tesina
@@ -316,6 +318,9 @@ latex_elements['preamble'] += r"""
 \vspace{-0.5ex} 
 \textcolor{myblue}{\rule{\textwidth}{0.9pt}}
 ]
+
+%Redefiniendo los capitulos para eliminar el numero de capitulo
+\renewcommand\thesection{\arabic{section}}        
 
 %Identacion para cada parrafo
 \setlength\parindent{1.7cm}
