@@ -288,7 +288,6 @@ latex_elements['preamble'] += r"""
 %A partir de la introduccion se comienzan a numerar los capitulos que son exclusivos
 % de contenido de la tesina
 \def\capIntroduccion{5}
-
 %\pgfmathsetmacro{\var}{20 + 4}
 %\message{Restando con PG : \var}  
 
@@ -314,11 +313,9 @@ latex_elements['preamble'] += r"""
                 ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};
             }
 
-
 % Removiendo el numero de capitulo del inicio de c/u
 \message{ Captiulos de contenido general: \capitulosgenerales  +++ }
 \message{Antes del ifnum}
-
 \titleformat{\chapter}[display]
 {\normalfont\bfseries\color{myblue}}
  {\filleft
@@ -334,45 +331,18 @@ latex_elements['preamble'] += r"""
 \vspace{-0.5ex} 
 \textcolor{myblue}{\rule{\textwidth}{0.9pt}}
 ]
-
 %Redefiniendo los capitulos para eliminar el numero de capitulo
 \renewcommand\thesection{\arabic{section}}        
-
 %Identacion para cada parrafo
 \setlength\parindent{1.7cm}
 %Se sobreecribe el estilo por default del capitulo
 \definecolor{myblue}{RGB}{0,82,155}
-
-
 %Redefiniendo el toc(tabla de contenidos del documento)
-%\usepackage[tocflat]{tocstyle}
-%\usetocstyle{standard}
-
 \usepackage{titlesec}
 \usepackage{titletoc}
 
 %Directiva para el capitulo, seccion y subseccion del indice
 
-%\titlecontents{section}
-%              [1.5em]
-%              {}
-%              {{\sffamily\thecontentslabel}\\*\hspace*{.7em}}
-%              {}
-%              {\titlerule*[.5pc]{.}\contentspage}
-
-%\titlecontents{chapter}
-%              [0em]
-%              {\bfseries}
-%              {Chapter \thecontentslabel\\*\hspace*{.7em}}
-%              {}
-%              {\hfill\contentspage}
-
-%\titlecontents*{subsection}
-%              [3.8em]
-%              {}
-%              {{\sffamily\thecontentslabel}\\*\hspace*{.7em}}
-%              {}
-%              {\titlerule*[.5pc]{.}\contentspage}
 
 \titlecontents{chapter}
               [0em]
@@ -380,12 +350,6 @@ latex_elements['preamble'] += r"""
               {\hspace{1.5em}}
               {}
               {\hfill\contentspage}
-
-%Agregando contenido antes de la tabla de contenido
-%\input{Organizacion}
-%\input{/home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/OrganizacionContenidos/Organizacion.tex}
-%\newpage
-
 \makeatother
 """
 
