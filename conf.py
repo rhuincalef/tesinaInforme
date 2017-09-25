@@ -326,6 +326,46 @@ latex_elements['preamble'] += r"""
 \setlength\parindent{1.7cm}
 %Se sobreecribe el estilo por default del capitulo
 \definecolor{myblue}{RGB}{0,82,155}
+
+
+%Redefiniendo el toc(tabla de contenidos del documento)
+%\usepackage[tocflat]{tocstyle}
+%\usetocstyle{standard}
+
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+%Directiva para el capitulo, seccion y subseccion del indice
+
+%\titlecontents{section}
+%              [1.5em]
+%              {}
+%              {{\sffamily\thecontentslabel}\\*\hspace*{.7em}}
+%              {}
+%              {\titlerule*[.5pc]{.}\contentspage}
+
+%\titlecontents{chapter}
+%              [0em]
+%              {\bfseries}
+%              {Chapter \thecontentslabel\\*\hspace*{.7em}}
+%              {}
+%              {\hfill\contentspage}
+
+%\titlecontents*{subsection}
+%              [3.8em]
+%              {}
+%              {{\sffamily\thecontentslabel}\\*\hspace*{.7em}}
+%              {}
+%              {\titlerule*[.5pc]{.}\contentspage}
+
+
+\titlecontents{chapter}
+              [0em]
+              {\bfseries}
+              {\hspace{1.5em}}
+              {}
+              {\hfill\contentspage}
+
 \makeatother
 """
 
