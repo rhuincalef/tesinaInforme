@@ -220,7 +220,8 @@ latex_elements['preamble'] += r"""
 %que no cuentan como capitulos enumerables en al tesis
 %NOTA:Este valor se decrementa al valor \thechapter para comenzar
 %numerando los contenidos de la tesina desde 1
-\def\cantCapitulosSinContenido{4}
+%\def\cantCapitulosSinContenido{4}
+\def\cantCapitulosSinContenido{3}
 
 
 
@@ -275,13 +276,13 @@ latex_elements['preamble'] += r"""
 %\chapter*{Acknowledgements}%
 
 %Capitulos anteriores al contenido de la tesis (que no se numeran) 
-\def\capitulosgenerales{4}
+%\def\capitulosgenerales{3}
 
 %Numeros de capitulos que no deben ser numerados
 \def\capAbstract{1}
 \def\capReconocimientos{2}
 \def\capResumen{3}
-\def\capOrganizacion{4}
+%\def\capOrganizacion{4}
 \def\capBibliografia{8}
 
 
@@ -314,7 +315,8 @@ latex_elements['preamble'] += r"""
             }
 
 % Removiendo el numero de capitulo del inicio de c/u
-\message{ Captiulos de contenido general: \capitulosgenerales  +++ }
+%\message{ Captiulos de contenido general: \capitulosgenerales  +++ }
+\message{ Captiulos de contenido general: \cantCapitulosSinContenido  +++ }
 \message{Antes del ifnum}
 \titleformat{\chapter}[display]
 {\normalfont\bfseries\color{myblue}}
@@ -322,7 +324,7 @@ latex_elements['preamble'] += r"""
   \begin{tikzpicture}
       \message{Imprimiendo el nombre del capitulo \chaptertitlename : \thechapter : \value{chapter}--- }
       %Si el capitulo no es contenido general se lo imprime con el numero al inicio
-      \ifthenelse{\thechapter=\capAbstract \OR \thechapter=\capReconocimientos \OR \thechapter=\capResumen \OR \thechapter=\capOrganizacion \OR \thechapter=\capBibliografia}{ \message{No es capitulo contenido} }{\imprimirCapitulo}
+      \ifthenelse{\thechapter=\capAbstract \OR \thechapter=\capReconocimientos \OR \thechapter=\capResumen \OR \thechapter=\capBibliografia}{ \message{No es capitulo contenido} }{\imprimirCapitulo}
   \end{tikzpicture}%
   }
 {10pt}
@@ -337,13 +339,12 @@ latex_elements['preamble'] += r"""
 \setlength\parindent{1.7cm}
 %Se sobreecribe el estilo por default del capitulo
 \definecolor{myblue}{RGB}{0,82,155}
+
 %Redefiniendo el toc(tabla de contenidos del documento)
 \usepackage{titlesec}
 \usepackage{titletoc}
 
 %Directiva para el capitulo, seccion y subseccion del indice
-
-
 \titlecontents{chapter}
               [0em]
               {\bfseries}
@@ -397,6 +398,7 @@ numfig_figure_caption_prefix = "Fig."
 #latex_documents = [
 #    (master_doc, 'prueba.tex', '','', 'manual'),
 #]
+
 
 latex_documents = [
     (master_doc, 'Tesina-Huincalef-Urrutia.tex', '','', 'manual'),

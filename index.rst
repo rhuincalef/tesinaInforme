@@ -8,4 +8,7 @@
    Reconocimientos/*
    Resumen/*
    Introduccion/*
+   apendices/apendices
    Bibliografia/*
+    
+   
