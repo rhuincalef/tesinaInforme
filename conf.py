@@ -119,7 +119,15 @@ htmlhelp_basename = 'pruebadoc'
 import os
 path = os.getcwd().replace('/','//')
 
+
 latex_additional_files = []
+
+#Clase base de sphinx manual -->
+
+#https://github.com/basespace/basespace-python-sdk/blob/master/doc/latex/sphinxmanual.cls
+#/usr/local/lib/python2.7/dist-packages/sphinx/texinputs/sphinxmanual.cls
+
+
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
@@ -131,8 +139,16 @@ latex_elements = {
 
     # Additional stuff for the LaTeX preamble.
     #
-     'preamble': '',
-
+    'preamble': '',
+    #'preamble': ''' 
+    #                \\begin{organizacion}
+    #                First document. This is a simple example, with no 
+    #                extra parameters or packages included.
+    #                \\end{organizacion} 
+    #                ''',
+    'atendofbody': '''First document. This is a simple example, with no 
+                        extra parameters or packages included. ''',
+    
     # Latex figure (float) alignment
     #
      'figure_align': 'htbp',
@@ -358,7 +374,6 @@ latex_elements['preamble'] += r"""
 %              {}
 %              {\titlerule*[.5pc]{.}\contentspage}
 
-
 \titlecontents{chapter}
               [0em]
               {\bfseries}
@@ -366,9 +381,16 @@ latex_elements['preamble'] += r"""
               {}
               {\hfill\contentspage}
 
+%Agregando contenido antes de la tabla de contenido
+%\input{Organizacion}
+%\input{/home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/OrganizacionContenidos/Organizacion.tex}
+%\newpage
+
 \makeatother
 """
 
+#TODO: Mirar en /usr/local/lib/python2.7/dist-packages/sphinx/writers/latex.py que es donde 
+#genera el esqueleto del .tex principal
 
 
 pathRaiz = os.getcwd()

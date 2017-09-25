@@ -7,6 +7,5 @@
    Abstract/*
    Reconocimientos/*
    Resumen/*
-   OrganizacionContenidos/*
    Introduccion/*
    Bibliografia/*
