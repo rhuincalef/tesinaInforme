@@ -130,11 +130,15 @@ Dado que PCL ofrece facilidades para emplear el mecanismo de SVM a través de la
    
 
 
-Una vez aplicado del pipleline de cropeado para todas las muestras, se realizó la extracción de keypoints...
+Una vez aplicado del pipeline de cropeado para todas las muestras, se debe realizar la extracción de keypoints. Los keypoints o puntos de interés, son los puntos en una nube de puntos que se destacan por ser:
 
-.. TODO: AGREGAR SAMPLING y KEYPOINTS!
+* Estables con respecto a interferencias locales y globales en el dominio de la imagen, como variaciones de iluminación y brillo.
+* Distintivos para la caracterización efectiva de una superficie, y ricos en contenido en terminos de color y textura.
+* Tienen una posición claramente definida y se pueden obtener repetidamente con respecto a ruido y variaciones en el punto de visión.
+* No es afectado por variaciones de escala, por lo que son ideales para procesamiento en tiempo real como también, procesamiento en distintas escalas. 
 
 
+Así para comenzar con el procesamiento de cada muestra, como primer paso se aplica el algortimo de Uniform Sampling, que es una variación del downsampling de Voxel Grid, donde se retornan los índices de los puntos. Esto reducirá la cantidad de puntos de la nube de entrada, de la que se extraerán los keypoints principales (en una nube a parte) que aporten mayor información para la SVM. Esta nube se utilizará para generar el descriptor seleccionado.
 
 
 Luego de computarse los descriptores de las muestras, se procede a realizar la conversión de las muestras a formato svmlight. Para la clasificación de muestras con svmlight, el formato consiste en especificar cada muestra como una combinación de un numero que especifica la clase a la que petenece la misma separado por un espacio en blanco <SPACE> de sus features <FEATURE_N> con sus respectivos valores <VALOR> y, separada de otras muestras por caracteres de nueva linea <NEW_LINE>:
@@ -170,7 +174,7 @@ Como primera medida, se  procedió a realizar el calculo de la cantidad de muest
 
 Una vez cropeadas todas las muestras de training, se comenzaron con las pruebas de clasificación, comenzando por generar los descriptores FPFH del archivo de training que emplea la SVM, tomando para este archivo como muestras positivas los baches y como muestras negativas las grietas, con el fin de intentar clasificar solo entre baches y grietas. Una vez entrenada, la SVM se probó con diversos archivos de entrenamiento que incluían:  Un conejo, un bache, una grieta y un archivo de training mixto (7 baches y 28 elementos que no son baches). El resultado de esta prueba fue negativo, debido a que la muestra de bache dio negativa, la del conejo dio positiva y la del archivo de training mixto dió positiva para muestras que no eran baches.
 
-Posteriormente, se aplico la misma prueba para el descriptor VFH y GRSD, obteniéndose resultados positivos para muestras que no eran baches y negativos para baches, logrando un accuracy considerablemente inferior al esperado.
+Posteriormente, se aplicó la misma prueba para el descriptor VFH y GRSD, obteniéndose resultados positivos para muestras que no eran baches y negativos para baches, logrando un accuracy considerablemente inferior al esperado.
 
 LUEGO SE ESCALARON LOS VALORES DE LAS FEATURES, Y NO SE LOGRÓ NADA PARA LOS 3 METODOS DE ML.
 
