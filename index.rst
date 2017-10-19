@@ -8,7 +8,6 @@
    Reconocimientos/*
    Resumen/*
    Introduccion/*
-   apendices/apendices
+   Cap6/*
    Bibliografia/*
-    
    

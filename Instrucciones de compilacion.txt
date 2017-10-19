@@ -1,5 +1,5 @@
 #Procedimiento para compilar la tesina --->
 
-- Si no se reemplazo previamente, copiar latex.py.default a usr/local/lib/python2.7/dist-packages/sphinx/writers/, reemplazar y cambiar el directorio donde se encuentra Organizacion.tex.
+- Si no se reemplazo previamente, copiar latex.py.default a /usr/local/lib/python2.7/dist-packages/sphinx/writers/, reemplazar y cambiar el directorio donde se encuentra Organizacion.tex.
 - $ make latex
 - $ cd _build/latex &&  make (o lualatex Tesina-Huincalef-Urrutia.tex)

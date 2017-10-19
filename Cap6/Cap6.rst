@@ -1479,8 +1479,9 @@ El servidor al recibir esta información, realiza el cálculo del valor VIZIR (:
 Proyectos basados en el uso de reconstrucción 3D
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. https://es.wikipedia.org/wiki/C%C3%A1mara_Time_of_Flight
+.. https://es.wikipedia.org/wiki/Unidad_de_medici%C3%B3n_inercial
 
-AGREGAR INFO DE 2 O 3 PAPERS
 
 
 
@@ -1489,5 +1490,9 @@ Aplicaciones web y móviles existentes para la notificación de fallas
 --------------------------------------------------------------------
 
 .. ACA INCLUIR LOS SISTEMAS WEB EN "Ejemplos de otros sistemas para el registro de fallas.txt"
+
+
+
+
 
 

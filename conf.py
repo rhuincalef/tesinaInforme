@@ -351,8 +351,18 @@ latex_elements['preamble'] += r"""
               {\hspace{1.5em}}
               {}
               {\hfill\contentspage}
+\usepackage{appendix}
+\usepackage{titletoc}
 \makeatother
 """
+#.. raw:: latex
+
+#   \appendix
+#   \noappendicestocpagenum
+#   \addappheadtotoc
+#   \settocdepth{chapter}
+
+
 
 #TODO: Mirar en /usr/local/lib/python2.7/dist-packages/sphinx/writers/latex.py que es donde 
 #genera el esqueleto del .tex principal
@@ -413,7 +423,6 @@ man_pages = [
     (master_doc, 'Tesina-Huincalef-Urrutia', u'',
      [], 1)
 ]
-
 
 # -- Options for Texinfo output -------------------------------------------
 
