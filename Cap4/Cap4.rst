@@ -138,7 +138,7 @@ Una vez aplicado del pipeline de cropeado para todas las muestras, se debe reali
 * No es afectado por variaciones de escala, por lo que son ideales para procesamiento en tiempo real como también, procesamiento en distintas escalas. 
 
 
-Así para comenzar con el procesamiento de cada muestra, como primer paso se aplica el algortimo de Uniform Sampling, que es una variación del downsampling de Voxel Grid, donde se retornan los índices de los puntos. Esto reducirá la cantidad de puntos de la nube de entrada, de la que se extraerán los keypoints principales (en una nube a parte) que aporten mayor información para la SVM. Esta nube se utilizará para generar el descriptor seleccionado.
+Así para comenzar con el procesamiento de cada muestra, como primer paso se aplica el algortimo de Uniform Sampling, que es una variación del downsampling de Voxel Grid, donde se retornan los índices de los puntos. Esto reducirá la cantidad de puntos de la nube de entrada y estos puntos serán los keypoints principales, que aporten mayor información para la SVM. Esta nube se utilizará para generar el descriptor seleccionado.
 
 
 Luego de computarse los descriptores de las muestras, se procede a realizar la conversión de las muestras a formato svmlight. Para la clasificación de muestras con svmlight, el formato consiste en especificar cada muestra como una combinación de un numero que especifica la clase a la que petenece la misma separado por un espacio en blanco <SPACE> de sus features <FEATURE_N> con sus respectivos valores <VALOR> y, separada de otras muestras por caracteres de nueva linea <NEW_LINE>:
