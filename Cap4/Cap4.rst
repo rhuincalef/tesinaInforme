@@ -185,8 +185,16 @@ SE COMPARARON LOS HISTOGRAMAS DE LOS BACHES DE TRAINING PARA FPFH, VFH Y GRSD, S
 SE PROCEDIÓ A CAMBIAR EL ENFOQUE Y EN VEZ DE CLASIFIACAR CON BACHES Y GRIETAS AL MISMO TIEMPO, SE PROCEDIO A CLASIFICAR SOLO BACHES CON GRSD, COLOCANDO COMO NO BACHES GRSD CAPTURAS DE PLANOS. SE APLICA EL PIPELINE DE CROPEADO A CADA MUESTRA DE TRAINING .PCD, CONSERVANDO BACHES Y PLANOS PARA LA SVM. EN ESTE CASO, AL EJECUTAR LA SVM ENTRENADA CON UN ARCHIVO DE TRAINIGN CON ESTOS DATOS, LA PRECISIÓN MEJORA LOGRANDO UNA CLARA DISTINCIÓN ENTRE BACHES Y PLANOS.
 
 
-
 LUEGO SE EMPLEO LA ESTIMACIÓN DE CURVATURAS DE LA SUPERFICIE EN PCL A TRAVÉS DEL ALGORTIMO DE "PrincipalCurvatureEstimation", para las carpetas de grietas y baches de TRAINING que mas capturas contenian, empleando los valores de curvatura maximo(pc1) y minimo(pc2) promedio de cada nube.Luego se comparó este valor,por medio de un diagrama de dispersión y uno de densidad, observandose que el rango de curvatura promedio de las grietas estaba contenida dentro del rango de los baches, por lo que los baches contenian valores de curvatura mayores en general. 
+
+
+PROBAMOS EL PIPELINE HASTA LA PARTE DE SEGMENTACION QUE INCLUYE FILTRADO POR CANTIDAD DE PUNTOS Y POR VALORES DE CURVATURA DE MUESTRAS, con dos baches downsampleados, una muestra de bunny, una grieta downsampleada (sin curvatura apreciable, con poca profundidad respecto del plano) y se pudieron generar clusters solo para los baches, lo que significa que asila correctamente estos, y no la grieta debido a que no tiene un valor de curvatura.
+
+Adicionalmente,se probaron con muestras 7 con downsampling generandose clusters para el bache completo o para la mayor parte del mismo. 
+
+Todas estas pruebas se hicieron con algoritmo "planar_segmentation_and_euclidean" con -threshold 0.005 y -max_it 1000.Este threshold es más bajo a los utilizados durante la etapa de cropeo de muestras (anteriormente -threshold 0.014). Con el valor de curvatura se pudo observar una considerable mejora.
+
+
 
 
 
