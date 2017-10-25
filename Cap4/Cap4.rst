@@ -188,11 +188,39 @@ SE PROCEDIÓ A CAMBIAR EL ENFOQUE Y EN VEZ DE CLASIFIACAR CON BACHES Y GRIETAS A
 LUEGO SE EMPLEO LA ESTIMACIÓN DE CURVATURAS DE LA SUPERFICIE EN PCL A TRAVÉS DEL ALGORTIMO DE "PrincipalCurvatureEstimation", para las carpetas de grietas y baches de TRAINING que mas capturas contenian, empleando los valores de curvatura maximo(pc1) y minimo(pc2) promedio de cada nube.Luego se comparó este valor,por medio de un diagrama de dispersión y uno de densidad, observandose que el rango de curvatura promedio de las grietas estaba contenida dentro del rango de los baches, por lo que los baches contenian valores de curvatura mayores en general. 
 
 
-PROBAMOS EL PIPELINE HASTA LA PARTE DE SEGMENTACION QUE INCLUYE FILTRADO POR CANTIDAD DE PUNTOS Y POR VALORES DE CURVATURA DE MUESTRAS, con dos baches downsampleados, una muestra de bunny, una grieta downsampleada (sin curvatura apreciable, con poca profundidad respecto del plano) y se pudieron generar clusters solo para los baches, lo que significa que asila correctamente estos, y no la grieta debido a que no tiene un valor de curvatura.
-
-Adicionalmente,se probaron con muestras 7 con downsampling generandose clusters para el bache completo o para la mayor parte del mismo. 
-
+PROBAMOS EL PIPELINE HASTA LA PARTE DE SEGMENTACION QUE INCLUYE FILTRADO POR CANTIDAD DE PUNTOS Y POR VALORES DE CURVATURA DE MUESTRAS, con dos baches downsampleados, una muestra de bunny, una grieta downsampleada (sin curvatura apreciable, con poca profundidad respecto del plano) y se pudieron generar clusters solo para los baches, lo que significa que asila correctamente estos, y no la grieta debido a que no tiene un valor de curvatura.Adicionalmente,se probaron con muestras 7 con downsampling generandose clusters para el bache completo o para la mayor parte del mismo. 
 Todas estas pruebas se hicieron con algoritmo "planar_segmentation_and_euclidean" con -threshold 0.005 y -max_it 1000.Este threshold es más bajo a los utilizados durante la etapa de cropeo de muestras (anteriormente -threshold 0.014). Con el valor de curvatura se pudo observar una considerable mejora.
+Debido a que se debieron ajustar los valores de curvatura maxima y minima tanto para baches como para grietas, se aplico el algoritmo de "principal_curvatures_estimation" en modo batch (donde se lee un archivo .batch con los listados de todos los directorios de captura) y se obtuvieron datos estadísticas acerca del promedio de curvaturas maximas y minimas para baches y grietas de TRAINING por directorio y en total, y luego se ajustaron los limites considerando estos valores de los archivos de TRAINING  cropeados.
+
+
+Valores finales tentativos:
+	tolerance = 0.023f
+	min_cluster_size=220
+	distance_threshold = 0.07 
+
+Resultados:
+
+	testeados/Baches_2.pcd  --> OK
+	testeados/bunny.pcd --> OK
+	testeados/bachecitos_tw_1.pcd --> OK
+	testeados/una_grieta/grietas_12.pcd --> OK
+	12-04-2017/bache_1.pcd --> OK
+	12-04-2017/bache_2.pcd --> OK
+	12-04-2017/bache_3.pcd --> OK
+	12-04-2017/bache_4.pcd --> M'OK
+	12-04-2017/bache_5.pcd --> OK
+	12-04-2017/baches_1.pcd --> OK
+	12-04-2017/baches_2.pcd --> OK
+
+
+	Las muestras cropeadas en la carpeta de 7planos_separados fueron cropeadas con un distance_threshold de 0.014, por lo que en los planos se detecta una mayor superficie
+	7planos_separados/bache_1_1_planePoints.pcd --> OK      
+	7planos_separados/bache_2_1_planePoints.pcd --> OK      
+	7planos_separados/bache_3_1_planePoints.pcd --> OK      
+	7planos_separados/bache_5_1_planePoints.pcd --> OK      
+	7planos_separados/baches_1_1_planePoints.pcd --> OK      
+	7planos_separados/baches_2_1_planePoints.pcd --> OK      
+
 
 
 
