@@ -224,6 +224,8 @@ Resultados:
 
 
 
+Se realizó una prueba con todos los baches capturados del dataset (sin downsampling ni cropeados), y se compararon los valores de curvatura maxima o minimo para los clusters y, ajustandose en base a los valores que se dejaban afuera del clusterizado, se lograron segmentar en base a curvatura y RANSAC SAC_PLANE con una precisión aproximada a 97,55%(159 /163 baches,). 
+Se realizó otra prueba para grietas con los mismos parámetros, y se obtuvo una precisión del 69,4% (91/131).
 
 
 
