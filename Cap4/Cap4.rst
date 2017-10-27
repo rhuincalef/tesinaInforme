@@ -229,6 +229,8 @@ Se realizó otra prueba para grietas con los mismos parámetros, y se obtuvo una
 
 
 
+Luego se agregaron las features de curvatura maxima y minima para cada muestra a las features del descriptor GRSD, y se entreno una SVM con capacidad para multiclase o multi labels, dividiendo las muestras entre 3 clases: Baches, Grietas y Planos, obteniendose una precisión de 100% contra si mismo y 89.9 % con otras grietas con planar. 
+
 
 
 
