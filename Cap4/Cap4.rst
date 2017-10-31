@@ -228,18 +228,21 @@ Se realizó una prueba con todos los baches capturados del dataset (sin downsamp
 Se realizó otra prueba para grietas con los mismos parámetros, y se obtuvo una precisión del 69,4% (91/131).
 
 
-
 Luego se agregaron las features de curvatura maxima y minima para cada muestra a las features del descriptor GRSD, y se entreno una SVM con capacidad para multiclase o multi labels, dividiendo las muestras entre 3 clases: Baches, Grietas y Planos, obteniendose una precisión de 100% contra si mismo y 89.9 % con otras grietas con planar. 
 
 
 
+Posteriormente, se confeccionó el archivo de training final con baches con histogramas GRSD similares, grietas y planos cropeados, empleando un kernel linear con un gamma -g 0.0008 y un -c 1 y logranod una precisión del 85.5% y de 70% emplenando un cross validation de 5 iteraciones, y empleando un archivo de testing con baches y grietas sin cropear. Sin embargo, al emplearlo con las muestras de testing reales cropeadas por medio del script de planar_segmentation_and_euclidean, y el mismo archivo de training, se redujo la precisión al 55% debido a que los clusters generados por éste, mayormente no tienen una curvatura adecuada al rango de baches, por lo que muchos de los baches se clasificaron como grietas, distinguiéndose así de los planos, pero no de las grietas.  
+
+Luego,como la precisión era muy baja con el descriptor global, adicionalmente se probó con el descriptor local FPFH que calcula un histograma por punto, agregando los valores de curvatura y, al probarlo con dos set de prueba se logró una precisión del 56,47%, observando que los descriptores y la curvatura de los puntos introducían ruido en el clasificador.
 
 
 
 
 
+NOTA 1: Agrupando los clusters generados de las muestras de training generadospor planar_segmentation_and_euclidean, y empleando un kernel rbf, sin datos escalados, la precisión del clasificador da un valor de 69,7%, sin embargo predice erronamente todos los baches y correctamente todas las grietas. 
 
-
+NOTA 2: El eccentricity promedio y los valores de las grietas y los baches son similares ya que ambas siguen una forma eliptica.
 
 
 
