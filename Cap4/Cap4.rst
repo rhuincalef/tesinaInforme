@@ -48,6 +48,7 @@ subdivisión en dos grupos: Aquellas que poseen profunidad y, por lo tanto puede
     - Fast Point Feature Histogram(FPFH)(Local)
     - ViewPoint Feature Histogram(VFH)(Local)
     - Global Radious-based Surface Descriptor(GRSD)(Global)
+    - Ensamble Shape of Functions(ESF)(Global)
 
 * Algoritmos que emplean el color RGB en los puntos de la captura:
 
@@ -60,6 +61,13 @@ FPFH
 
 
 VFH
++++
+.. TODO: PONER EXPLIACIÓN DE ALGORITMO ACÁ!
+
+
+
+
+ESF
 +++
 .. TODO: PONER EXPLIACIÓN DE ALGORITMO ACÁ!
 
@@ -174,9 +182,7 @@ Como primera medida, se  procedió a realizar el calculo de la cantidad de muest
 
 Una vez cropeadas todas las muestras de training, se comenzaron con las pruebas de clasificación, comenzando por generar los descriptores FPFH del archivo de training que emplea la SVM, tomando para este archivo como muestras positivas los baches y como muestras negativas las grietas, con el fin de intentar clasificar solo entre baches y grietas. Una vez entrenada, la SVM se probó con diversos archivos de entrenamiento que incluían:  Un conejo, un bache, una grieta y un archivo de training mixto (7 baches y 28 elementos que no son baches). El resultado de esta prueba fue negativo, debido a que la muestra de bache dio negativa, la del conejo dio positiva y la del archivo de training mixto dió positiva para muestras que no eran baches.
 
-Posteriormente, se aplicó la misma prueba para el descriptor VFH y GRSD, obteniéndose resultados positivos para muestras que no eran baches y negativos para baches, logrando un accuracy considerablemente inferior al esperado.
-
-Luego se realizaron pruebas, escalando los valores de las features con los mismos dataset probando con ML y no se consiguió nada para los 3 metodos de machine learning que emplean normales (FPFH,GRSD,VFH)
+Posteriormente, se aplicó la misma prueba para el descriptor VFH y GRSD, obteniéndose resultados positivos para muestras que no eran baches y negativos para baches, logrando un accuracy considerablemente inferior al esperado.Luego se testeó escalando los valores de las features con el mismo dataset, y la misma SVM y no se consiguió un aumento de precisión, para los 3 descritpores que emplean normales (FPFH,GRSD,VFH) con Machine Learning.
 
 
 SE COMPARARON LOS HISTOGRAMAS DE LOS BACHES DE TRAINING PARA FPFH, VFH Y GRSD, SIENDO EL DE GRSD EL MÁS SIMILAR DENTRO DEL MISMO TIPO DE MUESTRAS Y EL MAS HETEROGENEO RESPECTO DE LAS OTRAS MUESTRAS, Y DESCARTANDO LOS OTROS DOS MÉTODOS.
@@ -185,7 +191,7 @@ SE COMPARARON LOS HISTOGRAMAS DE LOS BACHES DE TRAINING PARA FPFH, VFH Y GRSD, S
 SE PROCEDIÓ A CAMBIAR EL ENFOQUE Y EN VEZ DE CLASIFIACAR CON BACHES Y GRIETAS AL MISMO TIEMPO, SE PROCEDIO A CLASIFICAR SOLO BACHES CON GRSD, COLOCANDO COMO NO BACHES GRSD CAPTURAS DE PLANOS. SE APLICA EL PIPELINE DE CROPEADO A CADA MUESTRA DE TRAINING .PCD, CONSERVANDO BACHES Y PLANOS PARA LA SVM. EN ESTE CASO, AL EJECUTAR LA SVM ENTRENADA CON UN ARCHIVO DE TRAINIGN CON ESTOS DATOS, LA PRECISIÓN MEJORA LOGRANDO UNA CLARA DISTINCIÓN ENTRE BACHES Y PLANOS.
 
 
-LUEGO SE EMPLEO LA ESTIMACIÓN DE CURVATURAS DE LA SUPERFICIE EN PCL A TRAVÉS DEL ALGORTIMO DE "PrincipalCurvatureEstimation", para las carpetas de grietas y baches de TRAINING que mas capturas contenian, empleando los valores de curvatura maximo(pc1) y minimo(pc2) promedio de cada nube.Luego se comparó este valor,por medio de un diagrama de dispersión y uno de densidad, observandose que el rango de curvatura promedio de las grietas estaba contenida dentro del rango de los baches, por lo que los baches contenian valores de curvatura mayores en general. 
+LUEGO SE AÑADIÓ LA ESTIMACIÓN DE CURVATURAS DE LA SUPERFICIE EN PCL A TRAVÉS DEL ALGORTIMO DE "PrincipalCurvatureEstimation", para las carpetas de grietas y baches de TRAINING que mas capturas contenian, empleando los valores de curvatura maximo(pc1) y minimo(pc2) promedio de cada nube.Luego se comparó este valor,por medio de un diagrama de dispersión y uno de densidad, observandose que el rango de curvatura promedio de las grietas estaba contenida dentro del rango de los baches, por lo que los baches contenian valores de curvatura mayores en general. 
 
 
 PROBAMOS EL PIPELINE HASTA LA PARTE DE SEGMENTACION QUE INCLUYE FILTRADO POR CANTIDAD DE PUNTOS Y POR VALORES DE CURVATURA DE MUESTRAS, con dos baches downsampleados, una muestra de bunny, una grieta downsampleada (sin curvatura apreciable, con poca profundidad respecto del plano) y se pudieron generar clusters solo para los baches, lo que significa que asila correctamente estos, y no la grieta debido a que no tiene un valor de curvatura.Adicionalmente,se probaron con muestras 7 con downsampling generandose clusters para el bache completo o para la mayor parte del mismo. 
@@ -231,10 +237,115 @@ Se realizó otra prueba para grietas con los mismos parámetros, y se obtuvo una
 Luego se agregaron las features de curvatura maxima y minima para cada muestra a las features del descriptor GRSD, y se entreno una SVM con capacidad para multiclase o multi labels, dividiendo las muestras entre 3 clases: Baches, Grietas y Planos, obteniendose una precisión de 100% contra si mismo y 89.9 % con otras grietas con planar. 
 
 
+Posteriormente, se confeccionó el archivo de training final con baches con histogramas GRSD similares, grietas y planos cropeados, empleando un kernel linear con un gamma -g 0.0008 y un -c 1 y logranod una precisión del 85.5% y de 70% emplenando un cross validation de 5 iteraciones, y empleando un archivo de testing con baches y grietas sin cropear. Sin embargo, al emplearlo con las muestras de testing reales cropeadas por medio del script automatico de planar_segmentation_and_euclidean, y el mismo archivo de training, se redujo la precisión al 55% debido a que los clusters generados por éste, mayormente no tienen una curvatura adecuada al rango de baches, por lo que muchos de los baches se clasificaron como grietas, distinguiéndose así de los planos, pero no de las grietas.
 
-Posteriormente, se confeccionó el archivo de training final con baches con histogramas GRSD similares, grietas y planos cropeados, empleando un kernel linear con un gamma -g 0.0008 y un -c 1 y logranod una precisión del 85.5% y de 70% emplenando un cross validation de 5 iteraciones, y empleando un archivo de testing con baches y grietas sin cropear. Sin embargo, al emplearlo con las muestras de testing reales cropeadas por medio del script de planar_segmentation_and_euclidean, y el mismo archivo de training, se redujo la precisión al 55% debido a que los clusters generados por éste, mayormente no tienen una curvatura adecuada al rango de baches, por lo que muchos de los baches se clasificaron como grietas, distinguiéndose así de los planos, pero no de las grietas.  
+Luego,como la precisión era muy baja con el descriptor global, adicionalmente se probó con el descriptor local FPFH que calcula un histograma por punto, agregando los valores de curvatura y, al probarlo con dos subconjuntos de muestras del set de testing (carpetas: testing_cropeadas_graches/ y testing_cropeadas_graches_alternativo/) se logró una precisión del 56,47%, observando que los descriptores y la curvatura de los puntos introducían ruido en el clasificador.
 
-Luego,como la precisión era muy baja con el descriptor global, adicionalmente se probó con el descriptor local FPFH que calcula un histograma por punto, agregando los valores de curvatura y, al probarlo con dos set de prueba se logró una precisión del 56,47%, observando que los descriptores y la curvatura de los puntos introducían ruido en el clasificador.
+Debido a esto se decidió volver a emplear el descriptor global ESF en una SVM multiclase, logrando una precisión del 54.4444% (49/90) empleando uno de los set de prueba (TESTING/testing_cropeadas_graches_alternativo/), pudiendo distinguir las grietas y baches de los planos, pero sin lograr distinguir baches de grietas, clasificando el resto de las muestras(41 restantes) como grietas cuando en realidad eran baches.
+
+
+
+
+Con el fin de descartar que el script automático de cropeo, estuviera produciendo clusters que no fueran parte de la falla, se probó cropeando el mismo dataset de muestras de training(testing_cropeadas_graches/) manualmente solo con descriptores globales GRSD,ESF, VFH y, empleando para training los baches similares, las grietas y los planos.Esto retorno los siguientes resultados:
+
+
+Descriptores + curvaturas: 
+GRSD -->
+	- Con kernel RBF -->
+
+		+ 42.10 % de accuracy para dataset de testing.
+
+	- Con kernel Linear -->
+
+	    + 57.9% de accuracy para dataset de testing.
+
+
+ESF -->
+	- Con kernel RBF -->
+	
+		+ 42.10 % de accuracy para dataset de testing
+
+	- Con kernel Linear -->
+
+	    + 42.10 % de accuracy para dataset de testing
+
+
+VFH -->
+	- Con kernel RBF -->
+
+	    + 42.10 % de accuracy para dataset de testing
+
+
+	- Con kernel Linear -->
+
+	    + 57.9 % de accuracy para dataset de testing
+
+FPFH -->
+	- Con kernel RBF -->
+
+	    + 42.10 % de accuracy para dataset de testing
+
+
+	- Con kernel Linear -->
+
+	    + 47.30 % de accuracy para dataset de testing
+
+
+
+Descriptores + sin curvaturas: 
+GRSD -->
+	- Con kernel RBF -->
+
+		+ 42.10 % de accuracy para dataset de testing.
+		+ 47.5 % de accuracy con -c 10 y gamma 0.000004
+
+	- Con kernel Linear -->
+
+	    + 79% de accuracy para dataset de testing.
+	    + 69.1% de accuracy con cross_validation de 5 iteraciones
+
+
+ESF -->
+	- Con kernel RBF -->
+	
+		+ 42.10% de accuracy para dataset de testing
+
+	- Con kernel Linear -->
+
+	    + 42.10% de accuracy para dataset de testing
+
+
+VFH -->
+	- Con kernel RBF -->
+
+	    + 42.10% de accuracy para dataset de testing
+
+
+	- Con kernel Linear -->
+
+	    + 57.9% de accuracy para dataset de testing
+
+
+FPFH -->
+	- Con kernel RBF -->
+
+	    + 42.10 % de accuracy para dataset de testing
+
+
+	- Con kernel Linear -->
+
+	    + 47.36 % de accuracy para dataset de testing
+
+
+
+
+PROBAR GRSD sin keypoints ni curvaturas!!!
+
+
+
+
+
+
 
 
 
