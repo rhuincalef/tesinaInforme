@@ -339,10 +339,7 @@ FPFH -->
 
 
 
-PROBAR GRSD sin keypoints ni curvaturas!!!
-
-
-
+- Realizando una prueba con planar_segmentation_and_euclidean aplicado a todos el set de testing, y se realizo una comparación con los archivos de training con el descriptor GRSD, obteniendo una precisión del 40.25 % (19/47).
 
 
 
