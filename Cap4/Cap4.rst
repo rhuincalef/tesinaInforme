@@ -341,10 +341,31 @@ FPFH -->
 
 - Realizando una prueba con planar_segmentation_and_euclidean aplicado a todos el set de testing, y se realizo una comparación con los archivos de training con el descriptor GRSD, obteniendo una precisión del 40.25 % (19/47).
 
+- Realizando una prueba agregando los valores de area + volumen con el descriptor GRSD con SVM con kernel Linear, se obtuvo una precisión 52.94% con el set de testing de baches similares y grietas, sin planos. 
+
+Posteriormente, se incluyeros aquellos atributos que son referentes a las dimensiones de  las grietas y baches de training, obteniendo : Ancho,alto , profundidad y volumen, y con éstos se realizó una comparación con el fin de obtener valores que permitieran diferenciar entre baches y grietas. Así, se optó por emplear el descriptor GRSD con la diferencia en valor de absoluto de ancho y alto de las fallas,clasificando por este limite a los baches que tienen diferencia |alto-ancho| > 40 como grietas y, los que tienen menor diferencia como baches (Limite alternativo > 30). De esta manera se opto por reclasificar las muestras según este valor como bache o grieta y, se realizaron las siguientes pruebas obteniendo como resultado:
+
+- Al agregar los valores de alto,profundidad y ancho, con el descriptor GRSD se obtuvo un score de 79.8 % para el set de testing.
+
+- Al agregar al GRSD la diferencia entre ancho y alto al descriptor GRSD, se logró un accuracy de 100% con archivo de testing(8/8).
+  
+- Agregando volumen y profundidad al descriptor GRSD con la diferencia entre  ancho y alto, se redujo la precisión al 75%.
+  
+  
+- TODO: FALTA PROBAR SACANDO VOLUMEN del descriptor.
+  
+  -->Sin volumen y con profundidad:
+    - RBF: 62.5% (5/8) de accuracy con dataset de testing.Con grieta erronea contada como OK: 75%
+    - Linear: 75% (6/8) de accuracy con dataset de testing.Con grieta erronea contada como OK: 87,5%
+    
+  -->Sin profundidad y con volumen: 
+    - RBF: 62.5% (5/8) de accuracy con dataset de testing; Con grieta erronea contada como OK: 75%
+    - Linear: 100% (8/8) de accuracy con dataset de testing.Con grieta erronea contada como OK: 87,5%
 
 
-
-
+- TODO: Falta reclasificar muestras segun diferencia de alto-ancho
+- TODO: Falta ajustar el planar_segmentation_and_euclidean con dif. alto-ancho.
+  
 
 
 
