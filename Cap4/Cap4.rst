@@ -499,9 +499,10 @@ rodrigo@rodrigo-asus:~/TESINA-2016-KINECT/MACHINE_LEARNING/algoritmos_parametriz
 
 
 
-
-- TODO: Falta reclasificar muestras segun diferencia de alto-ancho
 - TODO: Falta ajustar el planar_segmentation_and_euclidean con dif. alto-ancho.
+- TODO: 1.Ajustar las muestras de testing con el mismo parametro que las de training para mejorar la precisión.
+-       2.Las grietas con region_growing_rgb no se pueden aislar empleando intensidad, por lo que hay que ejecutar planar_segmentation_and_euclidean y  que éste descarte las muestras que no tengan un valor preestablecido. 
+-       3. Crear achivo test final con training y testing (ajustados con misma diff. alto y ancho) para el cross validation.
   
 
 
