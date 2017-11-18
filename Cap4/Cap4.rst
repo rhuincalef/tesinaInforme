@@ -499,11 +499,21 @@ rodrigo@rodrigo-asus:~/TESINA-2016-KINECT/MACHINE_LEARNING/algoritmos_parametriz
 
 
 
-- TODO: Falta ajustar el planar_segmentation_and_euclidean con dif. alto-ancho.
-- TODO: 1.Ajustar las muestras de testing con el mismo parametro que las de training para mejorar la precisión.
--       2.Las grietas con region_growing_rgb no se pueden aislar empleando intensidad, por lo que hay que ejecutar planar_segmentation_and_euclidean y  que éste descarte las muestras que no tengan un valor preestablecido. 
--       3. Crear achivo test final con training y testing (ajustados con misma diff. alto y ancho) para el cross validation.
+
+-       3. Crear achivo test final con training y testing (ajustados con misma diff. alto y ancho) para el cross validation.(Con kernel RBF cross_val da 62.4% de accuracy y con LINEAR se obtiene 87.46% con 10 iteraciones)
+
+-       4.Las grietas con region_growing_rgb no se pueden aislar empleando intensidad, por lo que hay que ejecutar planar_segmentation_and_euclidean y  que éste descarte las muestras que no tengan un valor preestablecido. 
   
+
+
+ULTIMO TEST -->
+
+- Se limpiaron algunas que contenian demasiados outliers, filtrando de un total de 1000, 797 muestras (744 para training y 53 para testing) y se procedió a calcular empleando los puntos que brinda el mecanismo Oriented Bounding Box de PCL, el cual se ajusta y se orienta al tamaño de la muestra, y observando las estadisticas de dimensiones del dataset de fallas de training, se seleccionó un limite para divirlas segun el tipo (grieta o bache) de 0.49, que se calcula como una diferencia entre alto y ancho, ya que al obtener las estadisticas se observaba que las grietas contenian una longitud considerablemente mayor al grosor, situación que no ocurría en baches. Al ejecutar nuevamente las pruebas con dataset de training y testing divididos por este limite, se obtuvo  91%  de accuracy con kernel Linear y 61% con kernel RBF empleando un cross validation de 5 iteraciones. 
+
+
+
+
+
 
 
 
