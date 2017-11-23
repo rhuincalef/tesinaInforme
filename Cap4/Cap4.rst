@@ -78,11 +78,6 @@ GRSD
 .. TODO: PONER EXPLIACIÓN DE ALGORITMO ACÁ!
 
 
-RIFT
-++++
-
-.. TODO: PONER EXPLIACIÓN DE ALGORITMO ACÁ!
-
 
 
 
@@ -178,17 +173,18 @@ Luego de realizar el downsampling con Voxel Grid y la conversión de capturas de
 Vitácora de pruebas para clasificación
 --------------------------------------
 
-Como primera medida, se  procedió a realizar el calculo de la cantidad de muestras que se dedicarán para traning y para testing del total de las muestras que se capturaron, siendo éste de 1002 muestras entre baches y grietas. Se decidió que se seleccionarían un 76,75% de las muestras para training(766) y el 33% para testing(236). Una vez hecha esta división, se procedió a  aplicar la metodología de cropeado(Pipeline de Cropeado), de las muestras de training con el fin de disgregar el tipo de falla del plano en el que ésta se encuentra y obtener solo features inherentes a la falla.
+Como primera medida, se  procedió a realizar el cálculo de la cantidad de muestras que se dedicarán para traning y testing del total de las muestras que se capturaron, siendo éste de 1002 muestras entre baches y grietas. Se decidió que se decidió seleccionar un 76,75% de las muestras para training (766) y el 33% para testing (236). Una vez hecha la división, se decidió que se aplicaría un Pipeline de Cropeado que consistirá de varios pasos que abarcan desde la limpieza y asilamiento de la muestra hasta la clasificación, con el fin de disgregar el tipo de falla del plano en el que ésta se encuentra y obtener sólo features inherentes a la falla.
 
-Una vez cropeadas todas las muestras de training, se comenzaron con las pruebas de clasificación, comenzando por generar los descriptores FPFH del archivo de training que emplea la SVM, tomando para este archivo como muestras positivas los baches y como muestras negativas las grietas, con el fin de intentar clasificar solo entre baches y grietas. Una vez entrenada, la SVM se probó con diversos archivos de entrenamiento que incluían:  Un conejo, un bache, una grieta y un archivo de training mixto (7 baches y 28 elementos que no son baches). El resultado de esta prueba fue negativo, debido a que la muestra de bache dio negativa, la del conejo dio positiva y la del archivo de training mixto dió positiva para muestras que no eran baches.
-
-Posteriormente, se aplicó la misma prueba para el descriptor VFH y GRSD, obteniéndose resultados positivos para muestras que no eran baches y negativos para baches, logrando un accuracy considerablemente inferior al esperado.Luego se testeó escalando los valores de las features con el mismo dataset, y la misma SVM y no se consiguió un aumento de precisión, para los 3 descritpores que emplean normales (FPFH,GRSD,VFH) con Machine Learning.
+Con respecto a la computación de features de baches y grietas, se optó por investigar cuales de los features de PCL se enfocaban en capturar las diferencias entre distintos tipos formas en superficies semejantes a planos, y debido al tamaño promedio de las nubes de puntos capturadas por el sensor, se seleccionaron aquellos cuyas dimensiones del histograma no sean de una magnitud que prolongue el tiempo de procesamiento de manera excesivo.    
 
 
-SE COMPARARON LOS HISTOGRAMAS DE LOS BACHES DE TRAINING PARA FPFH, VFH Y GRSD, SIENDO EL DE GRSD EL MÁS SIMILAR DENTRO DEL MISMO TIPO DE MUESTRAS Y EL MAS HETEROGENEO RESPECTO DE LAS OTRAS MUESTRAS, Y DESCARTANDO LOS OTROS DOS MÉTODOS.
+Una vez cropeadas todas las muestras de training, se comenzó con las pruebas de clasificación que consisten generar los descriptores FPFH del archivo de training que emplea la SVM, tomando para este archivo, como muestras positivas los baches y como muestras negativas las grietas, con el fin de intentar clasificar solo entre baches y grietas. Una vez entrenada, la SVM se probó con diversos archivos de entrenamiento: Un conejo, un bache, una grieta y un archivo de training mixto (que consistía de 7 baches y 28 elementos que no son baches). El resultado de esta prueba fue negativo, debido a que la muestra de bache no fue reconocida como tal, la del conejo resulto positiva y la del archivo de training mixto proporcionó resultos positivos para muestras que no eran baches. Posteriormente, se aplicó la misma prueba para el descriptor VFH y GRSD, obteniéndose resultados positivos para muestras que no eran baches y negativos para baches, logrando un accuracy considerablemente inferior al esperado.Luego, se testeó escalando los valores de las features con el mismo dataset, y la misma SVM y no se consiguió un aumento de precisión, para los 3 descritpores que emplean normales (FPFH,GRSD,VFH).
+
+Dado que las diferencias entre los descriptores de los distintos tipos de muestra no eran significativas, se realizó una comparación gráfica de los descriptores pertenecientes al mismo conjunto de muestras, observando que el descriptor GRSD contenia mayor diferencia entre distintos tipos de muestra, por lo que se continuo experimentando sólamente con este descriptor y se procedió a cambiar el enfoque, distinguiendo baches de planos y por otro lado, grietas y planos, necesitando clasificadores independientes. Con esta aproximación, la precisión aumentó considerablemente. 
+
+Debido a la necesidad de utilizar dos clasificadores diferentes por cada clase de muestra, se hizo un análisis de las curvaturas (Principal Curvatures Estimation) de las muestras con objetivo de encontrar un parámetro que, sumado al descriptor GRSD, permitiera la diferenciación entre ambos tipos de muestra empleando un único clasificador.
 
 
-SE PROCEDIÓ A CAMBIAR EL ENFOQUE Y EN VEZ DE CLASIFIACAR CON BACHES Y GRIETAS AL MISMO TIEMPO, SE PROCEDIO A CLASIFICAR SOLO BACHES CON GRSD, COLOCANDO COMO NO BACHES GRSD CAPTURAS DE PLANOS. SE APLICA EL PIPELINE DE CROPEADO A CADA MUESTRA DE TRAINING .PCD, CONSERVANDO BACHES Y PLANOS PARA LA SVM. EN ESTE CASO, AL EJECUTAR LA SVM ENTRENADA CON UN ARCHIVO DE TRAINIGN CON ESTOS DATOS, LA PRECISIÓN MEJORA LOGRANDO UNA CLARA DISTINCIÓN ENTRE BACHES Y PLANOS.
 
 
 LUEGO SE AÑADIÓ LA ESTIMACIÓN DE CURVATURAS DE LA SUPERFICIE EN PCL A TRAVÉS DEL ALGORTIMO DE "PrincipalCurvatureEstimation", para las carpetas de grietas y baches de TRAINING que mas capturas contenian, empleando los valores de curvatura maximo(pc1) y minimo(pc2) promedio de cada nube.Luego se comparó este valor,por medio de un diagrama de dispersión y uno de densidad, observandose que el rango de curvatura promedio de las grietas estaba contenida dentro del rango de los baches, por lo que los baches contenian valores de curvatura mayores en general. 
@@ -509,41 +505,6 @@ rodrigo@rodrigo-asus:~/TESINA-2016-KINECT/MACHINE_LEARNING/algoritmos_parametriz
 ULTIMO TEST -->
 
 - Se limpiaron algunas que contenian demasiados outliers, filtrando de un total de 1000, 797 muestras (744 para training y 53 para testing) y se procedió a calcular empleando los puntos que brinda el mecanismo Oriented Bounding Box de PCL, el cual se ajusta y se orienta al tamaño de la muestra, y observando las estadisticas de dimensiones del dataset de fallas de training, se seleccionó un limite para divirlas segun el tipo (grieta o bache) de 0.49, que se calcula como una diferencia entre alto y ancho, ya que al obtener las estadisticas se observaba que las grietas contenian una longitud considerablemente mayor al grosor, situación que no ocurría en baches. Al ejecutar nuevamente las pruebas con dataset de training y testing divididos por este limite, se obtuvo  91%  de accuracy con kernel Linear y 61% con kernel RBF empleando un cross validation de 5 iteraciones. 
-
-
-
-
-
-
-
-
-NOTA 1: Agrupando los clusters generados de las muestras de training generadospor planar_segmentation_and_euclidean, y empleando un kernel rbf, sin datos escalados, la precisión del clasificador da un valor de 69,7%, sin embargo predice erronamente todos los baches y correctamente todas las grietas. 
-
-NOTA 2: El eccentricity promedio y los valores de las grietas y los baches son similares ya que ambas siguen una forma eliptica.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
