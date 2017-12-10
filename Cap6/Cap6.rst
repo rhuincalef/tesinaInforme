@@ -1476,18 +1476,37 @@ El servidor al recibir esta información, realiza el cálculo del valor VIZIR (:
      
 
 
-Proyectos basados en el uso de reconstrucción 3D
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+Proyectos basados en la reconstrucción 3D
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. https://es.wikipedia.org/wiki/C%C3%A1mara_Time_of_Flight
 .. https://es.wikipedia.org/wiki/Unidad_de_medici%C3%B3n_inercial
 
 
+.. Road distress analysis using 2D and 3D information,
+.. Pothole detection and measurement of properties(2012),
+
+
+.. ----------------->>>>
+.. https://en.wikipedia.org/wiki/Breadth-first_search
+.. https://en.wikipedia.org/wiki/Geodesic
+.. https://en.wikipedia.org/wiki/Great-circle_distance
+.. https://cs.nyu.edu/courses/fall12/CSCI-GA.2945-001/dl/jiakai-slides.pdf
+.. https://msdn.microsoft.com/en-us/library/dn188670.aspx
+.. https://en.wikipedia.org/wiki/Polygon_soup
+.. 2015_3D pavement reconstruction and cracking recognition using Kinect (2015)
 
 
 
-Aplicaciones web y móviles existentes para la notificación de fallas
---------------------------------------------------------------------
+Con respecto al empleo de modelos 3D para la detección de fallas, entre las aproximaciones que se pueden mencionar, se encuentra la tesis :cite:`antecedentesReconstruccion3Dnro1` de Sikai Xie, donde se plantea la detección de distintos tipos de grietas y el cálculo de sus propiedades (largo, grosor y profundidad), por medio de la computación de un modelo tridimensional a partir las coordenadas en X,Y,Z ofrecidas en las nubes de puntos del sensor Kinect. Esta metodología, comienza con la conversión de la información espacial de la nube de puntos, a un modelo 3D compuesto de vértices y aristas, por medio de la función de Kinect Fusion ofrecida en la SDK de Microsoft. Este algoritmo consiste en combinar la información de distintas nubes de puntos capturadas desde distintas  ubicaciones para obtener datos geométricos 3D de alta resolución, efectuando para ello un seguimiento tanto de la orientación de la camara como de la posición y, debido a que se conoce la posición de cada subnube y como se relaciona con las demas, éstas se combinan en una única nube de salida. Kinect Fusion emplea internamente ICP (Iterative Closest Point) como herramienta para fusionar varias nubes de puntos en una única; El funcionamiento del mismo, consiste en mantener una captura fija (vertex cloud) y aplicar diversas transformaciones combinadas de traslación y rotación a la nube fuente (source), necesarias para minimizar el error o diferencia entre ambas nubes de puntos. Como salida a este algoritmo, se obtiene una malla de poligonos desorganizada(polygon soup) que no cuenta con información respecto a vertices vecinos compartidos por distintos triangulos, por  lo que ésta es procesada nuevamente para eliminar la redundancia de vértices, conservando aquellos que se encuentran a una distancia determinada.
+
+
+
+
+
+
+
+.. Aplicaciones web y móviles existentes para la notificación de fallas
+.. --------------------------------------------------------------------
 
 .. ACA INCLUIR LOS SISTEMAS WEB EN "Ejemplos de otros sistemas para el registro de fallas.txt"
 
