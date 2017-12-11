@@ -31,7 +31,7 @@ Los pavimentos flexibles se componen de una capa de mezcla asfáltica u hormigó
 Tipos de juntas
 ---------------
 
-Los senderos viales, tales como calles, autopistas, se encuentran sometidos a diversos cambios de temperatura durante el día, a diferencias de temperatura considerables entre las distintas estaciones del año, a cambios de humedad constante, y durante su construcción, a los tiempos de parada debido a las jornadas de trabajo con horas fijas, provocan que el material sufra dilataciones y contracciones y, si este material se encuentra extendido en una porción considerable de terreno, se producirá el agrietamiento aleatorio e irregular del mismo, a corto plazo. Para evitar ésto, se emplean juntas en el pavimento,como mecanismo de control de fisuras, que consisten en cortes realizada con maquinaria especial a lo largo y ancho del material, a una profundidad establecida según las propiedades de éste y de la calle, que lo divide en losas. Estas divisiones, se realizan a una distancia aproximada a la que aparecerían las fisuras, ya que en caso contrario, se fisurarían aquellas losas con dimensiones excesivas.
+Los senderos viales, tales como calles, autopistas, se encuentran sometidos a diversos cambios de temperatura durante el día, a diferencias de temperatura considerables entre las distintas estaciones del año, a cambios de humedad constante, y durante su construcción, a los tiempos de parada debido a las jornadas de trabajo con horas fijas, lo que provoca que el material sufra dilataciones y contracciones y, si éste se encuentra extendido en una porción considerable de terreno, se producirá el agrietamiento aleatorio e irregular del mismo, a corto plazo. Para evitar ésto, se emplean juntas en el pavimento,como mecanismo de control de fisuras, que consisten en cortes realizada con maquinaria especial a lo largo y ancho del material, a una profundidad establecida según las propiedades de éste y de la calle, que lo divide en losas. Estas divisiones, se realizan a una distancia aproximada a la que aparecerían las fisuras, ya que en caso contrario, se fisurarían aquellas losas con dimensiones excesivas.
 
 En base a la posición de las juntas respecto del avance del hormigonado, las juntas en el pavimento se pueden clasificar en juntas longitudinales, que son aquellas paralelas a dicho avance, o juntas transversales, que son aquellas perpendiculares según el avance del mismo. Por otro lado, las juntas se pueden clasificar respecto del tipo de función que cumplen como:
 
@@ -159,7 +159,7 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 * Grietas: Este tipo de falla tiene las mismas características que para pavimento rígido.
 
   
-* Hundimiento del borde y ahuellamiento: Ocurre cuando se hunde el borde del material que limita con el margen.El método de reparación depende de la profundidad máxima del mismo, si ésta es menor a 20 mm se emplea perfilado del pavimento, si es superior a 20 mm pero inferior a 40 mm se emplea la técnica de relleno de rodadera, si es mayor a 40 mm se realiza una reparación local de la estructura del pavimento.
+* Hundimiento del borde y ahuellamiento: Ocurre cuando se hunde el borde del material que limita con el margen. El método de reparación depende de la profundidad máxima del mismo, si ésta es menor a 20 mm se emplea perfilado del pavimento, si es superior a 20 mm pero inferior a 40 mm se emplea la técnica de relleno de rodadera, si es mayor a 40 mm se realiza una reparación local de la estructura del pavimento.
 
 .. figure:: pav-flexible-ahuellamiento-borde.png
    :scale: 50 %
@@ -209,11 +209,11 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 Proyectos de software anteriores para la detección de fallas sobre el pavimento
 -------------------------------------------------------------------------------
 
-Debido a que la recolección manual de fallas es una tarea costosa con respecto al tiempo y al esfuerzo, durante años se  han publicado varios papers y tesis con el fin de automatizar esta tarea a través del uso de distintos dispositivos para el sensado, combinados con distintas técnicas de localización, registro de fallas y análisis de la información sensada. Los papers y tesis publicados hasta la fecha se pueden clasificar según el tipo de sensor que emplean, en tres grandes grupos:
+Debido a que la recolección manual de fallas es una tarea costosa con respecto al tiempo y al esfuerzo, durante años se han publicado varios papers y tesis con el fin de automatizar esta tarea a través del uso de distintos dispositivos para el sensado, combinados con distintas técnicas de localización, registro de fallas y análisis de la información sensada. Los papers y tesis publicados hasta la fecha se pueden clasificar según el tipo de sensor que emplean, en tres grandes grupos:
 
 * Detección de fallas utilizando técnicas basadas en procesamiento 2D con imágenes o video.
 * Detección de fallas por medio de sensores de vibración(acelerómetros).
-* Detección de fallas empleando modelos de reconstrucción 3D (stereovision o dispositivos equipados con laser lasers).
+* Detección de fallas empleando modelos de reconstrucción 3D (sensores para captura de objetos empleando información 3D).
 
 
 Proyectos basados en procesamiento de video e imagen
@@ -232,20 +232,23 @@ El mundo percibido diariamente por las personas se manifiesta en una variedad de
 .. figure:: espectroElectromagnetico.png
    :scale:	80 %
 
-	El espectro electromagnético dividido y ampliado.
+	División del espectro electromagnético. La zona percibile por las personas del espectro se encuentra ampliado, siendo este una pequeña porción del especto completo.
 |
 
-Como se puede observar en la figura anterior, en un extremo del espectro se encuentran las ondas de radio que se caracterizan por poseer longitudes de onda millones de veces mas largas a las de la luz visible, mientras que en el otro extremo se encuentran los rayos gamma con longitudes de onda millones de veces más pequeñas. El espectro electromagnético se puede expresar en función de la energía, la frecuencia o la longitud de onda (wavelength, LAMBDA). La longitud de onda (LAMBDA) y la frecuencia se encuentran relacionadas por la expresión:
+Como se puede observar en la figura anterior, en un extremo del espectro se encuentran las ondas de radio que se caracterizan por poseer longitudes de onda millones de veces mas largas a las de la luz visible, mientras que en el otro extremo se encuentran los rayos gamma con longitudes de onda millones de veces más pequeñas. El espectro electromagnético se puede expresar en función de la energía,o la longitud de onda (wavelength, LAMBDA). La longitud de onda del espectro electromagnético representado por LAMBDA, se calcula en base a la velocidad de la luz y la frecuencia de la onda, relacionados por la expresión:
 |
-LAMBDA = c/v
 
-donde c es la velocidad de la luz (2.988 x 10 ^8 m/s). Por otro lado, la energía de varios componentes del espectro electromagnético se define en la expresión:
+.. math::  LAMBDA = c/v
+   :label: ecuacion1
+
+donde c es la velocidad de la luz (2.988 x 10 ^8 m/s) y v es la frecuencia medida en Hertz(Hz), donde 1 Hertz es igual a la cantidad de ciclos de onda senoidal por segundo. Las unidades de las longitudes de onda se miden en metros, empleándose las medidas micrometros y nanómetros frecuentemente. Alternativamente, el espectro electromagnético se puede expresar en base a la energía asociada con una longitud de onda por medio de la siguiente ecuación:
 |
-E = h*v(eq1)
 
-donde h es la constante de Planck. Las unidades de las longitudes de onda se miden en metros, empleándose las medidas micrometros y nanómetros frecuentemente. La frecuencia se mide en Hertz(Hz), con 1 Hertz siendo igual a un ciclo de onda sinusoidal por segundo. Una unidad de medida para la energía en el espectro electromagnético es el electron-volt.
+.. math::  E = h*v
+   :label: eq1
 
-Por lo tanto, las ondas electromagnéticas pueden ser vistas como ondas sinusoidales con longitud de onda LAMBDA, o pueden ser consideradas como un flujo de partículas sin masa, cada una viajando en un patrón con forma de onda y moviéndose a la velocidad de la luz. Cada partícula sin masa, contiene una cierta cantidad de energía denominada fotón(photon). De la ecuación eq1 , se puede observar que la energía es proporcional a la frecuencia, por lo que cuanto más alta sea la frecuencia el fenómeno electromagnético llevará mas energía por fotón. Así las ondas de radio tienen fotones con baja energía, las microondas tienen más energía que las ondas de radio, las infrarojas aún más, siendo la luz visible, luz ultravioleta,los rayos X y finalmente los rayos gamma los que tienen mayor cantidad de energía de todos. Esta es la razón por la cual los rayos gamma son los más dañinos para los organismos vivientes.
+.. Una unidad de medida para la energía en el espectro electromagnético es el electron-volt.
+donde h es la constante de Planck y v es la frecuencia de la onda, midiéndose la energía E a través de la unidad fotón. Por lo tanto, las ondas electromagnéticas pueden ser vistas como ondas senoidales con longitud de onda LAMBDA, o pueden ser consideradas como un flujo de partículas sin masa, cada una viajando en un patrón con forma de onda y moviéndose a la velocidad de la luz. Cada partícula sin masa, contiene una cierta cantidad de energía denominada fotón(photon).De la ecuación :eq:`eq1` , se puede observar que la energía es proporcional a la frecuencia, por lo que cuanto más alta sea la frecuencia el fenómeno electromagnético llevará mas energía por fotón. Así las ondas de radio tienen fotones con baja energía, las microondas tienen más energía que las ondas de radio, las infrarojas aún más, siendo la luz visible, luz ultravioleta,los rayos X y finalmente los rayos gamma los que tienen mayor cantidad de energía de todos. Esta es la razón por la cual los rayos gamma son los más dañinos para los organismos vivientes.
 
 |
 
@@ -279,7 +282,7 @@ Para que un sensor pueda captar un objeto de determinado tamaño, es necesario q
 	Sensor individual de captura
 
 
-Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación emitida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una conversión estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas.
+Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación emitida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una conversión estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así, si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas.
 Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como para representar la imagen, se produce un efecto denominado aliasing, que produce que la imagen visual pierda el patrón de la imagen original que intenta representar, produciendo una falso patrón y una imagen distorcionada. Como se observa en la siguiente imagen de una huella digital, a medida que la densidad de pixeles muestreados disminuye, la calidad de la imagen empeora y se produce éste efecto:
 
 
@@ -321,16 +324,17 @@ De esta forma, el proceso de digitalización requiere los valores de M,N y la ca
 .. beautiful mathematical formulas.
 
 
-Donde k es el número de bits empleados para representar el nivel de cada pixel. En general, el número de bits k se encuentra entre 1<=k<=8, empleándose k=1 para imágenes binarias, k=8 para imágenes por escala de grises (donde cada nivel ocupa cun byte) y, para el caso de las imágenes a color, con múltiples valores, cada nivel de color ocupa 8 bits usando los colores rojo,verde y azul (RGB), empleándose 24 bits por pixel con el fin de representar el color de éste. 
+Donde k es el número de bits empleados para representar el nivel de cada pixel. En general, el número de bits k se encuentra entre 1<=k<=8, empleándose k=1 para imágenes binarias, k=8 para imágenes por escala de grises (donde cada nivel ocupa un byte) y, para el caso de las imágenes a color, con múltiples valores, cada nivel de color ocupa 8 bits usando los colores rojo,verde y azul (RGB), empleándose 24 bits por pixel con el fin de representar el color de éste. 
 Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común referirse a la imagen como una "imagen de k-bits".Por ejemplo, una imagen con 256 niveles posibles es llamada una imagen de 8 bits.Por lo tanto, la cantidad de bits requeridos para almacenar una imagen será:
 
 .. math:: b = M x N x k
 	:label: cantBitsNecesarios
 
+|
+|
 .. figure:: resultadoDelProcesoCuantificacion.png
 
-   Representación del proceso de muestreo y cuantificación.Imagen continua captada por un dispositivo de sensado(a).Imagen muestreada y cuantificada(b).
-
+   Representación del proceso de muestreo y cuantificación.Imagen continua captada por un dispositivo de sensado(izquierda).Imagen muestreada y cuantificada(derecha).
 
 
 
@@ -349,7 +353,7 @@ Los pixeles Pk en la coordenada (i,j), con k siendo la cantidad total de pixeles
 * 8-vecinos(8-connected pixel): Se dice que un pixel P ubicado en (i,j) tiene una conexión diagonal de 4 pixeles, cuando tiene pixeles en las coordenadas (i+1,j+1),(i+1,j-1),(i-1,j+1) e (i-1,j-1). Si además este pixel tiene 4-vecinos, se dice que estos pixeles son 8-vecinos de P. 
 
 
-Otra propiedad de los pixeles es la adyacencia que se define en términos de los niveles de intensidad, siendo V el conjunto de valores de intensidad que un pixel puede adoptar, con V = {1} en imágenes binarias (considerandose adayacentes dos pixeles que tienen intensidad 1) y V siendo un subconjunto de todos los niveles de la imagen (para el caso de imagenes por escala de grises) y considerándose adyacentes dos pixeles cuyos valores de intensidad están en ese subconjunto. Existen 3 tipos de adyacencia:
+Otra propiedad de los pixeles es la adyacencia que se define en términos de los niveles de intensidad, siendo V el conjunto de valores de intensidad que un pixel puede adoptar, con V = {1} en imágenes binarias (considerandose adayacentes dos pixeles que tienen intensidad 1) y V siendo un subconjunto de todos los niveles de la imagen (para el caso de imagenes por escala de grises) y considerándose adyacentes dos pixeles cuyos valores de intensidad están en ese subconjunto, existen 3 tipos de adyacencia:
 
 * 4-adyacentes(4-adjacency). Dos pixeles P y Q con valores del conjunto V son 4-adyacentes si Q esta en el conjunto de los 4-vecinos de P.
 
@@ -413,7 +417,7 @@ Herramientas y técnicas sobre imágenes digitales
 .. NOTA:  FILTROS, E HISTOGRAMA DE FRECUENCIAS!!! 
 
 
-De forma general, existen dos tipos de aproximaciones que pueden emplearse en una imagen para aplicar técnicas de mejora de imagen y transformación: Emplear técnicas que actúen dominio espacial de la imagen, es decir modificando ciertas características sobre los pixeles de la imagen directamente; O Emplear técnicas que se ejecutan sobre el dominio de frecuencias de la imagen, que consisten en realizar una conversión de los valores de la imagen para llevarla a otro dominio, ejecutar transformaciones sobre ese dominio y finalmente, realizar la transformación inversa para obtener la imagen de salida.      
+De forma general, existen dos tipos de aproximaciones que pueden emplearse en una imagen para aplicar técnicas de mejora de imagen y transformación: Emplear técnicas que actúen dominio espacial de la imagen, es decir modificando ciertas características sobre los pixeles de la imagen directamente; O emplear técnicas que se ejecutan sobre el dominio de frecuencias de la imagen, que consisten en realizar una conversión de los valores de la imagen para llevarla a otro dominio, ejecutar transformaciones sobre ese dominio y finalmente, realizar la transformación inversa para obtener la imagen de salida.      
 
 Técnicas que sobre el dominio espacial
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -430,7 +434,7 @@ Debido a que las imágenes se representan como matrices, es posible tanto aplica
 Operaciones de manipulación de intensidad
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-En este tipo de técnicas las operaciones las relaciones entre pixeles vecinos no se consideran, como así tampoco la localización de los pixeles, sino que se modifican las intensidades de los pixeles. Estas operaciones pueden realizarse sobre pixeles individuales, tomando como entrada el valor de intensidad de un pixel y produciendo el valor de intensidad transformado para ese pixel; O sobre un vecindario de pixeles(neighborhood), donde dada la coordenada de un pixel en la imagen de entrada f(x,y), se toman los valores de intensidad de un conjunto de pixeles vecinos y, por medio del procesamiento de estos valores, se obtiene el valor de intensidad para ese pixel en la imagen de salida g(x,y).
+En este tipo de técnicas las relaciones entre pixeles vecinos no se consideran, como así tampoco la localización de los pixeles, sino que se modifican las intensidades de los pixeles. Estas operaciones pueden realizarse sobre pixeles individuales, tomando como entrada el valor de intensidad de un pixel y produciendo el valor de intensidad transformado para ese pixel.Alternativamente, se pueden aplicar sobre un vecindario de pixeles(neighbourhood), donde dada la coordenada de un pixel en la imagen de entrada f(x,y), se toman los valores de intensidad de un conjunto de pixeles vecinos y, por medio del procesamiento de estos valores, se obtiene el valor de intensidad para ese pixel en la imagen de salida g(x,y).
 
 |
 .. figure:: operacionesNeighborhood.png
@@ -446,7 +450,7 @@ Histograma de imagen
 ####################
 .. NOTA: Identacion h8
 
-La herramienta básica para este tipo de operaciones es el histograma de imagen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de intensidad (nivel de gris en imagenes por escala de grises) en los pixeles de la imagen. De esta manera, si se cuenta con K niveles de intensidad {0,1,...,K-1} y una cantidad NxM de pixeles, el histograma se define matemáticamente de la siguiente manera:
+La herramienta básica para este tipo de operaciones es el histograma de imagen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de intensidad (nivel de gris en imagenes por escala de grises) en los pixeles de la imagen. De esta manera, si la imagen f() cuenta con K niveles de intensidad {0,1,...,K-1} y una cantidad N x M de pixeles, el histograma Hf se define matemáticamente de la siguiente manera:
 
 .. math:: Hf(k) = J
    :label: formulaHistogramaImagen
@@ -454,7 +458,7 @@ La herramienta básica para este tipo de operaciones es el histograma de imagen,
 
 .. PAGINA 142 Image processing 3rd edition. Gonzales.
 
-Donde f() es la función que mapea el nivel de intensidad a cada pixel P(x,y), y J representa la cantidad de ocurrencias de ese nivel en los pixeles, con K niveles.Aunque este tipo de histograma no contiene información espacial con respecto a la imagen, es una herramienta valiosa que permite visualizar si la distribución de niveles de intensidad en una imagen es correcta, o si la imagen tiene tonalidades mas oscuras o más claras. Por ejemplo, en un histograma que corresponde a una imagen con escala de grises los niveles más oscuros se concentran sobre la parte más baja de la escala del histograma, mientras que los niveles más brillantes están en la parte alta del diagrama. Así, una imagen por escala de grises con bajo contraste, tendrá un histograma cuyos puntos se encuentran centrados en la escala y abarcan pocos valores en el rango, mientras que si ésta tiene un contraste alto, los valores del histograma abarcarán un rango amplio de la escala y, su distribución tenderá a ser uniforme.
+Donde f() es la función que mapea el nivel de intensidad a cada pixel P(x,y), y J representa la cantidad de ocurrencias de ese nivel en los pixeles, con K niveles. Aunque este tipo de histograma no contiene información espacial con respecto a la imagen, es una herramienta valiosa que permite visualizar si la distribución de niveles de intensidad en una imagen es correcta, o si la imagen tiene tonalidades mas oscuras o más claras. Por ejemplo, en un histograma que corresponde a una imagen con escala de grises, los niveles más oscuros se concentran sobre la parte más baja de la escala del histograma, mientras que los niveles más brillantes están en la parte alta del diagrama. Así, una imagen por escala de grises con bajo contraste, tendrá un histograma cuyos puntos se encuentran centrados en la escala y abarcan pocos valores en el rango, mientras que si ésta tiene un contraste alto, los valores del histograma abarcarán un rango amplio de la escala y, su distribución tenderá a ser uniforme.
 
 
 
@@ -477,16 +481,15 @@ Algunas veces el histograma de imagen se normaliza, dividiendo la cantidad de oc
 El histograma de imagen es una herramienta básica empleada por varias técnicas de procesamiento de imágenes con intensidad como la mejora de imagen,además de proveer información de utilidad para la compresión y la segmentación de imágenes.  
 
 
-Escalado de histograma
-######################
+Escalado de imagen
+##################
 
-El escalado de histograma consiste modificar el rango de niveles de intensidad que se consideran para representar un histograma.Este procedimiento dada una función f(n) que representa el histograma para cada uno de los n pixeles, consiste en multiplicar cada uno de estos valores por una constante numérica P (mayor o menor a 1):
+El escalado de imagen consiste modificar el rango de niveles de intensidad que se consideran para representar un histograma. Este procedimiento dada una imagen f(n) con n píxeles, implica multiplicar cada uno de estos valores por una constante numérica P (mayor o menor a 1):
 
 .. math:: g(n) = P*f(n)
    :label: formulaEscaladoImagen
 
-Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante P > 1, los niveles de gris cubrirán un rango mas amplio que aquellos de la función del histograma f(), mientras que si P < 1 se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez.
-| A continuación se pueden observar imágenes originales y los efectos de aplicar el histograma de imagen con dos escalas distintas:
+Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante P > 1, los niveles de gris cubrirán un rango mas amplio que aquellos de la función del histograma f(), mientras que si P < 1 se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez.A continuación se pueden observar imágenes originales y los efectos de aplicar el escalado de imagen con dos escalas distintas:
 
 .. _escaladohistograma:
 
@@ -525,7 +528,7 @@ Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el 
 Negativo de imagen
 ##################
 
-El negativo de una imagen consiste en escalar éstos con P=-1 revirtiendo el signo de los valores y  sumar un desplazamiento a los valores de intensidad de cada pixel K-1 con el fin de que estos se encuentren en el rango del histograma:
+El negativo de una imagen consiste en escalar los valores de la imagen f(n), con P = -1 revirtiendo el signo de los valores y sumar un desplazamiento a los valores de intensidad de cada pixel K-1 con el fin de que éstos se encuentren en el rango del histograma:
 
 .. math:: g(n) = -f(n) + (K-1)
 	:label: formulaImgInversa
@@ -542,7 +545,7 @@ Esta técnica se emplea para mejorar imágenes donde se pierde el nivel de detal
 Estiramiento de contraste(Contrast Stretching,Histogram Stretching)
 ###################################################################
 
-Este procedimiento consiste en distribuir las frecuencias de los niveles de intensidad,por medio de una fórmula matemática, en un nuevo histograma donde éstos se encuentren distribuidos de manera uniforme y abarquen la escala completa de niveles de intensidad. Por ejemplo si se emplea un histograma de una imagen de escala de grises, como el de la figura :num:`Fig. #escaladohistograma`, donde los niveles de intensidad de toda la escala están en el rango [0,K-1] y los niveles empleados por la figura se encuentran en el rango [A,B] con A y B siendo los valores máximos y mínimos de intensidad respectivamente, se puede emplear la siguiente fórmula matemática que mapee los valores en el nuevo histograma:
+Este procedimiento consiste en distribuir las frecuencias de los niveles de intensidad,por medio de una fórmula matemática, en un nuevo histograma donde éstos se encuentren organizados de manera uniforme y abarquen la escala completa de niveles de intensidad. Por ejemplo si se emplea un histograma de una imagen de escala de grises, como el de la figura :num:`Fig. #escaladohistograma`, donde los niveles de intensidad de toda la escala están en el rango [0,K-1] y los niveles empleados por la figura se encuentran en el rango [A,B] con A y B siendo los valores máximos y mínimos de intensidad respectivamente, se puede emplear la siguiente fórmula matemática que mapee los valores en el nuevo histograma:
 
 .. _alfa:
 
@@ -554,7 +557,7 @@ Este procedimiento consiste en distribuir las frecuencias de los niveles de inte
 De esta forma, este procedimiento modifica el contraste de la imagen en general si sus niveles de grises no están distribuidos adecuadamente, aunque si ésta abarca varios valores en la escala de grises del histograma, esta técnica puede producir poca o ninguna diferencia con respecto a la imagen original. A continuación se puede observar un ejemplo que contrastado con la figura :num:`Fig. #librosoriginal`, tiene una mejora en el contraste de la misma:
 
 
-.. figure:: estiramientoContrasteFormula.png
+.. figure:: estiramientoContrasteEjemplo.png
 	:scale: 70%
  
 	Ejemplo de estiramiento de contraste
@@ -566,7 +569,7 @@ Igualación de histograma(Histogram Equalization)
 ################################################
 
 Este procedimiento consiste en normalizar los niveles de intensidad del histograma de imagen, de manera que éstos sigan una distribución uniforme, y luego realizar un estiramiento de contraste para los niveles abarquen la mayoría de los valores en la escala del histograma. Este procedimiento provoca que el histograma se estire en el eje de las abscisas y tiende a aplanarlo de manera que se adapte a la distribución.
-Si se considera el caso para el histograma de imagen de una imagen con escala de grises, el primer paso consiste en realizar la normalización del histograma, obteniendo la función de densidad de probabilidad (PDF) de los niveles de gris, pf(k) para cada uno de los K niveles de intensidad.
+Si se considera el caso para el histograma de imagen de una imagen con escala de grises, el primer paso consiste en realizar la normalización del histograma, obteniendo la función de densidad de probabilidad (PDF) de los niveles de gris pf(k), para cada uno de los K niveles de intensidad.
 La función de densidad de probabilidad trata los valores de los niveles de intensidad como cantidades aleatorias, y definiéndose la probabilidad pf(k) de un nivel k ocurriendo en una imagen como:
 
 .. figure:: formulaNormalizacion.png
