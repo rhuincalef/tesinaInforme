@@ -1013,10 +1013,9 @@ Existen distintos tipos de operaciones que pueden realizarse sobre imágenes con
 Las operaciones de puntos son aplicadas a los pixeles individuales de una imagen, por lo que las interacciones y las dependencias entre pixeles vecinos no son consideradas, ni las operaciones que toman un conjunto de pixeles, sino que se basan en el procesamiento de las intensidades de los pixeles. Por lo tanto, este tipo de operación no altera la posición de los objetos en la imagen, sino que modifican la apariencia general de la imagen, cambiando la distribución de grises de la misma ,obteniendo el negativo o, desplazando los niveles de grises para aclarar la imagen.
 
 
-Las operaciones aritméticas se realizan entre imágenes de las mismas dimensiones espaciales, este tipo de operaciones es similar  a las operaciones por puntos debido a que la información espacial no es considerada, sino que la información se comparte entre imágenes y  se ejecutan pixel por pixel. Este tipo de operaciones se emplea para para la reducción del ruido en la imagen (distorciones aleatorias en la imagen producidas por radiación antes de capturar la misma o por fallos eléctricos en el dispositivo de sensado ), donde se realiza un promediado de las tonalidades de grises de un conjunto de frames y el resultado final es una imagen cuyo nivel de ruido ha sido reducido considerablemente.
-Otra área donde se emplean operaciones de éste tipo es en la detección de movimiento en sistemas de vigilancia, o en sistemas automatizados de inspección visual, donde se realiza la diferencia entre las matrices que representan las imágenes y luego se computa el histograma de imagen, que mostrará variaciones importantes en el intensidad (valores de brillo mayores) si cambios significativos han ocurrido entre dos frames.
+Las operaciones aritméticas se realizan entre imágenes de las mismas dimensiones espaciales, este tipo de operaciones es similar  a las operaciones por puntos debido a que la información espacial no es considerada, sino que la información se comparte entre imágenes y se ejecutan pixel por pixel. Este tipo de operaciones se emplea para para la reducción del ruido en la imagen (distorciones aleatorias en la imagen producidas por radiación antes de capturar la misma o por fallos eléctricos en el dispositivo de sensado ), donde se realiza un promediado de las tonalidades de grises de un conjunto de frames y el resultado final es una imagen cuyo nivel de ruido ha sido reducido considerablemente.Otra área donde se emplean operaciones de éste tipo es en la detección de movimiento en sistemas de vigilancia, o en sistemas automatizados de inspección visual, donde se realiza la diferencia entre las matrices que representan las imágenes y luego se computa el histograma de imagen, que mostrará variaciones importantes en el intensidad (valores de brillo mayores) si cambios significativos han ocurrido entre dos frames.
 
-Finalmente, las operaciones geométricas son operaciones complementarias a las operaciones por puntos debido a que no modifican los valores de los niveles de gris, sino que modifican la imagen modificando cambiando las posiciones de los elementos de la imagen. Este tipo de operaciones se emplea para realizar la rotación, traslación o zoom-in o zoom-out en la imagen.
+Finalmente, las operaciones geométricas son operaciones complementarias a las operaciones por puntos debido a que no modifican los valores de los niveles de gris, sino que modifican las posiciones de los elementos de la imagen. Este tipo de operaciones se emplea para realizar la rotación, traslación o zoom-in o zoom-out en la imagen.
 
 
 Imágenes binarias
@@ -1024,7 +1023,7 @@ Imágenes binarias
 
 En este tipo de imagen digital la intensidad de los pixeles sólo puede asumir dos valores 0 o 1, por lo que sólo se requiere un bit para su representación y los objetos se representan como una secuencia de 1 conectados, siendo éstas las que requieren menos espacio y tiempo de almacenamiento. Estas imágenes contienen suficiente información respecto de los objetos en la imagen y permiten que éstos se reconozcan fácilmente.
 Este tipo de imágenes se emplean en distintos tipos de aplicaciones de visión por computadora, como el reconocimiento de objetos, el rastreo,etc. aunque su aplicabilidad es limitada debido al contenido limitado de información que brindan.
-Las imágenes binarias surgen de una variedad de fuentes, generalmente son creadas por medio del procesamiento de imágenes de escala de grises, aunque algunos tipos de sensores entregan una imagen binaria como salida, como los dispositivos que se emplean para obtener dibujos o texto escrito a mano con un pad resistivo, un lápiz de luz. Generalmente estos dispositivos, inicializan todas las coordenadas de la imagen binaria en cero, y al detectar la presión o un cambio de resistencia, o luz sensada en una coordenada, entonces se le asigna a la misma el valor 1.Ejemplos de imágenes binarias, son los dibujos de líneas, texto escrito o impreso, siluetas, huellas digitales,o planos empleados por arquitectos.
+Las imágenes binarias surgen de una variedad de fuentes, generalmente son creadas por medio del procesamiento de imágenes de escala de grises, aunque algunos tipos de sensores entregan una imagen binaria como salida, como los dispositivos que se emplean para obtener dibujos o texto escrito a mano con un pad resistivo, un lápiz de luz. Generalmente estos dispositivos, inicializan todas las coordenadas de la imagen binaria en cero, y al detectar la presión o un cambio de resistencia, o luz sensada en una coordenada, entonces se le asigna a la misma el valor 1. Ejemplos de imágenes binarias, son los dibujos de líneas, texto escrito o impreso, siluetas, huellas digitales,o planos empleados por arquitectos.
 |
 
 .. figure:: imagenBinaria.png
@@ -1039,12 +1038,12 @@ Imágenes a color
 
 Con la finalidad de incluir el color en el procesamiento de imágenes, se debe emplear un modelo de color que permita la especificación de las intensidades de los colores en un sistema de coordenadas y un rango de valores dentro de ese sistema de coordenadas, donde cada color sea representado por un único valor. Debido a la variedad de campos de aplicación del color, existen diferentes esquemas de representación según el objetivo, entre los que se encuentran:
 
-* RGB(Red,Green,Blue). Emplea diversas combinaciones de colores primarios(normalizados entre [0,1] o sino valores en el rango 0-255) para la representación de colores en imágenes. Este modelo es utilizado principalmente por monitores a color y cámaras de video y para la manipulación y generación de imágenes digitales.
+* RGB(Red,Green,Blue). Emplea diversas combinaciones de colores primarios(normalizados entre [0,1] o alternativamente valores en el rango 0-255) para la representación de colores en imágenes. Este modelo es utilizado principalmente por monitores a color y cámaras de video y para la manipulación y generación de imágenes digitales.
 * CMY(Cyan,Magenta,Amarillo) y CMYK(Cyan,Magenta,Amarillo,Negro). Hace uso de los colores secundarios para representar el color, y es empleado para la impresión de imágenes color, realizándose una conversión interna del esquema RGB a CMY/K.
 * HSI(Tonalidad,Saturación,Intensidad). La tonalidad es un valor que describe el nivel de pureza de un color (rojo,verde o azul) percibido por un observador, la saturación brinda una medida del grado en que la luz blanca esta mezclado con la tonalidad de un color y, el brillo es una medida subjetiva que abarca la noción de la intensidad en imágenes sin color.Este modelo hace uso de estas características y además permite desacoplar la información de color y el componente de intensidad.
 
 
-El esquema empleado para la representación de imágenes digitales es RGB donde se emplea un vector para representar la composición de colores, de manera que cada pixel tenga asociadas las combinaciones correspondientes tres colores primarios (RGB), utilizando para cada color una representación de 8 bits.Por lo tanto, una imagen a color emplea 24 bits por cada pixel, necesitándose un total de (2^8)^3 = 16,777,216 valores posibles de color.
+El esquema empleado para la representación de imágenes digitales comunmente es RGB, donde se emplea un vector para representar la composición de colores, de manera que cada pixel tenga asociadas las combinaciones correspondientes tres colores primarios (RGB), utilizando para cada color una representación de 8 bits.Por lo tanto, una imagen a color emplea 24 bits por cada pixel, necesitándose un total de (2^8)^3 = 16,777,216 valores posibles de color.
 De esta forma, para una imagen con N x M elementos, existe un vector que contiene la intensidad asociada a cada color primario, que se corresponde con las coordenadas (x,y) de la siguiente forma:
 
 |
@@ -1095,7 +1094,6 @@ Procesamiento de imágenes
 Debido a que el procesamiento de imágenes abarca varios tipos de imágenes, comprendidas a lo largo de todo el espectro electromagnético, éste tiende a solaparse con otras áreas como el análisis de imágenes,basado en la extracción de información de utilidad desde la imagen, y la visión artificial, que es un área de la inteligencia artificial cuyo objetivo es lograr que una computadora adquiera conocimiento y pueda efectuar decisiones, basada en imágenes o video de entrada.
 Así,el procesamiento de imágenes digitales, es un conjunto de técnicas que toman una imagen como entrada y, por medio de una computadora, producen una imagen de salida con el objetivo de extraer información y reconocer objetos en ésta.
 
-
 Las herramientas y técnicas definidas anteriormente, se emplean en distintos tipos de operaciones que se pueden clasificar según:
 * El nivel de abstracción
 * El objetivo perseguido 
@@ -1110,12 +1108,12 @@ Alternativamente,los tipos de operaciones en el procesamiento de imagen según e
 
 .. pagina 49 gonzales, image processing.
 
-* Aplicación de filtros y mejora la imagen. Estas técnicas buscan manipular la imagen, de manera que el resultado sea mas adaptable que la original para una aplicación específica. Esto se hace con el fin de recuperar detalles que no se visualizan debido al bajo nivel de brillo, o simplemente subrayar ciertas características de interés en una imagen. Un ejemplo de este tipo de operaciones es cuando se aumenta el contraste para mejorar visualmente los objetos que se perciben en la imagen.
+* Aplicación de filtros y mejora la imagen. Estas técnicas buscan manipular la imagen, de manera que el resultado sea mas adaptable que la original para una aplicación específica. Esto se hace con el fin de recuperar detalles que no se visualizan debido al bajo nivel de brillo, o simplemente subrayar ciertas características de interés en una imagen. Un ejemplo de este tipo de operaciones es aumentar el contraste para mejorar visualmente los objetos que se perciben en la imagen.
 
 * Restauración y reconstrucción de la imagen. Este tipo busca mejorar la apariencia la imagen, sin embargo a diferencia de la mejora de imagen, esta técnica es objetiva debido a que se basan en modelos probabilísticos de degradación de imagen, mientras que la primera se basa en la subjetividad del observador para establecer una mejora adecuada. La restauración intenta recuperar una imagen que ha sido degradada empleando un conocimiento previo del fenómeno de degradación, por lo que estos procesos se encuentran orientados hacia el modelado de la degradación y la aplicación del proceso inverso, para recuperar la imagen original.
 
    
-* Wavelets. Las Wavelets son un conjunto transformaciones que forman parte del área de procesamiento de señales e imágenes denominado teoría de multiresolución, que abarca un conjunto de técnicas, incluyendo la división de bandas de una señal (subbanding), filtrado de voz digital y representación piramidal de una imagen. Esta rama se relaciona con la representación de imágenes (o señales) en más de una resolución, con el fin de obtener a una resolución específica, características que no se podrían identificar en otra resolución. Este tipo de herramienta es utilizada ampliamente para la compresión y la representación piramidal de una imagen. Esta última fue originalmente aplicada para la visión artificial y la compresión de imágenes, y consiste en subdivide subdividir una imagen con el fin de obtener una colección de imágenes de menor resolución organizadas en forma de imagen para su posterior procesamiento.
+* Wavelets. Las Wavelets son un conjunto transformaciones que forman parte del área de procesamiento de señales e imágenes denominado teoría de multiresolución, que abarca un conjunto de técnicas, incluyendo la división de bandas de una señal (subbanding), filtrado de voz digital y representación piramidal de una imagen. Esta rama se relaciona con la representación de imágenes (o señales) en más de una resolución, con el fin de obtener a una resolución específica, características que no se podrían identificar en otra resolución. Este tipo de herramienta es utilizada ampliamente para la compresión y la representación piramidal de una imagen. Esta última fue originalmente aplicada para la visión artificial y la compresión de imágenes, y consiste en subdividir una imagen con el fin de obtener una colección de imágenes de menor resolución organizadas para su posterior procesamiento.
   
 .. figure:: piramideImagen.png
 
@@ -1128,7 +1126,7 @@ Alternativamente,los tipos de operaciones en el procesamiento de imagen según e
 
 .. AGREGAR INFO A PROC. MORFOLOGICO EN IMAGE PROCESSING GONZALES. PAG. 649.
 
-* Procesamiento morfológico. La morfología se relaciona con la forma y las relaciones entre las partes de una imagen. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma. El procesamiento morfológico utiliza los mecanismos de la teoría de conjuntos y considera cada uno de los elementos que componen una imagen digital como conjuntos. Por lo tanto, si se emplea una imagen binaria cada pixel con coordenada (x,y) se define como un conjunto de dos dimensiones que representa el pixel blanco o negro de la misma, mientras que si se emplea una imagen con escala de grises, los dos primeros elementos del conjunto representan las coordenadas y el tercero corresponde al nivel de intensidad, e imágenes con distintos modelos de color se representan con conjuntos de mayores dimensiones.
+* Procesamiento morfológico. La morfología se relaciona con la forma y las relaciones entre las partes de una imagen. El procesamiento morfológico consiste en aquellas herramientas que permiten extraer componentes de la imagen que son útiles en la representación y descripción de la forma.Éste utiliza los mecanismos de la teoría de conjuntos y considera cada uno de los elementos que componen una imagen digital como conjuntos. Por lo tanto, si se emplea una imagen binaria cada pixel con coordenada (x,y) se define como un conjunto de dos dimensiones que representa el pixel blanco o negro de la misma, mientras que si se emplea una imagen con escala de grises, los dos primeros elementos del conjunto representan las coordenadas y el tercero corresponde al nivel de intensidad, e imágenes con distintos modelos de color se representan con conjuntos de mayores dimensiones.
 
 Así, el procesamiento morfológico consiste en aplicar a las imágenes representadas por conjuntos elementos de estructurado (ESs), que son pequeños conjuntos o sub-imágenes, que pueden adoptar distintas formas(aunque se rellenan con elementos para que adopten formas rectangulares),utilizadas con el fin de probar una imagen bajo estudio para propiedades de interés. A continuación se pueden observar distintos ES, con un origen se encuentra marcado por un punto negro, aunque si éste no se encuentra marcado se considera que es el centro del elemento de estructurado:
 
@@ -1160,7 +1158,7 @@ Las operaciones morfológicas que se aplican en una imagen, emplean los elemento
 	Fórmula de traslación para un conjunto B para un valor z.  
 
 
-Por una lado la erosión de una imagen A por B dentro de un espacio Z^2, es el conjunto de todos los puntos z tales que B, trasladado por z esta contenido en A, es decir,que elimina todos aquellos puntos que desplazados por z estan localizados dentro de A. Esto en una imagen binaria hace mas finos los objetos de la imagen, removiendo de la misma aquellos elementos que son mas pequeños que el elemento de estructurado.  
+Por una lado la erosión de una imagen A por B dentro de un espacio *Z^2*, es el conjunto de todos los puntos *z* tales que B, trasladado por *z* esta contenido en A, es decir,que elimina todos aquellos puntos que desplazados por *z* estan localizados dentro de A. Ésto en una imagen binaria hace mas finos los objetos de la imagen, removiendo de la misma aquellos elementos que son mas pequeños que el elemento de estructurado.  
 
 .. figure:: formulaErosionMorfologia.png
 	:scale: 50%
@@ -1183,7 +1181,7 @@ Por otro lado, la dilatación de una imagen A por B dentro de un espacio Z^2, co
 
 Por lo tanto, las operaciones principales asociadas este tipo de procesamiento, se definen como operaciones sobre conjuntos que combinan las propiedades de traslación, la erosión y dilatación, y abarcan tanto procedimientos relativos a la extracción de características de la misma, como aquellos que se emplean antes y después de los mismos. A continuación se detallan las operaciones relacionadas a la extracción de características: 
 
-	* Extracción de límites(boundary extraction) y componentes conectados. La extracción de limites consiste en extraer el contorno de un objeto representado en una imagen binaria, mientras que la extracción del componente conectado abarca la obtención del contorno y los pixeles que conforman la forma del objeto. Las fórmulas para estas operaciones se definen de la siguiente manera:
+	* Extracción de límites(boundary extraction) y componentes conectados. La extracción de límites consiste en extraer el contorno de un objeto representado en una imagen binaria, mientras que la extracción del componente conectado abarca la obtención del contorno y los pixeles que conforman la forma del objeto. Las fórmulas para estas operaciones se definen de la siguiente manera:
 	  
 		.. figure:: formulaExtraccionLimite.png
 			:scale: 50%
@@ -1196,9 +1194,9 @@ Por lo tanto, las operaciones principales asociadas este tipo de procesamiento, 
 			Fórmula para la extracción de componentes conectados. Los valores Xk representan los elementos de una nueva imagen (con las mismas dimensiones que la imagen de entrada A) resultante de aplicar B sobre A.
 		
 
-	* Esqueletos(Skeletons). Un esqueleto es conjunto de elementos de una imagen que representan la forma de la misma se encuentran equidistantes a los límites.Los esqueletos en una imagen representan los objetos con el menor número de pixeles, siendo cada uno de éstos parte de la estructura básica y siendo completamente necesarios. Por lo tanto los esqueletos permiten obtener información respecto de la imagen original tales como la posición, la orientación y la longitud de los segmentos que lo conforman.
+	* Esqueletos(Skeletons). Un esqueleto es conjunto de elementos de una imagen que representan la forma de la misma y se encuentran equidistantes a los límites.Los esqueletos en una imagen representan los objetos con el menor número de pixeles, siendo cada uno de éstos parte de la estructura básica y siendo absolutamente necesarios. Por lo tanto, los esqueletos permiten obtener información respecto de la imagen original tales como la posición, la orientación y la longitud de los segmentos que lo conforman.
 	
-	El proceso para la obtención de esqueletos, consiste en aplicar una sucesión de operaciones de erosión a una imagen con un elemento ES, hasta el punto donde si se aplicara la siguiente erosión se eliminarían los objetos que pertenecen a ésta. Luego, se puede aplicar la diferencia entre las múltiples erosiones menos las múltiples erosiones aplicadas a la operación de opening, de manera que se consideren aquellos elementos no suavizados como parte del esqueleto. Finalmente, la unión de todos los esqueletos de las figuras en la imagen constituyen la imagen final. 
+	El proceso para la obtención de esqueletos, consiste en aplicar una sucesión de operaciones de erosión a una imagen con un elemento ES, hasta el punto donde si se aplicara la siguiente erosión se eliminarían los objetos que pertenecen a ésta. Luego, se puede aplicar la diferencia entre las múltiples erosiones menos las múltiples erosiones aplicadas a la operación de opening(descrita más adelante), de manera que se consideren aquellos elementos no suavizados como parte del esqueleto. Finalmente, la unión de todos los esqueletos de las figuras en la imagen constituyen la imagen final. 
 
 	 .. figure:: ejemploEsqueleto1.png
 	 	:scale: 60%
@@ -1250,15 +1248,14 @@ Las técnicas que se emplean en conjunto con la extracción de características 
 	* Pruning. Este método es empleado para la eliminación de elementos de imagen excedentes producto del empleo de skeletons y thinning.
 
 
-* Segmentación.La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.
-Este proceso es uno de los más importantes elementos en análisis de imágenes automatizado, principalmente porque posibilita extraer aquellas entidades de interés en la imagen para aplicar otros métodos de procesamiento, como la descripción y el reconocimiento.
+* Segmentación.La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.Este proceso es uno de los más importantes elementos en análisis de imágenes automatizado, principalmente porque posibilita extraer aquellas entidades de interés en la imagen para aplicar otros métodos de procesamiento, como la descripción y el reconocimiento.
 
 .. cap 6. pag. 416. Image Digital Processing. Gonzales 3rd edition.
 * Procesamiento de color de imagen. Debido a que el color se considera como un descriptor potente para el reconocimiento y extracción de objetos de una escena, se han desarrollado métodos que permiten emplearlo en el procesamiento de imágenes. En general, este tipo de procesamiento consiste en trabajar con los componentes de color (o espacios de color) RGB por separado y asociar las componentes de cada uno de los pixeles de entrada para generar el pixel a color en la imagen de salida. Las tareas de procesamiento de imágenes digitales con color son variadas, aunque se distinguen las siguientes:
 
 
-	*Asignación de colores basado en tonalidades de grises. Este tipo de operación s realiza con el fin de lograr un mejor entendimiento de la imagen por parte del observador. Existen diferentes aproximaciones para realizar esta tarea, destacádonse el rebanado por intensidad y la transformación intensidad-color.
-	El rebanado por intensidad consiste en dividir los L-1 valores de la escala de grises en P planos, de manera que los pixeles cuyas intensidades se encuentren entre dos distintos planos sean representados por diferentes colores y, aquellos elementos que caigan en la división de un plano se le asigne el color del plano. 
+	*Asignación de colores basado en tonalidades de grises. Este tipo de operación se realiza con el fin de lograr un mejor entendimiento de la imagen por parte del observador. Existen diferentes aproximaciones para realizar esta tarea, destacádonse el rebanado por intensidad y la transformación intensidad-color.
+	El rebanado por intensidad consiste en dividir los *L-1* valores de la escala de grises en *P* planos, de manera que los pixeles cuyas intensidades se encuentren entre dos distintos planos sean representados por diferentes colores y, aquellos elementos que caigan en la división de un plano se le asigne el color del plano. 
 
 	.. figure:: slicingIntensidad.png
 		:scale: 50%
@@ -1275,12 +1272,12 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 	
 	|
 
-	.. figure:: transformacionColorIntensidad1.png
+	.. figure:: transformacionColorIntensidad2.png
 		:scale: 50%
 
 		Onda sinusoidal para cada componente que representa los valores de los diferentes objetos.
 	 
-	Alternativamente, este procedimiento también se puede emplear aplicando transformaciones sobre varias imágenes monocromáticas de distintas bandas del espectro electromagnético (capturadas por distintos sensores) y posteriormente combinarlas en una sola, de manera que se puedan visualizar características en imágenes que complejas, que sería imposible visualizar en caso contrario. Ésta variación de la técnica se emplea en el procesamiento de imágenes multiespectrales captadas por satélites. A continuación se puede visualizar un ejemplo, donde las imágenes superior-izquierda,superior-derecha y media-izquierda se tratan como los componentes RGB para formar la imagen media-izquierda. Y la imagen inferior-derecha, se produce como resultado de combinar el campo rojo de la imagen infraroja inferior-izquierda, sobre la imagen RGB obtenida anteriormente:  
+	Alternativamente, este procedimiento también se puede emplear aplicando transformaciones sobre varias imágenes monocromáticas de distintas bandas del espectro electromagnético (capturadas por distintos sensores) y posteriormente combinarlas en una sola, de manera que se puedan visualizar características en imágenes que complejas, que sería imposible visualizar en caso contrario. Ésta variación de la técnica se emplea en el procesamiento de imágenes multiespectrales captadas por satélites. A continuación, se puede visualizar un ejemplo donde las imágenes superior-izquierda,superior-derecha y media-izquierda se tratan como los componentes RGB para formar la imagen media-izquierda. Y la imagen inferior-derecha, se produce como resultado de combinar el campo rojo de la imagen infraroja inferior-izquierda, sobre la imagen RGB obtenida anteriormente:  
 
 
 	.. figure:: imagenMultiespectral.png
@@ -1304,7 +1301,7 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 	.. http://slideplayer.com/slide/6875110/
 	.. https://www.slideshare.net/RevanthChimmani1/color-image-processing-presentation
 
-	* Color Slicing(Rebanado por color). Esta transformación se emplea con el objetivo de separar objetos en la imagen del fondo, para ello se define un vector que representa el color neutral y posteriormente, se verifica para cada pixel si éste se encuentra dentro de un área (centrada en una coordenada de la imagen) determinada aplicando una fórmula matemática (que define la forma de ésta, si es un radio o un rectángulo por ejemplo), si es así se conserva el pixel con el color que posee. Por el contrario, si no es así se le asigna el valor del color neutral. En la siguiente figura se puede observar el efecto de esta operación sobre una imagen que contiene un bowl con frutillas:
+	* Color Slicing (Rebanado por color). Esta transformación se emplea con el objetivo de separar objetos en la imagen del fondo, para ello se define un vector que representa el color neutral y posteriormente, se verifica para cada pixel si éste se encuentra dentro de un área determinada (centrada en una coordenada de la imagen)  aplicando una fórmula matemática (que define la forma de ésta, si es un radio o un rectángulo por ejemplo) y si es así, se conserva el pixel con el color que posee. En caso contrario, se le asigna el valor del color neutral. En la siguiente figura se puede observar el efecto de esta operación sobre una imagen que contiene un bowl con frutillas:
 	  
 
 	.. figure:: colorSlicing.png
@@ -1315,15 +1312,15 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 	* Suavizado de colores(Color Smoothing). El suavizado de imagen al igual que en imágenes representadas por escala de grises, consiste en aplicar un filtro a la imagen digital de entrada con el fin producir los pixeles de salida, aunque en este las operaciones se aplican sobre los vectores que representan los componentes de color. De esta forma, la intensidad del pixel de salida se compone de procesar cada uno de los componentes de color por separado.
 	  
 	 
-	* Segmentación por colores. Dependiendo de si el modelo de representación de la imagen es HSI o RGB se puede realizar esta operación de dos maneras diferentes: Si la imagen es HSI, la segmentación consiste en  crear una máscara binaria generada a partir de aplicar el thresholding para un valor dado, estableciendo los valores que no estan sobre ese limite a negro y conservando el resto en 1, y luego aplicarla a la imagen de saturación. La salida de este procedimiento es una imagen cuyos componentes han sido filtrados.
+	* Segmentación por colores. Dependiendo de si el modelo de representación de la imagen es HSI o RGB se puede realizar esta operación de dos maneras diferentes: Si la imagen es HSI, la segmentación consiste en crear una máscara binaria generada a partir de aplicar el thresholding para un valor dado al componente de tonalidad o Hue (ya que los colores se representan con mayor detalle en este componente) provocando que los valores que no estan sobre ese limite se descarten (seteándose a 0)  y conservando el resto (seteado en 1), y luego se aplique esta máscara al componente de tonalidad. La salida de este procedimiento es una imagen donde las regiones con mayor predominancia de color han sido filtradas.
 	  
 
 
 	.. figure:: segmentacionColor.png
 
-		Ejemplo de segmentación a color para imagen con HSI.
-
-	Si la imagen emplea RGB, la segmentación de objetos en rangos de color específicos simplemente consiste en tomar un conjunto de puntos que cuyo color es representativo de los colores de interés, y obtener el promedio de color para cada componente y almacenar esto como un vector. Luego por medio de una fórmula de distancia, se realiza una comparación de los componentes de color de cada pixel con el vector y si se encuentra dentro de ésta distancia se lo conserva, y en caso contrario se lo descarta. La fórmula de distancia más común para realizar la medida de distancia es la Euclidiana, donde si la distancia entre el vector del pixel,z,y el vector promedio,a, se encuentra a menos de un límite,D0, se considera un color válido. 
+		Ejemplo de segmentación a color para imagen con HSI. En este ejemplo, se realiza la segmentación por color de la región rojiza en la imagen original (a), siendo (b) el matiz o tonalidad (Hue), (c)  la saturación y (d) a la intensidad. En (e) se define una máscara binaria de saturación que se aplica a (b) y el resultado se muestra en (f). En (g) se muestra el histograma  resultante de este procedimiento y en (h) se muestran los pixeles que pertenecen a la región de la imagen que tiene tonalidad roja resaltados en blanco.
+ 
+	Si la imagen emplea RGB, la segmentación de objetos en rangos de color específicos simplemente consiste en tomar un conjunto de puntos que cuyo color es representativo de los colores de interés, y obtener el promedio de color para cada componente y almacenar esto como un vector. Luego por medio de una fórmula de distancia, se realiza una comparación de los componentes de color de cada pixel con el vector y si se encuentra dentro de ésta distancia se lo conserva, y en caso contrario se lo descarta. La fórmula de distancia más común para realizar la medida de distancia es la Euclidiana, donde si la distancia entre el vector del pixel *z* y el vector promedio *a* se encuentra a menos de un límite *D0*, se considera un color válido. 
 
 
 	.. figure:: formulaDistanciaEcludiana.png
@@ -1332,7 +1329,7 @@ Este proceso es uno de los más importantes elementos en análisis de imágenes 
 
 
 * Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los pixeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores.
-Estas técnicas, consisten en transformar los pixeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: Representar la región en términos de sus características externas (su límite o boundary por ejemplo), describiéndose el limite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite;
+Estas técnicas, consisten en transformar los pixeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: Representar la región en términos de sus características externas (su límite o boundary por ejemplo), describiéndose el límite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite;
 O representarla según sus características internas, es decir, los pixeles que comprenden la región. En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región.Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o, en la distribución estadística de los elementos del patrón.
 Con respecto a la descripción de una textura, existen 3 aproximaciones para esta tarea: 
 	
@@ -1347,7 +1344,7 @@ Con respecto a la descripción de una textura, existen 3 aproximaciones para est
 
 	* La aproximación estructural. Esta técnica consiste en describir una textura por medio de un conjunto de reglas(o primitivas) que representan el patrón de la misma, que se repite de manera constante.
 	
-	* La aproximación espectral. Esta aproximación se basa en las propiedades de la  transformada de Fourier, y son usadas primariamente para detectar periodicidad en la totalidad de la imagen a través de picos en el espectro de las frecuencias de la imagen. 
+	* La aproximación espectral. Esta aproximación se basa en las propiedades de la transformada de Fourier, y son usadas primariamente para detectar periodicidad en la totalidad de la imagen a través de picos en el espectro de las frecuencias de la imagen. 
 
 |
 
