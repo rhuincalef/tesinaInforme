@@ -282,7 +282,7 @@ Para que un sensor pueda captar un objeto de determinado tamaño, es necesario q
 	Sensor individual de captura
 
 
-Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación emitida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una conversión estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de M filas x N columnas de valores discretos, donde cada uno de los elementos (i,j) que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así, si una imagen digital contiene M x N pixeles, se representa por una matriz de M x N elementos conteniendo desde 0 hasta M-1 índices en las filas y desde 0 hasta N-1 índices en las columnas.
+Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, estos en general producen una onda de voltaje continua cuya amplitud y forma esta relacionada a la radiación emitida o reflejada desde el objeto, por lo que para crear una imagen digital, es necesario realizar una conversión estos datos en un formato digital, dando como resultado una imagen digital. Este proceso comienza con la conversión de las coordenadas espaciales de la imagen a una matriz multidimensional que pueda ser indexada por valores numéricos(también llamado proceso de muestreo o sampling), de esta forma la señal puede ser almacenada y procesada como un arreglo de *M* filas x *N* columnas de valores discretos, donde cada uno de los elementos *(i,j)* que pueden ser indexados en la matriz se denomina elemento de imagen(picture element), pel o pixel. Así, si una imagen digital contiene *M* x *N* pixeles, se representa por una matriz de *M* x *N* elementos conteniendo desde 0 hasta *M-1* índices en las filas y desde 0 hasta *N-1* índices en las columnas.
 Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como para representar la imagen, se produce un efecto denominado aliasing, que produce que la imagen visual pierda el patrón de la imagen original que intenta representar, produciendo una falso patrón y una imagen distorcionada. Como se observa en la siguiente imagen de una huella digital, a medida que la densidad de pixeles muestreados disminuye, la calidad de la imagen empeora y se produce éste efecto:
 
 
@@ -313,7 +313,7 @@ La cuantificación se puede realizar de manera uniforme, cuando los valores de i
 	Cuantificación de imagen de 2 dimensiones.Cuantificación uniforme (a).Cuantificación no uniforme (b).
 
 
-De esta forma, el proceso de digitalización requiere los valores de M,N y la cantidad de niveles de intensidad L( niveles de gris en el caso de las imágenes con escala de grises o de valores en las bandas roja,verde y azul para las imágenes a color) como valores positivos, permitidos para cada pixel. No obstante, debido a las consideraciones de hardware, procesamiento y almacenamiento, el número de niveles es típicamente una potencia de 2:
+De esta forma, el proceso de digitalización requiere los valores de *M*,*N* y la cantidad de niveles de intensidad *L*( niveles de gris en el caso de las imágenes con escala de grises o de valores en las bandas roja,verde y azul para las imágenes a color) como valores positivos, permitidos para cada pixel. No obstante, debido a las consideraciones de hardware, procesamiento y almacenamiento, el número de niveles es típicamente una potencia de 2:
 
 
 .. math:: L = 2^k
@@ -324,8 +324,8 @@ De esta forma, el proceso de digitalización requiere los valores de M,N y la ca
 .. beautiful mathematical formulas.
 
 
-Donde k es el número de bits empleados para representar el nivel de cada pixel. En general, el número de bits k se encuentra entre 1<=k<=8, empleándose k=1 para imágenes binarias, k=8 para imágenes por escala de grises (donde cada nivel ocupa un byte) y, para el caso de las imágenes a color, con múltiples valores, cada nivel de color ocupa 8 bits usando los colores rojo,verde y azul (RGB), empleándose 24 bits por pixel con el fin de representar el color de éste. 
-Así, cuando una imagen puede tener 2^k niveles de gris, es una práctica común referirse a la imagen como una "imagen de k-bits".Por ejemplo, una imagen con 256 niveles posibles es llamada una imagen de 8 bits.Por lo tanto, la cantidad de bits requeridos para almacenar una imagen será:
+Donde *k* es el número de bits empleados para representar el nivel de cada pixel. En general, el número de bits *k* se encuentra entre *1 <= k <=8*, empleándose *k = 1* para imágenes binarias, *k = 8* para imágenes por escala de grises (donde cada nivel ocupa un byte) y, para el caso de las imágenes a color, con múltiples valores, cada nivel de color ocupa 8 bits usando los colores rojo,verde y azul (RGB), empleándose 24 bits por pixel con el fin de representar el color de éste. 
+Así, cuando una imagen puede tener *2^k* niveles de gris, es una práctica común referirse a la imagen como una "imagen de k-bits".Por ejemplo, una imagen con 256 niveles posibles es llamada una imagen de 8 bits.Por lo tanto, la cantidad de bits requeridos para almacenar una imagen será:
 
 .. math:: b = M x N x k
 	:label: cantBitsNecesarios
@@ -343,14 +343,14 @@ Relaciones entre pixeles
 .. CONTENIDOS A INCLUIR: 
 ..	-Relaciones entre pixeles y DISTANCIA ENTRE LOS MISMOS, background,foreground, region,interpolacion,neirbourhood o ventana o mascara(masking).
 
-Los pixeles Pk en la coordenada (i,j), con k siendo la cantidad total de pixeles con los indices i=1,2,...,n y j=1,2,...,m, que componen una imagen digital cuentan con distintas propiedades entre las que se encuentran las siguientes:
+Los pixeles Pk en la coordenada *(i,j)*, con *k* siendo la cantidad total de pixeles con los indices *i=1,2,...,n* y *j=1,2,...,m*, que componen una imagen digital cuentan con distintas propiedades entre las que se encuentran las siguientes:
 
-* Pixeles conectados: Un pixel en un punto P0 en (i0,j0) se conecta a otro pixel Pn en (in,jn) si y sólo si existe un camino desde P0 hasta Pn, que es una secuencia de puntos (i0,j0),(i1,j1)...(in,jn) tal que el pixel (ik,jk) es un vecino del pixel en (ik+1,jk+1) y Pk= Pk+1 para todos los k, 0 < k < n-1. La secuencia de pixeles distintos de un pixel a otro también se denomina camino digital (digital path) y, si el primer pixel del camino se encuentra conectado con el primer pixel, se denomina un camino cerrado.
+* Pixeles conectados: Un pixel en un punto *P0* en *(i0,j0)* se conecta a otro pixel Pn en *(in,jn)* si y sólo si existe un camino desde *P0* hasta Pn, que es una secuencia de puntos (i0,j0),(i1,j1)...(in,jn) tal que el pixel *(ik,jk)* es un vecino del pixel en *(ik+1,jk+1)* y *Pk= Pk+1* para todos los *k*, *0 < k < n-1*. La secuencia de pixeles distintos de un pixel a otro también se denomina camino digital (digital path) y, si el primer pixel del camino se encuentra conectado con el primer pixel, se denomina un camino cerrado.
   
-* 4-vecinos(4-connected pixel): Cuando un pixel P en la ubicación (i,j) tiene cuatro vecinos en las coordenadas (i+1,j), (i-1,j), (i,j+1) e (i,j-1) se conocen como 4-vecinos.Es decir, que cada pixel esta a una unidad de distancia' de (i,j) y algunas de las ubicaciones de P yacen fuera de la imagen digital en el borde la imagen.
+* 4-vecinos(4-connected pixel): Cuando un pixel *P* en la ubicación *(i,j)* tiene cuatro vecinos en las coordenadas *(i+1,j)*, *(i-1,j)*, *(i,j+1)* e *(i,j-1)* se conocen como 4-vecinos.Es decir, que cada pixel esta a una unidad de distancia de *(i,j)* y algunas de las ubicaciones de P yacen fuera de la imagen digital en el borde la imagen.
 
 
-* 8-vecinos(8-connected pixel): Se dice que un pixel P ubicado en (i,j) tiene una conexión diagonal de 4 pixeles, cuando tiene pixeles en las coordenadas (i+1,j+1),(i+1,j-1),(i-1,j+1) e (i-1,j-1). Si además este pixel tiene 4-vecinos, se dice que estos pixeles son 8-vecinos de P. 
+* 8-vecinos(8-connected pixel): Se dice que un pixel *P* ubicado en *(i,j)* tiene una conexión diagonal de 4 pixeles, cuando tiene pixeles en las coordenadas *(i+1,j+1)*,*(i+1,j-1)*,*(i-1,j+1)* e *(i-1,j-1)*. Si además este pixel tiene 4-vecinos, se dice que estos pixeles son 8-vecinos de P. 
 
 
 Otra propiedad de los pixeles es la adyacencia que se define en términos de los niveles de intensidad, siendo V el conjunto de valores de intensidad que un pixel puede adoptar, con V = {1} en imágenes binarias (considerandose adayacentes dos pixeles que tienen intensidad 1) y V siendo un subconjunto de todos los niveles de la imagen (para el caso de imagenes por escala de grises) y considerándose adyacentes dos pixeles cuyos valores de intensidad están en ese subconjunto, existen 3 tipos de adyacencia:
@@ -450,7 +450,7 @@ Histograma de imagen
 ####################
 .. NOTA: Identacion h8
 
-La herramienta básica para este tipo de operaciones es el histograma de imagen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de intensidad (nivel de gris en imagenes por escala de grises) en los pixeles de la imagen. De esta manera, si la imagen f() cuenta con K niveles de intensidad {0,1,...,K-1} y una cantidad N x M de pixeles, el histograma Hf se define matemáticamente de la siguiente manera:
+La herramienta básica para este tipo de operaciones es el histograma de imagen,que es una representación gráfica que agrupa las frecuencias de ocurrencias de cada nivel de intensidad (nivel de gris en imagenes por escala de grises) en los pixeles de la imagen. De esta manera, si la imagen f() cuenta con *K* niveles de intensidad *{0,1,...,K-1}* y una cantidad *N* x *M* de pixeles, el histograma Hf se define matemáticamente de la siguiente manera:
 
 .. math:: Hf(k) = J
    :label: formulaHistogramaImagen
@@ -458,7 +458,7 @@ La herramienta básica para este tipo de operaciones es el histograma de imagen,
 
 .. PAGINA 142 Image processing 3rd edition. Gonzales.
 
-Donde f() es la función que mapea el nivel de intensidad a cada pixel P(x,y), y J representa la cantidad de ocurrencias de ese nivel en los pixeles, con K niveles. Aunque este tipo de histograma no contiene información espacial con respecto a la imagen, es una herramienta valiosa que permite visualizar si la distribución de niveles de intensidad en una imagen es correcta, o si la imagen tiene tonalidades mas oscuras o más claras. Por ejemplo, en un histograma que corresponde a una imagen con escala de grises, los niveles más oscuros se concentran sobre la parte más baja de la escala del histograma, mientras que los niveles más brillantes están en la parte alta del diagrama. Así, una imagen por escala de grises con bajo contraste, tendrá un histograma cuyos puntos se encuentran centrados en la escala y abarcan pocos valores en el rango, mientras que si ésta tiene un contraste alto, los valores del histograma abarcarán un rango amplio de la escala y, su distribución tenderá a ser uniforme.
+Donde f() es la función que mapea el nivel de intensidad a cada pixel P(x,y), y *J* representa la cantidad de ocurrencias de ese nivel en los pixeles, con K niveles. Aunque este tipo de histograma no contiene información espacial con respecto a la imagen, es una herramienta valiosa que permite visualizar si la distribución de niveles de intensidad en una imagen es correcta, o si la imagen tiene tonalidades mas oscuras o más claras. Por ejemplo, en un histograma que corresponde a una imagen con escala de grises, los niveles más oscuros se concentran sobre la parte más baja de la escala del histograma, mientras que los niveles más brillantes están en la parte alta del diagrama. Así, una imagen por escala de grises con bajo contraste, tendrá un histograma cuyos puntos se encuentran centrados en la escala y abarcan pocos valores en el rango, mientras que si ésta tiene un contraste alto, los valores del histograma abarcarán un rango amplio de la escala y, su distribución tenderá a ser uniforme.
 
 
 
@@ -476,7 +476,7 @@ En la siguiente figura se puede observar, que la figura de la izquierda presenta
    Histograma de imagen.
 |
 
-Algunas veces el histograma de imagen se normaliza, dividiendo la cantidad de ocurrencias en cada nivel de intensidad, por el número total de pixeles en la imagen(N*M), de manera que la sumatoria de los componentes de un histograma normalizado sea 1. 
+Algunas veces el histograma de imagen se normaliza, dividiendo la cantidad de ocurrencias en cada nivel de intensidad, por el número total de pixeles en la imagen *(N x M)*, de manera que la sumatoria de los componentes de un histograma normalizado sea 1. 
 
 El histograma de imagen es una herramienta básica empleada por varias técnicas de procesamiento de imágenes con intensidad como la mejora de imagen,además de proveer información de utilidad para la compresión y la segmentación de imágenes.  
 
@@ -484,12 +484,12 @@ El histograma de imagen es una herramienta básica empleada por varias técnicas
 Escalado de imagen
 ##################
 
-El escalado de imagen consiste modificar el rango de niveles de intensidad que se consideran para representar un histograma. Este procedimiento dada una imagen f(n) con n píxeles, implica multiplicar cada uno de estos valores por una constante numérica P (mayor o menor a 1):
+El escalado de imagen consiste modificar el rango de niveles de intensidad que se consideran para representar un histograma. Este procedimiento dada una imagen f(n) con n píxeles, implica multiplicar cada uno de estos valores por una constante numérica *P* (mayor o menor a 1):
 
 .. math:: g(n) = P*f(n)
    :label: formulaEscaladoImagen
 
-Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante P > 1, los niveles de gris cubrirán un rango mas amplio que aquellos de la función del histograma f(), mientras que si P < 1 se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez.A continuación se pueden observar imágenes originales y los efectos de aplicar el escalado de imagen con dos escalas distintas:
+Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el valor de la constante *P > 1*, los niveles de gris cubrirán un rango mas amplio que aquellos de la función del histograma f(), mientras que si *P < 1* se empleará un rango de niveles de gris más reducido, lo que puede producir pérdida de información en la imagen y disminuir su nitidez.A continuación se pueden observar imágenes originales y los efectos de aplicar el escalado de imagen con dos escalas distintas:
 
 .. _escaladohistograma:
 
@@ -521,14 +521,14 @@ Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el 
 | 
 .. figure:: librosEscalaHistograma.png
 
-   Modificación de la escala del histograma con P=2. En este caso, la expansión de los valores del histograma de imagen, produce que se haga un mejor uso de los niveles de gris, produciendo una mejora en la nitidez de la misma
+   Modificación de la escala del histograma con *P = 2*. En este caso, la expansión de los valores del histograma de imagen, produce que se haga un mejor uso de los niveles de gris, produciendo una mejora en la nitidez de la misma
 
 
 
 Negativo de imagen
 ##################
 
-El negativo de una imagen consiste en escalar los valores de la imagen f(n), con P = -1 revirtiendo el signo de los valores y sumar un desplazamiento a los valores de intensidad de cada pixel K-1 con el fin de que éstos se encuentren en el rango del histograma:
+El negativo de una imagen consiste en escalar los valores de la imagen f(n), con *P = -1* revirtiendo el signo de los valores y sumar un desplazamiento a los valores de intensidad de cada pixel *K-1* con el fin de que éstos se encuentren en el rango del histograma:
 
 .. math:: g(n) = -f(n) + (K-1)
 	:label: formulaImgInversa
@@ -545,7 +545,7 @@ Esta técnica se emplea para mejorar imágenes donde se pierde el nivel de detal
 Estiramiento de contraste(Contrast Stretching,Histogram Stretching)
 ###################################################################
 
-Este procedimiento consiste en distribuir las frecuencias de los niveles de intensidad,por medio de una fórmula matemática, en un nuevo histograma donde éstos se encuentren organizados de manera uniforme y abarquen la escala completa de niveles de intensidad. Por ejemplo si se emplea un histograma de una imagen de escala de grises, como el de la figura :num:`Fig. #escaladohistograma`, donde los niveles de intensidad de toda la escala están en el rango [0,K-1] y los niveles empleados por la figura se encuentran en el rango [A,B] con A y B siendo los valores máximos y mínimos de intensidad respectivamente, se puede emplear la siguiente fórmula matemática que mapee los valores en el nuevo histograma:
+Este procedimiento consiste en distribuir las frecuencias de los niveles de intensidad,por medio de una fórmula matemática, en un nuevo histograma donde éstos se encuentren organizados de manera uniforme y abarquen la escala completa de niveles de intensidad. Por ejemplo si se emplea un histograma de una imagen de escala de grises, como el de la figura :num:`Fig. #escaladohistograma`, donde los niveles de intensidad de toda la escala están en el rango *[0,K-1]* y los niveles empleados por la figura se encuentran en el rango *[A,B]* con *A* y *B* siendo los valores máximos y mínimos de intensidad respectivamente, se puede emplear la siguiente fórmula matemática que mapee los valores en el nuevo histograma:
 
 .. _alfa:
 
@@ -569,8 +569,8 @@ Igualación de histograma(Histogram Equalization)
 ################################################
 
 Este procedimiento consiste en normalizar los niveles de intensidad del histograma de imagen, de manera que éstos sigan una distribución uniforme, y luego realizar un estiramiento de contraste para los niveles abarquen la mayoría de los valores en la escala del histograma. Este procedimiento provoca que el histograma se estire en el eje de las abscisas y tiende a aplanarlo de manera que se adapte a la distribución.
-Si se considera el caso para el histograma de imagen de una imagen con escala de grises, el primer paso consiste en realizar la normalización del histograma, obteniendo la función de densidad de probabilidad (PDF) de los niveles de gris pf(k), para cada uno de los K niveles de intensidad.
-La función de densidad de probabilidad trata los valores de los niveles de intensidad como cantidades aleatorias, y definiéndose la probabilidad pf(k) de un nivel k ocurriendo en una imagen como:
+Si se considera un histograma de imagen de una imagen con escala de grises, el primer paso consiste en realizar la normalización del histograma, obteniendo la función de densidad de probabilidad (PDF) de los niveles de gris pf(k), para cada uno de los K niveles de intensidad.
+La función de densidad de probabilidad trata los valores de los niveles de intensidad como cantidades aleatorias, y definiéndose la probabilidad pf(k) de un nivel *k* ocurriendo en una imagen como:
 
 .. figure:: formulaNormalizacion.png
 	:scale: 60%
@@ -579,7 +579,7 @@ La función de densidad de probabilidad trata los valores de los niveles de inte
 
 
 
-Donde la imagen digital tiene N x M pixeles,Hf(k) es el nivel de intensidad para un nivel k y k = 0,1,...,K-1. Éstas deben cumplir con la siguiente propiedad de sumatoria:
+Donde la imagen digital tiene *M x N* pixeles, Hf(k) es el nivel de intensidad para un nivel *k* y, con* 0,1,...,k-1* niveles. Éstas deben cumplir con la siguiente propiedad de sumatoria:
 
 
 .. figure:: propiedadFormulaNormalizacion.png
@@ -587,7 +587,7 @@ Donde la imagen digital tiene N x M pixeles,Hf(k) es el nivel de intensidad para
 
 	Propiedad de sumatoria de los valores normalizados
 
-En base a esta función, se define la función de distribución acumulada, Pf(r) para r niveles, con r= 0,1,...,K-1:
+En base a esta función, se define la función de distribución acumulada, Pf(r) para *r = k* niveles:
 
 
 .. figure:: formulaDistribucionAcumulada.png
@@ -595,7 +595,7 @@ En base a esta función, se define la función de distribución acumulada, Pf(r)
  
 	Función de distribución acumulada
  
-Así para obtener un histograma igualado, primero se debe computar la función de distribución acumulada del histograma de imagen Pf(k) de la imagen digital, para cada uno de los niveles del histograma, lo que provocará que éste tienda a aplanarse gráficamente, y luego aplicar la función de estiramiento de contraste para cada uno de los elementos, con el fin de distribuirlos a lo largo de la escala. Esto provocará que la imagen final sea más impactante y visibles que la original, sin embargo este proceso no eliminará aquellos picos resultantes del proceso de cuantificación.A continuación se observa el proceso de igualación de histograma aplicado a la imagen de libros:
+Así para obtener un histograma igualado, primero se debe computar la función de distribución acumulada del histograma de imagen Pf(k) de la imagen digital, para cada uno de los niveles del histograma, lo que provocará que éste tienda a aplanarse gráficamente, y luego aplicar la función de estiramiento de contraste para cada uno de los elementos, con el fin de distribuirlos a lo largo de la escala. Esto provocará que la imagen final sea más impactante y visible que la original, sin embargo, este proceso no eliminará aquellos picos resultantes del proceso de cuantificación. A continuación se observa el proceso de igualación de histograma aplicado a la imagen de libros:
 
 
 .. figure:: igualacionLibros.png
@@ -609,7 +609,7 @@ Así, este método se aplica cuando se desea una implementación simple que prod
 Limitado de imagen(Image thresholding)
 ######################################
 
-Esta técnica se emplea principalmente en imágenes con escala de grises, con el fin de abstraer información relevante respecto de los objetos en una imagen y optimizar el procesamiento y análisis subsecuente de la imagen. Este proceso consiste en, dada una imagen con K-1 niveles de gris, definir un limite entero T dentro del rango de niveles y comparar cada pixel con el límite T, y si la intensidad del pixel p(x,y) supera ese límite asignarle la intensidad 0, y en caso contrario asignarle el valor de intensidad 1.De esta forma, modificando el nivel del límite T se controla la abstracción de información que se generará en la imagen de salida, y dependiendo de las características del histograma de imagen, se abstraerá la cantidad de información relevante de ésta.
+Esta técnica se emplea principalmente en imágenes con escala de grises, con el fin de abstraer información relevante respecto de los objetos en una imagen y optimizar el procesamiento y análisis subsecuente de la imagen. Este proceso consiste en, dada una imagen con *K-1* niveles de gris, definir un limite entero *T* dentro del rango de niveles y comparar cada pixel con el límite *T*, y si la intensidad del pixel p(x,y) supera ese límite asignarle la intensidad 0, y en caso contrario asignarle el valor de intensidad 1.De esta forma, modificando el nivel del límite *T* se controla la abstracción de información que se generará en la imagen de salida, y dependiendo de las características del histograma de imagen, se abstraerá la cantidad de información relevante de ésta.
  
 Este procedimiento es útil en imágenes que cuentan con histogramas bimodales, es decir, aquellos histogramas donde los promedios de brillo entre el fondo y los objetos de la imagen se encuentran claramente delimitados, como en aquellas imágenes que contienen objetos oscuros con fondo brillante, u objetos brillantes sobre un fondo oscuro. De esta forma, el objeto consiste en separar concisamente los objetos del fondo de la imagen, para luego etiquetarlos.
 
@@ -619,7 +619,7 @@ Este procedimiento es útil en imágenes que cuentan con histogramas bimodales, 
 	Límite de la imagen. En la izquierda se puede apreciar una imagen con niveles de intensidad correctamente delimitados, mientras que en la imagen de la derecha, se puede observar una imagen con un límite poco claro entre objetos y fondo.
     
 
-Existen varias estrategias para la elección acerca de donde colocar el límite T: Si el histograma de imagen es bimodal, el límite se tiende a colocar entre medio de los modos de la imagen, como en la figura anterior. Sin embargo, esta aproximación tiene problemas si la imagen contiene multiples objetos de un brillo promedio diferente en un fondo uniforme(histograma multimodal), excluyéndose algunos objetos. También es difícil asignar un límite si el histograma es plano, conteniendo imágenes complejas, con variaciones de gris significativas, detalles, iluminación no uniforme, etc.
+Existen varias estrategias para la elección acerca de donde colocar el límite *T*: Si el histograma de imagen es bimodal, el límite se tiende a colocar entre medio de los modos de la imagen, como en la figura anterior. Sin embargo, esta aproximación tiene problemas si la imagen contiene múltiples objetos de un brillo promedio diferente en un fondo uniforme(histograma multimodal), excluyéndose algunos objetos. También es difícil asignar un límite si el histograma es plano, conteniendo imágenes complejas, con variaciones de gris significativas, detalles, iluminación no uniforme, etc.
 
 
 .. figure:: imagenMultimodal.png
@@ -627,7 +627,7 @@ Existen varias estrategias para la elección acerca de donde colocar el límite 
 	(a)Histograma multimodal que señala la dificultad de seleccionar un límite.(b) Histograma plano, para el que la selección de un límite es dificil o imposible.
 
 
-Por otro lado, también se pueden emplear aproximaciones que usen un modelo estadístico sobre el histograma, con una función de distribución de probabilidad (pdf), donde se plantee la decisión de asignar 0 o 1 a cada pixel, como una prueba estadística. De esta manera, se puede seleccionar la función de distribución que mejor se adapte a las ubicaciones de los modos del histograma(picos de intensidad en éste), el ancho de cada modo y la decisión acerca de donde termina un modo y comienza otro; Pudiendo aplicarse un modelo probabilístico, dependiendo de la forma de los modos, como por ejemplo, una pdf Gaussiana. Esta alternativa puede producir resultados aceptables con respecto a la colocación de límites, sin embargo cualquier modelo probabilístico simple no tiene en cuenta factores importantes como la continuidad del fondo o de los objetos, apariencia visual, e iluminación no uniforme, por lo que un modelo estadístico no produciría resultados visuales tan eficientes, como los que generaría una persona manualmente.
+Por otro lado, también se pueden emplear aproximaciones que usen un modelo estadístico sobre el histograma, con una función de distribución de probabilidad (pdf), donde se plantee la decisión de asignar 0 o 1 a cada pixel de forma estadística. De esta manera, se puede seleccionar la función de distribución que mejor se adapte a las ubicaciones de los modos del histograma(picos de intensidad en éste), el ancho de cada modo y la decisión acerca de donde termina un modo y comienza otro; Pudiendo aplicarse un modelo probabilístico, dependiendo de la forma de los modos, como por ejemplo, una pdf Gaussiana. Esta alternativa puede producir resultados aceptables con respecto a la colocación de límites, sin embargo cualquier modelo probabilístico simple no tiene en cuenta factores importantes como la continuidad del fondo o de los objetos, apariencia visual, e iluminación no uniforme, por lo que un modelo estadístico no produciría resultados visuales tan eficientes, como los que generaría una persona manualmente.
 
 Un ejemplo de aplicación de esta técnica, son las aplicaciones biomedicas, que permiten la iluminación de los objetos y el fondo, o imágenes microscópicas de una o múltiples células que contienen objetos brillantes sobre un fondo oscuro. 
 
@@ -638,15 +638,15 @@ Especificación(Histogram Matching o Specification)
 
 .. pag 150. Image processing 3rd edition Gonzales.
 
-Este método consiste realizar un mapeo entre los valores de un histograma de imagen igualado y una función de transformación(con una función de densidad de probabilidad ), de forma que se puedan obtener los valores aproximados de la imagen de entrada, en el dominio de la transformación. El primer paso consiste en aplicar la técnica de igualación (descrita anteriormente) para obtener valores distribuidos uniformemente, y redondearlos al rango de [0, K-1], con K niveles. 
-A continuación, se debe realizar la computación de la función de transformación G(), para cada uno de los q-niveles de intensidad, q=0,1,...,K-1. Los valores resultantes, son escalados y redondeados a sus valores más cercanos en el rango [0, K-1] y almacenados en una tabla.Esta fórmula define  una función de densidad de probabilidad pz(zi), que es la función de densidad de probabilidad que se desea que la imagen de salida adopte, sobre una variable aleatoria z:
+Este método consiste realizar un mapeo entre los valores de un histograma de imagen igualado y una función de transformación(con una función de densidad de probabilidad ), de forma que se puedan obtener los valores aproximados de la imagen de entrada, en el dominio de la transformación. El primer paso consiste en aplicar la técnica de igualación de histograma, para obtener valores distribuidos uniformemente, y redondearlos al rango de *[0, K-1]*, con K niveles. 
+A continuación, se debe realizar la computación de la función de transformación G(), para cada uno de los q-niveles de intensidad, *q=0,1,...,K-1*. Los valores resultantes, son escalados y redondeados a sus valores más cercanos en el rango *[0, K-1]* y almacenados en una tabla. Esta fórmula define una función de densidad de probabilidad pz(zi), que es la función de densidad de probabilidad que se desea que la imagen de salida adopte, sobre una variable aleatoria z:
 
 
 .. figure:: formulaEspecificacionHistograma.png
 
 	Fórmula de transformación G
 
-Posteriormente, para cada valor de intensidad en cada pixel del histograma igualado, sk, se emplean los valores almacenados (luego de aplicar G()), para encontrar el valor más próximo zq a sk, dentro del dominio de los valores producidos por G(), de manera que G(zq) es el valor más cercano y almacenar este mapeo de s a z. Si ocurre que más de un valor de zq satisface la condición de sk (con un mapeo no único), se elige el valor más pequeño por convención. Finalemente, con estos valores obtenidos se produce el nuevo histograma de imagen con los zq valores obtenidos, empleando los mapeos almacenados con anterioridad.
+Posteriormente, para cada valor de intensidad en cada pixel del histograma igualado *sk*, se emplean los valores almacenados (luego de aplicar G()), para encontrar el valor más próximo *zq* a *sk*, dentro del dominio de los valores producidos por G(), de manera que G(*zq*) es el valor más cercano y almacenar este mapeo de s a z. Si ocurre que más de un valor de *zq* satisface la condición de sk (con un mapeo no único), se elige el valor más pequeño por convención. Finalemente, con estos valores obtenidos se produce el nuevo histograma de imagen con los *zq* valores obtenidos, empleando los mapeos almacenados con anterioridad.
 
 
 .. figure:: ejemploEspecificacionHistograma.png
@@ -657,9 +657,9 @@ Posteriormente, para cada valor de intensidad en cada pixel del histograma igual
 Operaciones aritméticas entre matrices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Debido a que las imágenes se representan como matrices de números, pueden aplicarse operaciones aritméticas entre matrices que operen con los pixeles de éstas, siempre y cuando estas sean de la misma dimensión. Dadas dos imágenes con N x M pixeles y representándose los niveles de intensidad de éstas por medio de las funciones f(x,y) y g(x,y) con x=0,1,...,M-1 e y=0,1,...,N-1 y siendo M(x,y) la matriz resultante, las operaciones que se pueden aplicar a las matrices se pueden definir de la siguiente manera:
+Debido a que las imágenes se representan como matrices de números, pueden aplicarse operaciones aritméticas entre matrices que operen con los pixeles de éstas, siempre y cuando estas sean de la misma dimensión. Dadas dos imágenes con N x M pixeles y representándose los niveles de intensidad de éstas por medio de las funciones f(x,y) y g(x,y) con *x = 0,1,...,M-1* e *y = 0,1,...,N-1* y siendo M(x,y) la matriz resultante, las operaciones que se pueden aplicar a las matrices se pueden definir de la siguiente manera:
 
-* Suma: M(x,y) = f(x,y) + g(x,y). Un ejemplo de aplicación de la operación de suma es la corrección de la imágenes que se encuentran con degradaciones aleatorias o ruido, debido a diversas factores en el ambiente. La técnica mas sencilla para eliminarlo, es el modelo de ruido aditivo, donde se considera que una imagen con ruido es la suma de una imagen original y una imagen con ruido, y se supone que el ruido en cada par de coordenadas no esta correlacionado y que la media de éste es cero. Así, se puede afirmar que al calcular un promedio de N imágenes con ruido, tomadas en una rápida sucesión y sin ruido en la escena, la media de este calculo tenderá a cero (una matriz N x M con valores cercanos a cero), lo que mejorará el grado de fidelidad con respecto a la imagen original por un factor de N. Sin embargo, si existen diferencias en la escena o, si existen dependencias entre las imágenes con ruido (en caso de que todas éstas sean casi idénticas), entonces la reducción de ruido será limitada.
+* Suma: M(x,y) = f(x,y) + g(x,y). Un ejemplo de aplicación de la operación de suma es la corrección de la imágenes que se encuentran con degradaciones aleatorias o ruido, debido a diversas factores en el ambiente. La técnica mas sencilla para eliminarlo, es el modelo de ruido aditivo, donde se considera que una imagen con ruido es la suma de una imagen original y una imagen con ruido, y se supone que el ruido en cada par de coordenadas no esta correlacionado y que la media de éste es cero. Así, se puede afirmar que al calcular un promedio de *R* imágenes con ruido, tomadas en una rápida sucesión y sin ruido en la escena, la media de este calculo tenderá a cero (una matriz *N x M* con valores cercanos a cero), lo que mejorará el grado de fidelidad con respecto a la imagen original por un factor de R. Sin embargo, si existen diferencias en la escena o, si existen dependencias entre las imágenes con ruido (en caso de que todas éstas sean casi idénticas), entonces la reducción de ruido será limitada.
   
 
 .. figure:: ejemploSumaMatrices.png
@@ -667,7 +667,7 @@ Debido a que las imágenes se representan como matrices de números, pueden apli
      
 	Ejemplo de promediado de imágenes. La imagen de la izquierda es una imagen individual con ruido. La imagen del centro es un promedio de 4 imágenes. La imagen de la derecha es un promedio de 16 imágenes.
      
-* Resta: M(x,y) = f(x,y) - g(x,y). La diferencia de imágenes es una técnica que se emplea para detectar cambios en imágenes tomadas sobre la misma escena en diferentes momentos, esto permite que se le pueda aplicar para el rastreo de objetos, reconocer el movimiento de objetos, para computar información 3-D del movimiento 2D, en cámaras de vigilancia, y campos de la astronomía donde los bajos niveles de frecuencia introducen ruido en el dispositivo de sensado. De esta forma, para detectar si existe un cambio de imagen significativo se realiza la sustracción de las mismas, y se analiza el histograma de imagen: Si los niveles de intensidad del histograma en el nivel n no son significativos, significa que no existe una diferencia considerable entre ambas; Por el contrario, si los valores en un intervalo de niveles n o en un nivel n es significativa, se podrá percibir que el histograma tendrá un nivel de intensidad(más brillo) en ese punto. A continuación, se puede observar el histograma luego de realizar la resta entre dos imágenes:
+* Resta: M(x,y) = f(x,y) - g(x,y). La diferencia de imágenes es una técnica que se emplea para detectar cambios en imágenes tomadas sobre la misma escena en diferentes momentos, esto permite que se le pueda aplicar para el rastreo de objetos, reconocer el movimiento de objetos, para computar información 3-D del movimiento 2D, en cámaras de vigilancia y, campos de la astronomía donde los bajos niveles de frecuencia introducen ruido en el dispositivo de sensado. De esta forma, para detectar si existe un cambio de imagen significativo se realiza la sustracción de las mismas, y se analiza el histograma de imagen: Si los niveles de intensidad del histograma en el nivel *n* no son significativos, significa que no existe una diferencia considerable entre ambas; Por el contrario, si los valores en un intervalo de niveles *n* o en un nivel *n* es significativa, se podrá percibir que el histograma tendrá un nivel de intensidad(más brillo) en ese punto. A continuación, se puede observar el histograma luego de realizar la resta entre dos imágenes:
   
   .. figure:: diferenciaHistograma.png
   	:scale: 60%
@@ -691,9 +691,9 @@ Debido a que las imágenes se representan como matrices de números, pueden apli
 Operaciones geométricas de transformación
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Las operaciones geométricas modifican la relación espacial entre pixeles, realizando como primer paso la transformación espacial de las coordenadas de éstos a nuevas coordenadas en otro sistema de coordenadas, y posteriormente empleando la técnica de interpolación de intensidad, para asignar valores de intensidad a los pixeles transformados espacialmente. El esquema más empleado para definición de los métodos de la transformación de imágenes son las transformaciones afines (affine transformation) que son aquellas transformaciones que conservan la colinearidad entre puntos, lineas rectas y planos, es decir que todos aquellos puntos que yacen en una linea recta inicialmente aún lo hacen luego de aplicar la transformación, y las proporciones en las distancias entre los puntos, lo que significa que si un punto en una línea es el centro en la imagen digital de entrada, lo seguirá siendo en la imagen digital de salida. De esta forma, la combinación de estas transformaciones permite generar operaciones geométricas que actúan sobre cada pixel y producen una nueva imagen de salida.
+Las operaciones geométricas modifican la relación espacial entre pixeles, realizando como primer paso la transformación espacial de las coordenadas de éstos, a nuevas coordenadas en otro sistema de coordenadas, y posteriormente empleando la técnica de interpolación de intensidad, para asignar valores de intensidad a los pixeles transformados espacialmente. El esquema más empleado para definición de los métodos de la transformación de imágenes son las transformaciones afines (affine transformation) que son aquellas transformaciones que conservan la colinearidad entre puntos, lineas rectas y planos, es decir, que todos aquellos puntos que yacen en una línea recta inicialmente aún lo hacen luego de aplicar la transformación al igual que las proporciones en las distancias entre los puntos, lo que significa que si un punto en una línea es el centro en la imagen digital de entrada, lo seguirá siendo en la imagen digital de salida. De esta forma, la combinación de estas transformaciones permite generar operaciones geométricas que actúan sobre cada pixel y producen una nueva imagen de salida.
 
-Dada la coordenada de un pixel en una imagen digital de entrada (v,w) definida como una coordenada proyectada, es decir representado como un vector de tres valores (v,w,1) y siendo la coordenada para un pixel en el nuevo espacio (x,y), las transformaciones afines se pueden definir como una matriz de 3x3 T, donde dependiendo los valores definidos para los ente t11 y t32, se puede cambiar el tipo de transformación:
+Dada la coordenada de un pixel en una imagen digital de entrada (v,w) definida como una coordenada proyectada, es decir, representado como un vector de tres valores (v,w,1) y siendo la coordenada para un pixel en el nuevo espacio (x,y), las transformaciones afines se pueden definir como una matriz de 3x3 *T*, donde dependiendo los valores definidos para los indices *t11* y *t32*, se puede cambiar el tipo de transformación:
 
 
 .. figure:: transformacionAfineMatriz.png
@@ -706,7 +706,7 @@ En las siguientes secciones, se detallan las definiciones y efectos de las trans
 Traslación
 ##########
 
-La traslación es la operación mas sencilla y consiste en dada una imagen g(x,y), desplazar ésta en dirección horizontal y vertical, por medio de la suma de un valor tanto en el eje x como en el eje y.
+La traslación es la operación mas sencilla y consiste en dada una imagen g(x,y), desplazar ésta en dirección horizontal y vertical, por medio de la suma de un valor tanto en el eje *x* como en el eje *y*.
 
 .. figure:: traslacion1.png
 
@@ -723,7 +723,7 @@ La traslación es la operación mas sencilla y consiste en dada una imagen g(x,y
 Rotación
 ########
 
-La rotación consiste en girar una imagen por un ángulo 0 relativo al eje x, empleando la siguiente matriz de transformación:
+La rotación consiste en girar una imagen por un ángulo 0 relativo al eje *x*, empleando la siguiente matriz de transformación:
 
 .. figure:: rotacion1.png
 
@@ -740,7 +740,7 @@ La rotación consiste en girar una imagen por un ángulo 0 relativo al eje x, em
 Escalado
 ########
 
-El escalado consiste ampliar o reducir la escala de una imagen, empleando para ello los valores cx y cy como factores de escala del eje X y del eje Y respectivamente. Si los factores son menores a 1, la imagen se reducirá, mientras que si éstos son mayores a 1 la imagen aumentará su tamaño. Cuando se escala una imagen se modifica tanto la escala como la posición en el plano, por lo que si se desea volverla a posicionar sobre el origen se debe aplicar una traslación.
+El escalado consiste ampliar o reducir la escala de una imagen, empleando para ello los valores *cx* y *cy* como factores de escala del eje *X* y del eje *Y* respectivamente. Si los factores son menores a 1, la imagen se reducirá, mientras que si éstos son mayores a 1 la imagen aumentará su tamaño. Cuando se escala una imagen se modifica tanto la escala como la posición en el plano, por lo que si se desea volverla a posicionar sobre el origen se debe aplicar una traslación.
 
 
 .. figure:: escalado1.png
@@ -752,16 +752,16 @@ El escalado consiste ampliar o reducir la escala de una imagen, empleando para e
 
 .. figure:: escalado2.png
 
-	Escalado gráficamente. Esta imagen fue escalada por un factor de escala de 1.4 en el eje X y por un factor de escala de 0.8 en el eje Y.
+	Escalado gráficamente. Esta imagen fue escalada por un factor de escala de 1.4 en el eje *X* y por un factor de escala de 0.8 en el eje *Y*.
 
-Un ejemplo de la aplicación de esta transformación es la técnica de zoom, donde simplemente se escalan cada coordenada de pixel por un valor para el eje X y otro para el eje Y, y luego se aplica la interpolación para obtener los niveles de  intensidad en la imagen resultante.
+Un ejemplo de la aplicación de esta transformación es la técnica de zoom, donde simplemente se escalan cada coordenada de pixel por un valor para el eje *X* y otro para el eje *Y*, y luego se aplica la interpolación para obtener los niveles de  intensidad en la imagen resultante.
 
 
 
 Inclinación o transvección(Shearing)
 ####################################
 
-La inclinación o transvección, consiste en desplazar los puntos en un eje de manera lineal, por una cantidad proporcional a la coordenada en el eje perpendicular a ese. Esta transformación puede realizarse de manera horizontal sobre el eje X (en cuyo caso se desplaza cada punto de este eje por un valor proporcional a su coordenada en Y, quedando intactos los valores en y de cada punto),o de manera vertical sobre el eje Y (en este caso las líneas en verticales paralelas al eje Y se mantienen inalterables, modificándose las líneas paralelas al eje X). A continuación se muestra su definición matemática horizontal y verticalmente y un ejemplo de inclinación horizontal: 
+La inclinación o transvección, consiste en desplazar los puntos en un eje de manera lineal, por una cantidad proporcional a la coordenada en el eje perpendicular al mismo. Esta transformación puede realizarse de manera horizontal sobre el eje *X* (en cuyo caso se desplaza cada punto de este eje por un valor proporcional a su coordenada en *Y*, quedando intactos los valores en y de cada punto),o de manera vertical sobre el eje *Y* (en este caso las líneas en verticales paralelas al eje *Y* se mantienen inalterables, modificándose las líneas paralelas al eje *X*). A continuación se muestra su definición matemática horizontal y verticalmente y un ejemplo de inclinación horizontal: 
 
 
 .. figure:: inclinacion1.png
@@ -783,7 +783,7 @@ Interpolación
 .. NOTA: Identacion h8
 
 Una herramienta relacionada con las imágenes digitales es la interpolación, empleada en tareas como hacer zoom, reducción(shrinking), rotación y correcciones geométricas. Esta herramienta consiste en emplear datos conocidos de la imagen de entrada para estimar valores en coordenadas desconocidas. Por ejemplo, si se necesitara convertir una imagen a una escala mayor, la cantidad de pixeles y la correspondencia entre las intensidades diferirían por lo que sería necesario contar con un método que permita la asignación aproximada de intensidades. Un método para realizar ésto es asignar a cada pixel en la imagen mayor, el valor del pixel vecino más cercano si se superpone, esta imagen con la imagen de entrada, este método se conoce como interpolación de vecino más cercano.
-Existen otros métodos para asignar intensidades que consideran más vecinos y, la forma en que consideran estos sigue alguna fórmula matemática, entre los que se encuentran la interpolación bilinear (donde se emplean los 4 vecinos mas cercanos para estimar la intensidad) y la interpolación bicubica (que toma los 16 vecinos más cercanos):
+Existen otros métodos para asignar intensidades que consideran más vecinos y la forma en que consideran éstos sigue alguna fórmula matemática, entre los que se encuentran la interpolación bilinear (donde se emplean los 4 vecinos mas cercanos para estimar la intensidad) y la interpolación bicubica (que toma los 16 vecinos más cercanos):
 
 |
 
@@ -793,7 +793,7 @@ Existen otros métodos para asignar intensidades que consideran más vecinos y, 
 |
 |
 
-Donde v(x,y) es la intensidad del pixel en la coordenada(x,y), los coeficientes a,b,c y d se emplean para determinar los vecinos que de los que se obtendrá la intensidad. 
+Donde v(x,y) es la intensidad del pixel en la coordenada(x,y), los coeficientes *a,b,c* y *d* se emplean para determinar los vecinos que de los que se obtendrá la intensidad. 
 
 
 .. figure:: interpolacionBicubica.png
@@ -808,16 +808,16 @@ Técnicas de filtrado espacial
 .. filtrado espacial(filtros de suavizado y sharpening)
 .. Frecuencia y filtros de banda alta y baja(Introduction to digital image processing with MATLAB. pag 88)
 
-El filtrado espacial consiste en rechazar aquellos elementos en una imagen que no son de interés y conservar aquellos necesarios para el proceso en que se aplica. El filtrado se basa en emplear un filtro(también llamado mascara, kernel, template y ventana o window) que se define como un conjunto de pixeles (o vecindario) sobre un pixel con una coordenada (x,y) y luego aplicar diferentes operaciones sobre ese conjunto de pixeles (pueden ser operaciones estadísticas para filtros no lineales, como la media,mediana,etc. u operaciones lógicas AND,OR,NOT,XOR), de manera que se obtenga un nuevo valor de intensidad para el pixel del centro en la coordenada (x,y).Generalmente, en la práctica el valor del pixel filtrado se asigna a una ubicación en una nueva imagen que se crea para mantener los resultados filtrados, de manera que el contenido de la imagen de entrada no cambie mientras se esta realizando el filtrado. La forma en que se organizan los pixeles que forman el filtro dependen del objetivo que se persigue al aplicar éste y se define generalmente por una regla que dependiendo de la cantidad de vecinos que se desea abarcar, aumenta esta cantidad manteniendo la forma original del filtro.
+El filtrado espacial consiste en rechazar aquellos elementos en una imagen que no son de interés y conservar aquellos necesarios para el proceso en que se aplica. El filtrado se basa en emplear un filtro (también denominado mascara, kernel, template y ventana o window) que se define como un conjunto de pixeles (o vecindario) sobre un pixel con una coordenada (x,y) y luego aplicar diferentes operaciones sobre ese conjunto de pixeles (pueden ser operaciones estadísticas para filtros no lineales, como la media,mediana,etc. u operaciones lógicas AND,OR,NOT,XOR), de manera que se obtenga un nuevo valor de intensidad para el pixel del centro en la coordenada (x,y).Generalmente, en la práctica el valor del pixel filtrado se asigna a una ubicación en una nueva imagen que se crea para mantener los resultados filtrados durante el proceso, de manera que el contenido de la imagen de entrada no cambie mientras se esta realizando el filtrado. La forma en que se organizan los pixeles que forman el filtro dependen del objetivo que se persigue al aplicar éste y se define generalmente por una regla que dependiendo de la cantidad de vecinos que se desea abarcar, aumenta esta cantidad manteniendo la forma original del filtro.
 
 
 .. figure:: tiposFiltros.png
 	:scale: 80%
 
-	Tipos de filtros. (a) Filtros de una sola dimensión con una formula de fila ROW=2P + 1 y de columna COL=2P + 1 para pixeles P=1,2. (b) Filtros de dos dimensiones con formulas cuadrado SQUARE = (2P + 1)^² y cruz CROSS = 4P + 1, para P=1,2.
+	Tipos de filtros. (a) Filtros de una sola dimensión con una formula de fila ROW=2P + 1 y de columna COL=2P + 1 para pixeles P=1,2. (b) Filtros de dos dimensiones con formulas cuadrado SQUARE = (2P + 1)^² y cruz CROSS = 4P + 1, para *P = 1,2*.
 
 
-De esta forma, el proceso de filtrado consiste en realizar un desplazamiento de la máscara de filtrado por cada uno de los pixeles de ésta, y obtener el valor del pixel central producto de la operación efectuada; Matemáticamente este proceso se puede definir como: Dado un pixel con coordenada (x,y) en la imagen de entrada de tamaño M x N, variando x,y en el rango de los pixeles de la imagen, una máscara de m x n, con una mascara de filtrado rectangular con m= 2a + 1, n = 2b + 1 y, siendo los coeficientes de filtrado los valores wi que se aplican a las intensidades f(x,y)  de cada pixel de la imagen:
+De esta forma, el proceso de filtrado consiste en realizar un desplazamiento de la máscara de filtrado por cada uno de los pixeles de ésta y obtener el valor del pixel central producto de la operación efectuada. Matemáticamente este proceso se puede definir como: Dado un pixel con coordenada (x,y) en la imagen de entrada de tamaño *M x N*, variando *x,y* en el rango de los pixeles de la imagen, una máscara de *m x n*, con una máscara de filtrado rectangular con *m= 2a + 1*, *n = 2b + 1* y, siendo los coeficientes de filtrado los valores *wi* que se aplican a las intensidades f(x,y)  de cada pixel de la imagen:
 
 
 .. figure:: defMatematicaFiltrado.png
@@ -825,7 +825,7 @@ De esta forma, el proceso de filtrado consiste en realizar un desplazamiento de 
 	Definición matemática de la operación de filtrado
 
 
-La mascara de filtrado requiere que se especifiquen coeficientes de filtrado para cada una de las intensidades del filtrado, lo que puede hacerse especificando valores  iguales para todos los pixeles de la mascara,estar estos ponderados para asignar mas prioridad a ciertos pixeles en la imagen, o cuando se tiene una función estadística obtener la mascara de filtrado en base a ésta, aplicando la formula al vecindario de un pixel y obteniendo como salida, el nivel de intensidad del pixel en la imagen de salida. Con ésta ultima aproximación, solamente se requiere especificar la fórmula matemática y las dimensiones del vecindario para aplicarla. Un ejemplo de esta ultima aproximación, es aplicar la distribución de Gauss en un pixel, donde se considera la varianza de los pixeles y las coordenadas del pixel central (x,y), de forma que la aplicación de la mascara de filtrado consiste en tomar muestras y aplicar la formula en distintas ubicaciones:
+La máscara de filtrado requiere que se especifiquen coeficientes de filtrado para cada una de las intensidades del filtrado, lo que puede hacerse especificando valores  iguales para todos los pixeles de la máscara,estar estos ponderados para asignar mas prioridad a ciertos pixeles en la imagen, o cuando se tiene una función estadística obtener la máscara de filtrado en base a ésta, aplicando la formula al vecindario de un pixel y obteniendo como salida, el nivel de intensidad del pixel en la imagen de salida. Con ésta ultima aproximación, solamente se requiere especificar la fórmula matemática y las dimensiones del vecindario para aplicarla. Un ejemplo de esta ultima aproximación, es aplicar la distribución de Gauss en un pixel, donde se considera la varianza de los pixeles y las coordenadas del pixel central (x,y), de forma que la aplicación de la máscara de filtrado consiste en tomar muestras y aplicar la formula en distintas ubicaciones:
 
 
 .. figure:: formulaGauss.png
@@ -841,7 +841,7 @@ La mascara de filtrado requiere que se especifiquen coeficientes de filtrado par
 	Representación gráfica de los elementos considerados para el filtrado espacial
 
 
-Existen dos tipos de filtros según el tipo de operación que se realiza en ellos: Los filtros lineales que son aquellos donde la operación que se aplica sobre los pixeles de una imagen es una operación lineal, y los filtros no lineales donde se aplican operaciones no lineales sobre éstos.Una operación lineal es aquella donde se cumplen las propiedades de homogeneidad y adición para una imagen de entada f(x,y) y una imagen de salida g(x,y):
+Existen dos tipos de filtros según el tipo de operación que se realiza en ellos: Los filtros lineales que son aquellos donde la operación que se aplica sobre los pixeles de una imagen es una operación lineal, y los filtros no lineales. Una operación lineal es aquella donde se cumplen las propiedades de homogeneidad y adición para una imagen de entada f(x,y) y una imagen de salida g(x,y):
 
 * La homogeneidad ocurre cuando al multiplicar la salida de un operador aplicado a la imagen produce el mismo resultado, que multiplicar esa constante en la imagen de entrada y luego aplicar el operador. 
 * La adición que consiste en que la salida de una operación lineal a la suma de dos entradas, es lo mismo que aplicar la operación lineal a las entradas y luego realizar la suma de las mismas. 
@@ -854,10 +854,10 @@ El suavizado de imagen, aplicado en técnicas de pre-procesamiento de imagen (co
 
 .. figure:: ejemploSuavizadoImagen.png
 
-	Efecto de suavizado. La imagen original se sitúa en la parte superior izquierda. La imagen superior derecha tiene un filtro rectangular con una mascara de m=3. La imagen inferior izquierda con un filtro rectangular con m=5. La imagen inferior derecha tiene un filtro rectangular con m=9.
+	Efecto de suavizado. La imagen original se sitúa en la parte superior izquierda. La imagen superior derecha tiene un filtro rectangular con una mascara de *m = 3*. La imagen inferior izquierda con un filtro rectangular con *m = 5*. La imagen inferior derecha tiene un filtro rectangular con *m = 9*.
 
 
-Alternativamente, se pueden emplear filtros no lineales estadísticos para el suavizado de imagen, cuya respuesta se basa en ordenar los pixeles contenidos en el área de la imagen abarcada por el filtro, y reemplazar el valor del pixel del centro con el valor determinado por el resultado del ordenamiento.Existen varios tipos de filtros para suavizado que se basan en distintos valores (maximo,minimo), no obstante el ejemplo más relevante es el filtro que emplea la mediana (valor del conjunto para el cual la mitad de los valores son mayores o iguales a la misma y la otra mitad son menores o iguales) de los valores de intensidad en el pixel (incluyendo el valor del pixel en el cálculo), donde se lo obtiene y luego se asigna este valor como el valor de intensidad del pixel de salida. Este tipo de filtro es empleado debido a que produce excelentes resultados para la reducción de ruido aleatorio, con respecto filtros lineales del mismo tamaño. A continuación se destaca el efecto del suavizado de imagen empleando un filtro de mediana y un filtro de promediado lineal:
+Alternativamente, se pueden emplear filtros no lineales estadísticos para el suavizado de imagen, cuya respuesta se basa en ordenar los pixeles contenidos en el área de la imagen abarcada por el filtro, y reemplazar el valor del pixel del centro con el valor determinado por el resultado del ordenamiento.Existen varios tipos de filtros para suavizado que se basan en distintos valores (máximo,mínimo), no obstante el ejemplo más relevante es el filtro que emplea la mediana (valor del conjunto para el cual la mitad de los valores son mayores o iguales a la misma y el resto son menores) de los valores de intensidad en el pixel (incluyendo el valor del pixel en el cálculo), donde se lo obtiene y luego se asigna este valor como el valor de intensidad del pixel de salida. Este tipo de filtro es empleado debido a que produce excelentes resultados para la reducción de ruido aleatorio, con respecto filtros lineales del mismo tamaño. A continuación se destaca el efecto del suavizado de imagen empleando un filtro de mediana y un filtro de promediado lineal:
 
 
 .. figure:: ejemploFiltroMediana.png
@@ -875,7 +875,7 @@ Alternativamente, se pueden emplear filtros no lineales estadísticos para el su
 Técnicas sobre el dominio de las transformaciones
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Las operaciones que se ejecutan sobre el dominio de las transformaciones hacen uso de la transformada de Fourier para llevar las funciones al dominio de las frecuencias, efectuar operaciones sobre este dominio y finalmente, obtener la imagen de salida aplicando la función inversa a esta transformación.La transformada de Fourier es una técnica altamente empleada en el procesamiento de imágenes, ya que permiten realizar operaciones que de alta complejidad que requerirían un alto tiempo de procesamiento si no se empleara esta técnica, y realizar tareas asociadas al procesamiento imagen de manera más eficiente que empleando filtros lineales (cuando estos son de grandes dimensiones). Esta técnica se emplea en un amplio espectro de tareas tales como la mejora de video, restauración, compresión, segmentación y métodos que emplean la técnica de wavelets. La transformada de Fourier se desprende de las series de Fourier, propuestas por el matemático Frances Jean Baptiste Joseph Fourier 1822 para ser aplicadas en el campo del flujo del calor, donde se expresa que sin importar lo compleja que sea una función, si ésta es periódica se puede expresar matemáticamente como la suma de senos y cosenos de diferentes frecuencias, multiplicados cada uno por un coeficiente diferente. De esta forma, la transformada de Fourier(FT) extiende este concepto afirmando que, aquellas funciones cuya área debajo de la curva es finita y no necesariamente son periódicas, puede expresarse para las variables continuas, como la integral de los senos y/o cosenos multiplicados por una función de ponderación; Pudiendo ser ésta, reconstruida o recuperada completamente por el proceso inverso, sin pérdida de información. Esta característica permite trabajar sobre el dominio de Fourier y luego retornar al dominio espacial de una imagen sin perder información.
+Las operaciones que se ejecutan sobre el dominio de las transformaciones hacen uso de la transformada de Fourier para llevar las funciones al dominio de las frecuencias, efectuar operaciones sobre este dominio y finalmente, obtener la imagen de salida aplicando la función inversa a esta transformación. La transformada de Fourier es una técnica altamente empleada en el procesamiento de imágenes, ya que permite realizar operaciones que de alta complejidad que requerirían un alto tiempo de procesamiento si no se empleara esta técnica, y realizar tareas asociadas al procesamiento imagen de manera más eficiente que empleando filtros lineales (cuando estos son de grandes dimensiones). Esta técnica se emplea en un amplio espectro de tareas tales como la mejora de video, restauración, compresión, segmentación y métodos que emplean la técnica de wavelets. La transformada de Fourier se desprende de las series de Fourier, propuestas por el matemático Frances Jean Baptiste Joseph Fourier 1822 para ser aplicadas en el campo del flujo del calor, donde se expresa que sin importar lo compleja que sea una función, si ésta es periódica se puede expresar matemáticamente como la suma de senos y cosenos de diferentes frecuencias, multiplicados cada uno por un coeficiente diferente. De esta forma, la transformada de Fourier*(FT)* extiende este concepto afirmando que, aquellas funciones cuya área debajo de la curva es finita y no necesariamente son periódicas, puede expresarse para las variables continuas, como la integral de los senos y/o cosenos multiplicados por una función de ponderación; Pudiendo ser ésta, reconstruida o recuperada completamente por el proceso inverso, sin pérdida de información. Esta característica permite trabajar sobre el dominio de Fourier y luego retornar al dominio espacial de una imagen sin perder información.
 
 
 .. figure:: esquemaDominioFrecuencias.png
@@ -884,7 +884,7 @@ Las operaciones que se ejecutan sobre el dominio de las transformaciones hacen u
 	Esquema del dominio de las transformaciones
 
 
-Debido a que para representar una imagen digital se debe trabajar con valores discretos, la transformada de Fourier se debe definir de manera discreta (DFT Discrete Fourier Transform), donde ésta se define como una función F(u,v) sobre los valores (u,v) que representan las frecuencias con que se representará la imagen definiendo u como la frecuencia de oscilación a lo largo del eje X y la frecuencia de oscilación a lo largo del eje Y(expresadas en ciclos por pixel) que se emplearan para representar la imagen definida en el dominio dominio espacial sobre éste dominio: 
+Debido a que para representar una imagen digital se debe trabajar con valores discretos, la transformada de Fourier se debe definir de manera discreta (*DFT* Discrete Fourier Transform), donde ésta se define como una función F(u,v) sobre los valores (u,v) que representan las frecuencias con que se representará la imagen, definiendo *u* como la frecuencia de oscilación a lo largo del eje *X* y *v* la frecuencia de oscilación a lo largo del eje *Y*(expresadas en ciclos por pixel) que se emplearan para representar la imagen definida en el dominio dominio espacial sobre éste dominio: 
 
 
 .. figure:: formulaFTD.png
@@ -892,7 +892,7 @@ Debido a que para representar una imagen digital se debe trabajar con valores di
 
 	Fórmula de la Transformada de Fourier Discreta
 
-Además, esta función toma valores discretos x,y que son las coordenadas de los pixeles para una imagen digital de M x N, con u=0,1,2,...,M-1, v=0,1,2,...,N-1 y, su inversa, que permite obtener la imagen en el dominio espacial partiendo de la matriz de frecuencias, se define:  
+Además, esta función toma valores discretos *x,y* que son las coordenadas de los pixeles para una imagen digital de *M x N*, con *u = 0,1,2,...,M-1*, *v = 0,1,2,...,N-1* junto con su inversa que permite obtener la imagen en el dominio espacial partiendo de la matriz de frecuencias definida formalmente como:  
 
 .. figure:: formulaIFTD.png
 	:scale: 60%
@@ -910,7 +910,7 @@ Esta formula cuenta con distintas propiedades entre las que se destacan:
 
 	Fórmula para el calculo del espectro
 
-De manera que se obtenga una matriz de magnitud de frecuencias de la imagen del mismo tamaño de la imagen digital M x N (con la amplitud de las mismas), donde los vectores se representan con números complejos C= R + jI, correspondiendo R a la parte real del mismo y, siendo I la parte imaginaria (donde j es la raíz cuadrada de -1) y donde el conjunto de números reales se representan como números complejos con I=0.
+De manera que se obtenga una matriz de magnitud de frecuencias de la imagen del mismo tamaño de la imagen digital *M x N* (con la amplitud de las mismas), donde los vectores se representan con números complejos *C = R + jI*, correspondiendo *R* a la parte real del mismo y, siendo *I* la parte imaginaria (donde *j* es la raíz cuadrada de -1) y donde el conjunto de números reales se representan como números complejos con *I = 0*.
 Los componentes del espectro de la DFT determinan las amplitudes de las sinusoidales que componen la imagen, almacenando información acerca de las intensidades en la imagen, por lo que en cualquier frecuencia dada de una imagen, una gran amplitud implica una mayor relevancia de la onda sinusoidal para esa frecuencia; Mientras que si se cuenta con una pequeña amplitud, implica en menor medida la presencia de una onda sinusoidal en esa frecuencia.
 
 
@@ -922,7 +922,6 @@ Los componentes del espectro de la DFT determinan las amplitudes de las sinusoid
 	Fórmula para el cálculo del ángulo de fase
 
 El angulo de fase o fase, es una medida del desplazamiento de varias ondas sinusoidales con respecto al origen, por lo que este arreglo contiene los ángulos que contienen información respecto de donde los objetos se encuentran localizados en la imagen.
-
 
 
 
@@ -957,7 +956,7 @@ Mientras que el angulo de fase es simétrica impar con respecto al origen, lo qu
   
 	Formulas de traslación DFT. 
   
-* Rotación. La rotación implica que al multiplicar la imagen en el dominio espacial f(x,y) por un angulo A, rota la función en el dominio de las frecuencias F(u,v) por el mismo ángulo. Del mismo modo, rotar F(u,v) por A, rota la imagen en el dominio espacial f(x,y) por el mismo ángulo.  
+* Rotación. La rotación implica que al multiplicar la imagen en el dominio espacial f(x,y) por un angulo *A*, rota la función en el dominio de las frecuencias F(u,v) por el mismo ángulo. Del mismo modo, rotar F(u,v) por *A*, rota la imagen en el dominio espacial f(x,y) por el mismo ángulo.  
   
 
 * Teorema de la convolución. La convolución (representada por **) se emplea en el filtrado de imágenes, y consiste en rotar el filtro 180º y luego aplicarlo pixel a pixel por la imagen digital de entrada. De esta forma, la convolución en el dominio espacial entre una imagen f(x,y) y una transformación g(x,y) equivale a realizar la convolución en el dominio de las frecuencias de las funciones F(x,y) y H(x,y) respectivamente.
@@ -971,7 +970,7 @@ De la misma forma, el producto en el dominio espacial de una imagen f(x,y) y una
 		:label: formulaConvolucion1
 
 
-Cuando se quiere convertir una imagen digital al dominio de las frecuencias, como primera medida se debe aplicar una función de centrado del espectro, multiplicando cada uno de las coordenadas de la imagen por (-1)^x+y, esto permite que el espectro de la imagen este centrado;Adicionalmente, se puede aplicar una transformación logarítmica (1 + log(|F(u,v)|)) con el fin de aumentar la intensidad de los valores de la matriz de magnitud. Luego, se procede a aplicar la fórmula de Fourier discreta para cada una de las coordenadas en el dominio de la imagen digital con M x N pixeles, para obtener las matrices de magnitud y de fase, que tendrán las mismas dimensiones que la imagen de entrada. Aunque estas no contienen fácilmente asociable a las coordenadas de la imagen digital, se pueden visualizar igual que las anteriores:
+Cuando se quiere convertir una imagen digital al dominio de las frecuencias, como primera medida se debe aplicar una función de centrado del espectro, multiplicando cada uno de las coordenadas de la imagen por (-1)^x+y, esto permite que el espectro de la imagen este centrado.Adicionalmente, se puede aplicar una transformación logarítmica *(1 + log(|F(u,v)|))* con el fin de aumentar la intensidad de los valores de la matriz de magnitud. Luego, se procede a aplicar la fórmula de Fourier discreta para cada una de las coordenadas en el dominio de la imagen digital con *M x N* pixeles, para obtener las matrices de magnitud y de fase, que tendrán las mismas dimensiones que la imagen de entrada. Aunque estas no contienen fácilmente asociable a las coordenadas de la imagen digital, se pueden visualizar igual que las anteriores:
 
 
 .. figure:: graficoMagnitudFourier.png
@@ -979,7 +978,7 @@ Cuando se quiere convertir una imagen digital al dominio de las frecuencias, com
 	Gráficos correspondientes a un rectangulo y su matriz de magnitud. Imagen superior derecha: Imagen original de un rectangulo. Imagen superior izquierda: Magnitud con las frecuencias. Imagen inferior izquierda: Imagen original rotada. Imagen inferior derecha: Efecto de la rotación en el dominio de las frecuencias.
 
 
-Debido a que los valores de frecuencia F(u,v) son modificaciones de los valores de intensidad de la imagen con términos exponenciales, la correspondencia entre objetos y sus frecuencias es compleja, sin embargo observando el gráfico anterior se puede observar que la frecuencia esta directamente asociada a las tasas de cambios de intensidad en el dominio espacial, por lo que se las puede relacionar con los patrones de intensidad de una imagen. De esta forma, aquellos componentes con una frecuencia que varíen más lentamente son proporcionales al promedio de valores de frecuencia y se encuentran localizados en el centro del gráfico, y a medida que se desplazan los puntos desde este origen, las bajas frecuencias representan componentes cuya variación de intensidad es lenta en la imagen, pudiendo corresponderse éstos por ejemplo con las variaciones asociadas a paredes o pisos; Mientras que aquellas frecuencias que se encuentran más alejadas del origen, y poseen un valor más alto, se corresponden con a cambios de intensidad más altos en la imagen, como los bordes de los objetos.
+Debido a que los valores de frecuencia F(u,v) son modificaciones de los valores de intensidad de la imagen con términos exponenciales, la correspondencia entre objetos y sus frecuencias es compleja, sin embargo observando el gráfico anterior se puede observar que la frecuencia esta directamente asociada a las tasas de cambios de intensidad en el dominio espacial, por lo que se las puede relacionar con los patrones de intensidad de una imagen. De esta forma, aquellos componentes con una frecuencia que varíen más lentamente son proporcionales al promedio de valores de frecuencia y se encuentran localizados en el centro del gráfico, y a medida que se desplazan los puntos desde este origen, las bajas frecuencias representan componentes cuya variación de intensidad es lenta en la imagen, pudiendo corresponderse éstos,por ejemplo, con las variaciones asociadas a paredes o pisos; Mientras que aquellas frecuencias que se encuentran más alejadas del origen, y poseen un valor más alto, se corresponden con a cambios de intensidad más altos en la imagen, como los bordes de los objetos.
 
 Un ejemplo de aplicación del proceso de la transformada Fourier es el filtrado de elementos durante el suavizado de imagen, donde dada una imagen f(x,y) de M x N pixeles que necesita ser de un tamaño mayor para ser filtrada, se debe rellenar esta imagen con ceros con los pixeles P = 2*M, Q=2*N (por lo que la imagen pasa a tener PxQ pixeles). A continuación, se procede a centrar la transformación multiplicando por (-1)^x+y y a computar TFD de esta matriz F(u,v) y se aplica el filtro H(u,v) de tamaño P x Q a la matriz de intensidad G(u,v)= H(u,v)*F(u,v). Finalmente, se procede a obtener la imagen g(x,y) en el domino  espacial, aplicando la función inversa de la transformada de Fourier y centrándola de nuevo con: g(x,y) = [IFTD(G(u,v))](-1)^x+y, y se recorta esta imagen extrayendo la región M x N de la imagen. En la siguiente figura se puede apreciar el proceso de transformacion, ubicándose las figuras de manera descendente de izquierda a derecha:
 
