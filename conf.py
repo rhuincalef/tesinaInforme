@@ -370,6 +370,7 @@ latex_elements['preamble'] += r"""
 
 pathRaiz = os.getcwd()
 imgPath = pathRaiz + "/figs/"
+print "path:%s\n" % imgPath 
 latex_elements['preamble'] += r'\graphicspath{ {%s} }' % imgPath
 
 
