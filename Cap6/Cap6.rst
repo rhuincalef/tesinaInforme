@@ -4,7 +4,7 @@ Antecedentes de software para la gestión de fallas viales
 Pavimento
 ---------
 
-El pavimento de una calle o autopista, es una estructura compuesta de un conjunto de capas de materiales procesados sobre el suelo, cuya función consiste en distribuir las cargas de los vehículos al sub-suelo y permitir el tránsito de los mismos. La estructura del pavimento debería proveer una superficie de calidad aceptable para la circulación de vehículos, resistencia adecuada al resbalamiento,reducir la contaminación de ruido producto de la circulación de los vehículos, una superficie impermeable, de manera que el suelo que esta debajo de las capas de material este bien protegido, resistencia estructural (con el fin de soportar todo tipo de fuerza aplicada sobre él) y un diseño con un ciclo de vida prolongado y bajo costo de mantenimiento.
+El pavimento de una calle o autopista, es una estructura compuesta de un conjunto de capas de materiales procesados sobre el suelo, cuya función consiste en distribuir las cargas de los vehículos al sub-suelo y permitir el tránsito de los mismos. La estructura del pavimento debería proveer una superficie de calidad aceptable para la circulación de vehículos, resistencia adecuada al resbalamiento,reducir la contaminación de ruido producto de la circulación de los vehículos, una superficie impermeable, de manera que el suelo que está debajo de las capas de material esté bien protegido, resistencia estructural (con el fin de soportar todo tipo de fuerza aplicada sobre él) y un diseño con un ciclo de vida prolongado y bajo costo de mantenimiento.
 
 Los pavimentos se pueden clasificar en dos tipos diferentes:
 
@@ -19,7 +19,7 @@ Los pavimentos rígidos se integran por una losa de concreto de cemento portland
 
 
 * Pavimento flexible: Es una estructura compuesta por capas donde uno de los materiales presentes es el asfalto, lo que permite la deflexión (la deformación que del material como producto de una fuerza externa) bajo las cargas.
-Los pavimentos flexibles se componen de una capa de mezcla asfáltica u hormigón asfáltico, que consiste en un agregado de asfalto y materiales minerales (como áridos) compactados y extendidos. ;Ésta se expone a las condiciones más severas debido al clima y tráfico, una capa base que se compone de materiales áridos (conjunto de materiales obtenidos de la fragmentación de rocas y arenas, tales como la grava, la gravilla y la arena), una capa de sub-base con materiales de calidad inferior a los empleados en la capa base.
+Los pavimentos flexibles se componen de una capa de mezcla asfáltica u hormigón asfáltico, que consiste en un agregado de asfalto y materiales minerales (como áridos) compactados y extendidos. Ésta se expone a las condiciones más severas debido al clima y tráfico, una capa base que se compone de materiales áridos (conjunto de materiales obtenidos de la fragmentación de rocas y arenas, tales como la grava, la gravilla y la arena), una capa de sub-base con materiales de calidad inferior a los empleados en la capa base.
 
 .. figure:: pav-flexible.png
    :scale:	80 %
@@ -1505,6 +1505,7 @@ Posteriormente, se procede a realizar el análisis de la grieta en la maya de tr
 
 
 .. figure:: DGM_3D.png
+   :scale:	60 %
 
    DGM aplicado a un vértice V de la maya. Extraído desde Fig.4 en :cite:`antecedentesReconstruccion3Dnro1`.
 
@@ -1512,8 +1513,27 @@ Con el fin de separar los vértices aislados de los que se encuentran unidos a u
 
 El cálculo de la profundidad se realiza por medio de la computación de aquellos vertices que no son parte del grupo de vértices abruptos, aplicando la ecuación (1.10) basada en el método de mínimos cuadrados (Least Square Fitting) con la formula de la esfera, de manera que la profundidad de un vértice se calcula como la distancia mínima a la superficie de una esfera. Adicionalmente, se subdivide la grieta en una grilla de 10x10 y se calcula el valor de profunidad de aquellas grietas que tienen un nivel mayor de profundidad. Con respecto al area se aplicó la sumatoria de los cuadrados que conforman la grieta, mientras que para el cálculo del grosor se aplico la fórmula (1.11), que calcula la distancia entre el vértice que se encuentra a mayor profundidad y un vértice que se encuentra mas próximo al borde de la grieta (que es parte de la superficie del asfalto). Este procedimiento se realiza 3 veces, con tres puntos del borde de ésta para lograr una mejor aproximación.
 
+Otro trabajo en el cual se emplea reconstrucción 3D se puede mencionar a :cite:`antecedentesReconstruccion3Dnro2`, en el cual se diseñó un sistema automatizado de detección y análisis de fallas en circuitos viales utilizando un sensor Kinect. El objetivo del trabajo era proveer una solución basada en un sensor de bajo costo el cual puede llegar a estar montado sobre un vehículo y automáticamente detectar y analizar las fallas encontradas. Al resultado de los datos recolectados se les adjunta las coordenadas brindadas por el GPS. De esta manera, los datos de las fallas en la superficie del camino podrían ser recolectados por cualquier conductor sin necesidad de la detención del vehículo. Luego, toda esta información puedía ser utilizada por un especialista, y le brindaría información para utilizar en la toma de decisiones sobre la mejor manera en que deberían repararse.
 
+El sistema captura una nube de punto 3D y localización de los fallas viales detectadas. Estos datos son analizados para determinar ciertas dimensionas de la falla vial como el ancho y largo. La localización también, puede ser cargada en un mapa utilizando la API GoogleMaps. El diseño del sistema supone que el vehículo viajará a no más de 60km/h, el límite establecido para transitar en una zona residencial en Sudáfrica.
 
+El software utilizado por el sistema fue desarrollado sobre las bases de ROS. En primera instancia, una cámara de alta velocidad era utilizada para poder detectar un cambio considerable en la superficie del circuito vial, en esta etapa sólo se utiliza información de la cámara debido al costo de procesamiento que conlleva una nube de puntos en 3D. Si una falla vial era detectada, se capturaban los datos de localización (latitud, longitud) provista por el GPS del automóvil, la nube de puntos 3D provista por el sensor Kinect y todas aquellas imágenes en un intervalo determinado desde la detección de la falla vial. Por otro lado, si se detectaba que no se trataba de una falla vial toda la información relevada era descartada.
+
+Antes de que los datos sean realmente almacenados, la nube de puntos en 3D era analizada para poder confirmar si se trataba completamente de una falla vial. Para este análisis, la contextura de la falla vial era encontrada. Primero, la superficie del plano del circuito vial era estimado utilizando el algoritmo RANSAC. Por lo que, aquellos que no formaban parte del plano eran cosiderados como puntos pertenecientes a la falla vial. Luego, mediante la correlación entre la nube de puntos y la imagen capturada por el sensor Kinect se utilizaba para separar el plano en la imagen capturada por la cámara de alta velocidad. Posteriormente, el contorno de la falla vial era identificado y sus dimensiones calculadas. El ancho de la falla vial se definía como la máxima diferencia entre los puntos del contorno. La profundidad quedaba determinada como la máxima diferencia perpendicular entre el plano y los puntos de la falla vial.
+
+Al final del análisis, toda aquella información calculada se adjuntaba a los datos capturados por los sensores de la falla vial para su posterior utilización.
+
+.. figure:: potholeFlowChart.png
+   :scale:	60 %
+
+   Diagrama de flujo del sistema de detección. Extraído desde Fig.3 en :cite:`antecedentesReconstruccion3Dnro2`.
+
+En el siguiente trabajo :cite:`antecedentesReconstruccion3Dnro3`. El sensor Kinect era utilizado para capturar los datos a una distancia aproximada de 0.8 a 0.9 metros del nivel suelo, los cuales eran procesadas posteriormente utilzando un algoritmo que procesaba los datos y extraía medidas inherentes a las fallas viales implementado con herramientas de software matmático ofrecido por Matlab.
+
+.. figure:: potholeFlowChart1.png
+   :scale:	30%
+
+   Diagrama de flujo del algoritmo. Extraído desde Fig.10 en :cite:`antecedentesReconstruccion3Dnro3`.
 
 .. Aplicaciones web y móviles existentes para la notificación de fallas
 .. --------------------------------------------------------------------
