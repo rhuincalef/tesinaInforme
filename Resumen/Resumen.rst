@@ -4,7 +4,9 @@ Resumen
 Resumen
 ------------
 
-El objetivo de la presente tesina consiste en estudiar el software disponible para registro de distintos tipos de fallas sobre senderos viales, dispositivos hardware y herramientas de software asociadas al sensado de las mismas, y técnicas para el reconocimiento y clasificación de las muestras de fallas capturadas.
+.. El objetivo de la presente tesina consiste en estudiar el software disponible para registro de distintos tipos de fallas sobre senderos viales, dispositivos hardware y herramientas de software asociadas al sensado de las mismas, y técnicas para el reconocimiento y clasificación de las muestras de fallas capturadas.
+
+El objetivo de la presente tesina consiste en incorporar a un sistema de detección de fallas, funcionalidad para el sensado tridimensional de fallas viales, exponiendo software disponible para registro de distintos tipos de fallas sobre senderos viales, dispositivos hardware y herramientas de software asociadas al sensado de las mismas, y técnicas para el reconocimiento y clasificación de las muestras de fallas capturadas.
 
 Con respecto al software para el registro de fallas sobre senderos viales, se expondrá de manera breve la terminología relacionada a los distintos tipos de fallas, y  desarrollos software relacionados con el sensado y registro de fallas en sistemas de información.
 
