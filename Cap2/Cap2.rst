@@ -11,17 +11,17 @@ Los pavimentos se pueden clasificar en dos tipos diferentes:
 * Pavimento de rígido: Es una estructura compuesta por losas de hormigón cuya resistencia a la flexión es relativamente elevada.Los pavimentos rígidos se integran por una losa de concreto de cemento portland, que se encuentra situada por encima de una capa base de grava, y ésta a la vez descansa en una capa de suelo compactado, denominada subrasante.
 
 
-.. .. figure:: ../figs/Cap6/../figs/Cap6/pav-rigido.png
-.. figure:: ../figs/Cap6/pav-rigido.png
-   :scale:   80 %
+.. .. figure:: ../figs/Cap2/../figs/Cap2/pav-rigido.png
+.. figure:: ../figs/Cap2/pav-rigido.png
+   :scale: 80%
 
    Estructura del pavimento rígido
 
 
 * Pavimento flexible: Es una estructura compuesta por capas donde uno de los materiales presentes es el asfalto, lo que permite la deflexión (la deformación que del material como producto de una fuerza externa) bajo las cargas. Los pavimentos flexibles se componen de una capa de mezcla asfáltica u hormigón asfáltico, que consiste en un agregado de asfalto y materiales minerales (como áridos) compactados y extendidos. ;Ésta se expone a las condiciones más severas debido al clima y tráfico, una capa base que se compone de materiales áridos (conjunto de materiales obtenidos de la fragmentación de rocas y arenas, tales como la grava, la gravilla y la arena), una capa de sub-base con materiales de calidad inferior a los empleados en la capa base.
 
-.. figure:: ../figs/Cap6/pav-flexible.png
-   :scale:   80 %
+.. figure:: ../figs/Cap2/pav-flexible.png
+   :scale: 80%
 
    Estructura de pavimento flexible
 
@@ -51,30 +51,30 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Deficiencia de sellado: Este tipo de falla se ocasiona cuando se deterioran el sello de las juntas, por ejemplo, cuando existe fluencia fuera de la caja, despegado de ambas paredes, incrustación de materiales ajenos. El método de reparación de este tipo de falla consiste en realizar un sellado de juntas y de las grietas.
 
-.. figure:: ../figs/Cap6/pav-rigido-deficiencia-sellado.png
-   :scale: 70 %
+.. figure:: ../figs/Cap2/pav-rigido-deficiencia-sellado.png
+   :scale: 70%
 
    Deficiencia de sellado
 
 * Losas desniveladas:  Ocurre cuando se desintegran las aristas de una junta, ya sea de manera longitudinal o transversal, con pérdida de trozos. Para este tipo de falla el método de reparación consiste en un sellado de juntas y grietas, o reparación de espesor parcial, que consiste en reponer las saltaduras de material superficial en juntas y grietas.
 
-.. figure:: ../figs/Cap6/pav-rigido-losas-desniveladas.png
-   :scale: 30 %
+.. figure:: ../figs/Cap2/pav-rigido-losas-desniveladas.png
+   :scale: 30%
 
    Losas desniveladas
 
 * Grietas: Una grieta se define como una abertura larga y estrecha en una losa de material, y ésta dependiendo de su ubicación en la losa, puede ser una grieta de esquina, longitudinal (si se extiende a lo largo de una losa) o transversal (si se extiende de manera perpendicular al volcado del material de la losa). El método de reparación para este tipo de falla, consiste en el sellado de juntas y grietas, y la reparación en todo el espesor. 
   
-.. figure:: ../figs/Cap6/pav-rigido-grieta-longitudinal.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-rigido-grieta-longitudinal.png
+   :scale: 50%
 
    Grieta longitudinal
 
 
 * Desintegración: Esta falla se produce cuando ocurre un desgaste progresivo de la superficie, dejando al material árido expuesto. El método de reparación de este tipo de falla, consiste en realizar una reparación de espesor parcial, en la que se corta la porción de la zona a reparar con una profundidad de corte preestablecida, se limpia la zona y se rellena la zona con un material especial de sellado de juntas.
 
-.. figure:: ../figs/Cap6/pav-rigido-desintegracion.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-rigido-desintegracion.png
+   :scale: 50%
 
    Desintegración
 
@@ -83,31 +83,31 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Baches: Un bache se define como una cabidad, generalmente de forma redondeada producto de la pérdida o hundimiento del pavimento en una parte de la superficie. El método de reparación para este tipo de falla depende del deterioro del mismo, y es especial para cada caso.
   
-.. figure:: ../figs/Cap6/pav-rigido-bache.png
-   :scale: 40 %
+.. figure:: ../figs/Cap2/pav-rigido-bache.png
+   :scale: 40%
 
    Bache
 
 
 * Levantamiento: Es el levantamiento de una porción de la losa, localizado en ambos lados de una junta transversal o grieta.El método de reparación consiste en realizar una reparación en todo el espesor, en la que se remueve y reemplaza una porción de la losa en todo su espesor, con el fin de reparar aquellas partes de la losa con un alto grado de daño.
    
-.. figure:: ../figs/Cap6/pav-rigido-levantamiento.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-rigido-levantamiento.png
+   :scale: 50%
 
    Levantamiento de juntas
 
 * Escalonamiento de juntas o grietas: Este tipo de falla ocurre cuando existe un desnivel entre dos superficies del pavimento, separadas por una junta transversal o grieta. El método de reparación para este tipo de falla es el fresado de la superficie, donde se separan las partes defectuosas del pavimento, de las que se encuentran en buen estado.
   
-.. figure:: ../figs/Cap6/pav-rigido-escalonamiento-juntas.png
-   :scale: 70 %
+.. figure:: ../figs/Cap2/pav-rigido-escalonamiento-juntas.png
+   :scale: 70%
 
    Escalonamiento de juntas
 
 
 * Descenso de banquinas: Es la diferencia de alturas que existe entre el borde del pavimento y la banquina. El método de reparación de este tipo de falla, consiste en realizar el nivelamiento de las banquinas no revestidas.
 
-.. figure:: ../figs/Cap6/pav-rigido-descenso-banquinas.png
-   :scale: 40 %
+.. figure:: ../figs/Cap2/pav-rigido-descenso-banquinas.png
+   :scale: 40%
 
    Descenso de banquinas
 
@@ -117,16 +117,16 @@ Dentro de los tipos de fallas que pueden ocurrir en pavimentos rígidos se encue
 
 * Separación banquina-pavimento: Consiste en una rajadura entre el borde del pavimento y la banquina del sendero vial.El método de reparación consiste en realizar un sellado de juntas y grietas.
 
-.. figure:: ../figs/Cap6/pav-rigido-separacion-banquina-pavimento.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-rigido-separacion-banquina-pavimento.png
+   :scale: 50%
 
    Separación banquina-pavimento
 
 
 * Parches deteriorados: Este tipo de falla surge cuando una porción de la superficie del asfalto ha sido removido y reemplazado por otro (como hormigón o asfalto), y ésta se ha dañado. El método de reparación de este tipo de falla, varía según el deterioro, y requiere una reparación especial.
 
-.. figure:: ../figs/Cap6/pav-rigido-parche-deteriorado.png
-   :scale: 40 %
+.. figure:: ../figs/Cap2/pav-rigido-parche-deteriorado.png
+   :scale: 40%
 
    Parches deteriorados
 
@@ -135,21 +135,20 @@ Fallas sobre pavimentos flexibles
 
 * Exudación: Este tipo de falla se presenta cuando el asfalto pierde sus agregados pétreos en la superficie. El tipo de reparación para esta falla consiste en enarenar y realizar una reparación superficial.
 
-.. figure:: ../figs/Cap6/pav-flexible-exudacion.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-flexible-exudacion.png
+   :scale: 50%
 
    Exudación
 
 
-* Ahuellamiento y depresiones: El ahuellamiento es producido por el hundimiento de manera longitudinal del pavimento, y éste coincide con el área donde la mayor parte de los vehículos circula. Mientras que depresión, se considera un ahuellamiento de longitud menor al del ahuellamiento.
-Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza perfilado del pavimento, si la profundidad máxima es mayor a 20 mm pero inferior a 40 mm se realiza relleno de la rodadera, y si ésta es superior a 40 mm, se realiza una reparación local del pavimento.
+* Ahuellamiento y depresiones: El ahuellamiento es producido por el hundimiento de manera longitudinal del pavimento, y éste coincide con el área donde la mayor parte de los vehículos circula. Mientras que depresión, se considera un ahuellamiento de longitud menor al del ahuellamiento.Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza perfilado del pavimento, si la profundidad máxima es mayor a 20 mm pero inferior a 40 mm se realiza relleno de la rodadera, y si ésta es superior a 40 mm, se realiza una reparación local del pavimento.
 
 .. raw:: latex
    
    \newpage
 
-.. figure:: ../figs/Cap6/pav-flexible-ahuellamiento.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-flexible-ahuellamiento.png
+   :scale: 50%
 
    Ahuellamiento y depresión
 
@@ -159,16 +158,16 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
   
 * Hundimiento del borde y ahuellamiento: Ocurre cuando se hunde el borde del material que limita con el margen. El método de reparación depende de la profundidad máxima del mismo, si ésta es menor a 20 mm se emplea perfilado del pavimento, si es superior a 20 mm pero inferior a 40 mm se emplea la técnica de relleno de rodadera, si es mayor a 40 mm se realiza una reparación local de la estructura del pavimento.
 
-.. figure:: ../figs/Cap6/pav-flexible-ahuellamiento-borde.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-flexible-ahuellamiento-borde.png
+   :scale: 50%
 
    Hundimiento del borde y ahuellamiento
 
 
 * Baches: Este tipo de falla produce un hundimiento local del sendero vial, con agrietamiento  en malla cerrada y generalmente pérdida parcial de bloques de la capa de rodadura.Las técnicas de reparación de este tipo de falla consisten en restauración local de la estructura del pavimento, o bacheo sobre la base.
   
-.. figure:: ../figs/Cap6/pav-flexible-baches.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-flexible-baches.png
+   :scale: 50%
 
    Baches
 
@@ -178,16 +177,16 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
 
 * Pérdida local de áridos: Este tipo de falla se presenta cuando ocurre una pérdida de una porción de la capa superficial. El método de reparación para este tipo de falla consiste en reemplazar el material afirmado.
 
-.. figure:: ../figs/Cap6/pav-flexible-perdida-aridos.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-flexible-perdida-aridos.png
+   :scale: 50%
 
    Pérdida local de áridos
 
 
 * Pulimiento o peladuras: Produce desprendimientos de la última capa de tratamientos superficiales. El método de reparación varía según la severidad, siendo un método de tratamiento superficial simple con una profundidad menor a 25 mm y área menor a 0,8 m2, y siendo nivelación con sobrecarpeta para profundidad o área mayores a 25 mm y 0,8 m2 respectivamente.
 
-.. figure:: ../figs/Cap6/pav-flexible-pulimiento.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-flexible-pulimiento.png
+   :scale: 50%
 
    Pulimiento o peladuras
 
@@ -198,8 +197,8 @@ Si la profundidad máxima del ahuellamiento es inferior a los 20 mm, se realiza 
    
    \newpage
 
-.. figure:: ../figs/Cap6/pav-flexible-deformacion.png
-   :scale: 50 %
+.. figure:: ../figs/Cap2/pav-flexible-deformacion.png
+   :scale: 50%
 
    Deformación
 
@@ -225,33 +224,28 @@ Digitalización de imágenes
 
 El mundo percibido diariamente por las personas se manifiesta en una variedad de formas, colores y texturas que la visión humana puede adquirir, integrar e interpretar con relativa facilidad, como así también, reconocer éstas en sus representaciones asociadas en textos, presentaciones multimedia, imágenes o video digital. No obstante, existe una gran cantidad de radiación que puede ser sensada, que se encuentra delimitada por el espectro electromagnético, descubierto por Sir Isaac Newton en 1666, cuando un rayo de luz atravesó un a través de un prisma, y Newton observó que el haz de luz es blanco, sino que se compone de un espectro continuo de colores desde violeta en un extremo (0.43 micrometros) hasta rojo en el otro(0.79 micrometros). 
 
-
-|
-.. figure:: ../figs/Cap6/espectroElectromagnetico.png
-   :scale:   80 %
+.. figure:: ../figs/Cap2/espectroElectromagnetico.png
+   :scale: 40%
 
    División del espectro electromagnético. La zona percibile por las personas del espectro se encuentra ampliado, siendo este una pequeña porción del especto completo.
 
-|
-Como se puede observar en la figura anterior, en un extremo del espectro se encuentran las ondas de radio que se caracterizan por poseer longitudes de onda millones de veces mas largas a las de la luz visible, mientras que en el otro extremo se encuentran los rayos gamma con longitudes de onda millones de veces más pequeñas. El espectro electromagnético se puede expresar en función de la energía,o la longitud de onda (wavelength, LAMBDA). La longitud de onda del espectro electromagnético representado por LAMBDA, se calcula en base a la velocidad de la luz y la frecuencia de la onda, relacionados por la expresión:
-|
+Como se puede observar en la figura anterior, en un extremo del espectro se encuentran las ondas de radio que se caracterizan por poseer longitudes de onda millones de veces mas largas a las de la luz visible, mientras que en el otro extremo se encuentran los rayos gamma con longitudes de onda millones de veces más pequeñas. El espectro electromagnético se puede expresar en función de la energía,o la longitud de onda (wavelength, :math:`{\lambda}`). La longitud de onda del espectro electromagnético representado por :math:`{\lambda}`, se calcula en base a la velocidad de la luz y la frecuencia de la onda, relacionados por la expresión:
 
-.. math::  LAMBDA = c/v
+.. math:: {\lambda} = c/v
    :label: ecuacion1
 
-donde c es la velocidad de la luz (2.988 x 10 ^8 m/s) y v es la frecuencia medida en Hertz(Hz), donde 1 Hertz es igual a la cantidad de ciclos de onda senoidal por segundo. Las unidades de las longitudes de onda se miden en metros, empleándose las medidas micrometros y nanómetros frecuentemente. Alternativamente, el espectro electromagnético se puede expresar en base a la energía asociada con una longitud de onda por medio de la siguiente ecuación:
-|
+donde *c* es la velocidad de la luz (2.988 x 10 ^8 m/s) y *v* es la frecuencia medida en Hertz(Hz), donde 1 Hertz es igual a la cantidad de ciclos de onda senoidal por segundo. Las unidades de las longitudes de onda se miden en metros, empleándose las medidas micrometros y nanómetros frecuentemente. Alternativamente, el espectro electromagnético se puede expresar en base a la energía asociada con una longitud de onda por medio de la siguiente ecuación:
 
 .. math::  E = h*v
    :label: eq1
 
 .. Una unidad de medida para la energía en el espectro electromagnético es el electron-volt.
-donde h es la constante de Planck y v es la frecuencia de la onda, midiéndose la energía E a través de la unidad fotón. Por lo tanto, las ondas electromagnéticas pueden ser vistas como ondas senoidales con longitud de onda LAMBDA, o pueden ser consideradas como un flujo de partículas sin masa, cada una viajando en un patrón con forma de onda y moviéndose a la velocidad de la luz. Cada partícula sin masa, contiene una cierta cantidad de energía denominada fotón(photon).De la ecuación :eq:`eq1` , se puede observar que la energía es proporcional a la frecuencia, por lo que cuanto más alta sea la frecuencia el fenómeno electromagnético llevará mas energía por fotón. Así las ondas de radio tienen fotones con baja energía, las microondas tienen más energía que las ondas de radio, las infrarojas aún más, siendo la luz visible, luz ultravioleta,los rayos X y finalmente los rayos gamma los que tienen mayor cantidad de energía de todos. Esta es la razón por la cual los rayos gamma son los más dañinos para los organismos vivientes.
 
-|
+donde h es la constante de Planck y v es la frecuencia de la onda, midiéndose la energía E a través de la unidad fotón. Por lo tanto, las ondas electromagnéticas pueden ser vistas como ondas senoidales con longitud de onda :math:`{\lambda}`, o pueden ser consideradas como un flujo de partículas sin masa, cada una viajando en un patrón con forma de onda y moviéndose a la velocidad de la luz. Cada partícula sin masa, contiene una cierta cantidad de energía denominada fotón(photon).De la ecuación :eq:`eq1` , se puede observar que la energía es proporcional a la frecuencia, por lo que cuanto más alta sea la frecuencia el fenómeno electromagnético llevará mas energía por fotón. Así las ondas de radio tienen fotones con baja energía, las microondas tienen más energía que las ondas de radio, las infrarojas aún más, siendo la luz visible, luz ultravioleta,los rayos X y finalmente los rayos gamma los que tienen mayor cantidad de energía de todos. Esta es la razón por la cual los rayos gamma son los más dañinos para los organismos vivientes.
 
-.. figure:: ../figs/Cap6/ondaSinusoidal.png
-   :scale:   80 %
+
+.. figure:: ../figs/Cap2/ondaSinusoidal.png
+   :scale: 40%
 
    Representación gráfica de la longitud de onda (LAMDA)
 
@@ -263,19 +257,17 @@ Las imágenes,aunque tengan distintas fuentes, comparten el hecho de que existe 
 * Las imágenes de reflexión son aquellas en que la radiación ha sido reflejada desde la superficie de un objeto. Ésta puede ser del ambiente o artificial, y puede provenir desde una fuente localizada o desde fuentes múltiples. Este tipo de imágenes son las que se perciben día a día por las personas por medio de la vista, mientras que algunos ejemplos de imágenes no visibles de este tipo incluyen imágenes por radar, imágenes por sonar y algunos tipos de imágenes por microscopio. El tipo de información que puede ser extraída desde este tipo de imagen es generalmente respecto de la superficie de los objetos, su forma, color, textura y reflectividad.
 * Las imágenes de emisión son aquellas cuya radiación es emitida por el objeto que se desea capturar, como las imágenes térmicas o infrarojas, y que son usadas por áreas como la medicina, pruebas militares, o en objetos luminosos como bombillas de luz, estrellas, imágenes de resonancia magnética (MRI), las cuales obtienen información en base a la capacidad de emisión de las partículas. Cuando se emplea este tipo de imágenes se desea obtener información respecto de la estructura interna del objeto, aunque también pueden ser empleadas para información externa, por ejemplo, una cámara térmica utilizada en situaciones con baja iluminación, con el fin de producir una imagen que capture los objetos que producen calor en una escena.
 * Las imágenes de absorción donde la radiación atraviesa el material que compone el objeto y es absorbida o atenuada por éste parcialmente, lo que proporciona información relacionada con la estructura interna del mismo. El grado de absorción determina el nivel de la imagen registrada. Ejemplos de este tipo de imágenes son los rayos X, imágenes de transmisión microscópicas y ciertos tipos de imágenes sónicas.   
-|
 
-.. figure:: ../figs/Cap6/tiposInteraccionImagenes.png
-   :scale:   80 %
+.. figure:: ../figs/Cap2/tiposInteraccionImagenes.png
+   :scale: 60%
 
    Tipos de interacción para el sensado de imágenes
-
 
 Para que un sensor pueda captar un objeto de determinado tamaño, es necesario que la longitud de onda del sensor sea igual o menor al tamaño de del objeto, por lo que este requerimiento junto con el material del sensor, establecen los límites de la capacidad de captura del sensor de imagen y su clasificación en distintos tipos, tales como sensores infrarojos, de luz visible,etc. Así, con el fin de capturar imágenes digitales en las distintas bandas del espectro electromagnético, es necesario emplear sensores que puedan captar la energía irradiada en cierto rango y produzcan una señal eléctrica de salida (generada por una combinación entre el material sensible a la radiación del sensor y la fuente de alimentación del mismo), que permita la representación de una imagen del mundo tridimensional de interés en formato digital.
 
 
-.. figure:: ../figs/Cap6/sensorCaptura.png
-   :scale: 90%
+.. figure:: ../figs/Cap2/sensorCaptura.png
+   :scale: 70%
    
    Sensor individual de captura
 
@@ -284,18 +276,17 @@ Cuando un fenómeno es captado por un dispositivo con uno o varios sensores, est
 Cuando la cantidad de pixeles muestreados no es suficiente(undersampling) como para representar la imagen, se produce un efecto denominado aliasing, que produce que la imagen visual pierda el patrón de la imagen original que intenta representar, produciendo una falso patrón y una imagen distorcionada. Como se observa en la siguiente imagen de una huella digital, a medida que la densidad de pixeles muestreados disminuye, la calidad de la imagen empeora y se produce éste efecto:
 
 
-.. figure:: ../figs/Cap6/aliasing.png
-   :scale: 80%
+.. figure:: ../figs/Cap2/aliasing.png
+   :scale: 40%
    
    Efecto de aliasing. 256x256 (2^8*2^8=65,536 muestras). 128x128(2^7*2^7=16,384 muestras).64x64(2^6*2^6=4,096 muestras)
+
 |
 
-
-.. figure:: ../figs/Cap6/imagenPixels.png
+.. figure:: ../figs/Cap2/imagenPixels.png
+   :scale: 40%
 
    Representación de un array de imagen de 10 x 10
-
-.. NOTA: VER SI AGREGAR ACA LAS PROPIEDADES DE LOS PIXELES. PAG 83.Pretince Hall Gonzales 2 ed.
 
 
 El siguiente paso consiste en realizar la cuantificación o quantization, donde se realiza la conversión de las intensidades analógicas captadas por los sensores a valores numéricos discretos, asignando un valor a cada pixel muestreado, de manera que la imagen reconstruida de los valores muestreados sean de una calidad lo más aproximada a la real y el error introducido por la cuantificación sea mínimo.
@@ -305,13 +296,13 @@ La cuantificación se puede realizar de manera uniforme, cuando los valores de i
 
 
 
-.. figure:: ../figs/Cap6/cuantificacionUniformeNoUniforme.png
-   :scale: 70%
+.. figure:: ../figs/Cap2/cuantificacionUniformeNoUniforme.png
+   :scale: 60%
 
    Cuantificación de imagen de 2 dimensiones.Cuantificación uniforme (a).Cuantificación no uniforme (b).
 
 
-De esta forma, el proceso de digitalización requiere los valores de *M*,*N* y la cantidad de niveles de intensidad *L*( niveles de gris en el caso de las imágenes con escala de grises o de valores en las bandas roja,verde y azul para las imágenes a color) como valores positivos, permitidos para cada pixel. No obstante, debido a las consideraciones de hardware, procesamiento y almacenamiento, el número de niveles es típicamente una potencia de 2:
+De esta forma, el proceso de digitalización requiere los valores de *M*, *N* y la cantidad de niveles de intensidad *L* ( niveles de gris en el caso de las imágenes con escala de grises o de valores en las bandas roja,verde y azul para las imágenes a color) como valores positivos, permitidos para cada pixel. No obstante, debido a las consideraciones de hardware, procesamiento y almacenamiento, el número de niveles es típicamente una potencia de 2:
 
 
 .. math:: L = 2^k
@@ -328,9 +319,8 @@ Así, cuando una imagen puede tener *2^k* niveles de gris, es una práctica com�
 .. math:: b = M x N x k
    :label: cantBitsNecesarios
 
-|
-|
-.. figure:: ../figs/Cap6/resultadoDelProcesoCuantificacion.png
+
+.. figure:: ../figs/Cap2/resultadoDelProcesoCuantificacion.png
 
    Representación del proceso de muestreo y cuantificación.Imagen continua captada por un dispositivo de sensado(izquierda).Imagen muestreada y cuantificada(derecha).
 
@@ -373,7 +363,7 @@ Otra propiedad de los pixeles es la adyacencia que se define en términos de los
 
 |
 
-.. figure:: ../figs/Cap6/tiposConexionesImgBinaria.png
+.. figure:: ../figs/Cap2/tiposConexionesImgBinaria.png
   
    Tipos de conexiones entre pixeles. 4-vecinos(a). 8-vecinos(b). Componente conectado y fondo(c).
 
@@ -381,11 +371,9 @@ Una vez que un objeto es identificado algunos de sus atributos se pueden definir
 
 * Área del objeto: El área de un objeto se da como la sumatoria de todos los pixeles i,j que forman el objeto(pixeles con valor 1).
 * Ubicación del objeto: La ubicación del objeto se define como el centro del objeto en X e Y, calculados por medio de la sumatoria de las coordenadas del objeto dividido por el área del mismo. En la siguiente ecuación se puede observar la forma de calcular los centroides Xc e Yc:
-|
-|
 
-.. figure:: ../figs/Cap6/calculoCentroide.png
-   :scale: 80%
+.. figure:: ../figs/Cap2/calculoCentroide.png
+   :scale: 40%
    
    Fórmula para el cálculo del objeto
 
@@ -435,8 +423,9 @@ Operaciones de manipulación de intensidad
 En este tipo de técnicas las relaciones entre pixeles vecinos no se consideran, como así tampoco la localización de los pixeles, sino que se modifican las intensidades de los pixeles. Estas operaciones pueden realizarse sobre pixeles individuales, tomando como entrada el valor de intensidad de un pixel y produciendo el valor de intensidad transformado para ese pixel.Alternativamente, se pueden aplicar sobre un vecindario de pixeles(neighbourhood), donde dada la coordenada de un pixel en la imagen de entrada f(x,y), se toman los valores de intensidad de un conjunto de pixeles vecinos y, por medio del procesamiento de estos valores, se obtiene el valor de intensidad para ese pixel en la imagen de salida g(x,y).
 
 |
-.. figure:: ../figs/Cap6/operacionesNeighborhood.png
-   :scale: 70%
+
+.. figure:: ../figs/Cap2/operacionesNeighborhood.png
+   :scale: 50%
 
    Vecindario de pixeles
 
@@ -460,18 +449,20 @@ Donde f() es la función que mapea el nivel de intensidad a cada pixel P(x,y), y
 
 
 
-.. figure:: ../figs/Cap6/variosNivelesContraste.png
+.. figure:: ../figs/Cap2/variosNivelesContraste.png
    :scale: 60%
 
    Imágenes con distintos niveles de contraste y sus histogramas asociados
 
 En la siguiente figura se puede observar, que la figura de la izquierda presenta niveles de gris más oscuros, mientras que la figura de la derecha presenta niveles de grises con más brillo, lo que indica que han estado expuestas a condiciones de luz excesiva y escasa. 
+
 |
 
 
-.. figure:: ../figs/Cap6/histogramaImagen.png
+.. figure:: ../figs/Cap2/histogramaImagen.png
 
    Histograma de imagen.
+
 |
 
 Algunas veces el histograma de imagen se normaliza, dividiendo la cantidad de ocurrencias en cada nivel de intensidad, por el número total de pixeles en la imagen *(N x M)*, de manera que la sumatoria de los componentes de un histograma normalizado sea 1. 
@@ -491,33 +482,37 @@ Por ejemplo si se emplea un histograma de una imagen de escala de grises, si el 
 
 .. _escaladohistograma:
 
-.. figure:: ../figs/Cap6/efectoEscaladoHistograma.png
+.. figure:: ../figs/Cap2/efectoEscaladoHistograma.png
    :scale: 80%
 
    Efectos del escalado de histograma entre dos puntos A-B.
 
 | 
-.. figure:: ../figs/Cap6/estudiantesOriginal.png
+
+.. figure:: ../figs/Cap2/estudiantesOriginal.png
    :scale: 70%
 
    Imagen de estudiantes original (izquierda) y su histograma de imagen asociado(derecha).
 
-| 
-.. figure:: ../figs/Cap6/estudiantesEscalaHistograma.png
+|
+
+.. figure:: ../figs/Cap2/estudiantesEscalaHistograma.png
    :scale: 70%
 
    Modificación de la escala del histograma con P=0,75, en este caso los niveles de gris de la imagen tienden a juntarse, provocando que la imagen disminuya su calidad.
 
-| 
+|
+
 .. _librosoriginal:
 
-.. figure:: ../figs/Cap6/imagenOriginalLibros.png
+.. figure:: ../figs/Cap2/imagenOriginalLibros.png
    :scale: 70%
 
    Imagen de libros(izquierda) y su histograma(derecha)
 
-| 
-.. figure:: ../figs/Cap6/librosEscalaHistograma.png
+|
+
+.. figure:: ../figs/Cap2/librosEscalaHistograma.png
 
    Modificación de la escala del histograma con *P = 2*. En este caso, la expansión de los valores del histograma de imagen, produce que se haga un mejor uso de los niveles de gris, produciendo una mejora en la nitidez de la misma
 
@@ -530,13 +525,11 @@ El negativo de una imagen consiste en escalar los valores de la imagen f(n), con
 
 .. math:: g(n) = -f(n) + (K-1)
    :label: formulaImgInversa
-|
-|
 
-.. figure:: ../figs/Cap6/imagenNegativa.png
+
+.. figure:: ../figs/Cap2/imagenNegativa.png
 
    Imagen negativa con su histograma modificado
-|
 
 Esta técnica se emplea para mejorar imágenes donde se pierde el nivel de detalle en las regiones con niveles blanco y negro, percibiéndose ésta como demasiado oscura. Un ejemplo de esta operación es la inspección de imágenes telescópicas con campos de estrellas y galaxias, donde con una imagen negativa los objetos brillantes, aparecen con una tonalidad oscura sobre un fondo brillante que es mas sencillo de apreciar.   
 
@@ -547,16 +540,16 @@ Este procedimiento consiste en distribuir las frecuencias de los niveles de inte
 
 .. _alfa:
 
-.. figure:: ../figs/Cap6/estiramientoContrasteFormula.png
-   :scale: 70%
+.. figure:: ../figs/Cap2/estiramientoContrasteFormula.png
+   :scale: 50%
 
    Fórmula de estiramiento de contraste
 
 De esta forma, este procedimiento modifica el contraste de la imagen en general si sus niveles de grises no están distribuidos adecuadamente, aunque si ésta abarca varios valores en la escala de grises del histograma, esta técnica puede producir poca o ninguna diferencia con respecto a la imagen original. A continuación se puede observar un ejemplo que contrastado con la figura :num:`Fig. #librosoriginal`, tiene una mejora en el contraste de la misma:
 
 
-.. figure:: ../figs/Cap6/estiramientoContrasteEjemplo.png
-   :scale: 70%
+.. figure:: ../figs/Cap2/estiramientoContrasteEjemplo.png
+   :scale: 50%
  
    Ejemplo de estiramiento de contraste
  
@@ -570,8 +563,8 @@ Este procedimiento consiste en normalizar los niveles de intensidad del histogra
 Si se considera un histograma de imagen de una imagen con escala de grises, el primer paso consiste en realizar la normalización del histograma, obteniendo la función de densidad de probabilidad (PDF) de los niveles de gris pf(k), para cada uno de los K niveles de intensidad.
 La función de densidad de probabilidad trata los valores de los niveles de intensidad como cantidades aleatorias, y definiéndose la probabilidad pf(k) de un nivel *k* ocurriendo en una imagen como:
 
-.. figure:: ../figs/Cap6/formulaNormalizacion.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaNormalizacion.png
+   :scale: 50%
 
    Fórmula de normalización de histograma
 
@@ -580,23 +573,23 @@ La función de densidad de probabilidad trata los valores de los niveles de inte
 Donde la imagen digital tiene *M x N* pixeles, Hf(k) es el nivel de intensidad para un nivel *k* y, con* 0,1,...,k-1* niveles. Éstas deben cumplir con la siguiente propiedad de sumatoria:
 
 
-.. figure:: ../figs/Cap6/propiedadFormulaNormalizacion.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/propiedadFormulaNormalizacion.png
+   :scale: 50%
 
    Propiedad de sumatoria de los valores normalizados
 
 En base a esta función, se define la función de distribución acumulada, Pf(r) para *r = k* niveles:
 
 
-.. figure:: ../figs/Cap6/formulaDistribucionAcumulada.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaDistribucionAcumulada.png
+   :scale: 50%
  
    Función de distribución acumulada
  
 Así para obtener un histograma igualado, primero se debe computar la función de distribución acumulada del histograma de imagen Pf(k) de la imagen digital, para cada uno de los niveles del histograma, lo que provocará que éste tienda a aplanarse gráficamente, y luego aplicar la función de estiramiento de contraste para cada uno de los elementos, con el fin de distribuirlos a lo largo de la escala. Esto provocará que la imagen final sea más impactante y visible que la original, sin embargo, este proceso no eliminará aquellos picos resultantes del proceso de cuantificación. A continuación se observa el proceso de igualación de histograma aplicado a la imagen de libros:
 
 
-.. figure:: ../figs/Cap6/igualacionLibros.png
+.. figure:: ../figs/Cap2/igualacionLibros.png
    :scale: 70%
 
    Imagen de libros y su histograma luego de aplicar la igualación
@@ -612,7 +605,7 @@ Esta técnica se emplea principalmente en imágenes con escala de grises, con el
 Este procedimiento es útil en imágenes que cuentan con histogramas bimodales, es decir, aquellos histogramas donde los promedios de brillo entre el fondo y los objetos de la imagen se encuentran claramente delimitados, como en aquellas imágenes que contienen objetos oscuros con fondo brillante, u objetos brillantes sobre un fondo oscuro. De esta forma, el objeto consiste en separar concisamente los objetos del fondo de la imagen, para luego etiquetarlos.
 
 
-.. figure:: ../figs/Cap6/limiteImagen.png
+.. figure:: ../figs/Cap2/limiteImagen.png
     
    Límite de la imagen. En la izquierda se puede apreciar una imagen con niveles de intensidad correctamente delimitados, mientras que en la imagen de la derecha, se puede observar una imagen con un límite poco claro entre objetos y fondo.
     
@@ -620,7 +613,7 @@ Este procedimiento es útil en imágenes que cuentan con histogramas bimodales, 
 Existen varias estrategias para la elección acerca de donde colocar el límite *T*: Si el histograma de imagen es bimodal, el límite se tiende a colocar entre medio de los modos de la imagen, como en la figura anterior. Sin embargo, esta aproximación tiene problemas si la imagen contiene múltiples objetos de un brillo promedio diferente en un fondo uniforme(histograma multimodal), excluyéndose algunos objetos. También es difícil asignar un límite si el histograma es plano, conteniendo imágenes complejas, con variaciones de gris significativas, detalles, iluminación no uniforme, etc.
 
 
-.. figure:: ../figs/Cap6/imagenMultimodal.png
+.. figure:: ../figs/Cap2/imagenMultimodal.png
 
    (a)Histograma multimodal que señala la dificultad de seleccionar un límite.(b) Histograma plano, para el que la selección de un límite es dificil o imposible.
 
@@ -640,14 +633,15 @@ Este método consiste realizar un mapeo entre los valores de un histograma de im
 A continuación, se debe realizar la computación de la función de transformación G(), para cada uno de los q-niveles de intensidad, *q=0,1,...,K-1*. Los valores resultantes, son escalados y redondeados a sus valores más cercanos en el rango *[0, K-1]* y almacenados en una tabla. Esta fórmula define una función de densidad de probabilidad pz(zi), que es la función de densidad de probabilidad que se desea que la imagen de salida adopte, sobre una variable aleatoria z:
 
 
-.. figure:: ../figs/Cap6/formulaEspecificacionHistograma.png
+.. figure:: ../figs/Cap2/formulaEspecificacionHistograma.png
+   :scale: 50%
 
    Fórmula de transformación G
 
 Posteriormente, para cada valor de intensidad en cada pixel del histograma igualado *sk*, se emplean los valores almacenados (luego de aplicar G()), para encontrar el valor más próximo *zq* a *sk*, dentro del dominio de los valores producidos por G(), de manera que G(*zq*) es el valor más cercano y almacenar este mapeo de s a z. Si ocurre que más de un valor de *zq* satisface la condición de sk (con un mapeo no único), se elige el valor más pequeño por convención. Finalemente, con estos valores obtenidos se produce el nuevo histograma de imagen con los *zq* valores obtenidos, empleando los mapeos almacenados con anterioridad.
 
 
-.. figure:: ../figs/Cap6/ejemploEspecificacionHistograma.png
+.. figure:: ../figs/Cap2/ejemploEspecificacionHistograma.png
 
    Ejemplo de especificación de histograma. Se realiza la especificación de histograma de libros para que se aproxime a una "V" centrada en los niveles de gris y que se extiende a lo largo de la escala de grises, produciendo una imagen con un alto contraste. 
 
@@ -660,27 +654,34 @@ Debido a que las imágenes se representan como matrices de números, pueden apli
 * Suma: M(x,y) = f(x,y) + g(x,y). Un ejemplo de aplicación de la operación de suma es la corrección de la imágenes que se encuentran con degradaciones aleatorias o ruido, debido a diversas factores en el ambiente. La técnica mas sencilla para eliminarlo, es el modelo de ruido aditivo, donde se considera que una imagen con ruido es la suma de una imagen original y una imagen con ruido, y se supone que el ruido en cada par de coordenadas no esta correlacionado y que la media de éste es cero. Así, se puede afirmar que al calcular un promedio de *R* imágenes con ruido, tomadas en una rápida sucesión y sin ruido en la escena, la media de este calculo tenderá a cero (una matriz *N x M* con valores cercanos a cero), lo que mejorará el grado de fidelidad con respecto a la imagen original por un factor de R. Sin embargo, si existen diferencias en la escena o, si existen dependencias entre las imágenes con ruido (en caso de que todas éstas sean casi idénticas), entonces la reducción de ruido será limitada.
   
 
-.. figure:: ../figs/Cap6/ejemploSumaMatrices.png
+.. figure:: ../figs/Cap2/ejemploSumaMatrices.png
    :scale: 70%
      
    Ejemplo de promediado de imágenes. La imagen de la izquierda es una imagen individual con ruido. La imagen del centro es un promedio de 4 imágenes. La imagen de la derecha es un promedio de 16 imágenes.
+
+.. raw:: latex
+
+   \newpage
      
 * Resta: M(x,y) = f(x,y) - g(x,y). La diferencia de imágenes es una técnica que se emplea para detectar cambios en imágenes tomadas sobre la misma escena en diferentes momentos, esto permite que se le pueda aplicar para el rastreo de objetos, reconocer el movimiento de objetos, para computar información 3-D del movimiento 2D, en cámaras de vigilancia y, campos de la astronomía donde los bajos niveles de frecuencia introducen ruido en el dispositivo de sensado. De esta forma, para detectar si existe un cambio de imagen significativo se realiza la sustracción de las mismas, y se analiza el histograma de imagen: Si los niveles de intensidad del histograma en el nivel *n* no son significativos, significa que no existe una diferencia considerable entre ambas; Por el contrario, si los valores en un intervalo de niveles *n* o en un nivel *n* es significativa, se podrá percibir que el histograma tendrá un nivel de intensidad(más brillo) en ese punto. A continuación, se puede observar el histograma luego de realizar la resta entre dos imágenes:
   
-   .. figure:: ../figs/Cap6/diferenciaHistograma.png
-      :scale: 60%
+   .. figure:: ../figs/Cap2/diferenciaHistograma.png
+      :scale: 40%
 
       Las figuras (a) y (b) son las imágenes originales, la figura (c) es la imagen resultante de la diferencia y la figura (d) es su histograma asociado.
   
+.. raw:: latex
+
+   \newpage
 
 * Multiplicación: M(x,y)=f(x,y) * g(x,y). Este tipo de operación se emplea con el uso de una mascara para aislar regiones de interés(ROI) en la imagen final. Este proceso consiste en multiplicar una imagen por una mascara de imagen que tiene unos en la región de interés y cero en cualquier otra coordenada. Pueden existir más de una ROI en la máscara de imagen, con una forma arbitraria, aunque las formas rectangulares son usadas frecuentemente por la facilidad de implementación. En la siguiente imagen se puede observar el proceso de enmascarado de muelas en una imagen de rayos X:
   
 
-   .. figure:: ../figs/Cap6/multiplicacionHistograma.png
+   .. figure:: ../figs/Cap2/multiplicacionHistograma.png
       :scale: 70%
 
       Multiplicación de histograma.La figura de la izquierda es la imagen original, la imagen del centro es la mascara de la ROI que aísla muelas (donde blanco corresponde a 1 y negro corresponde a 0), y la figura de la derecha es el producto entre estas dos imágenes.
-  
+
   
 * División: M(x,y) = f(x,y) / g(x,y). Este tipo de operación (en conjunto con la multiplicación) se emplea para la corrección de sombras, ya que si se tiene un sensor que captura una imagen g(x,y) que puede ser descompuesta en una imagen perfecta f(x,y) y una función de sombreado h(x,y) esto es: g(x,y) = f(x,y) * h(x,y) ;Entonces, se puede obtener la imagen ideal dividiendo: g(x,y)/h(x,y).
 
@@ -694,7 +695,8 @@ Las operaciones geométricas modifican la relación espacial entre pixeles, real
 Dada la coordenada de un pixel en una imagen digital de entrada (v,w) definida como una coordenada proyectada, es decir, representado como un vector de tres valores (v,w,1) y siendo la coordenada para un pixel en el nuevo espacio (x,y), las transformaciones afines se pueden definir como una matriz de 3x3 *T*, donde dependiendo los valores definidos para los indices *t11* y *t32*, se puede cambiar el tipo de transformación:
 
 
-.. figure:: ../figs/Cap6/transformacionAfineMatriz.png
+.. figure:: ../figs/Cap2/transformacionAfineMatriz.png
+   :scale: 50%
 
    Fórmula de la transformación afin T definida de manera genérica. 
 
@@ -706,14 +708,16 @@ Traslación
 
 La traslación es la operación mas sencilla y consiste en dada una imagen g(x,y), desplazar ésta en dirección horizontal y vertical, por medio de la suma de un valor tanto en el eje *x* como en el eje *y*.
 
-.. figure:: ../figs/Cap6/traslacion1.png
+.. figure:: ../figs/Cap2/traslacion1.png
+   :scale: 50%
 
    Definición matricial traslación
 
 |
 |
 
-.. figure:: ../figs/Cap6/traslacion2.png
+.. figure:: ../figs/Cap2/traslacion2.png
+   :scale: 50%
 
    Traslación gráficamente
 
@@ -723,14 +727,16 @@ Rotación
 
 La rotación consiste en girar una imagen por un ángulo 0 relativo al eje *x*, empleando la siguiente matriz de transformación:
 
-.. figure:: ../figs/Cap6/rotacion1.png
+.. figure:: ../figs/Cap2/rotacion1.png
+   :scale: 50%
 
    Definición matricial de la rotación
 
 |
 |
 
-.. figure:: ../figs/Cap6/rotacion2.png
+.. figure:: ../figs/Cap2/rotacion2.png
+   :scale: 50%
 
    Rotación gráficamente
 
@@ -741,14 +747,15 @@ Escalado
 El escalado consiste ampliar o reducir la escala de una imagen, empleando para ello los valores *cx* y *cy* como factores de escala del eje *X* y del eje *Y* respectivamente. Si los factores son menores a 1, la imagen se reducirá, mientras que si éstos son mayores a 1 la imagen aumentará su tamaño. Cuando se escala una imagen se modifica tanto la escala como la posición en el plano, por lo que si se desea volverla a posicionar sobre el origen se debe aplicar una traslación.
 
 
-.. figure:: ../figs/Cap6/escalado1.png
+.. figure:: ../figs/Cap2/escalado1.png
+   :scale: 50%
 
    Definición matricial del escalado
 
 |
-|
 
-.. figure:: ../figs/Cap6/escalado2.png
+.. figure:: ../figs/Cap2/escalado2.png
+   :scale: 50%
 
    Escalado gráficamente. Esta imagen fue escalada por un factor de escala de 1.4 en el eje *X* y por un factor de escala de 0.8 en el eje *Y*.
 
@@ -762,14 +769,16 @@ Inclinación o transvección(Shearing)
 La inclinación o transvección, consiste en desplazar los puntos en un eje de manera lineal, por una cantidad proporcional a la coordenada en el eje perpendicular al mismo. Esta transformación puede realizarse de manera horizontal sobre el eje *X* (en cuyo caso se desplaza cada punto de este eje por un valor proporcional a su coordenada en *Y*, quedando intactos los valores en y de cada punto),o de manera vertical sobre el eje *Y* (en este caso las líneas en verticales paralelas al eje *Y* se mantienen inalterables, modificándose las líneas paralelas al eje *X*). A continuación se muestra su definición matemática horizontal y verticalmente y un ejemplo de inclinación horizontal: 
 
 
-.. figure:: ../figs/Cap6/inclinacion1.png
+.. figure:: ../figs/Cap2/inclinacion1.png
+   :scale: 50%
 
    Definición matricial de la inclinación
 
 |
 |
 
-.. figure:: ../figs/Cap6/inclinacion2.png
+.. figure:: ../figs/Cap2/inclinacion2.png
+   :scale: 50%
 
    Inclinación horizontal gráficamente. 
 
@@ -783,21 +792,18 @@ Interpolación
 Una herramienta relacionada con las imágenes digitales es la interpolación, empleada en tareas como hacer zoom, reducción(shrinking), rotación y correcciones geométricas. Esta herramienta consiste en emplear datos conocidos de la imagen de entrada para estimar valores en coordenadas desconocidas. Por ejemplo, si se necesitara convertir una imagen a una escala mayor, la cantidad de pixeles y la correspondencia entre las intensidades diferirían por lo que sería necesario contar con un método que permita la asignación aproximada de intensidades. Un método para realizar ésto es asignar a cada pixel en la imagen mayor, el valor del pixel vecino más cercano si se superpone, esta imagen con la imagen de entrada, este método se conoce como interpolación de vecino más cercano.
 Existen otros métodos para asignar intensidades que consideran más vecinos y la forma en que consideran éstos sigue alguna fórmula matemática, entre los que se encuentran la interpolación bilinear (donde se emplean los 4 vecinos mas cercanos para estimar la intensidad) y la interpolación bicubica (que toma los 16 vecinos más cercanos):
 
-|
+.. figure:: ../figs/Cap2/interpolacionBilinear.png
+   :scale: 50%   
 
-.. figure:: ../figs/Cap6/interpolacionBilinear.png
-      
    Fórmula de interpolación bilinear
-|
-|
 
 Donde v(x,y) es la intensidad del pixel en la coordenada(x,y), los coeficientes *a,b,c* y *d* se emplean para determinar los vecinos que de los que se obtendrá la intensidad. 
 
 
-.. figure:: ../figs/Cap6/interpolacionBicubica.png
-      
+.. figure:: ../figs/Cap2/interpolacionBicubica.png
+   :scale: 50%
+
    Fórmula de interpolación bicubica
-|
 
 
 Técnicas de filtrado espacial
@@ -809,8 +815,8 @@ Técnicas de filtrado espacial
 El filtrado espacial consiste en rechazar aquellos elementos en una imagen que no son de interés y conservar aquellos necesarios para el proceso en que se aplica. El filtrado se basa en emplear un filtro (también denominado mascara, kernel, template y ventana o window) que se define como un conjunto de pixeles (o vecindario) sobre un pixel con una coordenada (x,y) y luego aplicar diferentes operaciones sobre ese conjunto de pixeles (pueden ser operaciones estadísticas para filtros no lineales, como la media,mediana,etc. u operaciones lógicas AND,OR,NOT,XOR), de manera que se obtenga un nuevo valor de intensidad para el pixel del centro en la coordenada (x,y).Generalmente, en la práctica el valor del pixel filtrado se asigna a una ubicación en una nueva imagen que se crea para mantener los resultados filtrados durante el proceso, de manera que el contenido de la imagen de entrada no cambie mientras se esta realizando el filtrado. La forma en que se organizan los pixeles que forman el filtro dependen del objetivo que se persigue al aplicar éste y se define generalmente por una regla que dependiendo de la cantidad de vecinos que se desea abarcar, aumenta esta cantidad manteniendo la forma original del filtro.
 
 
-.. figure:: ../figs/Cap6/tiposFiltros.png
-   :scale: 80%
+.. figure:: ../figs/Cap2/tiposFiltros.png
+   :scale: 60%
 
    Tipos de filtros. (a) Filtros de una sola dimensión con una formula de fila ROW=2P + 1 y de columna COL=2P + 1 para pixeles P=1,2. (b) Filtros de dos dimensiones con formulas cuadrado SQUARE = (2P + 1)^² y cruz CROSS = 4P + 1, para *P = 1,2*.
 
@@ -818,26 +824,25 @@ El filtrado espacial consiste en rechazar aquellos elementos en una imagen que n
 De esta forma, el proceso de filtrado consiste en realizar un desplazamiento de la máscara de filtrado por cada uno de los pixeles de ésta y obtener el valor del pixel central producto de la operación efectuada. Matemáticamente este proceso se puede definir como: Dado un pixel con coordenada (x,y) en la imagen de entrada de tamaño *M x N*, variando *x,y* en el rango de los pixeles de la imagen, una máscara de *m x n*, con una máscara de filtrado rectangular con *m= 2a + 1*, *n = 2b + 1* y, siendo los coeficientes de filtrado los valores *wi* que se aplican a las intensidades f(x,y)  de cada pixel de la imagen:
 
 
-.. figure:: ../figs/Cap6/defMatematicaFiltrado.png
- 
+.. figure:: ../figs/Cap2/defMatematicaFiltrado.png
+   :scale: 50%
+
    Definición matemática de la operación de filtrado
 
 
 La máscara de filtrado requiere que se especifiquen coeficientes de filtrado para cada una de las intensidades del filtrado, lo que puede hacerse especificando valores  iguales para todos los pixeles de la máscara,estar estos ponderados para asignar mas prioridad a ciertos pixeles en la imagen, o cuando se tiene una función estadística obtener la máscara de filtrado en base a ésta, aplicando la formula al vecindario de un pixel y obteniendo como salida, el nivel de intensidad del pixel en la imagen de salida. Con ésta ultima aproximación, solamente se requiere especificar la fórmula matemática y las dimensiones del vecindario para aplicarla. Un ejemplo de esta ultima aproximación, es aplicar la distribución de Gauss en un pixel, donde se considera la varianza de los pixeles y las coordenadas del pixel central (x,y), de forma que la aplicación de la máscara de filtrado consiste en tomar muestras y aplicar la formula en distintas ubicaciones:
 
 
-.. figure:: ../figs/Cap6/formulaGauss.png
+.. figure:: ../figs/Cap2/formulaGauss.png
    :scale: 60%
 
    Fórmula de Gauss aplicada a un pixel de imagen.
 
-|
-|
 
-.. figure:: ../figs/Cap6/filtradoEspacialEsquema.png
+.. figure:: ../figs/Cap2/filtradoEspacialEsquema.png
+   :scale: 50%
 
    Representación gráfica de los elementos considerados para el filtrado espacial
-
 
 Existen dos tipos de filtros según el tipo de operación que se realiza en ellos: Los filtros lineales que son aquellos donde la operación que se aplica sobre los pixeles de una imagen es una operación lineal, y los filtros no lineales. Una operación lineal es aquella donde se cumplen las propiedades de homogeneidad y adición para una imagen de entada f(x,y) y una imagen de salida g(x,y):
 
@@ -850,15 +855,20 @@ Los filtros pueden ser aplicados tanto en el dominio espacial o en el dominio de
 El suavizado de imagen, aplicado en técnicas de pre-procesamiento de imagen (como remover detalles antes de la segmentación de objetos), es un ejemplo del uso tanto de filtros lineales como no lineales, ya que durante esta tarea se busca reducir el ruido y en suavizar la imagen (blurring). Un ejemplo de filtro lineal para la reducción de ruido, es aplicar el promediado de los pixeles vecinos definidos por la máscara en una imagen de entrada. Debido a que el ruido en una imagen ocurre cuando existen transiciones abruptas en niveles de intensidad entre pixeles vecinos, el promediado provoca una disminución en la diferencia de niveles, sin embargo, debido a que los contornos de las figuras se caracterizan por ésto, también produce que los bordes se vean poco nítidos. Otras aplicaciones de este tipo de filtro de suavizado, es reducir el detalle irrelevante, o la disminución de contornos falsos producto de niveles de intensidad insuficientes. A continuación, se puede observar el efecto de suavizado empleando el filtro de promedio de vecinos:
 
 
-.. figure:: ../figs/Cap6/ejemploSuavizadoImagen.png
+.. figure:: ../figs/Cap2/ejemploSuavizadoImagen.png
+   :scale: 30%
 
    Efecto de suavizado. La imagen original se sitúa en la parte superior izquierda. La imagen superior derecha tiene un filtro rectangular con una mascara de *m = 3*. La imagen inferior izquierda con un filtro rectangular con *m = 5*. La imagen inferior derecha tiene un filtro rectangular con *m = 9*.
 
+.. raw:: latex
+
+   \newpage
 
 Alternativamente, se pueden emplear filtros no lineales estadísticos para el suavizado de imagen, cuya respuesta se basa en ordenar los pixeles contenidos en el área de la imagen abarcada por el filtro, y reemplazar el valor del pixel del centro con el valor determinado por el resultado del ordenamiento.Existen varios tipos de filtros para suavizado que se basan en distintos valores (máximo,mínimo), no obstante el ejemplo más relevante es el filtro que emplea la mediana (valor del conjunto para el cual la mitad de los valores son mayores o iguales a la misma y el resto son menores) de los valores de intensidad en el pixel (incluyendo el valor del pixel en el cálculo), donde se lo obtiene y luego se asigna este valor como el valor de intensidad del pixel de salida. Este tipo de filtro es empleado debido a que produce excelentes resultados para la reducción de ruido aleatorio, con respecto filtros lineales del mismo tamaño. A continuación se destaca el efecto del suavizado de imagen empleando un filtro de mediana y un filtro de promediado lineal:
 
 
-.. figure:: ../figs/Cap6/ejemploFiltroMediana.png
+.. figure:: ../figs/Cap2/ejemploFiltroMediana.png
+   :scale: 50%
 
    Filtro de mediana vs filtro lineal. La imagen izquierda es un circuito electrónico con ruido. La imagen central es el resultado de la aplicación de un filtro lineal de 3x3. La imagen derecha es el resultado de aplicar un filtro no lineal de mediana de 3x3.
 
@@ -876,24 +886,27 @@ Técnicas sobre el dominio de las transformaciones
 Las operaciones que se ejecutan sobre el dominio de las transformaciones hacen uso de la transformada de Fourier para llevar las funciones al dominio de las frecuencias, efectuar operaciones sobre este dominio y finalmente, obtener la imagen de salida aplicando la función inversa a esta transformación. La transformada de Fourier es una técnica altamente empleada en el procesamiento de imágenes, ya que permite realizar operaciones que de alta complejidad que requerirían un alto tiempo de procesamiento si no se empleara esta técnica, y realizar tareas asociadas al procesamiento imagen de manera más eficiente que empleando filtros lineales (cuando estos son de grandes dimensiones). Esta técnica se emplea en un amplio espectro de tareas tales como la mejora de video, restauración, compresión, segmentación y métodos que emplean la técnica de wavelets. La transformada de Fourier se desprende de las series de Fourier, propuestas por el matemático Frances Jean Baptiste Joseph Fourier 1822 para ser aplicadas en el campo del flujo del calor, donde se expresa que sin importar lo compleja que sea una función, si ésta es periódica se puede expresar matemáticamente como la suma de senos y cosenos de diferentes frecuencias, multiplicados cada uno por un coeficiente diferente. De esta forma, la transformada de Fourier*(FT)* extiende este concepto afirmando que, aquellas funciones cuya área debajo de la curva es finita y no necesariamente son periódicas, puede expresarse para las variables continuas, como la integral de los senos y/o cosenos multiplicados por una función de ponderación; Pudiendo ser ésta, reconstruida o recuperada completamente por el proceso inverso, sin pérdida de información. Esta característica permite trabajar sobre el dominio de Fourier y luego retornar al dominio espacial de una imagen sin perder información.
 
 
-.. figure:: ../figs/Cap6/esquemaDominioFrecuencias.png
-   :scale: 70%
+.. figure:: ../figs/Cap2/esquemaDominioFrecuencias.png
+   :scale: 30%
 
    Esquema del dominio de las transformaciones
 
+.. raw:: latex
 
-Debido a que para representar una imagen digital se debe trabajar con valores discretos, la transformada de Fourier se debe definir de manera discreta (*DFT* Discrete Fourier Transform), donde ésta se define como una función F(u,v) sobre los valores (u,v) que representan las frecuencias con que se representará la imagen, definiendo *u* como la frecuencia de oscilación a lo largo del eje *X* y *v* la frecuencia de oscilación a lo largo del eje *Y*(expresadas en ciclos por pixel) que se emplearan para representar la imagen definida en el dominio dominio espacial sobre éste dominio: 
+   \newpage
+
+Debido a que para representar una imagen digital se debe trabajar con valores discretos, la transformada de Fourier se debe definir de manera discreta ( *DFT* Discrete Fourier Transform), donde ésta se define como una función F(u,v) sobre los valores (u,v) que representan las frecuencias con que se representará la imagen, definiendo *u* como la frecuencia de oscilación a lo largo del eje *X* y *v* la frecuencia de oscilación a lo largo del eje *Y* (expresadas en ciclos por pixel) que se emplearan para representar la imagen definida en el dominio dominio espacial sobre éste dominio: 
 
 
-.. figure:: ../figs/Cap6/formulaFTD.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaFTD.png
+   :scale: 50%
 
    Fórmula de la Transformada de Fourier Discreta
 
-Además, esta función toma valores discretos *x,y* que son las coordenadas de los pixeles para una imagen digital de *M x N*, con *u = 0,1,2,...,M-1*, *v = 0,1,2,...,N-1* junto con su inversa que permite obtener la imagen en el dominio espacial partiendo de la matriz de frecuencias definida formalmente como:  
+Además, esta función toma valores discretos *x*, *y* que son las coordenadas de los pixeles para una imagen digital de *M x N*, con *u = 0,1,2,...,M-1*, *v = 0,1,2,...,N-1* junto con su inversa que permite obtener la imagen en el dominio espacial partiendo de la matriz de frecuencias definida formalmente como:  
 
-.. figure:: ../figs/Cap6/formulaIFTD.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaIFTD.png
+   :scale: 50%
 
    Formula de la Transformada  de Fourier Inversa
 
@@ -903,10 +916,14 @@ Esta formula cuenta con distintas propiedades entre las que se destacan:
 
 * Magnitud o espectro(Espectro de frecuencias): El espectro consiste en aplicar para cada uno de los elementos de la frecuencia de la matriz la siguiente formula:
   
-.. figure:: ../figs/Cap6/formulaEspectro.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaEspectro.png
+   :scale: 50%
 
    Fórmula para el calculo del espectro
+
+.. raw:: latex
+   
+   \newpage
 
 De manera que se obtenga una matriz de magnitud de frecuencias de la imagen del mismo tamaño de la imagen digital *M x N* (con la amplitud de las mismas), donde los vectores se representan con números complejos *C = R + jI*, correspondiendo *R* a la parte real del mismo y, siendo *I* la parte imaginaria (donde *j* es la raíz cuadrada de -1) y donde el conjunto de números reales se representan como números complejos con *I = 0*.
 Los componentes del espectro de la DFT determinan las amplitudes de las sinusoidales que componen la imagen, almacenando información acerca de las intensidades en la imagen, por lo que en cualquier frecuencia dada de una imagen, una gran amplitud implica una mayor relevancia de la onda sinusoidal para esa frecuencia; Mientras que si se cuenta con una pequeña amplitud, implica en menor medida la presencia de una onda sinusoidal en esa frecuencia.
@@ -914,8 +931,8 @@ Los componentes del espectro de la DFT determinan las amplitudes de las sinusoid
 
 * Angulo de fase (Fase). El ángulo de fase para cada elemento de la matriz se obtiene por medio de la siguiente fórmula:
   
-.. figure:: ../figs/Cap6/formulaAnguloFase.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaAnguloFase.png
+   :scale: 50%
 
    Fórmula para el cálculo del ángulo de fase
 
@@ -925,66 +942,74 @@ El angulo de fase o fase, es una medida del desplazamiento de varias ondas sinus
 
 * Espectro potencia. El espectro potencia se calcula para cada elemento de la imagen con la siguiente fórmula:
   
-.. figure:: ../figs/Cap6/formulaPotencia.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaPotencia.png
+   :scale: 50%
 
    Fórmula para el espectro potencia
 
 
 * Simetría. La simetría con respecto a la transformada de Fourier discreta, enuncia que la magnitud del espectro es simétrica par respecto del punto central por lo que se cumple la siguiente igualdad:
   
-.. figure:: ../figs/Cap6/formulaSimetrica.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaSimetrica.png
+   :scale: 50%
 
    Formula simétrica par en el espectro de magnitud
+
+.. raw:: latex
+
+   \newpage
 
 Mientras que el angulo de fase es simétrica impar con respecto al origen, lo que significa que se cumple la siguiente igualdad:
 
 
-.. figure:: ../figs/Cap6/formulaAsimetrica.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaAsimetrica.png
+   :scale: 50%
 
    Formula asimétrica par en la fase
 
 
 * Traslación. La propiedad de traslación implica que al multiplicar la imagen f(x,y) por la parte exponencial de la transformada de Fourier en coordenadas (u0,v0), provoca un desplazamiento de la transformada al punto (u0,v0), y en consecuencia, multiplicar F(u,v) por el negativo de esa exponencial cambia el origen de f(x,y) hacia (x0,y0).
   
-.. figure:: ../figs/Cap6/formulaTraslacionDFT.png
-   :scale: 60%
+.. figure:: ../figs/Cap2/formulaTraslacionDFT.png
+   :scale: 50%
   
    Formulas de traslación DFT. 
   
 * Rotación. La rotación implica que al multiplicar la imagen en el dominio espacial f(x,y) por un angulo *A*, rota la función en el dominio de las frecuencias F(u,v) por el mismo ángulo. Del mismo modo, rotar F(u,v) por *A*, rota la imagen en el dominio espacial f(x,y) por el mismo ángulo.  
   
 
-* Teorema de la convolución. La convolución (representada por **) se emplea en el filtrado de imágenes, y consiste en rotar el filtro 180º y luego aplicarlo pixel a pixel por la imagen digital de entrada. De esta forma, la convolución en el dominio espacial entre una imagen f(x,y) y una transformación g(x,y) equivale a realizar la convolución en el dominio de las frecuencias de las funciones F(x,y) y H(x,y) respectivamente.
+* Teorema de la convolución. La convolución (representada por :math:`\star`) se emplea en el filtrado de imágenes, y consiste en rotar el filtro 180º y luego aplicarlo pixel a pixel por la imagen digital de entrada. De esta forma, la convolución en el dominio espacial entre una imagen f(x,y) y una transformación g(x,y) equivale a realizar la convolución en el dominio de las frecuencias de las funciones F(x,y) y H(x,y) respectivamente.
 
-   .. math::  f(x,y)**g(x,y) <---> F(u,v)*H(u,v)
+   .. math::  f(x,y) \star g(x,y) \Longleftrightarrow F(u,v)*H(u,v)
       :label: formulaConvolucion1
 
 De la misma forma, el producto en el dominio espacial de una imagen f(x,y) y una transformación g(x,y), es equivalente a aplicar la convolución entre las funciones del dominio de frecuencias F(x,y) y G(x,y).
    
-   .. math::  f(x,y)*g(x,y) <---> F(u,v)**H(u,v)
+   .. math::  f(x,y)*g(x,y) \Longleftrightarrow F(u,v) \star H(u,v)
       :label: formulaConvolucion2
 
 
 Cuando se quiere convertir una imagen digital al dominio de las frecuencias, como primera medida se debe aplicar una función de centrado del espectro, multiplicando cada uno de las coordenadas de la imagen por (-1)^x+y, esto permite que el espectro de la imagen este centrado.Adicionalmente, se puede aplicar una transformación logarítmica *(1 + log(|F(u,v)|))* con el fin de aumentar la intensidad de los valores de la matriz de magnitud. Luego, se procede a aplicar la fórmula de Fourier discreta para cada una de las coordenadas en el dominio de la imagen digital con *M x N* pixeles, para obtener las matrices de magnitud y de fase, que tendrán las mismas dimensiones que la imagen de entrada. Aunque estas no contienen fácilmente asociable a las coordenadas de la imagen digital, se pueden visualizar igual que las anteriores:
 
 
-.. figure:: ../figs/Cap6/graficoMagnitudFourier.png
+.. figure:: ../figs/Cap2/graficoMagnitudFourier.png
+   :scale: 40%
 
    Gráficos correspondientes a un rectangulo y su matriz de magnitud. Imagen superior derecha: Imagen original de un rectangulo. Imagen superior izquierda: Magnitud con las frecuencias. Imagen inferior izquierda: Imagen original rotada. Imagen inferior derecha: Efecto de la rotación en el dominio de las frecuencias.
 
+.. raw:: latex
+
+   \newpage
 
 Debido a que los valores de frecuencia F(u,v) son modificaciones de los valores de intensidad de la imagen con términos exponenciales, la correspondencia entre objetos y sus frecuencias es compleja, sin embargo observando el gráfico anterior se puede observar que la frecuencia esta directamente asociada a las tasas de cambios de intensidad en el dominio espacial, por lo que se las puede relacionar con los patrones de intensidad de una imagen. De esta forma, aquellos componentes con una frecuencia que varíen más lentamente son proporcionales al promedio de valores de frecuencia y se encuentran localizados en el centro del gráfico, y a medida que se desplazan los puntos desde este origen, las bajas frecuencias representan componentes cuya variación de intensidad es lenta en la imagen, pudiendo corresponderse éstos,por ejemplo, con las variaciones asociadas a paredes o pisos; Mientras que aquellas frecuencias que se encuentran más alejadas del origen, y poseen un valor más alto, se corresponden con a cambios de intensidad más altos en la imagen, como los bordes de los objetos.
 
 Un ejemplo de aplicación del proceso de la transformada Fourier es el filtrado de elementos durante el suavizado de imagen, donde dada una imagen f(x,y) de *M x N* pixeles que necesita ser de un tamaño mayor para ser filtrada, se debe rellenar esta imagen con ceros con los pixeles P = 2*M, Q=2*N (por lo que la imagen pasa a tener PxQ pixeles). A continuación, se procede a centrar la transformación multiplicando por *(-1)^x+y* y a computar TFD de esta matriz F(u,v) y se aplica el filtro H(u,v) de tamaño P x Q a la matriz de intensidad G(u,v)= H(u,v)*F(u,v). Finalmente, se procede a obtener la imagen g(x,y) en el domino  espacial, aplicando la función inversa de la transformada de Fourier y centrándola de nuevo con: g(x,y) = [IFTD(G(u,v))](-1)^x+y, y se recorta esta imagen extrayendo la región *M x N* de la imagen. En la siguiente figura se puede apreciar el proceso de transformacion, ubicándose las figuras de manera descendente de izquierda a derecha:
 
 
-.. figure:: ../figs/Cap6/ejemploTFDCompleto.png
+.. figure:: ../figs/Cap2/ejemploTFDCompleto.png
+   :scale: 50%
 
    Ejemplo de transformada de Fourier aplicada al suavizado de imagen.
-
 
 
 
@@ -1001,7 +1026,7 @@ Imágenes por escala de grises
 Este tipo de imágenes se representa por medio de un conjunto de valores, que abarcan distintas tonalidades de grises desde blanco hasta negro, representándose cada pixel con 8 bits.
 |
 
-.. figure:: ../figs/Cap6/greyscaleImg.png
+.. figure:: ../figs/Cap2/greyscaleImg.png
    :scale: 50%
    
    Representación de imagen en escala de grises
@@ -1022,13 +1047,15 @@ Imágenes binarias
 En este tipo de imagen digital la intensidad de los pixeles sólo puede asumir dos valores 0 o 1, por lo que sólo se requiere un bit para su representación y los objetos se representan como una secuencia de 1 conectados, siendo éstas las que requieren menos espacio y tiempo de almacenamiento. Estas imágenes contienen suficiente información respecto de los objetos en la imagen y permiten que éstos se reconozcan fácilmente.
 Este tipo de imágenes se emplean en distintos tipos de aplicaciones de visión por computadora, como el reconocimiento de objetos, el rastreo,etc. aunque su aplicabilidad es limitada debido al contenido limitado de información que brindan.
 Las imágenes binarias surgen de una variedad de fuentes, generalmente son creadas por medio del procesamiento de imágenes de escala de grises, aunque algunos tipos de sensores entregan una imagen binaria como salida, como los dispositivos que se emplean para obtener dibujos o texto escrito a mano con un pad resistivo, un lápiz de luz. Generalmente estos dispositivos, inicializan todas las coordenadas de la imagen binaria en cero, y al detectar la presión o un cambio de resistencia, o luz sensada en una coordenada, entonces se le asigna a la misma el valor 1. Ejemplos de imágenes binarias, son los dibujos de líneas, texto escrito o impreso, siluetas, huellas digitales,o planos empleados por arquitectos.
-|
 
-.. figure:: ../figs/Cap6/imagenBinaria.png
+
+.. figure:: ../figs/Cap2/imagenBinaria.png
 
    Imagen binaria
 
+.. raw:: latex
 
+   \newpage
 
 
 Imágenes a color
@@ -1044,30 +1071,26 @@ Con la finalidad de incluir el color en el procesamiento de imágenes, se debe e
 El esquema empleado para la representación de imágenes digitales comunmente es RGB, donde se emplea un vector para representar la composición de colores, de manera que cada pixel tenga asociadas las combinaciones correspondientes tres colores primarios (RGB), utilizando para cada color una representación de 8 bits.Por lo tanto, una imagen a color emplea 24 bits por cada pixel, necesitándose un total de (2^8)^3 = 16,777,216 valores posibles de color.
 De esta forma, para una imagen con N x M elementos, existe un vector que contiene la intensidad asociada a cada color primario, que se corresponde con las coordenadas (x,y) de la siguiente forma:
 
-|
-|
-.. figure:: ../figs/Cap6/formulaVectorColor.png
+.. figure:: ../figs/Cap2/formulaVectorColor.png
    :scale: 60%
 
    Vector de color para una coordenada en la imagen
-|
-
 
 Por lo tanto, la representación de una imagen de colores se reduce a realizar combinaciones entre el vector RGB de cada pixel: 
 
-|
-|
-.. figure:: ../figs/Cap6/imagenColor.png
+.. figure:: ../figs/Cap2/imagenColor.png
    :scale: 60%
 
    Representación de una imagen digital a color
-|
-|
 
-.. figure:: ../figs/Cap6/imagenColorvsGreyScale.png
+.. figure:: ../figs/Cap2/imagenColorvsGreyScale.png
+   :scale: 40%
 
    Representaciones de imagen en escala de grises vs imagen de color
-|
+
+.. raw:: latex
+
+   \newpage
 
 Existen varias aproximaciones para afrontar el procesamiento de imágenes de color, aunque se pueden clasificar en 2 grupos generales: Aquellas aproximaciones que procesan cada componente de la imagen individualmente, para luego formar la imagen de salida con éstos; Y aquellas aproximaciones que trabajan con los colores de los pixeles en la imagen directamente. Este tipo de imágenes pueden ser procesadas con algunos los tipos de técnicas que se emplean con las imágenes de escala de grises, mientras que algunas tienen que ser modificadas para ser aplicadas sobre las bandas de color individuales.
 
@@ -1077,14 +1100,15 @@ Imágenes indexadas
 
 En general las imágenes indexadas solo emplean un subconjunto pequeño de los 16 millones de colores, por lo que para mejorar la eficiencia de almacenamiento, la imagen puede tener asociado un mapa de color o paleta de colores, la cual es solamente un listado de todos los colores en la imagen. Así, cada pixel tiene un valor que no da su color, como en la imagen RGB, sino que es un índice al color en el mapa.
 Este tipo de imágenes digitales, se emplea en algunos formatos donde la cantidad de colores permitidos para una imagen es de 56 colores o menos, como en el formato GIF.
+
 |
 
-.. figure:: ../figs/Cap6/imagenIndexada.png
+.. figure:: ../figs/Cap2/imagenIndexada.png
    :scale: 50%
 
    Imagen de color indexada
-|
 
+|
 
 Procesamiento de imágenes
 +++++++++++++++++++++++++
@@ -1113,11 +1137,14 @@ Alternativamente,los tipos de operaciones en el procesamiento de imagen según e
    
 * Wavelets. Las Wavelets son un conjunto transformaciones que forman parte del área de procesamiento de señales e imágenes denominado teoría de multiresolución, que abarca un conjunto de técnicas, incluyendo la división de bandas de una señal (subbanding), filtrado de voz digital y representación piramidal de una imagen. Esta rama se relaciona con la representación de imágenes (o señales) en más de una resolución, con el fin de obtener a una resolución específica, características que no se podrían identificar en otra resolución. Este tipo de herramienta es utilizada ampliamente para la compresión y la representación piramidal de una imagen. Esta última fue originalmente aplicada para la visión artificial y la compresión de imágenes, y consiste en subdividir una imagen con el fin de obtener una colección de imágenes de menor resolución organizadas para su posterior procesamiento.
   
-.. figure:: ../figs/Cap6/piramideImagen.png
+.. figure:: ../figs/Cap2/piramideImagen.png
+   :scale: 70%
 
    Representación piramidal para un arreglo de imagen de 2-Dimensiones de N x N
-|
 
+.. raw:: latex
+
+   \newpage
 
 * Compresión.El objetivo de la compresión (o coding) es representar una imagen digital con la cantidad mínima de bits sin pérdida de información, persiguiendo así, la aceleración de la velocidad de transmición y reducción del ancho de banda necesaria para transmitir las mismas y la minimización del espacio requerido para almacenarlas, manteniendo a la vez en la fidelidad de la misma. La compresión es posible porque existe una redundancia presente en las imágenes, que es proporcional a la cantidad de correlación entre las muestras de datos. Por ejemplo, en imágenes estáticas existe un alto grado de correlación en los alrededores de un pixel, mientras que en los videos ésta se encuentra presente entre frames sucesivos del mismo. De esta forma para lograr un grado eficiente de compresión, estos métodos intentan remover los datos redundantes como así también, aquellos que se perciben pero son irrelevantes, produciendo que las imágenes de entrada y salida sean visualmente iguales, y no necesariamente numéricamente iguales.Las técnicas de compresión de las imágenes,se emplean frecuentemente en la extensión de las mismas, que a la vez representan el estándar seguido para la compresión como JPEG (Joint Photographic Experts Group).
   
@@ -1129,28 +1156,30 @@ Alternativamente,los tipos de operaciones en el procesamiento de imagen según e
 Así, el procesamiento morfológico consiste en aplicar a las imágenes representadas por conjuntos elementos de estructurado (ESs), que son pequeños conjuntos o sub-imágenes, que pueden adoptar distintas formas(aunque se rellenan con elementos para que adopten formas rectangulares),utilizadas con el fin de probar una imagen bajo estudio para propiedades de interés. A continuación se pueden observar distintos ES, con un origen se encuentra marcado por un punto negro, aunque si éste no se encuentra marcado se considera que es el centro del elemento de estructurado:
 
 
-.. figure:: ../figs/Cap6/ESProcMorfologico.png
+.. figure:: ../figs/Cap2/ESProcMorfologico.png
 
    Ejemplos de ES de procesamiento morfológico 
  
 
 Por lo tanto el procesamiento morfológico, consiste en crear un nuevo conjunto que representará la imagen de salida, aplicando el origen de los elementos de estructurado B a cada uno de los pixeles de la imagen A, conservando el pixel que esta en el origen, en aquellos casos en los que todos los elementos del conjunto B pertenezcan a la vez al conjunto A. Esto quiere decir, que al aplicar B sobre A, se conserva el elemento en el origen solo si todos los pixeles de B se encuentran superpuestos con pixeles de A que representan un objeto.En la siguiente figura se puede observar un ejemplo donde para la imagen A con un objeto sombreado, y un ES denominado B, B se aplica la imagen y se genera una nueva imagen con el objeto original reducido en tamaño:
 
-.. figure:: ../figs/Cap6/ejemploProcMorfologico.png
+.. figure:: ../figs/Cap2/ejemploProcMorfologico.png
    :scale: 60%
 
    Ejemplo de procesamiento morfológico. En la fila superior se observa la imagen y el ES asociado.En la parte inferior-izquierda se visualiza la imagen original, en la parte inferior-central se encuentra el ES, ampliado para adoptar una forma rectangular (donde la parte sombreada representa los pixeles de interés que deben tenerse en cuenta con respecto a la pertenencia), y la parte inferior-derecha representa el objeto sombreado luego de haber aplicado el ES.  
  
 Las operaciones morfológicas que se aplican en una imagen, emplean los elementos de estructurado en conjunto con las propiedades de reflección y de traslación, y operaciones primitivas de erosión y dilatación. La propiedad de reflección consiste en reemplazar las coordenadas de la imagen por sus opuestas modificando el signo de cada uno de los elementos del conjunto. Mientras que la traslación consiste en desplazar los elementos del conjunto por un valor z, cuya dimensión dependerá de la cantidad de elementos del conjunto.
 
-.. figure:: ../figs/Cap6/formulaReflexionMorfologia.png
+.. figure:: ../figs/Cap2/formulaReflexionMorfologia.png
    :scale: 50%
 
    Fórmula de reflexión para un conjunto B.
-|
+
 |
 
-.. figure:: ../figs/Cap6/formulaTraslacionMorfologia.png
+|
+
+.. figure:: ../figs/Cap2/formulaTraslacionMorfologia.png
    :scale: 50%
 
    Fórmula de traslación para un conjunto B para un valor z.  
@@ -1158,7 +1187,7 @@ Las operaciones morfológicas que se aplican en una imagen, emplean los elemento
 
 Por una lado la erosión de una imagen A por B dentro de un espacio *Z^2*, es el conjunto de todos los puntos *z* tales que B, trasladado por *z* esta contenido en A, es decir,que elimina todos aquellos puntos que desplazados por *z* estan localizados dentro de A. Ésto en una imagen binaria hace mas finos los objetos de la imagen, removiendo de la misma aquellos elementos que son mas pequeños que el elemento de estructurado.  
 
-.. figure:: ../figs/Cap6/formulaErosionMorfologia.png
+.. figure:: ../figs/Cap2/formulaErosionMorfologia.png
    :scale: 50%
 
    Fórmula de erosión
@@ -1166,7 +1195,7 @@ Por una lado la erosión de una imagen A por B dentro de un espacio *Z^2*, es el
 Por otro lado, la dilatación de una imagen A por B dentro de un espacio Z^2, consiste en realizar la reflección de la imagen alrededor del origen de ésta y luego aplicar la traslación a la reflección por un valor z. De esta manera, la dilatación consiste en mantener aquellos z para los que la reflexión de B y los valores de A se superponen por al menos un elemento. Esta técnica a diferencia de la erosión, provoca que los objetos se vuelvan más gruesos (crezcan de grosor), dependiendo la medida en que estos se modificarán según la forma del elemento de estructurado aplicado a la imagen.
 
 
-.. figure:: ../figs/Cap6/formulaDilatacionMorfologia.png
+.. figure:: ../figs/Cap2/formulaDilatacionMorfologia.png
    :scale: 50%
 
    Fórmula de dilatación
@@ -1181,29 +1210,29 @@ Por lo tanto, las operaciones principales asociadas este tipo de procesamiento, 
 
    * Extracción de límites(boundary extraction) y componentes conectados. La extracción de límites consiste en extraer el contorno de un objeto representado en una imagen binaria, mientras que la extracción del componente conectado abarca la obtención del contorno y los pixeles que conforman la forma del objeto. Las fórmulas para estas operaciones se definen de la siguiente manera:
      
-      .. figure:: ../figs/Cap6/formulaExtraccionLimite.png
+      .. figure:: ../figs/Cap2/formulaExtraccionLimite.png
          :scale: 50%
 
          Fórmula para la extracción de borde.
       
-      .. figure:: ../figs/Cap6/formulaComponenteConectado.png
+      .. figure:: ../figs/Cap2/formulaComponenteConectado.png
          :scale: 50%
       
          Fórmula para la extracción de componentes conectados. Los valores Xk representan los elementos de una nueva imagen (con las mismas dimensiones que la imagen de entrada A) resultante de aplicar B sobre A.
       
 
-   * Esqueletos(Skeletons). Un esqueleto es conjunto de elementos de una imagen que representan la forma de la misma y se encuentran equidistantes a los límites.Los esqueletos en una imagen representan los objetos con el menor número de pixeles, siendo cada uno de éstos parte de la estructura básica y siendo absolutamente necesarios. Por lo tanto, los esqueletos permiten obtener información respecto de la imagen original tales como la posición, la orientación y la longitud de los segmentos que lo conforman.
-   
-   El proceso para la obtención de esqueletos, consiste en aplicar una sucesión de operaciones de erosión a una imagen con un elemento ES, hasta el punto donde si se aplicara la siguiente erosión se eliminarían los objetos que pertenecen a ésta. Luego, se puede aplicar la diferencia entre las múltiples erosiones menos las múltiples erosiones aplicadas a la operación de opening(descrita más adelante), de manera que se consideren aquellos elementos no suavizados como parte del esqueleto. Finalmente, la unión de todos los esqueletos de las figuras en la imagen constituyen la imagen final. 
+   * Esqueletos(Skeletons). Un esqueleto es conjunto de elementos de una imagen que representan la forma de la misma y se encuentran equidistantes a los límites.Los esqueletos en una imagen representan los objetos con el menor número de pixeles, siendo cada uno de éstos parte de la estructura básica y siendo absolutamente necesarios. Por lo tanto, los esqueletos permiten obtener información respecto de la imagen original tales como la posición, la orientación y la longitud de los segmentos que lo conforman. El proceso para la obtención de esqueletos, consiste en aplicar una sucesión de operaciones de erosión a una imagen con un elemento ES, hasta el punto donde si se aplicara la siguiente erosión se eliminarían los objetos que pertenecen a ésta. Luego, se puede aplicar la diferencia entre las múltiples erosiones menos las múltiples erosiones aplicadas a la operación de opening(descrita más adelante), de manera que se consideren aquellos elementos no suavizados como parte del esqueleto. Finalmente, la unión de todos los esqueletos de las figuras en la imagen constituyen la imagen final. 
 
-   .. figure:: ../figs/Cap6/ejemploEsqueleto1.png
+   .. figure:: ../figs/Cap2/ejemploEsqueleto1.png
       :scale: 60%
 
       Ejemplo de la imagen binaria original
-   |
+   
    |
 
-   .. figure:: ../figs/Cap6/ejemploEsqueleto2.png
+   |
+
+   .. figure:: ../figs/Cap2/ejemploEsqueleto2.png
       :scale: 60%
     
       Ejemplo de la imagen luego de la obtención del esqueleto
@@ -1211,13 +1240,16 @@ Por lo tanto, las operaciones principales asociadas este tipo de procesamiento, 
     
    * Convex Hull. Un conjunto de elementos A se dice que es convexo si, contiene al menos dos puntos de un objeto de imagen que pueden ser vinculados por una línea recta dentro de él. Un convex hull H de un conjunto A por lo tanto, es el conjunto convexo más pequeño que contiene a A.
      
-   .. figure:: ../figs/Cap6/ejemploDefinicionConvexHull1.png
+   .. figure:: ../figs/Cap2/ejemploDefinicionConvexHull1.png
       :scale: 60%
 
       Ejemplos de convex hull convexo y no convexo. A el conjunto R1 la izquierda es convexo debido a que se puede vincular p y q, mientras que en la figura de la derecha no es convexo, sino concavo.
 
-   |
-   .. figure:: ../figs/Cap6/ejemploDefinicionConvexHull3.png
+   .. raw:: latex
+
+      \newpage
+
+   .. figure:: ../figs/Cap2/ejemploDefinicionConvexHull3.png
       :scale: 60%
    
       Ejemplo de convex hull aplicado a una imagen.
@@ -1229,15 +1261,21 @@ Las técnicas que se emplean en conjunto con la extracción de características 
 
    * Opening y Closing. La técnica de opening se emplea con el objetivo de suavizar el contorno de los objetos, eliminando conexiones entre elementos que contengan un número bajo de pixeles, y eliminando protuberancias finas. Por el contrario, closing tiende a suvizar los contornos de las figuras, pero fusiona lineas que no se encuentran completamente unidas en la figura y golfos largos y finos de pixeles, y rellena espacios en el contorno y elimina pequeños hoyos en la imagen.
      
-   .. figure:: ../figs/Cap6/formulaOpening.png
+   .. figure:: ../figs/Cap2/formulaOpening.png
       :scale: 50%
 
       Fórmula de opening
+   
    |
-   .. figure:: ../figs/Cap6/formulaClosing.png
+
+   .. figure:: ../figs/Cap2/formulaClosing.png
       :scale: 50%
 
       Fórmula de closing
+
+   .. raw:: latex
+
+      \newpage
    
     
    * Thinning.Esta técnica consiste en eliminar elementos de una imagen A por medio de la aplicación de la operación de shape detection, aplicando una secuencia de n elementos de estructurado que se encuentran en diferentes ángulos. De esta forma el resultado final es una imagen donde los elementos que pertenecen a ésta han reducido su grosor y se ha ampliado la cantidad de pixeles que representan el fondo de ésta. 
@@ -1250,28 +1288,31 @@ Las técnicas que se emplean en conjunto con la extracción de características 
 * Segmentación.La segmentación de una imagen es el proceso de subdividir los pixeles en una imagen en regiones uniformes y homogéneas, donde cada región  es un grupo de pixeles, que representa un objeto o una parte de la escena que se muestra en la imagen. Así, la segmentación permite obtener agrupaciones de pixeles que comparten características similares, interconectadas y no solapadas, donde cada pixel de una región o segmento en la imagen adquiere una etiqueta de región que indica la región a la que pertenece.Este proceso es uno de los más importantes elementos en análisis de imágenes automatizado, principalmente porque posibilita extraer aquellas entidades de interés en la imagen para aplicar otros métodos de procesamiento, como la descripción y el reconocimiento.
 
 .. cap 6. pag. 416. Image Digital Processing. Gonzales 3rd edition.
+
 * Procesamiento de color de imagen. Debido a que el color se considera como un descriptor potente para el reconocimiento y extracción de objetos de una escena, se han desarrollado métodos que permiten emplearlo en el procesamiento de imágenes. En general, este tipo de procesamiento consiste en trabajar con los componentes de color (o espacios de color) RGB por separado y asociar las componentes de cada uno de los pixeles de entrada para generar el pixel a color en la imagen de salida. Las tareas de procesamiento de imágenes digitales con color son variadas, aunque se distinguen las siguientes:
 
+   * Asignación de colores basado en tonalidades de grises. Este tipo de operación se realiza con el fin de lograr un mejor entendimiento de la imagen por parte del observador. Existen diferentes aproximaciones para realizar esta tarea, destacádonse el rebanado por intensidad y la transformación intensidad-color. El rebanado por intensidad consiste en dividir los *L-1* valores de la escala de grises en *P* planos, de manera que los pixeles cuyas intensidades se encuentren entre dos distintos planos sean representados por diferentes colores y, aquellos elementos que caigan en la división de un plano se le asigne el color del plano. 
 
-   *Asignación de colores basado en tonalidades de grises. Este tipo de operación se realiza con el fin de lograr un mejor entendimiento de la imagen por parte del observador. Existen diferentes aproximaciones para realizar esta tarea, destacádonse el rebanado por intensidad y la transformación intensidad-color.
-   El rebanado por intensidad consiste en dividir los *L-1* valores de la escala de grises en *P* planos, de manera que los pixeles cuyas intensidades se encuentren entre dos distintos planos sean representados por diferentes colores y, aquellos elementos que caigan en la división de un plano se le asigne el color del plano. 
-
-   .. figure:: ../figs/Cap6/slicingIntensidad.png
-      :scale: 50%
+   .. figure:: ../figs/Cap2/slicingIntensidad.png
+      :scale: 30%
 
       Rebanado por intensidad
+
+   .. raw:: latex
+
+      \newpage
    
    La asignación de colores empleando transformaciones de intensidad a color se basa en aplicar tres transformaciones independientes a las intensidades para producir cada uno de los campos de color de los pixel a color de la imagen de salida, de manera que los colores de la imagen resultante, se asignan según las características del tipo de transformación que se aplique. Las transformaciones aplicables con este método pueden ser transformaciones matemáticas, o basadas en filtros de suavizado y funciones no lineales, lo que brinda flexibilidad. A continuación, se puede apreciar un ejemplo donde se aplica una transformación que produce una onda sinusoidal para cada elemento, asignando colores más intensos para los elementos cuyo valor de onda sinusoidal se encuentre con mayor inclinación:
 
 
-   .. figure:: ../figs/Cap6/transformacionColorIntensidad1.png
+   .. figure:: ../figs/Cap2/transformacionColorIntensidad1.png
       :scale: 50%
 
       Ejemplo de transformación intensidad a color para una imagen. La imagen de la izquierda pertenece a una maleta sin explosivos, mientras que la de la derecha pertenece a una maleta con un explosivo simulado.
    
    |
 
-   .. figure:: ../figs/Cap6/transformacionColorIntensidad2.png
+   .. figure:: ../figs/Cap2/transformacionColorIntensidad2.png
       :scale: 50%
 
       Onda sinusoidal para cada componente que representa los valores de los diferentes objetos.
@@ -1279,23 +1320,28 @@ Las técnicas que se emplean en conjunto con la extracción de características 
    Alternativamente, este procedimiento también se puede emplear aplicando transformaciones sobre varias imágenes monocromáticas de distintas bandas del espectro electromagnético (capturadas por distintos sensores) y posteriormente combinarlas en una sola, de manera que se puedan visualizar características en imágenes que complejas, que sería imposible visualizar en caso contrario. Ésta variación de la técnica se emplea en el procesamiento de imágenes multiespectrales captadas por satélites. A continuación, se puede visualizar un ejemplo donde las imágenes superior-izquierda,superior-derecha y media-izquierda se tratan como los componentes RGB para formar la imagen media-izquierda. Y la imagen inferior-derecha, se produce como resultado de combinar el campo rojo de la imagen infraroja inferior-izquierda, sobre la imagen RGB obtenida anteriormente:  
 
 
-   .. figure:: ../figs/Cap6/imagenMultiespectral.png
+   .. figure:: ../figs/Cap2/imagenMultiespectral.png
       :scale: 50%
    
       Ejemplo de imagen multiespectral
    
 
    .. pag 448. Gonzales.
+
    * Transformaciones de intensidad. Las transformaciones de intensidad como el suavizado de imagen con filtros, se pueden aplicar de igual manera a los componentes de color de una imagen considerando el vector de intensidades como la entrada.
    
    * Procesamiento de Histograma. Esta tarea emplea el mecanismo de histograma de imagen y sus herramientas asociadas, aunque para procesar imágenes a color considera cada uno de los componentes de color rojo,verde y azul como un histograma separado, y emplea los niveles de intensidad de éstos para generar la imagen de salida.
 
    * Complementos de color. El complemento de color es equivalente al negativo en las imágenes con escala de grises, y para obtenerlo se debe modificar la tonalidad de la imagen cambiando cada uno de los componentes por su opuesto, de manera que el opuesto para un color de entrada se define en función de este por la rueda de colores que se detalle en la siguiente figura:
    
-   .. figure:: ../figs/Cap6/ruedaComplementoColor.png
+   .. figure:: ../figs/Cap2/ruedaComplementoColor.png
       :scale: 40%
 
       Ilustración de los complementos de cada color
+
+   .. raw:: latex
+
+      \newpage
 
    .. http://slideplayer.com/slide/6875110/
    .. https://www.slideshare.net/RevanthChimmani1/color-image-processing-presentation
@@ -1303,8 +1349,8 @@ Las técnicas que se emplean en conjunto con la extracción de características 
    * Color Slicing (Rebanado por color). Esta transformación se emplea con el objetivo de separar objetos en la imagen del fondo, para ello se define un vector que representa el color neutral y posteriormente, se verifica para cada pixel si éste se encuentra dentro de un área determinada (centrada en una coordenada de la imagen)  aplicando una fórmula matemática (que define la forma de ésta, si es un radio o un rectángulo por ejemplo) y si es así, se conserva el pixel con el color que posee. En caso contrario, se le asigna el valor del color neutral. En la siguiente figura se puede observar el efecto de esta operación sobre una imagen que contiene un bowl con frutillas:
      
 
-   .. figure:: ../figs/Cap6/colorSlicing.png
-      :scale: 60%
+   .. figure:: ../figs/Cap2/colorSlicing.png
+      :scale: 40%
 
       Color slicing ejemplos. En el ejemplo de la izquierda se empleo un cubo centrado en el punto (0,6863, 0,1608,0,1922) y en la de la derecha se empleo una esfera centrada en la misma coordenada.
    
@@ -1315,44 +1361,47 @@ Las técnicas que se emplean en conjunto con la extracción de características 
      
 
 
-   .. figure:: ../figs/Cap6/segmentacionColor.png
+   .. figure:: ../figs/Cap2/segmentacionColor.png
 
       Ejemplo de segmentación a color para imagen con HSI. En este ejemplo, se realiza la segmentación por color de la región rojiza en la imagen original (a), siendo (b) el matiz o tonalidad (Hue), (c)  la saturación y (d) a la intensidad. En (e) se define una máscara binaria de saturación que se aplica a (b) y el resultado se muestra en (f). En (g) se muestra el histograma  resultante de este procedimiento y en (h) se muestran los pixeles que pertenecen a la región de la imagen que tiene tonalidad roja resaltados en blanco.
  
    Si la imagen emplea RGB, la segmentación de objetos en rangos de color específicos simplemente consiste en tomar un conjunto de puntos que cuyo color es representativo de los colores de interés, y obtener el promedio de color para cada componente y almacenar esto como un vector. Luego por medio de una fórmula de distancia, se realiza una comparación de los componentes de color de cada pixel con el vector y si se encuentra dentro de ésta distancia se lo conserva, y en caso contrario se lo descarta. La fórmula de distancia más común para realizar la medida de distancia es la Euclidiana, donde si la distancia entre el vector del pixel *z* y el vector promedio *a* se encuentra a menos de un límite *D0*, se considera un color válido. 
 
 
-   .. figure:: ../figs/Cap6/formulaDistanciaEcludiana.png
+   .. figure:: ../figs/Cap2/formulaDistanciaEcludiana.png
       :scale: 50%
 
       Fórmula de distancia Euclidiana
 
+* Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los pixeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores.Estas técnicas, consisten en transformar los pixeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: Representar la región en términos de sus características externas (su límite o boundary por ejemplo), describiéndose el límite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite;O representarla según sus características internas, es decir, los pixeles que comprenden la región. En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región.Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o, en la distribución estadística de los elementos del patrón.
 
-* Representación y descripción. Este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los pixeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores.
-Estas técnicas, consisten en transformar los pixeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: Representar la región en términos de sus características externas (su límite o boundary por ejemplo), describiéndose el límite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite;
-O representarla según sus características internas, es decir, los pixeles que comprenden la región. En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región.Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o, en la distribución estadística de los elementos del patrón.
 Con respecto a la descripción de una textura, existen 3 aproximaciones para esta tarea: 
    
    * La aproximación estadística. La aproximación estadística consiste en emplear medidas cuantitativas estadísticas(media aritmética, varianza, desvío estándar y otras) respecto a la distribución de los niveles de intensidad a una imagen, asociando distintas combinaciones de estos valores a características a tales como la suavidad, la aspereza, la granularidad, etc.; Y descriptores que, en base una operación que define relaciones entre pixeles y las frecuencias de esas relaciones entre pixeles en la imagen, organizados en forma de matriz de N x N siendo N los niveles de intensidad(matriz de co-ocurrencias), permiten encontrar y describir patrones tales como la uniformidad, homogeneidad, contraste y correlación. 
      
-   .. figure:: ../figs/Cap6/ejemploMatrizCoOcurrencias.png
+   .. figure:: ../figs/Cap2/ejemploMatrizCoOcurrencias.png
       :scale: 50%
      
       Ejemplo de matriz de co-ocurrencias(derecha) de una imagen (izquierda),para 8 niveles de intensidad, definiendo la relación entre pixeles como aquel pixel que se encuentra inmediatamente a la derecha. 
      
-     
+   .. raw:: latex
+
+      \newpage
 
    * La aproximación estructural. Esta técnica consiste en describir una textura por medio de un conjunto de reglas(o primitivas) que representan el patrón de la misma, que se repite de manera constante.
    
+   .. raw:: latex
+
+      \newpage
+
    * La aproximación espectral. Esta aproximación se basa en las propiedades de la transformada de Fourier, y son usadas primariamente para detectar periodicidad en la totalidad de la imagen a través de picos en el espectro de las frecuencias de la imagen. 
 
-|
+   .. figure:: ../figs/Cap2/ejemplosTexturas.png
+      :scale: 60%
 
-.. figure:: ../figs/Cap6/ejemplosTexturas.png
+      Ejemplos de texturas artificiales (a-b) y texturas naturales(c-e)
 
-   Ejemplos de texturas artificiales (a-b) y texturas naturales(c-e)
-
-
+   
 Estudios relativos a la detección de fallas
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -1363,7 +1412,7 @@ Durante la segmentación de la imagen, se realiza la conversión de la imagen de
 Finalmente, en la fase de comparación de texturas se caracterizan las mismas por medio de la aproximación estadística, y se emplea un vector de características que se genera con una serie de filtros para cada región interna y externa y, finalmente estas se comparan empleando un mecanismo de machine learning de MATLAB, en combinación con el set de herramientas de procesamiento de imágenes integrados. De esta forma, el entrenamiento se realizó con 50 muestras de imágenes seleccionadas aleatoriamente, y la prueba fue llevada a cabo con 70 muestras, que contenían no solo hoyos, sino también elementos típicos que se pueden encontrar en caminos pavimentados, como son grietas,reparaciones y juntas. El resultado de este estudio fue favorable, ya que se lograron valores de precisión cercanos al 80%, sin embargo, este modelo tiene la desventaja de depender fuertemente de condiciones de luz solar óptimas,por la naturaleza de su funcionamiento. Además, si el ángulo del sol con respecto al suelo es perpendicular, la cantidad de sombra generada en la imagen es mínima por lo que algunos baches pueden pasar inadvertidos.
 
 
-.. figure:: ../figs/Cap6/modeloBrikalis.png
+.. figure:: ../figs/Cap2/modeloBrikalis.png
    :scale: 60%
 
    Modelo de procesamiento propuesto por Brikalis y Koch.Figura extaída desde :cite:`antecedentesProcImg2`.
@@ -1373,7 +1422,7 @@ Posteriormente, la aproximación de Koch y Brikalis definida en :cite:`anteceden
 Este experimento, fue testeado capturando el video desde un robot equipado con una cámara, con un total de 39 videos (10180 frames), logrando una precisión del 75% y un recall 84%(ver machine learning). Sin embargo, esta aproximación tiene el inconveniente de que unicamente se considera que solamente un único hoyo entrará en el campo de visión a la vez.
 
 
-.. figure:: ../figs/Cap6/brilakisMejora.png
+.. figure:: ../figs/Cap2/brilakisMejora.png
    :scale: 60%
 
    Método anterior de Brikalis y Korch, con mejoras subrayadas.Figura extaída desde :cite:`antecedentesProcImg2`.
@@ -1386,22 +1435,27 @@ Este experimento, fue testeado capturando el video desde un robot equipado con u
 Otra aproximación que se ha empleado para la detección de fallas, es la expuesta por Buza, Omanovic y Huseinovic en :cite:`antecedentesProcImg3`, que consiste en realizar la obtención de imagenes o frames de video a partir de grabaciones realizadas con cámaras digitales montadas exteriormente a vehículos. El primer paso en esta aproximación consiste en transformar la imagen a color (en RGB) a escala de grises, para luego continuar con la segmentación de la imagen a través del thresholding (o limitado) de los valores en el histograma de imagen. Así, el límite de la imagen se calcula por medio del método de Otsu para el clustering en imágenes, que consiste en aplicar una fórmula matemática (ecuación (2) de :cite:`antecedentesProcImg3`) que realiza la división entre los valores de intensidad del histograma de manera que, se realice la separación entre los pixeles del fondo y de los objetos, obteniendo una variación mínima de intensidad dentro de los elementos que componen cada una de estas clases y una variación considerable entre elementos de distintas clases. Luego, se extraen aquellas formas de la imagen que son lineales, por medio del valor de curvatura (eccentricity) y aquellas formas en la imagen que se encuentran conectadas al límite de ésta. Como salida, se obtiene una imagen intermedia con formas lineales, figuras conectadas al borde la imagen y que no satisfacen el límite de Otsu removidas.  
 
 
-.. DEFINIR EIGEN VALUES Y EIGEN VECTORS!!
+
 Posteriormente, se procede a realizar la extracción de forma aplicando un algoritmo de clustering, donde se realiza la agrupación de los elementos en *k* clusters (definidos por el usuario) según su similitud en conjuntos (o clusters) de pixeles. El método seleccionado fue el Spectral Clustering, que se basa en aceptar como entrada una matriz de similitud, donde cada uno de los elementos *(i,j)* de ésta representa el grado de similitud de los puntos *i* y *j*, empleando para medir éste una fórmula de distancia Euclidiana normalizada por un factor de escala (ecuación (4) de :cite:`antecedentesProcImg3`). El factor de escala se calcula en base a los valores del histograma de imagen(ecuación 5 de :cite:`antecedentesProcImg3`). 
+
+.. DEFINIR EIGEN VALUES Y EIGEN VECTORS!!
 
 .. El funcionamiento de este método consiste en realizar una reducción de dimensionalidad, computando los eigen valores en la matriz de similitud, para luego realizar el clustering con menos dimensiones.
 
 El próximo paso consiste en seleccionar de la imagen intermedia un conjunto de "semillas" o puntos, tales que cada uno de esos puntos se emplea como una representación de otros 50 puntos para el próximo paso; Ésto se realiza con el fin de reducir el tiempo de cómputo. Estas semillas se emplean para la extracción de la región del bache vertical, donde se considera cada una de éstas eligiendo aquellas cuyas coordenadas tengan el valor mayor y menor en Y y por medio de la inspección de la imagen clusterizada, se procede a seleccionar los pixeles cuyos valores de intensidad sean mas próximos al valor de la semilla, obtieniendo así la región vertical del bache. El procedimiento anterior, se realiza de manera análoga para definir una región horizontal del hoyo, a excepción de que se seleccionan las semillas que tienen una coordenada con valor X mayor y menor (dentro del conjunto de las semillas), seleccionando aquellos pixeles ubicados en los extremos derecho y e  izquierdo. Como paso final, se procede a unir los pixeles que componen la región del bache con líneas a fin de identificar su área y posición en la imagen. Este método fue testeado en MATLAB con la suit de imagenes integrada, con 50 imagenes seleccionadas de Google, donde 25 imágenes son hoyos, 10 grietas y el resto imagenes con reparaciones y areas sin defectos, lográndose una precisión del 80%.
 
-.. figure:: ../figs/Cap6/procesoIdentificacionPotholes.png
+.. figure:: ../figs/Cap2/procesoIdentificacionPotholes.png
 
    Proceso de extracción de potholes. Extraído desde :cite:`antecedentesProcImg3`.
 
+.. raw:: latex
+   
+   \newpage
 
 En otros estudios como :cite:`antecedentesProcImg4`,se especifica un sistema inteligente de transporte(ITS) para la advertencia de fallas, donde se integran métodos deterministas para el recononcimiento y ponderación de la gravedad de los baches, basados en su localización y características. Este sistema consiste en en emplear un vehículo con dipsotivo de sensado estacionario, que agrupa elementos tales como: una cámara de video digital CCD, GPS para la obtención de la ubicación, espacio de almacenamiento para las capturas, y comunicación Wi-Fi. Este dispositivo permite obtener muestras del pavimento que son enviadas a un algoritmo de detección de baches para análisis, y en caso de detectar una falla, se estima su criticidad por medio de un valor establecido y ésta, junto con su ubicación, puede ser enviada por medio de dispositivos ubicados al costado del camino, a un sistema para la administración de fallas por medio de Comunicación de corto Rango Dedicada(DSRC), WAVE o Wi-Fi. Así, cuando otro vehículo que emplee el mismo sistema circule cerca de la misma zona, el conductor puede ser advertido acerca de una falla.
 
 
-.. figure:: ../figs/Cap6/antecedenteSistemaDeteccionFallas.png
+.. figure:: ../figs/Cap2/antecedenteSistemaDeteccionFallas.png
 
    Sistema propuesto para la detección de fallas. Extraído desde :cite:`antecedentesProcImg4`.
 
@@ -1412,7 +1466,7 @@ Con respecto al método de detección de hoyos en imágenes, el primer paso cons
 Otras investigaciones plantean un método mas directo, sin emplear machine learning o clasificación  para el procesamiento de baches, como en :cite:`antecedentesProcImg6` donde se creó una librería de imágenes empleando un vehículo con una cámara GoPro montada en el parabrisas y extrayendo frames de estas filmaciones. En esta metodología no se consideran otros elementos del camino como vehículos, arbustos o árboles al costado del camino, por lo que con cada imagen se calcula el desvío estandar de los canales de de color de la imagen, se filtran aquellos elementos que se encuentran en el rango de valores del color del asfalto (justo en frente del vehículo) y, se obtiene el convex hull del camino, para obtener una forma uniforme. Una vez aislado el camino, se convirte la imagen de color a escala de grises, se remueve el ruido aplicado una técnica de filtrado Gaussiano, y finalmente, se aplica el algoritmo de Canny (empleado para la detección de bordes en imágenes) que produce una imagen binaria, y se refina la imagen con el método de dilatación para eliminar contornos sobrantes producto de éste algoritmo. Este experimento se implementó en Visual C++ con OpenCV, empleando 53 imagenes en total con 97 fallas de la librería bajo distintos escenarios, a una velocidad de 40 km/h, logrando una precisión de 81.8% y un recall 74.4%. No obstante, este algoritmo tiene el inconveniente de que los baches que se encuentran en el borde del campo de visión del vehículo son mayormente ignorados por el algoritmo de Canny, y que ciertos tipos de bordes en el campo de visión del vehículo no son captados debido a la rigidez de el algoritmo de detección de bordes.   
 
 
-.. figure:: ../figs/Cap6/ejemploAntecedenteAlgoritCanny.png
+.. figure:: ../figs/Cap2/ejemploAntecedenteAlgoritCanny.png
 
    Ejemplo de los pasos realizados en el método propuesto. Extraído de :cite:`antecedentesProcImg6`.
 
@@ -1435,7 +1489,7 @@ El primer módulo, se compone por 3 acelerómetros 380-Hz que sensan en tres eje
 
 Posteriormente, los datos filtrados junto con la fecha y la localización obtenida por GPS, al disponer de un punto de acceso, pueden ser enviados a través de una red Wifi abierta o, de la red de paquetes de datos de una compañía celular, al servidor central. En este servidor se mantiene una base de datos de las detecciones y se realiza un clustering de las muestras enviadas, considerando que solamente K eventos pueden ocurrir en una localización dada mientras el vehículo se mueve en una dirección, de manera que se restringan por esta frecuencia de ocurrencias aquellos eventos que no son fallas (tales como la vibración dentro del vehículo en movimiento).
 
-.. figure:: ../figs/Cap6/arquitecturaAntecSensor.png
+.. figure:: ../figs/Cap2/arquitecturaAntecSensor.png
    :scale: 60%
 
    Arquitectura propuesta por Eriksson,Girod,Hull,Newton,Madden y Balakrishnan. Extraído desde :cite:`antecedentesProcImg8`.
@@ -1468,7 +1522,7 @@ Mientras que el sistema RSMS(Roadway State Monitoring System) de información ge
 El servidor al recibir esta información, realiza el cálculo del valor VIZIR (:cite:`antecedentesProcImg101`) que asigna un índice a la muestra,con el fin de estimar el daño en la superficie del pavimento y asignarle una categoría a los valores en la escala de éste. Una vez clasificada la muestra, se registra en una base de datos local en MySql, y se emplea la API de Google Maps (servidor LBS ) para indicar la ubicación de las fallas en un mapa y, además se añade funcionalidad para filtrado de fallas por fecha y por estación.
 
 
-.. figure:: ../figs/Cap6/arquitecturaRSMS.png
+.. figure:: ../figs/Cap2/arquitecturaRSMS.png
    :scale: 50%  
 
    Arquitectura del sistema propuesto. Extraído desde :cite:`antecedentesProcImg11`.
@@ -1503,7 +1557,7 @@ Posteriormente, se procede a realizar el análisis de la grieta en la maya de tr
 
 
 
-.. figure:: ../figs/Cap6/DGM_3D.png
+.. figure:: ../figs/Cap2/DGM_3D.png
 
    DGM aplicado a un vértice V de la maya. Extraído desde Fig.4 en :cite:`antecedentesReconstruccion3Dnro1`.
 

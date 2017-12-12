@@ -8,6 +8,6 @@
    Reconocimientos/*
    Resumen/*
    Introduccion/*
-   Cap6/*
+   Cap2/*
    Bibliografia/*
    
