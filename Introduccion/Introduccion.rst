@@ -35,7 +35,11 @@ La falta de innovación con respecto al registro y análisis del estado de las v
 Marco teórico
 -------------
 
-.. PONER ACA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+A través del tiempo, la tarea de registrar los defectos y depresiones en el pavimento siempre ha sido crucial para adoptar una estrategia precisa para el mantenimiento y las tareas de reparación de los senderos viales y, debido a que la medición manual es una tarea costosa en tiempo y recursos, se ha experimentado con diversas técnologías con el fin de automatizar y reducir éste costo. En el rango de estas tecnologías, se han considerado tanto sensores de medición de diferentes características inherentes a las irregularidades viales, como así también técnologías para el geoposicionamiento y el registro y administración fallas por medio de sistemas web.
+
+
+Entre las aproximaciones de detección y análisis de fallas, se abarcan la investigación y experimentacion con imagenes y videos 3D, empleando técnicas de procesamiento de imágenes, con el fin de aislar las fallas basadas únicamente en la diferencia de niveles color en pixeles y/o textura que las fallas suelen poseer, respecto de los pixeles del sendero vial donde se encuentran. Alternativamente, se ha experimentado con sistemas que emplean sensores de vibración, tales como acelerómetros, que ubicados precisamente en uno o varios lugares de un vehículo, intentan detectar las diferencias de vibración abruptas, que se encuentran en un rango es propio de las fallas. Otra aproximación, consiste en emplear sensores para medir las características espaciales de las fallas viales, y luego realizar un procesamiento tridimensional de las coordenadas capturadas aplicando diversos algoritmos, de manera que se puedan detectar diferencias de nivel entre puntos del plano y de la falla, y así lograr aislar la falla del plano.Cada una de las aproximaciones descriptas anteriormente cuentan con ventajas como así tambien con desventajas, siendo cada una sensible a diferentes factores externos en el entorno en donde se realiza la medición.
+
 
 
 Desarrollos propuestos
