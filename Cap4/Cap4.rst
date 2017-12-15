@@ -116,7 +116,7 @@ De esta forma, el algoritmo RANSAC se repite una serie de veces hasta que se ten
 Metodología para clasificación de muestras con ML
 -------------------------------------------------
 
-Dado que PCL ofrece facilidades para emplear el mecanismo de SVM a través de la librería libsvm (implementada en C y con bindings a python y compatibilidad con Scikit Learn), se optó por seleccionar ésta técnica, en combinación con los descriptores producidos por los algoritmos de ML seleccionados, para las pruebas de clasificación de fallas detalladas en la sección vitácora de pruebas. La metodología de trabajo inicial para el procesamiento de muestras para la etapa de training consistió en: 
+Dado que PCL ofrece facilidades para emplear el mecanismo de SVM a través de la librería libsvm (implementada en C y con bindings a Python y compatibilidad con Scikit Learn), se optó por seleccionar esta técnica en combinación con los descriptores producidos por los algoritmos de ML seleccionados, para las pruebas de clasificación de fallas detalladas en la sección vitácora de pruebas. La metodología de trabajo inicial para el procesamiento de muestras para la etapa de training consistió en: 
 
 
 1. Aplicar "pipeline de cropeado" para cada muestra
@@ -131,9 +131,9 @@ Dado que PCL ofrece facilidades para emplear el mecanismo de SVM a través de la
 Una vez aplicado del pipeline de cropeado para todas las muestras, se debe realizar la extracción de keypoints. Los keypoints o puntos de interés, son los puntos en una nube de puntos que se destacan por ser:
 
 * Estables con respecto a interferencias locales y globales en el dominio de la imagen, como variaciones de iluminación y brillo.
-* Distintivos para la caracterización efectiva de una superficie, y ricos en contenido en terminos de color y textura.
+* Distintivos para la caracterización efectiva de una superficie, y ricos en contenido en términos de color y textura.
 * Tienen una posición claramente definida y se pueden obtener repetidamente con respecto a ruido y variaciones en el punto de visión.
-* No es afectado por variaciones de escala, por lo que son ideales para procesamiento en tiempo real como también, procesamiento en distintas escalas. 
+* No es afectado por variaciones de escala, por lo que son ideales para procesamiento en tiempo real como también procesamiento en distintas escalas. 
 
 
 Así para comenzar con el procesamiento de cada muestra, como primer paso se aplica el algortimo de Uniform Sampling, que es una variación del downsampling de Voxel Grid, donde se retornan los índices de los puntos. Esto reducirá la cantidad de puntos de la nube de entrada y estos puntos serán los keypoints principales, que aporten mayor información para la SVM. Esta nube se utilizará para generar el descriptor seleccionado.
@@ -145,10 +145,11 @@ Luego de computarse los descriptores de las muestras, se procede a realizar la c
 <LABEL> <FEATURE_1>:<VALOR> <FEATURE_2>:<VALOR> ... <FEATURE_N>:<VALOR><NEW_LINE>
 "..."
 
-Para el modo de clasificación, la clase a la que la muestra petenece se especifica como un valor positivo (1) si la muestra pertenece a la clase del tipo de elementos que se busca clasificar o, negativo (-1) si ésta no petenece a la clase del tipo de elementos que se desean clasificar. Los features se especifican como una sucesión de valores numéricos que representan las características propias de cada muestra, y que varía según el tamaño del histograma del descriptor que se emplee. Con el fin de realizar la conversión se eempleo un script de generacion de muestras que por medio de un archivo de configuración (.cfg), genera los descriptores para cada muestra y lo almacena en un archivo de testing o training según se haya especificado.
-
+Para el modo de clasificación, la clase a la que la muestra petenece se especifica como un valor positivo (1) si la muestra pertenece a la clase del tipo de elementos que se busca clasificar o, negativo (-1) si ésta no petenece a la clase del tipo de elementos que se desean clasificar. Los features se especifican como una sucesión de valores numéricos que representan las características propias de cada muestra, y que varía según el tamaño del histograma del descriptor que se emplee. Con el fin de realizar la conversión, se empleo un script de generación de muestras que por medio de un archivo de configuración (.cfg), genera los descriptores para cada muestra y lo almacena en un archivo de testing o training según se haya especificado.
 
 .. TODO: AGREGAR LA ETAPA DE TRAINING DEL MODELO!
+
+Una vez generados ambos archivos de training y testing, se procede a entrenar el modelo empleando el archivo de training, utilizando una de las utilidades provistas por lightsvm (svm-train), que permite generar un modelo de salida para distintos tipos de kernel y distintos tipos de SVM según la tarea para la que se emplee la misma(regresión o clasificación). Debido a que se debe realizar una división de muestras entre clases preestablecidas, se empleó una SVM para clasificación de muestras (SVC) y  debido a que el kernel que mejor precisión brindo fue Linear, éste fue empelado para generar el modelo, en combinación con distintos descriptores.         
 
 
 
@@ -197,9 +198,75 @@ Otra prueba realizada, consistió en computar y analizar el área y volumen de c
 Ya que al analizar la diferencia entre alto-ancho en el dataset de training de baches y grietas ésta era similar entre el mismo tipo de muestra, por lo que existían muestras (baches y grietas) que poseían una relación similar entre alto-ancho, se realizó una reclasificación de baches y grietas según esta característica. Luego al probar nuevamente la SVM entrenada con el subconjunto de testing incluyendo solamente los valores del descriptor GRSD y la diferencia entre alto-ancho, se consiguió una precisión del 87.5% con kernel RBF y un 100% con kernel Linear.
 
 
-Al observar que la precisión incrementó reclasificando el dataset de training, se aplicó el mismo procedimiento para el dataset de testing completo y debido a que el ancho y alto calculados se basan en valores máximos y mínimos que son brindados el mecanismo Oriented Bounding Box de PCL en los ejes X-Y, el cual se ajusta y se orienta al tamaño de la muestra, se eliminaron aquellas muestras que contenían outliers que introducían ruido en el cálculo de esta diferencia, filtrando con estos parámetros de un total de 1000 muestras, 806 muestras (753 para training y 53 para testing). Al analizar las estadísticas de dimensiones del dataset de fallas de training, se seleccionó un límite de diferencia entre alto y ancho para divirlas según el tipo (grieta o bache) de 0.49, ya que las grietas contenían una longitud considerablemente mayor al grosor, situación que no ocurría en baches. Al ejecutar nuevamente las pruebas con dataset de training y testing divididos por este límite, se obtuvo 89%  de accuracy con kernel Linear y 71% con kernel RBF (con gamma 0.0000002 y costo C 1500) empleando un cross validation de 5 iteraciones. Nuevamente se procedió a experimentar con la diferencia alto-ancho y cambiando únicamente el descriptor con ESF y FPFH, obteniendo para los mismos parámetros y la misma cantidad de iteraciones los siguientes resultados:
+Al observar que la precisión incrementó reclasificando el dataset de training, se aplicó el mismo procedimiento para el dataset de testing completo y debido a que el ancho y alto calculados se basan en valores máximos y mínimos que son brindados el mecanismo Oriented Bounding Box de PCL en los ejes X-Y, el cual se ajusta y se orienta al tamaño de la muestra, se eliminaron aquellas muestras que contenían outliers que introducían ruido en el cálculo de esta diferencia, filtrando con estos parámetros de un total de 1000 muestras, 806 muestras (753 para training y 53 para testing). Al analizar las estadísticas de dimensiones del dataset de fallas de training, se seleccionó un límite de diferencia entre alto y ancho para divirlas según el tipo (grieta o bache) de 0.49, ya que las grietas contenían una longitud considerablemente mayor al grosor, situación que no ocurría en baches. Al ejecutar nuevamente las pruebas con dataset de training y testing divididos por este límite, se obtuvo 89%  de accuracy con kernel Linear y 71% con kernel RBF (con gamma 0.0000002 y costo C 1500) empleando un cross validation de 5 iteraciones con GRSD. Nuevamente se procedió a experimentar con la diferencia alto-ancho, cambiando únicamente el descriptor con ESF y FPFH, obteniendo para los mismos parámetros y la misma cantidad de iteraciones los siguientes resultados:
 
-- Con FPFH 63% para un kernel Linear y 60% para un kernel RBF.
-- Con ESF 98% para un kernel Linear y 54% para un kernel RBF.
+* Con FPFH 63% para un kernel Linear y 60% para un kernel RBF.
+* Con ESF 98% para un kernel Linear y 54% para un kernel RBF.
  
+
+Finalmente, se realizó una comparación de las métricas de clasificación respecto de los distintos descriptores para la división original de muestras(53 en total), con el fin de constrastar la efectividad de clasificación de éstos y comprobar la superioridad de ESF respecto al resto. Para ello, se calcularon los valores de F1-Score y Recall para ambas clases y la matriz de confusión para exponer la cantidad de elementos efectivamente asignados a cada clase. Los valores de F1-Score y Recall se pueden observar a continuación: 
+
+.. TODO: REALIZAR UN CUADRO COMPARATIVO PARA KERNEL LINEAR Y KERNEL RBF DEL CONJUNTO INICIAL DE TRAIN/TEST
+
+Kernel Linear -->
+
++------------+------------+-------------------------------+
+| Tipo de muestra  | Precision   | Recall  |  F1-Score    |
++============+============+===============================+
+| Baches           |  1.0        | 1.0     |  1.0         |   
++------------+------------+-------------------------------+
+| Grietas          |  1.0        | 1.0     | 1.0          |
++------------+------------+-------------------------------+
+| avg/total        |  1.0        | 1.0     | 1.0          |
++------------+------------+-------------------------------+
+
+*Métricas para descriptor ESF con Kernel Linear*
+
+
++------------+------------+---------------------------------+ 
+| Tipo de muestra  | Precision   | Recall  |  F1-Score      |
++============+============+=================================+ 
+| Baches           |  0.91        | 0.48     |  0.63        |   
++------------+------------+---------------------------------+ 
+| Grietas          |  0.23        | 0.78     | 0.36         |
++------------+------------+---------------------------------+ 
+| avg/total        |  0.80        | 0.53     | 0.58         |
++------------+------------+---------------------------------+ 
+
+*Métricas para descriptor FPFH con Kernel Linear*
+
+
++------------+------------+---------------------------------+ 
+| Tipo de muestra  | Precision   | Recall  |  F1-Score      |
++============+============+=================================+ 
+| Baches           |  0.83        | 1      |  0.91          |   
++------------+------------+---------------------------------+ 
+| Grietas          |  0.23        | 0.78   |  0.36          |
++------------+------------+---------------------------------+ 
+| avg/total        |  0.80        | 0.53   | 0.58           |
++------------+------------+---------------------------------+ 
+
+*Métricas para descriptor GRSD con Kernel Linear*
+
+
+La matriz de confusión para cada uno de los descriptores empleados fue la siguiente:
+
+
+.. figure:: ../figs/Cap4/matriz_confusion_GRSD.png 
+   :scale: 70%
+
+   Matriz de confusión de SVM con descriptor GRSD
+
+
+.. figure:: ../figs/Cap4/matriz_confusion_ESF.png 
+   :scale: 70%
+
+   Matriz de confusión de SVM con descriptor ESF
+
+
+.. figure:: ../figs/Cap4/matriz_confusion_FPFH.png 
+   :scale: 70%
+
+   Matriz de confusión de SVM con descriptor FPFH
+
 
