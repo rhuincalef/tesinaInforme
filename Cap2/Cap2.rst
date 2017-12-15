@@ -4,7 +4,7 @@ Antecedentes de software para la gestión de fallas viales
 Pavimento
 ---------
 
-El pavimento de una calle o autopista, es una estructura compuesta de un conjunto de capas de materiales procesados sobre el suelo, cuya función consiste en distribuir las cargas de los vehículos al sub-suelo y permitir el tránsito de los mismos. La estructura del pavimento debería proveer una superficie de calidad aceptable para la circulación de vehículos, resistencia adecuada al resbalamiento,reducir la contaminación de ruido producto de la circulación de los vehículos, una superficie impermeable, de manera que el suelo que esta debajo de las capas de material este bien protegido, resistencia estructural (con el fin de soportar todo tipo de fuerza aplicada sobre él) y un diseño con un ciclo de vida prolongado y bajo costo de mantenimiento.
+El pavimento de una calle o autopista, es una estructura compuesta de un conjunto de capas de materiales procesados sobre el suelo, cuya función consiste en distribuir las cargas de los vehículos al sub-suelo y permitir el tránsito de los mismos. La estructura del pavimento debería proveer una superficie de calidad aceptable para la circulación de vehículos, resistencia adecuada al resbalamiento,reducir la contaminación de ruido producto de la circulación de los vehículos, una superficie impermeable, de manera que el suelo que está debajo de las capas de material esté bien protegido, resistencia estructural (con el fin de soportar todo tipo de fuerza aplicada sobre él) y un diseño con un ciclo de vida prolongado y bajo costo de mantenimiento.
 
 Los pavimentos se pueden clasificar en dos tipos diferentes:
 
@@ -16,6 +16,7 @@ Los pavimentos se pueden clasificar en dos tipos diferentes:
    :scale: 80%
 
    Estructura del pavimento rígido
+
 
 
 * Pavimento flexible: Es una estructura compuesta por capas donde uno de los materiales presentes es el asfalto, lo que permite la deflexión (la deformación que del material como producto de una fuerza externa) bajo las cargas. Los pavimentos flexibles se componen de una capa de mezcla asfáltica u hormigón asfáltico, que consiste en un agregado de asfalto y materiales minerales (como áridos) compactados y extendidos. ;Ésta se expone a las condiciones más severas debido al clima y tráfico, una capa base que se compone de materiales áridos (conjunto de materiales obtenidos de la fragmentación de rocas y arenas, tales como la grava, la gravilla y la arena), una capa de sub-base con materiales de calidad inferior a los empleados en la capa base.
@@ -1565,6 +1566,40 @@ Con el fin de separar los vértices aislados de los que se encuentran unidos a u
 
 El cálculo de la profundidad se realiza por medio de la computación de aquellos vertices que no son parte del grupo de vértices abruptos, aplicando la ecuación (1.10) en :cite:`antecedentesReconstruccion3Dnro1` basada en el método de mínimos cuadrados (Least Square Fitting) con la fórmula de la esfera, de manera que la profundidad de un vértice se calcula como la distancia mínima a la superficie de una esfera. Adicionalmente, se subdivide la grieta en una grilla de 10x10 y se calcula el valor de profunidad de aquellas grietas que tienen un nivel mayor de profundidad. Con respecto al area se aplicó la sumatoria de los cuadrados que conforman la grieta, mientras que para el cálculo del grosor se aplico la fórmula (1.11) de :cite:`antecedentesReconstruccion3Dnro1`, que calcula la distancia entre el vértice que se encuentra a mayor profundidad y un vértice que se encuentra mas próximo al borde de la grieta (que es parte de la superficie del asfalto). Este procedimiento se realiza 3 veces, con tres puntos del borde de ésta para lograr una mejor aproximación. Finalmente, se realizaron pruebas contando con 290 muestras en promedio por prueba para distintos tipos de grietas, transversales, longitudinales y alligator (varias grietas interconectadas entre si) detectando el 67% de grietas transversales, 77% de grietas longitudinales y solo 54% de las grietas alligator.  
 
+En otro trabajo como en el propuesto en :cite:`antecedentesReconstruccion3Dnro1`, Sudáfrica. En el cual se diseñaría un sistema automatizado de detección y análisis de fallas en los circuitos viales utilizando un dispositvo de bajo costo como el sensor Kinect montado sobre un vehículo.
+
+Los datos de las fallas viales pueden ser recolectadas por cualquier conductor sin necesidad de parar el vehículo. Estos datos censados luego, pueden ser analizados por un especialista, el cual podría tomar decisiones acerca de la mejor manera de raparar los caminos viales censados. De esta manera, un experto puede utilizar esta información para armar un programa de reparación eficiente. Con esto se lograría que el censado de baches sea realizara de una manera más rápida y con una frecuencia más regular para que el personal profesional pueda responder de una manera más eficiente.
+
+En el sistema el sensor captura una nube de punto 3D y la localización (latitud, longitud) de los baches detectados. Estos datos son analizados para determinar ciertas dimensionas de la falla vial como el ancho y largo. Además la localizacións capturada, podría ser cargada en un mapa utilizando la API GoogleMaps. El diseño del sistema supone que el vehículo viajará a no más de 60km/h, el límite establecido para transitar en una zona residencial en Sudáfrica.
+
+El software utilizado por el sistema fue desarrollado utilizando como base ROS. En primera instancia, una cámara de alta velocidad es utilizada para poder detectar un cambio considerable en la superficie del circuito vial, en esta etapa sólo se utiliza información de la cámara debido al costo de procesamiento que conlleva una nube de puntos en 3D. Si una falla vial se detectaba, los datos de localización (latitud, longitud) provista por el GPS del automóvil, la nube de puntos 3D provista por el sensor Kinect y todas aquellas imágenes en un intervalo determinado desde la detección de la falla vial se capturaban. Por otro lado, si se detectaba que no se trataba de una falla vial toda la información relevada era descartada.
+
+.. figure:: potholeFlowChart.png
+   :scale:  60 %
+
+   Diagrama de flujo del sistema de detección. Extraído desde Fig.3 en :cite:`antecedentesReconstruccion3Dnro2`.
+
+Antes de que los datos sean realmente almacenados, la nube de puntos en 3D se analiza para poder confirmar que se tratara completamente de una falla vial. Para este análisis, es necesario estimar la contextura de la falla vial. Primero, la superficie del plano del circuito vial es estimado utilizando el algoritmo RANSAC. Por lo que, aquellos puntos que no formaban parte del plano son cosiderados como puntos pertenecientes a la falla vial. Luego, mediante la correlación entre la nube de puntos y la imagen capturada por el sensor Kinect, ésta se utiliza para separar el plano en la imagen capturada por la cámara de alta velocidad. Posteriormente, el contorno de la falla vial es identificado y sus dimensiones calculadas. El ancho de la falla vial se define como la máxima diferencia entre los puntos del contorno. La profundidad queda determinada como la máxima diferencia perpendicular entre el plano y los puntos de la falla vial.
+
+Al final del análisis, toda aquella información calculada se adjuntaba a los datos capturados por los sensores de la falla vial para su posterior utilización.
+
+En el siguiente trabajo :cite:`antecedentesReconstruccion3Dnro3`. El sensor Kinect es utilizado para capturar los datos a una distancia aproximada de 0.8 a 0.9 metros del nivel suelo. Posteriormente, se utilza un algoritmo implementado con herramientas del software matmático ofrecido por Matlab, con el cual se procesa los datos y extrae medidas inherentes a las fallas viales.
+
+La nube de puntos que se captura desde el sensor Kinect usando OpenKinect, es un array de dos dimensiones de píxeles, donde cada píxel *(x,y)* contiene los valores de profundidad en milímetros. Los valores de profundidad van desde 0 a 2047. Valores altos en la profundidad marcan puntos más profundos sobre el pavimento. Como el sensor Kinect brinda una imagen de 640x480 píxeles. Utilizando Matlab, en este trabajo se recorta a 540x380, que es el área de interés para el mismo.
+
+El mínimo local de cada columna es calculado y sustraído de la misma para extraer la falla vial del resto de los datos. Entonces, el eje *X* y el eje *Y* son convertidos a coordenadas del mundo real siguiendo http://qa.social.msdn.microsoft.com/Forums/enUS/kinectsdknuiapi/thread/e53a4ba7-2522-407f-9d60-86e6fc5f89dc.
+
+.. figure:: potholeFlowChart1.png
+   :scale:  30%
+
+   Diagrama de flujo del algoritmo. Extraído desde Fig.10 en :cite:`antecedentesReconstruccion3Dnro3`.
+
+Luego, se generan varias mallas (meshes) de las fallas viales con diferentes acimuts y elevaciones para una mejor visualización de las mismas. Teniendo esto, la media, la desviación estándar y la profundidad máxima de la muestra son calculadas utilizandos funciones estándar de Matlab. Para el cálculo del área, las imágenes con información relacionada a las distancias de las superficies que aparecen en ella, se convierten a imágenes binarias para diferentes distancias en milímetros en la profundiad. Por cada incremento en la distancia de la profundiad, el área es calculada para una cantidad *n* de píxeles. El área final a cierta profundidad se calcula multiplicando el área binaria y el área de un píxel a esa profundidad particular.
+Se grafica el área y la curvatura de la falla vial uno sobre otro siguiendo la regla del trapecio :math:`\int_a^b f(x) \dx, \approx (b-a)\frac{f(a)+f(b)}{2}` para calcular el volúmen aproximado.
+
+La disminución del área con respecto a la profundidad brinda algunas propiedades para poder clasificar a las fallas viales. Basándose en los valores de curvaturas de los baches, estos se puedieron caracterizar en 3 diferentes tipos. Baches cuadrados, longitudinales o cúbicos.
+
+Además, los límites del bache son detectados desde las imágenes binarias y algunas propiedades de la misma son calculadas como, el máximo y menor en los ejes, centroide, excentricidad, orientación y perímetro.
 
 .. Aplicaciones web y móviles existentes para la notificación de fallas
 .. --------------------------------------------------------------------
