@@ -5,9 +5,10 @@ Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
 ¿Qué es Machine Learning(ML)?
 -----------------------------
 
-.. TODO: Concepto de machine learning, entrenamiento supervisado vs no supervisado
-.. TODO: Etapa de preprocesamiento de datos
+.. TODO: Concepto de machine learning, entrenamiento supervisado vs no supervisado.Clasificacion y regresion.
 .. TODO: Usos y aplicaciones de ML
+.. TODO: Etapa de preprocesamiento de datos
+.. TODO: Metricas empleadas para la medición
 
 
 
@@ -84,7 +85,7 @@ GRSD
 Metodología de preprocesado de muestras (Pipeline de Cropeado)
 --------------------------------------------------------------
 
-Debido a la cantidad numerosa de puntos que se encuentran en una captura realizada por el sensor (aproximadamente 300.000 puntos) y, a que se deseaba abstraer solo aquellas caracaterísticas propias de cada tipo de falla, se procedió a aplicar una serie de algoritmos como parte del preprocesado de datos en machine learning o "Pipeline de Cropeado", con el fin de reducir la cantidad de puntos de cada muestra y de solo calcular el descriptor con los puntos principales de un bache.Este Pipleline de cropeado, se compone de los siguientes pasos:
+Debido a la cantidad numerosa de puntos que se encuentran en una captura realizada por el sensor (aproximadamente 300.000 puntos) y, a que se deseaba abstraer solo aquellas caracaterísticas propias de cada tipo de falla, se procedió a aplicar una serie de algoritmos como parte del preprocesado de datos en machine learning o Pipeline de Cropeado, con el fin de reducir la cantidad de puntos de cada muestra y de sólo calcular el descriptor con los puntos principales de una falla.Este Pipleline de cropeado, se compone de los siguientes pasos:
 
 1 - Eliminación de ruido con Statistical Removal: Debido a que la densidad de puntos de una captura puede variar, bajo diversas condiciones tales como: La cantidad de luz solar presente o la posición del sensor con respecto al pavimento, es necesario eliminar para cada captura aquellos valores extremos o outliers, que pueden interferir con la computación features de la muestra. Para ello, PCL ofrece un algoritmo de filtrado denominado Statistical Outlier Removal, el cual para cada punto en la nube de entrada computa la distancia media de éste hacia todos sus vecinos, y asumiendo que las distancias siguen una distribución estadística Gaussiana con una media y desvío estándar, elimina de la nube aquellos puntos cuyas distancias esten fuera del intervalo definido por la media y el desvío estándar de la distribución.
 |
@@ -94,7 +95,12 @@ Debido a la cantidad numerosa de puntos que se encuentran en una captura realiza
 
    Izquieda: Ejemplo de nube de puntos sin el filtro Statistical Outlier Removal. Derecha: Ejemplo de nube de puntos con el filtro de Statistical Outlier Removal.
 
-2 - Downsampling con Voxel Grid: Se conoce con el nombre de vóxel a un conjunto de puntos que forman una mínima unidad cubica (grilla en 3D) de un objeto tridimensional, de la misma forma que un pixel es la minima unidad en una imagen en 2D. El algoritmo de Voxel Grid en PCL, permite reducir la cantidad de elementos de una nube, realizando una división de una nube de puntos en voxels, y computando en base a éstos el centroide (centro del voxel grid), que representa al resto de los puntos en el voxel grid.
+2 - Downsampling con Voxel Grid(Extracción de Keypoints): Se conoce con el nombre de vóxel a un conjunto de puntos que forman una mínima unidad cubica (grilla en 3D) de un objeto tridimensional, de la misma forma que un pixel es la mínima unidad en una imagen en 2D. El algoritmo de Voxel Grid en PCL, permite reducir la cantidad de elementos de una nube, realizando una división de una nube de puntos en voxels, y computando en base a éstos el centroide (centro del voxel grid) que se tomará como el punto que representa al resto de los puntos en el voxel grid. Estos puntos se denominan keypoints o puntos de interés y son aquellos  puntos principales que aportan mayor información respecto de la estructura del pavimento a la SVM. Éstos se caracterizan por ser:
+
+* Estables con respecto a interferencias locales y globales en el dominio de la imagen, como variaciones de iluminación y brillo.
+* Distintivos para la caracterización efectiva de una superficie, y ricos en contenido en términos de color y textura.
+* Tienen una posición claramente definida y se pueden obtener repetidamente con respecto a ruido y variaciones en el punto de visión.
+* No es afectado por variaciones de escala, por lo que son ideales para procesamiento en tiempo real como también procesamiento en distintas escalas. 
 
 
 .. figure:: ../figs/Cap4/voxel_grid_estructura.png
@@ -105,41 +111,38 @@ Debido a la cantidad numerosa de puntos que se encuentran en una captura realiza
 3 - Segmentación con algoritmo de Planar Segmentation: La segmentación en PCL consiste en dividir una nube de puntos de entrada en varios clusters, donde cada cluster representa un objeto de la captura, que puede ser procesado independientemente. El algoritmo empleado  para la segmentación en PCL fue RANSAC (Random Sample Consensus), este algoritmo considera que en la nube de puntos de entrada existen puntos que pueden ser ajustados al modelo,con un margen de error especificado (inliers), y puntos que no se ajustan al modelo de RANSAC(outliers). Este algoritmo es una algortimo no determinístico, y consiste en realizar N iteraciones, donde en cada una:  
 	
 		1. Se toma un subconjunto de puntos aleatorios de la nube de entrada y partiendo de un modelo establecido y, utilizando los puntos empleados como muestra, se realiza la computación de parámetros del modelo.
-		
-		2. A continuación, el algoritmo verifica cuales puntos del la nube de entrada completa son consistentes con el modelo generado, con los parametros tomados como muestra en el paso anterior, empleando una función de costo o función de pérdida(loss function). Los puntos que no se ajusten al modelo instanciado con un margen de error se consideran outliers, mientras que el resto de puntos que se ajustan al modelo se consideran inliers, y forman parte del conjunto de consenso(consensus set).
+    2. A continuación, el algoritmo verifica cuales puntos del la nube de entrada completa son consistentes con el modelo generado, particularmente con los parámetros tomados como muestra en el paso anterior, empleando una función de costo o función de pérdida(loss function). Los puntos que no se ajusten al modelo instanciado con un margen de error se consideran outliers, mientras que el resto de puntos que se ajustan al modelo se consideran inliers, y forman parte del conjunto de consenso(consensus set).
+    3. Se repite de nuevo el paso 1. 
 
-De esta forma, el algoritmo RANSAC se repite una serie de veces hasta que se tengan suficientes inliners como para ser considerada confiable la estimación. PCL ofrece varios modelos geométricos predefinidos para emplear con RANSAC, entre los que se encuentran: Circulo 2D, Circulo 3D, Cono, Cilindro, Linea, Esfera, Vara(Stick) y Plano. Debido a la características geormétrica de los senderos viales, se empleó para este paso RANSAC en combinación con el modelo de plano.  
+De esta forma, el algoritmo RANSAC se repite una serie de veces hasta que se tengan suficientes inliners como para ser considerada confiable la estimación. PCL ofrece varios modelos geométricos predefinidos para emplear con RANSAC, entre los que se encuentran: Circulo 2D, Circulo 3D, Cono, Cilindro, Linea, Esfera, Vara(Stick) y Plano. Debido a la características geormétrica de los senderos viales y de las fallas, se empleó para este paso RANSAC en combinación con el modelo de plano.  
 
-4 - Filtrado de puntos con Statistical Removal luego de segmentación: Debido a que la segmentación puede producir en la práctica valores espurios, se aplica nuevamente Statistical Outliers Removal con el fin de eliminar valores extremos que puedan haber permanecido en la muestra.
+.. TODO: COMPLETAR ESTA PARTE!!!
 
-
-Metodología para clasificación de muestras con ML
--------------------------------------------------
-
-Dado que PCL ofrece facilidades para emplear el mecanismo de SVM a través de la librería libsvm (implementada en C y con bindings a Python y compatibilidad con Scikit Learn), se optó por seleccionar esta técnica en combinación con los descriptores producidos por los algoritmos de ML seleccionados, para las pruebas de clasificación de fallas detalladas en la sección vitácora de pruebas. La metodología de trabajo inicial para el procesamiento de muestras para la etapa de training consistió en: 
+4 - Calculo de curvaturas principales (Principal Curvatures Estimation): Una vez realizada la segmentación, se realiza el cálculo de curvaturas para cada uno de los clusters aislados de manera que se filtren solo aquellos que se ubican en un valor dentro del rango de las fallas. PCL ofrece un algoritmo denominado Principal Curvatures Estimation (PCE) donde ...
 
 
-1. Aplicar "pipeline de cropeado" para cada muestra
-2. Extracción de keypoints
-3. Computación de descriptor (FPFH | VFH | GRSD | RIFT)
-4. Extracción de features (valores del histograma) del descriptor seleccionado 
-5. Almacenamiento de las feautes en formato svmlight en archivo de training
-6. Entrenamiento y almacenamiento del modelo entrenado con archivo de training
+
+.. 4 - Filtrado de puntos con Statistical Removal luego de segmentación: Debido a que la segmentación puede producir en la práctica valores espurios, se aplica nuevamente Statistical Outliers Removal con el fin de eliminar valores extremos que puedan haber permanecido en la muestra.
+
+
+Metodología para el procesamiento de muestras con ML
+----------------------------------------------------
+
+Dado que PCL ofrece facilidades para emplear el mecanismo de SVM a través de la librería libsvm (implementada en C y con bindings a Python y compatibilidad con Scikit Learn), se optó por seleccionar este mecanismo en combinación con los descriptores producidos por los algoritmos de ML seleccionados, para las pruebas de clasificación de fallas (detalladas en la sección vitácora de pruebas). La metodología de trabajo para el procesamiento de muestras se dividió en dos fases:
+
+* La fase de preparación del modelo, donde se debió realizar la conversión del descriptor de PCL y las características de la falla a un formato compatible con libsvm, el entrenamiento del modelo con dichos datos y el almacenamiento de éste para su posterior uso en la clasificación. Durante esta etapa, se realiza el entrenamiento de un modelo por cada tipo de descriptor probado. 
+* La fase de clasificación de muestras, donde se realiza el aislamiento de la muestra empleando el pipeline de cropeado y se emplea el modelo entrenado previamente para un descriptor para clasificar la muestra aislada previamente.        
+
+Con respecto a la fase de preparación del modelo, los pasos específicos para generar cada moledo en base un descriptor consistieron en los siguientes: 
+
+1. Aplicar el pipeline de cropeado para cada muestra
+2. Computación de descriptor (ESF | FPFH | VFH | GRSD | RIFT)
+3. Extracción de features (valores del histograma) del descriptor seleccionado 
+4. Almacenamiento de las feautes en formato svmlight en archivo de training
+5. Entrenamiento y almacenamiento del modelo entrenado con archivo de training
    
 
-
-Una vez aplicado del pipeline de cropeado para todas las muestras, se debe realizar la extracción de keypoints. Los keypoints o puntos de interés, son los puntos en una nube de puntos que se destacan por ser:
-
-* Estables con respecto a interferencias locales y globales en el dominio de la imagen, como variaciones de iluminación y brillo.
-* Distintivos para la caracterización efectiva de una superficie, y ricos en contenido en términos de color y textura.
-* Tienen una posición claramente definida y se pueden obtener repetidamente con respecto a ruido y variaciones en el punto de visión.
-* No es afectado por variaciones de escala, por lo que son ideales para procesamiento en tiempo real como también procesamiento en distintas escalas. 
-
-
-Así para comenzar con el procesamiento de cada muestra, como primer paso se aplica el algortimo de Uniform Sampling, que es una variación del downsampling de Voxel Grid, donde se retornan los índices de los puntos. Esto reducirá la cantidad de puntos de la nube de entrada y estos puntos serán los keypoints principales, que aporten mayor información para la SVM. Esta nube se utilizará para generar el descriptor seleccionado.
-
-
-Luego de computarse los descriptores de las muestras, se procede a realizar la conversión de las muestras a formato svmlight. Para la clasificación de muestras con svmlight, el formato consiste en especificar cada muestra como una combinación de un numero que especifica la clase a la que petenece la misma separado por un espacio en blanco <SPACE> de sus features <FEATURE_N> con sus respectivos valores <VALOR> y, separada de otras muestras por caracteres de nueva linea <NEW_LINE>:
+Luego de aplicar el pipeline de cropeado y computarse los descriptores de las muestras, se procede a realizar la conversión de las muestras a formato svmlight. Para la clasificación de muestras con svmlight, el formato consiste en especificar cada muestra como una combinación de un numero que especifica la clase a la que petenece la misma separado por un espacio en blanco <SPACE> de sus features <FEATURE_N> con sus respectivos valores <VALOR> y, separada de otras muestras por caracteres de nueva linea <NEW_LINE>:
 
 <LABEL> <FEATURE_1>:<VALOR> <FEATURE_2>:<VALOR> ... <FEATURE_N>:<VALOR><NEW_LINE>
 <LABEL> <FEATURE_1>:<VALOR> <FEATURE_2>:<VALOR> ... <FEATURE_N>:<VALOR><NEW_LINE>
@@ -152,17 +155,20 @@ Para el modo de clasificación, la clase a la que la muestra petenece se especif
 Una vez generados ambos archivos de training y testing, se procede a entrenar el modelo empleando el archivo de training, utilizando una de las utilidades provistas por lightsvm (svm-train), que permite generar un modelo de salida para distintos tipos de kernel y distintos tipos de SVM según la tarea para la que se emplee la misma(regresión o clasificación). Debido a que se debe realizar una división de muestras entre clases preestablecidas, se empleó una SVM para clasificación de muestras (SVC) y  debido a que el kernel que mejor precisión brindo fue Linear, éste fue empelado para generar el modelo, en combinación con distintos descriptores.         
 
 
+Con respecto a la etapa de clasificación, los pasos para lograr ésto fueron los siguientes:
 
-Con respecto a la etapa de testing, los pasos inicialmente fueron los siguientes:
+1. Aplicación del pipeline de cropeado a una muestra individual
+2. Conversión de cada cluster filtrado a formato svmlight para archivo de testing
+3. Lectura del modelo entrenado desde disco
+4. Computación de las dimensiones de la falla (alto,ancho para baches y largo ancho para las grietas)
+5. Computación del descriptor final, combinando el descriptor PCL y las dimensiones de la falla
+6. Clasificación de la muestra (bache o grieta)
+7. Almacenamiento en formato json de las propiedades de la falla
+8. Lectura y muestra de las propiedades obtenidas desde la aplicación web
 
-1. Downsampling de la muestra
-2. Conversión de capturas a formato svmlight para archivo de testing
-3. Prueba del clasificador con archivo de testing y obtención de métricas
+.. TODO: CONTINUAR POR ACA!!!
 
-
-Luego de realizar el downsampling con Voxel Grid y la conversión de capturas de testing a formato svmlight, se procede a probar el clasificador...
-
-.. TODO: CONTINUAR CON LA CLASIFICACIÓN.
+Luego de obtener los clusters desde el pipeline de cropeado y de realizar la conversión de capturas de testing, se procede a probar el clasificador con los archivos de training y testing para un tipo de descriptor. Debido a qu e   
 
 
 
