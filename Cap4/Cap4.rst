@@ -8,7 +8,7 @@ Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
 .. TODO: Concepto de machine learning, entrenamiento supervisado vs no supervisado.Clasificacion y regresion.
 .. TODO: Usos y aplicaciones de ML
 .. TODO: Etapa de preprocesamiento de datos
-.. TODO: Metricas empleadas para la medición
+.. TODO: Metricas empleadas en cada uno de los metodos para la clasificación
 
 
 
@@ -33,13 +33,19 @@ Redes Neuronales(NN)
 
 
 
+
 Selección de features para ML en PCL
 ------------------------------------
+
+.. TODO: ELIMINAR DE ESTE PARRAFO LA DESCRIPCIÓN DE LOS TIPOS DE DESCRIPTORES PCL,YA QUE VA EN CAP3.
 
 Inicialmente se investigó si PCL ofrecía funciones para obtener features de cada punto, de manera que se conozca información respecto de la geometría alrededor de un punto a través del procesamiento de sus vecinos, y se averiguó que PCL ofrecía una variedad de algoritmos que permiten computar "descriptores" que estan pensados para ser empleados en el reconocimiento de objetos 3D dentro de una captura. PCL ofrece dos tipos de descriptores: Descriptores locales que se emplean para describir la geometría alrededor de cada punto, sin considerar la geometría total del objeto que cada punto compone, por lo que cuando se emplean estos descriptores se deben seleccionar los puntos clave del objeto o keypoints que se desean procesar. Estos descriptores se emplean para el reconocimiento de objetos y para la registración(registration), que consiste en alinear dos nubes de puntos y por medio de transformaciones lineales, detectar si existen áreas comunes en ambas nubes de puntos.
 Por otro lado, PCL ofrece descriptores globales que describen la geometría de un cluster de puntos que representa un objeto, por lo que para emplear estos descriptores se requiere preprocesar una nube de puntos, con el fin de aislar el objeto. Estos descriptores se aplican para el reoconocimiento de objetos y clasificación, estimación de posición y análisis de geometría (tipo de objeto, forma, etc.). Los descriptores locales que emplean un radio de busqueda, mayormente pueden ser usados como globales, si se computa un solo punto en el cluster y se modifica el radio de busqueda de puntos vecinos, de manera que se abarquen todos los puntos que componen el objeto.
 
-De este conjunto, se seleccionó un subconjunto acorde a las capacidades de computo disponibles y a las características de curvatura y profundidad que son propias de fallas tipo bache y grieta. Con respecto a los baches, se optó por seleccionar aquellos algoritmos que computan features llamadas normales( vectores unidad que son tangentes a un punto en una superficie y perpendiculares al plano en que se encuentra dicho punto).
+
+
+
+Con respecto a la elección de features para ML, se seleccionó un subconjunto del rango completo de descriptores acorde a las capacidades de computo disponibles y a las características de curvatura y profundidad que son propias de fallas tipo bache y grieta. Con respecto a los baches, se optó por seleccionar aquellos algoritmos que computan features llamadas normales( vectores unidad que son tangentes a un punto en una superficie y perpendiculares al plano en que se encuentra dicho punto).
 
 Debido a que las grietas recolectadas poseen una diversidad de profundidades y algunas de estas no pueden ser detectadas por el sensor, se decidió realizar una 
 subdivisión en dos grupos: Aquellas que poseen profunidad y, por lo tanto pueden procesarse con las normales, y aquellas que no poseen una profundidad suficiente como para ser detectadas a traves de normales y, deben ser detectadas empleando algún mecanismo que utilice la diferencia de color entre la región interior y el resto del pavimento. Teniendo ésto en cuenta, se filtraron los siguientes algoritmos:
@@ -55,6 +61,7 @@ subdivisión en dos grupos: Aquellas que poseen profunidad y, por lo tanto puede
 
     - Rotation Invariant Feature Transform(RIFT)(Local)
       
+
 
 FPFH
 ++++
@@ -77,8 +84,6 @@ GRSD
 ++++
 
 .. TODO: PONER EXPLIACIÓN DE ALGORITMO ACÁ!
-
-
 
 
 
@@ -150,25 +155,25 @@ Luego de aplicar el pipeline de cropeado y computarse los descriptores de las mu
 
 Para el modo de clasificación, la clase a la que la muestra petenece se especifica como un valor positivo (1) si la muestra pertenece a la clase del tipo de elementos que se busca clasificar o, negativo (-1) si ésta no petenece a la clase del tipo de elementos que se desean clasificar. Los features se especifican como una sucesión de valores numéricos que representan las características propias de cada muestra, y que varía según el tamaño del histograma del descriptor que se emplee. Con el fin de realizar la conversión, se empleo un script de generación de muestras que por medio de un archivo de configuración (.cfg), genera los descriptores para cada muestra y lo almacena en un archivo de testing o training según se haya especificado.
 
-.. TODO: AGREGAR LA ETAPA DE TRAINING DEL MODELO!
 
 Una vez generados ambos archivos de training y testing, se procede a entrenar el modelo empleando el archivo de training, utilizando una de las utilidades provistas por lightsvm (svm-train), que permite generar un modelo de salida para distintos tipos de kernel y distintos tipos de SVM según la tarea para la que se emplee la misma(regresión o clasificación). Debido a que se debe realizar una división de muestras entre clases preestablecidas, se empleó una SVM para clasificación de muestras (SVC) y  debido a que el kernel que mejor precisión brindo fue Linear, éste fue empelado para generar el modelo, en combinación con distintos descriptores.         
 
 
-Con respecto a la etapa de clasificación, los pasos para lograr ésto fueron los siguientes:
+Con respecto a la etapa de clasificación, los pasos a seguir fueron los siguientes:
 
 1. Aplicación del pipeline de cropeado a una muestra individual
-2. Conversión de cada cluster filtrado a formato svmlight para archivo de testing
-3. Lectura del modelo entrenado desde disco
-4. Computación de las dimensiones de la falla (alto,ancho para baches y largo ancho para las grietas)
-5. Computación del descriptor final, combinando el descriptor PCL y las dimensiones de la falla
-6. Clasificación de la muestra (bache o grieta)
+2. Lectura del modelo entrenado desde disco
+3. Computación de las dimensiones de la falla
+4. Generación del descriptor final, combinando el descriptor PCL y las dimensiones de la falla
+5. Conversión del descriptor final a formato svmlight 
+6. Clasificación de la muestra (bache o grieta) empleando el descriptor final
 7. Almacenamiento en formato json de las propiedades de la falla
 8. Lectura y muestra de las propiedades obtenidas desde la aplicación web
 
-.. TODO: CONTINUAR POR ACA!!!
 
-Luego de obtener los clusters desde el pipeline de cropeado y de realizar la conversión de capturas de testing, se procede a probar el clasificador con los archivos de training y testing para un tipo de descriptor. Debido a qu e   
+Luego de obtener los clusters válidos desde el pipeline de cropeado, se procede generar el descriptor final computando el descriptor seleccionado en PCL y a calcular las dimensiones (alto-ancho y profundidad para baches y largo-grosor y profundidad para las grietas) en los ejes X,Y y Z por medio de la OBB mínima que contiene a la falla. De esta forma, el descriptor final para cada cluster se compone del descriptor de PCL sumado a la diferencia entre alto y ancho y, posteriormente se adapta al formato que es utilizado por la SVC. 
+
+Una vez obtenida la muestra, se levanta el modelo entrenado desde disco, y se le asigna la muestra para su clasificación, obteniendo el tipo de ésta, el cual, se almacena junto con las dimesiones de la falla según corresponda y el nombre del cluster(generado en base al nombre de la muestra) en formato json. Éste, posteriormente es leído por la aplicación web, que mostrará dicha información en una sección a parte, donde se visualizan las propiedades de la falla. 
 
 
 
