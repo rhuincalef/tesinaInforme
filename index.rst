@@ -11,5 +11,6 @@
    Cap6/*
    Cap4/*
    Cap2/*
+   Cap5/*
    Bibliografia/*
    
