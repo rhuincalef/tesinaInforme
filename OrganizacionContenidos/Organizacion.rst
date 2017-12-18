@@ -11,11 +11,18 @@ Capítulo 2.Antecedentes de software para la gestión de fallas viales
 
 Este capítulo comienza definiendo el concepto de falla, los tipos de material, tipos de reparación que se pueden efectuar sobre cada uno, y los tipos de falla que se corresponden sobre los distintos tipos de material. Durante este capítulo también se debaten antecedentes históricos, software y proyectos de investigación, relativos al sensado de fallas en distintos contextos.
 
-Capítulo 3.Dispositivos hardware y herramientas software para el sensado de fallas
-----------------------------------------------------------------------------------
+.. Capítulo 3.Dispositivos hardware y herramientas software para el sensado de fallas
+.. ----------------------------------------------------------------------------------
 
-El objetivo de este capítulo es enumerar los distintos tipos de dispositivos y sensores que pueden utilizarse para realizar la captura de irregularidades viales, sus principales características y funcionamiento. 
-Por otro lado, se expondrán librerías en distintos lenguajes de programación, y métodos de almacenamiento de las fallas empleados por los mismos.
+.. El objetivo de este capítulo es enumerar los distintos tipos de dispositivos y sensores que pueden utilizarse para realizar la captura de irregularidades viales, sus principales características y funcionamiento. 
+.. Por otro lado, se expondrán librerías en distintos lenguajes de programación, y métodos de almacenamiento de las fallas empleados por los mismos.
+
+
+Capítulo 3.Sensor Kinect y herramientas software implicadas el sensado de fallas
+--------------------------------------------------------------------------------
+
+El objetivo de este capítulo es explicar el funcionamiento del sensor Kinect, características y  librerías, métodos de almacenamiento de fallas empleados por éstos, para el desarrollo de aplicaciones en Linux y Windows.
+
 
 Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
 ---------------------------------------------------------------
