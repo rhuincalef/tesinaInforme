@@ -123,8 +123,23 @@ De esta forma, el algoritmo RANSAC se repite una serie de veces hasta que se ten
 
 .. TODO: COMPLETAR ESTA PARTE!!!
 
-4 - Calculo de curvaturas principales (Principal Curvatures Estimation): Una vez realizada la segmentación, se realiza el cálculo de curvaturas para cada uno de los clusters aislados de manera que se filtren solo aquellos que se ubican en un valor dentro del rango de las fallas. PCL ofrece un algoritmo denominado Principal Curvatures Estimation (PCE) donde ...
+4 - Cálculo de curvaturas principales (Principal Curvatures Estimation): Una vez realizada la segmentación, se realiza el cálculo de curvaturas promedio para cada uno de los clusters aislados, de manera que se filtren solo aquellos que se ubican en un valor dentro del rango de las fallas, siendo estos valores establecidos a partir del análisis de valores de curvaturas para baches y grietas. PCL ofrece un algoritmo denominado Principal Curvatures Estimation (PCE) para calcular curvaturas principales mínimas y máximas de cada punto, empleando eigenvectores y eigenvalores asociados, en base a un conjunto de puntos y sus normales asociadas. Los eigenvectores (o vectores propios), son un concepto relacionado con el álgebra lineal, y son aquellos vectores no nulos tales que al ser transformados por un operador lineal,no modifican su escala o producen un vector múltiplo de si mismo,mantienendo su dirección; Siendo el escalar que los múltiplica :math:`{\lambda}` el eigenvector asociado con este valor. Matemáticamente, dada una matriz *A* n dimensional, se dice que  un vector *v* es un eigenvector y :math:`{\lambda}` es un eigenvalor asociado al eigenvector, si se cumple la siguiente equivalencia:
 
+
+.. math:: A*v = {\lambda}*v
+   :label: ecuacionEigenVector
+
+
+Así, las curvaturas principales se calculan como los eigenvalores para un eigenvector en un punto dado y permiten indicar el grado de torcedura en una superficie para un punto establecido. Gráficamente, las curvaturas principales se pueden visualizar como: Para un punto *p* sobre una superficie dada y un vector unidad normal asociado, este contendrá un plano tangente que entre el punto y el vector normal unidad y, existirán diversos planos que contendrán al vector normal unidad y que cortarán a la superficie de manera distinta, lo que generará diversas curvas con distintos valores por plano. De esta forma, los valores de curvatura seleccionados serán aquellos máximos y mínimos que representen mayor grado de variación de ese conjunto.
+
+
+.. figure:: ../figs/Cap4/curvaturas-principales.png
+   :scale: 60%
+
+   Representación gráfica de las curvaturas principales
+
+
+Por lo tanto, el algoritmo de PCE en PCL para el plano tangente a la normal de un punto dado, aplica PCA sobre las normales de los puntos en un area dada (tomando k-vecinos del punto), siendo primero estas normales trasladadas al plano tangente, y finalmente retorna la curvatura principal (eigenvector del máximo eigenvalor), junto con los valores de curvatura mínimos y máximos (eigenvalores).
 
 
 .. 4 - Filtrado de puntos con Statistical Removal luego de segmentación: Debido a que la segmentación puede producir en la práctica valores espurios, se aplica nuevamente Statistical Outliers Removal con el fin de eliminar valores extremos que puedan haber permanecido en la muestra.
