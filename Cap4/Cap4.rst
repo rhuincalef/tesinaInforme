@@ -116,9 +116,25 @@ Debido a que la complejidad computacional de PFH es del orden O(n), esto puede r
 
 VFH
 +++
-.. TODO: PONER EXPLIACIÓN DE ALGORITMO ACÁ!
+
+VFH es una variación de FPFH que se emplea para la identificación y reconocimiento de posición, donde se aprovecha la velocidad de procesamiento y la potencia de este descriptor y, se agrega el componente de punto de visión, que no es afectado por variaciones en la escala de los datos. VFH   agrega el punto de visión  a FPFH, computando un histograma de ángulos con la diferencia de ángulos entre la normal del punto de visión y cada uno de los puntos de la superficie capturada:
 
 
+
+
+.. figure:: ../figs/Cap4/VFH_punto_vision.jpg
+ 
+    Representación gráfica del primer componente entre el punto de visión y cada uno de puntos de la superficie.
+
+
+Además se agrega un componente de forma de superficie, genernado para ésto un histograma FPFH extendido, donde se incorpora la computación de los ángulos relativos entre las normales en cada punto de la captura y el centroide del objeto (punto central):
+
+.. figure:: VFH_segundo_componente.jpg
+
+   Incorporación de la diferencia entre normales de puntos y centroide del objeto 
+
+
+La implementación de PCL utiliza 45 subdivisiones para cada uno de los valores de FPFH extendido, además de 45 subdivisiones para las distancias entre cada punto y el centroide y 128 subdivisiones para el punto de visión, lo que da como resultado un arreglo de 308 valores.
 
 
 ESF
