@@ -136,16 +136,37 @@ Además se agrega un componente de forma de superficie, genernado para ésto un 
 
 La implementación de PCL utiliza 45 subdivisiones para cada uno de los valores de FPFH extendido, además de 45 subdivisiones para las distancias entre cada punto y el centroide y 128 subdivisiones para el punto de visión, lo que da como resultado un arreglo de 308 valores.
 
+GRSD
+++++
+
+Este descriptor emplea el descriptor local Radious-based Surface Descriptor (RSD), que se basa en la descripción geométrica de una superficie por medio del cálculo de información radial, computada a través de información inherente a los puntos vecinos. El funcionamiento de este algoritmo se basa en establecer una relación entre los ángulos de las normales :math:`{\lambda}`, la distancia entre éstas *d* y el radio de una superficie *r* por medio de la siguiente fórmula: 
+
+
+.. math:: `d = r* {\alpha}`
+   :label: ecuacion1
+
+Así, este algoritmo considera aquellos puntos que petenezcan a la misma superficie tendrán un rango de valores de radio similar, por lo que para el caso de un plano el radio estimado será siempre infinito entre el punto y todos los vecinos, si se trata de una superficie esférica todos los circulos que se encuentren en su vecindario tendrán el mismo radio *r*, y para un punto en una superficie cilíndrica, estos tendrán valores similares.   
+Por lo tanto, para cada par de puntos se computa el ángulo entre las normales de éstos y se obtienen los radios mínimos y máximos asociados a cada distancia, en 5 valores de distancia diferentes. Finalmente, se almacenan en el descriptor solo los valores de radio mínimo y máximo de ese conjunto, para ese punto.
+
+
+.. figure:: ../figs/Cap4/descriptor_grsd.png
+
+   Izquierda: Relación entre radio, ángulo y distancia. Derecha: Se muestra un gráfico de número /densidad de puntos en un rango de 1cm para diferentes objetos, ejemplificando la delimitación del tipo de superficie (plano,esfera,cilindro,ruido) según el rango de radios mínimo y máximo.   
+
+Esta método cuenta con la ventaja de ser fácil de computar y aún así mantener su capacidad de descripción, y se emplea principalmente para la detección de puntos que pertenecen a distintas superficies.
+
+.. TODO: CONTINUAR CON https://ias.cs.tum.edu/_media/spezial/bib/marton11ijrr.pdf
+
+GRSD consiste en emplear ...
+
+
+
 
 ESF
 +++
 .. TODO: PONER EXPLIACIÓN DE ALGORITMO ACÁ!
 
 
-GRSD
-++++
-
-.. TODO: PONER EXPLIACIÓN DE ALGORITMO ACÁ!
 
 
 
