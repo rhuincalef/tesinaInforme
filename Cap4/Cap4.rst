@@ -143,15 +143,20 @@ Este descriptor emplea el descriptor local Radious-based Surface Descriptor (RSD
 
 
 .. math:: `d = r* {\alpha}`
-   :label: ecuacion1
-
-Así, este algoritmo considera aquellos puntos que petenezcan a la misma superficie tendrán un rango de valores de radio similar, por lo que para el caso de un plano el radio estimado será siempre infinito entre el punto y todos los vecinos, si se trata de una superficie esférica todos los circulos que se encuentren en su vecindario tendrán el mismo radio *r*, y para un punto en una superficie cilíndrica, estos tendrán valores similares.   
-Por lo tanto, para cada par de puntos se computa el ángulo entre las normales de éstos y se obtienen los radios mínimos y máximos asociados a cada distancia, en 5 valores de distancia diferentes. Finalmente, se almacenan en el descriptor solo los valores de radio mínimo y máximo de ese conjunto, para ese punto.
+   :label: ecuacionRadio
 
 
-.. figure:: ../figs/Cap4/descriptor_grsd.png
+.. figure:: ../figs/Cap4/radio_rsd_entre_normales.png
 
-   Izquierda: Relación entre radio, ángulo y distancia. Derecha: Se muestra un gráfico de número /densidad de puntos en un rango de 1cm para diferentes objetos, ejemplificando la delimitación del tipo de superficie (plano,esfera,cilindro,ruido) según el rango de radios mínimo y máximo.   
+   Representación gráfica el ángulo, el radio y la esfera
+
+
+Por lo tanto, para un punto punto *p* dado y cada uno de sus puntos vecinos, se calcula la diferencia entre normales, por medio del cálculo del ángulo :math:`{\alpha}`, la distancia entre las normales *d*y con estos valores, se obtiene el radio *r* de la esfera que engloba tanto a *p*  y su normal como  a uno de sus puntos vecinos y su normal asociada. Este proceso genera un conjunto de radios de las esferas que contienen a *p* y cada uno de sus vecinos, y sólo se agregan al descriptor de ese punto los radios máximos y mínimos.
+
+.. figure:: ../figs/Cap4/diagrama_densidad_grsd.png
+
+   En el gráfico de densidad, se muestra un gráfico de número /densidad de puntos en un rango de 1cm para diferentes objetos, ejemplificando la delimitación del tipo de superficie (plano,esfera,cilindro,ruido) según el rango de radios mínimo y máximo.
+
 
 Esta método cuenta con la ventaja de ser fácil de computar y aún así mantener su capacidad de descripción, y se emplea principalmente para la detección de puntos que pertenecen a distintas superficies.
 
