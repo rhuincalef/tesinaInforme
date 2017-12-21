@@ -162,7 +162,7 @@ Esta método cuenta con la ventaja de ser fácil de computar y aún así mantene
 
 .. TODO: CONTINUAR CON https://ias.cs.tum.edu/_media/spezial/bib/marton11ijrr.pdf
 
-GRSD consiste en emplear ...
+GRSD consiste en generar agrupamiento de puntos(o voxels) en lugar de puntos individuales, donde cada voxel tiene un ancho de 2.5 cm, y se procede a computar los radios máximos y mínimos entre y a etiquetar cada uno de los voxels según su valor de radio, siendo un plano si el radio_minimo > 0.1, una superficie cilíndrica si no es un plano y radio_máximo > 0.175, un borde/esquina o ruido, si no es cilindrico y radio_mínimo < 0.015, esférico si no es un borde y radio_maximo - radio_minimo < 0.05 y otra superficie si no es ninguna de las anteriores. Una vez etiquetados todos los voxels, se computa una característica global que describe las relaciones entre los clusters.
 
 
 
