@@ -338,52 +338,55 @@ Al observar que la precisión incrementó reclasificando el dataset de training,
 * Con ESF 98% para un kernel Linear y 54% para un kernel RBF.
  
 
-Finalmente, se realizó una comparación de las métricas de clasificación respecto de los distintos descriptores para la división original de muestras(53 en total), con el fin de contrastar la efectividad de clasificación de éstos y comprobar la superioridad de ESF respecto al resto. Para ello, se calcularon los valores de F1-Score y Recall para ambas clases y la matriz de confusión para exponer la cantidad de elementos efectivamente asignados a cada clase. Los valores de F1-Score y Recall se pueden observar a continuación: 
-
-.. TODO: REALIZAR UN CUADRO COMPARATIVO PARA KERNEL LINEAR Y KERNEL RBF DEL CONJUNTO INICIAL DE TRAIN/TEST
-
-Kernel Linear -->
-
-+------------+------------+-------------------------------+
-| Tipo de muestra  | Precision   | Recall  |  F1-Score    |
-+============+============+===============================+
-| Baches           |  1.0        | 1.0     |  1.0         |   
-+------------+------------+-------------------------------+
-| Grietas          |  1.0        | 1.0     | 1.0          |
-+------------+------------+-------------------------------+
-| avg/total        |  1.0        | 1.0     | 1.0          |
-+------------+------------+-------------------------------+
-
-*Métricas para descriptor ESF con Kernel Linear*
+Finalmente, se realizó una comparación de las métricas de clasificación respecto de los distintos descriptores para la división original de muestras(53 en total), con el fin de contrastar la efectividad de clasificación de éstos y comprobar la superioridad de ESF respecto al resto. Para ello, se calcularon los valores de F1-Score y Recall para ambas clases y la matriz de confusión para exponer la cantidad de elementos efectivamente asignados a cada clase. Los valores de F1-Score y Recall para la partición del dataset inicial, con los kernels linear y RBF, se puede observar a continuación: 
 
 
-+------------+------------+---------------------------------+ 
-| Tipo de muestra  | Precision   | Recall  |  F1-Score      |
-+============+============+=================================+ 
-| Baches           |  0.91        | 0.48     |  0.63        |   
-+------------+------------+---------------------------------+ 
-| Grietas          |  0.23        | 0.78     | 0.36         |
-+------------+------------+---------------------------------+ 
-| avg/total        |  0.80        | 0.53     | 0.58         |
-+------------+------------+---------------------------------+ 
++------------------+----------------------------------------+------------------------------------+
+|                  |              Kernel Linear             |             Kernel RBF             |
++------------------+-------------+---------+----------------+-------------+---------+------------+
+| Tipo de muestra  | Precision   | Recall  |  F1-Score      | Precision   | Recall  |  F1-Score  |
++==================+=============+=========+================+=============+=========+============+
+| Baches           |  1.0        | 1.0     |  1.0           |     0.0     |   0.0   |     0.0    | 
++------------------+-------------+---------+----------------+-------------+---------+------------+
+| Grietas          |  1.0        | 1.0     |  1.0           |     0.17    |   1.0   |     0.29   |
++------------------+-------------+---------+----------------+-------------+---------+------------+
+| avg/total        |  1.0        | 1.0     |  1.0           |     0.03    |   0.17  |     0.05   |
++------------------+-------------+---------+----------------+-------------+---------+------------+ 
 
-*Métricas para descriptor FPFH con Kernel Linear*
-
-
-+------------+------------+---------------------------------+ 
-| Tipo de muestra  | Precision   | Recall  |  F1-Score      |
-+============+============+=================================+ 
-| Baches           |  0.83        | 1      |  0.91          |   
-+------------+------------+---------------------------------+ 
-| Grietas          |  0.23        | 0.78   |  0.36          |
-+------------+------------+---------------------------------+ 
-| avg/total        |  0.80        | 0.53   | 0.58           |
-+------------+------------+---------------------------------+ 
-
-*Métricas para descriptor GRSD con Kernel Linear*
+*Métricas para descriptor ESF con Kernel Linear-RBF*
 
 
-La matriz de confusión para cada uno de los descriptores empleados fue la siguiente:
++------------------+----------------------------------------+------------------------------------+
+|                  |              Kernel Linear             |             Kernel RBF             |
++------------------+-------------+---------+----------------+-------------+---------+------------+ 
+| Tipo de muestra  | Precision   | Recall  |  F1-Score      | Precision   | Recall  |  F1-Score  |
++==================+=============+=========+================+=============+=========+============+ 
+| Baches           |  0.83       | 1       |  0.91          |     0.00    |   0.00  |    0.00    |
++------------------+-------------+---------+----------------+-------------+---------+------------+   
+| Grietas          |  0.23       | 0.78    |  0.36          |     0.17    |   1.00  |    0.29    |
++------------------+-------------+---------+----------------+-------------+---------+------------+ 
+| avg/total        |  0.80       | 0.53    |  0.58          |     0.03    |   0.17  |    0.05    |
++------------------+-------------+---------+----------------+-------------+---------+------------+  
+
+*Métricas para descriptor GRSD con Kernel Linear-RBF*
+
+
++------------------+----------------------------------------+------------------------------------+
+|                  |              Kernel Linear             |             Kernel RBF             |
++------------------+-------------+---------+----------------+-------------+---------+------------+ 
+| Tipo de muestra  | Precision   | Recall  |  F1-Score      | Precision   | Recall  |  F1-Score  |
++==================+=============+=========+================+=============+=========+============+ 
+| Baches           |  0.91       | 0.48    |  0.63          |      1.00   |   0.09  |  0.17      |
++------------------+-------------+---------+----------------+-------------+---------+------------+  
+| Grietas          |  0.23       | 0.78    |  0.36          |      0.18   |   1.00  |  0.31      |
++------------------+-------------+---------+----------------+-------------+---------+------------+  
+| avg/total        |  0.80       | 0.53    |  0.58          |      0.86   |   0.25  |  0.19      |
++------------------+-------------+---------+----------------+-------------+---------+------------+  
+
+*Métricas para descriptor FPFH con Kernel Linear-RBF*
+
+
+La matriz de confusión para cada uno de los descriptores empleados, con la partición de datos inicial, fue la siguiente:
 
 
 .. figure:: ../figs/Cap4/matriz_confusion_GRSD.png 
@@ -402,5 +405,16 @@ La matriz de confusión para cada uno de los descriptores empleados fue la sigui
    :scale: 70%
 
    Matriz de confusión de SVM con descriptor FPFH
+
+
+Finalmente, se realizó una comparación de la precisión promedio del k-folding de cada uno de los métodos con la precisión brindada por un clasificador Dummy, para comprobar realmente que la eficiencia de clasificación del clasificador (con kernel linear) sobrepasa la de un clasificador aleatorio:
+
++----------------------+----------------------------+------------------------------+---------------+ 
+|   Tipo de descriptor |           ESF              |          GRSD                |     FPFH      |
++----------------------+----------------------------+------------------------------+---------------+ 
+| Tipo de clasificador | ClasificadorESF | DummyESF | ClasificadorGRSD | DummyGRSD | ClasificadorFPFH | DummyFPFH |
++======================+==================+=========+==================+===========+==================+=========+ 
+| Precision            |       0.98      |   0.45   |         0.89    |    0.516   |       0.63      | 0.494      |   
++----------------------+------------------+---------+------------------+-----------+-----------------+---------------+ 
 
 
