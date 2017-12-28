@@ -7,8 +7,33 @@ Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
 
 .. TODO: Concepto de machine learning, entrenamiento supervisado vs no supervisado.Clasificacion y regresion.
 .. TODO: Usos y aplicaciones de ML
-.. TODO: Etapa de preprocesamiento de datos
+.. TODO: Etapa de pre-procesamiento de datos
 .. TODO: Metricas empleadas en cada uno de los metodos para la clasificación
+
+
+La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecanismos(reglas if-then, árboles de decisión, redes neuronales,etc.) que posibilitan a las computadoras imitar el la inteligencia humana con el fin de realizar tareas tales como: la toma de decisiones, resolver problemas y el aprendizaje; Considerándose un comportamiento inteligente, a aquél que involucra percibir o deducir información de un contexto y almacenarla en forma de conocimiento, de manera que pueda ser aplicado en futuras situaciones o contextos. Así, Machine Learning(ML) es una rama dentro de IA y consiste en aquellos mecanismos que se basan en identificar patrones en un conjunto de datos y, generar conocimiento de estas relaciones con el fin de aplicarlo en futuras predicciones. 
+
+
+
+De esta forma, ML se diferencia del paradigma de programación clásico donde un equipo de desarrollo programa instrucciones que procesan datos y se generándose salidas en base a estructuras predefinidas, en que los desarrolladores ingresan datos y las respuestas relacionadas a estos datos, y obtienen reglas de salida que pueden ser aplicadas a nuevos datos, para realizar nuevas predicciones. Así, ...
+
+A machine-learning system is trained rather than explicitly programmed. It’s presented with many examples relevant to a task, and it finds statistical structure in these examples that eventually allows the system to come up with rules for automating the task. For instance, if you wished to automate the task of tagging your vacation pictures, you could present a machine-learning system with many examples of pictures already tagged by humans, and the system would learn statistical rules for associating specific pictures to specific tags.
+
+
+.. figure:: ../figs/Cap4/ML_paradigma.jpg
+
+   Paradigma de ML vs paradigma de programación tradicional.
+
+
+
+
+
+
+.. TODO: PONER GRÁFICO DE AI-ML-DEEP LEARNING
+.. TODO: PONER GRÁFICO DEL PARADIGMA DE MACHINE LEARNING
+
+
+
 
 
 
