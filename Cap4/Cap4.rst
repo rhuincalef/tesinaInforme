@@ -2,6 +2,7 @@ Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
 ===============================================================
 
 
+.. Header H3 -->
 ¿Qué es Machine Learning(ML)?
 -----------------------------
 
@@ -11,28 +12,73 @@ Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
 .. TODO: Metricas empleadas en cada uno de los metodos para la clasificación
 
 
-La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecanismos(reglas if-then, árboles de decisión, redes neuronales,etc.) que posibilitan a las computadoras imitar el la inteligencia humana con el fin de realizar tareas tales como: la toma de decisiones, resolver problemas y el aprendizaje; Considerándose un comportamiento inteligente, a aquél que involucra percibir o deducir información de un contexto y almacenarla en forma de conocimiento, de manera que pueda ser aplicado en futuras situaciones o contextos. Así, Machine Learning(ML) es una rama dentro de IA y consiste en aquellos mecanismos que se basan en identificar patrones en un conjunto de datos, para generar conocimiento de estas relaciones, con el fin de aplicarlo en futuras predicciones. De esta forma, ML es un campo multidisciplinario que toma resultados de la inteligencia artificial, probabilidad, estadística, teoría de la información, filosofía, psicología y neurobiología.
+La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecanismos(reglas if-then, árboles de decisión, redes neuronales,etc.) que posibilitan a las computadoras imitar la inteligencia humana con el fin de realizar tareas tales como: la toma de decisiones, resolver problemas y el aprendizaje; Considerándose un comportamiento inteligente, a aquél que involucra percibir o deducir información de un contexto y almacenarla en forma de conocimiento, de manera que pueda ser aplicado en futuras situaciones o contextos. Así, Machine Learning(ML) es una rama dentro de IA y consiste en aquellos mecanismos que se basan en identificar patrones en un conjunto de datos, para generar conocimiento de estas relaciones que puede ser aplicado en futuras predicciones, mientras que Deep Learning es un subconjunto de algoritmos de ML, donde el aprendizaje se realiza por medio de sucesivas capas que representan el problema que son generadas automáticamente por medio de la exposición a datos de entrada, y permiten que una máquina aprenda conceptos complicados a través de su descomposición en conceptos más simples. Estas representaciones en Deep Learning se generan por medio de modelos denominados Redes Neuronales expuestas a enormes cantidades de datos, y cuyo funcionamiento se inspira en el funcionamiento del cerebro humano. 
 
 
 
+.. figure:: ../figs/Cap4/Diferencia_AI_ML_DL.jpg
 
+   Comparación de AI, ML y Deep Learning
 
-.. TODO: PONER GRÁFICO DE AI-ML-DEEP LEARNING
 
 
 .. TODO: PONER EL FLUJO DE TRABAJO DE ML -->
 ..  https://livebook.manning.com/#!/book/real-world-machine-learning/chapter-1/104
 
-De esta forma, ML se diferencia del paradigma de programación clásico donde un equipo de desarrollo programa instrucciones que procesan datos y se generándose salidas en base a estructuras predefinidas, en que los desarrolladores ingresan datos y las respuestas relacionadas a estos datos, y obtienen reglas de salida que pueden ser aplicadas a nuevos datos, para realizar nuevas predicciones. Por lo tanto, el uso de machine learning implica una etapa de entrenamiento training donde se genera un modelo por medio de elementos que son relevantes a una tarea, lo que permite que el modelo identifique patrones que permitan automatizar la tarea. 
-
-.. A machine-learning system is trained rather than explicitly programmed. It’s presented with many examples relevant to a task, and it finds statistical structure in these examples that eventually allows the system to come up with rules for automating the task. For instance, if you wished to automate the task of tagging your vacation pictures, you could present a machine-learning system with many examples of pictures already tagged by humans, and the system would learn statistical rules for associating specific pictures to specific tags.
-
+De esta forma, ML se diferencia del paradigma de programación clásico donde un equipo de desarrollo programa instrucciones que procesan datos y se generan salidas en base a estructuras predefinidas, en que para esta metodología solamente se ingresan datos (y opcionalmente sus respuestas),y se obtienen reglas de salida que pueden ser aplicadas a nuevos datos para realizar predicciones. Por lo tanto en ML, se considera que dado un programa cuyo rendimiento en la predicción sobre un conjunto de datos(o dataset) que se encuentra medido por medio de alguna métrica (que indica que tan precisas son sus predicciones sobre ese conjunto de datos), éste aprende de la experiencia si su rendimiento mejora al adquirir más experiencia.
 
 .. figure:: ../figs/Cap4/ML_paradigma.jpg
 
    Paradigma de ML vs paradigma de programación tradicional.
 
+Flujo de trabajo en ML
+^^^^^^^^^^^^^^^^^^^^^^
 
+Así, el flujo de trabajo en ML para la generación y prueba de un modelo de predicción se puede subdividir en las siguientes fases:
+
+1. Pre-procesamiento de datos(feature extraction). 
+2. Etapa de entrenamiento del modelo (training). Se genera un modelo por medio de elementos que son relevantes a una tarea, lo que permite que el modelo identifique patrones que permitan automatizar la tarea. 
+3. Evaluación y optimización del modelo.
+4. Etapa de validación (testing). (TODO: INCLUIR CROSS-VALIDATION)
+   
+
+.. TODO: TRADUCIR ESTA IMAGEN DE FLUJO DE TRABAJO
+
+.. figure:: ../figs/Cap4/workflow_ML.png
+
+   Flujo de trabajo general en ML
+
+
+
+.. TODO: Incluir funcionamiento de PCA aca!!!
+
+Debido a que los datos en el mundo real frecuentemente no son aceptables para ser procesados por un algoritmo de ML, debido a que contienen valores incorrectos, erróneos o nombres escritos de manera distinta aunque se refieren a la misma entidad, y dado los algoritmos de ML tienen como finalidad descubrir asociaciones y relaciones en un conjunto de datos de entrenamiento históricos (training dataset) para generar un modelo de predicción,  el primer paso para lograr ésto, consiste en realizar el pre-procesado de los datos de manera que se puedan producir datos de alta calidad, ruido leve y correlaciones fácilmente deducibles que permitan generar un modelo predictivo de alta fidelidad. De esta manera, el pre-procesamiento involucra aplicar técnicas y algoritmos para el saneamiento, visualización y transformación de datos a otro rango de valores, de forma que se reduzca la redundancia de features, la variabilidad de valores y el tiempo de procesamiento, conservando únicamente aquellas features con información relevante para el modelo. Durante esta fase se descarta información, por lo que se debe realizar con cautela ya que si atributos relevantes al modelo se descartan, puede verse afectada la capacidad de predicción de éste. En general, el pre-procesamiento de datos basa en considerar la presencia de las siguientes características en el dataset y aplicar los pasos mencionados:
+
+* Features categóricas: Las features categóricas son aquellos valores no numéricos a los que se les puede asignar un valor numérico, con el fin de que sean de utilidad para los algoritmos, tales como los días de la semana o el género. En general, los algoritmos de machine learning necesitan datos numéricos (salvo algunos casos concretos derivados de los árboles de decisión), por lo que es necesario codificar las features categóricas a través de la creación de clases con valores binarios que representan cada categoría, y luego asignar a cada muestra del dataset un valor (0 o 1) indicando si ésta pertenece o no a una determinada categoría. A continuación, se muestra un ejemplo donde para las categorías de hombre o mujer, se crea una clase binaria y se un valor 1 a la categoría donde se ubica la muestra:
+  
+
+.. figure:: ../figs/Cap4/ejemploFeatureCategorica.png
+
+   Ejemplo de conversión de feature categórica
+
+
+
+* Datos faltantes:
+
+
+
+.. TODO: Incluir Real-world machine learning! preprocessing data for modelling (categorical values, missing values),data visualization
+
+
+
+
+
+
+
+.. Header H4 -->
+
+Aplicaciones de ML
+^^^^^^^^^^^^^^^^^^
 
 .. TODO: INCLUIR APLICACIONES DE ML -->
 
@@ -40,6 +86,9 @@ De esta forma, ML se diferencia del paradigma de programación clásico donde un
 .. Introduction to machine learning- alex smola,vishwanathan- cap1
 .. Tom Mitchell - Machine learning - pag. 29.
 
+
+Beneficios del uso de ML
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. TODO: TRADUCIR VENTAJAS DE MACHINE LEARNING -->
 
@@ -53,25 +102,44 @@ To wrap up our discussion of the microlending example, we list some of the most 
 
 
 
+
+
+
+En la siguiente sección, se resumen los mecanismos principales de ML y sus métricas relacionadas al ajuste del modelo para mejorar su precisión.
+
+
+
 Mecanismos para Machine Learning(ML)
 ------------------------------------
 
 
+
+.. Algoritmos de Pre-procesamiento de datos
+.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. TODO: Incluir PCA, Normalización 
+
+
 Maquinas de soporte de Vectores(SVM)
-+++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. TODO: Completar!!!
 
 Redes Neuronales(NN)
-++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^
 
 .. TODO: Completar!!!
 
 Árboles de decisión(Tree)
-+++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. TODO: Completar!!!
 
+
+Algoritmos para la validación (testing)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. TODO: Incluir cross-validation
 
 
 
@@ -95,7 +163,7 @@ Con respecto a la elección de features para ML, debido a que únicamente alguna
 
 
 PFH-FPFH
-++++++++
+^^^^^^^^
 
 Los puntos orientados, compuestos por el vector de coordenadas y el vector normal del punto, son computacionalmente eficientes y rápidos de generar, sin embargo, no son capaces de capturar  información geométrica significativa alrededor de un punto, por lo que se necesita un descriptor que sea capaz de capturar información geométrica respecto de la curvatura, en base a los vecinos de un punto. Para ello se diseño Point Feature Histogram(PFH), que permite generalizar la curvatura media en base a los k-vecinos de un punto, empleando histograma de múltiples valores, que se caracteriza por ser invariante a la posición que adopta la superficie, robusto ante ruido y diferentes tipos de densidades en las muestras, e invariante a las rotaciones y traslaciones 3D. La implementación de este descriptor en PCL, se basa en el trabajo en :cite:`FPFH1` donde se define formalmente la metodología para computar las características locales geométricas partiendo desde una malla de triángulos.
 
@@ -156,7 +224,7 @@ Debido a que la complejidad computacional de PFH es del orden O(n), esto puede r
 
 
 VFH
-+++
+^^^
 
 VFH es una variación de FPFH que se emplea para la identificación y reconocimiento de posición, donde se aprovecha la velocidad de procesamiento y la potencia de este descriptor y, se agrega el componente de punto de visión, que no es afectado por variaciones en la escala de los datos. VFH   agrega el punto de visión  a FPFH, computando un histograma de ángulos con la diferencia de ángulos entre la normal del punto de visión y cada uno de los puntos de la superficie capturada:
 
@@ -178,7 +246,7 @@ Además se agrega un componente de forma de superficie, generando para ésto un 
 La implementación de PCL utiliza 45 subdivisiones para cada uno de los valores de FPFH extendido, además de 45 subdivisiones para las distancias entre cada punto y el centroide y 128 subdivisiones para el punto de visión, lo que da como resultado un arreglo de 308 valores.
 
 GRSD
-++++
+^^^^
 
 Este descriptor emplea el descriptor local Radious-based Surface Descriptor (RSD), que se basa en la descripción geométrica de una superficie por medio del cálculo de información radial, computada a través de información inherente a los puntos vecinos. El funcionamiento de este algoritmo se basa en establecer una relación entre los ángulos de las normales :math:`{\lambda}`, la distancia entre éstas *d* y el radio de una superficie *r* por medio de la siguiente fórmula: 
 
@@ -205,7 +273,7 @@ GRSD consiste en generar agrupamiento de puntos(o voxels) en lugar de puntos ind
 
 
 ESF
-+++
+^^^
 
 Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, sino que inicialmente emplea un conjunto de voxeles de la superficie(voxel grid). Este algoritmo consiste en iterar a través de cada uno de los puntos de la nube y, en de cada punto seleccionado, se eligen 3 puntos aleatorios y se computan las funciones de forma: D2,proporción D2(D2 ratio), D3 y A3, donde cada función genera histogramas que describen la relación geométrica entre puntos de la figura, produciendo un total de 10 sub-histogramas cada uno de 64 divisiones, por lo que el tamaño del histograma final es de 640. A continuación se detallan las funciones de forma:
 
@@ -237,7 +305,7 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
 
 
 Metodología de pre-procesado de muestras (Pipeline de Cropeado)
---------------------------------------------------------------
+---------------------------------------------------------------
 
 Debido a la cantidad numerosa de puntos que se encuentran en una captura realizada por el sensor (aproximadamente 300.000 puntos) y, a que se deseaba abstraer solo aquellas características propias de cada tipo de falla, se procedió a aplicar una serie de algoritmos como parte del pre-procesado de datos en machine learning o Pipeline de Cropeado, con el fin de reducir la cantidad de puntos de cada muestra y de sólo calcular el descriptor con los puntos principales de una falla.Este Pipleline de cropeado, se compone de los siguientes pasos:
 
@@ -456,6 +524,6 @@ Finalmente, se realizó una comparación de la precisión promedio del k-folding
 | Tipo de clasificador | ClasificadorESF | DummyESF | ClasificadorGRSD | DummyGRSD | ClasificadorFPFH | DummyFPFH |
 +======================+==================+=========+==================+===========+==================+=========+ 
 | Precision            |       0.98      |   0.45   |         0.89    |    0.516   |       0.63      | 0.494      |   
-+----------------------+------------------+---------+------------------+-----------+-----------------+---------------+ 
++----------------------+------------------+---------+------------------+-----------+-----------------+--------------+ 
 
 
