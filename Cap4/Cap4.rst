@@ -11,13 +11,21 @@ Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
 .. TODO: Metricas empleadas en cada uno de los metodos para la clasificación
 
 
-La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecanismos(reglas if-then, árboles de decisión, redes neuronales,etc.) que posibilitan a las computadoras imitar el la inteligencia humana con el fin de realizar tareas tales como: la toma de decisiones, resolver problemas y el aprendizaje; Considerándose un comportamiento inteligente, a aquél que involucra percibir o deducir información de un contexto y almacenarla en forma de conocimiento, de manera que pueda ser aplicado en futuras situaciones o contextos. Así, Machine Learning(ML) es una rama dentro de IA y consiste en aquellos mecanismos que se basan en identificar patrones en un conjunto de datos y, generar conocimiento de estas relaciones con el fin de aplicarlo en futuras predicciones. 
+La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecanismos(reglas if-then, árboles de decisión, redes neuronales,etc.) que posibilitan a las computadoras imitar el la inteligencia humana con el fin de realizar tareas tales como: la toma de decisiones, resolver problemas y el aprendizaje; Considerándose un comportamiento inteligente, a aquél que involucra percibir o deducir información de un contexto y almacenarla en forma de conocimiento, de manera que pueda ser aplicado en futuras situaciones o contextos. Así, Machine Learning(ML) es una rama dentro de IA y consiste en aquellos mecanismos que se basan en identificar patrones en un conjunto de datos, para generar conocimiento de estas relaciones, con el fin de aplicarlo en futuras predicciones. De esta forma, ML es un campo multidisciplinario que toma resultados de la inteligencia artificial, probabilidad, estadística, teoría de la información, filosofía, psicología y neurobiología.
 
 
 
-De esta forma, ML se diferencia del paradigma de programación clásico donde un equipo de desarrollo programa instrucciones que procesan datos y se generándose salidas en base a estructuras predefinidas, en que los desarrolladores ingresan datos y las respuestas relacionadas a estos datos, y obtienen reglas de salida que pueden ser aplicadas a nuevos datos, para realizar nuevas predicciones. Así, ...
 
-A machine-learning system is trained rather than explicitly programmed. It’s presented with many examples relevant to a task, and it finds statistical structure in these examples that eventually allows the system to come up with rules for automating the task. For instance, if you wished to automate the task of tagging your vacation pictures, you could present a machine-learning system with many examples of pictures already tagged by humans, and the system would learn statistical rules for associating specific pictures to specific tags.
+
+.. TODO: PONER GRÁFICO DE AI-ML-DEEP LEARNING
+
+
+.. TODO: PONER EL FLUJO DE TRABAJO DE ML -->
+..  https://livebook.manning.com/#!/book/real-world-machine-learning/chapter-1/104
+
+De esta forma, ML se diferencia del paradigma de programación clásico donde un equipo de desarrollo programa instrucciones que procesan datos y se generándose salidas en base a estructuras predefinidas, en que los desarrolladores ingresan datos y las respuestas relacionadas a estos datos, y obtienen reglas de salida que pueden ser aplicadas a nuevos datos, para realizar nuevas predicciones. Por lo tanto, el uso de machine learning implica una etapa de entrenamiento training donde se genera un modelo por medio de elementos que son relevantes a una tarea, lo que permite que el modelo identifique patrones que permitan automatizar la tarea. 
+
+.. A machine-learning system is trained rather than explicitly programmed. It’s presented with many examples relevant to a task, and it finds statistical structure in these examples that eventually allows the system to come up with rules for automating the task. For instance, if you wished to automate the task of tagging your vacation pictures, you could present a machine-learning system with many examples of pictures already tagged by humans, and the system would learn statistical rules for associating specific pictures to specific tags.
 
 
 .. figure:: ../figs/Cap4/ML_paradigma.jpg
@@ -26,14 +34,22 @@ A machine-learning system is trained rather than explicitly programmed. It’s p
 
 
 
+.. TODO: INCLUIR APLICACIONES DE ML -->
+
+.. MIT-Machine Learning Book -cap5
+.. Introduction to machine learning- alex smola,vishwanathan- cap1
+.. Tom Mitchell - Machine learning - pag. 29.
 
 
+.. TODO: TRADUCIR VENTAJAS DE MACHINE LEARNING -->
 
-.. TODO: PONER GRÁFICO DE AI-ML-DEEP LEARNING
-.. TODO: PONER GRÁFICO DEL PARADIGMA DE MACHINE LEARNING
+To wrap up our discussion of the microlending example, we list some of the most prominent advantages to using a machine-learning system, as compared to the most common alternatives of manual analysis, hardcoded business rules, and simple statistical models. The five advantages of machine learning are as follows:
 
-
-
+* Accurate— ML uses data to discover the optimal decision-making engine for your problem. As you collect more data, the accuracy can increase automatically.
+* Automated— As answers are validated or discarded, the ML model can learn new patterns automatically. This allows users to embed ML directly into an automated workflow.
+* Fast— ML can generate answers in a matter of milliseconds as new data streams in, allowing systems to react in real time.
+* Customizable— Many data-driven problems can be addressed with machine learning. ML models are custom built from your own data, and can be configured to optimize whatever metric drives your business.
+* Scalable— As your business grows, ML easily scales to handle increased data rates. Some ML algorithms can scale to handle large amounts of data on many machines in the cloud.
 
 
 

@@ -7,15 +7,16 @@ https://machinelearningmastery.com/machine-learning-books/
 
 
 
+#https://www.manning.com/books/deep-learning-with-python
 https://livebook.manning.com/#!/book/deep-learning-with-python/chapter-1/8
-https://www.manning.com/books/deep-learning-with-python
 
 Deep Learning - An MIT Book ---> 
 http://www.deeplearningbook.org/ 
 
-Real world machine learning -->
-https://www.manning.com/books/real-world-machine-learning
+Real world machine learning(Beneficios del uso de ML) -->
+#https://www.manning.com/books/real-world-machine-learning
 
+https://livebook.manning.com/#!/book/real-world-machine-learning/chapter-1
 
 AI vs Machine Learning -->
 https://en.wikipedia.org/wiki/Intelligence
