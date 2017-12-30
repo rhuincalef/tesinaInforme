@@ -86,7 +86,7 @@ Otro método para la normalización de features, es la estandarización que cons
    Fórmula de estandarización
 
 
-* Verificación de representatividad de los datos(Visualización de datos): Debido a que los valores      
+* Verificación de representatividad de los datos(Visualización de datos): Antes de realizar el entrenamiento puede ser necesario realizar la verificación de la relación y validez en las features que componen los datos de entrenamiento (por ejemplo en entrenamiento supervisado revisar como se relacionan las muestras y los resultados), necesitándose para ésto representaciones gráficas que indiquen que tan significativos son las muestras de que disponen y los tipos de muestras que podrían estar faltando.       
 
 
 
