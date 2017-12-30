@@ -61,9 +61,32 @@ Debido a que los datos en el mundo real frecuentemente no son aceptables para se
 
    Ejemplo de conversión de feature categórica
 
+* Datos faltantes: En general la información faltante en datasets, debido ya sea porque no pudo ser recolectada o porque no pudo ser medida, puede suceder que estos datos sean significativos para el algoritmo de ML, en cuyo caso se debe asignar un valor no valido entre -1 y -999 y proceder a probar el modelo, mientras que en caso contrario, se puede proceder a eliminar aquellas muestras de datos en las que el valor del atributo no se encuentre. Si la cantidad de muestras descartadas son suficientes como para disminuir la capacidad de predicción del modelo, se puede simplemente reemplazar aquellos valores faltantes por la media o la mediana del resto de valores de ese feature.
+
+* Datos en distintas escalas de valores(Normalización de datos): Algunos algoritmos de ML requieren que las features se normalicen, de manera que residan en el mismo rango de numérico, debido a que el rango de una feature puede influenciar la importancia de la feature con respecto a otras. La normalización consiste en ajustar los valores para que se distribuyan entre un valor mínimo y máximo, generalmente ubicado entre [-1,1] o [0,1]. Existen varias maneras de realizar ésto, una de ellas es rescaling aunque la mas sencilla consiste en restar al valor mínimo a cada valor del rango de valores y dividir ésto sobre el rango total de valores, lo que brinda valores en el intervalo [0,1] o [-1,1] aplicando la siguiente fórmula:
+  
+.. figure:: ../figs/Cap4/formula_rescaling.png
+
+   Fórmula Rescaling
 
 
-* Datos faltantes:
+Alternativamente, se puede aplicar la fórmula anterior reemplazando la resta del valor mínimo por la media de los valores:
+
+
+
+.. figure:: ../figs/Cap4/formula_mean_normalization.png
+
+   Fórmula normalización por media
+
+
+Otro método para la normalización de features, es la estandarización que consiste en calcular la media y su desvío estándar para los valores de una feature determinada, y luego por cada valor de esa feature substraer la media y dividir por el desvío estándar
+
+.. figure:: ../figs/Cap4/formula_estandarizacion.png
+
+   Fórmula de estandarización
+
+
+* Verificación de representatividad de los datos(Visualización de datos): Debido a que los valores      
 
 
 
