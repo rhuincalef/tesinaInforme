@@ -132,9 +132,13 @@ Otro mecanismo empleado para visualizar la relación entre features de un datase
 
 Adicionalmente, durante la etapa de pre-procesamiento se puede aplicar un análisis de componentes principales (Principal Component Analysis,PCA) que es un algoritmo que consiste en realizar la transformación de un conjunto de datos con o sin correlación a un espacio de menor dimensión sin correlación, denominadas componentes principales. Para ello aplica a la matriz de correlación la descomposición de valores singulares, que es una factorización donde se computan los eigenvalores(o autovalores) y en base éstos se computa su raíz cuadrada, dando como resultado los valores singulares de la matriz. De esta forma, se busca que al reducir la dimensionalidad de los datos, se conserven solamente aquellos elementos que tengan mayor varianza y por lo tanto, sean los que aporten mayor información al modelo a construir.   
 
-Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento del modelo donde se realiza la construcción del modelo en base a los datos saneados...
+Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento donde se exponen los algoritmos de ML a los datos pre-procesados y se ajustan las configuraciones del modelo para controlar el comportamiento de éste ante los datos(hyperparametros del modelo). Estos hyperparametros no son ajustados por el modelo automáticamente, ya que en algunos casos éstos pueden ser difíciles de determinar y para aquellos que controlan la capacidad de predicción del modelo, si se aprenden para el dataset en particular, siempre brindarán la máxima capacidad de predicción para esos datos, lo que no implica que la capacidad de predicción del modelo sea la misma con otro conjunto de datos. Debido a ésto, los hyperparametros se suelen ajustar manualmente y, durante esta fase el dataset completo se suele subdividir en datos de entrenamiento (entre 70% y 80% del total de muestras) y datos de testing (30%-40% del total de las muestras). Generalmente los datos del dataset son previamente estructurados durante el pre-procesamiento en vectores vectores o matrices, separando los datos que contienen features en matrices y, las respuestas a éstos(también denominadas labels o targets), si se dispone de ellas, en un vector cuyos resultados se corresponden con la cantidad de muestras y se encuentran ordenados.  
 
 
+Existen distintos tipos de métodos de entrenamiento según el objetivo perseguido con la generación del modelo entre los que se distinguen tres clases principales: Aprendizaje supervisado, aprendizaje no supervisado y aprendizaje por refuerzo. El aprendizaje supervisado, consiste en emplear las features y las respuestas de éstas(labels o clases) en un dataset para detectar relaciones entre los datos y sus resultados y así
+
+
+.. TODO: Definir tipos de entrenamiento (supervisado vs no supervisado)
 
 
 
