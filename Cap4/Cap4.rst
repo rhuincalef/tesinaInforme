@@ -122,7 +122,18 @@ Otro mecanismo empleado para visualizar la relación entre features de un datase
 
 .. figure:: ../figs/Cap4/Correlation-Matrix-Plot.png
 
-   Ejemplo de gráfico de matriz de correlación 
+   Ejemplo de gráfico de matriz de correlación para features relacionadas con personas que padecen diabetes. 
+
+
+.. https://es.wikipedia.org/wiki/An%C3%A1lisis_de_componentes_principales
+.. https://es.wikipedia.org/wiki/Teorema_de_descomposici%C3%B3n_espectral
+.. https://es.wikipedia.org/wiki/Descomposici%C3%B3n_en_valores_singulares
+.. http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA
+
+Adicionalmente, durante la etapa de pre-procesamiento se puede aplicar un análisis de componentes principales (Principal Component Analysis,PCA) que es un algoritmo que consiste en realizar la transformación de un conjunto de datos con o sin correlación a un espacio de menor dimensión sin correlación, denominadas componentes principales. Para ello aplica a la matriz de correlación la descomposición de valores singulares, que es una factorización donde se computan los eigenvalores(o autovalores) y en base éstos se computa su raíz cuadrada, dando como resultado los valores singulares de la matriz. De esta forma, se busca que al reducir la dimensionalidad de los datos, se conserven solamente aquellos elementos que tengan mayor varianza y por lo tanto, sean los que aporten mayor información al modelo a construir.   
+
+Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento del modelo donde se realiza la construcción del modelo en base a los datos saneados...
+
 
 
 
