@@ -130,7 +130,7 @@ Otro mecanismo empleado para visualizar la relación entre features de un datase
 
 Adicionalmente, durante la etapa de pre-procesamiento se puede aplicar un análisis de componentes principales (Principal Component Analysis,PCA) que es un algoritmo que consiste en realizar la transformación de un conjunto de datos con o sin correlación a un espacio de menor dimensión sin correlación, denominadas componentes principales. Para ello aplica a la matriz de correlación la descomposición de valores singulares, que es una factorización donde se computan los eigenvalores(o autovalores) y en base éstos se computa su raíz cuadrada, dando como resultado los valores singulares de la matriz. De esta forma, se busca que al reducir la dimensionalidad de los datos, se conserven solamente aquellos elementos que tengan mayor varianza y por lo tanto, sean los que aporten mayor información al modelo a construir.   
 
-Adicionalmente durante la fase de pre-procesamiento, si es que los datos del dataset no se estructuraron previamente, se los estructura, separando los datos de entrada que contienen features en una matriz, donde cada columna se asocia con una feature  y cada fila se asocia a una muestra individual y, si se dispone de las respuestas a éstos (también denominadas labels o targets), se organizan en un vector que alberga el grupo o clase asociado a cada muestra, siendo éste un vector con 1 columna y con tantas filas como muestras existan en el dataset.
+Además durante la fase de pre-procesamiento, si es que los datos del dataset no se estructuraron previamente, se los estructura, separando los datos de entrada que contienen features en una matriz, donde cada columna se asocia con una feature  y cada fila se asocia a una muestra individual y, si se dispone de las respuestas a éstos (también denominadas labels o targets), se organizan en un vector que alberga el grupo o clase asociado a cada muestra, siendo éste un vector con 1 columna y con tantas filas como muestras existan en el dataset.
 
 .. figure:: ../figs/Cap4/separacion_features_target.png
 
@@ -139,7 +139,18 @@ Adicionalmente durante la fase de pre-procesamiento, si es que los datos del dat
 
 Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento donde se exponen los algoritmos de ML a los datos pre-procesados y se ajustan las configuraciones del modelo para controlar el comportamiento de éste ante los datos(hyperparametros del modelo). Estos hyperparametros no son ajustados por el modelo automáticamente, ya que en algunos casos éstos pueden ser difíciles de determinar y para aquellos que controlan la capacidad de predicción del modelo, si se aprenden para el dataset en particular, siempre brindarán la máxima capacidad de predicción para esos datos, lo que no implica que la capacidad de predicción del modelo sea la misma con otro conjunto de datos. Por otro lado, debido a que el interés de generar un modelo radica en observar la capacidad de predicción sobre datos no solamente de entrenamiento, sino también aquellos que no ha recibido anteriormente, ya que esto determinará su rendimiento en un entorno real, durante esta fase el dataset completo se suele subdividir en datos de entrenamiento (entre 70% y 80% del total de muestras) y datos de testing (30%-40% del total de las muestras). 
 
-.. TODO: VER overfitting y underfitting. MIT book pag. 125.
+.. https://machinelearningmastery.com/overfitting-and-underfitting-with-machine-learning-algorithms/
+
+Durante esta etapa, el entrenamiento del modelo con el dataset, buscará que el modelo mejore su nivel de generalización, es decir, con que precisión el modelo aplica los conceptos aprendidos de los datos de entrenamiento a nuevos datos, dentro del dominio del problema. Dos conceptos relacionados a esta fase en el entrenamiento supervisado son overfitting y underfitting:
+
+* Overfitting ocurre cuando el modelo aprende la distribución de los datos y el ruido del dataset y los considera como conceptos, de manera que se ve afectada negativamente la capacidad de predicción del modelo, ya que estos conceptos no aplican a nuevos datos. De esta forma, cuando ocurre overfitting el error de predicción disminuye considerablemente con datos de entrenamiento, sin embargo, al contrastarlo con datos de prueba éste aumenta considerablemente.
+* Underfitting sucede cuando el modelo no puede aprender conceptos del dataset de training y, por lo tanto, tampoco puede realizar predicciones sobre datos de testing, mostrando un rendimiento pobre incluso en datos de entrenamiento.
+  
+
+.. figure:: ../figs/Cap4/plot_underfitting_overfitting_001.png
+
+   En este ejemplo, se muestra la función de tres modelos polinómicos de diferente grado que intentan aproximar parte de la función coseno, representándose éstos por una línea azul, la función real por una línea amarilla y las muestras producidas por puntos azules. En el diagrama de la izquierda, se observa que el modelo (polinomio grado 1) sufre de underfitting, ya que no puede ajustarse a los datos de entrenamiento. En el diagrama de la derecha, se puede observar que el modelo (polinomio de grado 15) sufre de overfitting, ya que aprende cada uno de los datos de prueba incluyendo el ruido y perdiendo la similitud con la función coseno real. En la gráfica del centro, se puede observar que el modelo se ajusta de manera casi perfecta al de la función coseno real, y se ajusta a aquellos datos que la representan, ignorando aquellas muestras que generan ruido.   
+
 
 
 
@@ -157,6 +168,9 @@ Existen distintos tipos de métodos de entrenamiento según el objetivo persegui
 Por el contrario, en el aprendizaje no supervisado no se conocen las clases, contando solo con los datos de entrada, por lo que su objetivo es obtener las clases descubriendo grupos de ejemplos similares en los datos(también denominado clustering) o, proyectar los datos desde un espacio de dimensiones superiores a uno de menores dimensiones, con el objetivo de maximizar la varianza entre las features (reducción de dimensionalidad como PCA). En el aprendizaje por refuerzo, el algoritmo no cuenta con muestras que correspondan con una salida correcta, sino que debe descubrirlas por medio de un proceso de prueba y error. Por ejemplo, utilizando aprendizaje por refuerzo ...
  
 
+
+
+.. CROSS-VALIDATION, Curva ROC para validacion!(Aprendizaje SUPERVISADO)
 
 
 
