@@ -37,9 +37,10 @@ Flujo de trabajo en ML
 Así, el flujo de trabajo en ML para la generación y prueba de un modelo de predicción se puede subdividir en las siguientes fases:
 
 1. Pre-procesamiento de datos(feature extraction). 
-2. Etapa de entrenamiento del modelo (training). Se genera un modelo por medio de elementos que son relevantes a una tarea, lo que permite que el modelo identifique patrones que permitan automatizar la tarea. 
-3. Evaluación y optimización del modelo.
-4. Etapa de validación (testing). (TODO: INCLUIR CROSS-VALIDATION)
+2. Etapa de entrenamiento del modelo (training).
+3. Evaluación y optimización del modelo(TODO: DESCRIBIR ALGUNAS DE LAS MÉTRICAS PARA LA EVALUACIÓN DEL MODELO EN CLASIFICACION, REGRESION Y CLUSTERING).
+4. Etapa de validación (testing). (TODO: INCLUIR CONCEPTO DE OVERFITTING-UNDERFITTING, Y FORMAS DE EVITARLOS: INCLUIR CROSS-VALIDATION, Y DEMAS...)
+.. 3. Evaluación y validación del modelo(testing).
    
 
 .. TODO: TRADUCIR ESTA IMAGEN DE FLUJO DE TRABAJO
@@ -141,18 +142,6 @@ Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento dond
 
 .. https://machinelearningmastery.com/overfitting-and-underfitting-with-machine-learning-algorithms/
 
-Durante esta etapa, el entrenamiento del modelo con el dataset, buscará que el modelo mejore su nivel de generalización, es decir, con que precisión el modelo aplica los conceptos aprendidos de los datos de entrenamiento a nuevos datos, dentro del dominio del problema. Dos conceptos relacionados a esta fase en el entrenamiento supervisado son overfitting y underfitting:
-
-* Overfitting ocurre cuando el modelo aprende la distribución de los datos y el ruido del dataset y los considera como conceptos, de manera que se ve afectada negativamente la capacidad de predicción del modelo, ya que estos conceptos no aplican a nuevos datos. De esta forma, cuando ocurre overfitting el error de predicción disminuye considerablemente con datos de entrenamiento, sin embargo, al contrastarlo con datos de prueba éste aumenta considerablemente.
-* Underfitting sucede cuando el modelo no puede aprender conceptos del dataset de training y, por lo tanto, tampoco puede realizar predicciones sobre datos de testing, mostrando un rendimiento pobre incluso en datos de entrenamiento.
-  
-
-.. figure:: ../figs/Cap4/plot_underfitting_overfitting_001.png
-
-   En este ejemplo, se muestra la función de tres modelos polinómicos de diferente grado que intentan aproximar parte de la función coseno, representándose éstos por una línea azul, la función real por una línea amarilla y las muestras producidas por puntos azules. En el diagrama de la izquierda, se observa que el modelo (polinomio grado 1) sufre de underfitting, ya que no puede ajustarse a los datos de entrenamiento. En el diagrama de la derecha, se puede observar que el modelo (polinomio de grado 15) sufre de overfitting, ya que aprende cada uno de los datos de prueba incluyendo el ruido y perdiendo la similitud con la función coseno real. En la gráfica del centro, se puede observar que el modelo se ajusta de manera casi perfecta al de la función coseno real, y se ajusta a aquellos datos que la representan, ignorando aquellas muestras que generan ruido.   
-
-
-
 
 Existen distintos tipos de métodos de entrenamiento según el objetivo perseguido con la generación del modelo, entre los que se distinguen tres clases principales: Aprendizaje supervisado, aprendizaje no supervisado y aprendizaje por refuerzo. El aprendizaje supervisado, consiste en emplear los datos de entrada y los labels (o clases) asociados a éstos para detectar relaciones entre los datos y sus resultados y predecir nuevos valores en base a éstos. Los modelos producidos por este tipo de método se subdividen en modelos de clasificación y de predicción, siendo los modelos de clasificación aquellos donde se asigna un dato de entrada a una clase predefinida, tales como los detectores de Spam que clasifican cada e-mail en la categoría de Spam o No Spam, o los reconocedores de dígitos manuscritos que asignan a un nuevo valor a una clase entre 0 y 9. Mientras que, los modelos de regresión dado un dato de entrada generan un valor numérico continuo, como por ejemplo predecir el valor del dólar en un modelo financiero.
 
@@ -165,12 +154,42 @@ Existen distintos tipos de métodos de entrenamiento según el objetivo persegui
    Representación gráfica de modelo regresor
 
 
-Por el contrario, en el aprendizaje no supervisado no se conocen las clases, contando solo con los datos de entrada, por lo que su objetivo es obtener las clases descubriendo grupos de ejemplos similares en los datos(también denominado clustering) o, proyectar los datos desde un espacio de dimensiones superiores a uno de menores dimensiones, con el objetivo de maximizar la varianza entre las features (reducción de dimensionalidad como PCA). En el aprendizaje por refuerzo, el algoritmo no cuenta con muestras que correspondan con una salida correcta, sino que debe descubrirlas por medio de un proceso de prueba y error. Por ejemplo, utilizando aprendizaje por refuerzo ...
- 
+Por el contrario, en el aprendizaje no supervisado no se conocen las clases, contando solo con los datos de entrada, por lo que su objetivo es obtener las clases descubriendo grupos de ejemplos similares en los datos(también denominado clustering) o, proyectar los datos desde un espacio de dimensiones superiores a uno de menores dimensiones, con el objetivo de maximizar la varianza entre las features (reducción de dimensionalidad como PCA). En el aprendizaje por refuerzo, el algoritmo no cuenta con muestras que correspondan con una salida correcta, sino que debe descubrirlas por medio de un proceso de prueba y error, transicionando una secuencia de estados que resultan de la interacción con el entorno.
+
+
+La fase de evaluación y optimización del modelo se lleva a cabo paralelamente a la fase de entrenamiento y consiste en computar métricas con el dataset de training, para evaluar el desempeño del modelo. Según el tipo de entrenamiento (supervisado o no supervisado), se computan diferentes métricas:
+
+.. Metricas de evaluación para clasificacion, regression y clustering --> http://scikit-learn.org/stable/modules/model_evaluation.html
+
+
+* Clasificación: Accuracy, Precision, Recall, F1-Score, Matriz de confusión.
+* Regresión: R2, explained variance.
+* Clustering: Completeness score, mutual_info_score, v_measure_score.
 
 
 
-.. CROSS-VALIDATION, Curva ROC para validacion!(Aprendizaje SUPERVISADO)
+
+
+Finalmente, durante la fase de validación se procede a analizar y mejorar el nivel de generalización del modelo, es decir, con que precisión éste aplica los conceptos aprendidos de los datos de entrenamiento a nuevos datos dentro del dominio del problema. Dos conceptos relacionados a la pérdida de capacidad de generalización en el entrenamiento supervisado son overfitting y underfitting donde:
+
+* Overfitting ocurre cuando el modelo aprende la distribución de los datos y el ruido del dataset y los considera como conceptos, de manera que se ve afectada negativamente la capacidad de predicción del modelo, ya que estos conceptos no aplican a nuevos datos. De esta forma, cuando ocurre overfitting el error de predicción disminuye considerablemente con datos de entrenamiento, sin embargo, al contrastarlo con datos de prueba éste aumenta considerablemente.
+* Underfitting sucede cuando el modelo no puede aprender conceptos del dataset de training y, por lo tanto, tampoco puede realizar predicciones sobre datos de testing, mostrando un rendimiento pobre incluso en datos de entrenamiento.
+  
+
+.. figure:: ../figs/Cap4/plot_underfitting_overfitting_001.png
+
+   En este ejemplo, se muestra la función de tres modelos polinómicos de diferente grado que intentan aproximar parte de la función coseno, representándose éstos por una línea azul, la función real por una línea amarilla y las muestras producidas por puntos azules. En el diagrama de la izquierda, se observa que el modelo (polinomio grado 1) sufre de underfitting, ya que no puede ajustarse a los datos de entrenamiento. En el diagrama de la derecha, se puede observar que el modelo (polinomio de grado 15) sufre de overfitting, ya que aprende cada uno de los datos de prueba incluyendo el ruido y perdiendo la similitud con la función coseno real. En la gráfica del centro, se puede observar que el modelo se ajusta de manera casi perfecta al de la función coseno real, y se ajusta a aquellos datos que la representan, ignorando aquellas muestras que generan ruido.   
+
+
+De esta manera, en esta fase se emplean distintos métodos para evaluar la capacidad de generalización del modelo entrenado con respecto a los datos de prueba, entre los que se destacan los siguientes:
+
+.. Real world machine learning. pag 105. Metodos de evaluación y validación del modelo!!!
+.. Matriz de confusión, k-fold y CROSS-VALIDATION, Curva ROC para validacion!(Aprendizaje SUPERVISADO)
+
+* Matriz de confusion:
+* K-Folding y Cross-validation: 
+* Curva ROC:
+
 
 
 
