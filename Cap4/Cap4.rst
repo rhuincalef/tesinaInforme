@@ -157,14 +157,81 @@ Existen distintos tipos de métodos de entrenamiento según el objetivo persegui
 Por el contrario, en el aprendizaje no supervisado no se conocen las clases, contando solo con los datos de entrada, por lo que su objetivo es obtener las clases descubriendo grupos de ejemplos similares en los datos(también denominado clustering) o, proyectar los datos desde un espacio de dimensiones superiores a uno de menores dimensiones, con el objetivo de maximizar la varianza entre las features (reducción de dimensionalidad como PCA). En el aprendizaje por refuerzo, el algoritmo no cuenta con muestras que correspondan con una salida correcta, sino que debe descubrirlas por medio de un proceso de prueba y error, transicionando una secuencia de estados que resultan de la interacción con el entorno.
 
 
+.. Metricas de evaluación para clasificacion, regression y clustering -->
+.. http://scikit-learn.org/stable/modules/model_evaluation.html
+
 La fase de evaluación y optimización del modelo se lleva a cabo paralelamente a la fase de entrenamiento y consiste en computar métricas con el dataset de training, para evaluar el desempeño del modelo. Según el tipo de entrenamiento (supervisado o no supervisado), se computan diferentes métricas:
-
-.. Metricas de evaluación para clasificacion, regression y clustering --> http://scikit-learn.org/stable/modules/model_evaluation.html
-
 
 * Clasificación: Accuracy, Precision, Recall, F1-Score, Matriz de confusión.
 * Regresión: R2, explained variance.
 * Clustering: Completeness score, mutual_info_score, v_measure_score.
+
+
+.. http://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-f-measure-metrics
+.. https://en.wikipedia.org/wiki/Precision_and_recall#Precision
+
+Con respecto a las métricas de modelos de clasificación, el accuracy es la proporción de las muestras para las que el modelo predice el resultado correcto, mientras que la tasa de error es la proporción para las que el modelo clasifica incorrectamente. Si *yi* es el valor del i-ésima muestra, *Yi* es el valor verdadero de la muestra, y *1(yi = Yi)* simboliza la pertenencia de *yi* en *Yi*, entonces la fracción de predicciones correctas *nsamples* se define como:
+
+.. figure:: ../figs/Cap4/formula_accuracy.png
+
+   Fórmula para el cálculo del Accuracy
+
+
+Este valor se indica en el rango de 0-1, por lo que cuanto más próximo es este valor a 1.0 mejor es la capacidad de predicción. Mientras que precision indica la capacidad del modelo para clasificar muestras que son positivas como tales y no clasificarlas como negativas, considerando el total de valores positivos y negativos; Este valor se calcula por medio de la siguiente fórmula, donde *tp* son las muestras verdaderas positivas (muestras realmente positivas) y *fp* son las muestras falsas positivas (aquellas muestras que se clasificaron como positivas pero en realidad son negativas):
+
+
+
+.. math:: precision = tp/ tp + fp
+   :label: ecuacionPrecision
+
+Recall es la capacidad del modelo de encontrar cuantas muestras positivas reales existen del total de muestras positivas clasificadas (verdaderas positivas y falsas positivas). Este valor se calcula por medio de la siguiente fórmula, donde *fn* son los falsos negativos(aquellas que son positivas pero son clasificadas como negativas):
+
+
+.. math:: recall = tp/ tp + fn
+   :label: ecuacionRecall
+
+F1-Score (o F-measure) es un promedio ponderado de precision y recall que se calcula por medio de la siguiente ecuación:
+
+.. math:: F1 = 2 * (precision * recall) / (precision + recall) 
+   :label: ecuacionF1Score
+
+Las métricas de precision, recall y F1-score se encuentran en el rango 0-1, siendo mejor el desempeño de predicción del clasificador cuanto más próximo a 1 son estos valores.
+
+.. http://scikit-learn.org/stable/modules/model_evaluation.html#confusion-matrix
+
+Por otro lado, la matriz de confusión es una tabla que permite visualizar y evaluar el accuracy de clasificación, donde cada columna de la matriz representa la cantidad de muestras que fueron predecidas como pertenecientes a una clase y, cada fila de la matriz, representa la cantidad de instancias que pertenecen realmente a una clase. Por lo tanto, un elemento *(i,j)* de la matriz se interpreta como el número de observaciones en el grupo *i* que fueron clasificados dentro del grupo *j*, por lo que los elementos que se encuentran en la diagonal de la matriz son la cantidad de muestras para las que el label verdadero fue predecido correctamente, mientras que los elementos que se encuentran fuera de ésta son las muestras clasificadas erróneamente. A continuación, se muestra un ejemplo de la matriz de confusión para un dataset de tipos de planta Iris (Setosa, Versicolor y Virginica):        
+
+
+.. figure:: ../figs/Cap4/ejemplo_matriz_confusion.png
+
+   Ejemplo de matriz de confusión.
+
+.. http://scikit-learn.org/stable/modules/model_evaluation.html#r2-score
+
+.. https://en.wikipedia.org/wiki/Coefficient_of_determination
+
+.. https://en.wikibooks.org/wiki/LaTeX/Mathematics#Formatting_mathematics_symbols
+
+Con respecto a la regresión, la métrica R2 o r^2 también conocido como coeficiente de determinación, es la proporción de la varianza en los labels (variable dependiente) que es predecible de las muestras de entrada(variable independiente), brindando una medida de que tan precisamente las salidas son replicadas por el modelo, basadas en la proporción de la variación total de las salidas explicadas por el modelo y permitiendo medir que tan eficazmente las muestras futuras serán predecidas. El valor de esta métrica puede ser tanto positivo como negativo, por lo que si este es negativo implica que la capacidad del modelo de predicción es peor que la media de éstos, mientras que si es cero indica que no existe una relación entre los datos de entrada y los labels por lo que el modelo predice siempre el label independientemente de los datos de entrada; Y finalmente, si este es igual a uno implica que el modelo es capaz de predecir exactamente toda la variabilidad en la variable dependiente(labels).
+El cálculo de R2 se realiza por medio de la siguiente fórmula, siendo :math:`{\hat{yi}}` el valor predecido de la muestra, *yi* el valor real de la muestra para *n* muestras:  
+
+
+.. figure:: ../figs/Cap4/formula_R2.png
+
+   Fórmula de R2
+
+donde:
+
+.. figure:: ../figs/Cap4/formula_y_medio_r2_score.png
+
+   Fórmula de cálculo de :math:`{\bar{y}}`(y-medio)
+
+
+
+
+
+
+
 
 
 
@@ -189,7 +256,6 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
 * Matriz de confusion:
 * K-Folding y Cross-validation: 
 * Curva ROC:
-
 
 
 
