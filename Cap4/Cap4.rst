@@ -163,8 +163,8 @@ Por el contrario, en el aprendizaje no supervisado no se conocen las clases, con
 La fase de evaluación y optimización del modelo se lleva a cabo paralelamente a la fase de entrenamiento y consiste en computar métricas con el dataset de training, para evaluar el desempeño del modelo. Según el tipo de entrenamiento (supervisado o no supervisado), se computan diferentes métricas:
 
 * Clasificación: Accuracy, Precision, Recall, F1-Score, Matriz de confusión.
-* Regresión: R2, explained variance.
-* Clustering: Completeness score, mutual_info_score, v_measure_score.
+* Regresión: R2, Variación explicada.
+* Clustering: Información mutua(MI), score de homogeneidad, score de completitud.
 
 
 .. http://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-f-measure-metrics
@@ -227,14 +227,45 @@ donde:
    Fórmula de cálculo de :math:`{\bar{y}}`(y-medio)
 
 
+La variación explicada mide la proporción en la que un modelo de regresión representa la dispersión (variación) de un conjunto de datos, y ésta se calcula por medio de la siguiente fórmula, donde *y* es el label asociado a una muestra, :math:`{\hat{y}}` es la salida predecida para ésta y *Var* es la varianza entre ambas variables:
+
+.. figure:: ../figs/Cap4/formula_explained_variance_r2.png
+ 
+    Fórmula para el cálculo de la variación explicada
+ 
+Cuanto más próximo a 1 es este valor, mejor es la capacidad de predicción del modelo.
+
+.. http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mutual_info_score.html#sklearn.metrics.mutual_info_score
+.. http://scikit-learn.org/stable/modules/clustering.html#mutual-info-score
+.. https://en.wikipedia.org/wiki/Adjusted_mutual_information
+
+Por otro lado, con respecto a clustering la métrica de información mutua (Mutual Information, MI) es una medida empleada para comparar la similaridad entre dos clases (o labels) para el mismo conjunto de datos. Así, para utilizar esta métrica en un modelo de clustering, se requiere disponer de las clases verdaderas a la que pertenezcan los datos asignadas por los desarrolladores del modelo, sin embargo este valor es invariable a los valores absolutos de los labels y a las permutaciones entre de clases o labels. Cuanto más cercano a cero sea este valor, indicará que las asignaciones de clases son independientes y no concuerdan, mientras que cuanto más cercano a uno se observará una mejor concordancia entre asignaciones. Este valor se computa por medio de la siguiente fórmula, donde *|Ui|* es el número de muestras en el cluster *U* y *|Vj|* es el número de muestras en el cluster *V*:
+
+.. figure:: ../figs/Cap4/formula_mutual_information_clustering.png
+
+   Fórmula para el cálculo de información mutua entre clusters U y V.
+
+.. http://scikit-learn.org/stable/modules/clustering.html#homogeneity-completeness
+
+El score de homogeneidad requiere al igual que la métrica anterior, el conocimiento de las clases reales de las muestras por adelantado y cuanto más próximo a uno sea, significará que ese cluster contiene únicamente puntos de datos que son miembros de la misma clase. Mientras que el score de completitud, permite establecer si todos los miembros de una clase son asignados al mismo cluster. Estas métricas son independiente a las permutaciones en los clusters, y se calculan por medio de las siguientes fórmulas, donde  H(C|K) es la entropía condicional de las clases dadas las asignaciones de los clusters, H(C) es la entropía de las clases, *nc* y *nk* son las muestras que pertenecen a la clase *C* y al cluster *K* y *Nc,k* es el número de muestras de una clase *c* asignada al cluster *k*:
 
 
+.. figure:: ../figs/Cap4/formula_homogeneidad_clustering.png
+
+   Ejemplo de fórmula de homogeneidad
 
 
+.. figure:: ../figs/Cap4/formula_completitud_clustering.png
 
+   Ejemplo de fórmula de completitud
 
+.. figure:: ../figs/Cap4/formula_entropia_condicional_clases_clustering.png
 
+   Ejemplo de fórmula de entropía condicional dadas las asignaciones de las clases
 
+.. figure:: ../figs/Cap4/formula_entropia_clases.png
+
+   Ejemplo de fórmula de entropía de las clases
 
 
 Finalmente, durante la fase de validación se procede a analizar y mejorar el nivel de generalización del modelo, es decir, con que precisión éste aplica los conceptos aprendidos de los datos de entrenamiento a nuevos datos dentro del dominio del problema. Dos conceptos relacionados a la pérdida de capacidad de generalización en el entrenamiento supervisado son overfitting y underfitting donde:
