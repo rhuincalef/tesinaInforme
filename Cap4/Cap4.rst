@@ -167,7 +167,7 @@ La fase de evaluación y optimización del modelo se lleva a cabo paralelamente 
  .. https://en.wikipedia.org/wiki/Mean_absolute_error
  .. Pag. 120 de Real world Machine learning
 
-* Regresión: R2, Variación explicada.
+* Regresión: R2, Variación explicada, Error Medio Cuadrado (Mean Squared Error).
 * Clustering: Información mutua(MI), score de homogeneidad, score de completitud.
 
 
@@ -239,6 +239,19 @@ La variación explicada mide la proporción en la que un modelo de regresión re
  
 Cuanto más próximo a 1 es este valor, mejor es la capacidad de predicción del modelo.
 
+.. https://en.wikipedia.org/wiki/Errors_and_residuals
+.. https://en.wikipedia.org/wiki/Mean_squared_error
+.. https://en.wikipedia.org/wiki/Root-mean-square_deviation
+
+El error medio cuadrado es una métrica de riesgo que representa el valor esperado del error (o pérdida) cuadrado, que consiste en calcular el promedio de los cuadrados de los errores, es decir, la diferencia entre los labels reales para un conjunto de variables y los valores predecidos para éste conjunto. Así, este método aplica la siguiente fórmula matemática donde  :math:`{\hat{Yi}}` es el valor predecido, *Yi* es el vector de valores observados y *n* es la cantidad de muestras de entrada para las que se realizaron las predicciones: 
+
+.. figure:: ../figs/Cap4/formula_mse_regresion.png
+
+   Fórmula de Mean Squared Error
+
+Si al resultado obtenido de aplicar esta fórmula, se le aplica la raíz cuadrada se obtiene la métrica de Raíz Cuadrada del Error cuadrado medio (Root-Mean Square Error, RMSE) y representa el desvío estándar de las diferencias de las muestras entre los valores estimados y los valores predecidos.Tanto MSE como RMSE, cuanto más próximos sean a cero los valores de éstas métricas, menos error de predicción existirá.
+
+
 .. http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mutual_info_score.html#sklearn.metrics.mutual_info_score
 .. http://scikit-learn.org/stable/modules/clustering.html#mutual-info-score
 .. https://en.wikipedia.org/wiki/Adjusted_mutual_information
@@ -291,14 +304,12 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
 .. * Matriz de confusion:
 * Cross-validation: Esta técnica se emplea para evitar problemas como overfitting  y donde no se cuenta con suficientes muestras para particionar el dataset en training y testing, perdiendo información relevante para el modelo o para el testing de éste. Este método consiste en realizar particiones en un conjunto de muestras en subconjuntos complementarios de entrenamiento y prueba y, efectuar el entrenamiento sobre la partición de training y realizar la evaluación del rendimiento del modelo sobre la partición de testing. De esta forma, este método puede ejecutarse repetidas veces, generando diferentes particiones con distintos resultados y luego combinarse éstos(por ejemplo, a través del promediado) con el fin de reducir la variabilidad. Dentro de las aproximaciones para realizar cross validation se distinguen las siguientes:
 
-   * K-Folding:
+   * K-Fold cross-validation:
    * Leave p-out cross-validation(LpO CV):
    * Leave-one-out cross-validation(LOO CV):
-   * K-fold cross-validation:
    * Método Holdout:
-   *       
+       
   
-
 * Curva ROC:
 
 * Score AUC:
