@@ -163,6 +163,10 @@ Por el contrario, en el aprendizaje no supervisado no se conocen las clases, con
 La fase de evaluación y optimización del modelo se lleva a cabo paralelamente a la fase de entrenamiento y consiste en computar métricas con el dataset de training, para evaluar el desempeño del modelo. Según el tipo de entrenamiento (supervisado o no supervisado), se computan diferentes métricas:
 
 * Clasificación: Accuracy, Precision, Recall, F1-Score, Matriz de confusión.
+ .. (TODO: VER SI PONER Root Mean-Squared Error, RMSE en regression) -->
+ .. https://en.wikipedia.org/wiki/Mean_absolute_error
+ .. Pag. 120 de Real world Machine learning
+
 * Regresión: R2, Variación explicada.
 * Clustering: Información mutua(MI), score de homogeneidad, score de completitud.
 
@@ -282,11 +286,22 @@ Finalmente, durante la fase de validación se procede a analizar y mejorar el ni
 De esta manera, en esta fase se emplean distintos métodos para evaluar la capacidad de generalización del modelo entrenado con respecto a los datos de prueba, entre los que se destacan los siguientes:
 
 .. Real world machine learning. pag 105. Metodos de evaluación y validación del modelo!!!
-.. Matriz de confusión, k-fold y CROSS-VALIDATION, Curva ROC para validacion!(Aprendizaje SUPERVISADO)
+.. k-fold y CROSS-VALIDATION, Curva ROC para validacion!
 
-* Matriz de confusion:
-* K-Folding y Cross-validation: 
+.. * Matriz de confusion:
+* Cross-validation: Esta técnica se emplea para evitar problemas como overfitting  y donde no se cuenta con suficientes muestras para particionar el dataset en training y testing, perdiendo información relevante para el modelo o para el testing de éste. Este método consiste en realizar particiones en un conjunto de muestras en subconjuntos complementarios de entrenamiento y prueba y, efectuar el entrenamiento sobre la partición de training y realizar la evaluación del rendimiento del modelo sobre la partición de testing. De esta forma, este método puede ejecutarse repetidas veces, generando diferentes particiones con distintos resultados y luego combinarse éstos(por ejemplo, a través del promediado) con el fin de reducir la variabilidad. Dentro de las aproximaciones para realizar cross validation se distinguen las siguientes:
+
+   * K-Folding:
+   * Leave p-out cross-validation(LpO CV):
+   * Leave-one-out cross-validation(LOO CV):
+   * K-fold cross-validation:
+   * Método Holdout:
+   *       
+  
+
 * Curva ROC:
+
+* Score AUC:
 
 
 
