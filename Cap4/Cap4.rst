@@ -242,6 +242,7 @@ Cuanto más próximo a 1 es este valor, mejor es la capacidad de predicción del
 .. https://en.wikipedia.org/wiki/Errors_and_residuals
 .. https://en.wikipedia.org/wiki/Mean_squared_error
 .. https://en.wikipedia.org/wiki/Root-mean-square_deviation
+.. https://en.wikipedia.org/wiki/Errors_and_residuals
 
 El error medio cuadrado es una métrica de riesgo que representa el valor esperado del error (o pérdida) cuadrado, que consiste en calcular el promedio de los cuadrados de los errores, es decir, la diferencia entre los labels reales para un conjunto de variables y los valores predecidos para éste conjunto. Así, este método aplica la siguiente fórmula matemática donde  :math:`{\hat{Yi}}` es el valor predecido, *Yi* es el vector de valores observados y *n* es la cantidad de muestras de entrada para las que se realizaron las predicciones: 
 
@@ -300,14 +301,37 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
 
 .. Real world machine learning. pag 105. Metodos de evaluación y validación del modelo!!!
 .. k-fold y CROSS-VALIDATION, Curva ROC para validacion!
+.. https://www.cs.cmu.edu/~schneide/tut5/node42.html
 
-.. * Matriz de confusion:
-* Cross-validation: Esta técnica se emplea para evitar problemas como overfitting  y donde no se cuenta con suficientes muestras para particionar el dataset en training y testing, perdiendo información relevante para el modelo o para el testing de éste. Este método consiste en realizar particiones en un conjunto de muestras en subconjuntos complementarios de entrenamiento y prueba y, efectuar el entrenamiento sobre la partición de training y realizar la evaluación del rendimiento del modelo sobre la partición de testing. De esta forma, este método puede ejecutarse repetidas veces, generando diferentes particiones con distintos resultados y luego combinarse éstos(por ejemplo, a través del promediado) con el fin de reducir la variabilidad. Dentro de las aproximaciones para realizar cross validation se distinguen las siguientes:
 
-   * K-Fold cross-validation:
-   * Leave p-out cross-validation(LpO CV):
-   * Leave-one-out cross-validation(LOO CV):
-   * Método Holdout:
+* Cross-validation: Esta técnica se emplea para evitar problemas como el overfitting y en situaciones donde no se cuenta con suficientes muestras para particionar el dataset en training y testing, perdiendo información relevante para el modelo o para el testing de éste. Este método consiste en realizar particiones en un conjunto de muestras en subconjuntos complementarios de entrenamiento y prueba y, efectuar el entrenamiento sobre la partición de training y realizar la evaluación del rendimiento del modelo sobre la partición de testing. Así, esta técnica busca garantizar que los resultados del predictor son independientes de las particiones de training y testing. Adicionalmente, este método puede ejecutarse repetidas veces, generando diferentes particiones con distintos resultados y luego combinarse éstos(por ejemplo, a través del promediado) con el fin de reducir la variabilidad. Dentro de las aproximaciones para realizar cross validation se distinguen las siguientes:
+
+   * Método Holdout: Este método es el más trivial y consiste en simplemente particionar de manera aleatoria el conjunto de muestras total en subconjuntos complementarios de entrenamiento y prueba, considerando entre el 20% y 40% para testing y el resto para training, y posteriormente realizar el entrenamiento y validación con éstos. 
+     
+
+     Este método tiene la desventaja de que puede existir alta variación al ejecutarse sobre distintos conjuntos de prueba, ya que el resultado depende en gran parte de como se realiza la partición de los datos, sin embargo, tiene la ventaja de ser rápido de computar.
+  
+   .. .. figure:: ../figs/Cap4/holdout_cross_validation.jpg
+   .. figure:: ../figs/Cap4/cross_validation_holdout_ejemplo.png
+   
+      Representación gráfica de la retención
+   
+  
+
+   * K-Fold cross-validation: Cross validation de *K* iteraciones consiste en realizar *k* divisiones complementarias de los datos de prueba(denominados *folds*), empleando uno de los subconjuntos para validación y los restantes *k-1* como datos de entrenamiento y ejecutar el proceso de training y testing. Este proceso se realiza *K* veces, con distintos datasets de training y testing, computando en cada una de las iteraciones el accuracy, que finalmente es promediado para obtener un resultado final. Este método tiene la ventaja de que cada muestra esta en el subcojunto de testing una única vez y en el dataset de training *k-1* veces, por lo que la variación en las predicciones con distintas muestras se incrementa a medida que *k* crece. Sin embargo, tiene la desventaja de ser computacionalmente costoso.
+  
+   .. figure:: ../figs/Cap4/K-fold_cross_validation.jpg
+   
+      Ejemplo gráfico de los subconjuntos generados con K-Fold cross-validation
+  
+   
+   * Leave-one-out cross-validation(LOO CV): Éste método consiste en realizar una partición de *k-1* muestras como la partición de entrenamiento y emplear únicamente una muestra para la partición de testing y luego, realizar el entrenamiento y la validación para esa muestra en particular. Este proceso se repite K veces y al igual que K-fold, se obtiene la media de los resultados predecidos para computar el resultado final.   
+     
+   .. figure:: ../figs/Cap4/Leave-one-out_cross_validation.jpg
+   
+      Representación gráfica de la generación de subconjuntos para LOO CV
+   
+   Una variación de éste método es Leave p-out cross-validation, donde se realiza el mismo proceso pero se consideran *p* elementos para el conjunto de testing en lugar de uno solo.
        
   
 * Curva ROC:
@@ -343,22 +367,12 @@ To wrap up our discussion of the microlending example, we list some of the most 
 
 
 
-
-
-
-En la siguiente sección, se resumen los mecanismos principales de ML y sus métricas relacionadas al ajuste del modelo para mejorar su precisión.
-
+En la siguiente sección, se exponen el funcionamiento particular de los principales algoritmos empleados en ML para la generación de modelos de predicción.
 
 
 Mecanismos para Machine Learning(ML)
 ------------------------------------
 
-
-
-.. Algoritmos de Pre-procesamiento de datos
-.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. TODO: Incluir PCA, Normalización 
 
 
 Maquinas de soporte de Vectores(SVM)
@@ -375,12 +389,6 @@ Redes Neuronales(NN)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. TODO: Completar!!!
-
-
-Algoritmos para la validación (testing)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. TODO: Incluir cross-validation
 
 
 
