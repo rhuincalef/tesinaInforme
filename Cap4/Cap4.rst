@@ -17,6 +17,7 @@ La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecan
 
 
 .. figure:: ../figs/Cap4/Diferencia_AI_ML_DL.jpg
+   :scale: 60%
 
    Comparación de AI, ML y Deep Learning
 
@@ -28,6 +29,7 @@ La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecan
 De esta forma, ML se diferencia del paradigma de programación clásico donde un equipo de desarrollo programa instrucciones que procesan datos y se generan salidas en base a estructuras predefinidas, en que para esta metodología solamente se ingresan datos (y opcionalmente sus respuestas),y se obtienen reglas de salida que pueden ser aplicadas a nuevos datos para realizar predicciones. Por lo tanto en ML, se considera que dado un programa cuyo rendimiento en la predicción sobre un conjunto de datos(o dataset) que se encuentra medido por medio de alguna métrica (que indica que tan precisas son sus predicciones sobre ese conjunto de datos), éste aprende de la experiencia si su rendimiento mejora al adquirir más experiencia.
 
 .. figure:: ../figs/Cap4/ML_paradigma.jpg
+   :scale: 60%
 
    Paradigma de ML vs paradigma de programación tradicional.
 
@@ -38,14 +40,13 @@ Así, el flujo de trabajo en ML para la generación y prueba de un modelo de pre
 
 1. Pre-procesamiento de datos(feature extraction). 
 2. Etapa de entrenamiento del modelo (training).
-3. Evaluación y optimización del modelo(TODO: DESCRIBIR ALGUNAS DE LAS MÉTRICAS PARA LA EVALUACIÓN DEL MODELO EN CLASIFICACION, REGRESION Y CLUSTERING).
-4. Etapa de validación (testing). (TODO: INCLUIR CONCEPTO DE OVERFITTING-UNDERFITTING, Y FORMAS DE EVITARLOS: INCLUIR CROSS-VALIDATION, Y DEMAS...)
-.. 3. Evaluación y validación del modelo(testing).
+3. Evaluación y optimización del modelo.
+4. Etapa de validación (testing).
    
-
 .. TODO: TRADUCIR ESTA IMAGEN DE FLUJO DE TRABAJO
 
 .. figure:: ../figs/Cap4/workflow_ML.png
+   :scale: 60%
 
    Flujo de trabajo general en ML
 
@@ -56,6 +57,7 @@ Debido a que los datos en el mundo real frecuentemente no son aceptables para se
   
 
 .. figure:: ../figs/Cap4/ejemploFeatureCategorica.png
+   :scale: 60%
 
    Ejemplo de conversión de feature categórica
 
@@ -64,6 +66,7 @@ Debido a que los datos en el mundo real frecuentemente no son aceptables para se
 * Datos en distintas escalas de valores(Normalización de datos): Algunos algoritmos de ML requieren que las features se normalicen, de manera que residan en el mismo rango de numérico, debido a que el rango de una feature puede influenciar la importancia de la feature con respecto a otras. La normalización consiste en ajustar los valores para que se distribuyan entre un valor mínimo y máximo, generalmente ubicado entre [-1,1] o [0,1]. Existen varias maneras de realizar ésto, una de ellas es rescaling aunque la mas sencilla consiste en restar al valor mínimo a cada valor del rango de valores y dividir ésto sobre el rango total de valores, lo que brinda valores en el intervalo [0,1] o [-1,1] aplicando la siguiente fórmula:
   
 .. figure:: ../figs/Cap4/formula_rescaling.png
+   :scale: 60%
 
    Fórmula Rescaling
 
@@ -73,6 +76,7 @@ Alternativamente, se puede aplicar la fórmula anterior reemplazando la resta de
 
 
 .. figure:: ../figs/Cap4/formula_mean_normalization.png
+   :scale: 60%
 
    Fórmula normalización por media
 
@@ -80,6 +84,7 @@ Alternativamente, se puede aplicar la fórmula anterior reemplazando la resta de
 Otro método para la normalización de features, es la estandarización que consiste en calcular la media y su desvío estándar para los valores de una feature determinada, y luego por cada valor de esa feature substraer la media y dividir por el desvío estándar
 
 .. figure:: ../figs/Cap4/formula_estandarizacion.png
+   :scale: 60%
 
    Fórmula de estandarización
 
@@ -91,14 +96,16 @@ Una de las herramientas empleadas para ésto son los gráficos de mosaicos, dond
 
 
 .. figure:: ../figs/Cap4/ejemplo_moisac_plot.png
- 
-    Ejemplo de gráfico de mosaicos del dataset del Titanic
+   :scale: 60%
+
+   Ejemplo de gráfico de mosaicos del dataset del Titanic
  
 
 Otra herramienta utilizada para este fin son los gráficos de densidad, que permiten mostrar la distribución de alguna de las features, creando para ésto un estimado de la distribución de probabilidad basándose en los valores de esa feature, considerando que los valores proporcionados son una muestra aleatoria que representa la población de valores.Para esto, se utilizando una técnica estadística conocida como kernel de suavizado (kernel smoothing) que dado un conjunto *p* de valores reales, produce un valor real de salida que es un promedio ponderado de los datos vecinos observados. A continuación, la distribución de grafica como una curva que muestra los valores que la variable probablemente puede adoptar. De esta forma, creando un gráfico de densidad por cada categoría que una feature puede adoptar, se pueden visualizar diferencias en el rango de los valores en cada categoría. 
 
 
 .. figure:: ../figs/Cap4/ejemplo_diagrama_densidad.png
+   :scale: 60%
 
    Ejemplo de diagrama de densidad para las millas por galon (MPG) que consumen autos fabricados por diferentes países, siendo las clases o categorías las siguientes: USA,Europa o Asia. Este gráfico ilustra la densidad de MPG vs el país del fabricante.
 
@@ -107,6 +114,7 @@ Alternativamente, se pueden emplear diagramas de dispersión (scatter plots), do
 
 
 .. figure:: ../figs/Cap4/ejemplo_diagrama_dispersion.png
+   :scale: 60%
 
    Ejemplo de diagrama de dispersión. En la izquierda se muestra que la relación entre las features de MPG y el peso del vehículo no siguen una relación linear, mientras que en la imagen a la derecha se muestra que MPG y año de fabricación siguen una relación linear. De estas figuras, se deduce que ambas features se encuentran relacionadas a MPG y sirven para la predicción de MPG.
 
@@ -120,6 +128,7 @@ Otro mecanismo empleado para visualizar la relación entre features de un datase
 
 
 .. figure:: ../figs/Cap4/Correlation-Matrix-Plot.png
+   :scale: 60%
 
    Ejemplo de gráfico de matriz de correlación para features relacionadas con personas que padecen diabetes. 
 
@@ -134,6 +143,7 @@ Adicionalmente, durante la etapa de pre-procesamiento se puede aplicar un análi
 Además durante la fase de pre-procesamiento, si es que los datos del dataset no se estructuraron previamente, se los estructura, separando los datos de entrada que contienen features en una matriz, donde cada columna se asocia con una feature  y cada fila se asocia a una muestra individual y, si se dispone de las respuestas a éstos (también denominadas labels o targets), se organizan en un vector que alberga el grupo o clase asociado a cada muestra, siendo éste un vector con 1 columna y con tantas filas como muestras existan en el dataset.
 
 .. figure:: ../figs/Cap4/separacion_features_target.png
+   :scale: 60%
 
    Ejemplo de separación de features donde se cuenta con información de clientes de una compañía de telefonía, y como target se especifica el feature "churn" que indica que si este cliente se ha dado de baja del servicio pago ofrecido por la compañía. 
 
@@ -146,10 +156,12 @@ Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento dond
 Existen distintos tipos de métodos de entrenamiento según el objetivo perseguido con la generación del modelo, entre los que se distinguen tres clases principales: Aprendizaje supervisado, aprendizaje no supervisado y aprendizaje por refuerzo. El aprendizaje supervisado, consiste en emplear los datos de entrada y los labels (o clases) asociados a éstos para detectar relaciones entre los datos y sus resultados y predecir nuevos valores en base a éstos. Los modelos producidos por este tipo de método se subdividen en modelos de clasificación y de predicción, siendo los modelos de clasificación aquellos donde se asigna un dato de entrada a una clase predefinida, tales como los detectores de Spam que clasifican cada e-mail en la categoría de Spam o No Spam, o los reconocedores de dígitos manuscritos que asignan a un nuevo valor a una clase entre 0 y 9. Mientras que, los modelos de regresión dado un dato de entrada generan un valor numérico continuo, como por ejemplo predecir el valor del dólar en un modelo financiero.
 
 .. figure:: ../figs/Cap4/ejemplo_supervisado_clasificacion.png
+   :scale: 60%
 
    Representación gráfica de modelo clasificador
 
 .. figure:: ../figs/Cap4/ejemplo_supervisado_regresion.png
+   :scale: 60%
 
    Representación gráfica de modelo regresor
 
@@ -177,6 +189,7 @@ La fase de evaluación y optimización del modelo se lleva a cabo paralelamente 
 Con respecto a las métricas de modelos de clasificación, el accuracy es la proporción de las muestras para las que el modelo predice el resultado correcto, mientras que la tasa de error es la proporción para las que el modelo clasifica incorrectamente. Si *yi* es el valor del i-ésima muestra, *Yi* es el valor verdadero de la muestra, y *1(yi = Yi)* simboliza la pertenencia de *yi* en *Yi*, entonces la fracción de predicciones correctas *nsamples* se define como:
 
 .. figure:: ../figs/Cap4/formula_accuracy.png
+   :scale: 60%
 
    Fórmula para el cálculo del Accuracy
 
@@ -207,6 +220,7 @@ Por otro lado, la matriz de confusión es una tabla que permite visualizar y eva
 
 
 .. figure:: ../figs/Cap4/ejemplo_matriz_confusion.png
+   :scale: 60%
 
    Ejemplo de matriz de confusión.
 
@@ -221,12 +235,14 @@ El cálculo de R2 se realiza por medio de la siguiente fórmula, siendo :math:`{
 
 
 .. figure:: ../figs/Cap4/formula_R2.png
+   :scale: 60%
 
    Fórmula de R2
 
 donde:
 
 .. figure:: ../figs/Cap4/formula_y_medio_r2_score.png
+   :scale: 60%
 
    Fórmula de cálculo de :math:`{\bar{y}}`(y-medio)
 
@@ -234,8 +250,9 @@ donde:
 La variación explicada mide la proporción en la que un modelo de regresión representa la dispersión (variación) de un conjunto de datos, y ésta se calcula por medio de la siguiente fórmula, donde *y* es el label asociado a una muestra, :math:`{\hat{y}}` es la salida predecida para ésta y *Var* es la varianza entre ambas variables:
 
 .. figure:: ../figs/Cap4/formula_explained_variance_r2.png
- 
-    Fórmula para el cálculo de la variación explicada
+   :scale: 60%
+
+   Fórmula para el cálculo de la variación explicada
  
 Cuanto más próximo a 1 es este valor, mejor es la capacidad de predicción del modelo.
 
@@ -247,6 +264,7 @@ Cuanto más próximo a 1 es este valor, mejor es la capacidad de predicción del
 El error medio cuadrado es una métrica de riesgo que representa el valor esperado del error (o pérdida) cuadrado, que consiste en calcular el promedio de los cuadrados de los errores, es decir, la diferencia entre los labels reales para un conjunto de variables y los valores predecidos para éste conjunto. Así, este método aplica la siguiente fórmula matemática donde  :math:`{\hat{Yi}}` es el valor predecido, *Yi* es el vector de valores observados y *n* es la cantidad de muestras de entrada para las que se realizaron las predicciones: 
 
 .. figure:: ../figs/Cap4/formula_mse_regresion.png
+   :scale: 60%
 
    Fórmula de Mean Squared Error
 
@@ -260,6 +278,7 @@ Si al resultado obtenido de aplicar esta fórmula, se le aplica la raíz cuadrad
 Por otro lado, con respecto a clustering la métrica de información mutua (Mutual Information, MI) es una medida empleada para comparar la similaridad entre dos clases (o labels) para el mismo conjunto de datos. Así, para utilizar esta métrica en un modelo de clustering, se requiere disponer de las clases verdaderas a la que pertenezcan los datos asignadas por los desarrolladores del modelo, sin embargo este valor es invariable a los valores absolutos de los labels y a las permutaciones entre de clases o labels. Cuanto más cercano a cero sea este valor, indicará que las asignaciones de clases son independientes y no concuerdan, mientras que cuanto más cercano a uno se observará una mejor concordancia entre asignaciones. Este valor se computa por medio de la siguiente fórmula, donde *|Ui|* es el número de muestras en el cluster *U* y *|Vj|* es el número de muestras en el cluster *V*:
 
 .. figure:: ../figs/Cap4/formula_mutual_information_clustering.png
+   :scale: 60%
 
    Fórmula para el cálculo de información mutua entre clusters U y V.
 
@@ -269,19 +288,23 @@ El score de homogeneidad requiere al igual que la métrica anterior, el conocimi
 
 
 .. figure:: ../figs/Cap4/formula_homogeneidad_clustering.png
+   :scale: 60%
 
    Ejemplo de fórmula de homogeneidad
 
 
 .. figure:: ../figs/Cap4/formula_completitud_clustering.png
+   :scale: 60%
 
    Ejemplo de fórmula de completitud
 
 .. figure:: ../figs/Cap4/formula_entropia_condicional_clases_clustering.png
+   :scale: 60%
 
    Ejemplo de fórmula de entropía condicional dadas las asignaciones de las clases
 
 .. figure:: ../figs/Cap4/formula_entropia_clases.png
+   :scale: 60%
 
    Ejemplo de fórmula de entropía de las clases
 
@@ -293,6 +316,7 @@ Finalmente, durante la fase de validación se procede a analizar y mejorar el ni
   
 
 .. figure:: ../figs/Cap4/plot_underfitting_overfitting_001.png
+   :scale: 60%
 
    En este ejemplo, se muestra la función de tres modelos polinómicos de diferente grado que intentan aproximar parte de la función coseno, representándose éstos por una línea azul, la función real por una línea amarilla y las muestras producidas por puntos azules. En el diagrama de la izquierda, se observa que el modelo (polinomio grado 1) sufre de underfitting, ya que no puede ajustarse a los datos de entrenamiento. En el diagrama de la derecha, se puede observar que el modelo (polinomio de grado 15) sufre de overfitting, ya que aprende cada uno de los datos de prueba incluyendo el ruido y perdiendo la similitud con la función coseno real. En la gráfica del centro, se puede observar que el modelo se ajusta de manera casi perfecta al de la función coseno real, y se ajusta a aquellos datos que la representan, ignorando aquellas muestras que generan ruido.   
 
@@ -302,6 +326,7 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
 .. Real world machine learning. pag 105. Metodos de evaluación y validación del modelo!!!
 .. k-fold y CROSS-VALIDATION, Curva ROC para validacion!
 .. https://www.cs.cmu.edu/~schneide/tut5/node42.html
+.. https://es.wikipedia.org/wiki/Validaci%C3%B3n_cruzada
 
 
 * Cross-validation: Esta técnica se emplea para evitar problemas como el overfitting y en situaciones donde no se cuenta con suficientes muestras para particionar el dataset en training y testing, perdiendo información relevante para el modelo o para el testing de éste. Este método consiste en realizar particiones en un conjunto de muestras en subconjuntos complementarios de entrenamiento y prueba y, efectuar el entrenamiento sobre la partición de training y realizar la evaluación del rendimiento del modelo sobre la partición de testing. Así, esta técnica busca garantizar que los resultados del predictor son independientes de las particiones de training y testing. Adicionalmente, este método puede ejecutarse repetidas veces, generando diferentes particiones con distintos resultados y luego combinarse éstos(por ejemplo, a través del promediado) con el fin de reducir la variabilidad. Dentro de las aproximaciones para realizar cross validation se distinguen las siguientes:
@@ -313,7 +338,8 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
   
    .. .. figure:: ../figs/Cap4/holdout_cross_validation.jpg
    .. figure:: ../figs/Cap4/cross_validation_holdout_ejemplo.png
-   
+      :scale: 60%
+
       Representación gráfica de la retención
    
   
@@ -321,24 +347,29 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
    * K-Fold cross-validation: Cross validation de *K* iteraciones consiste en realizar *k* divisiones complementarias de los datos de prueba(denominados *folds*), empleando uno de los subconjuntos para validación y los restantes *k-1* como datos de entrenamiento y ejecutar el proceso de training y testing. Este proceso se realiza *K* veces, con distintos datasets de training y testing, computando en cada una de las iteraciones el accuracy, que finalmente es promediado para obtener un resultado final. Este método tiene la ventaja de que cada muestra esta en el subcojunto de testing una única vez y en el dataset de training *k-1* veces, por lo que la variación en las predicciones con distintas muestras se incrementa a medida que *k* crece. Sin embargo, tiene la desventaja de ser computacionalmente costoso.
   
    .. figure:: ../figs/Cap4/K-fold_cross_validation.jpg
-   
+      :scale: 60%
+
       Ejemplo gráfico de los subconjuntos generados con K-Fold cross-validation
   
    
    * Leave-one-out cross-validation(LOO CV): Éste método consiste en realizar una partición de *k-1* muestras como la partición de entrenamiento y emplear únicamente una muestra para la partición de testing y luego, realizar el entrenamiento y la validación para esa muestra en particular. Este proceso se repite K veces y al igual que K-fold, se obtiene la media de los resultados predecidos para computar el resultado final.   
      
    .. figure:: ../figs/Cap4/Leave-one-out_cross_validation.jpg
-   
+      :scale: 60%
+
       Representación gráfica de la generación de subconjuntos para LOO CV
    
    Una variación de éste método es Leave p-out cross-validation, donde se realiza el mismo proceso pero se consideran *p* elementos para el conjunto de testing en lugar de uno solo.
        
   
-* Curva ROC:
+.. https://es.wikipedia.org/wiki/Curva_ROC
 
-* Score AUC:
+* Curva ROC: Receiver Operating Characteristic curve o ROC, es una representación gráfica que muestra la eficiencia de uno o varios métodos de clasificación, representando en el eje Y la tasa de verdaderos positivos (TP) y en el eje X la tasa de falsos positivos(FP). De esta manera, empleando los valores proporcionados por distintas matrices de confusión, se puede comparar la eficiencia de clasificación donde cuanto más pronunciada sea la curva hacia la esquina superior izquierda del diagrama, mayor será la cantidad de muestras clasificadas correctamente. Mientras que, si la curva del clasificador se encuentra por debajo de la línea diagonal que divide la esquina inferior izquierda y superior derecha significará los resultados proporcionados por éste, son peores que un valor aleatorio. Adicionalmente, extrayendo características de la curva se puede comparar el rendimiento del clasificador de manera numérica, uno de los valores empleados es el area de bajo de la curva(Area Under the ROC Curve,AUC) cuyo valor se encuentra en el rango 0-1, mejorando la eficiencia de clasificación cuanto más cercano a 1 es esta métrica.  
 
+.. figure:: ../figs/Cap4/curva_roc.png
+   :scale: 70%
 
+   Ejemplo de curva ROC
 
 .. Header H4 -->
 
@@ -355,16 +386,13 @@ Aplicaciones de ML
 Beneficios del uso de ML
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. TODO: TRADUCIR VENTAJAS DE MACHINE LEARNING -->
+Dentro de los beneficios que provienen de la utilización de ML respecto a las alternativas de análisis manual de datos, instrucciones programadas explícitamente y modelos estadísticos simples se encuentran:
 
-To wrap up our discussion of the microlending example, we list some of the most prominent advantages to using a machine-learning system, as compared to the most common alternatives of manual analysis, hardcoded business rules, and simple statistical models. The five advantages of machine learning are as follows:
-
-* Accurate— ML uses data to discover the optimal decision-making engine for your problem. As you collect more data, the accuracy can increase automatically.
-* Automated— As answers are validated or discarded, the ML model can learn new patterns automatically. This allows users to embed ML directly into an automated workflow.
-* Fast— ML can generate answers in a matter of milliseconds as new data streams in, allowing systems to react in real time.
-* Customizable— Many data-driven problems can be addressed with machine learning. ML models are custom built from your own data, and can be configured to optimize whatever metric drives your business.
-* Scalable— As your business grows, ML easily scales to handle increased data rates. Some ML algorithms can scale to handle large amounts of data on many machines in the cloud.
-
+* Precisión. ML emplea datos para descubrir el modelo con desempeño óptimo para el problema del dominio y medida que se disponga de más datos, mejor definido estará el problema y, en consecuencia, se incrementará la precisión de éste automáticamente.
+* Automatizado. A medida que las respuestas se validan o se descatan, el modelo de ML aprenderá nuevos patrones automáticamente, por lo que los usuarios del modelo contribuirán a su mejora incrementalmente.
+* Rapidez. ML puede generar respuestas en cuestión de milisegundos a medida que ingresan mayor cantidad de muestras de datos, permitiendo que el sistema mejore en tiempo real.
+* Personalizable. Varios problemas dirigidos por datos pueden ser resueltos con ML, ya que el modelo es construido basándose en datos propios, y puede ser configurado para optimizar aquellas métricas que sean de valor para el negocio.
+* Escalable. A medida que el negocio donde se aplica el modelo de ML crece, el modelo escala para manejar tasas de datos que crecen incrementalmente, llegando a maneja grandes cantidades de datos si se dispone del hardware apropiado.  
 
 
 En la siguiente sección, se exponen el funcionamiento particular de los principales algoritmos empleados en ML para la generación de modelos de predicción.
