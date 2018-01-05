@@ -375,12 +375,19 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
 
 Aplicaciones de ML
 ^^^^^^^^^^^^^^^^^^
-
-.. TODO: INCLUIR APLICACIONES DE ML -->
-
 .. MIT-Machine Learning Book -cap5
 .. Introduction to machine learning- alex smola,vishwanathan- cap1
 .. Tom Mitchell - Machine learning - pag. 29.
+
+Machine Learning cuenta con un amplio campo de aplicaciones entre las que se encuentran:
+
+* Transcripción de caracteres, donde el modelo observa una representación no estructurada de datos y lo transcribe una forma textual discreta, por ejemplo en el reconocimiento óptico de caracteres, al modelo le son presentados imágenes conteniendo un texto y se solicita que retorne la representación numérica de éste(por ejemplo en formato Unicode o ASCII). O en el reconocimiento de voz, donde el modelo en base a ondas de sonoras debe emitir una secuencia de caracteres o decodificar las palabras que fueron habladas en el audio de entrada.
+* Traducción de idiomas, donde a partir de un conjunto de símbolos en algún idioma, el modelo debe convertirlos en una secuencia de símbolos en otro idioma, aplicado generalmente a procesamiento de lenguaje natural, por ejemplo en la traducción de textos de un idioma a otro.
+*  Salidas estructuradas de información, que involucran tareas donde la salida es una estructura de datos que contiene múltiples valores (como un vector) que describe relaciones entre los datos. Un ejemplo de esto es el parseo, donde se mapea una sentencia en lenguaje natural en un árbol que describe la estructura gramatical etiquetando nodos de árboles como verbos, sustantivos o advebios; Otro caso de aplicación, es la segmentación de imágenes donde el modelo asigna a cada pixel una categoría específica, como por ejemplo una red neuronal que es usada para anotar las ubicaciones de las calles en una fotografía aérea.
+*  Data Mining, donde se cuenta con grandes cantidades de información en bases de datos y éstas contienen información valiosa para el negocio, acerca de las relaciones de los datos, que pueden ser descubiertas automáticamente. Un ejemplos de ésto es aprender reglas generales que ayuden a realizar la evaluación de otorgación de créditos a un posible solicitante, por medio del análisis de información de bases de datos financieras.
+* Ranking de páginas web, donde el usuario envía una consulta a un motor de búsqueda, que busca y proporciona paginas web relevantes a la misma ordenadas según la relevancia. Para lograr ésto el motor de búsqueda necesita conocer  cuales páginas son relevantes y concuerdan con la consulta especificada, adquiriendo para ésto información de distintas fuentes: la dirección web de cada página, el contenido de la misma, la frecuencia con la que varios usuarios entran a estos sitios para la misma consulta, o desde ejemplos de consultas similares en combinación páginas web rankeadas manualmente. Machine Learning es usada durante este proceso para automatizar y mejorar la precisión de las consultas al momento de diseñar un motor de búsqueda.
+* Aplicaciones de reserva por Internet que emplean filtrado colaborativo, donde se analiza la información relacionada a productos consumidos anteriormente por un usuario, con el fin de predecir futuros hábitos de consumo y de esta manera ofrecerle productos similares. Un ejemplo de aplicaciones que emplean este tipo de característica son Amazon y Netflix, donde los productos o servicios que se ofrecen a un usuario se predicen empleando los datos de consumo de otros usuarios con preferencias de consumo similares.  
+* Aplicaciones donde los desarrolladores no cuentan con suficiente conocimiento del dominio como para programar algoritmos efectivos, como por ejemplo las aplicaciones de control de seguridad que emplean el reconocimiento facial en base a imágenes o grabación de video. Estas aplicaciones deben realizar una clasificación del rostro en una imagen para determinar si es un usuario registrado o un desconocido, lidiando con diferentes condiciones de iluminación, expresiones faciales, diferentes corte de pelo,etc. debiendo para ello, aprender las características más relevantes de cada rostro con el fin sortear estas dificultades. 
 
 
 Beneficios del uso de ML
