@@ -409,21 +409,42 @@ Mecanismos para Machine Learning(ML)
 ------------------------------------
 
 
+Árboles de decisión(Tree)
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Maquinas de soporte de Vectores(SVM)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/
+.. http://www.saedsayad.com/decision_tree.htm
 
-.. TODO: Completar!!!
+Los árboles de decisión son un mecanismo de ML de aprendizaje que aproxima funciones de valores discretos, donde la función estimada puede ser representada por un árbol de decisión. Los árboles de decisión clasifican instancias ordenándolas desde un nodo raiz hasta llegar a nodos hoja, lo que en última instancia proporciona la clasificación de la instancia, de esta manera cada nodo en el árbol especifica alguna prueba de algún atributo de la muestra de entrada y, cada rama que desciende de ese nodo corresponde a uno de los posibles valores para este atributo. Entonces, la clasificación de una instancia comienza en el nodo raíz del árbol testeando el atributo especificado por este nodo, y luego desplazándose por la rama del árbol correspondiente al valor del atributo en el el ejemplo dado y, este proceso se repite nuevamente para el nodo actual, hasta llegar a un nodo hoja del árbol. 
+
+La construcción del árbol se puede realizar por medio de distintos algoritmos, aunque la mayoría se basa en un algoritmo base top-down de busqueda ambiciosa, que consiste en probar cada una de las features individualmente, para determinar cual de todas éstas clasifica de manera más eficiente las muestras de entrenamiento, computando para ésto una métrica denominada ganancia de la información(information gain), que mide que tan eficientemente un atributo separa las muestras del dataset de entrenamiento según sus labels. De esta forma, el atributo con la mejor división es seleccionado y establecido como la raíz del árbol. Luego, un nodo hijo del nodo raiz es creado para cada posible valor del nodo raíz y, las muestras de entrenamiento se ordenan de acuerdo al nodo hijo al que pertenecen. Este proceso se repite para cada una de las muestras de entrenamiento asociadas a cada nodo hijo, con el fin de seleccionar el mejor atributo posible para realizar la prueba en ese punto en el árbol. Este proceso continua hasta que la creación de ramas en el árbol no produce una mejora de predicción significativa, o hasta que la cantidad de muestras en cada uno de los nodos hoja del árbol es menor que un valor mínimo previamente establecido.
+Este proceso es un método de búsqueda ambicioso en el cual el algoritmo nunca retrocede sobre divisiones realizadas anteriormente en el árbol, para reconsiderar otras alternativas.   
+
+
+
+.. figure:: ../figs/Cap4/ejemplo_decision_tree.png
+
+   Ejemplo gráfico de la organización de un árbol de decisión 
+
+Los árboles de decision también pueden sufrir de overfitting, ya que éstos pueden ser creados con estructuras complejas de división que no generalicen de manera eficiente nuevos datos de prueba, por lo que existen varias aproximaciones para evitarlo denominadas poda o pruning, donde se eliminan ramas del árbol con el fin eliminar relaciones redundantes. Dependiendo del momento en que se realiza la poda éstas se clasifican en dos clases principales:
+
+* Poda temprana (early pruning), donde el crecimiento del árbol se detiene, antes de que alcance el punto donde memoriza el ruido y los datos de entrenamiento. Una de las aproximaciones de este tipo denominada reduced-error pruning consiste en dividir el dataset en subconjuntos complementarios de training y testing. Luego, se considera cada uno de los nodos en el árbol como un candidado a ser podado, donde podar un nodo implica remover el subarbol que se encuentra debajo de éste, convertirlo en un nodo hoja y asignarle los resultados de clasificación asociados al subárbol de ese nodo. Así, los nodos se remueven si el árbol luego de la poda de un nodo tiene un desempeño de predicción que el árbol original, sobre el dataset de testing. Ésto tiene el efecto de que cualquier nodo hoja agregado debido a regularidades coincidentes en el dataset de training es probable que sea podado, ya que es improbable que estas coincidencias también estén presentes en el dataset de testing. De esta forma se podan los nodos de manera iterativa, siempre seleccionando aquellos que incrementen el rendimiento del árbol sobre el dataset de testing, hasta que la poda de nodos produzca un decremento de la precisión del modelo.  
+
+  
+* Poda tardía (post pruning) que permiten que el árbol se construya con overfitting y luego se realiza la poda para eliminar esta característica. Estos métodos consisten en luego de que se entrenó con el dataset de training permitiendo el overfitting, luego se convierte el árbol en un conjunto de reglas construyendo una regla por cada camino desde la raíz del árbol hasta un nodo hoja. A continuación, se poda cada regla, removiendo cualquier otra precondición (secuencia de tests de atributos de la raíz al nodo hoja) que produzcan una mejora del accuracy de la misma, dejando intactas las reglas empeoran esta métrica. Finalmente, se ordenan las reglas podadas por su accuracy estimada, y se las considera en esta secuencia cuando se clasifican posteriores muestras.
+
+
 
 Redes Neuronales(NN)
 ^^^^^^^^^^^^^^^^^^^^
 
 .. TODO: Completar!!!
 
-Árboles de decisión(Tree)
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Maquinas de soporte de Vectores(SVM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. TODO: Completar!!!
+
 
 
 
