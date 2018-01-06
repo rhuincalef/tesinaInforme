@@ -8,6 +8,7 @@ https://machinelearningmastery.com/machine-learning-books/
 Diferencia AI, machine learning y deep learning -->
 http://fortune.com/ai-artificial-intelligence-deep-machine-learning/
 
+
 #https://www.manning.com/books/deep-learning-with-python
 https://livebook.manning.com/#!/book/deep-learning-with-python/chapter-1/8
 

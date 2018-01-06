@@ -435,10 +435,34 @@ Los árboles de decision también pueden sufrir de overfitting, ya que éstos pu
 
 
 
-Redes Neuronales(NN)
-^^^^^^^^^^^^^^^^^^^^
+Redes Neuronales(ANN)
+^^^^^^^^^^^^^^^^^^^^^
 
-.. TODO: Completar!!!
+.. http://neuralnetworksanddeeplearning.com/chap1.html
+.. https://medium.com/@xenonstack/overview-of-artificial-neural-networks-and-its-applications-2525c1addff7
+.. https://en.wikipedia.org/wiki/Biological_neural_network
+.. https://en.wikipedia.org/wiki/Artificial_neural_network
+.. Tom Mitchell - Machine Learning. pag. 98
+
+
+Las redes neuronales artificiales(Artificial Neural Network,ANN) son modelos inspirados en los sistemas neuronales de los cerebros animales, que se encuentran constituidos por neuronas interconectadas, que forman una red, y que se comunican por medio de impulsos eléctricos. Análogamente, las redes neuronales artificiales se componen de neuronas artificiales, que aceptan un conjunto de valores de entrada reales, que se encuentran regulados por un conjunto de pesos *wi* que determinan la relevancia de la contribución cada una de las entradas y que se ajustan automáticamente, durante la etapa de aprendizaje de la red. Estas neuronas computan una función en base a los valores de entrada y los pesos, y dependiendo de la relevancia de estos valores con respecto al problema, ésta se activa retornando un valor 1 si el valor computado supera cierto límite (threshold) y -1 en caso contrario.     
+
+
+.. figure:: ../figs/Cap4/ejemplo_neurona_artificial.png
+
+   Ejemplo de neurona artificial
+
+Por lo general, las redes neuronales se organizan en capas, donde cada una de las capas se compone de un conjunto de neuronas artificiales interconectadas con neuronas de la capa anterior y siguiente, con el fin de recibir solamente información desde la capa de procesamiento anterior y solo enviar información a la capa de procesamiento siguiente. Entre estas capas se distinguen la capa de entrada (input layer) donde se ubican las neuronas que reciben los datos de las muestras que la red procesará, la capa de salida (output layer) que contiene las neuronas que brindan el resultado final y las capas ocultas o intermedias (hidden layers) que solamente contienen información intermedia empleada durante el procesamiento. Las redes neuronales pueden contar con varias capas ocultas, dependiendo de que tan complejo sean las relaciones del problema que se busca resolver.
+
+
+.. figure:: ../figs/Cap4/ejemplo_capas_ann.jpg
+
+   Ejemplo de ANN multicapa
+
+
+
+
+
 
 Maquinas de soporte de Vectores(SVM)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
