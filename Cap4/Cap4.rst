@@ -458,16 +458,21 @@ Por lo general, las redes neuronales se organizan en capas, donde cada una de la
 .. figure:: ../figs/Cap4/ejemplo_capas_ann.jpg
 
    Ejemplo de ANN multicapa
-
-
-
-
-
+ 
 
 Maquinas de soporte de Vectores(SVM)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. Introduction to statistical learning.James Witten. pag 351.
+.. https://en.wikipedia.org/wiki/Support_vector_machine
+.. http://www.analiticaweb.es/machine-learning-y-support-vector-machines-porque-el-tiempo-es-dinero-2/
 
-.. TODO: Completar!!!
+
+Las máquinas de soporte de vectores (Support Vector Machines, SVM) son un mecanismo empleado durante el aprendizaje supervisado que pueden ser empleadas para resolver problemas de clasificación y regresión. Esta técnica consiste en realizar una separación de los datos por medio de hyperplanos, donde un hyperplano para un espacio de dimensión *p* (siendo *p* la cantidad de features) es un subespacio de dimensión *p-1* que es capaz de dividir los datos de entrenamiento en diferentes clases (para clasificación) o, encontrar la función que define la distribución de las muestras (en regresión).
+Así, la generación de un modelo de SVM consiste en evaluar varios hyperplanos separadores y seleccionar de entre éstos un hyperplano óptimo con el margen máximo hacia las muestras, el cual se obtiene computando la distancia perpendicular entre el hyperplano divisor para cada muestra y encontrando las dos muestras de ambas clases para las que la distancia es la mínima, ésto se conoce como margen (margin). Así el hyperplano de margen máximo, es el hyperplano separador para el que el margen es el valor máximo, esto es, el hyperplano que tiene la distancia mínima más grande a las muestras de entrenamiento. De esta forma los puntos que se encuentran en el margen máximo al hyperplano conforman los vectores de soporte en el espacio p-dimensional y  soportan el hyperplano de margen máximo en el sentido en que, si estos puntos fueran movidos levemente, entonces el hyperplano de margen máximo también se movería.
+
+.. figure:: ../figs/Cap4/ejemplo_vectores_sporte_svm.png
+
+   Ejemplo de hyperplano separador. La línea negra es el hyperplano que divide las muestras de entrenamiento, y las 3 muestras que son atravesadas por la línea punteada constituyen los vectores de soporte.
 
 
 
