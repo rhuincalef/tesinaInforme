@@ -500,10 +500,15 @@ De esta forma, las SVMs permiten realizar la clasificación con hyperplanos en c
 .. math:: K(x,y) = (xy + c)^d
    :label: ecuacionKernelPoly
 
-
+.. https://en.wikipedia.org/wiki/Multiclass_classification
+.. Introduction to statistical learning. pag. 370
 .. TODO: PONER MECANISMO DE SVM PARA MULTICLASE 
 
-
+Debido a que SVM es solamente una algoritmo de clasificación binario, se han desarrollado estrategias para la clasificación multiclase (o multilabel), con el fin de discriminar entre más de dos clases, entre las que se encuentran las siguientes:
+  
+* Uno contra el Uno (One-vs-One,OvO): En esta aproximación, dadas *N* clases se deben entrenar N(N-1)/2 clasificadores binarios, generando uno por cada posible combinación de clases y luego entrenarlos datos de entrenamiento asociados a las clases que deben predecir. Luego, durante la etapa de predicción se emplea un esquema de votación, donde todos los clasificadores predicen la misma muestra de testing y, la clase que tenga mayor cantidad de votos positivos es la clase a la pertenece la muestra.
+  
+* Uno contra el Resto (One-vs-Rest,OvR,OvA): Esta técnica consiste en para un problema con *N* clases, entrenar *N* clasificadores que emplean todas las muestras del dataset de training, clasificando como positivas aquellas que pertenecen a la clase que el clasificador tiene asignada y negativa si pertenece a cualquier otra clase. Así, al recibir una muestra de entrada, cada uno de los clasificadores genera un valor real, que es un score de confianza que indica la probabilidad de que esa muestra pertenezca a esa clase, y la clase para la que la muestra de testing genera el score más alto, es la clase en la que ésta se asigna.
 
 
 Selección de features para ML en PCL
