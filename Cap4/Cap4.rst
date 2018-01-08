@@ -474,6 +474,35 @@ Así, la generación de un modelo de SVM consiste en evaluar varios hyperplanos 
 
    Ejemplo de hyperplano separador. La línea negra es el hyperplano que divide las muestras de entrenamiento, y las 3 muestras que son atravesadas por la línea punteada constituyen los vectores de soporte.
 
+.. https://en.wikipedia.org/wiki/Kernel_method
+.. https://en.wikipedia.org/wiki/Support_vector_machine
+.. http://www.cogsys.wiai.uni-bamberg.de/teaching/ss06/hs_svm/slides/SVM_Seminarbericht_Hofmann.pdf
+.. http://crsouza.com/2010/03/17/kernel-functions-for-machine-learning-applications/#linear
+
+De esta forma, las SVMs permiten realizar la clasificación con hyperplanos en conjuntos de datos con que se encuentran separados linearmente, sin embargo existen situaciones donde éstos no se pueden dividir linearlmente  por lo que el desempeño de un clasificador linear sería considerablemente bajo en estas cirunstancias. Para solucionar este problema, las SVM emplean funciones de kernel que convierten el espacio de las features de entrada a un espacio de mayores dimensiones, siendo éstos cuadráticos, cúbicos , polinomiales o de orden superior, con el fin de lograr encontrar un hyperplano en este nuevo espacio, que separe las muestras con una mejor precisión. Existen diferentes tipos de kernels que se emplean para lograr ésto, entre los que se encuentran:
+
+.. https://en.wikipedia.org/wiki/Radial_basis_function_kernel
+.. https://en.wikipedia.org/wiki/Polynomial_kernel
+.. http://scikit-learn.org/stable/modules/svm.html
+
+* Kernel Linear: Donde para dos vectores *x*, *y* correspondientes a las muestras entrada sin modificar la función de kernel, se define de la siguiente forma:
+  
+.. math:: K(x,y) = (x,y)
+   :label: ecuacionKernelLinear
+
+* Kernel Radial Basis Function(RBF): Este kernel dados dos vectores *x*, *y* correspondientes a dos muestras representadas como vectores en el espacio de entrada, se define por medio de la siguiente fórmula, donde :math:`{\gamma}` es un parámetro libre mayor a cero ajustable al problema, y *||x-y ||^2*
+
+.. math:: K(x,y) = exp(-{\gamma}||x-y ||^2)
+   :label: ecuacionKernelRBF
+
+* Kernel Polynomial: El kernel polinomial para polinomios de grado *d* se computa por medio de la siguiente fórmula, donde *c* es un parámetro libre que ajusta la influencia del orden superior de la función contra términos de orden superior en el polinomio, *x*,*y* son las representaciones vectoriales de las muestras de entrada:
+
+.. math:: K(x,y) = (xy + c)^d
+   :label: ecuacionKernelPoly
+
+
+.. TODO: PONER MECANISMO DE SVM PARA MULTICLASE 
+
 
 
 
