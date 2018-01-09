@@ -9,9 +9,19 @@ Sensores 3D
 .. https://en.wikipedia.org/wiki/3D_scanner
 .. https://en.wikipedia.org/wiki/Structured-light_3D_scanner
 .. https://en.wikipedia.org/wiki/Field_of_view
+.. https://en.wikipedia.org/wiki/Point_cloud
+.. https://en.wikipedia.org/wiki/List_of_programs_for_point_cloud_processing
 
-.. https://en.wikipedia.org/wiki/Kinect
 
+Los scanners o sensores 3D, son elementos de medición que se emplean con el fin de analizar objetos del mundo real o entornos y obtener información respecto a sus características físicas, tales como colores y/o forma, que posteriormente pueden emplearse para genera modelos 3D digitales de éstos. Estos modelo se representa por medio de una nube de puntos (Point Cloud), que es una estructura de puntos definidos  en algún sistema de coordenadas, estando éstos definidos por sus coordenas (X,Y,Z) en un sistema de coordenadas tridimensional. Estas representaciones pueden ser directamente renderizadas e inspeccionadas, sin embargo para su uso en aplicaciones comerciales de edición o modelado deben ser convertidas en mallas poligonales o modelos triangulados, modelos NURBS (modelo matemático empleado para la representación de superficies y curvaturas) o modelos compatibles con el diseño asistido por computadora (CAD).
+
+Estos sensores son similares a las camaras digitales, ya que cuentan con un campo de visión cónico y solamente pueden recolectar información respecto del entorno en lugares que cuentan con suficiente iluminación. Sin embargo, a diferencia de éstas  que unicamente capturan información respecto de los colores de la superficie, los scanners 3D son capaces de recolectar información acerca de la distancia de cada punto en la imagen  dentro de su rango de visión, por lo que la coordenada de cada punto puede ser precisada. Aunque la imagen proporcionada por un scanner 3D incluya información de posicionamiento de los puntos que componen una imagen, una única captura del objeto no bastará para brindar un modelo tridimensional completo de las caracaterísticas de éste, por lo que si se desea obtener éste resultado, se deben realizar varias capturas desde distintos puntos de vista del mismo objeto y luego realizar la unión final de todas estas capturas en una captura final.
+
+
+
+.. Clases de sensores 3D y descripción general de C/U
+
+.. APLICACIONES de estos sensores
 
 Sensor Kinect
 +++++++++++++
@@ -22,6 +32,7 @@ Sensor Kinect
 .. TODO: FUNCIONAMIENTO Y CARACTERISTICAS, DRIVERS EN WINDOWS Y LINUX, ENUMERAR LIBRERÍAS PARA EL DESARROLLO DE APLICACIONES DESDE WINDOWS Y LINUX. 
 
 
+.. https://en.wikipedia.org/wiki/Kinect
 
 .. Libro Beginning Programming with Microsoft SDK Kinect -->
 .. http://droppdf.com/v/IBzJ5
@@ -35,6 +46,7 @@ Sensor Kinect
 
 .. ZigFu con Unity y Kinect -->
 .. https://forum.unity.com/threads/connecting-kinect-unity-with-official-sdk.162075/
+
 
 
 
