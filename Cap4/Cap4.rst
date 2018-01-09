@@ -502,7 +502,6 @@ De esta forma, las SVMs permiten realizar la clasificación con hyperplanos en c
 
 .. https://en.wikipedia.org/wiki/Multiclass_classification
 .. Introduction to statistical learning. pag. 370
-.. TODO: PONER MECANISMO DE SVM PARA MULTICLASE 
 
 Debido a que SVM es solamente una algoritmo de clasificación binario, se han desarrollado estrategias para la clasificación multiclase (o multilabel), con el fin de discriminar entre más de dos clases, entre las que se encuentran las siguientes:
   
