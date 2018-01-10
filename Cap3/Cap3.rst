@@ -55,17 +55,20 @@ Los scanners 3D de triangulación, consisten en emitir una luz láser sobre un o
 
 Dentro de los scanners que emplean estos mecanismos se encuentran los siguientes:
 
-* Conoscopic Holography: 
-* Structured Light:
-* Moduled Light:
+* Análisis Holográfico (Conoscopic Holography): Este tipo de dispositivo consiste en proyectar un rayo laser en una superficie y luego emplear la reflexión del mismo, haciendo que éste atraviese un cristal con forma cónica y genere un patrón de luz que se proyecta en una cámara y posteriormente es analizado para medir la distancia.
+
+* Luz estructurada 3D (Structured Light 3D): Los lásers 3D de luz estructurada proyectan un patrón de luz sobre un objeto o superficie y captan la deformación producida por el objeto, pudiendo ser éste de unidimensional (una línea de luz) o bidimensional (una grilla o patrón de lineas). Un sensor que se encuentra desplazado del emisor de luz, se emplea para captar la deformación y luego se computa la distancia. Este tipo de dispositivos se caracterizan por ser veloces, ya que en lugar de escanear un punto a la vez, los sensores escanean múltiples puntos en campo de visión con una sola emisión, lo que elimina la posibilidad de distorsión por movimiento.    
+  
+* Luz modulada (Moduled Light): En este tipo de sensores, la luz emitida por el emisor se modifica variando la amplitud de la radiación emitida en base a un patrón establecido (generalmente una onda sinusoidal) y una cámara detecta la diferencia entre la amplitud del patrón y la diferencia de radiación reflejada, empleándose ésta para detectar la distancia del objeto y computar las posiciones. 
   
 
 Por otro lado, la técnica de scanners sin contacto pasivos, no emiten ningún tipo de radiación sino que se funcionamiento se basa en capturar la radiación reflejada del ambiente, como la luz solar o la luz infraroja. Estos tipos de scanners se caracterizan por ser económicos, ya que no requieren de hardware  especializado  para la emisión de un tipo de radiación, sino pricipalmente de cámaras digitales simples. Dentro de esta categoría de lasers, se encuentran los siguientes:
 
-* Scanners de video estereoscópicos (stereoscopic)
-* Scanners fotométricos(Photometric scanner)
-* Silhouette scanners
-* Image-based scanners   
+* Scanners estereoscópicos (Stereoscopic Scanners): Estos dipositivos emplean dos cámaras de video en posiciones diferentes, enfocadas hacia el mismo objeto, que captarán distintas imágenes cuyas diferencias serán empleadas para computar la distancia y las posiciones de  cada punto en las imágenes.
+ 
+* Silhouette scanners: Estos scanners capturan una secuencia de imágenes para generar un contorno alrededor de un objeto que contrasta con el fondo, que posteriormente son superpuestos para formar un hull visual y aproximar el objeto.
+
+* Image-based scanners:   
 
 
 .. Clases de sensores 3D y descripción general de C/U
