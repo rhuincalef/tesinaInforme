@@ -66,17 +66,12 @@ Por otro lado, la técnica de scanners sin contacto pasivos, no emiten ningún t
 
 * Scanners estereoscópicos (Stereoscopic Scanners): Estos dipositivos emplean dos cámaras de video en posiciones diferentes, enfocadas hacia el mismo objeto, que captarán distintas imágenes cuyas diferencias serán empleadas para computar la distancia y las posiciones de  cada punto en las imágenes.
  
-* Silhouette scanners: Estos scanners capturan una secuencia de imágenes para generar un contorno alrededor de un objeto que contrasta con el fondo, que posteriormente son superpuestos para formar un hull visual y aproximar el objeto.
+* Silhouette scanners: Estos scanners capturan una secuencia de imágenes para generar un contorno alrededor de un objeto que contrasta con el fondo, que posteriormente son superpuestos para formar un hull visual y generar una aproximación del objeto.
 
-* Image-based scanners:   
-
-
-.. Clases de sensores 3D y descripción general de C/U
-
+Por otro lado, un ejemplo de los scanners de contacto son las camaras de medidas de coordenadas(Coordinate Measuring Machine) empleadas para la medición de las características geométricas de partes o productos industriales ensamblados. Este dispositivo se compone de tres ejes X,Y,Z ortogonales entre si, donde cada uno se mantiene una escala para registrar las coordenadas del elemento que se analiza. Así, este tipo de scanner desplaza uno de los ejes (ya sea automáticamente o manualmente) mientras que el resto se mantiene fijo, y graba cada una de las coordenadas del objeto.  
 
 
 .. APLICACIONES de estos sensores
-
 
 
 
