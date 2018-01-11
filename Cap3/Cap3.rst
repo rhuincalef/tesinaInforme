@@ -4,8 +4,6 @@ Capítulo 3.Sensor Kinect y herramientas software implicadas el sensado de falla
 Sensores 3D
 -----------
 
-.. TODO: DEFINICION, CARACTERÍSTICAS,FORMA DE REPRESENTACIÓN DE OBJETOS EN 3D, TIPOS DE SENSORES 3D, CARACTERÍSTICAS Y APLICACIONES. 
-
 .. https://en.wikipedia.org/wiki/3D_scanner
 .. https://en.wikipedia.org/wiki/Structured-light_3D_scanner
 .. https://en.wikipedia.org/wiki/Field_of_view
@@ -71,7 +69,15 @@ Por otro lado, la técnica de scanners sin contacto pasivos, no emiten ningún t
 Por otro lado, un ejemplo de los scanners de contacto son las camaras de medidas de coordenadas(Coordinate Measuring Machine) empleadas para la medición de las características geométricas de partes o productos industriales ensamblados. Este dispositivo se compone de tres ejes X,Y,Z ortogonales entre si, donde cada uno se mantiene una escala para registrar las coordenadas del elemento que se analiza. Así, este tipo de scanner desplaza uno de los ejes (ya sea automáticamente o manualmente) mientras que el resto se mantiene fijo, y graba cada una de las coordenadas del objeto.  
 
 
-.. APLICACIONES de estos sensores
+Existen varias áreas donde se aplican los scanners 3D, entre las más comunes se encuentran:
+
+* Control de calidad industrial. Una de las principales aplicaciones de los scanners 3D consisten en la digitalización de partes producidas, tanto en el diseño como en la producción de la parte final. Estos dispositivos deben ser precisos y versátiles, con el fin de obtener la mayor cantidad de información acerca del proceso de construcción de partes.
+ 
+* Registros históricos. En esta rama se emplean dispositivos 3D sin contacto que permitan el análisis de restos animales o artefactos antiguos sin dañarlos, con el fin de generar un modelo a mayor o menor escala, para ser exhibido en museos.
+  
+* Ciencias médicas. Dentro de las ciencias médicas, los scanners 3D se emplean por ejemplo en la rama de construcción de piezas dentales, ya que por su precisión y adquisición sin contacto, permiten generar de manera satisfactoria piezas cuyas dimensiones serían complejas de adquirir.
+   
+* Gráficos por computadora. Debido a que con las tecnologías actuales en la industria de videojuegos permiten la creación de entornos con mayor nivel gráfico de detalle, actualmente se recurre a los scanners 3D para la construcción de éstos en el entorno del videojuego, ya que escanear estos objetos consume menos tiempo que la creación a mano con herramientas digitales.  
 
 
 
