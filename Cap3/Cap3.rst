@@ -100,16 +100,81 @@ Sensor Kinect
 .. https://web.archive.org/web/20100620012436/http://www.microsoft.com/Presspass/press/2010/mar10/03-31PrimeSensePR.mspx?rss_fdn=Press%20Releases
 .. https://venturebeat.com/2009/09/05/how-many-vendors-does-it-take-to-make-microsofts-project-natal-game-control-system/
 
+
+.. Componentes del Kinect -->
+.. https://msdn.microsoft.com/en-us/library/jj663790.aspx
+.. https://msdn.microsoft.com/en-us/library/jj131033.aspx
+.. https://msdn.microsoft.com/en-us/library/jj131023.aspx
+.. https://msdn.microsoft.com/en-us/library/hh973078.aspx
+
+.. http://www.cs.upc.edu/~virtual/RVA/CourseSlides/Kinect.pdf
+.. http://www.laserfocusworld.com/articles/2011/01/lasers-bring-gesture-recognition-to-the-home.html
+.. https://bbzippo.wordpress.com/2010/11/28/kinect-in-infrared/
+.. http://www.depthbiomechanics.co.uk/?p=100
+
+
+
 El sensor Kinect es un dispositivo de juego compatible con las plataformas Xbox y PC, desarrollado por las compañías Microsoft y Primesense, pensado para la interacción del usuario sin la necesidad de controles físicos de juego, empleándose para la interacción una interfaz de gestos y comandos hablados.Este dispositivo es una cámara de rango que genera imágenes de rango (Range Images), que son aquellas que por cada pixel de la imagen tienen asociada la información de distancia de cada uno hacia el punto de captura. Este dispositivo fue lanzado en dos versiones,  la versión Kinect V1 para la consola Xbox 360 y la versión Kinect V2 para la consola Xbox One. 
 
-La versión Kinect V1, empleada para la captura de muestras de la presente tesina, se basa en la técnica de proyección de luz estructurada 3D con luz infraroja(IR), constituyéndose este sensor por un emisor IR, una camara IR, una cámara RGB de video y un grupo de micrófonos en la parte inferior. Para realizar la captura de objetos en el campo de visión, el emisor IR emite un patrón de puntos infrarojos en 830nm que son capturados por la cámara IR, que funciona a 30 Hz y produce imágenes en una resolución de 1280x960, y que filtra únicamente las señales IR evitando que otro tipos de señales del entorno (tales como las señales de control Remoto)  y condiciones de iluminación interior, interfieran con el funcionamiento del sensor. De esta forma, luego de capturar la señal IR la cámara realiza una reducción de los datos capturados y los combina con los datos de la cámara RGB de video para generar la imagen final.
+La versión Kinect V1, empleada para la captura de muestras de la presente tesina, se basa en la técnica de proyección de luz estructurada 3D con luz infraroja(IR) constituyéndose por: Un emisor IR, una camara IR o sensor de profundidad IR, una cámara RGB de video, un conjunto de micrófonos en la parte inferior para la captura de comandos de voz, un acelerómetro y un motor de inclinación. Para realizar la captura de objetos en el campo de visión, el sensor captura constantemente varias imágenes o frames por segundo(fps) paralelamente, correspondientes a la cámara IR y la cámara de video.  En cada frame, el emisor IR emite un patrón de puntos infrarojos con distintas intensidades en 830nm, que son capturados por la cámara IR que funciona a 30 fps y produce imágenes en una resolución de 1280x960 pixeles, la cual se encarga de filtrar únicamente las señales IR, evitando que otro tipos de señales del entorno (tales como las señales de control remoto o condiciones de iluminación interior), interfieran con el funcionamiento del sensor. De esta forma, la cámara IR captura la señal IR, que se representa como una imagen en escala de grises, donde cada pixel contiene la distancia Cartesiana en milímetros hacia la coordenada de ese pixel desde el dispositivo de captura. El sensado de objetos se encuentra delimitado por un rango de distancia entre 0.8 m y 0.4 m por defecto, para la versión de Xbox 360, mientras que para la versión de Windows se incluye además un rango cercano de 0.4m y 3 m. 
+
+
+.. figure:: ../figs/Cap3/funcionamineto_stream_profundidad.png
+   :scale: 60%
+
+   Funcionamiento del stream de profundidad
+
+
+.. .. figure:: ../figs/Cap3/ejemplo_patron_puntos.jpg
+.. figure:: ../figs/Cap3/ejemplo_patron_puntos_2.png
+   :scale: 60%
+
+   Patrón de puntos proyectados sobre una superficie
+
+
+Luego, se analizan las diferencias entre el patrón emitido y la información de profundidad sensada por la cámara IR, se realiza una reducción de los datos capturados y se combina esta información con los datos de la cámara RGB de video para generar la nube de puntos final.
+
+
+
+.. figure:: ../figs/Cap3/esquema_general_kinect.gif
+
+   Esquema general de funcionamiento del Kinect V1
+
+
+
+La cámara RGB opera a 30 fps en una resolución de 640x480 pixeles y puede ampliar su resolución a una definición de 1280x1024 pixeles, la cual se ajusta para concordar con la cámara IR de profundidad. Adicionalmente, la cámara RGB posee algunas características para optimizar la calidad del video tales como balanceo de blancos automático, saturación de color, corrección de defectos y eliminación de parpadeo.
 
 
 .. figure:: ../figs/Cap3/sensorKinectEstructura.png
+   :scale: 60%
+
+   Diagrama externo del sensor Kinect V1
+
+
+.. figure:: ../figs/Cap3/componentesKinectV2.png
+   :scale: 60%
 
    Representación externa de los componentes de hardware del sensor Kinect V1
 
 
+El acelerómetro del dispositivo se emplea para conocer la orientación del sensor con respecto a la gravedad, y se encuentra ubicado en el centro del dispositivo, de manera que el eje Z apunta a la dirección en la que el sensor apunta.
+
+.. figure:: ../figs/Cap3/acelerometro_sensor.png
+ 
+    Ejes del dispositivo
+
+
+Este sensor contiene un campo de de visión de 43º horizontalmente y 57º verticalmente, que puede ser variado verticalmente a través del motor de inclinación en +- 27º, siendo éste el área de interacción con el dispositivo, donde se capturarán todos aquellos elementos que se encuentren en frente del sensor y no se encuentren bloqueados por algún otro objeto.   
+
+.. figure:: ../figs/Cap3/extension_inclinacion.png
+   :scale: 60%
+
+   Extensión de inclinación
+
+
+
+
+La versión Kinect V2, fue lanzada para Xbox One ...
 
 
 
