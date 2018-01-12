@@ -83,33 +83,43 @@ Existen varias áreas donde se aplican los scanners 3D, entre las más comunes s
 
 Sensor Kinect
 +++++++++++++
-.. terminos de busqueda google -->
-.. "developing libraries kinect"
-.. https://www.google.com.ar/search?q=developing+libraries+kinect&safe=off&ei=SylUWpf3KIiawASF96vQBA&start=40&sa=N&biw=1183&bih=616
-
 .. TODO: FUNCIONAMIENTO Y CARACTERISTICAS, DRIVERS EN WINDOWS Y LINUX, ENUMERAR LIBRERÍAS PARA EL DESARROLLO DE APLICACIONES DESDE WINDOWS Y LINUX. 
-
 
 .. https://en.wikipedia.org/wiki/Kinect
 
 .. Libro Beginning Programming with Microsoft SDK Kinect -->
 .. http://droppdf.com/v/IBzJ5
-.. https://books.google.com.ar/books?id=Cfxnzjf9phAC&pg=PA29&lpg=PA29&dq=developing+libraries+kinect&source=bl&ots=phpg5X6rp_&sig=XD4KMR3pfCUE8ACGCtDE81-MBto&hl=es&sa=X&ved=0ahUKEwi_luTe5MnYAhXGEZAKHbgbB6I4ChDoAQglMAA#v=onepage&q=developing%20libraries%20kinect&f=false
-
-
 
 .. Libro Hacking the kinect -->
 .. http://pdf.th7.cn/down/files/1312/hacking_the_kinect.pdf
+
+.. https://www.jameco.com/jameco/workshop/howitworks/xboxkinect.html
+.. https://electronics.howstuffworks.com/microsoft-kinect2.htm
+
+.. https://en.wikipedia.org/wiki/Range_imaging
+.. https://web.archive.org/web/20100620012436/http://www.microsoft.com/Presspass/press/2010/mar10/03-31PrimeSensePR.mspx?rss_fdn=Press%20Releases
+.. https://venturebeat.com/2009/09/05/how-many-vendors-does-it-take-to-make-microsofts-project-natal-game-control-system/
+
+El sensor Kinect es un dispositivo de juego compatible con las plataformas Xbox y PC, desarrollado por las compañías Microsoft y Primesense, pensado para la interacción del usuario sin la necesidad de controles físicos de juego, empleándose para la interacción una interfaz de gestos y comandos hablados.Este dispositivo es una cámara de rango que genera imágenes de rango (Range Images), que son aquellas que por cada pixel de la imagen tienen asociada la información de distancia de cada uno hacia el punto de captura. Este dispositivo fue lanzado en dos versiones,  la versión Kinect V1 para la consola Xbox 360 y la versión Kinect V2 para la consola Xbox One. 
+
+La versión Kinect V1, empleada para la captura de muestras de la presente tesina, se basa en la técnica de proyección de luz estructurada 3D con luz infraroja(IR), constituyéndose este sensor por un emisor IR, una camara IR, una cámara RGB de video y un grupo de micrófonos en la parte inferior. Para realizar la captura de objetos en el campo de visión, el emisor IR emite un patrón de puntos infrarojos en 830nm que son capturados por la cámara IR, que funciona a 30 Hz y produce imágenes en una resolución de 1280x960, y que filtra únicamente las señales IR evitando que otro tipos de señales del entorno (tales como las señales de control Remoto)  y condiciones de iluminación interior, interfieran con el funcionamiento del sensor. De esta forma, luego de capturar la señal IR la cámara realiza una reducción de los datos capturados y los combina con los datos de la cámara RGB de video para generar la imagen final.
+
+
+.. figure:: ../figs/Cap3/sensorKinectEstructura.png
+
+   Representación externa de los componentes de hardware del sensor Kinect V1
+
+
+
+
+
+Microsoft Kinect SDK(Xbox Development Kit)
+------------------------------------------
 
 
 .. ZigFu con Unity y Kinect -->
 .. https://forum.unity.com/threads/connecting-kinect-unity-with-official-sdk.162075/
 
-
-
-
-Kinect for Windows SDK(Xbox Development Kit)
-----------------------------------------------
 
 .. https://developer.microsoft.com/en-us/windows/kinect
 .. https://developer.microsoft.com/en-us/windows/kinect/tools
@@ -128,8 +138,6 @@ Librería Java For Kinect(J4K)
 
 .. http://research.dwi.ufl.edu/ufdw/j4k/faq.php
 .. http://research.dwi.ufl.edu/ufdw/index.php
-
-
 
 
 Librería PCL
