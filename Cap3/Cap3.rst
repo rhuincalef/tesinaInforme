@@ -37,13 +37,20 @@ Dado que la velocidad de la luz en la atmósfera *c* es una constante se conoce,
    
    Robot móvil con un láser Lidar SICK Laser Rangefield.
 
-Por otro lado, la cámara ToF no escanea individualmente cada uno de los puntos en el campo de visión, sino que emite varios pulsos de radiación simultáneamente capturando la escena completa en cada emisión. Luego una cámara sensible a la radiación captura la imagen producida por la reflexión del conjunto de pulsos (cuyas características variarán dependiendo de la distancia entre el sensor y el objeto), finalmente se filtra la radiación cuya longitud de onda coincide con la del tipo que fue emitida y se genera la imagen final.
+Por otro lado, la cámara ToF no escanea individualmente cada uno de los puntos en el campo de visión, sino que emite varios pulsos de radiación simultáneamente capturando la escena completa en cada emisión. Luego una cámara sensible a la radiación captura la imagen producida por la reflexión del conjunto de pulsos (cuyas características variarán dependiendo de la distancia entre el sensor y el objeto), finalmente se filtra la radiación cuya longitud de onda coincide con la del tipo que fue emitida y se genera la imagen final. Estos dispositivos se emplean en: Aplicaciones automovilísticas para detección de peatones y prevención de colisiones, interfaces humanas donde se captura la interacción con el usuario tales como en televisores y videojuegos donde se emplea el dispositivo para capturar movimientos y gestos que son utilizados como gamepads, tales como la segunda generación del sensor Kinect (Kinect V2), en robótica en robots que se desplazan en un entorno donde deben esquivar obstáculos o seguir una persona, o en visión por computadora en entornos industriales para tareas automatizadas de medición, o detección de objetos que serán empleados por un robot para realizar una tarea.
 
-Este tipo de sensor, tienen la ventaja de ser rápidos para el muestreo, de alta precisión,aptos para trabajos de medición en monumentos o elementos de construcción, con una alta densidad de puntos por captura, una velocidad de captura entre 10.000 y 100.000 puntos por segundo y un rango de medición alto entre 200 y 300 m.
+
+.. figure:: ../figs/Cap3/sensor_kinect_v2_cam_tof.png
+   :scale: 50%
+
+   Kinect V2 con cámara ToF desarrollada por Microsoft. 
+
+
+Este tipo de sensor, tienen la ventaja de ser rápidos para el muestreo, de alta precisión,aptos para trabajos de medición en monumentos o elementos de construcción, con una alta densidad de puntos por captura, una velocidad de captura entre 10.000 y 100.000 puntos por segundo y un rango de medición alto entre 200 y 300 m. Sin embargo, estos dispositivos no cuentan con una resolución de profundidad alta, la precisión del modelo generado es aproximadamente 1 cm y no se cuenta con información de color.  
 
 .. http://floridalaserscanning.com/3d-laser-scanning/how-does-laser-scanning-work/
 
-Los lasers de diferencia de fase funcionan emitiendo un haz de luz continuo y de potencia modulada, con una longitud de onda específica sobre el objeto o superficie, para posteriormente medir la diferencia entre las longitudes de onda del haz de luz emitido y el reflejado, y a partir de ésta diferencia computar la distancia. Este proceso es similar a la técnica de tiempo de vuelo, excepto que la fase del láser reflejado refina la precisión respecto de la detección de la distancia. El alcance de este tipo de sensores se encuentra limitado por las características de la longitud de onda, por lo que el rango de la  medición es la mitad de la modulación de la longitud de onda del haz de luz, mientras que la precisión de la medición es inversamente proporcional a la frecuencia empleada, por lo que medir con una alta frecuencia brinda distancias precisas pero menor rango de medición. Este tipo de dispositivo cuenta con una velocidad de adquisición alta (ubicándose ésta entre 100.000 y 1.000.000 de puntos por segundo) y un alcance de captura intermedio entre 70-100 m. Sin embargo, aunque la velocidad de captura es considerablemente superior a los scanners ToF, las nubes de puntos generadas por el método de diferencia de fase suelen contener más ruido.
+Los lasers de diferencia de fase funcionan emitiendo un haz de luz continuo y de potencia modulada, con una longitud de onda específica sobre el objeto o superficie, para posteriormente medir la diferencia entre las longitudes de onda del haz de luz emitido y el reflejado, y a partir de ésta diferencia computar la distancia. Este proceso es similar a la técnica de tiempo de vuelo, excepto que la fase del láser reflejado refina la precisión respecto de la detección de la distancia. El alcance de este tipo de sensores se encuentra limitado por las características de la longitud de onda, por lo que el rango de la  medición es la mitad de la modulación de la longitud de onda del haz de luz, mientras que la precisión de la medición es inversamente proporcional a la frecuencia empleada, por lo que medir con una alta frecuencia brinda distancias precisas pero menor rango de medición. Este tipo de dispositivo cuenta con una velocidad de adquisición alta (ubicándose ésta entre 100.000 y 1.000.000 de puntos por segundo) y un alcance de captura intermedio entre 70-100 m. Sin embargo, aunque la velocidad de captura es considerablemente superior a los scanners ToF, las nubes de puntos generadas por el método de diferencia de fase suelen contener más ruido. 
 
 
 .. figure:: ../figs/Cap3/ejemplo_phase_shift.jpg
@@ -62,7 +69,12 @@ Los scanners 3D de triangulación, consisten en emitir una luz láser sobre un o
 
 Los sensores de Holografía Conoscópica (Conoscopic Holography), consisten en proyectar un rayo láser en una superficie y luego emplear la reflexión del mismo, haciendo que éste atraviese un cristal con forma cónica y genere un patrón de luz que se proyecta en una cámara y posteriormente es analizado para medir la distancia.
 
-Los sensores de luz estructurada 3D (Structured Light 3D), proyectan un patrón de luz sobre un objeto o superficie y captan la deformación producida por el objeto, pudiendo ser éste de unidimensional (una línea de luz) o bidimensional (una grilla o patrón de lineas). Un sensor que se encuentra desplazado del emisor de luz, se emplea para captar la deformación y luego se computa la distancia. Este tipo de dispositivos se caracterizan por ser veloces, ya que en lugar de escanear un punto a la vez, los sensores escanean múltiples puntos en campo de visión con una sola emisión, lo que elimina la posibilidad de distorsión por movimiento.    
+Los sensores de luz estructurada 3D (Structured Light 3D), proyectan un patrón de luz sobre un objeto o superficie y captan la deformación producida por el objeto, pudiendo ser éste de unidimensional (una línea de luz) o bidimensional (una grilla o patrón de lineas). Un sensor que se encuentra desplazado del emisor de luz, se emplea para captar la deformación y luego se computa la distancia. Este tipo de dispositivos se caracterizan por ser veloces, ya que en lugar de escanear un punto a la vez, los sensores escanean múltiples puntos en campo de visión con una sola emisión, lo que elimina la posibilidad de distorsión por movimiento. La resolución y velocidad de estos sensores es similar a la de las cámaras VGA, y su precisión es similar a las ToF (aproximadamente 1 cm), contando con un alcance máximo entre 3 m y 6 m, sin embargo estos dispositivos tienen dificultades para captar objetos pequeños menores a 1 cm.   
+
+.. figure:: ../figs/Cap3/ejemplo_luz_estructurada.jpg
+
+   Ejemplo de sensor ASUS Xion Pro con luz estructurada.
+
   
 En los scanners de luz modulada (Moduled Light), la luz emitida por el emisor se modifica variando la amplitud de la radiación emitida en base a un patrón establecido (generalmente una onda sinusoidal) y una cámara detecta la diferencia entre la amplitud del patrón y la diferencia de radiación reflejada, empleándose ésta para detectar la distancia del objeto y computar las posiciones. 
   
@@ -80,8 +92,7 @@ Por otro lado, la técnica de scanners sin contacto pasivos, no emiten ningún t
 * Silhouette scanners: Estos scanners capturan una secuencia de imágenes para generar un contorno alrededor de un objeto que contrasta con el fondo, que posteriormente son superpuestos para formar un hull visual y generar una aproximación del objeto.
   
 
-
-Por otro lado, un ejemplo de los scanners de contacto son las camaras de medidas de coordenadas(Coordinate Measuring Machine) empleadas para la medición de las características geométricas de partes o productos industriales ensamblados. Este dispositivo se compone de tres ejes X,Y,Z ortogonales entre si, donde cada uno se mantiene una escala para registrar las coordenadas del elemento que se analiza. Así, este tipo de scanner desplaza uno de los ejes (ya sea automáticamente o manualmente) mientras que el resto se mantiene fijo, y graba cada una de las coordenadas del objeto.  
+Con respecto a los scanners de contacto, un ejemplo de su funcionamiento son las cámaras de medidas de coordenadas(Coordinate Measuring Machine) empleadas para la medición de las características geométricas de partes o productos industriales ensamblados. Este dispositivo se compone de tres ejes X,Y,Z ortogonales entre si, donde cada uno se mantiene una escala para registrar las coordenadas del elemento que se analiza. Así, este tipo de scanner desplaza uno de los ejes (ya sea automáticamente o manualmente) mientras que el resto se mantiene fijo, y graba cada una de las coordenadas del objeto.  
 
 
 Existen varias áreas donde se aplican los scanners 3D, entre las más comunes se encuentran:
@@ -217,8 +228,12 @@ Librería Java For Kinect(J4K)
 .. http://research.dwi.ufl.edu/ufdw/index.php
 
 
-Librería PCL
-------------
+
+.. Encabezado h3 -->
+
+Librería Point Cloud Library(PCL)
+---------------------------------
+
 .. https://en.wikipedia.org/wiki/Point_cloud
 .. https://openkinect.org/wiki/Main_Page
 .. https://openkinect.org/wiki/Getting_Started
@@ -234,17 +249,63 @@ Librería PCL
 .. https://arxiv.org/pdf/1102.4258.pdf
 .. 
 
+
+PCL es un proyecto que comenzó en 2010 por Willow Garage (compañía desarrolladora de la librería de imágenes OpenCV) y de la compañía desarolladora de Robotic Operating System(ROS), y cuya primera versión fue oficialmente liberada en 2011. Point Cloud Library(PCL) es una librería independiente, de código abierto, multiplataforma, escrita en C++, para la captura, el procesamiento geométrico y almacenamiento de nubes de puntos 3D, que ofrece algoritmos vinculados a tareas relacionadas a la visión artificial (o visión por computadora).  La visión artificial es un área de la inteligencia artificial, donde se busca que una computadora obtenga información y logre un entendimiento de alto nivel de las propiedades de ésta (tales como formas, iluminación,distribución de colores) a partir de un video o imagen del mundo real. Esta disciplina incluye aquellos métodos que permiten adquirir, analizar, procesar y extraer datos que puedan ser convertidos a información numérica y simbólica que pueda ser de utilidad durante la automatización de una tarea. Dentro del rango de aplicaciones en las que se emplea la visión artificial las más comunes son las siguientes:
+
+* Reconocimiento óptico de caracteres(OCR) interpretando códigos escritos a mano.
+* Inspección de máquinas, asesorando la calidad de partes empelando estéreo visión con iluminación especializada para medir tolerancias en partes de dispositivos aéreos o de automóviles.
+* Seguridad automotriz, detectando obstáculos como peatones en los senderos viales, bajo condiciones donde las técnicas de visión activas como Lidar no funcionan correctamente.
+* CGI(computer-generated imagery) en Cine-TV, donde la filmación real con actores se une con imágenes generadas por computadora rastreando puntos clave en el video origen, con el fin de estimar el movimiento de la cámara y la forma del entorno.
+* Captura de movimiento, utilizando marcadores retro-reflectivos capturados desde distintas cámaras con el objetivo de capturar digitalmente el patrón de movimiento de actores para realizar una animación por computadora.
+* Reconocimiento de huellas digitales para el acceso de personal autorizado automatizado.
+
+
 .. TODO: QUE ES PCL, CARACTERISTICAS, Tipos de ALGORITMOS PARA PROCESAMIENTO DE NUBES. 
 ..  ALgoritmos de pre-procesamiento de nube: 
 ..    -Estimacion de features (procesamiento de normales)
 ..    -Estructuración de la nube (Descomposicion: kd-tree y octree)
 ..    -Filtrado con passthrough filter y outlier removal (radius-based y statistical)
 ..    -Resampling ya sea empleando downsampling (voxel grid y uniform sampling) y upsampling (moving least squares)
-..    -Segmentation (empleando tanto las normales como el color)
+..    -Registración de dos nubes de puntos
 
-.. Algoritmos de procesamiento de descriptores:
+..  ALgoritmos de segmentación de objetos: 
+..    -Segmentation (empleando tanto las normales como el color)
+..    -Reconstrucción(Triangulación)
+
+.. Algoritmos de generación de descriptores:
   - Descriptores locales (empleando color o normales)
   - Descriptores globales(empleando color o normales)
+
+
+
+De esta forma, PCL es una librería que ofrece diferentes módulos independientes que pueden ser combinados de distintas formas en un pipeline de instrucciones, con el fin de lograr el reconocimiento de distintos tipos de objetos en una nube de puntos. Los algoritmos de estos módulos están pensados para abarcar un  diverso rango de tareas que son necesarias para una correcta detección de objetos, tales como filtrado de puntos con valores atípicos distantes del resto en una nube (outliers en la nube), almacenamiento, lectura y conversión de nubes de puntos en distintos formatos, descomposición de la nube para realizar búsquedas, concatenar y fusionar dos nubes de puntos con los mismos o distintos campos, segmentar partes de una escena, extraer puntos clave y computar descriptores geométricos con el propósito de distinguir elementos del mundo real. De manera general, el pipeline de PCL para el reconocimiento de objetos se compone de las siguientes etapas:
+
+* Pre-procesamiento de nube: Durante esta etapa se elimina el ruido de la nube, se aplican algoritmos para estructurar la nube y se estiman features que proporcionan información acerca de las características de la superficie que serán empleadas durante las siguientes etapas.
+* Segmentación de objetos: En esta etapa se realiza la segmentación por medio de distintas técnicas con el fin de obtener clusters de interés, que serán utilizados para generar descriptores.
+* Generación de descriptores: Durante esta fase, se computan los descriptores para el/los clusters aislados. Un descriptor es una estructura compleja que codifica información respecto de la geometría que rodea un punto, de manera que permiten identificar un conjunto de puntos a lo largo de varias nubes de puntos, sin importar el ruido, la resolución o las posibles transformaciones. Adicionalmente, algunos descriptores capturan información global respecto del objeto al que pertenecen, como el punto de visión que puede ser utilizado para computar la posición.   
+
+A continuación, se enumeran y describen los algoritmos principales empleados durante cada fase.
+
+
+Algoritmos de pre-procesamiento de nube
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Algoritmos de segmentación de objetos
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Algoritmos para generación de descriptores
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Con respecto a la generación de descriptores, PCL ofrece dos tipos de descriptores: Descriptores locales que se emplean para describir la geometría alrededor de cada punto, sin considerar la geometría total del objeto que cada punto compone, por lo que cuando se emplean estos descriptores se deben seleccionar los puntos clave del objeto o keypoints que se desean procesar. Estos descriptores se emplean para el reconocimiento de objetos y para la registración(registration), que consiste en alinear dos nubes de puntos y por medio de transformaciones lineales, detectar si existen áreas comunes en ambas nubes de puntos.
+
+Por otro lado, PCL ofrece descriptores globales que describen la geometría de un cluster de puntos que representa un objeto, por lo que para emplear estos descriptores se requiere preprocesar una nube de puntos, con el fin de aislar el objeto. Estos descriptores se aplican para el reoconocimiento de objetos y clasificación, estimación de posición y análisis de geometría (tipo de objeto, forma, etc.). Los descriptores locales que emplean un radio de busqueda, mayormente pueden ser usados como globales, si se computa un solo punto en el cluster y se modifica el radio de busqueda de puntos vecinos, de manera que se abarquen todos los puntos que componen el objeto.
+
+
+ .. . Con respecto a los baches, se optó por seleccionar aquellos algoritmos que computan features llamadas normales( vectores unidad que son tangentes a un punto en una superficie y perpendiculares al plano en que se encuentra dicho punto).
+
+
+
 
 
 
