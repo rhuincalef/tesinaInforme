@@ -260,6 +260,20 @@ PCL es un proyecto que comenzó en 2010 por Willow Garage (compañía desarrolla
 * Reconocimiento de huellas digitales para el acceso de personal autorizado automatizado.
 
 
+
+
+
+De esta forma, PCL es una librería que ofrece diferentes módulos independientes que pueden ser combinados de distintas formas en un pipeline de instrucciones, con el fin de lograr el reconocimiento de distintos tipos de objetos en una nube de puntos. Los algoritmos de estos módulos están pensados para abarcar un  diverso rango de tareas que son necesarias para una correcta detección de objetos, tales como filtrado de puntos con valores atípicos distantes del resto en una nube (outliers en la nube), almacenamiento, lectura y conversión de nubes de puntos en distintos formatos, descomposición de la nube para realizar búsquedas, concatenar y fusionar dos nubes de puntos con los mismos o distintos campos, segmentar partes de una escena, extraer puntos clave y computar descriptores geométricos con el propósito de distinguir elementos del mundo real. De manera general, el pipeline de PCL para el reconocimiento de objetos se compone de las siguientes etapas:
+
+* Pre-procesamiento de nube: Durante esta etapa se elimina el ruido de la nube, se aplican algoritmos para estructurar la nube y se estiman features que proporcionan información acerca de las características de la superficie que serán empleadas durante las siguientes etapas.
+
+* Segmentación de objetos: En esta etapa se realiza la segmentación por medio de distintas técnicas con el fin de obtener clusters de interés, que serán utilizados para generar descriptores.
+
+* Generación de descriptores: Durante esta fase, se computan los descriptores para el/los clusters aislados. Un descriptor es una estructura compleja que codifica información respecto de la geometría que rodea un punto, de manera que permiten identificar un conjunto de puntos a lo largo de varias nubes de puntos, sin importar el ruido, la resolución o las posibles transformaciones. Adicionalmente, algunos descriptores capturan información global respecto del objeto al que pertenecen, como el punto de visión que puede ser utilizado para computar la posición.   
+
+A continuación, se enumeran y describen los algoritmos principales empleados durante cada fase.
+
+
 .. TODO: QUE ES PCL, CARACTERISTICAS, Tipos de ALGORITMOS PARA PROCESAMIENTO DE NUBES. 
 ..  ALgoritmos de pre-procesamiento de nube: 
 ..    -Estimacion de features (procesamiento de normales)
@@ -275,26 +289,50 @@ PCL es un proyecto que comenzó en 2010 por Willow Garage (compañía desarrolla
 .. Algoritmos de generación de descriptores:
   - Descriptores locales (empleando color o normales)
   - Descriptores globales(empleando color o normales)
-
-
-
-De esta forma, PCL es una librería que ofrece diferentes módulos independientes que pueden ser combinados de distintas formas en un pipeline de instrucciones, con el fin de lograr el reconocimiento de distintos tipos de objetos en una nube de puntos. Los algoritmos de estos módulos están pensados para abarcar un  diverso rango de tareas que son necesarias para una correcta detección de objetos, tales como filtrado de puntos con valores atípicos distantes del resto en una nube (outliers en la nube), almacenamiento, lectura y conversión de nubes de puntos en distintos formatos, descomposición de la nube para realizar búsquedas, concatenar y fusionar dos nubes de puntos con los mismos o distintos campos, segmentar partes de una escena, extraer puntos clave y computar descriptores geométricos con el propósito de distinguir elementos del mundo real. De manera general, el pipeline de PCL para el reconocimiento de objetos se compone de las siguientes etapas:
-
-* Pre-procesamiento de nube: Durante esta etapa se elimina el ruido de la nube, se aplican algoritmos para estructurar la nube y se estiman features que proporcionan información acerca de las características de la superficie que serán empleadas durante las siguientes etapas.
-
-* Segmentación de objetos: En esta etapa se realiza la segmentación por medio de distintas técnicas con el fin de obtener clusters de interés, que serán utilizados para generar descriptores.
-
-* Generación de descriptores: Durante esta fase, se computan los descriptores para el/los clusters aislados. Un descriptor es una estructura compleja que codifica información respecto de la geometría que rodea un punto, de manera que permiten identificar un conjunto de puntos a lo largo de varias nubes de puntos, sin importar el ruido, la resolución o las posibles transformaciones. Adicionalmente, algunos descriptores capturan información global respecto del objeto al que pertenecen, como el punto de visión que puede ser utilizado para computar la posición.   
-
-A continuación, se enumeran y describen los algoritmos principales empleados durante cada fase.
-
-
+  - 
+.. Encabezado nivel h4 -->
 Algoritmos de pre-procesamiento de nubes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Estimación de normales
+""""""""""""""""""""""
+.. TODO: COMPLETAR!!!
+
+Las normales, se consideran features de geometría asociadas a las nubes de puntos
+
+
+Descomposición de nubes: KD-Tree y Octree
+"""""""""""""""""""""""""""""""""""""""""
+.. TODO: COMPLETAR!!!
+
+Filtrado de ruido de la nube: Passthrough filter y Outlier Removal
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. TODO: COMPLETAR!!!
+
+
+Resampling de la nube: Downsampling y Upsampling
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. TODO: COMPLETAR!!
+
+
 
 
 Algoritmos de segmentación de objetos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Segmentación
+""""""""""""
+
+
+.. TODO: COMPLETAR!!
+
+Triangulación
+"""""""""""""
+
+.. TODO: COMPLETAR!!
 
 
 
@@ -306,22 +344,59 @@ Algoritmos para generación de descriptores
 .. https://github.com/PointCloudLibrary/pcl/wiki/Overview-and-Comparison-of-Features
 .. http://www.pointclouds.org/assets/icra2013/pcl_features_icra13.pdf
 
-Con respecto a la generación de descriptores, PCL ofrece dos tipos de descriptores: Descriptores locales y descriptores globales. Los descriptores locales, se emplean para describir la geometría alrededor de cada punto, sin considerar la geometría total del objeto que cada punto compone, por lo que cuando se computan éstos, se debe hacer un filtrado previo de los puntos clave del objeto o keypoints que se desean procesar. Estos descriptores se emplean para el reconocimiento de objetos y para la registración(registration), que consiste en alinear dos nubes de puntos y por medio de transformaciones lineales, detectar si existen áreas comunes en ambas nubes de puntos. 
+Con respecto a la generación de descriptores, PCL ofrece dos tipos de descriptores: Descriptores locales y descriptores globales. Los descriptores locales, se emplean para describir la geometría alrededor de cada punto, sin considerar la geometría total del objeto que cada punto compone, por lo que cuando se computan éstos, se debe hacer un filtrado previo de los puntos clave del objeto o keypoints que se desean procesar. Estos descriptores se emplean para el reconocimiento de objetos y para la registración(registration), que consiste en alinear dos nubes de puntos y por medio de transformaciones lineales, detectar si existen áreas comunes en ambas nubes de puntos.
 
-Por otro lado, PCL ofrece descriptores globales que describen la geometría de un cluster de puntos que representa un objeto, por lo que para emplear estos descriptores se requiere pre-procesar una nube de puntos, con el fin de aislar el objeto. Estos descriptores se aplican para el reconocimiento de objetos y clasificación, estimación de posición y análisis de geometría (tipo de objeto, forma, etc.). Los descriptores locales que emplean un radio de búsqueda, mayormente pueden ser usados como globales, si se computa un solo punto en el cluster y se modifica éste radio al de puntos vecinos, de manera que se abarquen todos los puntos que componen el objeto.
+Por otro lado, PCL ofrece descriptores globales que describen la geometría de un cluster de puntos que representa un objeto, por lo que para emplear estos descriptores se requiere pre-procesar una nube de puntos, con el fin de aislar el objeto. Estos descriptores se aplican para el reconocimiento de objetos y clasificación, estimación de posición y análisis de geometría (tipo de objeto, forma, etc.). Los descriptores locales que emplean un radio de búsqueda, mayormente pueden ser usados como globales, si se computa un solo punto en el cluster y se modifica éste radio al de puntos vecinos, de manera que se abarquen todos los puntos que componen el objeto. 
 
 Existen varios tipos de descriptores en PCL, cada uno empleando su propia técnica, ya sea empleando los ángulos de las normales o las distancias Euclidianas entre puntos. Sin embargo, con el fin de reducir el tamaño de cada descriptor, todos se organizan en histogramas cuyos rangos de escala se corresponden con la característica que es parte el descriptor (por ejemplo, distancia entre puntos), asociándose cada una de las características del descriptor a un histograma, donde éstos se encuentran divididos en k subdivisiones y en cada rango del histograma se representan las ocurrencias de puntos dentro de ese rango. De esta forma, cada algoritmo para la generación de descriptores realiza su propia subdivisión del histograma, dependiendo del rango de valores que sea más representativo en la variable, es decir, que esto se genera dinámicamente y se producen más subdivisiones para los valores donde existen mayor cantidad de puntos con esa característica.
 
 .. Ejemplo histograma -->
+
 .. http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.324.3396&rep=rep1&type=pdf
  
-
-
  .. . Con respecto a los baches, se optó por seleccionar aquellos algoritmos que computan features llamadas normales( vectores unidad que son tangentes a un punto en una superficie y perpendiculares al plano en que se encuentra dicho punto).
 
 
+A continuación se muestran los descriptores tanto locales como globales que se ofrecen en PCL, junto con el tamaño de cada uno:
 
 
++---------------------------------------------------------------+------------+-----------+ 
+| Descriptor                                                    |     Tipo   | Tamaño    | 
++===============================================================+============+===========+ 
+| PFH (Point Feature Histogram)                                 |    Local   |    125    | 
++---------------------------------------------------------------+------------+-----------+ 
+| FPFH (Fast Point Feature Histogram)                           |    Local   |    33     | 
++---------------------------------------------------------------+------------+-----------+ 
+| RSD (Radius-Based Surface Descriptor)                         |    Local   |    289    | 
++---------------------------------------------------------------+------------+-----------+ 
+| 3DSC(3D Shape Context)                                        |    Local   |   1980    | 
++---------------------------------------------------------------+------------+-----------+ 
+| USC(Unique Shape Context)                                     |    Local   |   1960    | 
++---------------------------------------------------------------+------------+-----------+ 
+| SHOT(Signatures of Histograms of Orientations)                |    Local   |   352     | 
++---------------------------------------------------------------+------------+-----------+ 
+| Spin Image                                                    |    Local   |    153    | 
++---------------------------------------------------------------+------------+-----------+ 
+| RIFT (Rotation-Invariant Feature Histogram)                   |    Local   |    32     | 
++---------------------------------------------------------------+------------+-----------+ 
+| NARF(Normal Aligned Radial Feature)                           |    Local   |    36     | 
++---------------------------------------------------------------+------------+-----------+ 
+| RoPs(Rotation Projection Statistics)                          |    Local   |    135    | 
++---------------------------------------------------------------+------------+-----------+ 
+| VFH(Viewpoint Feature Histogram)                              |    Global  |    308    | 
++---------------------------------------------------------------+------------+-----------+ 
+| CVFH(Clustered Viewpoint Feature Histogram)                   |    Global  |    308    | 
++---------------------------------------------------------------+------------+-----------+ 
+| OUR-CVFH(Oriented,Unique and Repeatable CVFH)                 |    Global  |    308    | 
++---------------------------------------------------------------+------------+-----------+ 
+| ESF(Ensamble Shape Of Functions)                              |    Global  |    640    | 
++---------------------------------------------------------------+------------+-----------+ 
+| GFPFH(Global Fast Point Feature Histogram)                    |    Global  |    16     | 
++---------------------------------------------------------------+------------+-----------+ 
+| GRSD(Global Radius-Based Surface Descriptor)                  |    Global  |    21     | 
++---------------------------------------------------------------+------------+-----------+ 
+
+En el siguiente capítulo, se expondrá en detalle el funcionamiento de los descriptores que fueron seleccionados para la descripción de los tipos de fallas.
 
 
 
