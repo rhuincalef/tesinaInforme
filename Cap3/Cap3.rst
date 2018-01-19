@@ -382,16 +382,67 @@ PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualizaci
 Computación de índices
 """"""""""""""""""""""
 
-Algunos de los algoritmos de PCL funcionan con índices, que no contienen la información de cada punto sino la posición dentro de la nube de puntos 
+Algunos de los algoritmos de PCL retornan índices, éstos contienen la posición del punto dentro del vector de puntos que mantiene el objeto PointCloud, sin incluir la información de cada punto. Esto permite computar los índices de puntos de interés (o su complemento) que sean relevantes para una operación determinada y, posteriormente, copiarlos a otra nube, reduciendo la cantidad de puntos a procesar. De esta manera, para extraer los índices se emplea la clase pcl::ExtractIndices, que a partir de algún algoritmo aplicado a una PointCloud (por ejemplo, la segmentación permite obtener los indices de los puntos pertenecientes a un cluster segmentado) que proporciona los índices de los puntos filtrados (en una estructura pcl::PointIndices) y la nube de puntos original, permite el filtrado de la información completa de los puntos. A nivel de código fuente la estructura general es la siguiente::
 
+   
+   // Objeto para almacenar la nube procesada anteriormente
+   pcl::PointCloud<pcl::PointXYZ>::Ptr cloudProcesada(new pcl::PointCloud<pcl::PointXYZ>);
+   ...
+
+   // Índices obtenidos
+   pcl::PointIndices::Ptr pointIndices(new pcl::PointIndices);
+
+   // Variable para almacenar los puntos extraídos a partir de los índices
+   pcl::PointCloud<pcl::PointXYZ>::Ptr nubeExtraida(new pcl::PointCloud<pcl::PointXYZ>);
+
+   pcl::ExtractIndices<pcl::PointXYZ> extract;
+   extract.setInputCloud(cloudAll);
+   extract.setIndices(pointIndices);
+   extract.filter(*cloudExtracted);				
+   
+
+Remover valores NaN
+"""""""""""""""""""
+
+Durante la captura de nubes de puntos pueden existir inconsistencias en los valores de las coordenadas para determinados puntos debido a problemas de posicionamiento con el sensor o por características de la superficie, estos valores se representan en PCL como NaN. Los valores NaN(Not a Number) son valores numéricos flotantes que no pueden ser representados o que son indefinidos y que si son utilizados en otros algoritmos de PCL, provocarán un fallo. Por este motivo, los valores NaN deben ser removidos antes de la aplicación de los algoritmos de PCL a una nube de entrada (si el algoritmo en cuestión no ofrece esta funcionalidad), teniendo en cuenta que al eliminar los valores NaN de una nube, esta cambiará su tamaño, por lo que si es necesario que la nube se mantenga organizada será necesario reorganizarla con la cantidad de puntos filtrados. Para realizar esta tarea PCL ofrece la función pcl::removeNaNFromPointCloud() que acepta la nube de entrada, de salida y un mapping (que es un vector de enteros) que permite identificar que punto de la nube original, se corresponde con que punto de la nube filtrada.
+
+# .PCD v0.7 - Point Cloud Data file format
+VERSION 0.7
+FIELDS x y z rgba
+SIZE 4 4 4 4
+TYPE F F F U
+COUNT 1 1 1 1
+WIDTH 640
+HEIGHT 480
+VIEWPOINT 0 0 0 1 0 0 0
+POINTS 307200
+DATA ascii
+nan nan nan 10135463
+nan nan nan 10398635
+
+
+A continuación se representan las instrucciónes básicas para realizar el filtrado de la nube de puntos de entrada::
+
+   //Definición de la nube de puntos
+   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+
+   //Pasos realizados para leer la nube de puntos de disco
+   ...
+
+   //Definición del objeto mapping y aplicación del método para remover NaN
+   std::vector<int> mapping;
+   pcl::removeNaNFromPointCloud(*cloud, *cloud, mapping);
 
 
 
 Estimación de normales
 """"""""""""""""""""""
+.. http://pointclouds.org/documentation/tutorials/normal_estimation.php
+.. https://en.wikipedia.org/wiki/Normal_(geometry)
 .. TODO: COMPLETAR!!!
 
-Las normales, se consideran features de geometría asociadas a las nubes de puntos
+Para diferenciar un punto de otro en una nube de puntos, no basta únicamente con su posición sino que es necesario computar una característica 3D que sea similar para puntos que se encuentran en superficies similares. Para conseguir ésto, PCL ofrece la computación de normales que son comúnmente empleadas en áreas relacionadas a la generación de gráficos por computadora, para detectar la orientación de una fuente de luz y mejorar los efectos visuales en una escena, definiéndose la normal de un punto como el vector perpendicular al plano tangente que contiene ese punto.
 
 
 Descomposición de nubes: KD-Tree y Octree
