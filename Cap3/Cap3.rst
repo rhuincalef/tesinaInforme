@@ -247,8 +247,6 @@ Librería Point Cloud Library(PCL)
 .. 
 .. Tipos de feature descriptors -->
 .. https://arxiv.org/pdf/1102.4258.pdf
-.. 
-
 
 PCL es un proyecto que comenzó en 2010 por Willow Garage (compañía desarrolladora de la librería de imágenes OpenCV) y de la compañía desarolladora de Robotic Operating System(ROS), y cuya primera versión fue oficialmente liberada en 2011. Point Cloud Library(PCL) es una librería independiente, de código abierto, multiplataforma, escrita en C++, para la captura, el procesamiento geométrico y almacenamiento de nubes de puntos 3D, que ofrece algoritmos vinculados a tareas relacionadas a la visión artificial (o visión por computadora).  La visión artificial es un área de la inteligencia artificial, donde se busca que una computadora obtenga información y logre un entendimiento de alto nivel de las propiedades de ésta (tales como formas, iluminación,distribución de colores) a partir de un video o imagen del mundo real. Esta disciplina incluye aquellos métodos que permiten adquirir, analizar, procesar y extraer datos que puedan ser convertidos a información numérica y simbólica que pueda ser de utilidad durante la automatización de una tarea. Dentro del rango de aplicaciones en las que se emplea la visión artificial las más comunes son las siguientes:
 
@@ -260,12 +258,9 @@ PCL es un proyecto que comenzó en 2010 por Willow Garage (compañía desarrolla
 * Reconocimiento de huellas digitales para el acceso de personal autorizado automatizado.
 
 
-
-
-
 De esta forma, PCL es una librería que ofrece diferentes módulos independientes que pueden ser combinados de distintas formas en un pipeline de instrucciones, con el fin de lograr el reconocimiento de distintos tipos de objetos en una nube de puntos. Los algoritmos de estos módulos están pensados para abarcar un  diverso rango de tareas que son necesarias para una correcta detección de objetos, tales como filtrado de puntos con valores atípicos distantes del resto en una nube (outliers en la nube), almacenamiento, lectura y conversión de nubes de puntos en distintos formatos, descomposición de la nube para realizar búsquedas, concatenar y fusionar dos nubes de puntos con los mismos o distintos campos, segmentar partes de una escena, extraer puntos clave y computar descriptores geométricos con el propósito de distinguir elementos del mundo real. De manera general, el pipeline de PCL para el reconocimiento de objetos se compone de las siguientes etapas:
 
-* Pre-procesamiento de nube: Durante esta etapa se elimina el ruido de la nube, se aplican algoritmos para estructurar la nube y se estiman features que proporcionan información acerca de las características de la superficie que serán empleadas durante las siguientes etapas.
+* Pre-procesamiento de nube: Durante esta etapa se elimina el ruido de la nube previamente capturada, se aplican algoritmos para estructurarla y se estiman features que proporcionan información acerca de las características de la superficie que serán empleadas durante las siguientes etapas.
 
 * Segmentación de objetos: En esta etapa se realiza la segmentación por medio de distintas técnicas con el fin de obtener clusters de interés, que serán utilizados para generar descriptores.
 
@@ -294,6 +289,104 @@ A continuación, se enumeran y describen los algoritmos principales empleados du
 Algoritmos de pre-procesamiento de nubes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. http://pointclouds.org/documentation/tutorials/pcd_file_format.php
+.. https://en.wikipedia.org/wiki/PLY_(file_format)
+.. https://en.wikipedia.org/wiki/Wavefront_.obj_file
+.. https://en.wikipedia.org/wiki/STL_(file_format)
+
+Representación y almacenamiento de una nube de puntos
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Con respecto al almacenamiento persistente de nubes de puntos, aunque éste se puede realizar en diversos formatos, PCL cuenta con su formato PCD (Point Cloud Data file) personalizado definido para complementar el resto de los formatos, donde no se soportan algunas características de procesamiento geométrico, estando disponible en dos versiones: Binaria y ASCII. Cuando este formato se encuentra en versión ASCII, es posible inspeccionarlo con un editor de textos para analizar los datos relacionados a la nube de puntos. Internamente, éste se compone por un encabezado donde se almacena información respecto de la información en la nube de puntos y un cuerpo que contiene las coordenadas 3D, y opcionalmente información RGB o RGBA, para cada punto de la captura. En el encabezado de la nube se encuentran los siguientes datos:
+
+* VERSION, que especifica la versión de la librería PCL.
+* FIELDS, que indica los atributos a través de los que se indicarán las coordenadas de cada punto e información necesaria para el procesamiento de éstos(tales como información de color, normales, etc.). Este valor es una tupla de cadenas separadas por espacios, entre las que se encuentran: x y z | x y z rgb | x y z normal_x normal_y normal_z.
+* SIZE, especifica el tamaño en bytes según el tipo de dato que se utilice para representar los valores de cada dimensión descrita por FIELDS, siendo este de 8 para valores tipo double, 4 si cada dimensión se representa por valores int o float, 2 para tipos short no signados y de 1 byte para tipos char sin signo.
+* TYPE, que indica el tipo de cada dimension descrita por FIELDS, siendo I para tipos enteros, U para tipos sin signo y F para valores flotantes.
+* COUNT, especifica cuantos elementos tiene cada dimensión, siendo este valor de 1 para nubes que solamente contendrán datos y del tamaño del descriptor para nubes que se representan como descriptores.
+* WIDTH, indica la longitud del conjunto de puntos que componen la nube de puntos, adoptando distintos valores dependiendo de la forma de organización de la nube, siendo las posibles formas: Organizada o Desorganizada. Una nube de puntos organizada, es aquella donde internamente los puntos en la nube se organizan en filas y columnas como en una matriz, mientras que en una nube desorganizada todos los puntos se organizan en una única fila. Por ejemplo, si este campo se definiera como *WIDTH 640*, significaría que los puntos que componen la nube se encuentran estructurados en filas con 640 puntos por fila.
+* HEIGHT, indica la cantidad de filas que contiene la nube de puntos, siendo 1 para las nubes de puntos desorganizadas y un valor numérico para las nubes de puntos organizadas.
+* VIEWPOINT, representa el punto de visión desde el que fueron adquiridos los puntos de la nube, que puede posteriormente ser empleado en descriptores que requieren orientación. Este campo se especifica como una traslación (traslacion_x, traslacion_y, traslacion_z) mas las unidades de cuaternión (o versores) que representan valores numéricos respecto de las rotación y orientación del sensor.
+* POINTS, especifica el número total de puntos en la nube.
+* DATA, indica por medio de una cadena de caracteres el formato en que la nube de puntos es almacenada, siendo los posibles valores ascii o binary.
+  
+Por otro lado, el cuerpo de la nube en formato ascii las coordenadas de cada punto, junto con la información adicional, se representan como una secuencia lineas separadas por caracteres de nueva línea, mientras que si se almacena en formato binario, la cabecera y el cuerpo son una copia del arreglo de puntos en memoria a disco.
+
+De esta forma, un ejemplo de archivo PCD en formato ascii, para una nube no estructurada con coordenadas e información de color  para una nube no estructurada se define de la siguiente manera:
+
+# .PCD v.7 - Point Cloud Data file format
+VERSION .7
+FIELDS x y z rgb
+SIZE 4 4 4 4
+TYPE F F F F
+COUNT 1 1 1 1
+WIDTH 213
+HEIGHT 1
+VIEWPOINT 0 0 0 1 0 0 0 #Valor por defecto
+POINTS 213
+DATA ascii
+0.93773 0.33763 0 4.2108e+06
+0.90805 0.35641 0 4.2108e+06
+...
+
+Adicionalmente PCL ofrece los siguientes formatos para almacenamiento de nubes de puntos diseñados por distintas organizaciones para ser empleados por distintos programas:
+
+* OBJ: Es un formato de archivo geométrico desarrollado por Wavefront Technologies, que representa la geometría especificamente de un objeto, detallando la posición de cada vertex, las coordeandas de las texturas y normales asociadas a éstos, y las caras que forman cada polígono.
+* PLY: Polygon File Format es un formato donde se almacenan un conjunto de polígonos que representan un objeto o superficie 3D, que puede contener información respecto de color y transparencia, normales, texturas de las coordenadas y valores de confianza para éstas. Este formato, permite almacenar distintas propiedades para las caras frontales y traseras de los polígonos y puede ser almacenado tanto en formato ascii o binario.   
+* STL: Es un formato nativo para el software de diseño y prototipado 3D de modelos, que pueden ser impresos en impresoras 3D. Este tipo de archivo representa un objeto como un conjunto de triángulos no ordenados, describiéndola a traves de las normales y los vértices que lo componen en un sistema Cartesiano. Este archivo se puede almacenar en formato ascii y binario.
+
+.. http://pointclouds.org/documentation/tutorials/basic_structures.php
+
+La representación en PCL de las nubes de puntos en memoria, se realiza por medio de la creación de instancias de la clase de pcl::PointCloud por cada nube leída, que almacena las coordenadas de los puntos que componen un objeto como un vector (std::vector) y encapsula el comportamiento propio de nube de puntos que puede ser necesario al momento de iterar, concatenar o acceder a puntos de ésta, tal como es la solicitud de la cantidad total de puntos en ésta. La clase PointCloud es una clase template (definida como PointCloud<PointT>) con respecto a los tipos de puntos, lo que significa que se utiliza el comportamiento y la estructura de esta clase base para  generar instancias de nubes de puntos con  distintos tipos de puntos. Los tipos de puntos en PCL se emplean para representar tanto las coordenadas y/o  atributos agregados (Normales,BoundaryPoints,etc.) de un objeto 3D como así también los descriptores; De esta forma, la clase base que representa una coordenada de una nube de puntos es pcl::PointXYZ para una coordenada 3D y pcl::PointXY para una coordenada en un espacio 2D, y dependiendo de la información adicional que se agrega a una coordenada, se agrega esta característica como parte de la nomenclatura de la coordenada base. Así, por ejemplo si se desean emplear coordenadas que contengan información espacial y agregar información de color, se deberá emplear la clase pcl::PointXYZRGB, o si por el contrario se desea emplear alguna característica de un punto sin incluir sus coordenadas, se emplea el nombre que PCL emplee para nombrar a esta característica, por ejemplo si se desea emplear únicamente normales se debe emplear el tipo de punto pcl::Normal. Para los tipos de puntos que se corresponden con descriptores(explicado en la sección Algoritmos para generación de descriptores), el tipo de punto se define como el nombre del descriptor, la palabra Signature y el tamaño de éste, siendo ejemplos de tipos de puntos asociados a descriptores los siguientes: FPFHSignature33, PFHSignature125, VFHSignature308,etc.  
+
+
+
+Lectura y escritura de nubes de puntos
+""""""""""""""""""""""""""""""""""""""
+
+Con respecto a la lectura y escritura de nubes de puntos, éstas se realizan por medio del módulo pcd_io especificando el tipo de punto que se leerá/escribirá de una nube determinada. Para la lectura de nubes de puntos, se deben importar los tipos de puntos y el módulo io, luego definir una nube de puntos para el tipo de punto e invocar al método loadPCDFile() que aceptará una cadena con el path completo de la nube como primer argumento y la nube definida anteriormente como parámetro de salida::
+
+   #include <pcl/io/pcd_io.h>
+
+   #include <pcl/point_types.h>
+
+   ...
+
+   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+   if (pcl::io::loadPCDFile<pcl::PointXYZ>(argv[1], *cloud) != 0)
+   {
+      return -1;
+   }
+   ...
+
+Con respecto a la escritura de nubes, esta consiste en definir la nube de salida e invocar al método de guardado que toma el nombre del archivo PCD de salida y la nube con el contenido previamente leído, siendo savePCDFileASCII() para almacenar ésta en formato ascii o savePCDFileBinary() para modo binario::
+
+   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+   pcl::io::savePCDFileASCII("output.pcd", *cloud);
+
+
+
+Visualización de nubes de puntos
+""""""""""""""""""""""""""""""""
+
+PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualización de nubes de puntos, que cuenta con la capacidad de abrir varias nubes simultáneamente superponiéndolas de manera ordenada y obtener y visualizar características relevantes ésta, tales como mostrar los ejes Cartesianos (X,Y,Z), obtención manual de coordenadas a partir de una selección, rotación de nube de puntos, modificación de los puntos que representa ésta, visualización de curvaturas principales y de normales,etc. Esta herramienta emplea del módulo *visualization* la clase pcl::visualization::PCLVisualizer, y que puede ser utilizada para implementar un visualizador propio. Adicionalmente, se emplear la clase CloudViewer para crear un visualizador con menos funciones, pero más sencillo de configurar y que proporciona una ventana y herramientas de zoom y rotación.
+
+.. figure:: ../figs/Cap3/ejemplo_pcl_viewer_1.png
+   :scale: 50%
+
+   Ejemplo de visualizador de PCL
+
+
+Computación de índices
+""""""""""""""""""""""
+
+Algunos de los algoritmos de PCL funcionan con índices, que no contienen la información de cada punto sino la posición dentro de la nube de puntos 
+
+
+
+
 Estimación de normales
 """"""""""""""""""""""
 .. TODO: COMPLETAR!!!
@@ -305,6 +398,7 @@ Descomposición de nubes: KD-Tree y Octree
 """""""""""""""""""""""""""""""""""""""""
 .. TODO: COMPLETAR!!!
 
+
 Filtrado de ruido de la nube: Passthrough filter y Outlier Removal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -315,7 +409,6 @@ Resampling de la nube: Downsampling y Upsampling
 """"""""""""""""""""""""""""""""""""""""""""""""
 
 .. TODO: COMPLETAR!!
-
 
 
 
@@ -356,47 +449,56 @@ Existen varios tipos de descriptores en PCL, cada uno empleando su propia técni
  
  .. . Con respecto a los baches, se optó por seleccionar aquellos algoritmos que computan features llamadas normales( vectores unidad que son tangentes a un punto en una superficie y perpendiculares al plano en que se encuentra dicho punto).
 
-
-A continuación se muestran los descriptores tanto locales como globales que se ofrecen en PCL, junto con el tamaño de cada uno:
+A continuación, se muestran los descriptores tanto locales como globales, que se ofrecen en PCL junto con el tamaño (en bytes) de los histogramas que componen cada uno:
 
 
 +---------------------------------------------------------------+------------+-----------+ 
-| Descriptor                                                    |     Tipo   | Tamaño    | 
+| Descriptor                                                    |     Tipo   | Tamaño    |
 +===============================================================+============+===========+ 
-| PFH (Point Feature Histogram)                                 |    Local   |    125    | 
+| PFH (Point Feature Histogram)                                 |    Local   |    125    |
 +---------------------------------------------------------------+------------+-----------+ 
-| FPFH (Fast Point Feature Histogram)                           |    Local   |    33     | 
+| FPFH (Fast Point Feature Histogram)                           |    Local   |    33     |
++---------------------------------------------------------------+------------+-----------+
+| RSD (Radius-Based Surface Descriptor)                         |    Local   |    289    |
 +---------------------------------------------------------------+------------+-----------+ 
-| RSD (Radius-Based Surface Descriptor)                         |    Local   |    289    | 
+| 3DSC(3D Shape Context)                                        |    Local   |    1980   |
 +---------------------------------------------------------------+------------+-----------+ 
-| 3DSC(3D Shape Context)                                        |    Local   |   1980    | 
+| USC(Unique Shape Context)                                     |    Local   |    1960   |
 +---------------------------------------------------------------+------------+-----------+ 
-| USC(Unique Shape Context)                                     |    Local   |   1960    | 
+| SHOT(Signatures of Histograms of Orientations)                |    Local   |    352    |
 +---------------------------------------------------------------+------------+-----------+ 
-| SHOT(Signatures of Histograms of Orientations)                |    Local   |   352     | 
+| Spin Image                                                    |    Local   |    153    |
 +---------------------------------------------------------------+------------+-----------+ 
-| Spin Image                                                    |    Local   |    153    | 
+| RIFT (Rotation-Invariant Feature Histogram)                   |    Local   |    32     |
 +---------------------------------------------------------------+------------+-----------+ 
-| RIFT (Rotation-Invariant Feature Histogram)                   |    Local   |    32     | 
+| NARF(Normal Aligned Radial Feature)                           |    Local   |    36     |
 +---------------------------------------------------------------+------------+-----------+ 
-| NARF(Normal Aligned Radial Feature)                           |    Local   |    36     | 
+| RoPs(Rotation Projection Statistics)                          |    Local   |    135    |
 +---------------------------------------------------------------+------------+-----------+ 
-| RoPs(Rotation Projection Statistics)                          |    Local   |    135    | 
+| VFH(Viewpoint Feature Histogram)                              |    Global  |    308    |
 +---------------------------------------------------------------+------------+-----------+ 
-| VFH(Viewpoint Feature Histogram)                              |    Global  |    308    | 
+| CVFH(Clustered Viewpoint Feature Histogram)                   |    Global  |    308    |
 +---------------------------------------------------------------+------------+-----------+ 
-| CVFH(Clustered Viewpoint Feature Histogram)                   |    Global  |    308    | 
+| OUR-CVFH(Oriented,Unique and Repeatable CVFH)                 |    Global  |    308    |
 +---------------------------------------------------------------+------------+-----------+ 
-| OUR-CVFH(Oriented,Unique and Repeatable CVFH)                 |    Global  |    308    | 
+| ESF(Ensamble Shape Of Functions)                              |    Global  |    640    |
 +---------------------------------------------------------------+------------+-----------+ 
-| ESF(Ensamble Shape Of Functions)                              |    Global  |    640    | 
+| GFPFH(Global Fast Point Feature Histogram)                    |    Global  |    16     |
 +---------------------------------------------------------------+------------+-----------+ 
-| GFPFH(Global Fast Point Feature Histogram)                    |    Global  |    16     | 
-+---------------------------------------------------------------+------------+-----------+ 
-| GRSD(Global Radius-Based Surface Descriptor)                  |    Global  |    21     | 
+| GRSD(Global Radius-Based Surface Descriptor)                  |    Global  |    21     |
 +---------------------------------------------------------------+------------+-----------+ 
 
-En el siguiente capítulo, se expondrá en detalle el funcionamiento de los descriptores que fueron seleccionados para la descripción de los tipos de fallas.
+
+En el siguiente capítulo, se expondrá en detalle el funcionamiento de los descriptores que fueron seleccionados para ser empleados en el clasificador de tipos de fallas.
+
+.. PyPCD -->
+.. https://github.com/dimatura/pypcd
+
+Librería PyPCD
+--------------
+
+
+
 
 
 
