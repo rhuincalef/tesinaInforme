@@ -486,10 +486,20 @@ En PCL la clase pcl::KdTree implementa este comportamiento para los distintos ti
                  << " (squared distance: " << squaredDistances[i] << ")" << std::endl;
    }
 
+.. http://pointclouds.org/documentation/tutorials/octree.php
 
+Por otro lado el Octree es una estructura de datos jerarquica empleada tanto para la búsqueda, como para el downsampling o la compresión de nubes de puntos. Un Octree es un árbol en el que cada nodo (pixel 3D o voxel) representa un punto en la nube que se considera el centro de cada voxel y que contiene ocho hijos(o ninguno) que son a su vez los vecinos del punto principal. A diferencia del Kd-Tree donde cada nodo representa una división basándose en las dimensiones, éste método realiza una subdivisión por puntos. Esta estructura se emplea además en motores 3D o en la generación de gráficos tridimensionales.   
 
+.. figure:: ../figs/Cap3/estructura_octree.png
+   :scale: 50%
+   
+   Ejemplo de la organización de un Octree
 
+En PCL el Octree se representa por medio diferentes clases según el tipo de función, encontrándose entre las que se destacan las siguientes:
 
+* pcl::octree::OctreePointCloudSearch para la búsqueda por radio, cantidad de vecinos y dentro de un voxel determinado.
+* pcl::io::OctreePointCloudCompression para realizar compresión/descompresión de nubes de puntos.
+* pcl::octree::OctreePointCloudChangeDetector para comparar dos nubes de puntos en base a sus Octrees y detectar diferencias, por medio del retorno de índices de puntos que no figuran en una de las nubes.
 
 
 Estimación de normales
@@ -498,7 +508,6 @@ Estimación de normales
 .. https://en.wikipedia.org/wiki/Normal_(geometry)
 .. https://www.adelaide.edu.au/mathslearning/bridging/resources/MT3VectorsBook_Feb2013.pdf
 .. http://mathworld.wolfram.com/NormalVector.html
-.. TODO: COMPLETAR!!!
 
 Para diferenciar un punto de otro en una nube de puntos, no basta únicamente con su posición, sino que es necesario computar una característica 3D que sea similar para puntos que se encuentran en superficies similares. Para conseguir ésto, PCL ofrece la computación de normales, donde un vector normal *n* de un punto, se define como el vector perpendicular al plano tangente, que contiene a ése punto. Estos vectores se emplean para diversas tareas entre las que se destacan:
 
