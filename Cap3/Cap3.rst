@@ -438,7 +438,58 @@ A continuación se representan las instrucciónes básicas para realizar el filt
 
 Descomposición de nubes: KD-Tree y Octree
 """""""""""""""""""""""""""""""""""""""""
-.. TODO: COMPLETAR!!!
+.. https://en.wikipedia.org/wiki/K-d_tree
+.. http://pointclouds.org/documentation/tutorials/kdtree_search.php
+.. http://pointclouds.org/documentation/tutorials/octree.php
+
+La descomposición de nubes de puntos consiste en orgnaizar la nube de puntos en una estructura de puntos, de manera que el filtrado y análisis del entorno de los mismos (búsqueda de vecinos mas cercanos o búsqueda de vecinos en un radio determinado o, el punto más cercano) sea mas eficiente. Para conseguir esto, PCL ofrece dos tipos de estructura: Kd-Tree y Octree. La estructura Kd-Tree es un árbol binario en el que cada nodo es un punto k-dimensional, y donde en cada nivel del árbol se dividen los puntos en una dimensión establecida. Así, en un espacio tridimensional la división comienza por crear el nodo raíz del árbol que divide los puntos en base al eje X en base a un criterio (tipicamente la raíz de cada subárbol es el punto medio del conjunto de coordenadas en ese eje), creando un nodo izquierdo que representa a los puntos cuyo valor de X sea menor y un nodo derecho para los valores mayores; Posteriormente, se realiza la división de puntos en el espacio Y para los nodos hijos del nodo raíz empelando el mismo procedimiento y para el espacio Z con los hijos de la división en Y. Al llegar al eje Z, se repite nuevamente todo el proceso para continuar subdividiéndo el espacio hasta que no existan puntos para continuar la división.
+
+
+.. figure:: ../figs/Cap3/ejemplo_kd_tree_division.png
+   :scale: 50%
+
+   Ejemplo de división en un espacio 2D, donde los puntos iniciales se encuentran marcados en negro,  las divisiónes en X en rojo y las divisiones en Y en azul. 
+
+En PCL la clase pcl::KdTree implementa este comportamiento para los distintos tipos de puntos y permite realizar la búsqueda por cantidad de vecinos más cercanos (pcl::KdTree::nearestKSearch()) o por radio de búsqueda (pcl::KdTree::radiusSearch()). A continuación se muestra una porción de código donde se realiza una búsqueda por cantidad de vecinos cercanos a un punto dado::
+
+// Object for storing the point cloud.
+   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+   // Read a PCD file from disk.
+   if (pcl::io::loadPCDFile<pcl::PointXYZ>(argv[1], *cloud) != 0)
+   {
+      return -1;
+   }
+
+   // kd-tree object.
+   pcl::search::KdTree<pcl::PointXYZ> kdtree;
+   kdtree.setInputCloud(cloud);
+
+   // We will find the 5 nearest neighbors of this point
+   // (it does not have to be one of the cloud's, we can use any coordinate).
+   pcl::PointXYZ point;
+   point.x = 0.0524343;
+   point.y = -0.58016;
+   point.z = 1.776;
+   // This vector will store the output neighbors.
+   std::vector<int> pointIndices(5);
+   // This vector will store their squared distances to the search point.
+   std::vector<float> squaredDistances(5);
+   // Perform the search, and print out results.
+   if (kdtree.nearestKSearch(point, 5, pointIndices, squaredDistances) > 0)
+   {
+      std::cout << "5 nearest neighbors of the point:" << std::endl;
+      for (size_t i = 0; i < pointIndices.size(); ++i)
+         std::cout << "\t" << cloud->points[pointIndices[i]].x
+                 << " " << cloud->points[pointIndices[i]].y
+                 << " " << cloud->points[pointIndices[i]].z
+                 << " (squared distance: " << squaredDistances[i] << ")" << std::endl;
+   }
+
+
+
+
+
 
 
 Estimación de normales
