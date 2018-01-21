@@ -436,18 +436,114 @@ A continuación se representan las instrucciónes básicas para realizar el filt
 
 
 
-Estimación de normales
-""""""""""""""""""""""
-.. http://pointclouds.org/documentation/tutorials/normal_estimation.php
-.. https://en.wikipedia.org/wiki/Normal_(geometry)
-.. TODO: COMPLETAR!!!
-
-Para diferenciar un punto de otro en una nube de puntos, no basta únicamente con su posición sino que es necesario computar una característica 3D que sea similar para puntos que se encuentran en superficies similares. Para conseguir ésto, PCL ofrece la computación de normales que son comúnmente empleadas en áreas relacionadas a la generación de gráficos por computadora, para detectar la orientación de una fuente de luz y mejorar los efectos visuales en una escena, definiéndose la normal de un punto como el vector perpendicular al plano tangente que contiene ese punto.
-
-
 Descomposición de nubes: KD-Tree y Octree
 """""""""""""""""""""""""""""""""""""""""
 .. TODO: COMPLETAR!!!
+
+
+Estimación de normales
+""""""""""""""""""""""
+
+.. https://en.wikipedia.org/wiki/Normal_(geometry)
+.. https://www.adelaide.edu.au/mathslearning/bridging/resources/MT3VectorsBook_Feb2013.pdf
+.. http://mathworld.wolfram.com/NormalVector.html
+.. TODO: COMPLETAR!!!
+
+Para diferenciar un punto de otro en una nube de puntos, no basta únicamente con su posición, sino que es necesario computar una característica 3D que sea similar para puntos que se encuentran en superficies similares. Para conseguir ésto, PCL ofrece la computación de normales, donde un vector normal *n* de un punto, se define como el vector perpendicular al plano tangente, que contiene a ése punto. Estos vectores se emplean para diversas tareas entre las que se destacan:
+
+* La generación de gráficos por computadora tridimensionales, en la detección de la orientación de una fuente de luz y mejorar los efectos visuales en una escena.
+* Composición digital, donde se renderizan modelos o imágenes 3D por computadora superponiendo varias imágenes. Las capas redenderizadas que se generan contienen información de normales pueden ser modificadas para cambiar la textura de un objeto según la fuente de ilumnación.
+
+
+.. figure:: ../figs/Cap3/ejemplo_vector_normal.gif
+   :scale: 50%
+
+   Ejemplo de vector normal *n*, perpendicular a un punto.
+
+.. http://pointclouds.org/documentation/tutorials/normal_estimation.php
+.. http://pointclouds.org/documentation/tutorials/how_features_work.php#id2
+
+Debido a las nubes de puntos proporcionan coordenas de los puntos que componen la superficie de un objeto, la computación de las normales de éstos, se calcula por medio de la generación de una matriz de vectores y valores propios de cada punto *Pi* (vectores que son invariables a cambios de escala o transformaciones), que es calculada empleando los k vecinos de éste y el centroide de éstos. Los valores de esta matriz se emplean en la técnica de análisis de compontes principales(PCA), que permite obtener las componentes principales con mayor variación, en este caso se obtiene el vector que es más representativo para el punto según sus vecinos más cercanos (vector normal).    
+Una vez realizado este cálculo y teniendo los vectores de cada punto, aún es necesario calcular la orientación de las normales, para ésto se utiliza el punto de visión *Vp* para orientar las normales *ni* de todos los puntos, haciendo cumplir siguiente ecuación: 
+
+
+.. figure:: ../figs/Cap3/equivalencia_orientacion_normales.png
+   :scale: 50%
+
+   Fórmula de equivalencia normales
+
+La precisión con que se estimen las normales para una superficie en PCL depende en gran medida de la escala que se utilice para el cálculo, que se establece por medio del radio de búsqueda (pcl::Feature::setRadiusSearch) o de la cantidad de vecinos empleados para la computación de la normal (pcl::Feature::setKSearch). Si se emplea un rango rasonablemente bajo, se considerarán menos vecinos para cada punto provocando que exista mayor similitud entre normales de la misma superficie y diferencia entre normales de distintas superficies y, en consecuencia, exista un mayor nivel de detalle las zonas con bordes de los objetos. Por el contrario, si se emplea una escala muy alta, se considerán más vecinos para la computación de las normales de puntos, provocando que en las regiones límites entre distintas superficies se abarque un mayor rango de vecinos de la zona adyacente, provocando que las normales muestren menor diferencia entre superficies diferentes.
+
+En PCL el cálculo de normales se realiza por medio de la clase pcl::NormalEstimation, que acepta un tipo de punto coordenada y un tipo de punto normal, y puede realizarse para toda la nube completa o, para un subconjunto de puntos, por medio de la utilización de índices. Si se desea realizar la estimación para toda la nube, basta con especificar a la clase de estimación de normales la nube de entrada, el método de búsqueda y el radio de búsqueda o la cantidad de vecinos. A continuación se muestra un ejemplo de código fuente que realiza la computación de normales::
+
+#include <pcl/point_types.h>
+#include <pcl/features/normal_3d.h>
+
+{
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+
+  ... read, pass in or create a point cloud ...
+
+  // Create the normal estimation class, and pass the input dataset to it
+  pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
+  ne.setInputCloud (cloud);
+
+  // Create an empty kdtree representation, and pass it to the normal estimation object.
+  // Its content will be filled inside the object, based on the given input dataset (as no other search surface is given).
+  pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
+  ne.setSearchMethod (tree);
+
+  // Output datasets
+  pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
+
+  // Use all neighbors in a sphere of radius 3cm
+  ne.setRadiusSearch (0.03);
+
+  // Compute the features
+  ne.compute (*cloud_normals);
+
+  // cloud_normals->points.size () should have the same size as the input cloud->points.size ()
+}   
+
+Si se desea realizar la computación de las normales de algunos puntos, se debe especificar además la estructura de los índices y asignarselo a pcl::NormalEstimation::
+
+
+#include <pcl/point_types.h>
+#include <pcl/features/normal_3d.h>
+
+{
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+
+  ... read, pass in or create a point cloud ...
+
+  // Create a set of indices to be used. For simplicity, we're going to be using the first 10% of the points in cloud
+  std::vector<int> indices (floor (cloud->points.size () / 10));
+  for (size_t i = 0; indices.size (); ++i) indices[i] = i;
+
+  // Create the normal estimation class, and pass the input dataset to it
+  pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
+  ne.setInputCloud (cloud);
+
+  // Pass the indices
+  boost::shared_ptr<std::vector<int> > indicesptr (new std::vector<int> (indices));
+  ne.setIndices (indicesptr);
+
+  // Create an empty kdtree representation, and pass it to the normal estimation object.
+  // Its content will be filled inside the object, based on the given input dataset (as no other search surface is given).
+  pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
+  ne.setSearchMethod (tree);
+
+  // Output datasets
+  pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
+
+  // Use all neighbors in a sphere of radius 3cm
+  ne.setRadiusSearch (0.03);
+
+  // Compute the features
+  ne.compute (*cloud_normals);
+
+  // cloud_normals->points.size () should have the same size as the input indicesptr->size ()
+} 
 
 
 Filtrado de ruido de la nube: Passthrough filter y Outlier Removal
