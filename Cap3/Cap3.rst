@@ -677,9 +677,20 @@ El método de Uniform Sampling realiza la misma tarea, sin embargo retorna los �
    pcl::PointCloud<int> keypointIndices;
    filter.compute(keypointIndices);
 
-.. https://en.wikipedia.org/wiki/Moving_least_squares
 
-El upsampling en PCL se realiza por medio del método Moving Least Squres(MLS)
+.. https://en.wikipedia.org/wiki/Moving_least_squares
+.. https://en.wikipedia.org/wiki/Upsampling
+.. http://www.nealen.de/projects/mls/asapmls.pdf
+
+El upsampling en PCL se realiza por medio del método Moving Least Squres(MLS), que es un método empleado para la reconstrucción de una superficie en base a un conjunto de datos de muestra (en este caso puntos). Este método consiste en generar una función continua que representa al conjunto de datos de muestra, empleando los valores de las variables independientes y dependientes para el computo. Para ello, dado un conjunto de muestras *S = { (xi,fi) | f(xi) = fi }*, con *xi, fi* siendo números reales, se computa por cada punto arbitrario *x* el valor mínimo cuadrado ponderado (Mean Least Square) con respecto a cada una de las muestras, produciendo un conjunto de polinomios de grado m *p(xi)* y empleando de todos éstos el polinomio que minimice el error mínimo cuadrado para calcular el valor de este punto en la función. 
+
+
+.. figure:: ../figs/Cap3/formula_MLS_upsampling.png
+
+   Fórmula para el calculo de MLS  
+
+
+De esta forma, MLS obtiene una función final a partir de un conjunto de funciones locales calculadas en base a los datos de muestra, cuyo valor de precisión es controlado por medio de los pesos :math:`{\theta}`.
 
 
 
