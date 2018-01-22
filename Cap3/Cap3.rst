@@ -606,16 +606,80 @@ Si se desea realizar la computación de las normales de algunos puntos, se debe 
 } 
 
 
-Filtrado de ruido de la nube: Passthrough filter y Outlier Removal
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Filtrado de ruido de la nube
+""""""""""""""""""""""""""""
 
-.. TODO: COMPLETAR!!!
+Debido a que una captura puede contener valores espurios, debido a baja precisión del sensor, medidas erróneas u falta de puntos en determinadas partes de una nube de puntos, o simplemente es necesario reducir la cantidad de puntos para disminuir el tiempo de computación. Para solucionar ésto, PCL ofrece varios algoritmos de filtrado de nubes de puntos entre los que se encuentran:
+
+* Passthrough Filter
+* Conditional Removal
+* Outlier Removal
+
+.. http://pointclouds.org/documentation/tutorials/passthrough.php
+
+El algoritmo de Passthrough Filter consiste en remover de la nube aquellos elementos que se encuentran fuera de un rango especificado por el usuario, por lo que este método únicamente requiere especificar el eje de filtrado y el rango de filtrado (mínimo y máximo). Este método se realiza por la clase pcl::PassThrough, que requiere el tipo de punto para el filtrado. A continuación se muestra el proceso de filtrado para una nube existente::
+
+   // Se define la nube cloud para el tipo de punto pcl::PointXYZ 
+   ...
+   pcl::PassThrough<pcl::PointXYZ> filter;
+   filter.setInputCloud(cloud);
+   // Se filtran los valores en el eje Z que no se encuentren entre 0-2 mts.
+   filter.setFilterFieldName("z");
+   filter.setFilterLimits(0.0, 2.0);
+
+   filter.filter(*filteredCloud); 
+
+.. figure:: ../figs/Cap3/ejemplo_passthrough.png
+   :scale: 50%
+
+   Ejemplo de nube original a la izquierda y nube filtrada con passthrough en eje Z.
+
+.. http://pointclouds.org/documentation/tutorials/remove_outliers.php
+
+El algoritmo Conditional Removal consiste en crear una o mas condiciones que verifican los valores de los atributos de un punto (tales como las coordenadas sobre un eje) y mantener solo aquellos puntos que cumplen ésta. Para ello, PCL encapsula las condiciones en clases siendo las condiciones disponibles AND (pcl::ConditionAnd) y OR (pcl::ConditionOr), que por medio del método addComparison() permiten especificar el tipo atributo, el operador de comparación (<,<=,==,>,>=) y el valor de la condición. Finalmente para realizar el filtrado, se crea una instancia de pcl::ConditionalRemoval que recibe las condiciones especificadas y genera la nube de salida. En el siguiente ejemplo se realiza el mismo filtrado que en Passthrough Filter empleando el Conditional Removal::
+
+
+   pcl::ConditionAnd<pcl::PointXYZ>::Ptr condition(new pcl::ConditionAnd<pcl::PointXYZ>);
+   // GT (Greater Than), LT(Less Than)
+   condition->addComparison(pcl::FieldComparison<pcl::PointXYZ>::ConstPtr(new pcl::FieldComparison<pcl::PointXYZ>("z", pcl::ComparisonOps::GT, 0.0)));
+   condition->addComparison(pcl::FieldComparison<pcl::PointXYZ>::ConstPtr(new pcl::FieldComparison<pcl::PointXYZ>("z", pcl::ComparisonOps::LT, 2.0)));
+
+   // Se filtran los puntos de la nube cloud previamente inicializada,
+   // y se guarda el resultado en filteredCloud
+   pcl::ConditionalRemoval<pcl::PointXYZ> filter;
+   filter.setCondition(condition);
+   filter.setInputCloud(cloud);
+   filter.filter(*filteredCloud);
+
+
+Con respecto al algoritmo Outlier Removal, existen dos variantes: Basado en radio y Estadístico; En el método basado en radio se especifica un radio de búsqueda y la cantidad mínima de vecinos que punto debe poseer para no ser considerado como outlier. De esta manera el algoritmo iterará todos los puntos en la nube y  por cada punto verificará que dentro del radio especificado existan al menos la cantidad mínima requerida de vecinos. Este comportamiento se realiza por medio de la clase pcl::RadiusOutlierRemoval.
+
+Por otro lado, el Statistical Outlier Removal itera cada punto en la nube y calcula la distancia media entre el punto y sus vecinos, la cual es comparada con la distancia de una distribución normal Gaussiana con media :math:`{\mu}` y desvío estándar :math:`{\sigma}`, eliminado aquellos puntos que caen fuera del rango de la distribución. Este método se implementa por medio de la clase pcl::StatisticalOutlierRemoval que acepta la nube, la media y el desvío estándar de la distribución de probabilidad. 
 
 
 Resampling de la nube: Downsampling y Upsampling
 """"""""""""""""""""""""""""""""""""""""""""""""
 
-.. TODO: COMPLETAR!!
+Resampling consiste en modificar la cantidad de puntos en una nube, ya sea aumentando la cantidad de puntos de ésta, reconstruyendo la superficie original, para que sean suficientes para el análisis (upsampling) o disminuyéndola sin comprometer significativamente la precisión para que el análisis de la misma sea más eficiente(downsampling). El downsampling en PCL se puede realizar el método de Voxelización o de Uniform Sampling. El método de Voxelización consiste en emplear un conjunto de voxels organizados en una estructura Octree para computar el punto medio del voxel, es decir, aquel punto que es un promedio de las coordenadas de todos los puntos que pertenecen al Voxel Grid. De esta manera, prevalecen solamente aquellos puntos principales que son representativos para cada voxel. PCL implementa este comportamiento por medio de la clase pcl::VoxelGrid, que permite especificar el tamaño de cada voxel (en cm) para cada una de las dimensiones X,Y,Z. En la siguiente porción de código se muestra un ejemplo de voxelización::
+
+   ...
+   pcl::VoxelGrid<pcl::PointXYZ> filter;
+   filter.setInputCloud(cloud);
+   filter.setLeafSize(0.01f, 0.01f, 0.01f);
+   filter.filter(*filteredCloud);
+   ...
+
+El método de Uniform Sampling realiza la misma tarea, sin embargo retorna los índices de los puntos filtrados en lugar del punto, y se emplea principalmente como parte del proceso de generación de descriptores::
+
+   pcl::UniformSampling<pcl::PointXYZ> filter;
+   filter.setInputCloud(cloud);
+   filter.setRadiusSearch(0.01f);
+   pcl::PointCloud<int> keypointIndices;
+   filter.compute(keypointIndices);
+
+.. https://en.wikipedia.org/wiki/Moving_least_squares
+
+El upsampling en PCL se realiza por medio del método Moving Least Squres(MLS)
 
 
 
