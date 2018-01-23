@@ -714,7 +714,18 @@ Este algoritmo posee una variación que se denomina Conditional Euclidean Segmen
 
 Region Growing Segmentation, realiza el agrupamiento en clusters en base a una verificación de la suavidad de la superficie, que se determina procesando el ángulo entre las normales y la diferencia de curvaturas entre puntos. Este algoritmo se implementa por medio de la clase pcl::RegionGrowing, que recibe los mismos parámetros de Euclidean Segmentation y adicionalmente emplea la estimación de normales y un valor límite para la curvatura. Este algoritmo tiene una variación conocida como Region Growing RGB, que en lugar de emplear las normales y la curvatura, utiliza los mismos parámetros que Euclidean Segmentation en combinación con el color de la nube. De esta forma, el proceso de segmentación se realiza con una nube con información de color (con puntos pcl::PointXYZRGB o pcl::PointXYZRGBA) y se puede controlar en base a límites de color para generar clusters, tanto entre puntos como límites entre clusters.
 
-   
+
+.. https://en.wikipedia.org/wiki/Minimum_cut
+.. http://pointclouds.org/documentation/tutorials/min_cut_segmentation.php
+.. http://gfx.cs.princeton.edu/pubs/Golovinskiy_2009_MBS/paper_small.pdf
+
+El algoritmo Min-Cut o core mínimo, se emplea para segmentar una nube de puntos en dos clusters, donde uno pertenece a un objeto cuyas coordenadas se conocen (foreground) y el otro perteneciente a puntos que no forman parte del objeto y se consideran como el fondo de la escena donde se encuentra éste (background). Para realizar ésto, el algoritmo genera un grafo en base a la nube de puntos donde cada punto se representa como un nodo del grafo, y además agrega al grafo dos vértices globales más denominados sink y source. Los nodos source y sink se encuentran interconectados por medio de aristas a todos los demás puntos y cada nodo que representa un punto se conecta por medio de aristas a sus puntos vecinos. De esta forma, Min-Cut asigna pesos para cada tipo de arista realizando la siguiente secuencia de acciones:
+
+*  Primero, asigna pesos a las aristas que interconectan las nubes de puntos (denominados costo de suavidad), que dependen de la distancia entre puntos y se computan por medio de la fórmula: :math:` smoothCost = e (-distancia/\sigma){\gamma}`. De esta forma, mayor será la probabilidad de corte de un borde, cuanto mayor sea la distancia entre puntos.
+*  Luego se establecen las penalidades de foreground y background, representadas por las aristas que unen cada uno de los puntos con el vértice source, que se define por el usuario y aquellas que unen los puntos de la nube con el vértice sink respectivamente. Ésta última se calcula como penalidad de background a través de la fórmula: :math:`{distanciaAlCentro/radio}`
+ 
+
+
 
 
 
