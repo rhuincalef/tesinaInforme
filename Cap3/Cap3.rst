@@ -701,7 +701,7 @@ Algoritmos de segmentación de objetos
 Segmentación
 """"""""""""
 
-La segmentación consiste en dividir una nube de puntos en clusters para que puedan ser procesados por separado, lo que en combinación con otras herramientas permite obtener modelos pertenecientes a objetos individuales en la captura y aislar superficies con distintas formas. PCL ofrece varios métodos alternativos para realizar la segmentación entre los que se encuentran:
+La segmentación consiste en dividir una nube de puntos en uno o varios clusters para que puedan ser procesados independientemente (donde cada cluster representa un objeto de interés para ser procesado), lo que en combinación con otras herramientas permite obtener modelos pertenecientes a objetos individuales en la captura y aislar superficies con distintas formas. PCL ofrece varios métodos alternativos para realizar la segmentación entre los que se encuentran:
 
 * Euclidean Segmentation
 * Region Growing Segmentation
@@ -726,12 +726,24 @@ El algoritmo Min-Cut o corte mínimo, se emplea para segmentar una nube de punto
 *  Finalmente, luego de realizar las preparaciones se realiza la búsqueda del mínimo corte recorriendo los nodos del grafo, dividiendo la nube en clusters de puntos de foreground y background.  
  
 
+.. http://pointclouds.org/documentation/tutorials/random_sample_consensus.php#random-sample-consensus
+.. https://en.wikipedia.org/wiki/Random_sample_consensus
 
-Triangulación
-"""""""""""""
+Finalmente, RANSAC (Random Sample Consensus) es un algoritmo de muestreo aleatorio que para un conjunto de datos de entrada con ruido, que estima los parámetros que permiten ajustar éstos a un modelo preestablecido. Este algoritmo considera que en la nube de puntos de entrada existen puntos que pueden ser ajustados a un modelo preestablecido con un margen de error especificado  (inliers), y puntos que no se ajustan al modelo de RANSAC(outliers). El funcionamiento de este algoritmo consiste en especificar un tipo de modelo y realizar N iteraciones, donde en cada una:  
+   
+    1. Se toma un subconjunto de puntos aleatorios de la nube de entrada y empleando el tipo modelo especificado, se entrena un modelo para este subconjunto de puntos y se computan los parámetros asociados éste.
+    2. A continuación, el algoritmo verifica cuales puntos de la nube de entrada completa son consistentes con el modelo y sus parámetros estimados previamente, empleando una función de costo o función de pérdida(loss function). Los puntos que no se ajusten al modelo instanciado con un margen de error se consideran outliers, mientras que el resto de puntos que se ajustan al modelo se consideran inliers hipotéticos y forman parte del conjunto de consenso(consensus set).
+    3. Se repite de nuevo el paso 1. 
 
-.. TODO: COMPLETAR!!
+De esta forma, el algoritmo RANSAC se repite una serie de veces hasta que se tengan suficientes inliers como para ser considerada confiable la estimación. Una ventaja de RANSAC es que es sumamente robusto para estimar los parámetros asociados a un modelo, aún cuando se cuenta con mucho ruido en la muestra. Por otro lado, su desventaja radica en que no existe un límite de tiempo para computar estos parámetros, por lo que si se requiere generar un modelo con pocas iteraciones es posible que la solución obtenida no sea satisfactoria. 
 
+
+.. figure:: ../figs/Cap3/ejempo_RANSAC.png
+
+   Ejemplo de algoritmo RANSAC. En la figura izquierda se puede observar un conjunto de puntos con outliers para ser ajustado con RANSAC empleando el modelo de línea. Mientras que en la derecha, se puede visualizar los puntos azules considerados por el modelo de línea de RANSAC y los outliers que no se ajustan a este modelo representados en rojo. 
+
+
+PCL ofrece varios modelos geométricos predefinidos para emplear con RANSAC, entre los que se encuentran: Circulo 2D, Circulo 3D, Cono, Cilindro, Linea, Esfera, Vara(Stick) y Plano.
 
 
 Algoritmos para generación de descriptores
