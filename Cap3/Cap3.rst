@@ -1,6 +1,7 @@
 Capítulo 3.Sensor Kinect y herramientas software implicadas el sensado de fallas
 ================================================================================
 
+
 Sensores 3D
 -----------
 
@@ -106,9 +107,9 @@ Existen varias áreas donde se aplican los scanners 3D, entre las más comunes s
 * Gráficos por computadora. Debido a que con las tecnologías actuales en la industria de videojuegos permiten la creación de entornos con mayor nivel gráfico de detalle, actualmente se recurre a los scanners 3D para la construcción de éstos en el entorno del videojuego, ya que escanear estos objetos consume menos tiempo que la creación a mano con herramientas digitales.  
 
 
-
 Sensor Kinect
-+++++++++++++
+^^^^^^^^^^^^^
+
 .. TODO: FUNCIONAMIENTO Y CARACTERISTICAS, DRIVERS EN WINDOWS Y LINUX, ENUMERAR LIBRERÍAS PARA EL DESARROLLO DE APLICACIONES DESDE WINDOWS Y LINUX. 
 
 .. https://en.wikipedia.org/wiki/Kinect
@@ -208,20 +209,109 @@ Este sensor contiene un campo de de visión de 43º horizontalmente y 57º verti
 
 La versión Kinect V2, fue lanzada para Xbox One y en lugar del sensor de luz estructurada 3D desarrollada por Primesense, esta versión emplea una versión de cámara Time-of-Flight desarrollado por Microsoft, que cuenta con mayor precisión para capturar los movimientos, una resolución de video de 1920x1080 pixeles a 30 fps para la cámara de video, 512x424 pixeles a 30 fps en la cámara IR,  capacidad de detección de mayor cantidad de articulaciones (ya que en Kinect V1 se podían detectar 6 cuerpos pero solo 2 con sus articulaciones completas, mientras que en esta versión se pueden capturar 6 cuerpos con sus articulaciones completas) y mayor rango de detección del jugador (con una distancia de detección entre 0.5 y 4.5 mts con software oficial).   
 
+Librerías para la utilización del sensor Kinect
+-----------------------------------------------
 
-Microsoft Kinect SDK(Xbox Development Kit)
-------------------------------------------
+.. LibFreenect desarrollada por OpenKinect-->
+.. https://openkinect.org/wiki/Main_Page
+.. https://github.com/dimatura/pypcd (Solo almacenamiento)
+.. https://github.com/strawlab/python-pcl
+
+.. Openni framework para el desarrollo de aplicaciones con sensores 3D -->
+.. http://openni.ru/
+.. https://structure.io/openni
+.. https://github.com/occipital/openni2
+
+Existen diferentes drivers y librerías que permiten interactuar con el sensor Kinect y desarrollar aplicaciones orientadas a diferentes propósitos y con distintas funcionalidad, aunqe principalmente se destacan las siguientes:
+
+* Microsoft Kinect SDK(Librería oficial)
+* Java For Kinect(J4K)
+* Freenect(OpenKinect) y PCL
+* OpenNi
+ 
+
+Kinect for Windows SDK 1.8 (Xbox Development Kit)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+El Kinect SDK de Microsoft es un conjunto de librerías y herramientas que permiten programar aplicaciones en plataformas de Microsoft empleando la funcionalidad que ofrece el sensor Kinect. Esta SDK permite programar aplicaciones Windows Presentation Foundation(WPF), que es una tecnología presentada como parte de Windows Vista que permite emplear los lenguajes de la plataforma .NET y el lenguaje declarativo basado en XML denominado XAML para crear aplicaciones visualmente atractivas, aplicaciones de escritorio WinForms y aplicaciones web con HTML5 (por medio de una API en Javascript que a través de un servidor configurado localmente permite la interacción o visualización desde un navegador). Esta librería funciona únicamente en plataformas Windows, requiere el framework .NET versión 4 y el IDE Microsoft Visual Studio, e incluye todos los drivers requeridos para interactuar con el sensor Kinect y los módulos para obtener información de los diferentes sensores del dispositivo. Dentro del rango de funcionalidad que se pueden incorporar en las aplicaciones con el presente SDK se encuentran:
+
+* Reconocimiento y seguimiento de personas por medio de esqueletos (Skeletical Tracking).
+* Cálculo de la distancia entre un objeto y el sensor empleando información de profundidad.
+* Captura de audio sin ruido y localización del origen de éste, e incorporación de comandos hablados a una aplicación a través de la definición de una gramática que permita el uso de voz (speech recognition).
+* Reconocimiento de gestos para el ingreso de comandos con Kinect.  
+* Rastreo de rostros en tiempo real, obteniendo la posición y las expresiones faciales, para el uso en un avatar o comunicación con el dispositivo a través del desarrollo de una interfaz de Usuario en Lenguaje Natural (Natural User Interface, NUI).
+* Utilidades para: la grabación y almacenamiento de un conjunto de frames de profunidad y color desde el Kinect con el fin de testear un escenario repetidas veces empleando Kinect Studio y la interacción en tiempo real con modelos renderizados desde el sensor Kinect con Kinect Fusion.
+ 
+
+De esta manera, la arquitectura de esta librería se compone de los siguientes elementos:
+
+1. Hardware del Kinect.
+2. Drivers del Kinect. Los drivers para Windows del dispositivo que se instalan durante la instalación del SDK que permite acceder a la funcionalidad del array de micrófonos a través de la API de audio estandar de Windows, controles de streaming para audio, video y profundidad y funciones de enumeración para varios dispositivos para la utilización de más de un dispositivo.
+3. Componentes de audio y video. Éstos son agrupados en la interfaz NUI de Kinect y permiten el acceso al stream de audio, video y profunidad.
+4. Componentes DMO (DirectX Media Object) para el filtrado de sonido y el ruido (beamforming) y localización de audio.
+5. APIs Estándar de Windows. APIs para el manejo de audio, speech y media.
+   
+
+.. figure:: ../figs/Cap3/arquitecturaSDK.png
+   :scale: 50%
+
+   Arquitectura Kinect For Windows SDK
+
+Entre los módulos principales de la librería se encuentran los siguientes:
+
+* NUI.
+* Kinect Interaction.
+* Face Tracking
+  
+El módulo NUI es el módulo principal del SDK y permite acceder a información de sonido, imágenes a color y profundidad capturada directamente desde el dispositivo, como así también ofrece funcionalidades que procesan esta información, tales como son: Un pipeline que permite reconocer y rastrear el cuerpo humano, el cual convierte la información de profundidad en uniones que en conjunto representan esqueleto del cuerpo humano, integración con la API Microsoft Speech para proporcionar un motor de procesamiento de comandos hablados que permita agregar comandos de voz a la aplicación, y la integración con la SDK Face Tracking para reconocimiento de expresiones faciales. 
+
+.. TODO: ACA PONER EL ACCESO A STREAMS Y SKELETICAL TRACKING
 
 
-.. ZigFu con Unity y Kinect -->
-.. https://forum.unity.com/threads/connecting-kinect-unity-with-official-sdk.162075/
 
 
-.. https://developer.microsoft.com/en-us/windows/kinect
-.. https://developer.microsoft.com/en-us/windows/kinect/tools
-.. https://msdn.microsoft.com/library/dn799271.aspx
 
-.. http://dailydotnettips.com/2016/01/17/developing-kinect-for-windows-v2-0-app-with-visual-studio-2015-on-windows-10/
+
+.. Links oficiales de documentación de Microsoft --> 
+.. https://docs.microsoft.com/es-es/visualstudio/ide/visual-studio-ide
+
+.. GUIA DE PROGRAMACION Kinect for windows programming guide -->
+.. https://msdn.microsoft.com/en-us/library/hh855348.aspx
+
+
+   .. Arquitectura general Kinect SDK --> 
+   .. https://msdn.microsoft.com/en-us/library/jj663803.aspx
+
+
+   .. Modulo NUI y submodulos streams (Color,Audio y Depth) -->
+   .. https://msdn.microsoft.com/en-us/library/hh855352.aspx
+
+      .. Color Stream -->
+      .. https://msdn.microsoft.com/en-us/library/jj131027.aspx
+
+      .. Audio Steam -->
+      .. https://msdn.microsoft.com/en-us/library/jj131026.aspx
+
+      .. Deapth Stream -->
+      .. https://msdn.microsoft.com/en-us/library/jj131028.aspx
+
+   .. Modulo KInect Interaction (para gestos)-->
+   .. https://msdn.microsoft.com/en-us/library/dn188671.aspx
+
+   .. Face Tracking SDK -->
+   .. https://msdn.microsoft.com/en-us/library/jj130970.aspx
+
+   .. Modelos ofrecidos por Kinect SDK -->
+   .. https://msdn.microsoft.com/en-us/library/hh973076.aspx   
+
+
+.. Programming Guide -->
+.. https://msdn.microsoft.com/en-us/library/hh855348.aspx
+.. https://msdn.microsoft.com/en-us/library/hh855354.aspx
+.. https://msdn.microsoft.com/en-us/library/hh855357.aspx
+.. https://msdn.microsoft.com/en-us/library/microsoft.kinect.colorimagestream.aspx
+
+
 
 .. Libro Kinect for Windows SDK Programming Guide -->
 .. https://books.google.com.ar/books?id=7XqIvRDHVzkC&pg=PT173&lpg=PT173&dq=wpf+kinect&source=bl&ots=ECZpK_Tctb&sig=E8t0Ntgqy7DpvtqqzhRdesxBIs0&hl=es&sa=X&ved=0ahUKEwjUrZSX6snYAhWEIJAKHbVGB4Q4HhDoAQgoMAE#v=onepage&q=wpf%20kinect&f=false
@@ -230,18 +320,23 @@ Microsoft Kinect SDK(Xbox Development Kit)
 .. http://dotneteers.net/blogs/vbandi/archive/2013/03/25/kinect-interactions-with-wpf-part-i-getting-started.aspx
 
 
-.. Librería Java For Kinect(J4K)
-.. -----------------------------
+
+.. ZigFu con Unity y Kinect -->
+.. https://forum.unity.com/threads/connecting-kinect-unity-with-official-sdk.162075/
+
+
+Librería Java For Kinect(J4K)
+-----------------------------
 
 .. http://research.dwi.ufl.edu/ufdw/j4k/faq.php
 .. http://research.dwi.ufl.edu/ufdw/index.php
 
 
 
-.. Encabezado h3 -->
+.. Encabezado h4 -->
 
 Librería Point Cloud Library(PCL)
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. https://en.wikipedia.org/wiki/Point_cloud
 .. https://openkinect.org/wiki/Main_Page
@@ -294,17 +389,23 @@ A continuación, se enumeran y describen los algoritmos principales empleados du
   - Descriptores locales (empleando color o normales)
   - Descriptores globales(empleando color o normales)
   - 
-.. Encabezado nivel h4 -->
+
+.. Encabezado h5 -->
+
+
 Algoritmos de pre-procesamiento de nubes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 
 .. http://pointclouds.org/documentation/tutorials/pcd_file_format.php
 .. https://en.wikipedia.org/wiki/PLY_(file_format)
 .. https://en.wikipedia.org/wiki/Wavefront_.obj_file
 .. https://en.wikipedia.org/wiki/STL_(file_format)
 
+
+.. Encabezado h6 -->
+
 Representación y almacenamiento de una nube de puntos
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Con respecto al almacenamiento persistente de nubes de puntos, aunque éste se puede realizar en diversos formatos, PCL cuenta con su formato PCD (Point Cloud Data file) personalizado definido para complementar el resto de los formatos, donde no se soportan algunas características de procesamiento geométrico, estando disponible en dos versiones: Binaria y ASCII. Cuando este formato se encuentra en versión ASCII, es posible inspeccionarlo con un editor de textos para analizar los datos relacionados a la nube de puntos. Internamente, éste se compone por un encabezado donde se almacena información respecto de la información en la nube de puntos y un cuerpo que contiene las coordenadas 3D, y opcionalmente información RGB o RGBA, para cada punto de la captura. En el encabezado de la nube se encuentran los siguientes datos:
 
@@ -351,7 +452,7 @@ La representación en PCL de las nubes de puntos en memoria, se realiza por medi
 
 
 Lectura y escritura de nubes de puntos
-""""""""""""""""""""""""""""""""""""""
+++++++++++++++++++++++++++++++++++++++
 
 Con respecto a la lectura y escritura de nubes de puntos, éstas se realizan por medio del módulo pcd_io especificando el tipo de punto que se leerá/escribirá de una nube determinada. Para la lectura de nubes de puntos, se deben importar los tipos de puntos y el módulo io, luego definir una nube de puntos para el tipo de punto e invocar al método loadPCDFile() que aceptará una cadena con el path completo de la nube como primer argumento y la nube definida anteriormente como parámetro de salida::
 
@@ -378,7 +479,7 @@ Con respecto a la escritura de nubes, esta consiste en definir la nube de salida
 
 
 Visualización de nubes de puntos
-""""""""""""""""""""""""""""""""
+++++++++++++++++++++++++++++++++
 
 PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualización de nubes de puntos, que cuenta con la capacidad de abrir varias nubes simultáneamente superponiéndolas de manera ordenada y obtener y visualizar características relevantes ésta, tales como mostrar los ejes Cartesianos (X,Y,Z), obtención manual de coordenadas a partir de una selección, rotación de nube de puntos, modificación de los puntos que representa ésta, visualización de curvaturas principales y de normales,etc. Esta herramienta emplea del módulo *visualization* la clase pcl::visualization::PCLVisualizer, y que puede ser utilizada para implementar un visualizador propio. Adicionalmente, se emplear la clase CloudViewer para crear un visualizador con menos funciones, pero más sencillo de configurar y que proporciona una ventana y herramientas de zoom y rotación.
 
@@ -389,7 +490,7 @@ PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualizaci
 
 
 Computación de índices
-""""""""""""""""""""""
+++++++++++++++++++++++
 
 Algunos de los algoritmos de PCL retornan índices, éstos contienen la posición del punto dentro del vector de puntos que mantiene el objeto PointCloud, sin incluir la información de cada punto. Esto permite computar los índices de puntos de interés (o su complemento) que sean relevantes para una operación determinada y, posteriormente, copiarlos a otra nube, reduciendo la cantidad de puntos a procesar. De esta manera, para extraer los índices se emplea la clase pcl::ExtractIndices, que a partir de algún algoritmo aplicado a una PointCloud (por ejemplo, la segmentación permite obtener los indices de los puntos pertenecientes a un cluster segmentado) que proporciona los índices de los puntos filtrados (en una estructura pcl::PointIndices) y la nube de puntos original, permite el filtrado de la información completa de los puntos. A nivel de código fuente la estructura general es la siguiente::
 
@@ -411,7 +512,7 @@ Algunos de los algoritmos de PCL retornan índices, éstos contienen la posició
    
 
 Remover valores NaN
-"""""""""""""""""""
++++++++++++++++++++
 
 Durante la captura de nubes de puntos pueden existir inconsistencias en los valores de las coordenadas para determinados puntos debido a problemas de posicionamiento con el sensor o por características de la superficie, estos valores se representan en PCL como NaN. Los valores NaN(Not a Number) son valores numéricos flotantes que no pueden ser representados o que son indefinidos y que si son utilizados en otros algoritmos de PCL, provocarán un fallo. Por este motivo, los valores NaN deben ser removidos antes de la aplicación de los algoritmos de PCL a una nube de entrada (si el algoritmo en cuestión no ofrece esta funcionalidad), teniendo en cuenta que al eliminar los valores NaN de una nube, esta cambiará su tamaño, por lo que si es necesario que la nube se mantenga organizada será necesario reorganizarla con la cantidad de puntos filtrados. Para realizar esta tarea PCL ofrece la función pcl::removeNaNFromPointCloud() que acepta la nube de entrada, de salida y un mapping (que es un vector de enteros) que permite identificar que punto de la nube original, se corresponde con que punto de la nube filtrada.
 
@@ -446,7 +547,8 @@ A continuación se representan las instrucciónes básicas para realizar el filt
 
 
 Descomposición de nubes: KD-Tree y Octree
-"""""""""""""""""""""""""""""""""""""""""
++++++++++++++++++++++++++++++++++++++++++
+
 .. https://en.wikipedia.org/wiki/K-d_tree
 .. http://pointclouds.org/documentation/tutorials/kdtree_search.php
 .. http://pointclouds.org/documentation/tutorials/octree.php
@@ -512,7 +614,7 @@ En PCL el Octree se representa por medio diferentes clases según el tipo de fun
 
 
 Estimación de normales
-""""""""""""""""""""""
+++++++++++++++++++++++
 
 .. https://en.wikipedia.org/wiki/Normal_(geometry)
 .. https://www.adelaide.edu.au/mathslearning/bridging/resources/MT3VectorsBook_Feb2013.pdf
@@ -616,7 +718,7 @@ Si se desea realizar la computación de las normales de algunos puntos, se debe 
 
 
 Filtrado de ruido de la nube
-""""""""""""""""""""""""""""
+++++++++++++++++++++++++++++
 
 Debido a que una captura puede contener valores espurios, debido a baja precisión del sensor, medidas erróneas u falta de puntos en determinadas partes de una nube de puntos, o simplemente es necesario reducir la cantidad de puntos para disminuir el tiempo de computación. Para solucionar ésto, PCL ofrece varios algoritmos de filtrado de nubes de puntos entre los que se encuentran:
 
@@ -667,7 +769,7 @@ Por otro lado, el Statistical Outlier Removal itera cada punto en la nube y calc
 
 
 Resampling de la nube: Downsampling y Upsampling
-""""""""""""""""""""""""""""""""""""""""""""""""
+++++++++++++++++++++++++++++++++++++++++++++++++
 
 Resampling consiste en modificar la cantidad de puntos en una nube, ya sea aumentando la cantidad de puntos de ésta, reconstruyendo la superficie original, para que sean suficientes para el análisis (upsampling) o disminuyéndola sin comprometer significativamente la precisión para que el análisis de la misma sea más eficiente(downsampling). El downsampling en PCL se puede realizar el método de Voxelización o de Uniform Sampling. El método de Voxelización consiste en emplear un conjunto de voxels organizados en una estructura Octree para computar el punto medio del voxel, es decir, aquel punto que es un promedio de las coordenadas de todos los puntos que pertenecen al Voxel Grid. De esta manera, prevalecen solamente aquellos puntos principales que son representativos para cada voxel. PCL implementa este comportamiento por medio de la clase pcl::VoxelGrid, que permite especificar el tamaño de cada voxel (en cm) para cada una de las dimensiones X,Y,Z. En la siguiente porción de código se muestra un ejemplo de voxelización::
 
@@ -703,12 +805,12 @@ De esta forma, MLS obtiene una función final a partir de un conjunto de funcion
 
 
 
-Algoritmos de segmentación de objetos
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Algoritmos de segmentación de objetos
+"""""""""""""""""""""""""""""""""""""
 
 Segmentación
-""""""""""""
+++++++++++++
 
 La segmentación consiste en dividir una nube de puntos en uno o varios clusters para que puedan ser procesados independientemente (donde cada cluster representa un objeto de interés para ser procesado), lo que en combinación con otras herramientas permite obtener modelos pertenecientes a objetos individuales en la captura y aislar superficies con distintas formas. PCL ofrece varios métodos alternativos para realizar la segmentación entre los que se encuentran:
 
@@ -758,7 +860,7 @@ PCL ofrece varios modelos geométricos predefinidos para emplear con RANSAC, ent
 
 
 Algoritmos para generación de descriptores
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""
 
 .. Organización de features en PCL -->
 .. http://pointclouds.org/documentation/tutorials/how_features_work.php
