@@ -263,12 +263,18 @@ Entre los módulos principales de la librería se encuentran los siguientes:
 * Kinect Interaction.
 * Face Tracking
   
-El módulo NUI es el módulo principal del SDK y permite acceder a información de sonido, imágenes a color y profundidad capturada directamente desde el dispositivo, como así también ofrece funcionalidades que procesan esta información, tales como son: Un pipeline que permite reconocer y rastrear el cuerpo humano, el cual convierte la información de profundidad en uniones que en conjunto representan esqueleto del cuerpo humano, integración con la API Microsoft Speech para proporcionar un motor de procesamiento de comandos hablados que permita agregar comandos de voz a la aplicación, y la integración con la SDK Face Tracking para reconocimiento de expresiones faciales. 
+El módulo NUI es el módulo principal del SDK y permite acceder a información de sonido, imágenes a color y profundidad capturada directamente desde el dispositivo, como así también ofrece funcionalidades que procesan esta información, tales como son: Un pipeline que permite reconocer y rastrear el cuerpo humano, el cual convierte la información de profundidad en uniones que en conjunto representan esqueleto del cuerpo humano, integración con la API Microsoft Speech para proporcionar un motor de procesamiento de comandos hablados que permita agregar comandos de voz a la aplicación, y la integración con la SDK Face Tracking para reconocimiento de expresiones faciales. De esta forma, para que las aplicaciones interactúen con el sensor kinect, el módulo define una clase principal KinectSensor que representa el sensor y que agrupa cada conjunto de frames de video, profundidad y skeletons en streams que obtienen de manera continua información del dispositivo, y que deben ser habilitados y configurados por el desarrollador de manera explícita para comenzar con el sensado. Así, el flujo de trabajo para la obtención de infomración con la librería consiste en:
 
-.. TODO: ACA PONER EL ACCESO A STREAMS Y SKELETICAL TRACKING
+1. Seleccionar un dispositivo Kinect. Esto se realiza por medio de iteración de la colección Kinect.KinectSensors que agrupa todos los dispositivos conectados y permite obtener el nombre y el estado del dispositivo(si se encuentra conectado funcionando correctamente).
+2. Luego de seleccionar el dispositivo, se deben habilitar los streams de los que se desee obtener información, invocando para ésto al método enable() de cada stream, que recibe la configuración que especifica el formato de los datos de imagen, la tasa de frames y la resolución de los pixeles de datos, definida como un tipo enumerado en las clases de formato para cada stream. Los streams para frames de imágenes a color, profundidad skeleton se encuentran definidos en las clases ColorStream, DepthStream y SkeletonStream, respectivamente.
+4. Posteriormente, se debe iniciar la recolección de datos desde el sensor con el método start(). 
+3. Para la obtención de frames, la aplicación obtiene el último frame (color o profundidad) invocando a un método del stream habilitado y lo copia a un buffer si esta disponible, o si no lo esta la aplicación puede retornar inmediatamente o esperar el siguiente frame. Para la obtención de frames el SDK proporciona dos modelos diferentes: modelo por consulta (polling) o modelo de eventos; El modelo por consulta consiste en que al momento de solicitar el siguiente frame se especifique una cantidad fija de milisegundos, de manera que se retorne el control a la aplicación cuando el siguiente frame este disponible o cuando el tiempo de espera expire. Mientras que en el modelo por eventos, se definen eventos separados para cada tipo de stream y handlers que reciben el frame del tipo de dato asociado al stream. 
 
 
+.. figure:: ../figs/Cap3/interaccionConAplicacionKinectForWindowsSDK.png
+   :scale: 70%
 
+   Interacción de sensor Kinect y aplicación desarrollada por usuario
 
 
 
