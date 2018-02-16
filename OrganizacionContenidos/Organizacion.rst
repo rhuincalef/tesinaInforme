@@ -18,10 +18,12 @@ Este capítulo comienza definiendo el concepto de falla, los tipos de material, 
 .. Por otro lado, se expondrán librerías en distintos lenguajes de programación, y métodos de almacenamiento de las fallas empleados por los mismos.
 
 
-Capítulo 3.Sensor Kinect y herramientas software implicadas el sensado de fallas
---------------------------------------------------------------------------------
+Capítulo 3.Sensor Kinect y herramientas software implicadas en el sensado de fallas
+-----------------------------------------------------------------------------------
 
-El objetivo de este capítulo es explicar el funcionamiento del sensor Kinect, características y  librerías, métodos de almacenamiento de fallas empleados por éstos, para el desarrollo de aplicaciones en Linux y Windows.
+El objetivo de este capítulo es explicar los tipos de sensores de scaneo 3D,el funcionamiento del sensor Kinect, características y librerías compatibles para el desarrollo de aplicaciones en Linux y Windows.
+
+.. El objetivo de este capítulo es explicar el funcionamiento del sensor Kinect, características,  librerías compatibles y métodos de almacenamiento de fallas empleados por éstas, para el desarrollo de aplicaciones en Linux y Windows.
 
 
 Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas

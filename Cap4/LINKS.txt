@@ -1,0 +1,35 @@
+https://github.com/josephmisiti/awesome-machine-learning/blob/master/books.md
+
+
+https://www.quora.com/Which-are-the-best-Machine-Learning-books
+
+https://machinelearningmastery.com/machine-learning-books/
+
+Diferencia AI, machine learning y deep learning -->
+http://fortune.com/ai-artificial-intelligence-deep-machine-learning/
+
+
+#https://www.manning.com/books/deep-learning-with-python
+https://livebook.manning.com/#!/book/deep-learning-with-python/chapter-1/8
+
+Deep Learning - An MIT Book ---> 
+http://www.deeplearningbook.org/ 
+
+Real world machine learning(Beneficios del uso de ML) -->
+#https://www.manning.com/books/real-world-machine-learning
+
+https://livebook.manning.com/#!/book/real-world-machine-learning/chapter-1
+
+
+
+AI vs Machine Learning -->
+https://en.wikipedia.org/wiki/Intelligence
+https://www.normshield.com/machine-learning-in-cyber-security-domain-1-fundamentals/
+https://dzone.com/articles/the-differences-between-ai-and-ml
+
+
+
+
+https://www.quora.com/What-are-the-main-differences-between-artificial-intelligence-and-machine-learning-Is-machine-learning-a-part-of-artificial-intelligence
+
+https://www.geospatialworld.net/blogs/difference-between-ai%EF%BB%BF-machine-learning-and-deep-learning/
