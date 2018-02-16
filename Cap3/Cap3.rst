@@ -261,20 +261,44 @@ Entre los módulos principales de la librería se encuentran los siguientes:
 
 * NUI.
 * Kinect Interaction.
-* Face Tracking
+* Face Tracking.
   
 El módulo NUI es el módulo principal del SDK y permite acceder a información de sonido, imágenes a color y profundidad capturada directamente desde el dispositivo, como así también ofrece funcionalidades que procesan esta información, tales como son: Un pipeline que permite reconocer y rastrear el cuerpo humano, el cual convierte la información de profundidad en uniones que en conjunto representan esqueleto del cuerpo humano, integración con la API Microsoft Speech para proporcionar un motor de procesamiento de comandos hablados que permita agregar comandos de voz a la aplicación, y la integración con la SDK Face Tracking para reconocimiento de expresiones faciales. De esta forma, para que las aplicaciones interactúen con el sensor kinect, el módulo define una clase principal KinectSensor que representa el sensor y que agrupa cada conjunto de frames de video, profundidad y skeletons en streams que obtienen de manera continua información del dispositivo, y que deben ser habilitados y configurados por el desarrollador de manera explícita para comenzar con el sensado. Así, el flujo de trabajo para la obtención de infomración con la librería consiste en:
 
 1. Seleccionar un dispositivo Kinect. Esto se realiza por medio de iteración de la colección Kinect.KinectSensors que agrupa todos los dispositivos conectados y permite obtener el nombre y el estado del dispositivo(si se encuentra conectado funcionando correctamente).
 2. Luego de seleccionar el dispositivo, se deben habilitar los streams de los que se desee obtener información, invocando para ésto al método enable() de cada stream, que recibe la configuración que especifica el formato de los datos de imagen, la tasa de frames y la resolución de los pixeles de datos, definida como un tipo enumerado en las clases de formato para cada stream. Los streams para frames de imágenes a color, profundidad skeleton se encuentran definidos en las clases ColorStream, DepthStream y SkeletonStream, respectivamente.
-4. Posteriormente, se debe iniciar la recolección de datos desde el sensor con el método start(). 
-3. Para la obtención de frames, la aplicación obtiene el último frame (color o profundidad) invocando a un método del stream habilitado y lo copia a un buffer si esta disponible, o si no lo esta la aplicación puede retornar inmediatamente o esperar el siguiente frame. Para la obtención de frames el SDK proporciona dos modelos diferentes: modelo por consulta (polling) o modelo de eventos; El modelo por consulta consiste en que al momento de solicitar el siguiente frame se especifique una cantidad fija de milisegundos, de manera que se retorne el control a la aplicación cuando el siguiente frame este disponible o cuando el tiempo de espera expire. Mientras que en el modelo por eventos, se definen eventos separados para cada tipo de stream y handlers que reciben el frame del tipo de dato asociado al stream. 
+3. Posteriormente, se debe iniciar la recolección de datos desde el sensor con el método start(). 
+4. Para la obtención de frames, la aplicación obtiene el último frame (color o profundidad) invocando a un método del stream habilitado y lo copia a un buffer si esta disponible, o si no lo esta la aplicación puede retornar inmediatamente o esperar el siguiente frame. Para la obtención de frames el SDK proporciona dos modelos diferentes: modelo por consulta (polling) o modelo de eventos; El modelo por consulta consiste en que al momento de solicitar el siguiente frame se especifique una cantidad fija de milisegundos, de manera que se retorne el control a la aplicación cuando el siguiente frame este disponible o cuando el tiempo de espera expire. Mientras que en el modelo por eventos, se definen eventos separados para cada tipo de stream y handlers que reciben el frame del tipo de dato asociado al stream. 
+5. Finalmente, se finaliza la captura de información desde el sensor con el método stop() de KinectSensor.
 
 
 .. figure:: ../figs/Cap3/interaccionConAplicacionKinectForWindowsSDK.png
    :scale: 70%
 
    Interacción de sensor Kinect y aplicación desarrollada por usuario
+
+Por otro lado, el módulo KinectInteraction es un módulo que emplea una combinación del stream de profundidad, stream de esqueleto y algoritmos complejos con el fin de proporcionar a las aplicaciones la capacidad de incorporar la interacción con el usuario por medio de gestos a través de una mano principal(se realiza el seguimiento de ambas pero solo una se emplea para controlar la interacción), efectuando detección y rastreo de la posición y estado de la misma, y registrando los siguientes gestos:
+
+* Agarrar y liberar un elemento (Grip and Release), donde el agarre consiste en mantener la mano abierta enfrentando el sensor y luego hacer un puño con la mano, mientras que liberar es la apertura del puño cerrado.
+* Detección de gesto presionar(Press), en el que el usuario mantiene su mano abierta enfrentando su palma con el sensor y mantiene sus brazos parcialmente extendidos, para luego extenderlos hacia el dispositivo.
+* Información respecto del control virtual que manipula el usuario con su mano principal. Esta información se obtiene por medio de un stream de interacción, similar al resto de los streams, que brinda frames que pueden ser procesado para proporcionar información en la interacción del usuario con la aplicación, tales como la posición de la mano y si ésta esta presionando, agarrando, o liberando y el control que el usuario esta empleando.
+
+Este módulo define una API nativa en C++ y una API en C# que brinda las características de identificación de usuario, rastreo de la mano y estado de la mano, como así también incluye un data stream de interacción (interaction stream), similar al resto de los streams, que permite obtener frames respecto de la interacción del usuario con la aplicación(posicion y estado de la mano). Adicionalmente, este módulo define controles en C# para aplicaciones WPF que pueden ser empleados para construir aplicaciones interactivas, tales como son listas scrolleables, botones que responden a los gestos y regiones interactivas.
+
+
+.. figure:: ../figs/Cap3/apiKinectInteraction.png
+   :scale: 60%
+
+   API en modulo Kinect Interaction
+
+
+El módulo de Face Tracking SDK utiliza información de los streams de color y de profundidad para deducir la posición de la cabeza y las expresiones faciales, para proporcionar a la aplicación esta información. La calidad de rastreo de rostros depende de la calidad de los frames de entrada de estos streams, por lo que frames más difusos u obscuros serán rastreados con un rendimiento menor que los frames mas brillantes o nitidos. El flujo de trabajo con esta API, consiste en crear un objeto principal IFFaceTracker para la obtención de frames, invocar al método de obtención de nuevos frames de este objeto y procesar los mismos dentro de un bucle, hasta que por alguna condición de corte no se desee continuar con el procesamiento.Esta interfaz proporciona de las siguientes clases para realizar el seguimiento de rostros:
+
+* IFFaceTracker. Esta es la interfaz principal a través de la cual se leen los frames, por medio de los métodos startTracking() para la inicialización del objeto y la determinación de orientación del sensor y, continueTracking() que emplea información anterior de startTracking() o continueTracking() para sucesivas llamadas y se almacenan en un buffer de tipo FT_SENSOR_DATA.
+* IFTResult. Esta clase contiene el resultado de la operación de obtención de frames.
+* IFTImage.
+* IFTModel. 
+
 
 
 
@@ -326,17 +350,11 @@ El módulo NUI es el módulo principal del SDK y permite acceder a información 
 .. http://dotneteers.net/blogs/vbandi/archive/2013/03/25/kinect-interactions-with-wpf-part-i-getting-started.aspx
 
 
-
-.. ZigFu con Unity y Kinect -->
-.. https://forum.unity.com/threads/connecting-kinect-unity-with-official-sdk.162075/
-
-
-Librería Java For Kinect(J4K)
------------------------------
+.. Librería Java For Kinect(J4K)
+.. -----------------------------
 
 .. http://research.dwi.ufl.edu/ufdw/j4k/faq.php
 .. http://research.dwi.ufl.edu/ufdw/index.php
-
 
 
 .. Encabezado h4 -->
