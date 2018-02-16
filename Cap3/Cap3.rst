@@ -225,9 +225,9 @@ Librerías para la utilización del sensor Kinect
 Existen diferentes drivers y librerías que permiten interactuar con el sensor Kinect y desarrollar aplicaciones orientadas a diferentes propósitos y con distintas funcionalidad, aunqe principalmente se destacan las siguientes:
 
 * Microsoft Kinect SDK(Librería oficial)
-* Java For Kinect(J4K)
+* OpenNI
 * Freenect(OpenKinect) y PCL
-* OpenNi
+.. * Java For Kinect(J4K)
  
 
 Kinect for Windows SDK 1.8 (Xbox Development Kit)
@@ -295,11 +295,9 @@ Este módulo define una API nativa en C++ y una API en C# que brinda las caracte
 El módulo de Face Tracking SDK utiliza información de los streams de color y de profundidad para deducir la posición de la cabeza y las expresiones faciales, para proporcionar a la aplicación esta información. La calidad de rastreo de rostros depende de la calidad de los frames de entrada de estos streams, por lo que frames más difusos u obscuros serán rastreados con un rendimiento menor que los frames mas brillantes o nitidos. El flujo de trabajo con esta API, consiste en crear un objeto principal IFFaceTracker para la obtención de frames, invocar al método de obtención de nuevos frames de este objeto y procesar los mismos dentro de un bucle, hasta que por alguna condición de corte no se desee continuar con el procesamiento.Esta interfaz proporciona de las siguientes clases para realizar el seguimiento de rostros:
 
 * IFFaceTracker. Esta es la interfaz principal a través de la cual se leen los frames, por medio de los métodos startTracking() para la inicialización del objeto y la determinación de orientación del sensor y, continueTracking() que emplea información anterior de startTracking() o continueTracking() para sucesivas llamadas y se almacenan en un buffer de tipo FT_SENSOR_DATA.
-* IFTResult. Esta clase contiene el resultado de la operación de obtención de frames.
-* IFTImage.
-* IFTModel. 
-
-
+* IFTResult. Esta clase contiene información respecto del resultado de la operación de obtención de frames.
+* IFTImage. Esta clase define los diferentes formatos admitidos para la imagen capturada por el sensor, mantiene buffers para almacenar los datos de la imagen y permite acceder a la información de ésta (pixeles,width,height,etc.).
+* IFTModel. Esta clase permite invocar a métodos para convertir la información capturada a mallas 3D de vértices. 
 
 
 .. Links oficiales de documentación de Microsoft --> 
@@ -357,18 +355,38 @@ El módulo de Face Tracking SDK utiliza información de los streams de color y d
 .. http://research.dwi.ufl.edu/ufdw/index.php
 
 
-.. Encabezado h4 -->
+OpenNI
+^^^^^^
+.. http://openni.ru/
+.. http://openni.ru/about/index.html
+.. http://openni.ru/openni-programmers-guide/index.html
+.. OpenNI V2 -->
+.. https://structure.io/openni 
 
-Librería Point Cloud Library(PCL)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OpenNI framework es un SDK open-source empleado para el desarrollo de librerías y aplicaciones de sensado 3D, que ofrece un rango variado de herramientas para la colaboración y la promoción del software desarrollado, brindando una plataforma de marketing para descargar y compartir software en la comunidad OpenNI. La librería OpenNI proporciona acceso a los dispositivos desarrollados por PrimeSense y Asus Xtion y permite acceder a las imagenes de profundidad y RGB, y streams IR. El flujo de trabajo de OpenNI consiste en emplear la clase principal openni::OpenNI que engloba todos los dispositivos conectados del sistema y agrupa los eventos de conexión y desconexión de dispositivos, inicializando todos los dispositivos por medio de OpenNI::initialize(), enumerando todos los dispositivos con  OpenNI::enumerateDevices(), leer y procesar información del dispositivo conectado y finalmente terminar la ejecución con OpenNI::shutdown(). Las clases principales a través de las que se accede a un dispositivo y se lee la información son las siguientes:
+
+*  openni::OpenNI. Es la clase principal para acceder a los dispositivos conectados, eventos relacionados a conexión y desconexión de dispositivos, información de version de la API y errores.
+* openni::Device. Esta clase representa un dispositivo conectado al sistema y requiere que OpenNI se haya inicializado antes de que pueda ser generada una instancia. Esta clase contiene métodos para habilitar el flujo de streams del dispositivo, obtener información del dispositivo, revisar el estado de la conexión y realizar sincronización de frames, para aquellos dispositivos que cuentan con cámaras de video y de profundidad, y donde puede que la tasa de frames entre ambos este desfasada.
+*  openni::VideoStream. Representa todos los  streams de datos obtenido desde un dispositivo y se emplea para obtener objetos de tipo VideoFrameRef. Esta clase permite habilitar, deshabilitar y configurar el stream de datos(framerate, resolución y tipo de pixel) y la lectura de frames puede realizarse ya sea empleando un modelo de polling o un modelo dirigido por eventos.
+*  openni::VideoFrameRef. Abstrae los datos y los metadatos de un frame leído desde un stream. Permite acceder a tamaño de los datos, resolucion del frame, timestamp, tipo de sensor y datos del frame (Array Stride). 
+
+
+
+.. Encabezado h4 -->
+Freenect y Librería Point Cloud Library(PCL)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 .. https://en.wikipedia.org/wiki/Point_cloud
 .. https://openkinect.org/wiki/Main_Page
 .. https://openkinect.org/wiki/Getting_Started
+.. https://openkinect.org/wiki/Roadmap
+
+
 .. https://en.wikipedia.org/wiki/Point_Cloud_Library
+.. http://pointclouds.org/about/
 .. https://en.wikipedia.org/wiki/Computer_vision
 .. http://robotica.unileon.es/index.php/PhD-3D-Object-Tracking
-
 
 .. http://cmuems.com/excap/readings/forsyth-ponce-computer-vision-a-modern-approach.pdf
 .. http://szeliski.org/Book/drafts/SzeliskiBook_20100903_draft.pdf
@@ -376,7 +394,20 @@ Librería Point Cloud Library(PCL)
 .. Tipos de feature descriptors -->
 .. https://arxiv.org/pdf/1102.4258.pdf
 
-PCL es un proyecto que comenzó en 2010 por Willow Garage (compañía desarrolladora de la librería de imágenes OpenCV) y de la compañía desarolladora de Robotic Operating System(ROS), y cuya primera versión fue oficialmente liberada en 2011. Point Cloud Library(PCL) es una librería independiente, de código abierto, multiplataforma, escrita en C++, para la captura, el procesamiento geométrico y almacenamiento de nubes de puntos 3D, que ofrece algoritmos vinculados a tareas relacionadas a la visión artificial (o visión por computadora).  La visión artificial es un área de la inteligencia artificial, donde se busca que una computadora obtenga información y logre un entendimiento de alto nivel de las propiedades de ésta (tales como formas, iluminación,distribución de colores) a partir de un video o imagen del mundo real. Esta disciplina incluye aquellos métodos que permiten adquirir, analizar, procesar y extraer datos que puedan ser convertidos a información numérica y simbólica que pueda ser de utilidad durante la automatización de una tarea. Dentro del rango de aplicaciones en las que se emplea la visión artificial las más comunes son las siguientes:
+
+Freneect (Libfreenect) es un driver multiplataforma, de código abierto para el sensor Kinect disponible para Windows, Linux y OS X, que incluye todo el código necesario para inicializar, activar y comunicarse con el sensor Kinect y es desarrollado por la comunidad abierta OpenKinect con más de 2000 miembros y cuyo interés radica en explotar las capacidades del sensor sobre diversas plataformas. Libfreenect se encuentra disponible tanto para la versión 1 de Kinect (en Xbox 360) y 2.0 (Xbox One). Este driver permite acceder a imágenes con RGB y profundidad, motor, acelerómetro, led y audio del  y proporciona el siguiente conjunto de wrappers para los lenguajes de programación:
+
+* Python
+* C, C++ y C#
+* Java JNI, Java JNA
+* Common Lisp
+* Actionscript
+
+Adicionalmente, libfreenect brinda las utilidades de prueba Record y Fakenect: La primera permite grabar una secuencia de frames del dispositivo en disco volcando las lecturas de los streams de video, profundidad y acelerómetro, mientras que la segunda se enfoca en permitir leer las grabaciones hechas por Record, de manera que se no sea necesario contar con un sensor conectado para realizar pruebas.  
+
+.. http://https.www.pointclouds.org/news/2012/05/29/pcl-goes-mobile-with-ves-and-kiwi/
+
+Por otro lado, PCL es un proyecto que comenzó en 2010 por Willow Garage (compañía desarrolladora de la librería de imágenes OpenCV) y de la compañía desarolladora de Robotic Operating System(ROS), y cuya primera versión fue oficialmente liberada en 2011. Point Cloud Library(PCL) es una librería independiente, de código abierto, multiplataforma (disponible para Linux, Windows, MacOS, y Android/iOS), escrita en C++, para la captura, el procesamiento geométrico y almacenamiento de nubes de puntos 2D/3D. Aunque esta librería fue pensada para desarrollar en C++, también existe un binding para Python que incluye el siguiente conjunto de funciones: Entrada/Salida de archivos PCD,segmentación, suavizado, filtrado y registración. Esta librería ofrece algoritmos vinculados a tareas relacionadas a la visión artificial (o visión por computadora), que es un área de la inteligencia artificial, donde se busca que una computadora obtenga información y logre un entendimiento de alto nivel de las propiedades de ésta (tales como formas, iluminación,distribución de colores) a partir de un video o imagen del mundo real. Esta disciplina incluye aquellos métodos que permiten adquirir, analizar, procesar y extraer datos que puedan ser convertidos a información numérica y simbólica que pueda ser de utilidad durante la automatización de una tarea. Dentro del rango de aplicaciones en las que se emplea la visión artificial las más comunes son las siguientes:
 
 * Reconocimiento óptico de caracteres(OCR) interpretando códigos escritos a mano.
 * Inspección de máquinas, asesorando la calidad de partes empelando estéreo visión con iluminación especializada para medir tolerancias en partes de dispositivos aéreos o de automóviles.
@@ -385,6 +416,12 @@ PCL es un proyecto que comenzó en 2010 por Willow Garage (compañía desarrolla
 * Captura de movimiento, utilizando marcadores retro-reflectivos capturados desde distintas cámaras con el objetivo de capturar digitalmente el patrón de movimiento de actores para realizar una animación por computadora.
 * Reconocimiento de huellas digitales para el acceso de personal autorizado automatizado.
 
+
+.. PyPCD -->
+.. https://github.com/dimatura/pypcd
+
+.. Librería PyPCD
+.. --------------
 
 De esta forma, PCL es una librería que ofrece diferentes módulos independientes que pueden ser combinados de distintas formas en un pipeline de instrucciones, con el fin de lograr el reconocimiento de distintos tipos de objetos en una nube de puntos. Los algoritmos de estos módulos están pensados para abarcar un  diverso rango de tareas que son necesarias para una correcta detección de objetos, tales como filtrado de puntos con valores atípicos distantes del resto en una nube (outliers en la nube), almacenamiento, lectura y conversión de nubes de puntos en distintos formatos, descomposición de la nube para realizar búsquedas, concatenar y fusionar dos nubes de puntos con los mismos o distintos campos, segmentar partes de una escena, extraer puntos clave y computar descriptores geométricos con el propósito de distinguir elementos del mundo real. De manera general, el pipeline de PCL para el reconocimiento de objetos se compone de las siguientes etapas:
 
@@ -395,7 +432,6 @@ De esta forma, PCL es una librería que ofrece diferentes módulos independiente
 * Generación de descriptores: Durante esta fase, se computan los descriptores para el/los clusters aislados. Un descriptor es una estructura compleja que codifica información respecto de la geometría que rodea un punto, de manera que permiten identificar un conjunto de puntos a lo largo de varias nubes de puntos, sin importar el ruido, la resolución o las posibles transformaciones. Adicionalmente, algunos descriptores capturan información global respecto del objeto al que pertenecen, como el punto de visión que puede ser utilizado para computar la posición.   
 
 A continuación, se enumeran y describen los algoritmos principales empleados durante cada fase.
-
 
 .. TODO: QUE ES PCL, CARACTERISTICAS, Tipos de ALGORITMOS PARA PROCESAMIENTO DE NUBES. 
 ..  ALgoritmos de pre-procesamiento de nube: 
@@ -944,13 +980,6 @@ A continuación, se muestran los descriptores tanto locales como globales, que s
 
 
 En el siguiente capítulo, se expondrá en detalle el funcionamiento de los descriptores que fueron seleccionados para ser empleados en el clasificador de tipos de fallas.
-
-.. PyPCD -->
-.. https://github.com/dimatura/pypcd
-
-Librería PyPCD
---------------
-
 
 
 
