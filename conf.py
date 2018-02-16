@@ -151,7 +151,8 @@ latex_elements = {
     
     # Latex figure (float) alignment
     #
-     'figure_align': 'htbp',
+     #'figure_align': 'htbp',
+     'figure_align': 'H',
      'fncychap':'\\usepackage[Glenn]{fncychap}',
      #Opciones de clase para latex para iniciar los caps en cualquier pagina(par e impar)
      #Mas opciones en -->
