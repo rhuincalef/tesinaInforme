@@ -107,8 +107,8 @@ Existen varias áreas donde se aplican los scanners 3D, entre las más comunes s
 * Gráficos por computadora. Debido a que con las tecnologías actuales en la industria de videojuegos permiten la creación de entornos con mayor nivel gráfico de detalle, actualmente se recurre a los scanners 3D para la construcción de éstos en el entorno del videojuego, ya que escanear estos objetos consume menos tiempo que la creación a mano con herramientas digitales.  
 
 
-Sensor Kinect
-^^^^^^^^^^^^^
+Sensor Kinect V1
+^^^^^^^^^^^^^^^^
 
 .. TODO: FUNCIONAMIENTO Y CARACTERISTICAS, DRIVERS EN WINDOWS Y LINUX, ENUMERAR LIBRERÍAS PARA EL DESARROLLO DE APLICACIONES DESDE WINDOWS Y LINUX. 
 
@@ -191,12 +191,28 @@ Aunque la cámara de video RGB admite una resolución mayor a la cámara IR, és
 
    Representación externa de los componentes de hardware del sensor Kinect V1
 
+Empleando la información de profundidad, el dispositivo ofrece la posibilidad de realizar el rastreo de esqueletos de jugadores, permitiendo rastrear 2 personas  completas (con esqueletos compuestos de 20 uniones para personas de pie y las 10 uniones pertenecientes a la cintura para personas de sentadas) y la ubicación de 4 personas adicionales.
+
+
+.. figure:: ../figs/Cap3/rastreoEsqueletoKinect.png
+   :scale: 50%
+
+   Rastreo de dos esqueletos completos (compuestos por segmentos azules y uniones, representadas como puntos azules) y 4 esqueletos parciales.
+
 
 El acelerómetro del dispositivo se emplea para conocer la orientación del sensor con respecto a la gravedad, y se encuentra ubicado en el centro del dispositivo, de manera que el eje Z apunta a la dirección en la que el sensor apunta.
 
 .. figure:: ../figs/Cap3/acelerometro_sensor.png
  
     Ejes del dispositivo
+
+.. Human Interaces Guidelines v 1.8.0 -->
+Con respecto al audio captado por el dispositivo, éste detecta comandos en un rango que abarca +-50º en frente del dispositivo, pudiendo modificarse programáticamente la dirección en la que apunta el array de microfonos en incrementos de 10º en una escala total de 100º. Además, el array de micrófonos puede cancelar 20 decibeles(dB) de ruido del ambiente frontal, mientras que el sonido que proviene desde detrás del dispositivo obtiene 6 dB más de supresión. Por defecto, el dispositivo captura la fuente con el mayor nivel de decibeles.
+
+.. figure:: ../figs/Cap3/arrayMicrofonosKinect.png
+   :scale: 60%
+
+   Modificación del array de micrófonos
 
 
 Este sensor contiene un campo de de visión de 43º horizontalmente y 57º verticalmente, que puede ser variado verticalmente a través del motor de inclinación en +- 27º, siendo éste el área de interacción con el dispositivo, donde se capturarán todos aquellos elementos que se encuentren en frente del sensor y no se encuentren bloqueados por algún otro objeto.   
@@ -208,6 +224,7 @@ Este sensor contiene un campo de de visión de 43º horizontalmente y 57º verti
 
 
 La versión Kinect V2, fue lanzada para Xbox One y en lugar del sensor de luz estructurada 3D desarrollada por Primesense, esta versión emplea una versión de cámara Time-of-Flight desarrollado por Microsoft, que cuenta con mayor precisión para capturar los movimientos, una resolución de video de 1920x1080 pixeles a 30 fps para la cámara de video, 512x424 pixeles a 30 fps en la cámara IR,  capacidad de detección de mayor cantidad de articulaciones (ya que en Kinect V1 se podían detectar 6 cuerpos pero solo 2 con sus articulaciones completas, mientras que en esta versión se pueden capturar 6 cuerpos con sus articulaciones completas) y mayor rango de detección del jugador (con una distancia de detección entre 0.5 y 4.5 mts con software oficial).   
+
 
 Librerías para la utilización del sensor Kinect
 -----------------------------------------------
@@ -235,7 +252,7 @@ Kinect for Windows SDK 1.8 (Xbox Development Kit)
 
 El Kinect SDK de Microsoft es un conjunto de librerías y herramientas que permiten programar aplicaciones en plataformas de Microsoft empleando la funcionalidad que ofrece el sensor Kinect. Esta SDK permite programar aplicaciones Windows Presentation Foundation(WPF), que es una tecnología presentada como parte de Windows Vista que permite emplear los lenguajes de la plataforma .NET y el lenguaje declarativo basado en XML denominado XAML para crear aplicaciones visualmente atractivas, aplicaciones de escritorio WinForms y aplicaciones web con HTML5 (por medio de una API en Javascript que a través de un servidor configurado localmente permite la interacción o visualización desde un navegador). Esta librería funciona únicamente en plataformas Windows, requiere el framework .NET versión 4 y el IDE Microsoft Visual Studio, e incluye todos los drivers requeridos para interactuar con el sensor Kinect y los módulos para obtener información de los diferentes sensores del dispositivo. Dentro del rango de funcionalidad que se pueden incorporar en las aplicaciones con el presente SDK se encuentran:
 
-* Reconocimiento y seguimiento de personas por medio de esqueletos (Skeletical Tracking).
+* Reconocimiento y seguimiento de personas por medio de esqueletos (Skeletical Tracking). 
 * Cálculo de la distancia entre un objeto y el sensor empleando información de profundidad.
 * Captura de audio sin ruido y localización del origen de éste, e incorporación de comandos hablados a una aplicación a través de la definición de una gramática que permita el uso de voz (speech recognition).
 * Reconocimiento de gestos para el ingreso de comandos con Kinect.  
@@ -263,7 +280,7 @@ Entre los módulos principales de la librería se encuentran los siguientes:
 * Kinect Interaction.
 * Face Tracking.
   
-El módulo NUI es el módulo principal del SDK y permite acceder a información de sonido, imágenes a color y profundidad capturada directamente desde el dispositivo, como así también ofrece funcionalidades que procesan esta información, tales como son: Un pipeline que permite reconocer y rastrear el cuerpo humano, el cual convierte la información de profundidad en uniones que en conjunto representan esqueleto del cuerpo humano, integración con la API Microsoft Speech para proporcionar un motor de procesamiento de comandos hablados que permita agregar comandos de voz a la aplicación, y la integración con la SDK Face Tracking para reconocimiento de expresiones faciales. De esta forma, para que las aplicaciones interactúen con el sensor kinect, el módulo define una clase principal KinectSensor que representa el sensor y que agrupa cada conjunto de frames de video, profundidad y skeletons en streams que obtienen de manera continua información del dispositivo, y que deben ser habilitados y configurados por el desarrollador de manera explícita para comenzar con el sensado. Así, el flujo de trabajo para la obtención de infomración con la librería consiste en:
+El módulo NUI es el módulo principal del SDK y permite acceder a información de sonido, imágenes a color y profundidad capturada directamente desde el dispositivo, como así también ofrece funcionalidades que procesan esta información, tales como son: Un pipeline que permite reconocer y rastrear el cuerpo humano, el cual convierte la información de profundidad en uniones que en conjunto representan esqueleto del cuerpo humano, integración con la API Microsoft Speech para proporcionar un motor de procesamiento de comandos hablados que permita agregar comandos de voz a la aplicación, y la integración con la SDK Face Tracking para reconocimiento de expresiones faciales. De esta forma, para que las aplicaciones interactúen con el sensor kinect, el módulo define una clase principal KinectSensor que representa el sensor y que agrupa cada conjunto de frames de video, profundidad y skeletons en streams que obtienen de manera continua información del dispositivo, y que deben ser habilitados y configurados por el desarrollador de manera explícita para comenzar con el sensado. Así, el flujo de trabajo para la obtención de información con la librería consiste en:
 
 1. Seleccionar un dispositivo Kinect. Esto se realiza por medio de iteración de la colección Kinect.KinectSensors que agrupa todos los dispositivos conectados y permite obtener el nombre y el estado del dispositivo(si se encuentra conectado funcionando correctamente).
 2. Luego de seleccionar el dispositivo, se deben habilitar los streams de los que se desee obtener información, invocando para ésto al método enable() de cada stream, que recibe la configuración que especifica el formato de los datos de imagen, la tasa de frames y la resolución de los pixeles de datos, definida como un tipo enumerado en las clases de formato para cada stream. Los streams para frames de imágenes a color, profundidad skeleton se encuentran definidos en las clases ColorStream, DepthStream y SkeletonStream, respectivamente.
