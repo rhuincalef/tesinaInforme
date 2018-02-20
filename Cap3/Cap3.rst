@@ -278,7 +278,7 @@ Existen diferentes drivers y librerías que permiten interactuar con el sensor K
 Kinect for Windows SDK 1.8 (Xbox Development Kit)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-El Kinect SDK de Microsoft es un conjunto de librerías y herramientas que permiten programar aplicaciones en plataformas de Microsoft empleando la funcionalidad que ofrece el sensor Kinect. Esta SDK permite programar aplicaciones Windows Presentation Foundation(WPF), que es una tecnología presentada como parte de Windows Vista que permite emplear los lenguajes de la plataforma .NET y el lenguaje declarativo basado en XML denominado XAML para crear aplicaciones visualmente atractivas, aplicaciones de escritorio WinForms y aplicaciones web con HTML5 (por medio de una API en Javascript que a través de un servidor configurado localmente permite la interacción o visualización desde un navegador). Esta librería funciona únicamente en plataformas Windows, requiere el framework .NET versión 4 y el IDE Microsoft Visual Studio, e incluye todos los drivers requeridos para interactuar con el sensor Kinect a través de los diferentes sensores de éste. Dentro del rango de funcionalidad que se pueden incorporar en las aplicaciones con el presente SDK se encuentran:
+El Kinect SDK de Microsoft es un conjunto de librerías y herramientas que permiten programar aplicaciones en plataformas de Microsoft empleando la funcionalidad que ofrece el sensor Kinect. Esta SDK permite programar aplicaciones Windows Presentation Foundation (WPF), que es una tecnología que permite emplear los lenguajes de la plataforma .NET y el lenguaje declarativo XAML para crear aplicaciones visualmente atractivas, aplicaciones de escritorio WinForms y aplicaciones web con HTML5 (por medio de una API en Javascript que a través de un servidor configurado localmente permite la interacción o visualización desde un navegador). Esta librería funciona únicamente en plataformas Windows, requiere el framework .NET versión 4 y el IDE Microsoft Visual Studio, e incluye todos los drivers requeridos para interactuar con el sensor Kinect a través de los diferentes sensores de éste. Dentro del rango de funcionalidad que se pueden incorporar en las aplicaciones con el presente SDK se encuentran:
 
 * Reconocimiento y seguimiento de personas por medio de esqueletos (Skeletical Tracking). 
 * Cálculo de la distancia entre un objeto y el sensor empleando información de profundidad.
@@ -559,14 +559,13 @@ La representación en PCL de las nubes de puntos en memoria, se realiza por medi
 Lectura y escritura de nubes de puntos
 ++++++++++++++++++++++++++++++++++++++
 
-Con respecto a la lectura y escritura de nubes de puntos, éstas se realizan por medio del módulo pcd_io especificando el tipo de punto que se leerá/escribirá de una nube determinada. Para la lectura de nubes de puntos, se deben importar los tipos de puntos y el módulo io, luego definir una nube de puntos para el tipo de punto e invocar al método loadPCDFile() que aceptará una cadena con el path completo de la nube como primer argumento y la nube definida anteriormente como parámetro de salida::
+Con respecto a la lectura y escritura de nubes de puntos, éstas se realizan por medio del módulo *pcd_io* especificando el tipo de punto que se leerá/escribirá de una nube determinada. Para la lectura de nubes de puntos, se deben importar los tipos de puntos y el módulo io, luego definir una nube de puntos para el tipo de punto e invocar al método loadPCDFile() que aceptará una cadena con el path completo de la nube como primer argumento y la nube definida anteriormente como parámetro de salida::
 
    #include <pcl/io/pcd_io.h>
 
    #include <pcl/point_types.h>
 
    ...
-
    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 
    if (pcl::io::loadPCDFile<pcl::PointXYZ>(argv[1], *cloud) != 0)
@@ -579,6 +578,9 @@ Con respecto a la escritura de nubes, esta consiste en definir la nube de salida
 
    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 
+   // Se carga o copia la nube a la variable cloud
+   ...
+
    pcl::io::savePCDFileASCII("output.pcd", *cloud);
 
 
@@ -586,7 +588,7 @@ Con respecto a la escritura de nubes, esta consiste en definir la nube de salida
 Visualización de nubes de puntos
 ++++++++++++++++++++++++++++++++
 
-PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualización de nubes de puntos, que cuenta con la capacidad de abrir varias nubes simultáneamente superponiéndolas de manera ordenada y obtener y visualizar características relevantes ésta, tales como mostrar los ejes Cartesianos (X,Y,Z), obtención manual de coordenadas a partir de una selección, rotación de nube de puntos, modificación de los puntos que representa ésta, visualización de curvaturas principales y de normales,etc. Esta herramienta emplea del módulo *visualization* la clase pcl::visualization::PCLVisualizer, y que puede ser utilizada para implementar un visualizador propio. Adicionalmente, se emplear la clase CloudViewer para crear un visualizador con menos funciones, pero más sencillo de configurar y que proporciona una ventana y herramientas de zoom y rotación.
+PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualización de nubes de puntos, que cuenta con la capacidad de abrir varias nubes simultáneamente superponiéndolas de manera ordenada y obtener y visualizar características relevantes ésta, tales como mostrar los ejes Cartesianos (X,Y,Z), obtención manual de coordenadas a partir de una selección, rotación de nube de puntos, modificación de los puntos que representa ésta, visualización de curvaturas principales y de normales. Esta herramienta emplea la clase pcl::visualization::PCLVisualizer del módulo *visualization* y puede ser utilizada para implementar un visualizador propio. Adicionalmente, se puede emplear la clase CloudViewer para crear un visualizador con menos funciones, pero más sencillo de configurar y que proporciona una ventana y herramientas de zoom y rotación.
 
 .. figure:: ../figs/Cap3/ejemplo_pcl_viewer_1.png
    :scale: 50%
@@ -597,7 +599,7 @@ PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualizaci
 Computación de índices
 ++++++++++++++++++++++
 
-Algunos de los algoritmos de PCL retornan índices, éstos contienen la posición del punto dentro del vector de puntos que mantiene el objeto PointCloud, sin incluir la información de cada punto. Esto permite computar los índices de puntos de interés (o su complemento) que sean relevantes para una operación determinada y, posteriormente, copiarlos a otra nube, reduciendo la cantidad de puntos a procesar. De esta manera, para extraer los índices se emplea la clase pcl::ExtractIndices, que a partir de algún algoritmo aplicado a una PointCloud (por ejemplo, la segmentación permite obtener los indices de los puntos pertenecientes a un cluster segmentado) que proporciona los índices de los puntos filtrados (en una estructura pcl::PointIndices) y la nube de puntos original, permite el filtrado de la información completa de los puntos. A nivel de código fuente la estructura general es la siguiente::
+Algunos de los algoritmos de PCL retornan índices, éstos contienen la posición del punto dentro del vector de puntos que mantiene el objeto PointCloud, sin incluir la información completa de cada punto. Esto permite computar los índices de puntos de interés (o su complemento) que sean relevantes para una operación determinada y, posteriormente, copiarlos a otra nube, reduciendo la cantidad de puntos a procesar. De esta manera, para extraer los índices se emplea la clase pcl::ExtractIndices, que a partir de algún algoritmo aplicado a una PointCloud que proporciona los índices de los puntos filtrados (en una estructura pcl::PointIndices) y la nube de puntos original, permite el filtrado de la información completa de los puntos. Por ejemplo, la segmentación permite obtener los indices de los puntos pertenecientes a un cluster segmentado. A nivel de código fuente la estructura general es la siguiente::
 
    
    // Objeto para almacenar la nube procesada anteriormente
@@ -619,7 +621,7 @@ Algunos de los algoritmos de PCL retornan índices, éstos contienen la posició
 Remover valores NaN
 +++++++++++++++++++
 
-Durante la captura de nubes de puntos pueden existir inconsistencias en los valores de las coordenadas para determinados puntos debido a problemas de posicionamiento con el sensor o por características de la superficie, estos valores se representan en PCL como NaN. Los valores NaN(Not a Number) son valores numéricos flotantes que no pueden ser representados o que son indefinidos y que si son utilizados en otros algoritmos de PCL, provocarán un fallo. Por este motivo, los valores NaN deben ser removidos antes de la aplicación de los algoritmos de PCL a una nube de entrada (si el algoritmo en cuestión no ofrece esta funcionalidad), teniendo en cuenta que al eliminar los valores NaN de una nube, esta cambiará su tamaño, por lo que si es necesario que la nube se mantenga organizada será necesario reorganizarla con la cantidad de puntos filtrados. Para realizar esta tarea PCL ofrece la función pcl::removeNaNFromPointCloud() que acepta la nube de entrada, de salida y un mapping (que es un vector de enteros) que permite identificar que punto de la nube original, se corresponde con que punto de la nube filtrada.
+Durante la captura de nubes de puntos pueden existir inconsistencias en los valores de las coordenadas para determinados puntos debido a problemas de posicionamiento con el sensor o por características de la superficie, estos valores se representan en PCL como NaN. Los valores NaN (Not a Number) son valores numéricos flotantes que no pueden ser representados o que son indefinidos y que, si son utilizados en otros algoritmos de PCL, provocarán un fallo. Por este motivo, los valores NaN deben ser removidos antes de la aplicación de los algoritmos de PCL a una nube de entrada (si el algoritmo en cuestión no ofrece esta funcionalidad), teniendo en cuenta que al eliminar los valores NaN de una nube, esta cambiará su tamaño, por lo que si es necesario que la nube se mantenga organizada será necesario reorganizarla con la cantidad de puntos filtrados. Para realizar esta tarea PCL ofrece la función pcl::removeNaNFromPointCloud() que acepta la nube de entrada, de salida y un mapping (que es un vector de enteros) que permite identificar que punto de la nube original, se corresponde con que punto de la nube filtrada.
 
 # .PCD v0.7 - Point Cloud Data file format
 VERSION 0.7
@@ -636,7 +638,7 @@ nan nan nan 10135463
 nan nan nan 10398635
 
 
-A continuación se representan las instrucciónes básicas para realizar el filtrado de la nube de puntos de entrada::
+A continuación se representan las instrucciones básicas para realizar el filtrado de la nube de puntos de entrada::
 
    //Definición de la nube de puntos
    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
@@ -658,7 +660,9 @@ Descomposición de nubes: KD-Tree y Octree
 .. http://pointclouds.org/documentation/tutorials/kdtree_search.php
 .. http://pointclouds.org/documentation/tutorials/octree.php
 
-La descomposición de nubes de puntos consiste en orgnaizar la nube de puntos en una estructura de puntos, de manera que el filtrado y análisis del entorno de los mismos (búsqueda de vecinos mas cercanos o búsqueda de vecinos en un radio determinado o, el punto más cercano) sea mas eficiente. Para conseguir esto, PCL ofrece dos tipos de estructura: Kd-Tree y Octree. La estructura Kd-Tree es un árbol binario en el que cada nodo es un punto k-dimensional, y donde en cada nivel del árbol se dividen los puntos en una dimensión establecida. Así, en un espacio tridimensional la división comienza por crear el nodo raíz del árbol que divide los puntos en base al eje X en base a un criterio (tipicamente la raíz de cada subárbol es el punto medio del conjunto de coordenadas en ese eje), creando un nodo izquierdo que representa a los puntos cuyo valor de X sea menor y un nodo derecho para los valores mayores; Posteriormente, se realiza la división de puntos en el espacio Y para los nodos hijos del nodo raíz empelando el mismo procedimiento y para el espacio Z con los hijos de la división en Y. Al llegar al eje Z, se repite nuevamente todo el proceso para continuar subdividiéndo el espacio hasta que no existan puntos para continuar la división.
+.. La descomposición de nubes de puntos consiste en organizar la nube de puntos en una estructura de manera que el filtrado y análisis del entorno de los mismos (búsqueda de vecinos mas cercanos, búsqueda de vecinos en un radio determinado o, el punto más cercano) sea mas eficiente. Para conseguir esto, PCL ofrece dos tipos de estructura: Kd-Tree y Octree. La estructura Kd-Tree es un árbol binario en el que cada nodo es un punto k-dimensional, y donde en cada nivel del árbol se dividen los puntos en una dimensión establecida. Así, en un espacio tridimensional la división comienza por crear el nodo raíz del árbol que divide los puntos en base al eje X en base a un criterio (típicamente la raíz de cada subárbol es el punto medio del conjunto de coordenadas en ese eje), creando un nodo izquierdo que representa a los puntos cuyo valor de X sea menor y un nodo derecho para los valores mayores; Posteriormente, se realiza la división de puntos en el espacio Y para los nodos hijos del nodo raíz empelando el mismo procedimiento y para el espacio Z con los hijos de la división en Y. Al llegar al eje Z, se repite nuevamente todo el proceso para continuar subdividiéndo el espacio hasta que no existan puntos para continuar la división.
+
+La descomposición de nubes de puntos consiste en organizar la nube de puntos en una estructura de manera que el filtrado y análisis del entorno de los mismos (búsqueda de vecinos mas cercanos, búsqueda de vecinos en un radio determinado o, el punto más cercano, etc.) sea mas eficiente. Para conseguir esto, PCL ofrece dos tipos de estructuras: Kd-Tree y Octree. La estructura Kd-Tree es un árbol binario que organiza un conjunto de puntos en un espacio K-dimensional, estando determinada la cantidad de dimensiones por los ejes utilizados para definir las coordenadas de cada punto en la nube. De esta forma, si se emplean nubes de puntos tridimensionales, el árbol kd-tree organizará los puntos por medio de divisiones en los ejes X,Y,Z. En esta estructura, cada nodo representa un punto de la nube y cada nivel del árbol es una separación de puntos en alguna de las dimensiones. Así, en un espacio tridimensional la división comienza por crear el nodo raíz del árbol que divide los puntos respecto al eje X en base a un criterio (típicamente la raíz de cada subárbol es el punto medio del conjunto de coordenadas en ese eje), creando un nodo izquierdo que representa al subárbol de los puntos cuyo valor de X sea menor y un nodo derecho para el subárbol de los valores mayores; Posteriormente, se realiza la división de puntos en el espacio Y para los nodos hijos del nodo raíz empelando el mismo procedimiento y para el espacio Z con los hijos de la división en Y. Al llegar al eje Z, se repite nuevamente todo el proceso para continuar subdividiendo el espacio hasta que no existan puntos para continuar la división.
 
 
 .. figure:: ../figs/Cap3/ejemplo_kd_tree_division.png
