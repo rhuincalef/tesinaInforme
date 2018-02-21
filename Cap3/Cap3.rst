@@ -670,32 +670,33 @@ La descomposición de nubes de puntos consiste en organizar la nube de puntos en
 
    Ejemplo de división en un espacio 2D, donde los puntos iniciales se encuentran marcados en negro,  las divisiónes en X en rojo y las divisiones en Y en azul. 
 
-En PCL la clase pcl::KdTree implementa este comportamiento para los distintos tipos de puntos y permite realizar la búsqueda por cantidad de vecinos más cercanos (pcl::KdTree::nearestKSearch()) o por radio de búsqueda (pcl::KdTree::radiusSearch()). A continuación se muestra una porción de código donde se realiza una búsqueda por cantidad de vecinos cercanos a un punto dado::
+En PCL la clase pcl::KdTree implementa este comportamiento para los distintos tipos de puntos y permite realizar la búsqueda por cantidad de vecinos más cercanos (pcl::KdTree::nearestKSearch()) o por radio de búsqueda (pcl::KdTree::radiusSearch()). A continuación, se muestra una porción de código donde se realiza una búsqueda por cantidad de vecinos cercanos a un punto dado::
 
-// Object for storing the point cloud.
+   // Objeto que almacena la pointcloud
    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 
-   // Read a PCD file from disk.
+   // Lectura del archivo .pcd de disco
    if (pcl::io::loadPCDFile<pcl::PointXYZ>(argv[1], *cloud) != 0)
    {
       return -1;
    }
 
-   // kd-tree object.
+   // Objeto kd-tree que representa a la pointcloud instanciada
    pcl::search::KdTree<pcl::PointXYZ> kdtree;
    kdtree.setInputCloud(cloud);
 
-   // We will find the 5 nearest neighbors of this point
-   // (it does not have to be one of the cloud's, we can use any coordinate).
+   // Se define la búsqueda de los 5 vecinos mas cercanos a un punto aleatorio
    pcl::PointXYZ point;
    point.x = 0.0524343;
    point.y = -0.58016;
    point.z = 1.776;
-   // This vector will store the output neighbors.
+   // Vector para almacenar los índices de los puntos filtrados
    std::vector<int> pointIndices(5);
-   // This vector will store their squared distances to the search point.
+
+   // Distancias cuadradas de los vecinos obtenidos hasta el punto aleatorio
    std::vector<float> squaredDistances(5);
-   // Perform the search, and print out results.
+   
+   // Se realiza la búsqueda y se imprimen resultados
    if (kdtree.nearestKSearch(point, 5, pointIndices, squaredDistances) > 0)
    {
       std::cout << "5 nearest neighbors of the point:" << std::endl;
@@ -708,7 +709,7 @@ En PCL la clase pcl::KdTree implementa este comportamiento para los distintos ti
 
 .. http://pointclouds.org/documentation/tutorials/octree.php
 
-Por otro lado el Octree es una estructura de datos jerarquica empleada tanto para la búsqueda, como para el downsampling o la compresión de nubes de puntos. Un Octree es un árbol en el que cada nodo (pixel 3D o voxel) representa un punto en la nube que se considera el centro de cada voxel y que contiene ocho hijos(o ninguno) que son a su vez los vecinos del punto principal. A diferencia del Kd-Tree donde cada nodo representa una división basándose en las dimensiones, éste método realiza una subdivisión por puntos. Esta estructura se emplea además en motores 3D o en la generación de gráficos tridimensionales.   
+Por otro lado el Octree es una estructura de datos jerárquica empleada tanto para la búsqueda, como para reducción de la cantidad de puntos (downsampling) o la compresión de nubes de puntos. Un Octree es un árbol en el que cada nodo (pixel 3D o voxel) representa un punto en la nube que se considera el centro de cada voxel y que contiene ocho hijos(o ninguno) que son a su vez los vecinos del punto principal. A diferencia del Kd-Tree donde cada nodo representa una división basándose en las dimensiones, este método realiza una subdivisión por puntos y sus vecinos asociados. Esta estructura se emplea además en motores 3D o en la generación de gráficos tridimensionales.   
 
 .. figure:: ../figs/Cap3/estructura_octree.png
    :scale: 50%
@@ -729,10 +730,10 @@ Estimación de normales
 .. https://www.adelaide.edu.au/mathslearning/bridging/resources/MT3VectorsBook_Feb2013.pdf
 .. http://mathworld.wolfram.com/NormalVector.html
 
-Para diferenciar un punto de otro en una nube de puntos, no basta únicamente con su posición, sino que es necesario computar una característica 3D que sea similar para puntos que se encuentran en superficies similares. Para conseguir ésto, PCL ofrece la computación de normales, donde un vector normal *n* de un punto, se define como el vector perpendicular al plano tangente, que contiene a ése punto. Estos vectores se emplean para diversas tareas entre las que se destacan:
+Para diferenciar un punto de otro en una nube de puntos, no basta únicamente con su posición, sino que es necesario computar una característica 3D que sea similar para puntos que se encuentran en superficies similares. Para conseguir ésto, PCL ofrece la computación de normales, donde un vector normal *n* de un punto, se define como el vector perpendicular al plano tangente que contiene a ése punto. Estos vectores se emplean para diversas tareas entre las que se destacan:
 
 * La generación de gráficos por computadora tridimensionales, en la detección de la orientación de una fuente de luz y mejorar los efectos visuales en una escena.
-* Composición digital, donde se renderizan modelos o imágenes 3D por computadora superponiendo varias imágenes. Las capas redenderizadas que se generan contienen información de normales pueden ser modificadas para cambiar la textura de un objeto según la fuente de ilumnación.
+* Composición digital, donde se renderizan modelos o imágenes 3D por computadora superponiendo varias imágenes. Las capas renderizadas generadas, contienen información de normales pueden ser modificadas para cambiar la textura de un objeto según la fuente de iluminación.
 
 
 .. figure:: ../figs/Cap3/ejemplo_vector_normal.gif
@@ -743,7 +744,7 @@ Para diferenciar un punto de otro en una nube de puntos, no basta únicamente co
 .. http://pointclouds.org/documentation/tutorials/normal_estimation.php
 .. http://pointclouds.org/documentation/tutorials/how_features_work.php#id2
 
-Debido a las nubes de puntos proporcionan coordenas de los puntos que componen la superficie de un objeto, la computación de las normales de éstos, se calcula por medio de la generación de una matriz de vectores y valores propios de cada punto *Pi* (vectores que son invariables a cambios de escala o transformaciones), que es calculada empleando los k vecinos de éste y el centroide de éstos. Los valores de esta matriz se emplean en la técnica de análisis de compontes principales(PCA), que permite obtener las componentes principales con mayor variación, en este caso se obtiene el vector que es más representativo para el punto según sus vecinos más cercanos (vector normal).    
+Debido a las nubes de puntos proporcionan coordenadas de los puntos que componen la superficie de un objeto, la computación de las normales de éstos, se calcula por medio de la generación de una matriz de vectores y valores propios de cada punto *Pi* (vectores que son invariables a cambios de escala o transformaciones), que es calculada empleando los k vecinos de éste y el centroide de éstos. Los valores de esta matriz se emplean en la técnica de análisis de componentes principales(PCA), que permite obtener las componentes principales con mayor variación, en este caso se obtiene el vector que es más representativo para el punto según sus vecinos más cercanos (vector normal).    
 Una vez realizado este cálculo y teniendo los vectores de cada punto, aún es necesario calcular la orientación de las normales, para ésto se utiliza el punto de visión *Vp* para orientar las normales *ni* de todos los puntos, haciendo cumplir siguiente ecuación: 
 
 
@@ -752,9 +753,9 @@ Una vez realizado este cálculo y teniendo los vectores de cada punto, aún es n
 
    Fórmula de equivalencia normales
 
-La precisión con que se estimen las normales para una superficie en PCL depende en gran medida de la escala que se utilice para el cálculo, que se establece por medio del radio de búsqueda (pcl::Feature::setRadiusSearch) o de la cantidad de vecinos empleados para la computación de la normal (pcl::Feature::setKSearch). Si se emplea un rango rasonablemente bajo, se considerarán menos vecinos para cada punto provocando que exista mayor similitud entre normales de la misma superficie y diferencia entre normales de distintas superficies y, en consecuencia, exista un mayor nivel de detalle las zonas con bordes de los objetos. Por el contrario, si se emplea una escala muy alta, se considerán más vecinos para la computación de las normales de puntos, provocando que en las regiones límites entre distintas superficies se abarque un mayor rango de vecinos de la zona adyacente, provocando que las normales muestren menor diferencia entre superficies diferentes.
+La precisión con que se estimen las normales para una superficie en PCL depende en gran medida de la escala que se utilice para el cálculo, que se establece por medio del radio de búsqueda (pcl::Feature::setRadiusSearch) o de la cantidad de vecinos empleados para la computación de la normal (pcl::Feature::setKSearch). Si se emplea un rango razonablemente bajo, se considerarán menos vecinos para cada punto provocando que exista mayor similitud entre normales de la misma superficie y diferencia entre normales de distintas superficies y, en consecuencia, exista un mayor nivel de detalle las zonas con bordes de los objetos. Por el contrario, si se emplea una escala muy alta, se considerarán más vecinos para la computación de las normales de puntos, provocando que en las regiones límites entre distintas superficies se abarque un mayor rango de vecinos de la zona adyacente, provocando que las normales muestren menor diferencia entre superficies diferentes.
 
-En PCL el cálculo de normales se realiza por medio de la clase pcl::NormalEstimation, que acepta un tipo de punto coordenada y un tipo de punto normal, y puede realizarse para toda la nube completa o, para un subconjunto de puntos, por medio de la utilización de índices. Si se desea realizar la estimación para toda la nube, basta con especificar a la clase de estimación de normales la nube de entrada, el método de búsqueda y el radio de búsqueda o la cantidad de vecinos. A continuación se muestra un ejemplo de código fuente que realiza la computación de normales::
+En PCL el cálculo de normales se realiza por medio de la clase pcl::NormalEstimation, que acepta un tipo de punto coordenada y un tipo de punto normal, y puede realizarse para toda la nube completa o, para un subconjunto de puntos, por medio de la utilización de índices. Si se desea realizar la estimación para toda la nube, basta con especificar a la clase de estimación de normales la nube de entrada, el método de búsqueda y el radio de búsqueda o la cantidad de vecinos. A continuación, se muestra un ejemplo de código fuente que realiza la computación de normales::
 
 #include <pcl/point_types.h>
 #include <pcl/features/normal_3d.h>
@@ -762,30 +763,30 @@ En PCL el cálculo de normales se realiza por medio de la clase pcl::NormalEstim
 {
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
 
-  ... read, pass in or create a point cloud ...
+  // Se lee o se crea una nube de puntos
+  ...
 
-  // Create the normal estimation class, and pass the input dataset to it
+  // Se instancia la clase de estimación de normales
   pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
   ne.setInputCloud (cloud);
 
-  // Create an empty kdtree representation, and pass it to the normal estimation object.
-  // Its content will be filled inside the object, based on the given input dataset (as no other search surface is given).
+  //Se crea una instancia vacía de kd-tree y se pasa al objeto de estimación de normales.
+
   pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
   ne.setSearchMethod (tree);
 
-  // Output datasets
+  // Variable para normales de salida
   pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
 
-  // Use all neighbors in a sphere of radius 3cm
+  // Se establece el radio de salida en metros
   ne.setRadiusSearch (0.03);
 
-  // Compute the features
+  // El tamaño de las normales tiene que ser el mismo que el de los puntos en la nube de entrada
   ne.compute (*cloud_normals);
 
-  // cloud_normals->points.size () should have the same size as the input cloud->points.size ()
 }   
 
-Si se desea realizar la computación de las normales de algunos puntos, se debe especificar además la estructura de los índices y asignarselo a pcl::NormalEstimation::
+Si se desea realizar la computación de las normales de algunos puntos, se debe especificar además la estructura de los índices y asignárselo a pcl::NormalEstimation::
 
 
 #include <pcl/point_types.h>
@@ -794,35 +795,27 @@ Si se desea realizar la computación de las normales de algunos puntos, se debe 
 {
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
 
-  ... read, pass in or create a point cloud ...
-
-  // Create a set of indices to be used. For simplicity, we're going to be using the first 10% of the points in cloud
+  // Se crea el conjunto de índices para ser empleado (10% del total de puntos)
   std::vector<int> indices (floor (cloud->points.size () / 10));
   for (size_t i = 0; indices.size (); ++i) indices[i] = i;
 
-  // Create the normal estimation class, and pass the input dataset to it
   pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
   ne.setInputCloud (cloud);
 
-  // Pass the indices
+  // Se pasan los índices
   boost::shared_ptr<std::vector<int> > indicesptr (new std::vector<int> (indices));
   ne.setIndices (indicesptr);
 
-  // Create an empty kdtree representation, and pass it to the normal estimation object.
-  // Its content will be filled inside the object, based on the given input dataset (as no other search surface is given).
   pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
   ne.setSearchMethod (tree);
 
-  // Output datasets
+  // Normales de salida
   pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
 
-  // Use all neighbors in a sphere of radius 3cm
   ne.setRadiusSearch (0.03);
 
-  // Compute the features
   ne.compute (*cloud_normals);
 
-  // cloud_normals->points.size () should have the same size as the input indicesptr->size ()
 } 
 
 
@@ -837,12 +830,13 @@ Debido a que una captura puede contener valores espurios, debido a baja precisi�
 
 .. http://pointclouds.org/documentation/tutorials/passthrough.php
 
-El algoritmo de Passthrough Filter consiste en remover de la nube aquellos elementos que se encuentran fuera de un rango especificado por el usuario, por lo que este método únicamente requiere especificar el eje de filtrado y el rango de filtrado (mínimo y máximo). Este método se realiza por la clase pcl::PassThrough, que requiere el tipo de punto para el filtrado. A continuación se muestra el proceso de filtrado para una nube existente::
+El algoritmo de Passthrough Filter consiste en remover de la nube aquellos elementos que se encuentran fuera de un rango especificado por el usuario, por lo que este método únicamente requiere especificar el eje de filtrado y el rango sobre ese eje (mínimo y máximo). Este método se realiza por la clase pcl::PassThrough, que requiere el tipo de punto para el filtrado. A continuación, se muestra el proceso de filtrado para una nube existente::
 
    // Se define la nube cloud para el tipo de punto pcl::PointXYZ 
    ...
    pcl::PassThrough<pcl::PointXYZ> filter;
    filter.setInputCloud(cloud);
+
    // Se filtran los valores en el eje Z que no se encuentren entre 0-2 mts.
    filter.setFilterFieldName("z");
    filter.setFilterLimits(0.0, 2.0);
@@ -856,10 +850,11 @@ El algoritmo de Passthrough Filter consiste en remover de la nube aquellos eleme
 
 .. http://pointclouds.org/documentation/tutorials/remove_outliers.php
 
-El algoritmo Conditional Removal consiste en crear una o mas condiciones que verifican los valores de los atributos de un punto (tales como las coordenadas sobre un eje) y mantener solo aquellos puntos que cumplen ésta. Para ello, PCL encapsula las condiciones en clases siendo las condiciones disponibles AND (pcl::ConditionAnd) y OR (pcl::ConditionOr), que por medio del método addComparison() permiten especificar el tipo atributo, el operador de comparación (<,<=,==,>,>=) y el valor de la condición. Finalmente para realizar el filtrado, se crea una instancia de pcl::ConditionalRemoval que recibe las condiciones especificadas y genera la nube de salida. En el siguiente ejemplo se realiza el mismo filtrado que en Passthrough Filter empleando el Conditional Removal::
+El algoritmo Conditional Removal consiste en crear una o mas condiciones que verifican los valores de los atributos de un punto (tales como las coordenadas sobre un eje) y mantener solo aquellos puntos que cumplen ésta. Para ello, PCL representa las condiciones por clases siendo las condiciones disponibles AND (pcl::ConditionAnd) y OR (pcl::ConditionOr), que por medio del método addComparison() permiten especificar el tipo atributo, el operador de comparación (<,<=,==,>,>=) y el valor de la condición. Finalmente para realizar el filtrado, se crea una instancia de pcl::ConditionalRemoval que recibe las condiciones especificadas y genera la nube de salida. En el siguiente ejemplo se realiza el mismo filtrado que en Passthrough Filter empleando el Conditional Removal::
 
 
    pcl::ConditionAnd<pcl::PointXYZ>::Ptr condition(new pcl::ConditionAnd<pcl::PointXYZ>);
+
    // GT (Greater Than), LT(Less Than)
    condition->addComparison(pcl::FieldComparison<pcl::PointXYZ>::ConstPtr(new pcl::FieldComparison<pcl::PointXYZ>("z", pcl::ComparisonOps::GT, 0.0)));
    condition->addComparison(pcl::FieldComparison<pcl::PointXYZ>::ConstPtr(new pcl::FieldComparison<pcl::PointXYZ>("z", pcl::ComparisonOps::LT, 2.0)));
@@ -872,7 +867,7 @@ El algoritmo Conditional Removal consiste en crear una o mas condiciones que ver
    filter.filter(*filteredCloud);
 
 
-Con respecto al algoritmo Outlier Removal, existen dos variantes: Basado en radio y Estadístico; En el método basado en radio se especifica un radio de búsqueda y la cantidad mínima de vecinos que punto debe poseer para no ser considerado como outlier. De esta manera el algoritmo iterará todos los puntos en la nube y  por cada punto verificará que dentro del radio especificado existan al menos la cantidad mínima requerida de vecinos. Este comportamiento se realiza por medio de la clase pcl::RadiusOutlierRemoval.
+Con respecto al algoritmo Outlier Removal, existen dos variantes: Basado en radio y Estadístico. En el método basado en radio se especifica un radio de búsqueda y la cantidad mínima de vecinos que punto debe poseer para no ser considerado como outlier. De esta manera el algoritmo iterará todos los puntos en la nube y  por cada punto verificará que dentro del radio especificado existan al menos la cantidad mínima requerida de vecinos. Este comportamiento se realiza por medio de la clase pcl::RadiusOutlierRemoval.
 
 Por otro lado, el Statistical Outlier Removal itera cada punto en la nube y calcula la distancia media entre el punto y sus vecinos, la cual es comparada con la distancia de una distribución normal Gaussiana con media :math:`{\mu}` y desvío estándar :math:`{\sigma}`, eliminado aquellos puntos que caen fuera del rango de la distribución. Este método se implementa por medio de la clase pcl::StatisticalOutlierRemoval que acepta la nube, la media y el desvío estándar de la distribución de probabilidad. 
 
@@ -880,16 +875,18 @@ Por otro lado, el Statistical Outlier Removal itera cada punto en la nube y calc
 Resampling de la nube: Downsampling y Upsampling
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
-Resampling consiste en modificar la cantidad de puntos en una nube, ya sea aumentando la cantidad de puntos de ésta, reconstruyendo la superficie original, para que sean suficientes para el análisis (upsampling) o disminuyéndola sin comprometer significativamente la precisión para que el análisis de la misma sea más eficiente(downsampling). El downsampling en PCL se puede realizar el método de Voxelización o de Uniform Sampling. El método de Voxelización consiste en emplear un conjunto de voxels organizados en una estructura Octree para computar el punto medio del voxel, es decir, aquel punto que es un promedio de las coordenadas de todos los puntos que pertenecen al Voxel Grid. De esta manera, prevalecen solamente aquellos puntos principales que son representativos para cada voxel. PCL implementa este comportamiento por medio de la clase pcl::VoxelGrid, que permite especificar el tamaño de cada voxel (en cm) para cada una de las dimensiones X,Y,Z. En la siguiente porción de código se muestra un ejemplo de voxelización::
+Resampling consiste en modificar la cantidad de puntos en una nube, ya sea aumentando la cantidad de puntos, reconstruyendo la superficie original para que sean suficientes para el análisis (upsampling) o, disminuyéndola sin comprometer significativamente la precisión para que el análisis de la misma sea más eficiente (downsampling). El downsampling en PCL se puede realizar el método de Voxelización o de Uniform Sampling. El método de Voxelización consiste en emplear un conjunto de voxels organizados en una estructura Octree para computar el punto medio del voxel, es decir, aquel punto que es un promedio de las coordenadas de todos los puntos que pertenecen al Voxel Grid. De esta manera, prevalecen solamente aquellos puntos principales que son representativos para cada voxel. PCL implementa este comportamiento por medio de la clase pcl::VoxelGrid, que permite especificar el tamaño de cada voxel (en cm) para cada una de las dimensiones X,Y,Z. En la siguiente porción de código se muestra un ejemplo de voxelización::
 
    ...
    pcl::VoxelGrid<pcl::PointXYZ> filter;
    filter.setInputCloud(cloud);
+
+   // Se especifica el tamaño del voxel en cada eje
    filter.setLeafSize(0.01f, 0.01f, 0.01f);
    filter.filter(*filteredCloud);
    ...
 
-El método de Uniform Sampling realiza la misma tarea, sin embargo retorna los índices de los puntos filtrados en lugar del punto, y se emplea principalmente como parte del proceso de generación de descriptores::
+El método de Uniform Sampling realiza la misma tarea, sin embargo, retorna los índices de los puntos filtrados en lugar del punto y se emplea principalmente como parte del proceso de generación de descriptores::
 
    pcl::UniformSampling<pcl::PointXYZ> filter;
    filter.setInputCloud(cloud);
@@ -902,7 +899,7 @@ El método de Uniform Sampling realiza la misma tarea, sin embargo retorna los �
 .. https://en.wikipedia.org/wiki/Upsampling
 .. http://www.nealen.de/projects/mls/asapmls.pdf
 
-El upsampling en PCL se realiza por medio del método Moving Least Squres(MLS), que es un método empleado para la reconstrucción de una superficie en base a un conjunto de datos de muestra (en este caso puntos). Este método consiste en generar una función continua que representa al conjunto de datos de muestra, empleando los valores de las variables independientes y dependientes para el computo. Para ello, dado un conjunto de muestras *S = { (xi,fi) | f(xi) = fi }*, con *xi, fi* siendo números reales, se computa por cada punto arbitrario *x* el valor mínimo cuadrado ponderado (Mean Least Square) con respecto a cada una de las muestras, produciendo un conjunto de polinomios de grado m *p(xi)* y empleando de todos éstos el polinomio que minimice el error mínimo cuadrado para calcular el valor de este punto en la función. 
+El upsampling en PCL se realiza por medio del método Moving Least Squres(MLS), que es un método empleado para la reconstrucción de una superficie en base a un conjunto de datos de muestra (en este caso puntos). Este método consiste en generar una función continua que representa al conjunto de datos de muestra, empleando los valores de las variables independientes y dependientes para el computo. Para ello, dado un conjunto de muestras *S = { (xi,fi) | f(xi) = fi }*, con *xi, fi* siendo números reales, se computa por cada punto arbitrario *x* el valor mínimo cuadrado ponderado (Mean Least Square) con respecto a cada una de las muestras, produciendo un conjunto de polinomios de grado m *p(xi)*. De todos éstos, se emplea el polinomio que minimice el error mínimo cuadrado para calcular el valor de este punto en la función. 
 
 
 .. figure:: ../figs/Cap3/formula_MLS_upsampling.png
@@ -913,51 +910,49 @@ El upsampling en PCL se realiza por medio del método Moving Least Squres(MLS), 
 De esta forma, MLS obtiene una función final a partir de un conjunto de funciones locales calculadas en base a los datos de muestra, cuyo valor de precisión es controlado por medio de los pesos :math:`{\theta}`. El método de MLS se implementa en la clase pcl::MovingLeastSquares, que requiere la nube de entrada, un Kd-Tree para estructurar la nube, y un radio de upsampling para generar los nuevos puntos, determinando este valor la cantidad de puntos producidos (si es demasiado grande se generarán menos puntos). 
 
 
-
-
 Algoritmos de segmentación de objetos
 """""""""""""""""""""""""""""""""""""
 
 Segmentación
 ++++++++++++
 
-La segmentación consiste en dividir una nube de puntos en uno o varios clusters para que puedan ser procesados independientemente (donde cada cluster representa un objeto de interés para ser procesado), lo que en combinación con otras herramientas permite obtener modelos pertenecientes a objetos individuales en la captura y aislar superficies con distintas formas. PCL ofrece varios métodos alternativos para realizar la segmentación entre los que se encuentran:
+La segmentación consiste en dividir una nube de puntos en uno o varios clusters para que puedan ser procesados independientemente (donde cada cluster representa un objeto de interés para ser procesado), lo que en combinación con otras herramientas, permite obtener modelos pertenecientes a objetos individuales en la captura y aislar superficies con distintas formas. PCL ofrece varios métodos alternativos para realizar la segmentación entre los que se encuentran:
 
 * Euclidean Segmentation
 * Region Growing Segmentation
 * Min-Cut Segmentation 
 
 
-Euclidean Segmentation, o segmentación Euclidiana, itera cada uno de los puntos de la nube, y por cada  computa la distancia Euclidiana entre el punto iterado y uno de sus vecinos y si ésta es menor a un límite (o threshold) significa que ambos pertenecen al mismo cluster, por lo que ambos puntos son marcados como iterados y agregados al mismo cluster. Este proceso continúa por cada uno de los vecinos del punto y luego por los vecinos de éstos, hasta que no existan más puntos que agregar al cluster. Cuando sucede ésto, se crea un nuevo cluster y el proceso se repite con aquellos puntos que no se han agrupado aún en un cluster, hasta iterar todos los puntos en la nube. Este algoritmo se implementa en PCL por medio de la clase pcl::EuclideanClusterExtraction, que acepta como parámetros una nube de puntos de entrada, un tamaño máximo y mínimo para los clusters, un árbol de búsqueda (como Kd-Tree) y un valor de tolerancia para controlar la tolerancia (distancia en cm) para considerar a un punto como perteneciente a un cluster o no; Así si este valor es pequeño provocará que los objetos en la nube se dividan en varios clusters y, si es demasiado grande para el/los objeto/s que se desea segmentar agrupará todos los puntos de éste en el mismo cluster.
+Euclidean Segmentation, o segmentación Euclidiana, itera cada uno de los puntos de la nube, y por cada uno computa la distancia Euclidiana entre el punto iterado y uno de sus vecinos y, si ésta es menor a un límite (o threshold), significa que ambos pertenecen al mismo cluster, por lo que ambos puntos son marcados como iterados y agregados al mismo cluster. Este proceso continúa por cada uno de los vecinos del punto y luego por los vecinos de éstos, hasta que no existan más puntos que agregar al cluster. Cuando sucede ésto, se crea un nuevo cluster y el proceso se repite con aquellos puntos que no se han agrupado aún en un cluster, hasta iterar todos los puntos en la nube. Este algoritmo se implementa en PCL por medio de la clase pcl::EuclideanClusterExtraction, que acepta como parámetros una nube de puntos de entrada, un tamaño máximo y mínimo para los clusters, un árbol de búsqueda (como Kd-Tree) y un valor de tolerancia para controlar la tolerancia (distancia en cm) para considerar a un punto como perteneciente a un cluster o no; Así, si este valor es pequeño provocará que los objetos en la nube se dividan en varios clusters y, si es demasiado grande para el/los objeto/s que se desean segmentar agrupará todos los puntos de éstos en el mismo cluster.
 
-Este algoritmo posee una variación que se denomina Conditional Euclidean Segmentation, o segmentación Euclidiana condicional, que además de realizar la computación y verificación de distancias, permite que el usuario especifique una condición para cada par de puntos a ser comparados (denominándose seed o semilla al punto procesado y candidate o candidato al vecino de la semilla que esta siendo iterada). En esta función el usuario recibe una copia de ambos puntos y la distancia cuadrada de éstos y retorna un valor booleano, que en caso de ser verdadero permite que el candidato pueda ser agregado al cluster y falso en caso contrario. Este algoritmo se encuentra implementado en la clase pcl::ConditionalEuclideanClustering, que recibe los mismos parámetros que la función estándar y permite especificar la función de condición por medio del método setConditionFunction().
+Este algoritmo posee una variación que se denomina Conditional Euclidean Segmentation, o segmentación Euclidiana condicional, que además de realizar la computación y verificación de distancias, permite que el usuario especifique una condición para cada par de puntos a ser comparados (denominándose *seed* o semilla al punto procesado y *candidate* o candidato al vecino de la semilla que esta siendo iterada). En esta función el usuario recibe una copia de ambos puntos y la distancia cuadrada de éstos y retorna un valor booleano, que en caso de ser verdadero permite que el candidato pueda ser agregado al cluster y falso en caso contrario. Este algoritmo se encuentra implementado en la clase pcl::ConditionalEuclideanClustering, que recibe los mismos parámetros que la función estándar y permite especificar la función de condición por medio del método setConditionFunction().
 
-Region Growing Segmentation, realiza el agrupamiento en clusters en base a una verificación de la suavidad de la superficie, que se determina procesando el ángulo entre las normales y la diferencia de curvaturas entre puntos. Este algoritmo se implementa por medio de la clase pcl::RegionGrowing, que recibe los mismos parámetros de Euclidean Segmentation y adicionalmente emplea la estimación de normales y un valor límite para la curvatura. Este algoritmo tiene una variación conocida como Region Growing RGB, que en lugar de emplear las normales y la curvatura, utiliza los mismos parámetros que Euclidean Segmentation en combinación con el color de la nube. De esta forma, el proceso de segmentación se realiza con una nube con información de color (con puntos pcl::PointXYZRGB o pcl::PointXYZRGBA) y se puede controlar en base a límites de color para generar clusters, tanto entre puntos como límites entre clusters.
+Region Growing Segmentation, realiza el agrupamiento en clusters en base a una verificación de la suavidad de la superficie, que se determina procesando el ángulo entre las normales y la diferencia de curvaturas entre puntos. Este algoritmo se implementa por medio de la clase pcl::RegionGrowing, que recibe los mismos parámetros de Euclidean Segmentation y adicionalmente emplea la estimación de normales y un valor límite para la curvatura. Este algoritmo tiene una variación conocida como Region Growing RGB, que en lugar de emplear las normales y la curvatura, utiliza los mismos parámetros que Euclidean Segmentation en combinación con el color de la nube. De esta forma, el proceso de segmentación se realiza con una nube con información de color (con puntos pcl::PointXYZRGB o pcl::PointXYZRGBA) y se puede controlar en base a límites de color para generar clusters, tanto entre puntos como entre clusters.
 
 
 .. https://en.wikipedia.org/wiki/Minimum_cut
 .. http://pointclouds.org/documentation/tutorials/min_cut_segmentation.php
 .. http://gfx.cs.princeton.edu/pubs/Golovinskiy_2009_MBS/paper_small.pdf
 
-El algoritmo Min-Cut o corte mínimo, se emplea para segmentar una nube de puntos en dos clusters, donde uno pertenece a un objeto cuyas coordenadas se conocen (foreground) y el otro perteneciente a puntos que no forman parte del objeto y se consideran como el fondo de la escena donde se encuentra ubicados éste (background). Para realizar ésto, el algoritmo genera un grafo en base a la nube de puntos donde cada punto se representa como un nodo del grafo, y adicionalmente agrega al grafo dos vértices globales más denominados sink y source. Los nodos source y sink se encuentran interconectados por medio de aristas a todos los demás puntos de la nube y además cada nodo que representa un punto, se conecta por medio de aristas a sus puntos vecinos más cercanos. Así, el grafo producido por Min-Cut se genera uniendo los nodos que representan puntos de la nube con sus k-vecinos más cercanos (definiéndose *k* por el usuario) y con los nodos globales sink y source con aristas que contienen un peso que se calcula de manera diferente según los tipos de nodos que ésta une. La computación de los pesos de los distintos tipos de nodos se realizan de la siguiente manera:
+El algoritmo Min-Cut o corte mínimo, se emplea para segmentar una nube de puntos en dos clusters, donde uno pertenece a un objeto cuyas coordenadas se conocen (foreground) y el otro perteneciente a puntos que no forman parte del objeto y se consideran parte del fondo de la escena donde se encuentra posicionado éste (background). Para realizar ésto, el algoritmo genera un grafo en base a la nube de puntos donde cada punto se representa como un nodo del grafo, y adicionalmente agrega al grafo dos vértices globales más denominados sink y source. Los nodos source y sink se encuentran interconectados por medio de aristas a todos los demás puntos de la nube y además cada nodo que representa un punto, se conecta por medio de aristas a sus puntos vecinos más cercanos. Así, el grafo producido por Min-Cut se genera uniendo los nodos que representan puntos de la nube con sus k-vecinos más cercanos (definiéndose *k* por el usuario) y, con los nodos globales sink y source con aristas que contienen un peso, que es calculado de manera diferente según los tipos de nodos que éstas unen. La computación de los pesos de las aristas que conectan distintos tipos de nodos se realiza de la siguiente manera:
 
 *  Primero, se asignan pesos a las aristas que interconectan los nodos que representan los puntos de la nube de puntos (denominados costo de suavidad), cuyo valor depende de la distancia entre éstos y se computa por medio de la fórmula: :math:` smoothCost = e^((-distanciaEntrePtos/\sigma){\gamma})`, donde :math:`{\sigma}` es el espaciado entre los puntos de la nube que depende de la resolución y es establecido por el usuario. De esta forma, mayor será la probabilidad de corte de un borde, cuanto mayor sea la distancia entre puntos en la nube.
-*  Luego se establecen las penalidades de foreground y background, donde la penalidad de foreground es el peso que se asigna para las aristas que unen cada punto de la nube con el vértice source (valor definido por el usuario), y la penalidad de background son los pesos que unen los puntos de la nube con el vértice sink. Ésta última es un valor calculado en base a la distancia horizontal hacia la ubicación del objeto, por medio de la siguiente fórmula: :math:`{penalidadBackground = distanciaAlCentro/radio}`, donde la distancia al centro esperado del objeto en el plano horizontal es calculada por medio de la ecuación: :math:`{distanciaAlCentro = \sqrt{ (X - CentroX)^2 + (Y - CentroY)^2} }`, mientras que el radio es un parámetro especificado por el usuario y define el rango fuera del cual, no existen puntos que pertenecezcan al objeto que se esta segmentado (o foreground).
+*  Luego se establecen las penalidades de foreground y background, donde la penalidad de foreground es el peso que se asigna para las aristas que unen cada punto de la nube con el vértice source (valor definido por el usuario), y la penalidad de background son los pesos de las aristas que unen los puntos de la nube con el vértice sink. Ésta última es un valor calculado en base a la distancia horizontal hacia la ubicación del objeto, por medio de la siguiente fórmula: :math:`{penalidadBackground = distanciaAlCentro/radio}`, donde la distancia al centro del objeto en el plano horizontal es calculada por medio de la ecuación: :math:`{distanciaAlCentro = \sqrt{ (X - CentroX)^2 + (Y - CentroY)^2} }`, donde *X* , *Y* son las coordenadas del punto,  mientras que el radio es un parámetro especificado por el usuario y define el rango fuera del cual, no existen puntos que pertenecezcan al objeto que se esta segmentado (o foreground).
 
-Finalmente, luego de configurar el grafo se realiza la búsqueda del mínimo corte recorriendo los nodos del grafo, considerando tanto las penalidades de background/foreground como el valor de suavidad, al momento de realizar un corte mínimo. Así, cuando el corte mínimo se computa, se logra que los puntos vecinos sean asignados al mismo segmento(empleando el valor de suavidad) y que aquellos puntos que se encuentran débilmente conectados al objeto o, que se encuentran dentro del rango definido por el radio de background, sean asignados al background y no al objeto a segmentar.  
+Finalmente, luego de configurar el grafo se realiza la búsqueda del mínimo corte recorriendo los nodos del grafo, considerando tanto las penalidades de background/foreground como el valor de suavidad, al momento de realizar un corte mínimo. Así, cuando el corte mínimo se computa, se logra que los puntos vecinos sean asignados al mismo segmento (empleando el valor de suavidad) y que aquellos puntos que se encuentran débilmente conectados al objeto o, que se encuentran dentro del rango definido por el radio de background, sean asignados al background y no al objeto a segmentar.  
 
 
 
 .. http://pointclouds.org/documentation/tutorials/random_sample_consensus.php#random-sample-consensus
 .. https://en.wikipedia.org/wiki/Random_sample_consensus
 
-Finalmente, RANSAC (Random Sample Consensus) es un algoritmo de muestreo aleatorio que para un conjunto de datos de entrada con ruido, que estima los parámetros que permiten ajustar éstos a un modelo preestablecido. Este algoritmo considera que en la nube de puntos de entrada existen puntos que pueden ser ajustados a un modelo preestablecido con un margen de error especificado  (inliers), y puntos que no se ajustan al modelo de RANSAC(outliers). El funcionamiento de este algoritmo consiste en especificar un tipo de modelo y realizar N iteraciones, donde en cada una:  
+Finalmente, RANSAC (Random Sample Consensus) es un algoritmo de muestreo aleatorio que para un conjunto de datos de entrada con ruido, estima los parámetros que permiten ajustar éstos a un modelo preestablecido. Este algoritmo considera que en la nube de puntos de entrada existen puntos que pueden ser ajustados a un modelo preestablecido con un margen de error especificado  (inliers), y puntos que no se ajustan al modelo de RANSAC(outliers). El funcionamiento de este algoritmo consiste en especificar un tipo de modelo y realizar N iteraciones, donde en cada una:  
    
-    1. Se toma un subconjunto de puntos aleatorios de la nube de entrada y empleando el tipo modelo especificado, se entrena un modelo para este subconjunto de puntos y se computan los parámetros asociados éste.
-    2. A continuación, el algoritmo verifica cuales puntos de la nube de entrada completa son consistentes con el modelo y sus parámetros estimados previamente, empleando una función de costo o función de pérdida(loss function). Los puntos que no se ajusten al modelo instanciado con un margen de error se consideran outliers, mientras que el resto de puntos que se ajustan al modelo se consideran inliers hipotéticos y forman parte del conjunto de consenso(consensus set).
+    1. Se toma un subconjunto de puntos mínimos aleatorios de la nube de entrada ( considerado suficiente para estimar los parámetros del modelo) y, empleando el tipo de modelo especificado, se entrena un modelo para este subconjunto de puntos y se computan los parámetros asociados éste.
+    2. A continuación, el algoritmo verifica cuales puntos de la nube de entrada completa son consistentes con el modelo y sus parámetros estimados previamente, empleando una función de costo o función de pérdida específica del modelo (loss function). Los puntos que no se ajusten al modelo instanciado con un margen de error, se consideran outliers, mientras que el resto de puntos que se ajustan al modelo se consideran inliers hipotéticos y forman parte del conjunto de consenso (consensus set).
     3. Se repite de nuevo el paso 1. 
 
-De esta forma, el algoritmo RANSAC se repite una serie de veces hasta que se tengan suficientes inliers como para ser considerada confiable la estimación. Una ventaja de RANSAC es que es sumamente robusto para estimar los parámetros asociados a un modelo, aún cuando se cuenta con mucho ruido en la muestra. Por otro lado, su desventaja radica en que no existe un límite de tiempo para computar estos parámetros, por lo que si se requiere generar un modelo con pocas iteraciones es posible que la solución obtenida no sea satisfactoria. 
+De esta forma, el algoritmo RANSAC se repite una serie de veces hasta que se tengan suficientes inliers como para ser considerada confiable a la estimación. Una ventaja de RANSAC es que es sumamente robusto para estimar los parámetros asociados a un modelo, aún cuando se cuenta con ruido en la muestra. Por otro lado, su desventaja radica en que no existe un límite de tiempo para computar estos parámetros, por lo que si se requiere generar un modelo con pocas iteraciones es posible que la solución obtenida no sea satisfactoria. 
 
 
 .. figure:: ../figs/Cap3/ejempo_RANSAC.png
@@ -976,11 +971,11 @@ Algoritmos para generación de descriptores
 .. https://github.com/PointCloudLibrary/pcl/wiki/Overview-and-Comparison-of-Features
 .. http://www.pointclouds.org/assets/icra2013/pcl_features_icra13.pdf
 
-Con respecto a la generación de descriptores, PCL ofrece dos tipos de descriptores: Descriptores locales y descriptores globales. Los descriptores locales, se emplean para describir la geometría alrededor de cada punto, sin considerar la geometría total del objeto que cada punto compone, por lo que cuando se computan éstos, se debe hacer un filtrado previo de los puntos clave del objeto o keypoints que se desean procesar. Estos descriptores se emplean para el reconocimiento de objetos y para la registración(registration), que consiste en alinear dos nubes de puntos y por medio de transformaciones lineales, detectar si existen áreas comunes en ambas nubes de puntos.
+Con respecto a la generación de descriptores, PCL ofrece dos tipos de descriptores: Descriptores locales y descriptores globales. Los descriptores locales, se emplean para describir la geometría alrededor de cada punto, sin considerar la geometría total del objeto del que forma parte ese punto, por lo que cuando se computan éstos, se debe hacer un filtrado previo de los puntos clave del objeto o keypoints que se desean procesar. Estos descriptores se emplean para el reconocimiento de objetos y para la registración (registration), que es una técnica donde se alinean dos nubes de puntos y, por medio de transformaciones lineales, se detecta si existen áreas comunes en ambas nubes de puntos.
 
-Por otro lado, PCL ofrece descriptores globales que describen la geometría de un cluster de puntos que representa un objeto, por lo que para emplear estos descriptores se requiere pre-procesar una nube de puntos, con el fin de aislar el objeto. Estos descriptores se aplican para el reconocimiento de objetos y clasificación, estimación de posición y análisis de geometría (tipo de objeto, forma, etc.). Los descriptores locales que emplean un radio de búsqueda, mayormente pueden ser usados como globales, si se computa un solo punto en el cluster y se modifica éste radio al de puntos vecinos, de manera que se abarquen todos los puntos que componen el objeto. 
+Por otro lado, PCL ofrece descriptores globales que describen la geometría de un cluster de puntos que representa un objeto, por lo que para emplear estos descriptores se requiere pre-procesar una nube de puntos, con el fin de aislar el objeto. Estos descriptores se aplican para el reconocimiento de objetos y clasificación, estimación de posición y análisis de geometría (tipo de objeto, forma, etc.). Los descriptores locales que emplean un radio de búsqueda, mayormente pueden ser usados como globales, si se computa un solo punto en el cluster y se modifica el  radio de puntos que se consideran vecinos, para abarcar todos los puntos que componen el objeto. 
 
-Existen varios tipos de descriptores en PCL, cada uno empleando su propia técnica, ya sea empleando los ángulos de las normales o las distancias Euclidianas entre puntos. Sin embargo, con el fin de reducir el tamaño de cada descriptor, todos se organizan en histogramas cuyos rangos de escala se corresponden con la característica que es parte el descriptor (por ejemplo, distancia entre puntos), asociándose cada una de las características del descriptor a un histograma, donde éstos se encuentran divididos en k subdivisiones y en cada rango del histograma se representan las ocurrencias de puntos dentro de ese rango. De esta forma, cada algoritmo para la generación de descriptores realiza su propia subdivisión del histograma, dependiendo del rango de valores que sea más representativo en la variable, es decir, que esto se genera dinámicamente y se producen más subdivisiones para los valores donde existen mayor cantidad de puntos con esa característica.
+Existen varios tipos de descriptores en PCL, cada uno empleando su propia técnica, ya sea empleando los ángulos de las normales o las distancias Euclidianas entre puntos. Sin embargo, con el fin de reducir el tamaño de cada descriptor, todos se organizan en histogramas cuyos rangos de escala se corresponden con la característica que es parte el descriptor (por ejemplo, distancia entre puntos), asociándose cada una de las características del descriptor a un histograma, donde éstos se encuentran divididos en k subdivisiones y, en cada rango del histograma, se representan las ocurrencias de puntos dentro de ese rango. De esta forma, cada algoritmo para la generación de descriptores realiza su propia subdivisión del histograma, dependiendo del rango de valores que sea más representativo en la variable, por lo que éstas se generan dinámicamente y se producen en mayor medida para los valores donde existen mayor cantidad de puntos con esa característica.
 
 .. Ejemplo histograma -->
 
@@ -1028,7 +1023,7 @@ A continuación, se muestran los descriptores tanto locales como globales, que s
 +---------------------------------------------------------------+------------+-----------+ 
 
 
-En el siguiente capítulo, se expondrá en detalle el funcionamiento de los descriptores que fueron seleccionados para ser empleados en el clasificador de tipos de fallas.
+En el siguiente capítulo, se expondrá en detalle el funcionamiento de los descriptores que fueron seleccionados para ser empleados en el clasificador de tipos de fallas en la presente tesina.
 
 
 
