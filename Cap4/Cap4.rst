@@ -12,8 +12,7 @@ Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
 .. TODO: Metricas empleadas en cada uno de los metodos para la clasificación
 
 
-La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecanismos(reglas if-then, árboles de decisión, redes neuronales,etc.) que posibilitan a las computadoras imitar la inteligencia humana con el fin de realizar tareas tales como: la toma de decisiones, resolver problemas y el aprendizaje; Considerándose un comportamiento inteligente, a aquél que involucra percibir o deducir información de un contexto y almacenarla en forma de conocimiento, de manera que pueda ser aplicado en futuras situaciones o contextos. Así, Machine Learning(ML) es una rama dentro de IA y consiste en aquellos mecanismos que se basan en identificar patrones en un conjunto de datos, para generar conocimiento de estas relaciones que puede ser aplicado en futuras predicciones, mientras que Deep Learning es un subconjunto de algoritmos de ML, donde el aprendizaje se realiza por medio de sucesivas capas que representan el problema que son generadas automáticamente por medio de la exposición a datos de entrada, y permiten que una máquina aprenda conceptos complicados a través de su descomposición en conceptos más simples. Estas representaciones en Deep Learning se generan por medio de modelos denominados Redes Neuronales expuestas a enormes cantidades de datos, y cuyo funcionamiento se inspira en el funcionamiento del cerebro humano. 
-
+La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecanismos( árboles de decisión, redes neuronales, etc.) que posibilitan a las computadoras imitar la inteligencia humana con el fin de realizar tareas tales como: la toma de decisiones, resolver problemas y el aprendizaje; Considerándose un comportamiento inteligente, a aquél que involucra percibir o deducir información de un contexto y almacenarla en forma de conocimiento, de manera que pueda ser aplicado en futuras situaciones o contextos. Así, Machine Learning (ML) es una rama dentro de IA en la que se emplean mecanismos que se basan en identificar patrones en un conjunto de datos, para generar conocimiento de estas relaciones que puede ser aplicado en futuras predicciones, mientras que Deep Learning es un subconjunto de algoritmos de ML, donde el aprendizaje se realiza por medio de modelos con sucesivas capas que representan el problema, generados automáticamente por medio de la exposición a datos de entrada, que permiten que una máquina aprenda conceptos complicados a través de su descomposición en conceptos más simples. Estas representaciones en Deep Learning se generan por medio de modelos denominados Redes Neuronales expuestas a enormes cantidades de datos, y cuyo funcionamiento se inspira en el funcionamiento del cerebro humano. 
 
 
 .. figure:: ../figs/Cap4/Diferencia_AI_ML_DL.jpg
@@ -26,12 +25,13 @@ La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecan
 .. TODO: PONER EL FLUJO DE TRABAJO DE ML -->
 ..  https://livebook.manning.com/#!/book/real-world-machine-learning/chapter-1/104
 
-De esta forma, ML se diferencia del paradigma de programación clásico donde un equipo de desarrollo programa instrucciones que procesan datos y se generan salidas en base a estructuras predefinidas, en que para esta metodología solamente se ingresan datos (y opcionalmente sus respuestas),y se obtienen reglas de salida que pueden ser aplicadas a nuevos datos para realizar predicciones. Por lo tanto en ML, se considera que dado un programa cuyo rendimiento en la predicción sobre un conjunto de datos(o dataset) que se encuentra medido por medio de alguna métrica (que indica que tan precisas son sus predicciones sobre ese conjunto de datos), éste aprende de la experiencia si su rendimiento mejora al adquirir más experiencia.
+De esta forma, ML se diferencia del paradigma de programación clásico donde un equipo de desarrollo programa instrucciones que procesan datos y se generan salidas en base a estructuras predefinidas, en que para esta metodología solamente se ingresan datos (y opcionalmente sus respuestas),y se obtienen reglas de salida que pueden ser aplicadas a nuevos datos para realizar predicciones. Por lo tanto en ML, se considera que dado un programa cuyo rendimiento en la predicción sobre un conjunto de datos (o dataset)  se encuentra medido a través de alguna métrica (que indica que tan precisas son sus predicciones sobre ese conjunto de datos), éste aprende de la experiencia si dicho  rendimiento mejora al adquirir más experiencia.
 
 .. figure:: ../figs/Cap4/ML_paradigma.jpg
    :scale: 60%
 
    Paradigma de ML vs paradigma de programación tradicional.
+
 
 Flujo de trabajo en ML
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -50,8 +50,7 @@ Así, el flujo de trabajo en ML para la generación y prueba de un modelo de pre
 
    Flujo de trabajo general en ML
 
-
-Debido a que los datos en el mundo real frecuentemente no son aceptables para ser procesados por un algoritmo de ML, debido a que contienen valores incorrectos, erróneos o nombres escritos de manera distinta aunque se refieren a la misma entidad, y dado los algoritmos de ML tienen como finalidad descubrir asociaciones y relaciones en un conjunto de datos de entrenamiento históricos (training dataset) para generar un modelo de predicción,  el primer paso para lograr ésto, consiste en realizar el pre-procesado de los datos de manera que se puedan producir datos de alta calidad, ruido leve y correlaciones fácilmente deducibles que permitan generar un modelo predictivo de alta fidelidad. De esta manera, el pre-procesamiento involucra aplicar técnicas y algoritmos para el saneamiento, visualización y transformación de datos a otro rango de valores, de forma que se reduzca la redundancia de features, la variabilidad de valores y el tiempo de procesamiento, conservando únicamente aquellas features con información relevante para el modelo. Durante esta fase se descarta información, por lo que se debe realizar con cautela ya que si atributos relevantes al modelo se descartan, puede verse afectada la capacidad de predicción de éste. En general, el pre-procesamiento de datos basa en considerar la presencia de las siguientes características en el dataset y aplicar los pasos mencionados:
+Debido a que los datos en el mundo real frecuentemente no son aceptables para ser procesados por un algoritmo de ML, dado que contienen valores incorrectos, erróneos o nombres escritos de manera distinta aunque se refieren a la misma entidad, y dado los algoritmos de ML tienen como finalidad descubrir asociaciones y relaciones en un conjunto de datos de entrenamiento históricos (training dataset) para generar un modelo de predicción,  el primer paso para lograr ésto, consiste en realizar el pre-procesado de los datos de manera que se puedan producir datos de alta calidad, ruido leve y correlaciones fácilmente deducibles que permitan generar un modelo predictivo de alta fidelidad. De esta manera, el pre-procesamiento involucra aplicar técnicas y algoritmos para el saneamiento, visualización y transformación de datos a otro rango de valores, de forma que se reduzca la redundancia de features, la variabilidad de valores y el tiempo de procesamiento, conservando únicamente aquellas features con información relevante para el modelo. Durante esta fase se descarta información, por lo que ésta se debe realizar con cautela ya que si atributos relevantes al modelo se descartan, puede verse afectada la capacidad de predicción del mismo. En general, el pre-procesamiento de datos basa en considerar la presencia de las siguientes características en el dataset y aplicar los pasos mencionados:
 
 * Features categóricas: Las features categóricas son aquellos valores no numéricos a los que se les puede asignar un valor numérico, con el fin de que sean de utilidad para los algoritmos, tales como los días de la semana o el género. En general, los algoritmos de machine learning necesitan datos numéricos (salvo algunos casos concretos derivados de los árboles de decisión), por lo que es necesario codificar las features categóricas a través de la creación de clases con valores binarios que representan cada categoría, y luego asignar a cada muestra del dataset un valor (0 o 1) indicando si ésta pertenece o no a una determinada categoría. A continuación, se muestra un ejemplo donde para las categorías de hombre o mujer, se crea una clase binaria y se un valor 1 a la categoría donde se ubica la muestra:
   
@@ -61,9 +60,9 @@ Debido a que los datos en el mundo real frecuentemente no son aceptables para se
 
    Ejemplo de conversión de feature categórica
 
-* Datos faltantes: En general la información faltante en datasets, debido ya sea porque no pudo ser recolectada o porque no pudo ser medida, puede suceder que estos datos sean significativos para el algoritmo de ML, en cuyo caso se debe asignar un valor no valido entre -1 y -999 y proceder a probar el modelo, mientras que en caso contrario, se puede proceder a eliminar aquellas muestras de datos en las que el valor del atributo no se encuentre. Si la cantidad de muestras descartadas son suficientes como para disminuir la capacidad de predicción del modelo, se puede simplemente reemplazar aquellos valores faltantes por la media o la mediana del resto de valores de ese feature.
+* Datos faltantes: En general la información faltante en datasets, ya sea porque no pudo ser recolectada o porque no pudo ser medida, puede ocurrir que estos datos sean significativos para el algoritmo de ML, en cuyo caso se debe asignar un valor no valido entre -1 y -999 y proceder a probar el modelo. Mientras que en caso contrario, se puede proceder a eliminar aquellas muestras de datos en las que el valor del atributo no se encuentre. Si la cantidad de muestras descartadas son suficientes como para disminuir la capacidad de predicción del modelo, se puede simplemente reemplazar aquellos valores faltantes por la media o la mediana del resto de valores de ese feature.
 
-* Datos en distintas escalas de valores(Normalización de datos): Algunos algoritmos de ML requieren que las features se normalicen, de manera que residan en el mismo rango de numérico, debido a que el rango de una feature puede influenciar la importancia de la feature con respecto a otras. La normalización consiste en ajustar los valores para que se distribuyan entre un valor mínimo y máximo, generalmente ubicado entre [-1,1] o [0,1]. Existen varias maneras de realizar ésto, una de ellas es rescaling aunque la mas sencilla consiste en restar al valor mínimo a cada valor del rango de valores y dividir ésto sobre el rango total de valores, lo que brinda valores en el intervalo [0,1] o [-1,1] aplicando la siguiente fórmula:
+* Datos en distintas escalas de valores (Normalización de datos): Algunos algoritmos de ML requieren que las features se normalicen, de manera que residan en el mismo rango de numérico, debido a que el rango de una feature puede influenciar la importancia de la feature con respecto a otras. La normalización consiste en ajustar los valores para que se distribuyan entre un valor mínimo y máximo, generalmente ubicado entre [-1,1] o [0,1]. Existen varias maneras de realizar ésto, una de ellas es rescaling aunque la mas sencilla consiste en restar al valor mínimo a cada valor del rango de valores y dividir ésto sobre el rango total de valores, lo que brinda valores en el intervalo [0,1] o [-1,1] aplicando la siguiente fórmula:
   
 .. figure:: ../figs/Cap4/formula_rescaling.png
    :scale: 60%
@@ -89,7 +88,7 @@ Otro método para la normalización de features, es la estandarización que cons
    Fórmula de estandarización
 
 
-* Verificación de representatividad de los datos(Visualización de datos): Antes de realizar el entrenamiento puede ser necesario realizar la verificación de la relación y validez en las features que componen los datos de entrenamiento (por ejemplo en entrenamiento supervisado revisar como se relacionan las muestras y los resultados), necesitándose para ésto representaciones gráficas que indiquen que tan significativos son las muestras de que disponen y los tipos de muestras que podrían estar faltando.
+* Verificación de representatividad de los datos (Visualización de datos): Antes de realizar el entrenamiento puede ser necesario realizar la verificación de la relación y validez en las features que componen los datos de entrenamiento (por ejemplo  revisar como se relacionan las muestras y los resultados, si se dispone de ambos), necesitándose para ésto representaciones gráficas que indiquen que tan significativos son las muestras de que disponen y los tipos de muestras que podrían estar faltando.
 
 Una de las herramientas empleadas para ésto son los gráficos de mosaicos, donde se representan las proporciones de instancias y los porcentajes de cada clase respecto del total, entre dos features del dataset. Este diagrama consiste en seleccionar dos features y realizar una subdivisión vertical entre las dos clases generando una columna para cada clase, donde el ancho de cada columna es equivalente a la proporción de los datos de esa clase respecto del total de datos. Luego se realiza la división de estos rectángulos por una línea horizontal, donde la altura de cada rectángulo depende de la cantidad de muestras que pertenecen a esa clase. Así, si la línea horizontal que separa ambos rectángulos se encuentra separada de manera considerable, ambas features se encontrarán fuertemente relacionadas, mientras que si por el contrario, se encuentran juntas significará que ambas features no se encuentran relacionadas. A continuación, se muestra un ejemplo para un dataset con información de pasajeros del Titanic, donde se demuestra que el género y la supervivencia se encuentran relacionadas:
 
@@ -101,7 +100,7 @@ Una de las herramientas empleadas para ésto son los gráficos de mosaicos, dond
    Ejemplo de gráfico de mosaicos del dataset del Titanic
  
 
-Otra herramienta utilizada para este fin son los gráficos de densidad, que permiten mostrar la distribución de alguna de las features, creando para ésto un estimado de la distribución de probabilidad basándose en los valores de esa feature, considerando que los valores proporcionados son una muestra aleatoria que representa la población de valores.Para esto, se utilizando una técnica estadística conocida como kernel de suavizado (kernel smoothing) que dado un conjunto *p* de valores reales, produce un valor real de salida que es un promedio ponderado de los datos vecinos observados. A continuación, la distribución de grafica como una curva que muestra los valores que la variable probablemente puede adoptar. De esta forma, creando un gráfico de densidad por cada categoría que una feature puede adoptar, se pueden visualizar diferencias en el rango de los valores en cada categoría. 
+Otra herramienta utilizada para este fin son los gráficos de densidad, que permiten mostrar la distribución de alguna de las features, creando para ésto un estimado de la distribución de probabilidad basándose en los valores de esa feature, considerando que los valores proporcionados son una muestra aleatoria que representa la población de valores. Para esto, se utilizan los datos observados en combinación una técnica estadística conocida como kernel de suavizado (kernel smoothing), la cual dado un conjunto *p* de valores reales, produce un valor real de salida que es un promedio ponderado de los datos vecinos observados. Así, este diagrama permite visualizar la forma de la distribución en el intervalo completo con mayor precisión a como lo haría un histograma, ya que en éste la forma de la distribución depende de la cantidad de intervalos (barras) que se utilicen. A continuación, la distribución de gráfica como una curva que muestra los valores que la variable probablemente puede adoptar. De esta forma, creando un gráfico de densidad por cada categoría que una feature puede adoptar, se pueden visualizar diferencias en el rango de los valores en cada categoría. 
 
 
 .. figure:: ../figs/Cap4/ejemplo_diagrama_densidad.png
@@ -124,7 +123,7 @@ Alternativamente, se pueden emplear diagramas de dispersión (scatter plots), do
 .. https://en.wikipedia.org/wiki/Correlation_and_dependence#Correlation_matrices
 .. https://machinelearningmastery.com/visualize-machine-learning-data-python-pandas/
 
-Otro mecanismo empleado para visualizar la relación entre features de un dataset es la matriz de correlación (o matriz de covarianza) que es una matriz simétrica que consiste en, dadas *n* features del dataset, generar una matriz de *n x n* que relaciona cada feature con el resto y donde el elemento (i,j) de la matriz representa la correlación entre ambas features, siendo esta la relación linear que existe entre ambas variables. Así, si la variabilidad de una feature se encuentra asociada a la variabilidad de la otra, el elemento (i,j) de la matriz contendrá un valor positivo y cuanto más sea esta relación más alto será este valor. Por el contrario, si no existe una relación linear entre ambas features, tenderán a estar negativamente correlacionadas, siendo estos valores inferiores y negativos. 
+Otro mecanismo empleado para visualizar la relación entre features de un dataset es la matriz de correlación (o matriz de covarianza) que es una matriz simétrica que consiste en: Dadas *n* features del dataset, generar una matriz de *n x n* que relaciona cada feature con el resto y donde el elemento (i,j) de la matriz representa la correlación entre ambas features, siendo ésta la relación linear que existe entre ambas variables. Así, si la variabilidad de una feature se encuentra asociada a la variabilidad de la otra, el elemento (i,j) de la matriz contendrá un valor positivo y cuanto más sea esta relación más alto será este valor. Por el contrario, si no existe una relación linear entre ambas features, tenderán a estar negativamente correlacionadas, siendo estos valores inferiores y negativos. 
 
 
 .. figure:: ../figs/Cap4/Correlation-Matrix-Plot.png
@@ -138,22 +137,24 @@ Otro mecanismo empleado para visualizar la relación entre features de un datase
 .. https://es.wikipedia.org/wiki/Descomposici%C3%B3n_en_valores_singulares
 .. http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA
 
-Adicionalmente, durante la etapa de pre-procesamiento se puede aplicar un análisis de componentes principales (Principal Component Analysis,PCA) que es un algoritmo que consiste en realizar la transformación de un conjunto de datos con o sin correlación a un espacio de menor dimensión sin correlación, denominadas componentes principales. Para ello aplica a la matriz de correlación la descomposición de valores singulares, que es una factorización donde se computan los eigenvalores(o autovalores) y en base éstos se computa su raíz cuadrada, dando como resultado los valores singulares de la matriz. De esta forma, se busca que al reducir la dimensionalidad de los datos, se conserven solamente aquellos elementos que tengan mayor varianza y por lo tanto, sean los que aporten mayor información al modelo a construir.   
+Adicionalmente, durante la etapa de pre-procesamiento se puede aplicar un análisis de componentes principales (Principal Component Analysis, PCA) que es un algoritmo que consiste en realizar la transformación de un conjunto de datos, con o sin correlación, a un espacio de menor dimensión sin correlación, denominadas componentes principales. Para ello, aplica a la matriz de correlación la descomposición de valores singulares, que es una factorización donde se computan los eigenvalores(o autovalores) y en base éstos se computa su raíz cuadrada, dando como resultado los valores singulares de la matriz. De esta forma, se busca que al reducir la dimensionalidad de los datos, se conserven solamente aquellos elementos que tengan mayor varianza y por lo tanto, sean los que aporten mayor información al modelo a construir.   
 
-Además durante la fase de pre-procesamiento, si es que los datos del dataset no se estructuraron previamente, se los estructura, separando los datos de entrada que contienen features en una matriz, donde cada columna se asocia con una feature  y cada fila se asocia a una muestra individual y, si se dispone de las respuestas a éstos (también denominadas labels o targets), se organizan en un vector que alberga el grupo o clase asociado a cada muestra, siendo éste un vector con 1 columna y con tantas filas como muestras existan en el dataset.
+Durante la fase de pre-procesamiento, si es que los datos del dataset no se estructuraron previamente, también se los estructura, separando los datos de entrada que contienen features en una matriz, donde cada columna se asocia con una feature y cada fila se asocia a una muestra individual de esa feature y, si se dispone de las respuestas a éstos (también denominadas labels o targets), se organizan en un vector que alberga el grupo o clase asociado a cada muestra, siendo éste un vector con 1 columna y con tantas filas como muestras existan en el dataset.
 
 .. figure:: ../figs/Cap4/separacion_features_target.png
    :scale: 60%
 
-   Ejemplo de separación de features donde se cuenta con información de clientes de una compañía de telefonía, y como target se especifica el feature "churn" que indica que si este cliente se ha dado de baja del servicio pago ofrecido por la compañía. 
+   Ejemplo de separación de features donde se cuenta con información de clientes de una compañía de telefonía, y como target se especifica el feature "churn" que indica que si este cliente se ha dado de baja del servicio pago ofrecido por la compañía o, si ha cambiado de servicio. 
 
 
-Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento donde se exponen los algoritmos de ML a los datos pre-procesados y se ajustan las configuraciones del modelo para controlar el comportamiento de éste ante los datos(hyperparametros del modelo). Estos hyperparametros no son ajustados por el modelo automáticamente, ya que en algunos casos éstos pueden ser difíciles de determinar y para aquellos que controlan la capacidad de predicción del modelo, si se aprenden para el dataset en particular, siempre brindarán la máxima capacidad de predicción para esos datos, lo que no implica que la capacidad de predicción del modelo sea la misma con otro conjunto de datos. Por otro lado, debido a que el interés de generar un modelo radica en observar la capacidad de predicción sobre datos no solamente de entrenamiento, sino también aquellos que no ha recibido anteriormente, ya que esto determinará su rendimiento en un entorno real, durante esta fase el dataset completo se suele subdividir en datos de entrenamiento (entre 70% y 80% del total de muestras) y datos de testing (30%-40% del total de las muestras). 
+
+
+Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento donde se exponen los algoritmos de ML a los datos pre-procesados y se ajustan las configuraciones del modelo para controlar el comportamiento de éste ante los datos (hyperparámetros del modelo). Estos hyperparámetros no son ajustados por el modelo empleando los datos de entrada sino que deben ser especificados por el desarrollador, ya que en algunos casos los valores de estos pueden ser difíciles de determinar de manera automática. Por otro lado, debido a que el interés de generar un modelo radica en observar la capacidad de predicción sobre datos no solamente de entrenamiento sino también aquellos que no ha recibido anteriormente, ya que esto determinará su rendimiento en un entorno real, durante esta fase el dataset completo se suele subdividir en datos de entrenamiento (entre 70% y 80% del total de muestras) y datos de testing (30%-40% del total de las muestras). 
 
 .. https://machinelearningmastery.com/overfitting-and-underfitting-with-machine-learning-algorithms/
 
 
-Existen distintos tipos de métodos de entrenamiento según el objetivo perseguido con la generación del modelo, entre los que se distinguen tres clases principales: Aprendizaje supervisado, aprendizaje no supervisado y aprendizaje por refuerzo. El aprendizaje supervisado, consiste en emplear los datos de entrada y los labels (o clases) asociados a éstos para detectar relaciones entre los datos y sus resultados y predecir nuevos valores en base a éstos. Los modelos producidos por este tipo de método se subdividen en modelos de clasificación y de predicción, siendo los modelos de clasificación aquellos donde se asigna un dato de entrada a una clase predefinida, tales como los detectores de Spam que clasifican cada e-mail en la categoría de Spam o No Spam, o los reconocedores de dígitos manuscritos que asignan a un nuevo valor a una clase entre 0 y 9. Mientras que, los modelos de regresión dado un dato de entrada generan un valor numérico continuo, como por ejemplo predecir el valor del dólar en un modelo financiero.
+Existen distintos tipos de métodos de entrenamiento según el objetivo perseguido con la generación del modelo, entre los que se distinguen tres clases principales: Aprendizaje supervisado, aprendizaje no supervisado y aprendizaje por refuerzo. El aprendizaje supervisado, consiste en emplear los datos de entrada y los labels (o clases) asociados a éstos para detectar relaciones entre los datos y sus resultados y predecir nuevos valores en base a éstos. Los modelos producidos por este tipo de método se subdividen en modelos de clasificación y de predicción, siendo los modelos de clasificación aquellos donde se asigna un dato de entrada a una clase predefinida, tales como los detectores de Spam que clasifican cada e-mail en la categoría (Spam o No Spam), o los reconocedores de dígitos manuscritos que asignan a un nuevo valor a una clase entre 0 y 9. Mientras que, los modelos de regresión dado un dato de entrada generan un valor numérico continuo, como por ejemplo el valor del dólar en un modelo financiero.
 
 .. figure:: ../figs/Cap4/ejemplo_supervisado_clasificacion.png
    :scale: 60%
@@ -166,7 +167,7 @@ Existen distintos tipos de métodos de entrenamiento según el objetivo persegui
    Representación gráfica de modelo regresor
 
 
-Por el contrario, en el aprendizaje no supervisado no se conocen las clases, contando solo con los datos de entrada, por lo que su objetivo es obtener las clases descubriendo grupos de ejemplos similares en los datos(también denominado clustering) o, proyectar los datos desde un espacio de dimensiones superiores a uno de menores dimensiones, con el objetivo de maximizar la varianza entre las features (reducción de dimensionalidad como PCA). En el aprendizaje por refuerzo, el algoritmo no cuenta con muestras que correspondan con una salida correcta, sino que debe descubrirlas por medio de un proceso de prueba y error, transicionando una secuencia de estados que resultan de la interacción con el entorno.
+Por el contrario, en el aprendizaje no supervisado no se conocen las clases, contando solo con los datos de entrada, por lo que su objetivo es obtener las clases descubriendo grupos de ejemplos similares en los datos (también denominado clustering) o, proyectar los datos desde un espacio de dimensiones superiores a uno de menores dimensiones, con el objetivo de maximizar la varianza entre las features (reducción de dimensionalidad como PCA). En el aprendizaje por refuerzo, el algoritmo no cuenta con muestras que correspondan con una salida correcta, sino que debe descubrirlas por medio de un proceso de prueba y error, transicionando una secuencia de estados que resultan de la interacción con el entorno.
 
 
 .. Metricas de evaluación para clasificacion, regression y clustering -->
@@ -186,7 +187,7 @@ La fase de evaluación y optimización del modelo se lleva a cabo paralelamente 
 .. http://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-f-measure-metrics
 .. https://en.wikipedia.org/wiki/Precision_and_recall#Precision
 
-Con respecto a las métricas de modelos de clasificación, el accuracy es la proporción de las muestras para las que el modelo predice el resultado correcto, mientras que la tasa de error es la proporción para las que el modelo clasifica incorrectamente. Si *yi* es el valor del i-ésima muestra, *Yi* es el valor verdadero de la muestra, y *1(yi = Yi)* simboliza la pertenencia de *yi* en *Yi*, entonces la fracción de predicciones correctas *nsamples* se define como:
+Con respecto a las métricas de modelos de clasificación, el accuracy es la proporción de las muestras para las que el modelo predice el resultado correcto, mientras que la tasa de error es la proporción para las que el modelo clasifica incorrectamente. Si *yi* es el valor del i-ésima muestra, *Yi* es el valor verdadero de la muestra, y *1 (yi = Yi)* simboliza la pertenencia de *yi* en *Yi*, entonces la fracción de predicciones correctas *nsamples* se define como:
 
 .. figure:: ../figs/Cap4/formula_accuracy.png
    :scale: 60%
@@ -194,29 +195,29 @@ Con respecto a las métricas de modelos de clasificación, el accuracy es la pro
    Fórmula para el cálculo del Accuracy
 
 
-Este valor se indica en el rango de 0-1, por lo que cuanto más próximo es este valor a 1.0 mejor es la capacidad de predicción. Mientras que precision indica la capacidad del modelo para clasificar muestras que son positivas como tales y no clasificarlas como negativas, considerando el total de valores positivos y negativos; Este valor se calcula por medio de la siguiente fórmula, donde *tp* son las muestras verdaderas positivas (muestras realmente positivas) y *fp* son las muestras falsas positivas (aquellas muestras que se clasificaron como positivas pero en realidad son negativas):
+Este valor se indica en el rango de 0-1, por lo que cuanto más próximo es este valor a 1.0 mejor es la capacidad de predicción. Mientras que *precision* indica la capacidad del modelo para clasificar muestras que son positivas como tales y no clasificarlas como negativas, considerando el total de valores positivos y negativos; Este valor se calcula por medio de la siguiente fórmula, donde *tp* son las muestras verdaderas positivas (muestras realmente positivas) y *fp* son las muestras falsas positivas (aquellas muestras que se clasificaron como positivas pero en realidad son negativas):
 
 
 
 .. math:: precision = tp/ tp + fp
    :label: ecuacionPrecision
 
-Recall es la capacidad del modelo de encontrar cuantas muestras positivas reales existen del total de muestras positivas clasificadas (verdaderas positivas y falsas positivas). Este valor se calcula por medio de la siguiente fórmula, donde *fn* son los falsos negativos(aquellas que son positivas pero son clasificadas como negativas):
+*Recall* es la capacidad del modelo de encontrar cuantas muestras positivas reales existen del total de muestras positivas clasificadas (verdaderas positivas y falsas positivas). Este valor se calcula por medio de la siguiente fórmula, donde *fn* son los falsos negativos (aquellas que son positivas pero son clasificadas como negativas):
 
 
 .. math:: recall = tp/ tp + fn
    :label: ecuacionRecall
 
-F1-Score (o F-measure) es un promedio ponderado de precision y recall que se calcula por medio de la siguiente ecuación:
+*F1-Score* (o F-measure) es un promedio ponderado de *precision* y *recall* que se calcula por medio de la siguiente ecuación:
 
 .. math:: F1 = 2 * (precision * recall) / (precision + recall) 
    :label: ecuacionF1Score
 
-Las métricas de precision, recall y F1-score se encuentran en el rango 0-1, siendo mejor el desempeño de predicción del clasificador cuanto más próximo a 1 son estos valores.
+Las métricas de precision , recall y F1-score se encuentran en el rango 0-1, siendo mejor el desempeño de predicción del clasificador, cuanto más próximo a 1 son estos valores.
 
 .. http://scikit-learn.org/stable/modules/model_evaluation.html#confusion-matrix
 
-Por otro lado, la matriz de confusión es una tabla que permite visualizar y evaluar el accuracy de clasificación, donde cada columna de la matriz representa la cantidad de muestras que fueron predecidas como pertenecientes a una clase y, cada fila de la matriz, representa la cantidad de instancias que pertenecen realmente a una clase. Por lo tanto, un elemento *(i,j)* de la matriz se interpreta como el número de observaciones en el grupo *i* que fueron clasificados dentro del grupo *j*, por lo que los elementos que se encuentran en la diagonal de la matriz son la cantidad de muestras para las que el label verdadero fue predecido correctamente, mientras que los elementos que se encuentran fuera de ésta son las muestras clasificadas erróneamente. A continuación, se muestra un ejemplo de la matriz de confusión para un dataset de tipos de planta Iris (Setosa, Versicolor y Virginica):        
+Por otro lado, la matriz de confusión es una tabla que permite visualizar y evaluar el accuracy de clasificación, donde cada columna de la matriz representa la cantidad de muestras que fueron predecidas como pertenecientes a una clase y cada fila de la matriz, representa la cantidad de instancias que pertenecen realmente a una clase. Por lo tanto, un elemento *(i,j)* de la matriz se interpreta como el número de observaciones en el grupo *i* que fueron clasificados dentro del grupo *j*, por lo que los elementos que se encuentran en la diagonal de la matriz son la cantidad de muestras para las que el label verdadero fue predecido correctamente, mientras que los elementos que se encuentran fuera de ésta son las muestras clasificadas erróneamente. A continuación, se muestra un ejemplo de la matriz de confusión para un dataset de tipos de planta Iris (Setosa, Versicolor y Virginica):        
 
 
 .. figure:: ../figs/Cap4/ejemplo_matriz_confusion.png
@@ -230,7 +231,7 @@ Por otro lado, la matriz de confusión es una tabla que permite visualizar y eva
 
 .. https://en.wikibooks.org/wiki/LaTeX/Mathematics#Formatting_mathematics_symbols
 
-Con respecto a la regresión, la métrica R2 o r^2 también conocido como coeficiente de determinación, es la proporción de la varianza en los labels (variable dependiente) que es predecible de las muestras de entrada(variable independiente), brindando una medida de que tan precisamente las salidas son replicadas por el modelo, basadas en la proporción de la variación total de las salidas explicadas por el modelo y permitiendo medir que tan eficazmente las muestras futuras serán predecidas. El valor de esta métrica puede ser tanto positivo como negativo, por lo que si este es negativo implica que la capacidad del modelo de predicción es peor que la media de éstos, mientras que si es cero indica que no existe una relación entre los datos de entrada y los labels por lo que el modelo predice siempre el label independientemente de los datos de entrada; Y finalmente, si este es igual a uno implica que el modelo es capaz de predecir exactamente toda la variabilidad en la variable dependiente(labels).
+Con respecto a la regresión, la métrica R^2 o r^2 también conocido como coeficiente de determinación, es la proporción de la varianza que existe entre los labels predecidos (variable dependiente) utilizando las muestras de entrada (variable independiente) y el verdadero valor de las mismas, brindando una medida de que tan precisamente las salidas son replicadas por el modelo, basadas en la proporción de la variación total de las salidas, lo que permite establecer que tan eficazmente las muestras futuras serán predecidas. El valor de esta métrica puede ser tanto positivo como negativo, por lo que si este es negativo implica que la capacidad del modelo de predicción es peor que la media de éstos, mientras que si es cero indica que no existe una relación entre los datos de entrada y los labels, por lo que el modelo predice siempre el label independientemente de los datos de entrada; Y finalmente, si este es igual a uno implica que el modelo es capaz de predecir exactamente toda la variabilidad en la variable dependiente (labels).
 El cálculo de R2 se realiza por medio de la siguiente fórmula, siendo :math:`{\hat{yi}}` el valor predecido de la muestra, *yi* el valor real de la muestra para *n* muestras:  
 
 
@@ -247,7 +248,7 @@ donde:
    Fórmula de cálculo de :math:`{\bar{y}}`(y-medio)
 
 
-La variación explicada mide la proporción en la que un modelo de regresión representa la dispersión (variación) de un conjunto de datos, y ésta se calcula por medio de la siguiente fórmula, donde *y* es el label asociado a una muestra, :math:`{\hat{y}}` es la salida predecida para ésta y *Var* es la varianza entre ambas variables:
+La variación explicada mide la proporción en la que un modelo de regresión representa la dispersión (variación) de un conjunto de datos, es decir, entre las predicciones y los valores reales asociados a las muestras. Este score se calcula por medio de la siguiente fórmula, donde *y* es el label asociado a una muestra, :math:`{\hat{y}}` es la salida predecida para ésta y *Var* es la varianza entre ambas variables:
 
 .. figure:: ../figs/Cap4/formula_explained_variance_r2.png
    :scale: 60%
@@ -268,14 +269,14 @@ El error medio cuadrado es una métrica de riesgo que representa el valor espera
 
    Fórmula de Mean Squared Error
 
-Si al resultado obtenido de aplicar esta fórmula, se le aplica la raíz cuadrada se obtiene la métrica de Raíz Cuadrada del Error cuadrado medio (Root-Mean Square Error, RMSE) y representa el desvío estándar de las diferencias de las muestras entre los valores estimados y los valores predecidos.Tanto MSE como RMSE, cuanto más próximos sean a cero los valores de éstas métricas, menos error de predicción existirá.
+Si al resultado obtenido de aplicar esta fórmula, se le aplica la raíz cuadrada se obtiene la métrica de Raíz Cuadrada del Error cuadrado medio (Root-Mean Square Error, RMSE) y representa el desvío estándar de las diferencias de las muestras entre los valores estimados y los valores predecidos. Tanto MSE como RMSE, cuanto más próximos sean a cero los valores de éstas métricas, menos error de predicción existirá.
 
 
 .. http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mutual_info_score.html#sklearn.metrics.mutual_info_score
 .. http://scikit-learn.org/stable/modules/clustering.html#mutual-info-score
 .. https://en.wikipedia.org/wiki/Adjusted_mutual_information
 
-Por otro lado, con respecto a clustering la métrica de información mutua (Mutual Information, MI) es una medida empleada para comparar la similaridad entre dos clases (o labels) para el mismo conjunto de datos. Así, para utilizar esta métrica en un modelo de clustering, se requiere disponer de las clases verdaderas a la que pertenezcan los datos asignadas por los desarrolladores del modelo, sin embargo este valor es invariable a los valores absolutos de los labels y a las permutaciones entre de clases o labels. Cuanto más cercano a cero sea este valor, indicará que las asignaciones de clases son independientes y no concuerdan, mientras que cuanto más cercano a uno se observará una mejor concordancia entre asignaciones. Este valor se computa por medio de la siguiente fórmula, donde *|Ui|* es el número de muestras en el cluster *U* y *|Vj|* es el número de muestras en el cluster *V*:
+Por otro lado, con respecto a clustering la métrica de información mutua (Mutual Information, MI) es una medida empleada para comparar la similitud entre dos clases (o labels) para el mismo conjunto de datos. Así, para utilizar esta métrica en un modelo de clustering, se requiere disponer de las clases verdaderas a la que pertenezcan los datos empleados en el entrenamiento del modelo, sin embargo este valor es invariable a los valores absolutos de los labels y a las permutaciones entre de clases. Cuanto más cercano a cero sea este valor, indicará que las asignaciones de clases son independientes y no concuerdan, mientras que cuanto más cercano a uno se observará una mejor concordancia entre asignaciones. Este valor se computa por medio de la siguiente fórmula, donde *|Ui|* es el número de muestras en el cluster *U* y *|Vj|* es el número de muestras en el cluster *V*:
 
 .. figure:: ../figs/Cap4/formula_mutual_information_clustering.png
    :scale: 60%
@@ -311,7 +312,7 @@ El score de homogeneidad requiere al igual que la métrica anterior, el conocimi
 
 Finalmente, durante la fase de validación se procede a analizar y mejorar el nivel de generalización del modelo, es decir, con que precisión éste aplica los conceptos aprendidos de los datos de entrenamiento a nuevos datos dentro del dominio del problema. Dos conceptos relacionados a la pérdida de capacidad de generalización en el entrenamiento supervisado son overfitting y underfitting donde:
 
-* Overfitting ocurre cuando el modelo aprende la distribución de los datos y el ruido del dataset y los considera como conceptos, de manera que se ve afectada negativamente la capacidad de predicción del modelo, ya que estos conceptos no aplican a nuevos datos. De esta forma, cuando ocurre overfitting el error de predicción disminuye considerablemente con datos de entrenamiento, sin embargo, al contrastarlo con datos de prueba éste aumenta considerablemente.
+* Overfitting ocurre cuando el modelo aprende la distribución de los datos y el ruido del dataset y los considera como conceptos, de manera que se ve afectada negativamente la capacidad de predicción, ya que estos conceptos no aplican a nuevos datos. De esta forma, cuando ocurre overfitting el error de predicción disminuye considerablemente con datos de entrenamiento, sin embargo, al contrastarlo con datos de prueba éste aumenta considerablemente.
 * Underfitting sucede cuando el modelo no puede aprender conceptos del dataset de training y, por lo tanto, tampoco puede realizar predicciones sobre datos de testing, mostrando un rendimiento pobre incluso en datos de entrenamiento.
   
 
@@ -331,10 +332,9 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
 
 * Cross-validation: Esta técnica se emplea para evitar problemas como el overfitting y en situaciones donde no se cuenta con suficientes muestras para particionar el dataset en training y testing, perdiendo información relevante para el modelo o para el testing de éste. Este método consiste en realizar particiones en un conjunto de muestras en subconjuntos complementarios de entrenamiento y prueba y, efectuar el entrenamiento sobre la partición de training y realizar la evaluación del rendimiento del modelo sobre la partición de testing. Así, esta técnica busca garantizar que los resultados del predictor son independientes de las particiones de training y testing. Adicionalmente, este método puede ejecutarse repetidas veces, generando diferentes particiones con distintos resultados y luego combinarse éstos(por ejemplo, a través del promediado) con el fin de reducir la variabilidad. Dentro de las aproximaciones para realizar cross validation se distinguen las siguientes:
 
-   * Método Holdout: Este método es el más trivial y consiste en simplemente particionar de manera aleatoria el conjunto de muestras total en subconjuntos complementarios de entrenamiento y prueba, considerando entre el 20% y 40% para testing y el resto para training, y posteriormente realizar el entrenamiento y validación con éstos. 
-     
-
-     Este método tiene la desventaja de que puede existir alta variación al ejecutarse sobre distintos conjuntos de prueba, ya que el resultado depende en gran parte de como se realiza la partición de los datos, sin embargo, tiene la ventaja de ser rápido de computar.
+   * Método Holdout: Este método es el más trivial y consiste en simplemente particionar de manera aleatoria el conjunto de muestras total en subconjuntos complementarios de entrenamiento y prueba, considerando entre el 20% y 40% para testing y el resto para training, y posteriormente realizar el entrenamiento y validación con éstos.
+   
+   Este método tiene la desventaja de que puede existir alta variación al ejecutarse sobre distintos conjuntos de prueba, ya que el resultado depende en gran parte de como se realiza la partición de los datos, sin embargo, tiene la ventaja de ser rápido de computar.
   
    .. .. figure:: ../figs/Cap4/holdout_cross_validation.jpg
    .. figure:: ../figs/Cap4/cross_validation_holdout_ejemplo.png
@@ -342,9 +342,7 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
 
       Representación gráfica de la retención
    
-  
-
-   * K-Fold cross-validation: Cross validation de *K* iteraciones consiste en realizar *k* divisiones complementarias de los datos de prueba(denominados *folds*), empleando uno de los subconjuntos para validación y los restantes *k-1* como datos de entrenamiento y ejecutar el proceso de training y testing. Este proceso se realiza *K* veces, con distintos datasets de training y testing, computando en cada una de las iteraciones el accuracy, que finalmente es promediado para obtener un resultado final. Este método tiene la ventaja de que cada muestra esta en el subcojunto de testing una única vez y en el dataset de training *k-1* veces, por lo que la variación en las predicciones con distintas muestras se incrementa a medida que *k* crece. Sin embargo, tiene la desventaja de ser computacionalmente costoso.
+   * K-Fold cross-validation: Cross validation de *K* iteraciones consiste en realizar *k* divisiones complementarias de los datos de prueba (denominados *folds*), empleando uno de los subconjuntos para validación y los restantes *k-1* como datos de entrenamiento y ejecutar el proceso de training y testing. Este proceso se repite *K* veces, con distintos datasets de training y testing, computando en cada una de las iteraciones el accuracy, que finalmente es promediado para obtener un resultado final. Este método tiene la ventaja de que cada muestra esta en el subconjunto de testing una única vez y en el dataset de training *k-1* veces, por lo que la variación en las predicciones con distintas muestras se incrementa a medida que *k* crece. Sin embargo, tiene la desventaja de ser computacionalmente costoso.
   
    .. figure:: ../figs/Cap4/K-fold_cross_validation.jpg
       :scale: 60%
@@ -352,7 +350,7 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
       Ejemplo gráfico de los subconjuntos generados con K-Fold cross-validation
   
    
-   * Leave-one-out cross-validation(LOO CV): Éste método consiste en realizar una partición de *k-1* muestras como la partición de entrenamiento y emplear únicamente una muestra para la partición de testing y luego, realizar el entrenamiento y la validación para esa muestra en particular. Este proceso se repite K veces y al igual que K-fold, se obtiene la media de los resultados predecidos para computar el resultado final.   
+   * Leave-one-out cross-validation (LOO CV): Éste método consiste en realizar una partición de *k-1* muestras como la partición de entrenamiento y emplear únicamente una muestra para la partición de testing y luego, realizar el entrenamiento y la validación para esa muestra en particular. Este proceso se repite *K* veces, con distintas muestras asignadas a la partición de testing, y al igual que K-fold, se obtiene la media de los resultados predecidos para computar el resultado final.   
      
    .. figure:: ../figs/Cap4/Leave-one-out_cross_validation.jpg
       :scale: 60%
@@ -364,12 +362,16 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
   
 .. https://es.wikipedia.org/wiki/Curva_ROC
 
-* Curva ROC: Receiver Operating Characteristic curve o ROC, es una representación gráfica que muestra la eficiencia de uno o varios métodos de clasificación, representando en el eje Y la tasa de verdaderos positivos (TP) y en el eje X la tasa de falsos positivos(FP). De esta manera, empleando los valores proporcionados por distintas matrices de confusión, se puede comparar la eficiencia de clasificación donde cuanto más pronunciada sea la curva hacia la esquina superior izquierda del diagrama, mayor será la cantidad de muestras clasificadas correctamente. Mientras que, si la curva del clasificador se encuentra por debajo de la línea diagonal que divide la esquina inferior izquierda y superior derecha significará los resultados proporcionados por éste, son peores que un valor aleatorio. Adicionalmente, extrayendo características de la curva se puede comparar el rendimiento del clasificador de manera numérica, uno de los valores empleados es el area de bajo de la curva(Area Under the ROC Curve,AUC) cuyo valor se encuentra en el rango 0-1, mejorando la eficiencia de clasificación cuanto más cercano a 1 es esta métrica.  
+* Curva ROC: Receiver Operating Characteristic curve o ROC, es una representación gráfica que muestra la eficiencia de uno o varios métodos de clasificación, representando en el eje Y la tasa de verdaderos positivos (TP) y en el eje X la tasa de falsos positivos(FP). De esta manera, empleando los valores proporcionados por distintas matrices de confusión, se puede comparar la eficiencia de clasificación donde cuanto más pronunciada sea la curva hacia la esquina superior izquierda del diagrama, mayor será la cantidad de muestras clasificadas correctamente. Mientras que, si la curva del clasificador se encuentra por debajo de la línea diagonal que divide la esquina inferior izquierda y superior derecha, significará que los resultados proporcionados por éste son peores que un valor aleatorio. Adicionalmente, extrayendo características de la curva se puede comparar el rendimiento del clasificador de manera numérica, uno de los valores empleados es el área de bajo de la curva (Area Under the ROC Curve,AUC) cuyo valor se encuentra en el rango 0-1, mejorando la eficiencia de clasificación cuanto más cercano a 1 es esta métrica.  
 
 .. figure:: ../figs/Cap4/curva_roc.png
    :scale: 70%
 
    Ejemplo de curva ROC
+
+
+.. VISTO HASTA ACA!!!!!
+.. ..................................................................................
 
 .. Header H4 -->
 
