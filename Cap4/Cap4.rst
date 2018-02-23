@@ -458,22 +458,25 @@ Por lo general, las redes neuronales se organizan en capas, donde cada una de la
    Ejemplo de ANN multicapa
  
 
-.. VISTO HASTA ACA!!!!!
-.. ..................................................................................
 
 Maquinas de soporte de Vectores(SVM)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. Introduction to statistical learning.James Witten. pag 351.
 .. https://en.wikipedia.org/wiki/Support_vector_machine
 .. http://www.analiticaweb.es/machine-learning-y-support-vector-machines-porque-el-tiempo-es-dinero-2/
+.. https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
+
+Las máquinas de soporte de vectores (Support Vector Machines, SVM) son un mecanismo empleado durante el aprendizaje supervisado para resolver problemas de clasificación y regresión, basadas en la utilización de hyperplanos. En esta técnica las *p* features asociadas a una cantidad *n* de muestras de entrenamiento, se organizan en un espacio *p-dimensional* (siendo cada muestra considerada como un vector de dimensión *p*) donde cada una de las features representa la coordenada de una muestra en particular. De esta forma, SVM consiste en realizar una separación de los datos en el espacio *p-dimensional* por medio de hyperplanos, donde un hyperplano para un espacio de dimensión *p* es un subespacio de dimensión *p-1* que es capaz de separar los datos de entrenamiento en diferentes clases (para clasificación) o, encontrar la función que define la distribución de las muestras (en regresión), según las features especificadas para las muestras. 
+
+Así, la generación de un modelo de SVM consiste en computar y evaluar varios hyperplanos separadores de los datos de entrada y seleccionar de entre éstos, un hyperplano óptimo (o hyperplano de margen máximo) cuya distancia hacia las muestras más cercanas, sea la mayor. Por lo tanto, para obtener el valor de éste se calcula la distancia perpendicular entre el hyperplano divisor y las muestras de todas las clases y se consideran las muestras de ambas clases, cuya distancia al hyperplano sea menor. Estas distancias se conocen como margen (margin). 
+Así el hyperplano óptimo, es el hyperplano separador cuyo margen entre las muestras a menor distancia es el mayor, por lo que mantiene una distancia mayor a las muestras de entrenamiento mas cercanas de ambas clases, y establece la mayor distancia de separación entre ambas clases. De esta forma las coordenadas de las muestras más cercanas al hyperplano conforman los vectores de soporte en el espacio *p*-dimensional y, soportan el hyperplano óptimo ya que si estos puntos fueran movidos levemente, entonces el hyperplano óptimo también se movería para mantener este margen, por lo que este hyperplano depende de los vectores de soporte. Mientras que, si las coordenadas de cualquier otra muestra se modifican, desplazandose en el *p*-espacio no afectaría el margen del hyperplano óptimo, siempre y cuando no se modifique la clase a la que ésta fue asignada.
 
 
-Las máquinas de soporte de vectores (Support Vector Machines, SVM) son un mecanismo empleado durante el aprendizaje supervisado para resolver problemas de clasificación y regresión. Esta técnica consiste en realizar una separación de los datos por medio de hyperplanos, donde un hyperplano para un espacio de dimensión *p* (siendo *p* la cantidad de features) es un subespacio de dimensión *p-1* que es capaz de dividir los datos de entrenamiento en diferentes clases (para clasificación) o, encontrar la función que define la distribución de las muestras (en regresión).
-Así, la generación de un modelo de SVM consiste en evaluar varios hyperplanos separadores y seleccionar de entre éstos, un hyperplano óptimo con el margen máximo hacia las muestras, el cual se obtiene computando la distancia perpendicular entre el hyperplano divisor para cada muestra y encontrando las dos muestras de ambas clases para las que la distancia es la mínima, ésto se conoce como margen (margin). Así el hyperplano de margen máximo, es el hyperplano separador para el que el margen es el valor máximo, esto es, el hyperplano que tiene la distancia mínima más grande a las muestras de entrenamiento. De esta forma los puntos que se encuentran en el margen máximo al hyperplano conforman los vectores de soporte en el espacio *p*-dimensional y  soportan el hyperplano de margen máximo en el sentido en que, si estos puntos fueran movidos levemente, entonces el hyperplano de margen máximo también se movería.
+.. Así, la generación de un modelo de SVM consiste en computar y evaluar varios hyperplanos separadores de los datos de entrada y seleccionar de entre éstos, un hyperplano óptimo con el margen máximo hacia las muestras, el cual se obtiene computando la distancia perpendicular entre el hyperplano divisor para cada muestra y encontrando las dos muestras de ambas clases para las que la distancia es la mínima, ésto se conoce como margen (margin). Así el hyperplano de margen máximo, es el hyperplano separador para el que el margen es el valor máximo, esto es, el hyperplano que tiene la distancia mínima más grande a las muestras de entrenamiento. De esta forma los puntos que se encuentran en el margen máximo al hyperplano conforman los vectores de soporte en el espacio *p*-dimensional y  soportan el hyperplano de margen máximo en el sentido en que, si estos puntos fueran movidos levemente, entonces el hyperplano de margen máximo también se movería.
 
 .. figure:: ../figs/Cap4/ejemplo_vectores_sporte_svm.png
 
-   Ejemplo de hyperplano separador. La línea negra es el hyperplano que divide las muestras de entrenamiento, y las 3 muestras que son atravesadas por la línea punteada constituyen los vectores de soporte.
+   Ejemplo de hyperplano separador. La línea negra es el hyperplano que divide las muestras de entrenamiento, y las coordenadas de las tres muestras que son atravesadas por la línea punteada constituyen los vectores de soporte para ese hyperplano.
 
 .. https://en.wikipedia.org/wiki/Kernel_method
 .. https://en.wikipedia.org/wiki/Support_vector_machine
@@ -510,6 +513,9 @@ Debido a que SVM es solamente una algoritmo de clasificación binario, se han de
   
 * Uno contra el Resto (One-vs-Rest,OvR,OvA): Esta técnica consiste en para un problema con *N* clases, entrenar *N* clasificadores que emplean todas las muestras del dataset de training, clasificando como positivas aquellas que pertenecen a la clase que el clasificador tiene asignada y negativa si pertenece a cualquier otra clase. Así, al recibir una muestra de entrada, cada uno de los clasificadores genera un valor real, que es un score de confianza que indica la probabilidad de que esa muestra pertenezca a esa clase, y la clase para la que la muestra de testing genera el score más alto, es la clase en la que ésta se asigna.
 
+
+.. VISTO HASTA ACA!!!!!
+.. ..................................................................................
 
 Selección de features para ML en PCL
 ------------------------------------
