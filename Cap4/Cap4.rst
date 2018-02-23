@@ -514,34 +514,33 @@ Debido a que SVM es solamente una algoritmo de clasificación binario, se han de
 * Uno contra el Resto (One-vs-Rest,OvR,OvA): Esta técnica consiste en para un problema con *N* clases, entrenar *N* clasificadores que emplean todas las muestras del dataset de training, clasificando como positivas aquellas que pertenecen a la clase que el clasificador tiene asignada y negativa si pertenece a cualquier otra clase. Así, al recibir una muestra de entrada, cada uno de los clasificadores genera un valor real, que es un score de confianza que indica la probabilidad de que esa muestra pertenezca a esa clase, y la clase para la que la muestra de testing genera el score más alto, es la clase en la que ésta se asigna.
 
 
-.. VISTO HASTA ACA!!!!!
-.. ..................................................................................
 
 Selección de features para ML en PCL
 ------------------------------------
 
-Con respecto a la elección de features para ML, debido a que únicamente algunas grietas podían ser aisladas aplicando la metodología de cropeado de muestras (Ver pipeline de cropeado), ya que durante la recolección de muestras se observó que en la práctica existían grietas que no poseían profundidad significativa para ser detectadas por el sensor, sino solamente grosor y largo suficiente para ser apreciadas como grietas. Por lo tanto, se optó por clasificar solo aquellos tipos de fallas que poseen profundidad necesaria para ser aisladas por descriptores que computan información geométrica relacionada con los ángulos entre las normales de la superficie. Debido a ésto, se seleccionó un subconjunto del rango completo de descriptores locales y globales que PCL ofrece, acorde a las capacidades de computo disponibles y a las propiedades de las normales que éstos computan, siendo los descriptores testeados los siguientes: 
+Con respecto a la elección de features para ML, debido a que únicamente algunas grietas podían ser aisladas aplicando la metodología de cropeado de muestras (Ver :ref:`pipeline_cropeado`), ya que durante la recolección de muestras se observó que en la práctica existían grietas que no poseían profundidad significativa para ser detectadas por el sensor, sino solamente grosor y largo suficiente para ser apreciadas como grietas, se optó por clasificar solo aquellos tipos de fallas que poseen una profundidad necesaria para ser aisladas por descriptores que computan información geométrica relacionada con los ángulos entre las normales de la superficie. Debido a ésto, se seleccionó un subconjunto del rango completo de descriptores locales y globales que PCL ofrece, acorde a las capacidades de computo disponibles y a las propiedades de las normales que éstos computan, siendo los descriptores testeados los siguientes: 
 
-* Fast Point Feature Histogram(FPFH)(Local)
-* ViewPoint Feature Histogram(VFH)(Local)
-* Global Radious-based Surface Descriptor(GRSD)(Global)
-* Ensamble Shape of Functions(ESF)(Global)
+* Fast Point Feature Histogram(FPFH)
+* ViewPoint Feature Histogram(VFH)
+* Global Radious-based Surface Descriptor(GRSD)
+* Ensamble Shape of Functions(ESF)
 
 
 PFH-FPFH
 ^^^^^^^^
 
-Los puntos orientados, compuestos por el vector de coordenadas y el vector normal del punto, son computacionalmente eficientes y rápidos de generar, sin embargo, no son capaces de capturar  información geométrica significativa alrededor de un punto, por lo que se necesita un descriptor que sea capaz de capturar información geométrica respecto de la curvatura, en base a los vecinos de un punto. Para ello se diseño Point Feature Histogram(PFH), que permite generalizar la curvatura media en base a los k-vecinos de un punto, empleando histograma de múltiples valores, que se caracteriza por ser invariante a la posición que adopta la superficie, robusto ante ruido y diferentes tipos de densidades en las muestras, e invariante a las rotaciones y traslaciones 3D. La implementación de este descriptor en PCL, se basa en el trabajo en :cite:`FPFH1` donde se define formalmente la metodología para computar las características locales geométricas partiendo desde una malla de triángulos.
+Los puntos orientados, compuestos por el vector de coordenadas y el vector normal del punto, son computacionalmente eficientes y rápidos de generar, sin embargo, no son capaces de capturar  información geométrica significativa alrededor de un punto, por lo que se necesita un descriptor que sea capaz de capturar información geométrica respecto de la curvatura, en base a los vecinos de un punto. Para ello se diseño Point Feature Histogram (PFH), que permite generalizar la curvatura media en base a los *k*-vecinos de un punto, empleando histograma de múltiples valores, que se caracteriza por ser invariante a la posición que adopta la superficie, robusto ante ruido y diferentes tipos de densidades en las muestras, e invariante a las rotaciones y traslaciones 3D. La implementación de este descriptor en PCL, se basa en el trabajo en :cite:`FPFH1` donde se define formalmente la metodología para computar las características locales geométricas partiendo desde una malla de triángulos.
 
-El funcionamiento de PFH consiste en representar las relaciones entre puntos en un k-vecindario dados los puntos y sus normales estimadas, de manera que se capture con la mayor precisión posible las variaciones en la superficie tomando en consideración todas las interacciones entre las direcciones de las normales estimadas. De esta forma, las features de un punto dependen en gran parte de las estimaciones de las normales para los puntos. Formalmente, PFH para cada punto *p*, perteneciente a una nube de puntos realiza los siguientes pasos:
-* Primero, considera aquellos *k* vecinos que se encuentran a una distancia menor a un radio *r* para el procesamiento, ubicándose en el centro de la esfera el punto de entrada *p*, y produciendo un conjunto de puntos *P = {pj1,pj2,...,pjn}*, y un conjunto de normales asociadas a cada punto *N = {Nj1,Nj2,...,Njn}*:
+El funcionamiento de PFH consiste en representar las relaciones entre puntos en un k-vecindario dados los puntos y sus normales estimadas, de manera que se capture con la mayor precisión posible las variaciones en la superficie, tomando en consideración todas las interacciones entre las direcciones de las normales estimadas. De esta forma, las features de un punto dependen en gran parte de las estimaciones de las normales para los puntos. Formalmente, PFH para cada punto *p*, perteneciente a una nube de puntos realiza los siguientes pasos:
+
+* Primero, considera aquellos *k* vecinos que se encuentran a una distancia menor a un radio *r* para el procesamiento, ubicándose en el centro de la esfera el punto de entrada *p*, y produciendo un conjunto de puntos *P = {pj1, pj2, ..., pjn}*, y un conjunto de normales asociadas a cada punto *N = {Nj1 ,Nj2 ,..., Njn}*:
 
 
 .. figure:: ../figs/Cap4/pfh_k_vecinos.png
 
    Ejemplo de los pk-vecinos considerados como entrada al algoritmo
 
-* Luego, para cada par de puntos en el conjunto P de vecinos e incluyendo el punto central *p*,*pj1* y *pj2*, y sus normales estimadas se selecciona un punto *ps* como origen  y un punto *pt* como objetivo, siendo el punto origen el que tiene el menor ángulo entre la normal de ese punto y un vector imaginario que conecta *ps* y *pt*; Matemáticamente hablando, se debe cumplir la siguiente ecuación: :math:`|n1 \cdot (p2-p1)| <= |n2 \cdot (p2-p1)| `. Posteriormente, para computar las diferencias entre los puntos y sus normales, se procede a definir 3 vectores base *u*, *v* y *w* alrededor del punto origen, siendo *u* el vector normal *ns* asociado al punto origen y definiéndose estos vectores por medio de las siguientes fórmulas, donde *x* es el producto cruz entre dos vectores y *|| . ||* es la norma Euclidiana del vector:
+* Luego, para cada par de puntos en el conjunto *P* de vecinos e incluyendo el punto central *p*,*pj1* y *pj2*, y sus normales estimadas, se selecciona un punto *ps* como origen  y un punto *pt* como objetivo, siendo el punto origen el que tiene el menor ángulo entre la normal de ese punto y un vector imaginario que conecta *ps* y *pt*; Matemáticamente hablando, se debe cumplir la siguiente ecuación: :math:`|n1 \cdot (p2-p1)| <= |n2 \cdot (p2-p1)| `. Posteriormente, para computar las diferencias entre los puntos y sus normales, se procede a definir tres vectores base *u*, *v* y *w* alrededor del punto origen, siendo *u* el vector normal *ns* asociado al punto origen y definiéndose estos vectores por medio de las siguientes fórmulas, donde *x* es el producto cruz entre dos vectores y *|| . ||* es la norma Euclidiana del vector:
   
 
 .. math:: U = ns
@@ -559,7 +558,7 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
 
    Asignación de ejes al punto origen 
 
-* A continuación, empleando los vectores *uvw* y las coordenadas y normales de los puntos se pueden calcular la diferencia entre las dos normales de la siguiente manera, siendo :math:`{\cdot}` el producto escalar entre dos vectores y *d* la distancia Euclidiana entre ps y pt, *d* = || ps-pt ||:
+* A continuación, empleando los vectores *uvw* y las coordenadas y normales de los puntos, se pueden calcular la diferencia entre las dos normales de la siguiente manera, siendo :math:`{\cdot}` el producto escalar entre dos vectores y *d* la distancia Euclidiana entre ps y pt, *d* = || ps - pt ||:
   
 .. math:: {\alpha} = v \cdot nt
           {\phi}  = u \cdot (pt-ps)/d
@@ -572,7 +571,9 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
    Ángulos y sus correspondencias con las normales
 
 
-* Finalmente, las frecuencias de las tuplas (:math:`{\alpha}`,:math:`{\phi}`,:math:`{\theta}`,*d*) por cada punto se organizan en un histograma, y se divide cada una de los rangos de las  características en *b* subdivisiones y se cuentan las frecuencias de valores en cada subdivisión. Así, el número de subdivisiones por cada feature del histograma, que se pueden formar utilizando las 4 features es *d^⁴*. La implementación PFH de PCL, emplea 5 subdivisiones de histograma por feature (cada uno de los 4 valores de features empleará estos 5 valores como rangos de intervalo) y no incluye las distancias, lo que resulta en 5^3 = 125 valores float de features.
+* Finalmente, las frecuencias de las tuplas (o features) del descriptor (:math:`{\alpha}`,:math:`{\phi}`,:math:`{\theta}`,*d*) por cada punto se organizan en un histograma, y se divide el espectro de valores que puede adoptar cada feature en *b* subdivisiones y se cuentan las frecuencias de valores en cada subdivisión. Así, el número de subdivisiones por cada feature del histograma, que se pueden formar utilizando *n* cantidad de features es *d^n*, en este ejemplo es la cantidad de divisiones *div^4* ya que se emplean 4 valores en cada feature. La implementación PFH de PCL, emplea 5 subdivisiones de histograma por feature y no incluye las distancias, lo que resulta en 5^3 = 125 valores float de features. Este descriptor se define en la clase que define el tipo de punto pcl::PFHSignature125.
+
+.. * Finalmente, las frecuencias de las tuplas (:math:`{\alpha}`,:math:`{\phi}`,:math:`{\theta}`,*d*) por cada punto se organizan en un histograma, y se divide cada una de los rangos de las características en *b* subdivisiones y se cuentan las frecuencias de valores en cada subdivisión. Así, el número de subdivisiones por cada feature del histograma, que se pueden formar utilizando las 4 features es *d^⁴*. La implementación PFH de PCL, emplea 5 subdivisiones de histograma por feature (cada uno de los 4 valores de features empleará estos 5 valores como rangos de intervalo) y no incluye las distancias, lo que resulta en 5^3 = 125 valores float de features.
 
 
 Debido a que la complejidad computacional de PFH es del orden O(n), esto puede resultar en cuellos de botella de procesamiento para aplicaciones en tiempo real o con considerable cantidad de muestras, por lo que para solventar este inconveniente se puede emplear FPFH. FPFH consiste en calcular para cada punto *p* de la nube, los valores de (:math:`{\alpha}`, :math:`{\phi}`, :math:`{\theta}`) análogamente a como se realiza con PFH, solo que este cálculo se realiza solamente entre el punto *p* y los k-vecinos de éste, denominando este valor como SPFH(p). A continuación, el valor SPFH(p) es ponderado calculando los features para los puntos vecinos *pk*, SPFH(pk), y utilizando las distancias *wk* entre cada punto *pk* y el punto *p*, empleando la siguiente fórmula:
@@ -592,10 +593,7 @@ Debido a que la complejidad computacional de PFH es del orden O(n), esto puede r
 VFH
 ^^^
 
-VFH es una variación de FPFH que se emplea para la identificación y reconocimiento de posición, donde se aprovecha la velocidad de procesamiento y la potencia de este descriptor y, se agrega el componente de punto de visión, que no es afectado por variaciones en la escala de los datos. VFH   agrega el punto de visión  a FPFH, computando un histograma de ángulos con la diferencia de ángulos entre la normal del punto de visión y cada uno de los puntos de la superficie capturada:
-
-
-
+VFH es una variación de FPFH que se emplea para la identificación y reconocimiento de posición, donde se aprovecha la velocidad de procesamiento y la potencia de este descriptor y se agrega el componente de punto de visión, que no es afectado por variaciones en la escala de los datos. VFH agrega el punto de visión a FPFH, computando un histograma de ángulos con la diferencia de ángulos entre la normal del punto de visión y cada uno de los puntos de la superficie capturada:
 
 .. figure:: ../figs/Cap4/VFH_punto_vision.jpg
  
@@ -608,13 +606,13 @@ Además se agrega un componente de forma de superficie, generando para ésto un 
 
    Incorporación de la diferencia entre normales de puntos y centroide del objeto 
 
+.. La implementación de PCL utiliza 45 subdivisiones para cada uno de los valores de FPFH extendido, además de 45 subdivisiones para las distancias entre cada punto y el centroide y 128 subdivisiones para el punto de visión, lo que da como resultado un arreglo de 308 valores.
 
-La implementación de PCL utiliza 45 subdivisiones para cada uno de los valores de FPFH extendido, además de 45 subdivisiones para las distancias entre cada punto y el centroide y 128 subdivisiones para el punto de visión, lo que da como resultado un arreglo de 308 valores.
 
 GRSD
 ^^^^
 
-Este descriptor emplea el descriptor local Radious-based Surface Descriptor (RSD), que se basa en la descripción geométrica de una superficie por medio del cálculo de información radial, computada a través de información inherente a los puntos vecinos. El funcionamiento de este algoritmo se basa en establecer una relación entre los ángulos de las normales :math:`{\lambda}`, la distancia entre éstas *d* y el radio de una superficie *r* por medio de la siguiente fórmula: 
+Este descriptor global emplea el descriptor local Radious-based Surface Descriptor (RSD), que se basa en la descripción geométrica de una superficie por medio del cálculo de información radial, computada a través de información inherente a los puntos vecinos. El funcionamiento de este algoritmo se basa en establecer una relación entre los ángulos de las normales :math:`{\lambda}`, la distancia entre éstas *d* y el radio de una superficie *r* por medio de la siguiente fórmula: 
 
 
 .. math:: `d = r* {\alpha}`
@@ -626,7 +624,7 @@ Este descriptor emplea el descriptor local Radious-based Surface Descriptor (RSD
    Representación gráfica el ángulo, el radio y la esfera
 
 
-Por lo tanto, para un punto punto *p* dado y cada uno de sus puntos vecinos, se calcula la diferencia entre normales, por medio del cálculo del ángulo :math:`{\alpha}`, la distancia entre las normales *d*y con estos valores, se obtiene el radio *r* de la esfera que engloba tanto a *p*  y su normal como  a uno de sus puntos vecinos y su normal asociada. Este proceso genera un conjunto de radios de las esferas que contienen a *p* y cada uno de sus vecinos, y sólo se agregan al descriptor de ese punto los radios máximos y mínimos.
+Por lo tanto, para un punto *p* dado y cada uno de sus puntos vecinos, se calcula la diferencia entre normales, por medio del cálculo del ángulo :math:`{\alpha}`, la distancia entre las normales *d* y, con estos valores, se obtiene el radio *r* de la esfera que engloba tanto a *p*  y su normal, como a uno de sus puntos vecinos y la normal de éste. Este proceso, genera un conjunto de radios que describe cada una de las esferas que contiene a *p* con uno de sus vecinos, y de todas éstas únicamente se agregan al descriptor de ese punto los radios máximo y mínimo.
 
 .. figure:: ../figs/Cap4/diagrama_densidad_grsd.png
 
@@ -635,15 +633,15 @@ Por lo tanto, para un punto punto *p* dado y cada uno de sus puntos vecinos, se 
 
 Esta método cuenta con la ventaja de ser fácil de computar y aún así mantener su capacidad de descripción, y se emplea principalmente para la detección de puntos que pertenecen a distintas superficies.
 
-GRSD consiste en generar agrupamiento de puntos(o voxels) en lugar de puntos individuales, donde cada voxel tiene un ancho de 2.5 cm, y se procede a computar los radios máximos y mínimos entre y a etiquetar cada uno de los voxels según su valor de radio, siendo un plano si el radio_minimo > 0.1, una superficie cilíndrica si no es un plano y radio_máximo > 0.175, un borde/esquina o ruido, si no es cilíndrico y radio_mínimo < 0.015, esférico si no es un borde y radio_maximo - radio_minimo < 0.05 y otra superficie si no es ninguna de las anteriores. Una vez etiquetados todos los voxels, se computa un histograma global que describe las relaciones entre los clusters, en base a las intersecciones de cada superficie con el resto.
+GRSD consiste en generar agrupamiento de puntos (o voxels) en lugar de puntos individuales, donde cada voxel tiene un ancho de 2.5 cm, y se procede a computar los radios máximos y mínimos entre *p* y un conjunto de vecinos y a etiquetar cada uno de los voxels según su valor de radio, siendo un plano si el radio_minimo > 0.1, una superficie cilíndrica si no es un plano y radio_máximo > 0.175, un borde/esquina o ruido, si no es cilíndrico y radio_mínimo < 0.015, esférico si no es un borde y radio_maximo - radio_minimo < 0.05 y otra superficie si no es ninguna de las anteriores. Una vez etiquetados todos los voxels, se computa un histograma global que describe las relaciones entre los clusters, en base a las intersecciones de cada superficie con el resto.
 
 
 ESF
 ^^^
 
-Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, sino que inicialmente emplea un conjunto de voxeles de la superficie(voxel grid). Este algoritmo consiste en iterar a través de cada uno de los puntos de la nube y, en de cada punto seleccionado, se eligen 3 puntos aleatorios y se computan las funciones de forma: D2,proporción D2(D2 ratio), D3 y A3, donde cada función genera histogramas que describen la relación geométrica entre puntos de la figura, produciendo un total de 10 sub-histogramas cada uno de 64 divisiones, por lo que el tamaño del histograma final es de 640. A continuación se detallan las funciones de forma:
+Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, sino que inicialmente emplea un conjunto de voxeles de la superficie (voxel grid). Este algoritmo consiste en iterar a través de cada uno de los puntos de la nube y, de cada punto seleccionado, se eligen 3 puntos aleatorios y se computan las funciones de forma: D2, proporción D2 (D2 ratio), D3 y A3, donde cada función genera histogramas que describen la relación geométrica entre puntos de la figura, produciendo un total de 10 sub-histogramas cada uno de 64 divisiones, por lo que el tamaño del histograma final es de 640. A continuación se detallan las funciones de forma:
 
-* La función D2, computa las distancias entre los 3 puntos elegidos, formando 3 pares distintos, y para cada par verifica si la linea que conecta ambos puntos yacen completamente dentro de la superficie, enteramente afuera de la figura (no formando parte del objeto) o, abarcando una porción del objeto y una porción del espacio libre. Dependiendo de esta condición, se asigna el valor de distancia a un histograma IN, OUT o MIXED respectivamente.
+* La función D2, computa las distancias entre los 3 puntos elegidos, formando 3 pares distintos, y para cada par verifica si la línea que conecta ambos puntos yacen completamente dentro de la superficie, enteramente afuera de la figura (no formando parte del objeto) o, abarcando una porción del objeto y una porción del espacio libre. Dependiendo de esta condición, se asigna el valor de distancia a un histograma IN, OUT o MIXED respectivamente.
   
 
 .. figure:: ../figs/Cap4/Funcion_D2.png
@@ -653,14 +651,14 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
 
 * La proporción D2, consiste en generar un histograma que represente la proporción entre partes de la línea dentro de la superficie y fuera de ésta, donde el valor será cero si la línea esta completamente afuera, uno si esta completamente adentro, y un valor intermedio si se encuentra tanto dentro como fuera.
 
-* La función D3, computa la raíz cuadrada del área del triángulo formada por los 3 puntos, y es agrupado, al igual que D2, en 3 histogramas IN,OUT y MIXED independientes de los que emplea D2.
+* La función D3, computa la raíz cuadrada del área del triángulo formada por los 3 puntos, y es agrupado, al igual que D2, en 3 histogramas IN, OUT y MIXED independientes de los que emplea D2.
   
 
 .. figure:: ../figs/Cap4/Funcion_D3.png
 
    Representación gráfica de la función D3
   
-* Finalmente, la función A3 computa el ángulo formado por los puntos del triángulo, y luego este valor es asignado a un histograma IN,OUT o MIXED, dependiendo de que superficie abarca la línea que se encuentra opuesta al ángulo calculado. Estos 3 histogramas son independientes de los que se emplean en D2 y D3.
+* Finalmente, la función A3 computa el ángulo formado por los puntos del triángulo, y luego este valor es asignado a un histograma IN, OUT o MIXED, dependiendo de que superficie abarca la línea que se encuentra opuesta al ángulo calculado. Estos 3 histogramas son independientes de los que se emplean en D2 y D3.
 
 
 .. figure:: ../figs/Cap4/Funcion_A3.png
@@ -668,7 +666,10 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
    Representación gráfica de la función A3
 
 
+.. VISTO HASTA ACA!!!!!
+.. ..................................................................................
 
+.. _pipeline_cropeado:
 
 Metodología de pre-procesado de muestras (Pipeline de Cropeado)
 ---------------------------------------------------------------
