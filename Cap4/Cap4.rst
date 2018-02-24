@@ -421,6 +421,7 @@ La construcción del árbol se puede realizar por medio de distintos algoritmos,
 Este proceso es un método de búsqueda ambicioso en el cual el algoritmo nunca retrocede sobre divisiones realizadas anteriormente en el árbol, para reconsiderar otras alternativas.
 
 .. figure:: ../figs/Cap4/ejemplo_decision_tree.png
+   :scale: 60%
 
    Ejemplo gráfico de la organización de un árbol de decisión 
 
@@ -447,6 +448,7 @@ Las redes neuronales artificiales (Artificial Neural Network, ANN) son modelos i
 
 
 .. figure:: ../figs/Cap4/ejemplo_neurona_artificial.png
+   :scale: 80%
 
    Ejemplo de neurona artificial
 
@@ -454,6 +456,7 @@ Por lo general, las redes neuronales se organizan en capas, donde cada una de la
 
 
 .. figure:: ../figs/Cap4/ejemplo_capas_ann.jpg
+   :scale: 60%
 
    Ejemplo de ANN multicapa
  
@@ -475,6 +478,7 @@ Así el hyperplano óptimo, es el hyperplano separador cuyo margen entre las mue
 .. Así, la generación de un modelo de SVM consiste en computar y evaluar varios hyperplanos separadores de los datos de entrada y seleccionar de entre éstos, un hyperplano óptimo con el margen máximo hacia las muestras, el cual se obtiene computando la distancia perpendicular entre el hyperplano divisor para cada muestra y encontrando las dos muestras de ambas clases para las que la distancia es la mínima, ésto se conoce como margen (margin). Así el hyperplano de margen máximo, es el hyperplano separador para el que el margen es el valor máximo, esto es, el hyperplano que tiene la distancia mínima más grande a las muestras de entrenamiento. De esta forma los puntos que se encuentran en el margen máximo al hyperplano conforman los vectores de soporte en el espacio *p*-dimensional y  soportan el hyperplano de margen máximo en el sentido en que, si estos puntos fueran movidos levemente, entonces el hyperplano de margen máximo también se movería.
 
 .. figure:: ../figs/Cap4/ejemplo_vectores_sporte_svm.png
+   :scale: 80%
 
    Ejemplo de hyperplano separador. La línea negra es el hyperplano que divide las muestras de entrenamiento, y las coordenadas de las tres muestras que son atravesadas por la línea punteada constituyen los vectores de soporte para ese hyperplano.
 
@@ -537,6 +541,7 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
 
 
 .. figure:: ../figs/Cap4/pfh_k_vecinos.png
+   :scale: 100%
 
    Ejemplo de los pk-vecinos considerados como entrada al algoritmo
 
@@ -555,6 +560,7 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
 
 
 .. figure:: ../figs/Cap4/esquema_ejes_punto_origen.png
+   :scale: 100%
 
    Asignación de ejes al punto origen 
 
@@ -566,7 +572,8 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
    :label: ecuacionesFeatures
 
 
-.. figure:: esquema_ejes_angulos.png
+.. figure:: ../figs/Cap4/esquema_ejes_angulos.png
+   :scale: 80%
 
    Ángulos y sus correspondencias con las normales
 
@@ -585,6 +592,7 @@ Debido a que la complejidad computacional de PFH es del orden O(n), esto puede r
 
 
 .. figure:: ../figs/Cap4/fpfh_relaciones.png
+   :scale: 80%
 
    Esquema relaciones que se consideran para calcular las features de FPFH. El punto central *p* o *pq* se encuentra en el centro, las relaciones entre *p* y sus k-vecinos empleados para computar SPFH(p) se encuentran resaltados en rojo y las relaciones entre los k-vecinos empleadas para ponderación se encuentran remarcadas en negro.   
 
@@ -596,13 +604,15 @@ VFH
 VFH es una variación de FPFH que se emplea para la identificación y reconocimiento de posición, donde se aprovecha la velocidad de procesamiento y la potencia de este descriptor y se agrega el componente de punto de visión, que no es afectado por variaciones en la escala de los datos. VFH agrega el punto de visión a FPFH, computando un histograma de ángulos con la diferencia de ángulos entre la normal del punto de visión y cada uno de los puntos de la superficie capturada:
 
 .. figure:: ../figs/Cap4/VFH_punto_vision.jpg
- 
-    Representación gráfica del primer componente entre el punto de visión y cada uno de puntos de la superficie.
+   :scale: 100%
+
+   Representación gráfica del primer componente entre el punto de visión y cada uno de puntos de la superficie.
 
 
 Además se agrega un componente de forma de superficie, generando para ésto un histograma FPFH extendido, donde se incorpora la computación de los ángulos relativos entre las normales en cada punto de la captura y el centroide del objeto (punto central):
 
-.. figure:: VFH_segundo_componente.jpg
+.. figure:: ../figs/Cap4/VFH_segundo_componente.jpg
+   :scale: 70%
 
    Incorporación de la diferencia entre normales de puntos y centroide del objeto 
 
@@ -620,6 +630,7 @@ Este descriptor global emplea el descriptor local Radious-based Surface Descript
 
 
 .. figure:: ../figs/Cap4/radio_rsd_entre_normales.png
+   :scale: 50%
 
    Representación gráfica el ángulo, el radio y la esfera
 
@@ -627,6 +638,7 @@ Este descriptor global emplea el descriptor local Radious-based Surface Descript
 Por lo tanto, para un punto *p* dado y cada uno de sus puntos vecinos, se calcula la diferencia entre normales, por medio del cálculo del ángulo :math:`{\alpha}`, la distancia entre las normales *d* y, con estos valores, se obtiene el radio *r* de la esfera que engloba tanto a *p*  y su normal, como a uno de sus puntos vecinos y la normal de éste. Este proceso, genera un conjunto de radios que describe cada una de las esferas que contiene a *p* con uno de sus vecinos, y de todas éstas únicamente se agregan al descriptor de ese punto los radios máximo y mínimo.
 
 .. figure:: ../figs/Cap4/diagrama_densidad_grsd.png
+   :scale: 50%
 
    En el gráfico de densidad, se muestra un gráfico de número /densidad de puntos en un rango de 1cm para diferentes objetos, ejemplificando la delimitación del tipo de superficie (plano,esfera,cilindro,ruido) según el rango de radios mínimo y máximo.
 
@@ -645,6 +657,7 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
   
 
 .. figure:: ../figs/Cap4/Funcion_D2.png
+   :scale: 100%
 
    Representación gráfica de la función D2
 
@@ -655,6 +668,7 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
   
 
 .. figure:: ../figs/Cap4/Funcion_D3.png
+   :scale: 100%
 
    Representación gráfica de la función D3
   
@@ -662,6 +676,7 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
 
 
 .. figure:: ../figs/Cap4/Funcion_A3.png
+   :scale: 100%
 
    Representación gráfica de la función A3
 
@@ -674,9 +689,9 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
 Metodología de pre-procesado de muestras (Pipeline de Cropeado)
 ---------------------------------------------------------------
 
-Debido a la cantidad numerosa de puntos que se encuentran en una captura realizada por el sensor (aproximadamente 300.000 puntos) y, a que se deseaba abstraer solo aquellas características propias de cada tipo de falla, se procedió a aplicar una serie de algoritmos como parte del pre-procesado de datos en machine learning o Pipeline de Cropeado, con el fin de reducir la cantidad de puntos de cada muestra y de sólo calcular el descriptor con los puntos principales de una falla.Este Pipleline de cropeado, se compone de los siguientes pasos:
+Debido a la cantidad numerosa de puntos que se encuentran en una captura realizada por el sensor (aproximadamente 300.000 puntos) y, a que se deseaba abstraer solo aquellas características propias de cada tipo de falla, se procedió a aplicar una serie de algoritmos como parte del pre-procesado de datos en machine learning o Pipeline de Cropeado, con el fin de reducir la cantidad de puntos de cada muestra y de sólo calcular el descriptor con los puntos principales de una falla. Este pipleline de cropeado, se compone de los siguientes pasos:
 
-1 - Eliminación de ruido con Statistical Removal: Debido a que la densidad de puntos de una captura puede variar, bajo diversas condiciones tales como: La cantidad de luz solar presente o la posición del sensor con respecto al pavimento, es necesario eliminar para cada captura aquellos valores extremos o outliers, que pueden interferir con la computación features de la muestra. Para ello, PCL ofrece un algoritmo de filtrado denominado Statistical Outlier Removal, el cual para cada punto en la nube de entrada computa la distancia media de éste hacia todos sus vecinos, y asumiendo que las distancias siguen una distribución estadística Gaussiana con una media y desvío estándar, elimina de la nube aquellos puntos cuyas distancias estén fuera del intervalo definido por la media y el desvío estándar de la distribución.
+1 - Eliminación de ruido con Statistical Removal: Debido a que la densidad de puntos de una captura puede variar, bajo diversas condiciones tales como: La cantidad de luz solar presente o la posición del sensor con respecto al pavimento, es necesario eliminar para cada captura aquellos valores extremos (o outliers), que pueden interferir con la computación features de la muestra. Para ello, PCL ofrece un algoritmo de filtrado denominado Statistical Outlier Removal, el cual para cada punto en la nube de entrada computa la distancia media de éste hacia todos sus vecinos, y asumiendo que las distancias siguen una distribución estadística Gaussiana con una media y desvío estándar, elimina de la nube aquellos puntos cuyas distancias estén fuera del intervalo definido por la media y el desvío estándar de la distribución.
 |
 
 .. figure:: ../figs/Cap4/statistical_removal_ejemplo.jpg
@@ -684,7 +699,7 @@ Debido a la cantidad numerosa de puntos que se encuentran en una captura realiza
 
    Izquierda: Ejemplo de nube de puntos sin el filtro Statistical Outlier Removal. Derecha: Ejemplo de nube de puntos con el filtro de Statistical Outlier Removal.
 
-2 - Downsampling con Voxel Grid(Extracción de Keypoints): Se conoce con el nombre de voxel a un conjunto de puntos que forman una mínima unidad cubica (grilla en 3D) de un objeto tridimensional, de la misma forma que un pixel es la mínima unidad en una imagen en 2D. El algoritmo de Voxel Grid en PCL, permite reducir la cantidad de elementos de una nube, realizando una división de una nube de puntos en voxels, y computando en base a éstos el centroide (centro del voxel grid) que se tomará como el punto que representa al resto de los puntos en el voxel grid. Estos puntos se denominan keypoints o puntos de interés y son aquellos  puntos principales que aportan mayor información respecto de la estructura del pavimento a la SVM. Éstos se caracterizan por ser:
+2 - Downsampling con Voxel Grid (Extracción de Keypoints): Se conoce con el nombre de voxel a un conjunto de puntos que forman una mínima unidad cubica (grilla en 3D) de un objeto tridimensional, de la misma forma que un pixel es la mínima unidad en una imagen en 2D. El algoritmo de Voxel Grid en PCL, permite reducir la cantidad de elementos de una nube, realizando una división de una nube de puntos en voxels, y computando en base a éstos el centroide (centro del voxel grid) que se tomará como el punto que representa al resto de los puntos en el voxel grid. Estos puntos se denominan keypoints o puntos de interés y son aquellos puntos principales que aportan mayor información respecto de la estructura del pavimento a la SVM. Éstos se caracterizan por ser:
 
 * Estables con respecto a interferencias locales y globales en el dominio de la imagen, como variaciones de iluminación y brillo.
 * Distintivos para la caracterización efectiva de una superficie, y ricos en contenido en términos de color y textura.
@@ -697,21 +712,21 @@ Debido a la cantidad numerosa de puntos que se encuentran en una captura realiza
 
    Estructura de un voxel y voxel grid en 3D
 
-3 - Segmentación con algoritmo de Planar Segmentation: El algoritmo empleado para la segmentación en PCL fue RANSAC (Random Sample Consensus) configurado para el modelo de plano (PLANE), ya que se deseaba de aislar los planos asociados a las depresiones que representan a los tipos de fallas seleccionadas(baches y grietas profundos).
+3 - Segmentación con algoritmo de Planar Segmentation: El algoritmo empleado para la segmentación en PCL fue RANSAC (Random Sample Consensus) configurado para el modelo de plano (PLANE), ya que se deseaba de aislar los planos asociados a las depresiones que representan a los tipos de fallas seleccionadas (baches y grietas profundos).
 
 
-4 - Cálculo de curvaturas principales (Principal Curvatures Estimation): Una vez realizada la segmentación, se realiza el cálculo de curvaturas promedio para cada uno de los clusters aislados, de manera que se filtren solo aquellos que se ubican en un valor dentro del rango de las fallas, siendo estos valores establecidos a partir del análisis de valores de curvaturas para baches y grietas. PCL ofrece un algoritmo denominado Principal Curvatures Estimation (PCE) para calcular curvaturas principales mínimas y máximas de cada punto, empleando eigenvectores y eigenvalores asociados, en base a un conjunto de puntos y sus normales asociadas. Los eigenvectores (o vectores propios), son un concepto relacionado con el álgebra lineal, y son aquellos vectores no nulos tales que al ser transformados por un operador lineal,no modifican su escala o producen un vector múltiplo de si mismo,manteniendo su dirección; Siendo el escalar que los multiplica :math:`{\lambda}` el eigenvector asociado con este valor. Matemáticamente, dada una matriz *A* n dimensional, se dice que  un vector *v* es un eigenvector y :math:`{\lambda}` es un eigenvalor asociado al eigenvector, si se cumple la siguiente equivalencia:
+4 - Cálculo de curvaturas principales (Principal Curvatures Estimation): Una vez realizada la segmentación, se realiza el cálculo de curvaturas promedio para cada uno de los clusters aislados, de manera que se filtren solo aquellos que se ubican en un valor dentro del rango de las fallas, siendo estos valores establecidos a partir del análisis de valores de curvaturas para baches y grietas. PCL ofrece un algoritmo denominado Principal Curvatures Estimation (PCE) para calcular curvaturas principales mínimas y máximas de cada punto, empleando eigenvectores y eigenvalores asociados, en base a un conjunto de puntos y sus normales asociadas. Los eigenvectores (o vectores propios), son un concepto relacionado con el álgebra lineal, y son aquellos vectores no nulos tales que al ser transformados por un operador lineal, no modifican su escala o producen un vector múltiplo de si mismo, manteniendo su dirección; Siendo el escalar que los multiplica :math:`{\lambda}` el eigenvector asociado con este valor. Matemáticamente, dada una matriz *A* n dimensional, se dice que  un vector *v* es un eigenvector y :math:`{\lambda}` es un eigenvalor asociado al eigenvector, si se cumple la siguiente equivalencia:
 
 
 .. math:: A*v = {\lambda}*v
    :label: ecuacionEigenVector
 
 
-Así, las curvaturas principales se calculan como los eigenvalores para un eigenvector en un punto dado y permiten indicar el grado de torcedura en una superficie para un punto establecido. Gráficamente, las curvaturas principales se pueden visualizar como: Para un punto *p* sobre una superficie dada y un vector unidad normal asociado, este contendrá un plano tangente que entre el punto y el vector normal unidad y, existirán diversos planos que contendrán al vector normal unidad y que cortarán a la superficie de manera distinta, lo que generará diversas curvas con distintos valores por plano. De esta forma, los valores de curvatura seleccionados serán aquellos máximos y mínimos que representen mayor grado de variación de ese conjunto.
+Así, las curvaturas principales se calculan como los eigenvalores para un eigenvector en un punto dado y permiten indicar el grado de depresión en una superficie para un punto establecido. Gráficamente, las curvaturas principales se pueden visualizar como: Para un punto *p* sobre una superficie dada y un vector unidad normal asociado, este contendrá un plano tangente que entre el punto y el vector normal unidad y, existirán diversos planos que contendrán al vector normal unidad y que cortarán a la superficie de manera distinta, lo que generará diversas curvas con distintos valores por plano. De esta forma, los valores de curvatura seleccionados serán aquellos máximos y mínimos que representen mayor grado de variación de ese conjunto.
 
 
 .. figure:: ../figs/Cap4/curvaturas-principales.png
-   :scale: 60%
+   :scale: 40%
 
    Representación gráfica de las curvaturas principales
 
@@ -737,10 +752,9 @@ Con respecto a la fase de preparación del modelo, los pasos específicos para g
 3. Extracción de features (valores del histograma) del descriptor seleccionado 
 4. Almacenamiento de las features en formato svmlight en archivo de training
 5. Entrenamiento y almacenamiento del modelo entrenado con archivo de training
-   
 
 
-Luego de aplicar el pipeline de cropeado y computarse los descriptores de las muestras, se procede a realizar la conversión de las muestras a formato svmlight. Para la clasificación de muestras con svmlight, el formato consiste en especificar cada muestra como una combinación de un numero que especifica la clase a la que pertenece la misma separado por un espacio en blanco <SPACE> de sus features <FEATURE_N> con sus respectivos valores <VALOR> y, separada de otras muestras por caracteres de nueva linea <NEW_LINE>:
+Luego de aplicar el pipeline de cropeado y computarse los descriptores de las muestras, se procede a realizar la conversión de las muestras a formato svmlight. Para la clasificación de muestras con svmlight, el formato consiste en especificar cada muestra como una combinación de un numero que especifica la clase a la que pertenece la misma separado por un espacio en blanco <SPACE> de sus features <FEATURE_N> con sus respectivos valores <VALOR> y, separada de otras muestras por caracteres de nueva línea <NEW_LINE>:
 
 <LABEL> <FEATURE_1>:<VALOR> <FEATURE_2>:<VALOR> ... <FEATURE_N>:<VALOR><NEW_LINE>
 <LABEL> <FEATURE_1>:<VALOR> <FEATURE_2>:<VALOR> ... <FEATURE_N>:<VALOR><NEW_LINE>
@@ -748,9 +762,7 @@ Luego de aplicar el pipeline de cropeado y computarse los descriptores de las mu
 
 Para el modo de clasificación, la clase a la que la muestra pertenece se especifica como un valor positivo (1) si la muestra pertenece a la clase del tipo de elementos que se busca clasificar o, negativo (-1) si ésta no pertenece a la clase del tipo de elementos que se desean clasificar. Los features se especifican como una sucesión de valores numéricos que representan las características propias de cada muestra, y que varía según el tamaño del histograma del descriptor que se emplee. Con el fin de realizar la conversión, se empleo un script de generación de muestras que por medio de un archivo de configuración (.cfg), genera los descriptores para cada muestra y lo almacena en un archivo de testing o training según se haya especificado.
 
-
-Una vez generados ambos archivos de training y testing, se procede a entrenar el modelo empleando el archivo de training, utilizando una de las utilidades provistas por svm-light (svm-train), que permite generar un modelo de salida para distintos tipos de kernel y distintos tipos de SVM según la tarea para la que se emplee la misma(regresión o clasificación). Debido a que se debe realizar una división de muestras entre clases preestablecidas, se empleó una SVM para clasificación de muestras (SVC) y  debido a que el kernel que mejor precisión brindo fue Linear, éste fue empelado para generar el modelo, en combinación con distintos descriptores.         
-
+Una vez generados ambos archivos de training y testing, se procede a entrenar el modelo empleando el archivo de training, utilizando una de las utilidades provistas por svm-light (svm-train), que permite generar un modelo de salida para distintos tipos de kernel y distintos tipos de SVM según la tarea para la que se emplee la misma (regresión o clasificación). Debido a que se debe realizar una división de muestras entre clases preestablecidas, se empleó una SVM para clasificación de muestras (SVC) y debido a que el kernel que mejor precisión brindo fue Linear, éste fue empelado para generar el modelo, en combinación con distintos descriptores.         
 
 Con respecto a la etapa de clasificación, los pasos a seguir fueron los siguientes:
 
@@ -860,19 +872,19 @@ La matriz de confusión para cada uno de los descriptores empleados, con la part
 
 
 .. figure:: ../figs/Cap4/matriz_confusion_GRSD.png 
-   :scale: 70%
+   :scale: 50%
 
    Matriz de confusión de SVM con descriptor GRSD
 
 
 .. figure:: ../figs/Cap4/matriz_confusion_ESF.png 
-   :scale: 70%
+   :scale: 50%
 
    Matriz de confusión de SVM con descriptor ESF
 
 
 .. figure:: ../figs/Cap4/matriz_confusion_FPFH.png 
-   :scale: 70%
+   :scale: 50%
 
    Matriz de confusión de SVM con descriptor FPFH
 

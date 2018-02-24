@@ -596,6 +596,68 @@ PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualizaci
    Ejemplo de visualizador de PCL
 
 
+
+Computacion de Bounding Boxes(AABB-OBB)
++++++++++++++++++++++++++++++++++++++++
+
+.. https://en.wikipedia.org/wiki/Minimum_bounding_box
+.. http://pointclouds.org/documentation/tutorials/moment_of_inertia.php
+.. https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/Coordinate_Spaces_in_Blender#Global_and_local_coordinates
+.. https://en.wikibooks.org/wiki/Blender_3D:_Noob_to_Pro/Coordinate_Spaces_in_Blender#Global_and_local_coordinates
+.. http://www.artwork.com/gdsii/gdsfilt/windows/polygon.htm
+.. http://www.yaldex.com/games-programming/0672323699_ch08lev1sec10.html
+
+La bounding box mínima (MBB) para el conjunto de puntos que componen un objeto, se considera el rectángulo (o box) formado por las coordenadas mínimas necesarias para contener todos los puntos objeto dentro de ésta y cuya medida (área, volumen o hypervolumen en espacios de más de tres dimensiones) es la mínima. La bounding box de un objeto puede ser computada a través del convex hull, ya que si se dispone de éste, la bounding box mínima para los puntos del objeto es la misma que la bounding box del convex hull. 
+
+.. .. figure:: ../figs/Cap3/ejemplo_bounding_box.png
+.. figure:: ../figs/Cap3/ejemplo_bounding_box_2.png
+   :scale: 100%
+
+   Ejemplo de conjunto de puntos de un objeto (P0-P4) con su convex hull y el bounding box asociado.
+
+
+Existen varios tipos de Bounding Box dependiendo del sistema de coordenadas que se considere: Axis Aligned Bounding Box (AABB) y Oriented Bounding Box (OBB). AABB consiste en computar las coordenadas de la caja de manera que los bordes de ésta, sean paralelas a la orientación de los ejes Cartesianos globales en la captura, donde el origen se encuentra en el centro de la escena. Por otro lado, OBB consiste en computar las coordenadas de la caja tomando como referencia un sistema de coordenadas Cartesiano local del objeto, cuya orientación y origen se encuentra definidos en base al centro de los puntos que componen el objeto, de manera que la bounding box se encontrará paralela a los ejes del objeto en sí.
+
+
+.. figure:: ../figs/Cap3/aabb_vs_obb.png
+   :scale: 100%
+
+   AABB vs OBB
+
+En PCL este comportamiento se implementa en la clase pcl::MomentOfInertiaEstimation, que a partir de una nube de entrada permite obtener el centro del objeto y los puntos máximos y mínimos en los ejes X,Y,Z de las boxes AABB y OBB. A continuación se muestra un ejemplo de código donde se obtienen las respectivas boxes::
+
+   ...
+   // Se instancia el objeto y se envia la nube 'cloud' de entrada inicializada previamente 
+   pcl::MomentOfInertiaEstimation <pcl::PointXYZ> feature_extractor;
+   feature_extractor.setInputCloud (cloud);
+   feature_extractor.compute ();
+   
+   ...
+   // Se definen los puntos máximos y mínimos para AABB y OBB
+   pcl::PointXYZ min_point_AABB;
+   pcl::PointXYZ max_point_AABB;
+   pcl::PointXYZ min_point_OBB;
+   pcl::PointXYZ max_point_OBB;
+   pcl::PointXYZ position_OBB;
+
+   // Se obtienen los puntos
+   feature_extractor.getAABB (min_point_AABB, max_point_AABB);
+   feature_extractor.getOBB (min_point_OBB, max_point_OBB, position_OBB, rotational_matrix_OBB);
+   
+   // Se instancia un visualizador y se agregan los puntos de ambas cajas
+   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Viewer")); 
+
+   viewer->addCube (min_point_AABB.x, max_point_AABB.x, min_point_AABB.y, max_point_AABB.y, min_point_AABB.z, max_point_AABB.z, 1.0, 1.0, 0.0, "AABB");
+   viewer->addCube (position, quat, max_point_OBB.x - min_point_OBB.x, max_point_OBB.y - min_point_OBB.y, max_point_OBB.z - min_point_OBB.z, "OBB");
+   ...
+
+
+.. figure:: ../figs/Cap3/ejemplo_pcl_abb_obb.png
+   :scale: 60%
+
+   Ejemplo de poste de luz con AABB en amarillo y OBB en rojo.  
+
+
 Computación de índices
 ++++++++++++++++++++++
 
