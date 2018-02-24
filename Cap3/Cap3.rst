@@ -38,7 +38,7 @@ Dado que la velocidad de la luz en la atmósfera *c* es una constante que se con
 Existen diferentes métodos para el escaneo del objeto por medio de lasers, entre ellas las aproximaciones más comunes son las que emplean los sensores Lidar y las Cámaras ToF. El sensor Lidar (Light Detection And Ranging) emplea un pulso láser para medir la distancia a un objeto variando rápidamente su dirección por medio de un sistema de espejos rotativos, modificando los ángulos horizontales y verticales, de manera que se puedan captar las distancias de todos puntos del objeto que se encuentra en el campo de visión. Una vez obtenidas las distancias y conociendo los ángulos horizontales y verticales, se pueden computar la posiciones (X,Y,Z) para cada uno de los puntos. Así, partiendo de la diferencia entre los tiempos de retorno de los rayos y, adicionalmente, empleando diferencias entre longitudes de onda (emitidas y recibidas), se genera un modelo tridimensional del objetivo. Estos dispositivos se empelan principalmente en satélites para la generación de mapas terrestres de alta resolución, topografía, documentación histórica de objetos antiguos y en la detección de objetos en vehículos autónomos.             
 
 .. figure:: ../figs/Cap3/sensor_lidar_esquema.png
-   :scale: 60%
+   :scale: 50%
 
    Ejemplo de láser tipo Lidar. En la figura superior, se puede observar el rayo proyectado (línea roja) que es desplazado para escanear una escena entera por medio de un espejo rotativo. En la figura central se denota con azul el láser, con una círculo verde un objeto esférico y un rectángulo verde que constituye las paredes del entorno en el que se ubica el dispositivo. Finalmente, en la figura inferior se muestra el sensor representado como un punto negro, y los puntos azules simbolizan cada uno de los puntos capturados por el dispositivo durante el escaneo.
 
@@ -168,7 +168,6 @@ Sensor Kinect V1
 
 .. http://www.cs.upc.edu/~virtual/RVA/CourseSlides/Kinect.pdf
 .. http://www.laserfocusworld.com/articles/2011/01/lasers-bring-gesture-recognition-to-the-home.html
-.. https://bbzippo.wordpress.com/2010/11/28/kinect-in-infrared/
 .. http://www.depthbiomechanics.co.uk/?p=100
 
 
@@ -365,7 +364,7 @@ El módulo de Face Tracking SDK utiliza información de los streams de color y d
       .. Audio Steam -->
       .. https://msdn.microsoft.com/en-us/library/jj131026.aspx
 
-      .. Deapth Stream -->
+      .. Depth Stream -->
       .. https://msdn.microsoft.com/en-us/library/jj131028.aspx
 
    .. Modulo KInect Interaction (para gestos)-->
@@ -388,9 +387,6 @@ El módulo de Face Tracking SDK utiliza información de los streams de color y d
 
 .. Libro Kinect for Windows SDK Programming Guide -->
 .. https://books.google.com.ar/books?id=7XqIvRDHVzkC&pg=PT173&lpg=PT173&dq=wpf+kinect&source=bl&ots=ECZpK_Tctb&sig=E8t0Ntgqy7DpvtqqzhRdesxBIs0&hl=es&sa=X&ved=0ahUKEwjUrZSX6snYAhWEIJAKHbVGB4Q4HhDoAQgoMAE#v=onepage&q=wpf%20kinect&f=false
-
-.. WPF with Kinect -->
-.. http://dotneteers.net/blogs/vbandi/archive/2013/03/25/kinect-interactions-with-wpf-part-i-getting-started.aspx
 
 
 .. Librería Java For Kinect(J4K)
@@ -421,19 +417,19 @@ OpenNI framework es un SDK open-source empleado para el desarrollo de librerías
 Freenect y Librería Point Cloud Library(PCL)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-.. https://en.wikipedia.org/wiki/Point_cloud
 .. https://openkinect.org/wiki/Main_Page
 .. https://openkinect.org/wiki/Getting_Started
 .. https://openkinect.org/wiki/Roadmap
 
 
-.. https://en.wikipedia.org/wiki/Point_Cloud_Library
 .. http://pointclouds.org/about/
+.. https://en.wikipedia.org/wiki/Point_Cloud_Library
 .. https://en.wikipedia.org/wiki/Computer_vision
 .. http://robotica.unileon.es/index.php/PhD-3D-Object-Tracking
 
+.. LIBRO (NO USADO) -->
 .. http://cmuems.com/excap/readings/forsyth-ponce-computer-vision-a-modern-approach.pdf
+
 .. http://szeliski.org/Book/drafts/SzeliskiBook_20100903_draft.pdf
 .. 
 .. Tipos de feature descriptors -->
@@ -460,13 +456,6 @@ Por otro lado, PCL es un proyecto que comenzó en 2010 por Willow Garage (compa�
 * CGI (computer-generated imagery) en Cine-TV, donde la filmación real con actores se une con imágenes generadas por computadora rastreando puntos clave en el video origen, con el fin de estimar el movimiento de la cámara y la forma del entorno.
 * Captura de movimiento, utilizando marcadores retro-reflectivos capturados desde distintas cámaras con el objetivo de capturar digitalmente el patrón de movimiento de actores para realizar una animación por computadora.
 * Reconocimiento de huellas digitales para el acceso de personal autorizado automatizado.
-
-
-.. PyPCD -->
-.. https://github.com/dimatura/pypcd
-
-.. Librería PyPCD
-.. --------------
 
 De esta forma, PCL es una librería que ofrece diferentes módulos independientes que pueden ser combinados de distintas formas en un pipeline de instrucciones, con el fin de lograr el reconocimiento de distintos tipos de objetos en una nube de puntos. Los algoritmos de estos módulos están pensados para abarcar un  diverso rango de tareas que son necesarias para una correcta detección de objetos, tales como filtrado de puntos con valores atípicos distantes del resto en una nube (outliers en la nube), almacenamiento, lectura y conversión de nubes de puntos en distintos formatos, descomposición de la nube para realizar búsquedas, concatenar y fusionar dos nubes de puntos con los mismos o distintos campos, segmentar partes de una escena, extraer puntos clave y computar descriptores geométricos con el propósito de distinguir elementos del mundo real. De manera general, el pipeline de PCL para el reconocimiento de objetos se compone de las siguientes etapas:
 
@@ -721,6 +710,10 @@ Descomposición de nubes: KD-Tree y Octree
 .. https://en.wikipedia.org/wiki/K-d_tree
 .. http://pointclouds.org/documentation/tutorials/kdtree_search.php
 .. http://pointclouds.org/documentation/tutorials/octree.php
+.. http://robotica.unileon.es/index.php/PCL/OpenNI_tutorial_2:_Cloud_processing_(basic)#k-d_tree
+.. http://robotica.unileon.es/index.php/PCL/OpenNI_tutorial_2:_Cloud_processing_(basic)#Octree
+
+
 
 .. La descomposición de nubes de puntos consiste en organizar la nube de puntos en una estructura de manera que el filtrado y análisis del entorno de los mismos (búsqueda de vecinos mas cercanos, búsqueda de vecinos en un radio determinado o, el punto más cercano) sea mas eficiente. Para conseguir esto, PCL ofrece dos tipos de estructura: Kd-Tree y Octree. La estructura Kd-Tree es un árbol binario en el que cada nodo es un punto k-dimensional, y donde en cada nivel del árbol se dividen los puntos en una dimensión establecida. Así, en un espacio tridimensional la división comienza por crear el nodo raíz del árbol que divide los puntos en base al eje X en base a un criterio (típicamente la raíz de cada subárbol es el punto medio del conjunto de coordenadas en ese eje), creando un nodo izquierdo que representa a los puntos cuyo valor de X sea menor y un nodo derecho para los valores mayores; Posteriormente, se realiza la división de puntos en el espacio Y para los nodos hijos del nodo raíz empelando el mismo procedimiento y para el espacio Z con los hijos de la división en Y. Al llegar al eje Z, se repite nuevamente todo el proceso para continuar subdividiéndo el espacio hasta que no existan puntos para continuar la división.
 
@@ -768,8 +761,6 @@ En PCL la clase pcl::KdTree implementa este comportamiento para los distintos ti
                  << " " << cloud->points[pointIndices[i]].z
                  << " (squared distance: " << squaredDistances[i] << ")" << std::endl;
    }
-
-.. http://pointclouds.org/documentation/tutorials/octree.php
 
 Por otro lado el Octree es una estructura de datos jerárquica empleada tanto para la búsqueda, como para reducción de la cantidad de puntos (downsampling) o la compresión de nubes de puntos. Un Octree es un árbol en el que cada nodo (pixel 3D o voxel) representa un punto en la nube que se considera el centro de cada voxel y que contiene ocho hijos(o ninguno) que son a su vez los vecinos del punto principal. A diferencia del Kd-Tree donde cada nodo representa una división basándose en las dimensiones, este método realiza una subdivisión por puntos y sus vecinos asociados. Esta estructura se emplea además en motores 3D o en la generación de gráficos tridimensionales.   
 
@@ -884,13 +875,14 @@ Si se desea realizar la computación de las normales de algunos puntos, se debe 
 Filtrado de ruido de la nube
 ++++++++++++++++++++++++++++
 
+.. http://pointclouds.org/documentation/tutorials/passthrough.php
+
 Debido a que una captura puede contener valores espurios, debido a baja precisión del sensor, medidas erróneas u falta de puntos en determinadas partes de una nube de puntos, o simplemente es necesario reducir la cantidad de puntos para disminuir el tiempo de computación. Para solucionar ésto, PCL ofrece varios algoritmos de filtrado de nubes de puntos entre los que se encuentran:
 
 * Passthrough Filter
 * Conditional Removal
 * Outlier Removal
 
-.. http://pointclouds.org/documentation/tutorials/passthrough.php
 
 El algoritmo de Passthrough Filter consiste en remover de la nube aquellos elementos que se encuentran fuera de un rango especificado por el usuario, por lo que este método únicamente requiere especificar el eje de filtrado y el rango sobre ese eje (mínimo y máximo). Este método se realiza por la clase pcl::PassThrough, que requiere el tipo de punto para el filtrado. A continuación, se muestra el proceso de filtrado para una nube existente::
 
@@ -1005,8 +997,8 @@ Finalmente, luego de configurar el grafo se realiza la búsqueda del mínimo cor
 
 
 
-.. http://pointclouds.org/documentation/tutorials/random_sample_consensus.php#random-sample-consensus
 .. https://en.wikipedia.org/wiki/Random_sample_consensus
+.. http://pointclouds.org/documentation/tutorials/random_sample_consensus.php#random-sample-consensus
 
 Finalmente, RANSAC (Random Sample Consensus) es un algoritmo de muestreo aleatorio que para un conjunto de datos de entrada con ruido, estima los parámetros que permiten ajustar éstos a un modelo preestablecido. Este algoritmo considera que en la nube de puntos de entrada existen puntos que pueden ser ajustados a un modelo preestablecido con un margen de error especificado  (inliers), y puntos que no se ajustan al modelo de RANSAC(outliers). El funcionamiento de este algoritmo consiste en especificar un tipo de modelo y realizar N iteraciones, donde en cada una:  
    
