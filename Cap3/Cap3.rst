@@ -192,6 +192,7 @@ Así, en cada frame el emisor IR emite un patrón de puntos con distintas intens
 
 
 .. .. figure:: ../figs/Cap3/ejemplo_patron_puntos.jpg
+
 .. figure:: ../figs/Cap3/ejemplo_patron_puntos_2.png
    :scale: 60%
 
@@ -200,7 +201,9 @@ Así, en cada frame el emisor IR emite un patrón de puntos con distintas intens
 
 Luego, el chip de procesamiento interno del sensor analiza las diferencias entre el patrón original emitido y la información de profundidad sensada por la cámara IR, se realiza una reducción de los datos capturados y se combina esta información con los datos de la cámara RGB de video para generar la nube de puntos final.
 
-.. figure:: ../figs/Cap3/esquema_general_kinect.gif
+.. .. figure:: ../figs/Cap3/esquema_general_kinect.gif
+
+.. figure:: ../figs/Cap3/esquema_general_kinect_v2.png
 
    Esquema general de funcionamiento del Kinect V1
 
@@ -234,6 +237,7 @@ El acelerómetro del dispositivo se emplea para conocer la orientación del sens
     Ejes del dispositivo
 
 .. Human Interaces Guidelines v 1.8.0 -->
+
 Con respecto al audio captado por el dispositivo, éste detecta comandos en un rango que abarca +-50º en frente del dispositivo, pudiendo modificarse programáticamente la dirección en la que apunta el array de micrófonos en incrementos de 10º en una escala total de 100º. Además, el array de micrófonos puede cancelar 20 decibeles(dB) de ruido del ambiente frontal, mientras que el sonido que proviene desde detrás del dispositivo obtiene 6 dB más de supresión. Por defecto, el dispositivo captura los comandos hablados del jugador con el mayor nivel de decibeles.
 
 .. figure:: ../figs/Cap3/arrayMicrofonosKinect.png
@@ -271,8 +275,7 @@ Existen diferentes drivers y librerías que permiten interactuar con el sensor K
 * Microsoft Kinect SDK(Librería oficial)
 * OpenNI
 * Freenect(OpenKinect) y PCL
-.. * Java For Kinect(J4K)
- 
+
 
 Kinect for Windows SDK 1.8 (Xbox Development Kit)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -414,6 +417,7 @@ OpenNI framework es un SDK open-source empleado para el desarrollo de librerías
 
 
 .. Encabezado h4 -->
+
 Freenect y Librería Point Cloud Library(PCL)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -789,7 +793,9 @@ Para diferenciar un punto de otro en una nube de puntos, no basta únicamente co
 * Composición digital, donde se renderizan modelos o imágenes 3D por computadora superponiendo varias imágenes. Las capas renderizadas generadas, contienen información de normales pueden ser modificadas para cambiar la textura de un objeto según la fuente de iluminación.
 
 
-.. figure:: ../figs/Cap3/ejemplo_vector_normal.gif
+.. .. figure:: ../figs/Cap3/ejemplo_vector_normal.gif
+
+.. figure:: ../figs/Cap3/ejemplo_vector_normal_v2.png
    :scale: 50%
 
    Ejemplo de vector normal *n*, perpendicular a un punto.
@@ -808,68 +814,71 @@ Una vez realizado este cálculo y teniendo los vectores de cada punto, aún es n
 
 La precisión con que se estimen las normales para una superficie en PCL depende en gran medida de la escala que se utilice para el cálculo, que se establece por medio del radio de búsqueda (pcl::Feature::setRadiusSearch) o de la cantidad de vecinos empleados para la computación de la normal (pcl::Feature::setKSearch). Si se emplea un rango razonablemente bajo, se considerarán menos vecinos para cada punto provocando que exista mayor similitud entre normales de la misma superficie y diferencia entre normales de distintas superficies y, en consecuencia, exista un mayor nivel de detalle las zonas con bordes de los objetos. Por el contrario, si se emplea una escala muy alta, se considerarán más vecinos para la computación de las normales de puntos, provocando que en las regiones límites entre distintas superficies se abarque un mayor rango de vecinos de la zona adyacente, provocando que las normales muestren menor diferencia entre superficies diferentes.
 
-En PCL el cálculo de normales se realiza por medio de la clase pcl::NormalEstimation, que acepta un tipo de punto coordenada y un tipo de punto normal, y puede realizarse para toda la nube completa o, para un subconjunto de puntos, por medio de la utilización de índices. Si se desea realizar la estimación para toda la nube, basta con especificar a la clase de estimación de normales la nube de entrada, el método de búsqueda y el radio de búsqueda o la cantidad de vecinos. A continuación, se muestra un ejemplo de código fuente que realiza la computación de normales::
+En PCL el cálculo de normales se realiza por medio de la clase pcl::NormalEstimation, que acepta un tipo de punto coordenada y un tipo de punto normal, y puede realizarse para toda la nube completa o, para un subconjunto de puntos, por medio de la utilización de índices. Si se desea realizar la estimación para toda la nube, basta con especificar a la clase de estimación de normales la nube de entrada, el método de búsqueda y el radio de búsqueda o la cantidad de vecinos. A continuación, se muestra un ejemplo de código fuente que realiza la computación de normales:
 
-#include <pcl/point_types.h>
-#include <pcl/features/normal_3d.h>
+.. code-block:: c
 
-{
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+   #include <pcl/point_types.h>
+   #include <pcl/features/normal_3d.h>
 
-  // Se lee o se crea una nube de puntos
-  ...
+   {
+     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
 
-  // Se instancia la clase de estimación de normales
-  pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
-  ne.setInputCloud (cloud);
+     // Se lee o se crea una nube de puntos
+     ...
 
-  //Se crea una instancia vacía de kd-tree y se pasa al objeto de estimación de normales.
+     // Se instancia la clase de estimación de normales
+     pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
+     ne.setInputCloud (cloud);
 
-  pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
-  ne.setSearchMethod (tree);
+     //Se crea una instancia vacía de kd-tree y se pasa al objeto de estimación de normales.
 
-  // Variable para normales de salida
-  pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
+     pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
+     ne.setSearchMethod (tree);
 
-  // Se establece el radio de salida en metros
-  ne.setRadiusSearch (0.03);
+     // Variable para normales de salida
+     pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
 
-  // El tamaño de las normales tiene que ser el mismo que el de los puntos en la nube de entrada
-  ne.compute (*cloud_normals);
+     // Se establece el radio de salida en metros
+     ne.setRadiusSearch (0.03);
 
-}   
+     // El tamaño de las normales tiene que ser el mismo que el de los puntos en la nube de entrada
+     ne.compute (*cloud_normals);
 
-Si se desea realizar la computación de las normales de algunos puntos, se debe especificar además la estructura de los índices y asignárselo a pcl::NormalEstimation::
+   }   
 
+Si se desea realizar la computación de las normales de algunos puntos, se debe especificar además la estructura de los índices y asignárselo a pcl::NormalEstimation:
 
-#include <pcl/point_types.h>
-#include <pcl/features/normal_3d.h>
+.. code-block:: c
 
-{
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+   #include <pcl/point_types.h>
+   #include <pcl/features/normal_3d.h>
 
-  // Se crea el conjunto de índices para ser empleado (10% del total de puntos)
-  std::vector<int> indices (floor (cloud->points.size () / 10));
-  for (size_t i = 0; indices.size (); ++i) indices[i] = i;
+   {
+     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
 
-  pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
-  ne.setInputCloud (cloud);
+     // Se crea el conjunto de índices para ser empleado (10% del total de puntos)
+     std::vector<int> indices (floor (cloud->points.size () / 10));
+     for (size_t i = 0; indices.size (); ++i) indices[i] = i;
 
-  // Se pasan los índices
-  boost::shared_ptr<std::vector<int> > indicesptr (new std::vector<int> (indices));
-  ne.setIndices (indicesptr);
+     pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;
+     ne.setInputCloud (cloud);
 
-  pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
-  ne.setSearchMethod (tree);
+     // Se pasan los índices
+     boost::shared_ptr<std::vector<int> > indicesptr (new std::vector<int> (indices));
+     ne.setIndices (indicesptr);
 
-  // Normales de salida
-  pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
+     pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ> ());
+     ne.setSearchMethod (tree);
 
-  ne.setRadiusSearch (0.03);
+     // Normales de salida
+     pcl::PointCloud<pcl::Normal>::Ptr cloud_normals (new pcl::PointCloud<pcl::Normal>);
 
-  ne.compute (*cloud_normals);
+     ne.setRadiusSearch (0.03);
 
-} 
+     ne.compute (*cloud_normals);
+
+   } 
 
 
 Filtrado de ruido de la nube

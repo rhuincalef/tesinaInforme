@@ -184,8 +184,8 @@ La fase de evaluación y optimización del modelo se lleva a cabo paralelamente 
 * Clustering: Información mutua(MI), score de homogeneidad, score de completitud.
 
 
-.. http://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-f-measure-metrics
 .. https://en.wikipedia.org/wiki/Precision_and_recall#Precision
+.. http://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-f-measure-metrics
 
 Con respecto a las métricas de modelos de clasificación, el accuracy es la proporción de las muestras para las que el modelo predice el resultado correcto, mientras que la tasa de error es la proporción para las que el modelo clasifica incorrectamente. Si *yi* es el valor del i-ésima muestra, *Yi* es el valor verdadero de la muestra, y *1 (yi = Yi)* simboliza la pertenencia de *yi* en *Yi*, entonces la fracción de predicciones correctas *nsamples* se define como:
 
@@ -225,11 +225,8 @@ Por otro lado, la matriz de confusión es una tabla que permite visualizar y eva
 
    Ejemplo de matriz de confusión.
 
-.. http://scikit-learn.org/stable/modules/model_evaluation.html#r2-score
-
 .. https://en.wikipedia.org/wiki/Coefficient_of_determination
-
-.. https://en.wikibooks.org/wiki/LaTeX/Mathematics#Formatting_mathematics_symbols
+.. http://scikit-learn.org/stable/modules/model_evaluation.html#r2-score
 
 Con respecto a la regresión, la métrica R^2 o r^2 también conocido como coeficiente de determinación, es la proporción de la varianza que existe entre los labels predecidos (variable dependiente) utilizando las muestras de entrada (variable independiente) y el verdadero valor de las mismas, brindando una medida de que tan precisamente las salidas son replicadas por el modelo, basadas en la proporción de la variación total de las salidas, lo que permite establecer que tan eficazmente las muestras futuras serán predecidas. El valor de esta métrica puede ser tanto positivo como negativo, por lo que si este es negativo implica que la capacidad del modelo de predicción es peor que la media de éstos, mientras que si es cero indica que no existe una relación entre los datos de entrada y los labels, por lo que el modelo predice siempre el label independientemente de los datos de entrada; Y finalmente, si este es igual a uno implica que el modelo es capaz de predecir exactamente toda la variabilidad en la variable dependiente (labels).
 El cálculo de R2 se realiza por medio de la siguiente fórmula, siendo :math:`{\hat{yi}}` el valor predecido de la muestra, *yi* el valor real de la muestra para *n* muestras:  
@@ -260,7 +257,6 @@ Cuanto más próximo a 1 es este valor, mejor es la capacidad de predicción del
 .. https://en.wikipedia.org/wiki/Errors_and_residuals
 .. https://en.wikipedia.org/wiki/Mean_squared_error
 .. https://en.wikipedia.org/wiki/Root-mean-square_deviation
-.. https://en.wikipedia.org/wiki/Errors_and_residuals
 
 El error medio cuadrado es una métrica de riesgo que representa el valor esperado del error (o pérdida) cuadrado, que consiste en calcular el promedio de los cuadrados de los errores, es decir, la diferencia entre los labels reales para un conjunto de variables y los valores predecidos para éste conjunto. Así, este método aplica la siguiente fórmula matemática donde  :math:`{\hat{Yi}}` es el valor predecido, *Yi* es el vector de valores observados y *n* es la cantidad de muestras de entrada para las que se realizaron las predicciones: 
 

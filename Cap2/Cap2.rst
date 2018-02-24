@@ -284,7 +284,9 @@ Cuando la cantidad de píxeles muestreados no es suficiente (undersampling) como
 
 |
 
-.. figure:: ../figs/Cap2/imagenpíxels.png
+.. .. figure:: ../figs/Cap2/imagenpíxels.png
+
+.. figure:: ../figs/Cap2/imagenPixels.png
    :scale: 40%
 
    Representación de un array de imagen de 10 x 10.
@@ -610,11 +612,9 @@ Este procedimiento es útil en imágenes que cuentan con histogramas bimodales, 
 
 Existen varias estrategias para la elección acerca de donde colocar el límite *T*: Si el histograma de imagen es bimodal, el límite se tiende a colocar entre medio de los modos de la imagen, como en la figura anterior. Sin embargo, esta aproximación tiene problemas si la imagen contiene múltiples objetos de un brillo promedio diferente en un fondo uniforme (histograma multimodal), excluyéndose algunos objetos. También es difícil asignar un límite si el histograma es plano, conteniendo imágenes complejas, con variaciones de gris significativas, detalles, iluminación no uniforme, etc.
 
-
 .. figure:: ../figs/Cap2/imagenMultimodal.png
-
-   (a) Histograma multimodal que señala la dificultad de seleccionar un límite. (b) Histograma plano, para el que la selección de un límite es difícil o imposible.
-
+   
+   (a)Histograma multimodal que señala la dificultad de seleccionar un límite. (b) Histograma plano, para el que la selección de un límite es difícil o imposible.
 
 Por otro lado, también se pueden emplear aproximaciones que usen un modelo estadístico sobre el histograma, con una función de distribución de probabilidad (pdf), donde se plantee la decisión de asignar 0 o 1 a cada píxel de forma estadística. De esta manera, se puede seleccionar la función de distribución que mejor se adapte a las ubicaciones de los modos del histograma (picos de intensidad en éste), el ancho de cada modo y la decisión acerca de donde termina un modo y comienza otro; Pudiendo aplicarse un modelo probabilístico, dependiendo de la forma de los modos, como por ejemplo, una pdf Gaussiana. Esta alternativa puede producir resultados aceptables con respecto a la colocación de límites, sin embargo, cualquier modelo probabilístico simple no tiene en cuenta factores importantes como la continuidad del fondo o de los objetos, apariencia visual, e iluminación no uniforme, por lo que un modelo estadístico no produciría resultados visuales tan eficientes, como los que generaría una persona manualmente.
 
