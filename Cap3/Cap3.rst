@@ -44,7 +44,7 @@ Existen diferentes métodos para el escaneo del objeto por medio de lasers, entr
 
 
 .. figure:: ../figs/Cap3/robot_lidar.jpg
-   :scale: 50%
+   :scale: 20%
    
    Robot móvil con un láser Lidar SICK Laser Rangefield.
 
@@ -52,7 +52,7 @@ Por otro lado, la cámara ToF no escanea individualmente cada uno de los puntos 
 
 
 .. figure:: ../figs/Cap3/sensor_kinect_v2_cam_tof.png
-   :scale: 50%
+   :scale: 20%
 
    Kinect V2 con cámara ToF desarrollada por Microsoft. 
 
@@ -67,7 +67,7 @@ Los lásers de diferencia de fase (Phase Shift) funcionan emitiendo un haz de lu
 
 
 .. figure:: ../figs/Cap3/diferencia_fase_sinusoidal.png
-   :scale: 50%
+   :scale: 25%
    
    Representación gráfica de la diferencia de fase entre dos ondas sinusoidales.
 
@@ -76,7 +76,7 @@ Este proceso es similar a la técnica de tiempo de vuelo, excepto que la fase de
 
 
 .. figure:: ../figs/Cap3/ejemplo_phase_shift.jpg
-   :scale: 60%
+   :scale: 40%
    
    Comparación gráfica de laser ToF y Phase Shift 
 
@@ -89,7 +89,7 @@ Los escaners 3D de triangulación, se componen por un láser y una cámara que c
 .. .. figure:: ../figs/Cap3/ejemplo_triangulacion.jpg
 
 .. figure:: ../figs/Cap3/ejemplo_triangulacion_2.png
-   :scale: 60%
+   :scale: 35%
    
    Esquema gráfico de scanners de triangulación.
 
@@ -99,6 +99,7 @@ Los escaners 3D de triangulación, se componen por un láser y una cámara que c
 Los sensores de luz estructurada 3D (Structured Light 3D), proyectan un patrón de luz sobre un objeto o superficie, pudiendo ser éste de unidimensional (una línea de luz) o bidimensional (una grilla o patrón de lineas). Un sensor que se encuentra desplazado del emisor de luz, se emplea para captar la deformación del rayo original y a partir de esta calcular la distancia. Este tipo de dispositivos se caracterizan por ser veloces, ya que en lugar de escanear un punto a la vez, los sensores escanean múltiples puntos en el campo de visión con una sola emisión, lo que elimina la posibilidad de distorsión por movimiento. La resolución y velocidad de estos sensores es similar a la de las cámaras VGA, y su precisión es similar a las ToF (aproximadamente 1 cm), contando con un alcance máximo entre 3 m y 6 m, sin embargo estos dispositivos tienen dificultades para captar objetos pequeños menores a 1 cm.   
 
 .. figure:: ../figs/Cap3/ejemplo_luz_estructurada.jpg
+   :scale: 50%
 
    Ejemplo de sensor ASUS Xion Pro con luz estructurada.
 
@@ -113,7 +114,7 @@ Por otro lado, la técnica de escáner sin contacto pasivos, no emiten ningún t
 * Escáner estereoscópicos (Stereoscopic Scanners): Estos dispositivos emplean dos cámaras de video en posiciones diferentes (desplazadas algunos centímetros) enfocadas hacia el mismo objeto, que captarán imágenes distintas del mismo y, por medio del análisis de estas diferencias, se puede calcular la distancia de cada punto punto en las imágenes. Un ejemplo de este tipo de dispositivos son las cámaras estéreo, que cuentan con la ventaja de ser económicas, sin embargo requieren una perfecta calibración de ambas cámaras de video y son sensibles a las malas condiciones de iluminación. 
  
 .. figure:: ../figs/Cap3/ejemplo_de_camara_estereo.png
-   :scale: 60%
+   :scale: 25%
 
    Cámara estéreo
 
@@ -124,7 +125,7 @@ Por otro lado, la técnica de escáner sin contacto pasivos, no emiten ningún t
 Con respecto a los escáner de contacto, un ejemplo de su funcionamiento son las cámaras de medidas de coordenadas(Coordinate Measuring Machine) empleadas para la medición de las características geométricas de partes o productos industriales ensamblados. Este dispositivo se compone de tres ejes X,Y,Z ortogonales entre si, donde cada uno mantiene una escala para registrar las coordenadas del elemento que se analiza. Así, este tipo de escáner desplaza uno de los ejes (ya sea automáticamente o manualmente) mientras que el resto se mantiene fijo, y graba cada una de las coordenadas del objeto.  
 
 .. figure:: ../figs/Cap3/coordinate_measure_machine.png
-   :scale: 50%
+   :scale: 30%
 
    Ejemplo de Coordinate Measure Machine.
 
@@ -186,7 +187,7 @@ Así, en cada frame el emisor IR emite un patrón de puntos con distintas intens
 
 
 .. figure:: ../figs/Cap3/funcionamineto_stream_profundidad.png
-   :scale: 60%
+   :scale: 30%
 
    Funcionamiento del stream de profundidad
 
@@ -204,6 +205,7 @@ Luego, el chip de procesamiento interno del sensor analiza las diferencias entre
 .. .. figure:: ../figs/Cap3/esquema_general_kinect.gif
 
 .. figure:: ../figs/Cap3/esquema_general_kinect_v2.png
+   :scale: 30%
 
    Esquema general de funcionamiento del Kinect V1
 
@@ -211,7 +213,7 @@ Aunque la cámara de video RGB admite una resolución mayor a la cámara IR, és
 
 
 .. figure:: ../figs/Cap3/sensorKinectEstructura.png
-   :scale: 60%
+   :scale: 50%
 
    Diagrama externo del sensor Kinect V1
 
@@ -233,8 +235,9 @@ Empleando la información de profundidad, el dispositivo ofrece la posibilidad d
 El acelerómetro del dispositivo se emplea para conocer la orientación del sensor con respecto a la gravedad, y se encuentra ubicado en el centro del dispositivo, de manera que el eje Z apunta a la dirección en la que el sensor apunta.
 
 .. figure:: ../figs/Cap3/acelerometro_sensor.png
- 
-    Ejes del dispositivo
+   :scale: 100%
+
+   Ejes del dispositivo
 
 .. Human Interaces Guidelines v 1.8.0 -->
 
@@ -300,7 +303,7 @@ De esta manera, la arquitectura de esta librería se compone de los siguientes e
    
 
 .. figure:: ../figs/Cap3/arquitecturaSDK.png
-   :scale: 50%
+   :scale: 70%
 
    Arquitectura Kinect For Windows SDK
 
@@ -552,7 +555,9 @@ La representación en PCL de las nubes de puntos en memoria, se realiza por medi
 Lectura y escritura de nubes de puntos
 ++++++++++++++++++++++++++++++++++++++
 
-Con respecto a la lectura y escritura de nubes de puntos, éstas se realizan por medio del módulo *pcd_io* especificando el tipo de punto que se leerá/escribirá de una nube determinada. Para la lectura de nubes de puntos, se deben importar los tipos de puntos y el módulo io, luego definir una nube de puntos para el tipo de punto e invocar al método loadPCDFile() que aceptará una cadena con el path completo de la nube como primer argumento y la nube definida anteriormente como parámetro de salida::
+Con respecto a la lectura y escritura de nubes de puntos, éstas se realizan por medio del módulo *pcd_io* especificando el tipo de punto que se leerá/escribirá de una nube determinada. Para la lectura de nubes de puntos, se deben importar los tipos de puntos y el módulo io, luego definir una nube de puntos para el tipo de punto e invocar al método loadPCDFile() que aceptará una cadena con el path completo de la nube como primer argumento y la nube definida anteriormente como parámetro de salida:
+
+.. code-block:: c
 
    #include <pcl/io/pcd_io.h>
 
@@ -567,7 +572,9 @@ Con respecto a la lectura y escritura de nubes de puntos, éstas se realizan por
    }
    ...
 
-Con respecto a la escritura de nubes, esta consiste en definir la nube de salida e invocar al método de guardado que toma el nombre del archivo PCD de salida y la nube con el contenido previamente leído, siendo savePCDFileASCII() para almacenar ésta en formato ascii o savePCDFileBinary() para modo binario::
+Con respecto a la escritura de nubes, esta consiste en definir la nube de salida e invocar al método de guardado que toma el nombre del archivo PCD de salida y la nube con el contenido previamente leído, siendo savePCDFileASCII() para almacenar ésta en formato ascii o savePCDFileBinary() para modo binario:
+
+.. code-block:: c
 
    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 
@@ -584,7 +591,7 @@ Visualización de nubes de puntos
 PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualización de nubes de puntos, que cuenta con la capacidad de abrir varias nubes simultáneamente superponiéndolas de manera ordenada y obtener y visualizar características relevantes ésta, tales como mostrar los ejes Cartesianos (X,Y,Z), obtención manual de coordenadas a partir de una selección, rotación de nube de puntos, modificación de los puntos que representa ésta, visualización de curvaturas principales y de normales. Esta herramienta emplea la clase pcl::visualization::PCLVisualizer del módulo *visualization* y puede ser utilizada para implementar un visualizador propio. Adicionalmente, se puede emplear la clase CloudViewer para crear un visualizador con menos funciones, pero más sencillo de configurar y que proporciona una ventana y herramientas de zoom y rotación.
 
 .. figure:: ../figs/Cap3/ejemplo_pcl_viewer_1.png
-   :scale: 50%
+   :scale: 40%
 
    Ejemplo de visualizador de PCL
 
@@ -604,7 +611,7 @@ La bounding box mínima (MBB) para el conjunto de puntos que componen un objeto,
 
 .. .. figure:: ../figs/Cap3/ejemplo_bounding_box.png
 .. figure:: ../figs/Cap3/ejemplo_bounding_box_2.png
-   :scale: 100%
+   :scale: 70%
 
    Ejemplo de conjunto de puntos de un objeto (P0-P4) con su convex hull y el bounding box asociado.
 
@@ -617,7 +624,9 @@ Existen varios tipos de Bounding Box dependiendo del sistema de coordenadas que 
 
    AABB vs OBB
 
-En PCL este comportamiento se implementa en la clase pcl::MomentOfInertiaEstimation, que a partir de una nube de entrada permite obtener el centro del objeto y los puntos máximos y mínimos en los ejes X,Y,Z de las boxes AABB y OBB. A continuación se muestra un ejemplo de código donde se obtienen las respectivas boxes::
+En PCL este comportamiento se implementa en la clase pcl::MomentOfInertiaEstimation, que a partir de una nube de entrada permite obtener el centro del objeto y los puntos máximos y mínimos en los ejes X,Y,Z de las boxes AABB y OBB. A continuación se muestra un ejemplo de código donde se obtienen las respectivas boxes:
+
+.. code-block:: c
 
    ...
    // Se instancia el objeto y se envia la nube 'cloud' de entrada inicializada previamente 
@@ -654,8 +663,9 @@ En PCL este comportamiento se implementa en la clase pcl::MomentOfInertiaEstimat
 Computación de índices
 ++++++++++++++++++++++
 
-Algunos de los algoritmos de PCL retornan índices, éstos contienen la posición del punto dentro del vector de puntos que mantiene el objeto PointCloud, sin incluir la información completa de cada punto. Esto permite computar los índices de puntos de interés (o su complemento) que sean relevantes para una operación determinada y, posteriormente, copiarlos a otra nube, reduciendo la cantidad de puntos a procesar. De esta manera, para extraer los índices se emplea la clase pcl::ExtractIndices, que a partir de algún algoritmo aplicado a una PointCloud que proporciona los índices de los puntos filtrados (en una estructura pcl::PointIndices) y la nube de puntos original, permite el filtrado de la información completa de los puntos. Por ejemplo, la segmentación permite obtener los indices de los puntos pertenecientes a un cluster segmentado. A nivel de código fuente la estructura general es la siguiente::
+Algunos de los algoritmos de PCL retornan índices, éstos contienen la posición del punto dentro del vector de puntos que mantiene el objeto PointCloud, sin incluir la información completa de cada punto. Esto permite computar los índices de puntos de interés (o su complemento) que sean relevantes para una operación determinada y, posteriormente, copiarlos a otra nube, reduciendo la cantidad de puntos a procesar. De esta manera, para extraer los índices se emplea la clase pcl::ExtractIndices, que a partir de algún algoritmo aplicado a una PointCloud que proporciona los índices de los puntos filtrados (en una estructura pcl::PointIndices) y la nube de puntos original, permite el filtrado de la información completa de los puntos. Por ejemplo, la segmentación permite obtener los indices de los puntos pertenecientes a un cluster segmentado. A nivel de código fuente la estructura general es la siguiente:
 
+.. code-block:: c
    
    // Objeto para almacenar la nube procesada anteriormente
    pcl::PointCloud<pcl::PointXYZ>::Ptr cloudProcesada(new pcl::PointCloud<pcl::PointXYZ>);
@@ -693,7 +703,9 @@ nan nan nan 10135463
 nan nan nan 10398635
 
 
-A continuación se representan las instrucciones básicas para realizar el filtrado de la nube de puntos de entrada::
+A continuación se representan las instrucciones básicas para realizar el filtrado de la nube de puntos de entrada:
+
+.. code-block:: c
 
    //Definición de la nube de puntos
    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
@@ -705,7 +717,6 @@ A continuación se representan las instrucciones básicas para realizar el filtr
    //Definición del objeto mapping y aplicación del método para remover NaN
    std::vector<int> mapping;
    pcl::removeNaNFromPointCloud(*cloud, *cloud, mapping);
-
 
 
 Descomposición de nubes: KD-Tree y Octree
@@ -729,7 +740,9 @@ La descomposición de nubes de puntos consiste en organizar la nube de puntos en
 
    Ejemplo de división en un espacio 2D, donde los puntos iniciales se encuentran marcados en negro,  las divisiónes en X en rojo y las divisiones en Y en azul. 
 
-En PCL la clase pcl::KdTree implementa este comportamiento para los distintos tipos de puntos y permite realizar la búsqueda por cantidad de vecinos más cercanos (pcl::KdTree::nearestKSearch()) o por radio de búsqueda (pcl::KdTree::radiusSearch()). A continuación, se muestra una porción de código donde se realiza una búsqueda por cantidad de vecinos cercanos a un punto dado::
+En PCL la clase pcl::KdTree implementa este comportamiento para los distintos tipos de puntos y permite realizar la búsqueda por cantidad de vecinos más cercanos (pcl::KdTree::nearestKSearch()) o por radio de búsqueda (pcl::KdTree::radiusSearch()). A continuación, se muestra una porción de código donde se realiza una búsqueda por cantidad de vecinos cercanos a un punto dado:
+
+.. code-block:: c
 
    // Objeto que almacena la pointcloud
    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
@@ -796,7 +809,7 @@ Para diferenciar un punto de otro en una nube de puntos, no basta únicamente co
 .. .. figure:: ../figs/Cap3/ejemplo_vector_normal.gif
 
 .. figure:: ../figs/Cap3/ejemplo_vector_normal_v2.png
-   :scale: 50%
+   :scale: 70%
 
    Ejemplo de vector normal *n*, perpendicular a un punto.
 
@@ -808,7 +821,7 @@ Una vez realizado este cálculo y teniendo los vectores de cada punto, aún es n
 
 
 .. figure:: ../figs/Cap3/equivalencia_orientacion_normales.png
-   :scale: 50%
+   :scale: 85%
 
    Fórmula de equivalencia normales
 
@@ -893,7 +906,9 @@ Debido a que una captura puede contener valores espurios, debido a baja precisi�
 * Outlier Removal
 
 
-El algoritmo de Passthrough Filter consiste en remover de la nube aquellos elementos que se encuentran fuera de un rango especificado por el usuario, por lo que este método únicamente requiere especificar el eje de filtrado y el rango sobre ese eje (mínimo y máximo). Este método se realiza por la clase pcl::PassThrough, que requiere el tipo de punto para el filtrado. A continuación, se muestra el proceso de filtrado para una nube existente::
+El algoritmo de Passthrough Filter consiste en remover de la nube aquellos elementos que se encuentran fuera de un rango especificado por el usuario, por lo que este método únicamente requiere especificar el eje de filtrado y el rango sobre ese eje (mínimo y máximo). Este método se realiza por la clase pcl::PassThrough, que requiere el tipo de punto para el filtrado. A continuación, se muestra el proceso de filtrado para una nube existente:
+
+.. code-block:: c
 
    // Se define la nube cloud para el tipo de punto pcl::PointXYZ 
    ...
@@ -907,14 +922,15 @@ El algoritmo de Passthrough Filter consiste en remover de la nube aquellos eleme
    filter.filter(*filteredCloud); 
 
 .. figure:: ../figs/Cap3/ejemplo_passthrough.png
-   :scale: 50%
+   :scale: 100%
 
    Ejemplo de nube original a la izquierda y nube filtrada con passthrough en eje Z.
 
 .. http://pointclouds.org/documentation/tutorials/remove_outliers.php
 
-El algoritmo Conditional Removal consiste en crear una o mas condiciones que verifican los valores de los atributos de un punto (tales como las coordenadas sobre un eje) y mantener solo aquellos puntos que cumplen ésta. Para ello, PCL representa las condiciones por clases siendo las condiciones disponibles AND (pcl::ConditionAnd) y OR (pcl::ConditionOr), que por medio del método addComparison() permiten especificar el tipo atributo, el operador de comparación (<,<=,==,>,>=) y el valor de la condición. Finalmente para realizar el filtrado, se crea una instancia de pcl::ConditionalRemoval que recibe las condiciones especificadas y genera la nube de salida. En el siguiente ejemplo se realiza el mismo filtrado que en Passthrough Filter empleando el Conditional Removal::
+El algoritmo Conditional Removal consiste en crear una o mas condiciones que verifican los valores de los atributos de un punto (tales como las coordenadas sobre un eje) y mantener solo aquellos puntos que cumplen ésta. Para ello, PCL representa las condiciones por clases siendo las condiciones disponibles AND (pcl::ConditionAnd) y OR (pcl::ConditionOr), que por medio del método addComparison() permiten especificar el tipo atributo, el operador de comparación (<,<=,==,>,>=) y el valor de la condición. Finalmente para realizar el filtrado, se crea una instancia de pcl::ConditionalRemoval que recibe las condiciones especificadas y genera la nube de salida. En el siguiente ejemplo se realiza el mismo filtrado que en Passthrough Filter empleando el Conditional Removal:
 
+.. code-block:: c
 
    pcl::ConditionAnd<pcl::PointXYZ>::Ptr condition(new pcl::ConditionAnd<pcl::PointXYZ>);
 
@@ -938,7 +954,9 @@ Por otro lado, el Statistical Outlier Removal itera cada punto en la nube y calc
 Resampling de la nube: Downsampling y Upsampling
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
-Resampling consiste en modificar la cantidad de puntos en una nube, ya sea aumentando la cantidad de puntos, reconstruyendo la superficie original para que sean suficientes para el análisis (upsampling) o, disminuyéndola sin comprometer significativamente la precisión para que el análisis de la misma sea más eficiente (downsampling). El downsampling en PCL se puede realizar el método de Voxelización o de Uniform Sampling. El método de Voxelización consiste en emplear un conjunto de voxels organizados en una estructura Octree para computar el punto medio del voxel, es decir, aquel punto que es un promedio de las coordenadas de todos los puntos que pertenecen al Voxel Grid. De esta manera, prevalecen solamente aquellos puntos principales que son representativos para cada voxel. PCL implementa este comportamiento por medio de la clase pcl::VoxelGrid, que permite especificar el tamaño de cada voxel (en cm) para cada una de las dimensiones X,Y,Z. En la siguiente porción de código se muestra un ejemplo de voxelización::
+Resampling consiste en modificar la cantidad de puntos en una nube, ya sea aumentando la cantidad de puntos, reconstruyendo la superficie original para que sean suficientes para el análisis (upsampling) o, disminuyéndola sin comprometer significativamente la precisión para que el análisis de la misma sea más eficiente (downsampling). El downsampling en PCL se puede realizar el método de Voxelización o de Uniform Sampling. El método de Voxelización consiste en emplear un conjunto de voxels organizados en una estructura Octree para computar el punto medio del voxel, es decir, aquel punto que es un promedio de las coordenadas de todos los puntos que pertenecen al Voxel Grid. De esta manera, prevalecen solamente aquellos puntos principales que son representativos para cada voxel. PCL implementa este comportamiento por medio de la clase pcl::VoxelGrid, que permite especificar el tamaño de cada voxel (en cm) para cada una de las dimensiones X,Y,Z. En la siguiente porción de código se muestra un ejemplo de voxelización:
+
+.. code-block:: c
 
    ...
    pcl::VoxelGrid<pcl::PointXYZ> filter;
@@ -949,7 +967,9 @@ Resampling consiste en modificar la cantidad de puntos en una nube, ya sea aumen
    filter.filter(*filteredCloud);
    ...
 
-El método de Uniform Sampling realiza la misma tarea, sin embargo, retorna los índices de los puntos filtrados en lugar del punto y se emplea principalmente como parte del proceso de generación de descriptores::
+El método de Uniform Sampling realiza la misma tarea, sin embargo, retorna los índices de los puntos filtrados en lugar del punto y se emplea principalmente como parte del proceso de generación de descriptores:
+
+.. code-block:: c
 
    pcl::UniformSampling<pcl::PointXYZ> filter;
    filter.setInputCloud(cloud);
@@ -966,8 +986,9 @@ El upsampling en PCL se realiza por medio del método Moving Least Squres(MLS), 
 
 
 .. figure:: ../figs/Cap3/formula_MLS_upsampling.png
+   :scale: 40%
 
-   Fórmula para el calculo de MLS  
+   Fórmula para el cálculo de MLS  
 
 
 De esta forma, MLS obtiene una función final a partir de un conjunto de funciones locales calculadas en base a los datos de muestra, cuyo valor de precisión es controlado por medio de los pesos :math:`{\theta}`. El método de MLS se implementa en la clase pcl::MovingLeastSquares, que requiere la nube de entrada, un Kd-Tree para estructurar la nube, y un radio de upsampling para generar los nuevos puntos, determinando este valor la cantidad de puntos producidos (si es demasiado grande se generarán menos puntos). 
@@ -999,7 +1020,7 @@ Region Growing Segmentation, realiza el agrupamiento en clusters en base a una v
 
 El algoritmo Min-Cut o corte mínimo, se emplea para segmentar una nube de puntos en dos clusters, donde uno pertenece a un objeto cuyas coordenadas se conocen (foreground) y el otro perteneciente a puntos que no forman parte del objeto y se consideran parte del fondo de la escena donde se encuentra posicionado éste (background). Para realizar ésto, el algoritmo genera un grafo en base a la nube de puntos donde cada punto se representa como un nodo del grafo, y adicionalmente agrega al grafo dos vértices globales más denominados sink y source. Los nodos source y sink se encuentran interconectados por medio de aristas a todos los demás puntos de la nube y además cada nodo que representa un punto, se conecta por medio de aristas a sus puntos vecinos más cercanos. Así, el grafo producido por Min-Cut se genera uniendo los nodos que representan puntos de la nube con sus k-vecinos más cercanos (definiéndose *k* por el usuario) y, con los nodos globales sink y source con aristas que contienen un peso, que es calculado de manera diferente según los tipos de nodos que éstas unen. La computación de los pesos de las aristas que conectan distintos tipos de nodos se realiza de la siguiente manera:
 
-*  Primero, se asignan pesos a las aristas que interconectan los nodos que representan los puntos de la nube de puntos (denominados costo de suavidad), cuyo valor depende de la distancia entre éstos y se computa por medio de la fórmula: :math:` smoothCost = e^((-distanciaEntrePtos/\sigma){\gamma})`, donde :math:`{\sigma}` es el espaciado entre los puntos de la nube que depende de la resolución y es establecido por el usuario. De esta forma, mayor será la probabilidad de corte de un borde, cuanto mayor sea la distancia entre puntos en la nube.
+*  Primero, se asignan pesos a las aristas que interconectan los nodos que representan los puntos de la nube de puntos (denominados costo de suavidad), cuyo valor depende de la distancia entre éstos y se computa por medio de la fórmula  :math:`{smoothCost = e^{((-distanciaEntrePtos / \sigma ) * \gamma )}}` , donde :math:`{\sigma}` es el espaciado entre los puntos de la nube que depende de la resolución y es establecido por el usuario. De esta forma, mayor será la probabilidad de corte de un borde, cuanto mayor sea la distancia entre puntos en la nube.
 *  Luego se establecen las penalidades de foreground y background, donde la penalidad de foreground es el peso que se asigna para las aristas que unen cada punto de la nube con el vértice source (valor definido por el usuario), y la penalidad de background son los pesos de las aristas que unen los puntos de la nube con el vértice sink. Ésta última es un valor calculado en base a la distancia horizontal hacia la ubicación del objeto, por medio de la siguiente fórmula: :math:`{penalidadBackground = distanciaAlCentro/radio}`, donde la distancia al centro del objeto en el plano horizontal es calculada por medio de la ecuación: :math:`{distanciaAlCentro = \sqrt{ (X - CentroX)^2 + (Y - CentroY)^2} }`, donde *X* , *Y* son las coordenadas del punto,  mientras que el radio es un parámetro especificado por el usuario y define el rango fuera del cual, no existen puntos que pertenecezcan al objeto que se esta segmentado (o foreground).
 
 Finalmente, luego de configurar el grafo se realiza la búsqueda del mínimo corte recorriendo los nodos del grafo, considerando tanto las penalidades de background/foreground como el valor de suavidad, al momento de realizar un corte mínimo. Así, cuando el corte mínimo se computa, se logra que los puntos vecinos sean asignados al mismo segmento (empleando el valor de suavidad) y que aquellos puntos que se encuentran débilmente conectados al objeto o, que se encuentran dentro del rango definido por el radio de background, sean asignados al background y no al objeto a segmentar.  

@@ -16,7 +16,7 @@ La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecan
 
 
 .. figure:: ../figs/Cap4/Diferencia_AI_ML_DL.jpg
-   :scale: 60%
+   :scale: 100%
 
    Comparación de AI, ML y Deep Learning
 
@@ -28,7 +28,7 @@ La Inteligencia Artificial(IA) es una disciplina que abarca todos aquellos mecan
 De esta forma, ML se diferencia del paradigma de programación clásico donde un equipo de desarrollo programa instrucciones que procesan datos y se generan salidas en base a estructuras predefinidas, en que para esta metodología solamente se ingresan datos (y opcionalmente sus respuestas),y se obtienen reglas de salida que pueden ser aplicadas a nuevos datos para realizar predicciones. Por lo tanto en ML, se considera que dado un programa cuyo rendimiento en la predicción sobre un conjunto de datos (o dataset)  se encuentra medido a través de alguna métrica (que indica que tan precisas son sus predicciones sobre ese conjunto de datos), éste aprende de la experiencia si dicho  rendimiento mejora al adquirir más experiencia.
 
 .. figure:: ../figs/Cap4/ML_paradigma.jpg
-   :scale: 60%
+   :scale: 100%
 
    Paradigma de ML vs paradigma de programación tradicional.
 
@@ -147,8 +147,6 @@ Durante la fase de pre-procesamiento, si es que los datos del dataset no se estr
    Ejemplo de separación de features donde se cuenta con información de clientes de una compañía de telefonía, y como target se especifica el feature "churn" que indica que si este cliente se ha dado de baja del servicio pago ofrecido por la compañía o, si ha cambiado de servicio. 
 
 
-
-
 Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento donde se exponen los algoritmos de ML a los datos pre-procesados y se ajustan las configuraciones del modelo para controlar el comportamiento de éste ante los datos (hyperparámetros del modelo). Estos hyperparámetros no son ajustados por el modelo empleando los datos de entrada sino que deben ser especificados por el desarrollador, ya que en algunos casos los valores de estos pueden ser difíciles de determinar de manera automática. Por otro lado, debido a que el interés de generar un modelo radica en observar la capacidad de predicción sobre datos no solamente de entrenamiento sino también aquellos que no ha recibido anteriormente, ya que esto determinará su rendimiento en un entorno real, durante esta fase el dataset completo se suele subdividir en datos de entrenamiento (entre 70% y 80% del total de muestras) y datos de testing (30%-40% del total de las muestras). 
 
 .. https://machinelearningmastery.com/overfitting-and-underfitting-with-machine-learning-algorithms/
@@ -157,12 +155,12 @@ Una vez pre-procesados los datos, se lleva a cabo la etapa de entrenamiento dond
 Existen distintos tipos de métodos de entrenamiento según el objetivo perseguido con la generación del modelo, entre los que se distinguen tres clases principales: Aprendizaje supervisado, aprendizaje no supervisado y aprendizaje por refuerzo. El aprendizaje supervisado, consiste en emplear los datos de entrada y los labels (o clases) asociados a éstos para detectar relaciones entre los datos y sus resultados y predecir nuevos valores en base a éstos. Los modelos producidos por este tipo de método se subdividen en modelos de clasificación y de predicción, siendo los modelos de clasificación aquellos donde se asigna un dato de entrada a una clase predefinida, tales como los detectores de Spam que clasifican cada e-mail en la categoría (Spam o No Spam), o los reconocedores de dígitos manuscritos que asignan a un nuevo valor a una clase entre 0 y 9. Mientras que, los modelos de regresión dado un dato de entrada generan un valor numérico continuo, como por ejemplo el valor del dólar en un modelo financiero.
 
 .. figure:: ../figs/Cap4/ejemplo_supervisado_clasificacion.png
-   :scale: 60%
+   :scale: 70%
 
    Representación gráfica de modelo clasificador
 
 .. figure:: ../figs/Cap4/ejemplo_supervisado_regresion.png
-   :scale: 60%
+   :scale: 70%
 
    Representación gráfica de modelo regresor
 
@@ -190,7 +188,7 @@ La fase de evaluación y optimización del modelo se lleva a cabo paralelamente 
 Con respecto a las métricas de modelos de clasificación, el accuracy es la proporción de las muestras para las que el modelo predice el resultado correcto, mientras que la tasa de error es la proporción para las que el modelo clasifica incorrectamente. Si *yi* es el valor del i-ésima muestra, *Yi* es el valor verdadero de la muestra, y *1 (yi = Yi)* simboliza la pertenencia de *yi* en *Yi*, entonces la fracción de predicciones correctas *nsamples* se define como:
 
 .. figure:: ../figs/Cap4/formula_accuracy.png
-   :scale: 60%
+   :scale: 90%
 
    Fórmula para el cálculo del Accuracy
 
@@ -221,7 +219,7 @@ Por otro lado, la matriz de confusión es una tabla que permite visualizar y eva
 
 
 .. figure:: ../figs/Cap4/ejemplo_matriz_confusion.png
-   :scale: 60%
+   :scale: 70%
 
    Ejemplo de matriz de confusión.
 
@@ -233,22 +231,22 @@ El cálculo de R2 se realiza por medio de la siguiente fórmula, siendo :math:`{
 
 
 .. figure:: ../figs/Cap4/formula_R2.png
-   :scale: 60%
+   :scale: 100%
 
    Fórmula de R2
 
 donde:
 
 .. figure:: ../figs/Cap4/formula_y_medio_r2_score.png
-   :scale: 60%
+   :scale: 100%
 
-   Fórmula de cálculo de :math:`{\bar{y}}`(y-medio)
+   Fórmula de cálculo de :math:`{\bar{y}}`
 
 
 La variación explicada mide la proporción en la que un modelo de regresión representa la dispersión (variación) de un conjunto de datos, es decir, entre las predicciones y los valores reales asociados a las muestras. Este score se calcula por medio de la siguiente fórmula, donde *y* es el label asociado a una muestra, :math:`{\hat{y}}` es la salida predecida para ésta y *Var* es la varianza entre ambas variables:
 
 .. figure:: ../figs/Cap4/formula_explained_variance_r2.png
-   :scale: 60%
+   :scale: 80%
 
    Fórmula para el cálculo de la variación explicada
  
@@ -261,7 +259,7 @@ Cuanto más próximo a 1 es este valor, mejor es la capacidad de predicción del
 El error medio cuadrado es una métrica de riesgo que representa el valor esperado del error (o pérdida) cuadrado, que consiste en calcular el promedio de los cuadrados de los errores, es decir, la diferencia entre los labels reales para un conjunto de variables y los valores predecidos para éste conjunto. Así, este método aplica la siguiente fórmula matemática donde  :math:`{\hat{Yi}}` es el valor predecido, *Yi* es el vector de valores observados y *n* es la cantidad de muestras de entrada para las que se realizaron las predicciones: 
 
 .. figure:: ../figs/Cap4/formula_mse_regresion.png
-   :scale: 60%
+   :scale: 50%
 
    Fórmula de Mean Squared Error
 
@@ -275,7 +273,7 @@ Si al resultado obtenido de aplicar esta fórmula, se le aplica la raíz cuadrad
 Por otro lado, con respecto a clustering la métrica de información mutua (Mutual Information, MI) es una medida empleada para comparar la similitud entre dos clases (o labels) para el mismo conjunto de datos. Así, para utilizar esta métrica en un modelo de clustering, se requiere disponer de las clases verdaderas a la que pertenezcan los datos empleados en el entrenamiento del modelo, sin embargo este valor es invariable a los valores absolutos de los labels y a las permutaciones entre de clases. Cuanto más cercano a cero sea este valor, indicará que las asignaciones de clases son independientes y no concuerdan, mientras que cuanto más cercano a uno se observará una mejor concordancia entre asignaciones. Este valor se computa por medio de la siguiente fórmula, donde *|Ui|* es el número de muestras en el cluster *U* y *|Vj|* es el número de muestras en el cluster *V*:
 
 .. figure:: ../figs/Cap4/formula_mutual_information_clustering.png
-   :scale: 60%
+   :scale: 70%
 
    Fórmula para el cálculo de información mutua entre clusters U y V.
 
@@ -285,23 +283,23 @@ El score de homogeneidad requiere al igual que la métrica anterior, el conocimi
 
 
 .. figure:: ../figs/Cap4/formula_homogeneidad_clustering.png
-   :scale: 60%
+   :scale: 70%
 
    Ejemplo de fórmula de homogeneidad
 
 
 .. figure:: ../figs/Cap4/formula_completitud_clustering.png
-   :scale: 60%
+   :scale: 70%
 
    Ejemplo de fórmula de completitud
 
 .. figure:: ../figs/Cap4/formula_entropia_condicional_clases_clustering.png
-   :scale: 60%
+   :scale: 70%
 
    Ejemplo de fórmula de entropía condicional dadas las asignaciones de las clases
 
 .. figure:: ../figs/Cap4/formula_entropia_clases.png
-   :scale: 60%
+   :scale: 70%
 
    Ejemplo de fórmula de entropía de las clases
 
@@ -313,7 +311,7 @@ Finalmente, durante la fase de validación se procede a analizar y mejorar el ni
   
 
 .. figure:: ../figs/Cap4/plot_underfitting_overfitting_001.png
-   :scale: 60%
+   :scale: 80%
 
    En este ejemplo, se muestra la función de tres modelos polinómicos de diferente grado que intentan aproximar parte de la función coseno, representándose éstos por una línea azul, la función real por una línea amarilla y las muestras producidas por puntos azules. En el diagrama de la izquierda, se observa que el modelo (polinomio grado 1) sufre de underfitting, ya que no puede ajustarse a los datos de entrenamiento. En el diagrama de la derecha, se puede observar que el modelo (polinomio de grado 15) sufre de overfitting, ya que aprende cada uno de los datos de prueba incluyendo el ruido y perdiendo la similitud con la función coseno real. En la gráfica del centro, se puede observar que el modelo se ajusta de manera casi perfecta al de la función coseno real, y se ajusta a aquellos datos que la representan, ignorando aquellas muestras que generan ruido.   
 
@@ -361,7 +359,7 @@ De esta manera, en esta fase se emplean distintos métodos para evaluar la capac
 * Curva ROC: Receiver Operating Characteristic curve o ROC, es una representación gráfica que muestra la eficiencia de uno o varios métodos de clasificación, representando en el eje Y la tasa de verdaderos positivos (TP) y en el eje X la tasa de falsos positivos(FP). De esta manera, empleando los valores proporcionados por distintas matrices de confusión, se puede comparar la eficiencia de clasificación donde cuanto más pronunciada sea la curva hacia la esquina superior izquierda del diagrama, mayor será la cantidad de muestras clasificadas correctamente. Mientras que, si la curva del clasificador se encuentra por debajo de la línea diagonal que divide la esquina inferior izquierda y superior derecha, significará que los resultados proporcionados por éste son peores que un valor aleatorio. Adicionalmente, extrayendo características de la curva se puede comparar el rendimiento del clasificador de manera numérica, uno de los valores empleados es el área de bajo de la curva (Area Under the ROC Curve,AUC) cuyo valor se encuentra en el rango 0-1, mejorando la eficiencia de clasificación cuanto más cercano a 1 es esta métrica.  
 
 .. figure:: ../figs/Cap4/curva_roc.png
-   :scale: 70%
+   :scale: 60%
 
    Ejemplo de curva ROC
 
@@ -417,7 +415,7 @@ La construcción del árbol se puede realizar por medio de distintos algoritmos,
 Este proceso es un método de búsqueda ambicioso en el cual el algoritmo nunca retrocede sobre divisiones realizadas anteriormente en el árbol, para reconsiderar otras alternativas.
 
 .. figure:: ../figs/Cap4/ejemplo_decision_tree.png
-   :scale: 60%
+   :scale: 80%
 
    Ejemplo gráfico de la organización de un árbol de decisión 
 
@@ -474,7 +472,7 @@ Así el hyperplano óptimo, es el hyperplano separador cuyo margen entre las mue
 .. Así, la generación de un modelo de SVM consiste en computar y evaluar varios hyperplanos separadores de los datos de entrada y seleccionar de entre éstos, un hyperplano óptimo con el margen máximo hacia las muestras, el cual se obtiene computando la distancia perpendicular entre el hyperplano divisor para cada muestra y encontrando las dos muestras de ambas clases para las que la distancia es la mínima, ésto se conoce como margen (margin). Así el hyperplano de margen máximo, es el hyperplano separador para el que el margen es el valor máximo, esto es, el hyperplano que tiene la distancia mínima más grande a las muestras de entrenamiento. De esta forma los puntos que se encuentran en el margen máximo al hyperplano conforman los vectores de soporte en el espacio *p*-dimensional y  soportan el hyperplano de margen máximo en el sentido en que, si estos puntos fueran movidos levemente, entonces el hyperplano de margen máximo también se movería.
 
 .. figure:: ../figs/Cap4/ejemplo_vectores_sporte_svm.png
-   :scale: 80%
+   :scale: 65%
 
    Ejemplo de hyperplano separador. La línea negra es el hyperplano que divide las muestras de entrenamiento, y las coordenadas de las tres muestras que son atravesadas por la línea punteada constituyen los vectores de soporte para ese hyperplano.
 
@@ -494,7 +492,7 @@ De esta forma, las SVMs permiten realizar la clasificación con hyperplanos en c
 .. math:: K(x,y) = (x,y)
    :label: ecuacionKernelLinear
 
-* Kernel Radial Basis Function(RBF): Este kernel dados dos vectores *x*, *y* correspondientes a dos muestras representadas como vectores en el espacio de entrada, se define por medio de la siguiente fórmula, donde :math:`{\gamma}` es un parámetro libre mayor a cero ajustable al problema, y *||x-y ||^2*
+* Kernel Radial Basis Function(RBF): Este kernel dados dos vectores *x*, *y* correspondientes a dos muestras representadas como vectores en el espacio de entrada, se define por medio de la siguiente fórmula, donde :math:`{\gamma}` es un parámetro libre mayor a cero ajustable al problema:
 
 .. math:: K(x,y) = exp(-{\gamma}||x-y ||^2)
    :label: ecuacionKernelRBF
@@ -541,13 +539,14 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
 
    Ejemplo de los pk-vecinos considerados como entrada al algoritmo
 
-* Luego, para cada par de puntos en el conjunto *P* de vecinos e incluyendo el punto central *p*,*pj1* y *pj2*, y sus normales estimadas, se selecciona un punto *ps* como origen  y un punto *pt* como objetivo, siendo el punto origen el que tiene el menor ángulo entre la normal de ese punto y un vector imaginario que conecta *ps* y *pt*; Matemáticamente hablando, se debe cumplir la siguiente ecuación: :math:`|n1 \cdot (p2-p1)| <= |n2 \cdot (p2-p1)| `. Posteriormente, para computar las diferencias entre los puntos y sus normales, se procede a definir tres vectores base *u*, *v* y *w* alrededor del punto origen, siendo *u* el vector normal *ns* asociado al punto origen y definiéndose estos vectores por medio de las siguientes fórmulas, donde *x* es el producto cruz entre dos vectores y *|| . ||* es la norma Euclidiana del vector:
+
+* Luego, para cada par de puntos en el conjunto *P* de vecinos e incluyendo el punto central *p*,*pj1* y *pj2*, y sus normales estimadas, se selecciona un punto *ps* como origen  y un punto *pt* como objetivo, siendo el punto origen el que tiene el menor ángulo entre la normal de ese punto y un vector imaginario que conecta *ps* y *pt*; Matemáticamente hablando, se debe cumplir la siguiente ecuación: :math:`|| n1 \bm{\cdot} (p2 - p1) || <= || n2 \bm{\cdot} (p2 - p1) ||` . Posteriormente, para computar las diferencias entre los puntos y sus normales, se procede a definir tres vectores base *u*, *v* y *w* alrededor del punto origen, siendo *u* el vector normal *ns* asociado al punto origen y definiéndose estos vectores por medio de las siguientes fórmulas, donde *x* es el producto cruz entre dos vectores y :math:`|| . ||` es la norma Euclidiana del vector:
   
 
 .. math:: U = ns
    :label: ecuacionVectorU
 
-.. math:: v = u x (pt - ps)/ || pt - ps ||
+.. math:: v = u * (pt - ps) / || pt - ps ||
    :label: ecuacionVectorV
 
 
@@ -556,25 +555,29 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
 
 
 .. figure:: ../figs/Cap4/esquema_ejes_punto_origen.png
-   :scale: 100%
+   :scale: 80%
 
    Asignación de ejes al punto origen 
 
-* A continuación, empleando los vectores *uvw* y las coordenadas y normales de los puntos, se pueden calcular la diferencia entre las dos normales de la siguiente manera, siendo :math:`{\cdot}` el producto escalar entre dos vectores y *d* la distancia Euclidiana entre ps y pt, *d* = || ps - pt ||:
-  
-.. math:: {\alpha} = v \cdot nt
-          {\phi}  = u \cdot (pt-ps)/d
-          {\theta} = arctan( w \cdot nt, u \cdot nt)
-   :label: ecuacionesFeatures
+* A continuación, empleando los vectores *uvw* y las coordenadas y normales de los puntos, se pueden calcular la diferencia entre las dos normales de la siguiente manera, siendo :math:`{\bm{\cdot}}`  el producto escalar entre dos vectores y *d* la distancia Euclidiana entre ps y pt, *d* = || ps - pt ||:
+
+.. math:: {\alpha} = v \bm{\cdot} nt
+   :label: ecuacionesFeatures1
+
+.. math:: {\phi}  = u \bm{\cdot} (pt - ps) / d
+   :label: ecuacionesFeatures2
+
+.. math:: {\theta} = arctan( w \bm{\cdot} nt, u \bm{\cdot} nt)
+   :label: ecuacionesFeatures3
 
 
 .. figure:: ../figs/Cap4/esquema_ejes_angulos.png
-   :scale: 80%
+   :scale: 90%
 
    Ángulos y sus correspondencias con las normales
 
 
-* Finalmente, las frecuencias de las tuplas (o features) del descriptor (:math:`{\alpha}`,:math:`{\phi}`,:math:`{\theta}`,*d*) por cada punto se organizan en un histograma, y se divide el espectro de valores que puede adoptar cada feature en *b* subdivisiones y se cuentan las frecuencias de valores en cada subdivisión. Así, el número de subdivisiones por cada feature del histograma, que se pueden formar utilizando *n* cantidad de features es *d^n*, en este ejemplo es la cantidad de divisiones *div^4* ya que se emplean 4 valores en cada feature. La implementación PFH de PCL, emplea 5 subdivisiones de histograma por feature y no incluye las distancias, lo que resulta en 5^3 = 125 valores float de features. Este descriptor se define en la clase que define el tipo de punto pcl::PFHSignature125.
+* Finalmente, las frecuencias de las tuplas (o features) del descriptor (:math:`{\alpha}`, :math:`{\phi}` , :math:`{\theta}` ,*d*) por cada punto se organizan en un histograma, y se divide el espectro de valores que puede adoptar cada feature en *b* subdivisiones y se cuentan las frecuencias de valores en cada subdivisión. Así, el número de subdivisiones por cada feature del histograma, que se pueden formar utilizando *n* cantidad de features es *d^n*, en este ejemplo es la cantidad de divisiones *div^4* ya que se emplean 4 valores en cada feature. La implementación PFH de PCL, emplea 5 subdivisiones de histograma por feature y no incluye las distancias, lo que resulta en 5^3 = 125 valores float de features. Este descriptor se define en la clase que define el tipo de punto pcl::PFHSignature125.
 
 .. * Finalmente, las frecuencias de las tuplas (:math:`{\alpha}`,:math:`{\phi}`,:math:`{\theta}`,*d*) por cada punto se organizan en un histograma, y se divide cada una de los rangos de las características en *b* subdivisiones y se cuentan las frecuencias de valores en cada subdivisión. Así, el número de subdivisiones por cada feature del histograma, que se pueden formar utilizando las 4 features es *d^⁴*. La implementación PFH de PCL, emplea 5 subdivisiones de histograma por feature (cada uno de los 4 valores de features empleará estos 5 valores como rangos de intervalo) y no incluye las distancias, lo que resulta en 5^3 = 125 valores float de features.
 
@@ -588,7 +591,7 @@ Debido a que la complejidad computacional de PFH es del orden O(n), esto puede r
 
 
 .. figure:: ../figs/Cap4/fpfh_relaciones.png
-   :scale: 80%
+   :scale: 90%
 
    Esquema relaciones que se consideran para calcular las features de FPFH. El punto central *p* o *pq* se encuentra en el centro, las relaciones entre *p* y sus k-vecinos empleados para computar SPFH(p) se encuentran resaltados en rojo y las relaciones entre los k-vecinos empleadas para ponderación se encuentran remarcadas en negro.   
 
@@ -608,7 +611,7 @@ VFH es una variación de FPFH que se emplea para la identificación y reconocimi
 Además se agrega un componente de forma de superficie, generando para ésto un histograma FPFH extendido, donde se incorpora la computación de los ángulos relativos entre las normales en cada punto de la captura y el centroide del objeto (punto central):
 
 .. figure:: ../figs/Cap4/VFH_segundo_componente.jpg
-   :scale: 70%
+   :scale: 90%
 
    Incorporación de la diferencia entre normales de puntos y centroide del objeto 
 
@@ -621,12 +624,12 @@ GRSD
 Este descriptor global emplea el descriptor local Radious-based Surface Descriptor (RSD), que se basa en la descripción geométrica de una superficie por medio del cálculo de información radial, computada a través de información inherente a los puntos vecinos. El funcionamiento de este algoritmo se basa en establecer una relación entre los ángulos de las normales :math:`{\lambda}`, la distancia entre éstas *d* y el radio de una superficie *r* por medio de la siguiente fórmula: 
 
 
-.. math:: `d = r* {\alpha}`
+.. math:: d = r * {\alpha}
    :label: ecuacionRadio
 
 
 .. figure:: ../figs/Cap4/radio_rsd_entre_normales.png
-   :scale: 50%
+   :scale: 40%
 
    Representación gráfica el ángulo, el radio y la esfera
 
@@ -720,7 +723,7 @@ Así, las curvaturas principales se calculan como los eigenvalores para un eigen
 
 
 .. figure:: ../figs/Cap4/curvaturas-principales.png
-   :scale: 40%
+   :scale: 20%
 
    Representación gráfica de las curvaturas principales
 
@@ -867,31 +870,32 @@ La matriz de confusión para cada uno de los descriptores empleados, con la part
 
 
 .. figure:: ../figs/Cap4/matriz_confusion_GRSD.png 
-   :scale: 50%
+   :scale: 70%
 
    Matriz de confusión de SVM con descriptor GRSD
 
 
 .. figure:: ../figs/Cap4/matriz_confusion_ESF.png 
-   :scale: 50%
+   :scale: 70%
 
    Matriz de confusión de SVM con descriptor ESF
 
 
 .. figure:: ../figs/Cap4/matriz_confusion_FPFH.png 
-   :scale: 50%
+   :scale: 70%
 
    Matriz de confusión de SVM con descriptor FPFH
 
 
 Finalmente, se realizó una comparación de la precisión promedio del k-folding de cada uno de los métodos con la precisión brindada por un clasificador Dummy, comprobando  realmente que la eficiencia de clasificación del clasificador (con kernel linear) sobrepasa la de un clasificador aleatorio:
 
-+----------------------+----------------------------+------------------------------+---------------+ 
-|   Tipo de descriptor |           ESF              |          GRSD                |     FPFH      |
-+----------------------+----------------------------+------------------------------+---------------+ 
-| Tipo de clasificador | ClasificadorESF | DummyESF | ClasificadorGRSD | DummyGRSD | ClasificadorFPFH | DummyFPFH |
-+======================+==================+=========+==================+===========+==================+=========+ 
-| Precision            |       0.98      |   0.45   |         0.89    |    0.516   |       0.63      | 0.494      |   
-+----------------------+------------------+---------+------------------+-----------+-----------------+--------------+ 
+
++--------------------+-----------------+---------------------+-------------------+ 
+| Tipo de descriptor |         ESF     |         GRSD        |         FPFH      |
++--------------------+-----------------+---------------------+-------------------+ 
+| Tipo clasificador  | ESF  | DummyESF | GRSD |   DummyGRSD  | FPFH | DummyFPFH  |
++====================+======+==========+======+==============+======+============+
+| **Precision**      | 0.98 | 0.45     | 0.89 |    0.516     | 0.63 |   0.494    |
++--------------------+------+----------+------+--------------+------+------------+
 
 

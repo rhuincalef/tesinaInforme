@@ -211,6 +211,7 @@ latex_elements['preamble'] += r"""
 \usepackage{ifthen}
 %\usepackage{calc}
 \usepackage{pgf}
+\usepackage{bm}
 %\setmainfont{Linux Libertine Mono O}
 
 % Sobreescritura de los comandos de latex generados por Sphinx automaticamente
