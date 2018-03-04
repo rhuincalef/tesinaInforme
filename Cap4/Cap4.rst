@@ -826,14 +826,14 @@ Finalmente, se realizó una comparación de las métricas de clasificación resp
 +------------------+-------------+---------+----------------+-------------+---------+------------+
 | Tipo de muestra  | Precision   | Recall  |  F1-Score      | Precision   | Recall  |  F1-Score  |
 +==================+=============+=========+================+=============+=========+============+
-| Baches           |  1.0        | 1.0     |  1.0           |     0.0     |   0.0   |     0.0    | 
+| Baches           |  1.0        | 1.0     |  1.0           |     0.0     |   0.0   |     0.0    |
 +------------------+-------------+---------+----------------+-------------+---------+------------+
 | Grietas          |  1.0        | 1.0     |  1.0           |     0.17    |   1.0   |     0.29   |
 +------------------+-------------+---------+----------------+-------------+---------+------------+
 | avg/total        |  1.0        | 1.0     |  1.0           |     0.03    |   0.17  |     0.05   |
 +------------------+-------------+---------+----------------+-------------+---------+------------+ 
 
-*Métricas para descriptor ESF con Kernel Linear-RBF*
+   Métricas para descriptor ESF con Kernel Linear-RBF
 
 
 +------------------+----------------------------------------+------------------------------------+
@@ -848,8 +848,7 @@ Finalmente, se realizó una comparación de las métricas de clasificación resp
 | avg/total        |  0.80       | 0.53    |  0.58          |     0.03    |   0.17  |    0.05    |
 +------------------+-------------+---------+----------------+-------------+---------+------------+  
 
-*Métricas para descriptor GRSD con Kernel Linear-RBF*
-
+   Métricas para descriptor GRSD con Kernel Linear-RBF
 
 +------------------+----------------------------------------+------------------------------------+
 |                  |              Kernel Linear             |             Kernel RBF             |
@@ -863,7 +862,7 @@ Finalmente, se realizó una comparación de las métricas de clasificación resp
 | avg/total        |  0.80       | 0.53    |  0.58          |      0.86   |   0.25  |  0.19      |
 +------------------+-------------+---------+----------------+-------------+---------+------------+  
 
-*Métricas para descriptor FPFH con Kernel Linear-RBF*
+Métricas para descriptor FPFH con Kernel Linear-RBF
 
 
 La matriz de confusión para cada uno de los descriptores empleados, con la partición de datos inicial, fue la siguiente:
@@ -898,4 +897,5 @@ Finalmente, se realizó una comparación de la precisión promedio del k-folding
 | **Precision**      | 0.98 | 0.45     | 0.89 |    0.516     | 0.63 |   0.494    |
 +--------------------+------+----------+------+--------------+------+------------+
 
+   Prueba con descriptores ESF,GRSD y FPFH vs prueba con Dummys
 
