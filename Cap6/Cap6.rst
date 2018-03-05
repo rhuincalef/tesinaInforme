@@ -8,7 +8,7 @@ Arquitectura global del sistema de administración de fallas
 
 .. TODO: Se da una explicación de la estructura general de las 3 aplicaciones y como éstas interactúan mutuamente para conseguir el objetivo de la tesina.
 
-La arquitectura general del sistema de registro y administración de fallas sobre circuitos viales, se compone de tres aplicaciones independientes: Aplicación web, aplicación de captura y aplicación de clasificación, con diferentes funcionalidades, que por medio de la interacción permiten llevar a cabo el registro, clasificación y obtención de información inherente a distintos tipos de fallas. La forma en que éstas interactúan y la frecuencia de ejecución se encuentra predefinida por medio de archivos de configuración específicos de cada una y, el lugar de ejecución (cliente o servidor) se encuentra condicionada por la funcionalidad que proporcionan al sistema global de administración de fallas. Así, las interacciones definen un flujo de trabajo que involucran tanto a la maquina cliente de captura de fallas como al servidor que las procesa y que se describe en la siguiente figura:
+La arquitectura general del sistema de registro y administración de fallas sobre circuitos viales, se compone de tres aplicaciones independientes: Aplicación web, aplicación de captura y aplicación de clasificación, con diferentes funcionalidades, que por medio de la interacción permiten llevar a cabo el registro, clasificación y obtención de información inherente a distintos tipos de fallas. La forma en que éstas interactúan y la frecuencia de ejecución se encuentra predefinida por medio de archivos de configuración específicos de cada una y, el lugar de ejecución (cliente o servidor) se encuentra condicionada por la funcionalidad que proporcionan al sistema global de administración de fallas. Así, las interacciones definen un flujo de trabajo que involucran tanto a la máquina cliente de captura de fallas como al servidor que las procesa y que se describe en la siguiente figura:
 
 
 .. figure:: ../figs/Cap6/FlujoTrabajo.png
@@ -35,7 +35,7 @@ Aplicación web
 .. TODO: Incluir:
 ..				-Requerimientos funcionales, no funcionales
 ..              -Diseño: Arquitectura de la aplicación.Incluir Diagrama de Clases Software. Descripción breve de la funcionalidad que proporcionan los módulos principales. 
-..              -Manual del usuario: Descripción respecto de como emplear las funcionalidades.
+..              -Funcionalidad de la aplicación: Descripción respecto de como emplear las funcionalidades.
 ..                                 *Funcionalidades heredadas: Incluir funcionalidad realizada durante el proyecto de investigación (previo a la tesina).
 ..                                 *Funcionalidades agregadas: Incluir funcionalidad que fue desarrollada como parte de la tesina. 
 ..              -Librerías empleadas para el desarrollo
@@ -49,7 +49,7 @@ Aplicación de captura(appCliente)
 ..				-Requerimientos funcionales, no funcionales
 ..              -Diseño: Arquitectura de la aplicación.Incluir Diagrama de Clases Software. Descripción breve de la funcionalidad que proporcionan los módulos principales. 
 ..              -Librerías empleadas para el desarrollo
-..              -Manual del usuario: Descripción respecto de como emplear las funcionalidades 
+..              -Funcionalidad de la aplicación: Descripción respecto de como emplear las funcionalidades 
 
 .. h4 -->
 
@@ -67,7 +67,7 @@ Los requerimientos funcionales que fueron determinados para la aplicación de ca
   
 * *Almacenar/Leer de manera persistente un conjunto de fallas*: Las fallas informadas y confirmadas capturadas se deben poder almacenar en un archivo que contenga el recorrido hecho con las fallas (archivo de recorrido), para ser posteriormente cargado y enviado a la aplicación web.  
   
-* *Enviar una o varias fallas al servidor remoto*: Se deben poder enviar una o más fallas informadas y/o confirmadas cargadas en memoria, desde la aplicación de captura hacia la aplicación web. 
+* *Enviar una o varias fallas a servidor remoto*: Se deben poder enviar una o más fallas informadas y/o confirmadas cargadas en memoria, desde la aplicación de captura hacia la aplicación web. 
 
 
 Requerimientos no funcionales
@@ -80,17 +80,28 @@ Por otro lado, los requerimientos no funcionales que fueron determinados para la
 * Interacción entre aplicación de captura y aplicación web a través de un protocolo de comunicación sencillo, que permita rastrear por medio de códigos de estado posibles errores en la obtención o envío de información.
 * Visualización de las fallas tanto con luz solar como en ausencia de ésta. Debido a que la luz solar interfiere con el tipo de ondas emitidas por el sensor, la aplicación debe contemplar la visualización de las fallas tanto de día, en horas previas al anochecer, como así también la captura de noche. 
 
+Diseño de la aplicación
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Arquitectura de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+La arquitectura de la aplicación de captura consiste de los siguientes módulos:
+
+* Kinect.
+* b
+* c
+* 
+
+
 
 
 Librerías empleadas en la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-Manual del usuario
-^^^^^^^^^^^^^^^^^^
+Funcionalidad de la aplicación
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Aplicación de clasificación
@@ -100,6 +111,94 @@ Aplicación de clasificación
 ..				-Requerimientos funcionales, no funcionales
 ..              -Diseño: Arquitectura de la aplicación.Incluir Diagrama de Clases Software. Descripción breve de la funcionalidad que proporcionan los módulos principales. 
 ..              -Librerías empleadas para el desarrollo
-..              -Manual del usuario: Descripción respecto de como emplear las funcionalidades 
+..              -Funcionalidad de la aplicación: Descripción respecto de como emplear las funcionalidades 
+
+Requerimientos funcionales
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* *Clasificación de fallas*: La aplicación debe leer los parámetros utilizados en los algoritmos relacionados con la clasificación desde un archivo de configuración, procesar capturas en formato .pcd desde un directorio específico y producir uno o más clusters, con información respecto de las dimensiones de la falla aislada, en un directorio de salida accesible por la aplicación web.
+
+
+Requerimientos no funcionales
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Capacidad para ser configurado y ejecutado en múltiples plataformas.
+* Utilizar los mecanismos de paralelización en el procesamiento provistos por las librerías empleadas, con el fin de minimizar el tiempo de clasificación de fallas.
+* Disponibilidad de capacidad de almacenamiento persistente alto para computar las muestras.
+* Contar con un mecanismo de configuración que sea minimalista y amigable.
+* Capacidad de realizar un rastreo de las muestras previamente procesadas, para reducir tiempo de cómputo.
+* Versatilidad con respecto al modelo de Machine Learning empleado, el algoritmo de segmentación, el descriptor y el tipo de punto para la clasificación de fallas.
+* Obligatoriedad de ejecución como tarea programada periódica y en segundo plano.
+
+
+Diseño
+^^^^^^
+La estructura de la aplicación de clasificación esta integrada por los siguientes componentes software principales:
+
+* **MainPipeLine**: Es la clase principal de procesado, que realiza las configuraciones globales iniciales, analiza el directorio de muestras, instancia objetos Nube y comienza con el procesamiento de cada una. 
+ 
+* **Nube**: Representa una nube de puntos y todas aquellas nubes resultantes de haber sido procesadas por los algoritmos que intervienen en la clasificación. Contiene una colección de clusters que se derivaron del procesamiento de la misma.
+  
+* **Cluster**: Nube de puntos resultado de la aplicación de estrategia de segmentación. Esta clase contiene la información sobre las dimensiones aproximadas del mismo, por ejemplo alto, ancho, profundidad.
+
+* **EstrategiaSegmentationAbstract**: Clase que representa la estrategia que será empleada para segmentar la nube de puntos. Puede consistir en uno o varios algoritmos de segmentación concretos. 
+
+* **PointFeature**: Esta clase representa el feature personalizado que se compone de uno de los features ofrecidos por PCL y la diferencia entre ancho y alto calculados a partir de un cluster.
+
+
+.. TODO: Hacer una referencia a capitulo 3.
+
+* **EstrategiaDescriptorAbstract**: Esta clase genera el PointFeature a partir de un cluster y puede ser extendida para distintos tipos de descriptores provistos por PCL.
+  
+.. TODO: Hacer una referencia a capitulo 4.
+  
+* **EstrategiaClasificacionMLAbstract**: Esta clase representa la estrategia de clasificación que se puede adoptar para clasificar a que clase el cluster pertenece. Puede ser extendida para ser utilizada con distintos modelos de Machine Learning.
+
+* **DBManager**: Esta clase engloba el comportamiento relacionado con la interacción de MainPipeLine con una base de datos que mantiene un registro de las fallas previamente clasificadas. Todas las fallas procesadas y clasificadas con o sin éxito, se agregan a dicha base. 
+
+
+
+.. figure:: ../figs/Cap6/Final Diagrama de clases clasificador .png
+   :scale: 100%
+
+   Diagrama de clases software de la aplicación de clasificación
+
+
+Librerías empleadas para el desarrollo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Boost: 
+* PCL: 
+* JSONCPP: 
+* SQLite3: 
+
+
+Funcionalidad de la aplicación
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Para el funcionamiento de esta aplicación, es necesario compilarla siguiendo las instrucciones en README.txt desde el repositorio https://github.com/rhuincalef/clasificadorFallas o, en el código fuente adjunto. Luego se debe realizar la configuración de los parámetros obligatorios de la aplicación, para ello se debe alterar el archivo *config_pipeline.json-default* cambiando la extensión a .json y modificando cada una de las siguientes entradas:
+
+* **configuracion_global**: Esta entrada contiene el *dir_entrada* que es el directorio raíz desde el cual esta aplicación lee los archivos .pcd a procesar; *dir_salida* es el directorio raíz donde la aplicación almacenará los resultados obtenidos del procesamiento. Por último, cuenta con *database_muestras* que indica la ruta absoluta del archivo de base de datos con extensión .db, que se puede encontrar en el archivo base *fallas.db*.
+      
+* **clasificador**: Esta entrada consiste en aquellas configuraciones relativas al tipo de modelo de clasificación seleccionado. En *tipo* se debe especificar el modelo de clasificación a utilizar, siendo el único modelo implementado "svm". *path_modelo* especifica la ruta absoluta al modelo entrenado utilizado por el clasificador. 
+ 
+
+.. TODO: Ver RANSAC y Euclidean
+
+* **estrategia_segmetador**: Esta entrada contiene aquellos valores empleados para la calibración del algoritmo de segmentación seleccionado. Estos valores fueron determinados por medio de pruebas de segmentación para baches y grietas y deben ser modificados con precaución según el tipo de objetos que desee aislar. No es necesario modificar estos valores para probar con grietas y baches. El único algoritmo implementado es Planar Euclidean que se encuentra especificado en la entrada *tipo*, el cual consta para planar segmentation de *distance_threshold*, *max_iterations* y de euclidean_segmentation (RANSAC) *tolerance*, *min_cluster_size* y *max_cluster_size*. 
+
+.. TODO: REFERENCIA "CAP3. Representación y almacenamiento de una nube de puntos"
+
+* **point_feature**: Esta entrada especifica el tipo de punto ofrecido por PCL a utilizar para la lectura, procesamiento y almacenamiento de nubes de puntos.           
+
+.. TODO: REFERENCIA "CAP4. Descriptores"
+
+* **estrategia_descriptor**: Esta entrada representa el tipo de descriptor de PCL que se utilizará para generar el descriptor personalizado (PointFeature). *tipo_descriptor* determina el tipo de descriptor que puede ser "GRSD" o "ESF", aunque ESF es el descriptor que más precisión tiene para este desarrollo en concreto.
+  
+  Tener en consideración, que el tipo de modelo entrenado especificado en entrada **clasificador** tiene que estar entrenado con el tipo de estrategia descriptor seleccionada, por lo que si se selecciona ESF el *path_modelo* debe ser el de un modelo que este entrenado con éste feature de PCL. 
+
+
+Finalmente, para ejecutar la aplicación en segundo plano como una tarea programada, se deben seguir las instrucciones especificadas en README.txt, donde se detallan lapsos de ejecución de la tarea en intervalos de 5 minutos, todos los días. Esta configuración requiere el uso de *crontab* y únicamente fue probada bajo Linux (Ubuntu 16.14 y Manjaro Hakoila 17.16). 
+
 
 
