@@ -59,14 +59,15 @@ Requerimientos funcionales
 
 Los requerimientos funcionales que fueron determinados para la aplicación de captura de fallas fueron los siguientes:
 
-* *Capturar información relativa a fallas confirmadas en la ubicación de la misma*: La aplicación debe permitir el registro de información asociada a cada falla en el lugar de captura de fallas   (tipo falla y material, criticidad, coordenadas) 
-* *Obtención de fallas informadas en una calle desde el servidor*:
-* *Captura de información relativa a fallas informadas en la ubicación de la misma*:
-*  
+* *Capturar información relativa a fallas confirmadas en la ubicación de la misma*: La aplicación debe permitir capturar fallas nuevas sin registro previo en la aplicación web(fallas confirmadas) detectadas durante una exploración, registrando información  respecto de las propiedades de la falla (tipo de falla, tipo de material, criticidad, características geométricas) y de la ubicación donde ésta se encuentra, de manera que posteriormente la aplicación web pueda computar datos de la dirección de la misma. 
+
+* *Obtención de fallas informadas en una calle desde el servidor*: La aplicación debe permitir la obtención de fallas informadas que fueron previamente registradas desde la aplicación web, según el nombre de la calle donde éstas se encuentran. De esta forma, la aplicación de captura debe poder comunicarse con la aplicación web, que buscará la calle solicitada de entre conjunto de calles registradas y retornará los resultados, para proceder con la captura de las fallas informadas.  
   
-* *Visualización de las fallas (con luz solar y en ausencia de ésta)*:  
-* *Almacenar/Leer de manera persistente un archivo de fallas*:
-* *Enviar fallas al servidor remoto*:
+* *Captura de información relativa a fallas informadas en la ubicación de la misma*: Una vez solicitadas las fallas desde el servidor, se debe poder registrar información de las propiedades de cada falla.  
+  
+* *Almacenar/Leer de manera persistente un conjunto de fallas*: Las fallas informadas y confirmadas capturadas se deben poder almacenar en un archivo que contenga el recorrido hecho con las fallas (archivo de recorrido), para ser posteriormente cargado y enviado a la aplicación web.  
+  
+* *Enviar una o varias fallas al servidor remoto*: Se deben poder enviar una o más fallas informadas y/o confirmadas cargadas en memoria, desde la aplicación de captura hacia la aplicación web. 
 
 
 Requerimientos no funcionales
@@ -74,10 +75,10 @@ Requerimientos no funcionales
 
 Por otro lado, los requerimientos no funcionales que fueron determinados para la aplicación de captura de fallas fueron los siguientes:
 
-* Respuesta rápida ante la solicitud de efectuar una captura, debido a que ésta tarea debe realizarse sobre un vehículo con tiempos de ejecución que pueden estar limitados por la fuente de alimentación del dispositivo sobre el cual se ejecuta la aplicación.  
+* Respuesta rápida ante la solicitud de efectuar una captura, debido a que ésta tarea debe realizarse sobre un vehículo con tiempos de ejecución que pueden estar limitados por la fuente de alimentación del dispositivo, sobre el cual se ejecuta la aplicación.  
 * Interfaz intuitiva, con terminología e iconos afines al dominio del problema, que agilicen la interacción con el usuario.
-* Interacción entre aplicación de captura y aplicación web a través de un protocolo de comunicación sencillo, que permita identificar por medio de códigos de estado posibles errores en la obtención o envío de información.
-*   
+* Interacción entre aplicación de captura y aplicación web a través de un protocolo de comunicación sencillo, que permita rastrear por medio de códigos de estado posibles errores en la obtención o envío de información.
+* Visualización de las fallas tanto con luz solar como en ausencia de ésta. Debido a que la luz solar interfiere con el tipo de ondas emitidas por el sensor, la aplicación debe contemplar la visualización de las fallas tanto de día, en horas previas al anochecer, como así también la captura de noche. 
 
 
 Arquitectura de la aplicación
