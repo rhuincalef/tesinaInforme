@@ -8,6 +8,17 @@ Arquitectura global del sistema de administración de fallas
 
 .. TODO: Se da una explicación de la estructura general de las 3 aplicaciones y como éstas interactúan mutuamente para conseguir el objetivo de la tesina.
 
+Antes de comenzar a detallar los diferentes componentes del sistema de administración de fallas, es necesario tener en cuenta que los tipos de fallas administrados por ésta, desde que son notificadas hasta que concluye su reparación, atraviesan por un conjunto de estados que son secuenciales, excluyentes y una vez superado un estado, la falla no puede regresar a un estado previo. Estos tipos de estado son:
+
+* **Informado**: Son aquellas fallas que fueron cargadas por usuarios desde la aplicación web.
+  
+* **Confirmado**: Son aquellas fallas que realmente fueron cargadas por personal autorizado o aquellas fallas informadas que fueron validadas por los mismos y modificadas en el sistema.
+  
+* **En reparación**: Son aquellas fallas a las que se les ha asignado una fecha de finalización estimada y un procedimiento de reparación.
+  
+* **Reparado**: Son aquellas fallas que realmente han sido reparadas y que poseen un costo real de reparación y una fecha de finalización efectiva de la reparación.
+  
+
 La arquitectura general del sistema de registro y administración de fallas sobre circuitos viales, se compone de tres aplicaciones independientes: Aplicación web, aplicación de captura y aplicación de clasificación, con diferentes funcionalidades, que por medio de la interacción permiten llevar a cabo el registro, clasificación y obtención de información inherente a distintos tipos de fallas. La forma en que éstas interactúan y la frecuencia de ejecución se encuentra predefinida por medio de archivos de configuración específicos de cada una y, el lugar de ejecución (cliente o servidor) se encuentra condicionada por la funcionalidad que proporcionan al sistema global de administración de fallas. Así, las interacciones definen flujos de trabajo que involucran tanto a la máquina cliente de captura de fallas como al servidor que las procesa, siendo los flujos principales los siguientes:
 
 * Flujo de trabajo para fallas Confirmadas
@@ -46,7 +57,7 @@ Por otro, lado el flujo de trabajo de fallas informadas varía con respecto a la
 1. El primer paso en este flujo de trabajo consiste en solicitar las fallas que se encuentren localizadas en una calle, enviando para éste fin el nombre de la calle desde la aplicación de captura. De esta forma, la aplicación web realiza un filtrado de los nombres de calles registrados, asociados a fallas informadas previamente y retorna aquellas que se encuentren en la calle solicitada.
 2. A continuación, se realiza la captura de la falla informada registrando solamente información relativa a las propiedades de ésta, obviando sus coordenadas.
 3. Se almacenan las fallas en un recorrido de la misma forma que en el flujo de trabajo para fallas confirmadas.
-4. Se envían las fallas que forman parte del recorrido al servidor, enviando junto con las propiedades el *id* con el que se encuentran registradas en la aplicación web, para su posterior búsqueda.
+4. Se envían las fallas que forman parte del recorrido al servidor, enviando junto con las propiedades el identificador con el que se encuentran registradas en la aplicación web, para su posterior búsqueda.
 5. Se realiza el aislamiento y clasificación de la falla análogamente a como se realiza en el flujo de trabajo de fallas confirmadas.
 6. Se visualizan las fallas aisladas correctamente desde la aplicación web con estado Informada.    
 
@@ -60,10 +71,87 @@ Aplicación web
 .. TODO: Incluir:
 ..				-Requerimientos funcionales, no funcionales
 ..              -Diseño: Arquitectura de la aplicación.Incluir Diagrama de Clases Software. Descripción breve de la funcionalidad que proporcionan los módulos principales. 
+..              -Librerías empleadas para el desarrollo
 ..              -Funcionalidad de la aplicación: Descripción respecto de como emplear las funcionalidades.
 ..                                 *Funcionalidades heredadas: Incluir funcionalidad realizada durante el proyecto de investigación (previo a la tesina).
 ..                                 *Funcionalidades agregadas: Incluir funcionalidad que fue desarrollada como parte de la tesina. 
-..              -Librerías empleadas para el desarrollo
+
+
+Requerimientos funcionales
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Incorporar visualizador de características geométricas inherentes a los distintos tipos de fallas.
+* Agregar información respecto al resultado de clasificación y dimensiones obtenidas para una falla en particular.
+* Añadir capacidad de filtrado de distintos tipos de fallas a partir de información de la dirección.
+ 
+
+
+Requerimientos no funcionales
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Manipulación del archivo que contiene información de la geometría de la falla de manera intuitiva.
+* Ayuda de fácil acceso para entender los comandos para interactuar con el visualizador.
+* Indicación clara de las fallas filtradas en una calle, remarcadas de manera que se trace una ruta sobre ésta. 
+
+
+Diseño de la aplicación
+^^^^^^^^^^^^^^^^^^^^^^^
+
+En primer lugar, esta aplicación consistía en la georeferenciación de fallas sobre un mapa interactivo, cuyo objetivo principal era la visualización del estado de la fallas informadas por usuarios y características que los mismos aportaban vía web. Esta aplicación fue pensada para ser utilizada por diferentes tipos de usuarios entre los que se encontraban:
+
+* Usuarios anónimos
+* Usuarios registrados (administradores)
+  
+Los usuarios anónimos disponen de las siguientes funciones:
+
+* **Informar de una falla**: Esta funcionalidad permite especificar la calle y altura donde se encuentra localizada una falla, la clase a la que la falla pertenece (Ver :doc:`../Cap2/Cap2`), una pequeña observación (opcional) y una o más imágenes de la falla notificada. Esta información luego se envía y se registra en el sistema de administración de fallas.
+   
+* **Visualización de la información asociada a una falla previamente informada**: Permite visualizar información sobre las especificaciones de la falla previamente notificada por otro usuario y los comentarios que otras personas hicieron sobre ésta.
+
+Por otro lado, los usuarios registrados pueden realizar las siguientes operaciones en la aplicación web:
+
+* **Informar de una falla**: Ésta funcionalidad se encuentra extendida acorde a los conocimientos técnicos del personal que opera el sistema, proveyendo las mismas funcionalidades que las que se encuentran disponibles para el perfil de usuario anónimo y adicionalmente, vocabulario específico de cada tipo de falla.
+
+* **Ver fallas reparadas**: Esta función es exclusiva del usuario registrado y permite visualizar de manera veloz sobre el mapa las fallas que se encuentran reparadas o las que no.
+
+* **Agregar tipos de fallas**: Brinda la posibilidad de añadir un nuevo tipo de falla al sistema e incorporando todos aquellos atributos y características técnicas inherentes a la misma.
+
+* **Filtrado de fallas por calle**: Permite trazar una ruta sobre el mapa de aquellas fallas pertenecientes a una calle en particular, con la posibilidad de establecer el tipo y el estado de la falla.
+
+* **Cambio de estado de fallas**: Esta funcionalidad permite modificar el estado de una falla por el siguiente en la secuencia de estados, dependiendo los atributos del siguiente estado del estado actual de la misma.  
+
+
+
+Estructura general del proyecto
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+Clases específicas agregadas
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. TODO: Models y controllers principales.
+
+
+
+Librerías empleadas
+^^^^^^^^^^^^^^^^^^^
+
+* **Three.js**:
+* **Geocoder**:
+* **Geonames**:
+* **CodeIgniter**:
+* **Boostrap**:
+* **jQuery**:
+* **GMaps**:
+* **GeoComplete**:
+
+
+
+Funcionalidad de la aplicación
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
 
 
 Aplicación de captura(appCliente)
@@ -185,7 +273,7 @@ Librerías empleadas para el desarrollo
 
 * **Boost**: Es una librería open-source que fue diseñada con el objetivo de extender las capacidades del lenguaje C++ e incluye varias funcionalidades entre las que se destacan el procesamiento de texto, operaciones de iteración sobre directorios del sistema operativo, operaciones de entrada/salida, programación concurrente, etc. Esta librería fue empleada principalmente para implementar la iteración, búsqueda y creación de elementos en la jerarquía de directorios del sistema operativo y el procesamiento de cadenas de texto asociadas a éstas.
 
-* PCL: Librería descripta en el capítulo 4. Ver *Freenect y Librería Point Cloud Library(PCL)* en :doc:`../Cap4/Cap4`. 
+* PCL: Librería descripta en el capítulo 4. Ver *Freenect y Librería Point Cloud Library (PCL)* en :doc:`../Cap4/Cap4`. 
 
 * JSONCPP: Es una librería en C++ empleada para la manipulación de archivos con formato JSON y la serialización/deserialización de éstos hacia/desde disco. Fue empleada para funcionalidad relacionada con creación de los archivos .json que mantienen información de dimensiones respecto de la falla clasificada.
   
