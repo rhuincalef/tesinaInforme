@@ -8,13 +8,19 @@ Arquitectura global del sistema de administración de fallas
 
 .. TODO: Se da una explicación de la estructura general de las 3 aplicaciones y como éstas interactúan mutuamente para conseguir el objetivo de la tesina.
 
-La arquitectura general del sistema de registro y administración de fallas sobre circuitos viales, se compone de tres aplicaciones independientes: Aplicación web, aplicación de captura y aplicación de clasificación, con diferentes funcionalidades, que por medio de la interacción permiten llevar a cabo el registro, clasificación y obtención de información inherente a distintos tipos de fallas. La forma en que éstas interactúan y la frecuencia de ejecución se encuentra predefinida por medio de archivos de configuración específicos de cada una y, el lugar de ejecución (cliente o servidor) se encuentra condicionada por la funcionalidad que proporcionan al sistema global de administración de fallas. Así, las interacciones definen un flujo de trabajo que involucran tanto a la máquina cliente de captura de fallas como al servidor que las procesa y que se describe en la siguiente figura:
+La arquitectura general del sistema de registro y administración de fallas sobre circuitos viales, se compone de tres aplicaciones independientes: Aplicación web, aplicación de captura y aplicación de clasificación, con diferentes funcionalidades, que por medio de la interacción permiten llevar a cabo el registro, clasificación y obtención de información inherente a distintos tipos de fallas. La forma en que éstas interactúan y la frecuencia de ejecución se encuentra predefinida por medio de archivos de configuración específicos de cada una y, el lugar de ejecución (cliente o servidor) se encuentra condicionada por la funcionalidad que proporcionan al sistema global de administración de fallas. Así, las interacciones definen flujos de trabajo que involucran tanto a la máquina cliente de captura de fallas como al servidor que las procesa, siendo los flujos principales los siguientes:
+
+* Flujo de trabajo para fallas Confirmadas
+* Flujo de trabajo para fallas Informadas
 
 
-.. figure:: ../figs/Cap6/FlujoTrabajo.png
+El flujo de trabajo para fallas confirmadas se describe en la siguiente figura:
+
+
+.. figure:: ../figs/Cap6/FlujoTrabajo_confirmada.png
    :scale: 100%
 
-   Flujo de trabajo de aplicación web.
+   Flujo de trabajo para fallas con estado "Confirmada".
 
 
 1. En esta etapa la aplicación de captura fue configurada previamente en una notebook/netbook/ultrabook o algún dispositivo con espacio suficiente y conexión USB para interactuar con el dispositivo Kinect y un GPS. Así, en esta etapa se realiza la  captura de fallas en algún vehículo en distintas ubicaciones y para cada falla se computan su latitud y longitud. 
@@ -24,6 +30,25 @@ La arquitectura general del sistema de registro y administración de fallas sobr
 5. De esta forma, con la información obtenida por ambos servidores, se realiza una validación de los datos obtenidos, se los adapta al formato de la base de datos del sistema y finalmente, se los registra en sistema de administración y registro de fallas.  
 6. La aplicación de clasificación o clasificador, se encuentra alojada en el mismo servidor donde reside la aplicación web, configurada como un cron job (o tarea programada) que se ejecuta con una frecuencia de 5 min., por lo que la información de clasificación de una falla puede demorar un tiempo extra y no estar disponible de manera instantánea, al contrario de lo que ocurre con la información de las fallas subidas en un recorrido. Debido a que en la práctica algunas fallas no cuentan con una único patrón que los distinga como un bache o una grieta, sino que pueden contener deformaciones de ambos tipos, el clasificador se encuentra configurado para aislar varias clases de fallas en una captura, aislando por cada clase de falla encontrada en una captura, uno o más clusters, mostrando la información de cada cluster junto con el nombre de la captura a la que pertenece.   
 7. Finalmente, una vez que el demonio de clasificación se haya ejecutado, serán visibles en cada falla de la aplicación web el tipo al que pertenece, determinado por el clasificador, y sus dimensiones (altura, ancho y profundidad para baches y grosor, largo y profundidad para grietas).
+
+
+Por otro, lado el flujo de trabajo de fallas informadas varía con respecto a la obtención de información relativa a las coordenadas de la falla y se describe en la siguiente figura:
+
+
+
+.. figure:: ../figs/Cap6/FlujoTrabajo_informada.png
+   :scale: 100%
+
+   Flujo de trabajo para fallas con estado "Informada". 
+
+
+
+1. El primer paso en este flujo de trabajo consiste en solicitar las fallas que se encuentren localizadas en una calle, enviando para éste fin el nombre de la calle desde la aplicación de captura. De esta forma, la aplicación web realiza un filtrado de los nombres de calles registrados, asociados a fallas informadas previamente y retorna aquellas que se encuentren en la calle solicitada.
+2. A continuación, se realiza la captura de la falla informada registrando solamente información relativa a las propiedades de ésta, obviando sus coordenadas.
+3. Se almacenan las fallas en un recorrido de la misma forma que en el flujo de trabajo para fallas confirmadas.
+4. Se envían las fallas que forman parte del recorrido al servidor, enviando junto con las propiedades el *id* con el que se encuentran registradas en la aplicación web, para su posterior búsqueda.
+5. Se realiza el aislamiento y clasificación de la falla análogamente a como se realiza en el flujo de trabajo de fallas confirmadas.
+6. Se visualizan las fallas aisladas correctamente desde la aplicación web con estado Informada.    
 
 
 En las siguientes secciones se describirán en detalle la arquitectura, características  y modo de uso de cada una de las aplicaciones que componen el sistema de registro y administración de fallas. 
@@ -86,12 +111,6 @@ Diseño de la aplicación
 Arquitectura de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La arquitectura de la aplicación de captura consiste de los siguientes módulos:
-
-* Kinect.
-* b
-* c
-* 
 
 
 
@@ -158,7 +177,7 @@ La estructura de la aplicación de clasificación esta integrada por los siguien
 
 
 
-.. figure:: ../figs/Cap6/Final Diagrama de clases clasificador .png
+.. figure:: ../figs/Cap6/Final_Diagrama_de_clases_clasificador.png
    :scale: 100%
 
    Diagrama de clases software de la aplicación de clasificación
@@ -167,10 +186,15 @@ La estructura de la aplicación de clasificación esta integrada por los siguien
 Librerías empleadas para el desarrollo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Boost: 
-* PCL: 
-* JSONCPP: 
-* SQLite3: 
+* **Boost**: Es una librería open-source que fue diseñada con el objetivo de extender las capacidades del lenguaje C++ e incluye varias funcionalidades entre las que se destacan el procesamiento de texto, operaciones de iteración sobre directorios del sistema operativo, operaciones de entrada/salida, programación concurrente, etc. Esta librería fue empleada principalmente para implementar la iteración, búsqueda y creación de elementos en la jerarquía de directorios del sistema operativo y el procesamiento de cadenas de texto asociadas a éstas.
+
+.. TODO: Agregar referencia Capítulo 4.
+
+* PCL: Librería descripta en el capítulo 4. 
+
+* JSONCPP: Es una librería en C++ empleada para la manipulación de archivos con formato JSON y la serialización/deserialización de éstos hacia/desde disco. Fue empleada para funcionalidad relacionada con creación de los archivos .json que mantienen información de dimensiones respecto de la falla clasificada.
+  
+* SQLite3: Es un sistema de bases de datos relacional desarrollada en C, donde la aplicación cliente realiza consultas a la base de datos por medio de funciones, en lugar de comunicarse con un proceso independiente, lo que provoca una reducción de la latencia en la interacción. Esta base de datos fue utilizada para mantener un registro de las fallas que fueron procesadas, evitando procesamiento innecesario. 
 
 
 Funcionalidad de la aplicación
