@@ -10,5 +10,6 @@
    Introduccion/*
    Cap3/*
    Cap4/*
+   Cap6/*
    Bibliografia/*
    
