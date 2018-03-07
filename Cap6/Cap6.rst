@@ -50,8 +50,7 @@ Por otro, lado el flujo de trabajo de fallas informadas varía con respecto a la
 .. figure:: ../figs/Cap6/FlujoTrabajo_informada.png
    :scale: 100%
 
-   Flujo de trabajo para fallas con estado "Informada". 
-
+   Flujo de trabajo para fallas con estado "Informada".
 
 
 1. El primer paso en este flujo de trabajo consiste en solicitar las fallas que se encuentren localizadas en una calle, enviando para éste fin el nombre de la calle desde la aplicación de captura. De esta forma, la aplicación web realiza un filtrado de los nombres de calles registrados, asociados a fallas informadas previamente y retorna aquellas que se encuentren en la calle solicitada.
@@ -193,13 +192,50 @@ Por otro lado, los requerimientos no funcionales que fueron determinados para la
 * Interacción entre aplicación de captura y aplicación web a través de un protocolo de comunicación sencillo, que permita rastrear por medio de códigos de estado posibles errores en la obtención o envío de información.
 * Visualización de las fallas tanto con luz solar como en ausencia de ésta. Debido a que la luz solar interfiere con el tipo de ondas emitidas por el sensor, la aplicación debe contemplar la visualización de las fallas tanto de día, en horas previas al anochecer, como así también la captura de noche. 
 
+
 Diseño de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Arquitectura de la aplicación
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+La arquitectura de la aplicación cliente esta formada por los siguientes componentes principales:
+
+* **Dispositivo Kinect**: La interacción con el dispositivo Microsoft Kinect consiste únicamente en la obtención de frames de profundidad y de video, necesarios para la generación del archivo de nube de puntos. Estos frames se solicitan de manera continua y son renderizados y visualizados en tiempo real por la aplicación, en la ventana de captura. Ésta ventana se compone de dos visualizadores, uno que muestra una imagen de video a color y otro con una imagen de profundidad, con distintos colores asociados a las distancias entre el dispositivo de sensado y la falla. Ésto permite que se pueda corregir la orientación del dispositivo al momento de la captura.  
+    
+* **Geofencing**: El módulo de geofencing se incluye como parte de la aplicación y tiene la finalidad de computar y retornar las coordenadas donde se encuentra ubicada una falla desde el dispositivo GPS para fallas confirmadas. Éste brinda dos modos de operación, uno donde se leen coordenadas desde el dispositivo reales ("real-gps") y otro donde se lee un conjunto de coordenadas artificiales y se iteran de manera circular ("fake-gps"). Éste último, fue realizado por motivos de debugging entre la aplicación de captura y la aplicación web, en entornos cerrados donde no se dispone de conectividad GPS.
+  
+* **APIClient**: Este módulo es incluido junto con la aplicación contiene la clase principal encargada del intercambio de información de fallas entre la aplicación web y aplicación de captura.  
+  
+* **Aplicación cliente**: La aplicación cliente tiene como objetivo ofrecer tanto la captura, administración y envío al servidor de fallas, tanto informadas como confirmadas. Con respecto a la gestión de fallas confirmadas, la aplicación se comunica adicionalmente con el módulo GPS, para la obtención de las coordenadas de la falla, mientras que para las fallas informadas ésta interacción no es necesaria, debido a que las coordenadas de la dirección ya fueron especificadas en uno de los flujos de trabajo.    
 
 
+
+.. figure:: ../figs/Cap6/arquitecturaAppCliente.png
+   :scale: 100%
+
+   Arquitectura general de aplicación cliente
+
+
+De esta manera, la aplicación cliente se compone de las siguientes clases software:
+
+* **Main**: Esta es la clase principal que efectúa la configuración inicial de la aplicación  y administra los capturadores asociados a fallas informadas y confirmadas.
+  
+* Capturador: Esta clase representa un objeto que realiza la captura de una falla con estado Confirmada, y se ejecutar todas aquellas operaciones inherentes a la administración de una falla Confirmada como son enviar fallas a la aplicación web, descartar fallas y solicitar a GeofencingAPI la computación de la latitud y longitud asociada a una falla.      
+  
+* CapturadorInformados: Representa al objeto encargado de realizar las operaciones de captura de fallas Informadas, ejecutando las operaciones relacionadas con la administración de fallas informadas, excluyendo de este conjunto las operaciones de computación de coordenadas de la falla. Adicionalmente, encapsula las operaciones de solicitud y carga de fallas informadas en memoria desde la aplicación web.
+  
+* ItemFalla: Esta clase representa a una falla confirmada o informada administrada por un capturador, y mantiene para cada falla el estado actual (Informada o Confirmada) y una colección de objetos Captura asociadas a ésta.
+  
+* Estado: Representa el estado actual de la falla y sus atributos depende del estado concreto que la falla tenga asociado. De esta superclase extienden dos subclases que son: Confirmada e Informada. Confirmada mantiene información respecto de las propiedades asociadas a la falla (tipo de falla, tipo de material y criticidad)coordenadas de la falla (latitud y longitud) y si es posible obtenerlos, información de la dirección. Por otro lado, Informada solamente mantiene información de la dirección (calle y altura) y el identificador con el que la falla se encuentra registrada.
+  
+* Captura: Esta clase contiene información propia de una captura individual para un objeto ItemFalla (nombre captura, extensión, directorio) y el comportamiento para almacenar esta persistentemente. 
+  
+* GeofencingAPI: Es la API principal de comunicación con el dispositivo GPS y principalmente contiene las operaciones de obtención de coordenadas.
+  
+* ApiClientApp: Esta clase representa la API que contiene la funcionalidad relacionada con la comunicación entre la aplicación cliente y la aplicación web, para la obtención de fallas informadas y envío de fallas (confirmadas e informadas) al servidor. Mantiene atributos relacionados con la conexión entre ambas aplicaciones, la cantidad de bytes enviados y bytes totales de las capturas a enviar.    
+   
+
+.. figure:: ../figs/Cap6/Final_Diagrama_clases_appCliente.png
+
+   Diagrama de clases software de la aplicación de captura
 
 
 
