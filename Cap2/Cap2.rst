@@ -284,7 +284,9 @@ Cuando la cantidad de píxeles muestreados no es suficiente (undersampling) como
 
 |
 
-.. figure:: ../figs/Cap2/imagenpíxels.png
+.. .. figure:: ../figs/Cap2/imagenpíxels.png
+
+.. figure:: ../figs/Cap2/imagenPixels.png
    :scale: 40%
 
    Representación de un array de imagen de 10 x 10.
@@ -532,7 +534,7 @@ El negativo de una imagen consiste en escalar los valores de la imagen f(n), con
 Esta técnica se emplea para mejorar imágenes donde se pierde el nivel de detalle en las regiones con niveles blanco y negro, percibiéndose ésta como demasiado oscura. Un ejemplo de esta operación es la inspección de imágenes telescópicas con campos de estrellas y galaxias, donde con una imagen negativa los objetos brillantes, aparecen con una tonalidad oscura sobre un fondo brillante que es más sencillo de apreciar.   
 
 Estiramiento de contraste (Contrast Stretching,Histogram Stretching)
-###################################################################
+####################################################################
 
 Este procedimiento consiste en distribuir las frecuencias de los niveles de intensidad, por medio de una fórmula matemática, en un nuevo histograma donde éstos se encuentren organizados de manera uniforme y abarquen la escala completa de niveles de intensidad. Por ejemplo, si se emplea un histograma de una imagen de escala de grises, como el de la figura :num:`Fig. #escaladohistograma`, donde los niveles de intensidad de toda la escala están en el rango *[0,K-1]* y los niveles empleados por la figura se encuentran en el rango *[A,B]* con *A* y *B* siendo los valores máximos y mínimos de intensidad respectivamente, se puede emplear la siguiente fórmula matemática que mapee los valores en el nuevo histograma:
 
@@ -610,11 +612,9 @@ Este procedimiento es útil en imágenes que cuentan con histogramas bimodales, 
 
 Existen varias estrategias para la elección acerca de donde colocar el límite *T*: Si el histograma de imagen es bimodal, el límite se tiende a colocar entre medio de los modos de la imagen, como en la figura anterior. Sin embargo, esta aproximación tiene problemas si la imagen contiene múltiples objetos de un brillo promedio diferente en un fondo uniforme (histograma multimodal), excluyéndose algunos objetos. También es difícil asignar un límite si el histograma es plano, conteniendo imágenes complejas, con variaciones de gris significativas, detalles, iluminación no uniforme, etc.
 
-
 .. figure:: ../figs/Cap2/imagenMultimodal.png
-
-   (a) Histograma multimodal que señala la dificultad de seleccionar un límite. (b) Histograma plano, para el que la selección de un límite es difícil o imposible.
-
+   
+   (a)Histograma multimodal que señala la dificultad de seleccionar un límite. (b) Histograma plano, para el que la selección de un límite es difícil o imposible.
 
 Por otro lado, también se pueden emplear aproximaciones que usen un modelo estadístico sobre el histograma, con una función de distribución de probabilidad (pdf), donde se plantee la decisión de asignar 0 o 1 a cada píxel de forma estadística. De esta manera, se puede seleccionar la función de distribución que mejor se adapte a las ubicaciones de los modos del histograma (picos de intensidad en éste), el ancho de cada modo y la decisión acerca de donde termina un modo y comienza otro; Pudiendo aplicarse un modelo probabilístico, dependiendo de la forma de los modos, como por ejemplo, una pdf Gaussiana. Esta alternativa puede producir resultados aceptables con respecto a la colocación de límites, sin embargo, cualquier modelo probabilístico simple no tiene en cuenta factores importantes como la continuidad del fondo o de los objetos, apariencia visual, e iluminación no uniforme, por lo que un modelo estadístico no produciría resultados visuales tan eficientes, como los que generaría una persona manualmente.
 
@@ -1572,9 +1572,9 @@ En el sistema el sensor captura una nube de punto 3D y la localización (latitud
 El software utilizado por el sistema fue desarrollado utilizando como base ROS. En primera instancia, una cámara de alta velocidad es utilizada para poder detectar un cambio considerable en la superficie del circuito vial, en esta etapa sólo se utiliza información de la cámara debido al costo de procesamiento que conlleva una nube de puntos en 3D. Si una falla vial se detectaba, los datos de localización (latitud, longitud) provista por el GPS del automóvil, la nube de puntos 3D provista por el sensor Kinect y todas aquellas imágenes en un intervalo determinado desde la detección de la falla vial se capturaban. Por otro lado, si se detectaba que no se trataba de una falla vial toda la información relevada era descartada.
 
 .. figure:: ../figs/Cap2/potholeFlowChart.png
-   :scale:  60 %
+   :scale: 60%
 
-   Diagrama de flujo del sistema de detección. Extraído desde Fig.3 en :cite:`antecedentesReconstruccion3Dnro2`.
+   Diagrama de flujo del sistema de detección.Extraído desde Fig.3 en :cite:`antecedentesReconstruccion3Dnro2`.
 
 Antes de que los datos sean realmente almacenados, la nube de puntos en 3D se analiza para poder confirmar que se tratara completamente de una falla vial. Para este análisis, es necesario estimar la contextura de la falla vial. Primero, la superficie del plano del circuito vial es estimado utilizando el algoritmo RANSAC. Por lo que, aquellos puntos que no formaban parte del plano son cosiderados como puntos pertenecientes a la falla vial. Luego, mediante la correlación entre la nube de puntos y la imagen capturada por el sensor Kinect, ésta se utiliza para separar el plano en la imagen capturada por la cámara de alta velocidad. Posteriormente, el contorno de la falla vial es identificado y sus dimensiones calculadas. El ancho de la falla vial se define como la máxima diferencia entre los puntos del contorno. La profundidad queda determinada como la máxima diferencia perpendicular entre el plano y los puntos de la falla vial.
 
@@ -1582,21 +1582,24 @@ Al final del análisis, toda aquella información calculada se adjuntaba a los d
 
 En el siguiente trabajo :cite:`antecedentesReconstruccion3Dnro3`. El sensor Kinect es utilizado para capturar los datos a una distancia aproximada de 0.8 a 0.9 metros del nivel suelo. Posteriormente, se utilza un algoritmo implementado con herramientas del software matmático ofrecido por Matlab, con el cual se procesa los datos y extrae medidas inherentes a las fallas viales.
 
-La nube de puntos que se captura desde el sensor Kinect usando OpenKinect, es un array de dos dimensiones de píxeles, donde cada píxel *(x,y)* contiene los valores de profundidad en milímetros. Los valores de profundidad van desde 0 a 2047. Valores altos en la profundidad marcan puntos más profundos sobre el pavimento. Como el sensor Kinect brinda una imagen de 640x480 píxeles. Utilizando Matlab, en este trabajo se recorta a 540x380, que es el área de interés para el mismo.
+.. _myvinculo: http://qa.social.msdn.microsoft.com/Forums/enUS/kinectsdknuiapi/thread/e53a4ba7-2522-407f-9d60-86e6fc5f89dc
 
-El mínimo local de cada columna es calculado y sustraído de la misma para extraer la falla vial del resto de los datos. Entonces, el eje *X* y el eje *Y* son convertidos a coordenadas del mundo real siguiendo http://qa.social.msdn.microsoft.com/Forums/enUS/kinectsdknuiapi/thread/e53a4ba7-2522-407f-9d60-86e6fc5f89dc.
+La nube de puntos que se captura desde el sensor Kinect usando OpenKinect, es un array de dos dimensiones de píxeles, donde cada píxel *(x,y)* contiene los valores de profundidad en milímetros. Los valores de profundidad van desde 0 a 2047. Valores altos en la profundidad marcan puntos más profundos sobre el pavimento. Como el sensor Kinect brinda una imagen de 640x480 píxeles. Utilizando Matlab, en este trabajo se recorta a 540x380, que es el área de interés para el mismo.El mínimo local de cada columna es calculado y sustraído de la misma para extraer la falla vial del resto de los datos.Entonces, el eje *X* y el eje *Y* son convertidos a coordenadas del mundo real siguiendo `myvinculo`_.
 
 .. figure:: ../figs/Cap2/potholeFlowChart1.png
-   :scale:  30%
+   :scale: 30%
 
    Diagrama de flujo del algoritmo. Extraído desde Fig.10 en :cite:`antecedentesReconstruccion3Dnro3`.
 
 Luego, se generan varias mallas (meshes) de las fallas viales con diferentes acimuts (azimuth) y elevaciones para una mejor visualización de las mismas. Teniendo esto, la media, la desviación estándar y la profundidad máxima de la muestra son calculadas utilizandos funciones estándar de Matlab. Para el cálculo del área, las imágenes con información relacionada a las distancias de las superficies que aparecen en ella, se convierten a imágenes binarias para diferentes distancias en milímetros en la profundiad. Por cada incremento en la distancia de la profundiad, el área es calculada para una cantidad *n* de píxeles. El área final a cierta profundidad se calcula multiplicando el área binaria y el área de un píxel a esa profundidad particular.
-Se grafica el área y la curvatura de la falla vial uno sobre otro siguiendo la regla del trapecio :math:`\int_a^b f(x) \dx, \approx (b-a)\frac{f(a)+f(b)}{2}` para calcular el volúmen aproximado.
+
+.. TODO: VER FALLA ACA LA COMPILACIÓN!!! -->
+.. Se grafica el área y la curvatura de la falla vial uno sobre otro siguiendo la regla del trapecio :math:`{\int_a^b f(x) \dx, \approx (b-a)\frac{f(a)+f(b)}{2}}` para calcular el volúmen aproximado.
 
 La disminución del área con respecto a la profundidad brinda algunas propiedades para poder clasificar a las fallas viales. Basándose en los valores de curvaturas de los baches, estos se puedieron caracterizar en 3 diferentes tipos. Baches cuadrados, longitudinales o cúbicos.
 
 Además, los límites (boundary) del bache son detectados desde las imágenes binarias y algunas propiedades de la misma son calculadas como, el máximo y menor en los ejes, centroide, excentricidad, orientación y perímetro.
+
 
 .. Aplicaciones web y móviles existentes para la notificación de fallas
 .. --------------------------------------------------------------------

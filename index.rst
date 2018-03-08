@@ -8,9 +8,8 @@
    Reconocimientos/*
    Resumen/*
    Introduccion/*
-   Cap6/*
+   Cap3/*
    Cap4/*
-   Cap2/*
-   Cap5/*
+   Cap6/*
    Bibliografia/*
    

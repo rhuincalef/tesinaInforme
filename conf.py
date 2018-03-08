@@ -211,6 +211,8 @@ latex_elements['preamble'] += r"""
 \usepackage{ifthen}
 %\usepackage{calc}
 \usepackage{pgf}
+\usepackage{bm}
+\usepackage{caption}
 %\setmainfont{Linux Libertine Mono O}
 
 % Sobreescritura de los comandos de latex generados por Sphinx automaticamente
@@ -354,6 +356,10 @@ latex_elements['preamble'] += r"""
               {\hfill\contentspage}
 \usepackage{appendix}
 \usepackage{titletoc}
+
+\usepackage[nottoc]{tocbibind}
+\renewcommand{\listfigurename}{Indice de figuras}
+\renewcommand{\listtablename}{Indice de tablas}
 \makeatother
 """
 #.. raw:: latex

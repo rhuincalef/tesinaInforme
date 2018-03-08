@@ -3,3 +3,13 @@
 - Si no se reemplazo previamente, copiar latex.py.default a /usr/local/lib/python2.7/dist-packages/sphinx/writers/, reemplazar y cambiar el directorio donde se encuentra Organizacion.tex.
 - $ make latex
 - $ cd _build/latex &&  make (o lualatex Tesina-Huincalef-Urrutia.tex)
+
+
+#Procedimiento para incluir las listas de figuras/tablas al indice -->
+
+- Modificar el writer en /usr/local/lib/python2.7/dist-packages/sphinx/writers/ para incluir la siguiente linea luego de la inclusión de Organización:
+
+\thispagestyle{empty}
+\listoffigures
+\listoftables
+\newpage
