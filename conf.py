@@ -381,6 +381,9 @@ latex_elements['preamble'] += r'\graphicspath{ {%s} }' % imgPath
 
 # Extension instalada con $ sudo pip install sphinxcontrib-bibtex para soportar 
 # el formato BibTex.
+# #from docutils.parsers.rst import directives  # for Directive.option_spec
+# #from sphinx.util.compat import Directive
+# from docutils.parsers.rst import Directive, directives
 
 mystyle = path + '//_estilos//title'
 
