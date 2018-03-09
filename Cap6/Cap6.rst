@@ -199,7 +199,11 @@ Librerías empleadas
 Funcionalidad de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Al ejecutar la aplicación configurada en un servidor web, se presentará en la pantalla principal un mapa interactivo de la ciudad de Trelew con todas las fallas registradas en el sistema, diferenciandose por colores las fallas con distinto estado.
+.. TODO: AGREGAR CONFIGURACION DE LA APLICACION!!!!
+
+.. TODO: TERMINAR LA FUNCIONALIDAD QUE FALTA!!
+
+Al ejecutar la aplicación configurada en un servidor web, se presentará en la pantalla principal un mapa interactivo de la ciudad de Trelew con todas las fallas registradas en el sistema, diferenciándose por colores las fallas con distinto estado.
 
 
 .. figure:: ../figs/Cap6/pantalla_principal_web.png
@@ -224,7 +228,7 @@ Una vez autentificado un usuario este accede al siguiente conjunto de operacione
 
     - Agregar. Ver :ref:`_disenioApp`
 * Barra de búsqueda. Idem para usuario anónimo.
-* Registrar Usuarios. Esta opción permite a un administrador agregar nuevos usuarios al sistema, especificando para ello nombre, apellido, teléfono, mail, usuario y contraseña. Luego debe hacer click en *Registrar* para proceder con el registro de éste.  
+* Registrar Usuarios. Esta opción permite a un administrador agregar nuevos usuarios al sistema, especificando para ello nombre, apellido, teléfono, mail, usuario y contraseña. Luego debe hacer presionar sobre la opción *Registrar* para proceder con el registro de éste.  
 * Barra lateral de filtrado. Esta barra se encuentra localizada en la parte superior izquierda del menú de opciones con un botón, y al acceder se despliega un sidebar donde el usuario debe seleccionar la opción *Filtrado de fallas por calle*. Una vez hecho esto, se abrirá un menú en la misma sidebar en el cual el usuario ingresará la calle, y seleccionara por medio de la opción "Seleccionar tipo de falla" el/los tipo/s de falla que desea filtrar. Además, deberá seleccionar el/los estados de falla. Una vez hecho esto se solicita el filtrado por medio del botón "Buscar", luego se trazará una ruta si existiesen ese tipo de fallas sobre la calle especificada. Con la opción *Limpiar Ruta* se puede realizar un borrado de la ruta trazada.  
 * Ayuda. Idem para usuario anónimo.  
 
@@ -330,10 +334,183 @@ Python 2.7
 * 
 
 
-
-
 Funcionalidad de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _configAppCliente:
+
+Configuración de la aplicación
+""""""""""""""""""""""""""""""
+
+.. TODO: PONER LA CONFIGURACIÓN DE LA APLICACION ACA!
+
+
+Modo de uso de la aplicación
+++++++++++++++++++++++++++++
+
+Al iniciar la aplicación, se realizará una comprobación de conexión con sensor y se comprobará que exista el archivo de configuración de propiedades en el directorio de ejecución de la aplicación (Ver sección :ref:`_configAppCliente`) y se éstas se efectúa correctamente se visualizará un conjunto de submenus que agrupan las siguientes funcionalidades:
+
+* **Seleccionar BD**: Este menú agrupa las opciones relacionadas con el registro de coordenadas geográficas asociadas a la captura de fallas. La funcionalidad de este módulo se realizó con fines de debugging para mantener un registro de la ubicación de las fallas ya capturadas en una base de datos JSON, evitar la recaptura de éstas y facilitar la organización de las mismas, registrando las coordenadas (latitud y longitud), el nombre del archivo de captura PCD y la fecha en que dicho conjunto de fallas fue capturada.
+
+* **Captura de fallas**: Este módulo agrupa la funcionalidad de captura de fallas confirmadas e informadas y la obtención de fallas desde el servidor web.
+  
+* **Almacenar recorrido**: Contiene las funcionalidades relacionadas con la lectura/escritura de archivos de recorridos desde/hacia disco.
+  
+* **Subida de archivos**: Este menú abarca la opción de subida de archivos de captura a la aplicación web.
+
+
+.. figure:: ../figs/Cap6/MenuPrincipalAppCliente.png
+   :scale: 100%
+
+   Menú principal de aplicación de captura
+
+En el caso de que la conexión al sensor no pueda establecerse, no podrán realizarse capturas de ningún tipo y no se podrá emplear la funcionalidad de almacenamiento de recorridos. La aplicación mostrará un diálogo preguntando si se desea continuar con la ejecución de aplicación o si se desea terminar con la ejecución de la misma.
+
+
+.. figure:: ../figs/Cap6/errorConexionIincial.png
+
+   Error de conexión del sensor inicial
+
+.. TODO: VER SI EXISTE ERROR DE PROPIEDADES EN JSON AL INICIAR!!!
+
+
+Aunque el menú de selección de BD no forma parte de la funcionalidad de captura, ya que fue desarrollado previamente al desarrollo de la generación de archivos de recorridos, este módulo se conservo para conservar un registro global de las fallas y sus fechas de captura, por lo que no será explicado en detalle, sin embargo antes de comenzar la captura de fallas informadas y confirmadas, se debe seleccionar este menú y seleccionar sobre la opción *Comenzar BD nueva*. Ésto producirá una BD JSON global (para todas las fallas de todos los recorridos) y permitirá continuar con la captura de fallas y la generación de recorridos.
+
+
+.. figure:: ../figs/Cap6/capturarFallaNueva1.png
+   :scale: 100%
+
+   Inicialización de BD de registro de fallas
+
+
+Con respecto al menú de captura de fallas, si esta pestaña es seleccionada se podrán observar las siguientes opciones:
+
+* Capturar falla nueva
+* Obtener falla informada
+* Capturar falla informada
+
+La opción de capturar falla nueva permite realizar la captura de fallas con estado confirmada, y al seleccionarse se mostrará una pantalla donde el usuario deberá seleccionar las propiedades de la falla que se está capturando siendo éstas: el tipo de falla, tipo de material de la calle donde la falla se localiza y nivel de criticidad específico para cada tipo de falla. Una vez confirmadas estas propiedades, se mostrará una vista con un explorador de archivos desde donde se podrá navegar la estructura de archivos de las carpetas locales a la ejecución de la aplicación y se podrá crear/eliminar un directorio de capturas y escribir en la barra de búsqueda un nombre de archivo para la captura. 
+
+
+.. figure:: ../figs/Cap6/capturaFallaNueva2.png
+   :scale: 100%
+
+   Creación de un directorio en el explorador de archivos
+
+
+.. figure:: ../figs/Cap6/capturaFallaNueva3.png
+   :scale: 100%
+
+   Establecimiento del nombre de la falla en el directorio creado anteriormente
+
+
+Al confirmar el directorio y el nombre del archivo de captura, se mostrarán los visores de la imagen en video y de la imagen de profundidad, con la opción de generar una captura desde la opción *Capturar* o presionando SPACEBAR. 
+
+
+.. figure:: ../figs/Cap6/capturaFallaNueva4.png
+   :scale: 100%
+
+   Visor de imagen RGB y de profundidad
+
+Una vez capturada una falla, se mostrará un cuadro de diálogo que permitirá visualizar la falla a través de la herramienta *pcl_viewer* ofrecida por PCL y luego, al cerrar este cuadro de diálogo se proporcionará la opción de conservar o descartar dicha captura, si ésta no es de una calidad aceptable. Estos dos últimos pasos pueden repetirse, permitiendo la obtención de múltiples capturas asociadas a una falla confirmada. 
+
+.. figure:: ../figs/Cap6/capturaFallaNueva5.png
+   :scale: 100%
+
+   Visualización de la falla capturada
+
+Con respecto a la opción de *obtención de fallas*, ésta consiste en obtener desde el servidor fallas con estado informada en  una calle determinada y cargarlas en memoria, para su posterior captura. Al seleccionar esta opción, se una entrada de texto donde se deberá ingresar el nombre de la calle, cuyo valor será autocompletado con las calles que el servidor tiene registradas. Una vez ingresado el nombre de la calle se debe seleccionar la opción *Solicitar fallas servidor*, que enviará la petición a la aplicación web para su carga en memoria.      
+
+
+.. figure:: ../figs/Cap6/obtencionDireccion1.png
+   :scale: 100%
+
+   Ingreso de nombre de calle 
+
+Una vez obtenidas las fallas informadas desde la aplicación web, se puede proceder con la capturar de las mismas seleccionando la opción *Capturar falla informada*, que mostrará un listado con la información asociada a la falla informada: ID que es el identificador de la falla en el sistema, nombre de la calle y altura de la misma, donde el usuario deberá seleccionar una de las fallas de la lista y presionar sobre la opción *Realizar captura*. 
+
+.. figure:: ../figs/Cap6/capturaFallaInforma1.png
+   :scale: 100%
+   
+   Selección de una falla informada para su captura
+
+Luego de seleccionar la falla, se mostrará el explorador de archivos para la selección de nombre  de falla y creación/eliminación de directorios de captura.
+
+.. figure:: ../figs/Cap6/capturaFallaInforma2.png
+   :scale: 100%
+
+   Selección del nombre y directorio donde se almacenará la falla informada
+
+
+
+Finalmente, se mostrará la pantalla que contiene los visores y se mostrarán los cuadros de diálogos para la visualización y conservación de la captura que son visualizados para las fallas confirmadas.
+
+
+.. figure:: ../figs/Cap6/capturaFallaInforma3.png
+   :scale: 100%
+
+   Captura de falla informada
+
+Con respecto al menú de *Almacenar recorrido* este ofrece las siguientes opciones:
+
+* Guardar fallas capturadas
+* Cargar fallas capturadas
+
+
+La opción de *Guardar fallas capturadas* permite almacenar una o varias fallas (informadas y/o capturadas) previamente en un archivo de recorrido (archivos .rec), para ser leído posteriormente. Al seleccionar esta opción, se podrá abrirá una ventana que permitirá navegar la jerarquía de directorios de la aplicación para seleccionar un directorio. La jerarquía puede visualizarse en dos modos: Vista iconos y Vista lista; Si se selecciona vista iconos (opción por defecto) se puede visualizar los elementos en iconos de tamaño mediano, mientras que en vista lista se puede visualizar un listado con el nombre completo de cada uno de los archivos y directorios en una lista.  
+
+
+
+.. figure:: ../figs/Cap6/menuAlmacenarRecorrido.png
+   :scale: 100%
+ 
+   Menú Almacenar recorrido
+
+.. TODO: VER SI LAS FALLAS ALMACENADAS EN DISCO SON BORRADAS DE MEMORIA!!!
+
+Una vez seleccionado el directorio (dentro del mismo), se debe ingresar en la barra inferior el nombre del archivo de recorrido (obviando la extension .rec) y elegir la opción *Guardar*. Una vez realizado el almacenamiento exitoso, se mostrará un mensaje indicando la correcta finalización del guardado del mismo. 
+
+
+.. figure:: ../figs/Cap6/almacenarFalla1.png
+   :scale: 100%
+
+   Almacenamiento de recorrido
+
+Respecto de la opción *Cargar fallas capturadas*, esta permite cargar en memoria un conjunto de fallas almacenadas en un archivo de recorridos. Al momento de realizar la carga de un archivo de recorrido en memoria, es importante realizar un almacenamiento persistente de las fallas que puedan existir en memoria, ya que éstas serán eliminadas antes de proceder con la carga del recorrido. Al seleccionar esta opción, se mostrará un explorador para la navegación de archivos a partir del cual se localizará el archivo de recorrido. Una vez seleccionado éste, se debe confirmar su apertura seleccionando la opción *Abrir*, y la aplicación verificará la consistencia de todos los archivos PCD en las rutas en que se almacenaron al momento de guardar el recorrido, y cargará en memoria solo aquellas consistentes, indicando que existió un error al momento de realizar la carga con algunas capturas.
+
+
+.. figure:: ../figs/Cap6/cargaFallas1.png
+   :scale: 100%
+
+   Carga de recorrido
+
+
+.. figure:: ../figs/Cap6/cargaFallas2.png
+   :scale: 100%
+
+   Mensaje al realizar una carga exitosa de un recorrido consistente
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Aplicación de clasificación
