@@ -7,7 +7,7 @@
 
 #Procedimiento para incluir las listas de figuras/tablas al indice -->
 
-- Modificar el writer en /usr/local/lib/python2.7/dist-packages/sphinx/writers/ para incluir la siguiente linea luego de la inclusión de Organización:
+- Modificar el writer en /usr/local/lib/python2.7/dist-packages/sphinx/writers/latex.py para incluir la siguiente linea luego de la inclusión de Organizacion.tex:
 
 \thispagestyle{empty}
 \listoffigures

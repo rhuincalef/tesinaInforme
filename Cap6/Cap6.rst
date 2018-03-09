@@ -92,6 +92,7 @@ Requerimientos no funcionales
 * Ayuda de fácil acceso para entender los comandos para interactuar con el visualizador.
 * Indicación clara de las fallas filtradas en una calle, remarcadas de manera que se trace una ruta sobre ésta. 
 
+.. _disenioApp:
 
 Diseño de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -124,12 +125,61 @@ Por otro lado, los usuarios registrados pueden realizar las siguientes operacion
 Estructura general del proyecto
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+La aplicación web fue desarrollada con el lenguaje de programación PHP empleando el framework CodeIgniter, el cual emplea la arquitectura Model-View-Controller, para la funcionalidad backend, en combinación con Boostrap para las vistas del fontend. Por lo que, la arquitectura general de la aplicación web es la se conforma por los siguientes componentes:
+
+.. figure:: ../figs/Cap6/appWebFlowChart.png
+
+   Arquitectura de la aplicación
+
+
+* **index.php**: Es el controlador principal de la aplicación e inicializa los recursos necesarios para la ejecución de CodeIgniter.
+  
+* **Routing**: Este módulo recibe las peticiones HTTP realizadas y se encarga de establecer el objetivo de la petición.
+   
+* **Security**: Realiza el saneamiento de la URL solicitada, comprobando que todas las configuraciones de seguridad establecidos en el servidor se cumplan y luego, realiza la carga del controlador de la aplicación.
+   
+* **Application Controller**: Es el controlador principal de la aplicación y carga todos aquellos recursos necesarios para el procesamiento de las peticiones, como son los modelos, las vistas, librerías, plugins y scripts.
+  
+* **Caching**: Este módulo realiza la administración de aquellas peticiones que ya han sido procesadas, por lo que, si una petición ya fue realizada no es necesario renderizarla nuevamente, sino que se retorna directamente por medio de éste módulo el resultado procesado anteriormente.
+  
+* **View**: Este componente mantiene la estructura general de las vistas, que serán renderizadas posteriormente ante una petición con información que responda a la misma. Si esta activada la posibilidad de caching, ésta será almacenada para responder a futuras peticiones.
+
+
+La organización de directorios de la aplicación web se divide en dos carpetas: 
+
+* Application
+* System
+
+La carpeta Application contiene aquellos elementos que componen la aplicación desarrollada, subdiviéndose en varias subcarpetas siéndo las principales las siguientes:
+
+*  **Config**: Contiene todos aquellos archivos de configuración.
+    
+*  **Controllers**: Contiene los controladores de la aplicación, donde cada uno se encuentra asociado a una URL que puede ser solicitada. De esta forma, si existe un controlador Producto con un método consultar en midominio.com, el acceso a esta funcionalidad será realizado por la siguiente dirección http://www.midominio.com/index.php/producto/consultar.
+    
+*  **Core**: Esta carpeta agrupa las clases de base, sobre las que se construye la aplicación.
+   
+*  **Libraries**: Contiene archivos de librería desarrollados o incorporados para el funcionamiento de la aplicación.
+   
+*  **Models**: Contiene los modelos que reflejan la lógica de la aplicación, agrupando las clases tanto del problema especifico modelado como de las que acceden a la base de datos.
+   
+*  **Views**: Esta clase contiene los archivos templates HTML que representan la pagina web final que se enviará en respuesta a una petición. 
+
+
+Por otro lado, la carpeta System contiene el código fuente propio del framework, donde se encuentran las clases nucleo del framework, los drivers para el acceso a diferentes DBMS, librerías empleadas por éstos y utilidades relacionadas con la manipulación de distintos atributos asociados a las páginas web (cookies, fechas y URL). 
 
 
 Clases específicas agregadas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. TODO: Models y controllers principales.
 
+Para el desarrollo de la funcionalidad incorporada a la aplicación web, se extendió el comportamiento de las clases preexistentes en la misma, siendo éstas las siguientes:
+
+* **Falla**: Se agregó funcionalidad para creación y registro de fallas de peticiones provenientes de la aplicación de captura para fallas confirmadas e informadas, identificar la correspondencia entre una falla y los clusters que fueron clasificados  a partir de ésta.
+* **Multimedia**: Esta clase se extendió para incluir el procesamiento de archivos de tipo PCD asociados a una falla, ya que anteriormente solo se permitía subir archivos multimedia de tipo imagen.
+* **Calle**: Se añadió comportamiento relacionado con la obtención de sugerencias desde la aplicación de captura, y la obtención de fallas desde ésta a partir del nombre de una calle.
+* **Dirección**: Se agregó comportamiento para realizar el geocodificación inversa (reverse geocoding) en las fallas confirmadas enviadas desde la aplicación de captura, y para la obtención de la intersección más próxima a una coordenada geográfica.
+* **TipoFalla**: En esta clase se incorporó funcionalidad para obtener los tipos de reparación y el tipo de material asociados a un tipo de falla y disponer de esta información en la aplicación de captura.
+* **TipoMaterial**: Se agregó funcionalidad para obtener los tipos de criticidades asociadas con un tipo de material desde la aplicación de captura.
+* **Pcd_upload_model**: Esta clase se encarga de gestionar la subida de archivos asociados a capturas (archivos tipo PCD) desde la aplicación de captura.
 
 
 Librerías empleadas
@@ -149,8 +199,34 @@ Librerías empleadas
 Funcionalidad de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Al ejecutar la aplicación configurada en un servidor web, se presentará en la pantalla principal un mapa interactivo de la ciudad de Trelew con todas las fallas registradas en el sistema, diferenciandose por colores las fallas con distinto estado.
 
 
+.. figure:: ../figs/Cap6/pantalla_principal_web.png
+   :scale: 100%
+
+   Pantalla de inicio de la aplicación web
+
+Esta pantalla inicial muestra las opciones ofrecidas para un tipo de usuario anónimo, y estas son:
+
+* Iniciar Sesion: Esta opción se encuentra disponible para usuarios registrados que ya posean una cuenta en el sistema, y permite el logueo de los mismos.
+* **Baches**: Dentro de esta opción se ofrece la función *Agregar* que permite informar una falla nueva. Ver :ref:`_disenioApp`. 
+* Ayuda: Esta opción permite visualizar el el significado, con respecto al estado, de cada color de los marcadores.
+* Barra de búsqueda. Esta barra se encuentra en el centro del conjunto de las opciones y permite buscar y posicionarse sobre una dirección.
+  
+Una vez autentificado un usuario este accede al siguiente conjunto de operaciones:
+
+* Baches. Este menú ofrece las opciones:
+
+    - Informar falla. Ver :ref:`_disenioApp`
+    - Ver fallas reparadas. Ver :ref:`_disenioApp`
+* TipoFalla
+
+    - Agregar. Ver :ref:`_disenioApp`
+* Barra de búsqueda. Idem para usuario anónimo.
+* Registrar Usuarios. Esta opción permite a un administrador agregar nuevos usuarios al sistema, especificando para ello nombre, apellido, teléfono, mail, usuario y contraseña. Luego debe hacer click en *Registrar* para proceder con el registro de éste.  
+* Barra lateral de filtrado. Esta barra se encuentra localizada en la parte superior izquierda del menú de opciones con un botón, y al acceder se despliega un sidebar donde el usuario debe seleccionar la opción *Filtrado de fallas por calle*. Una vez hecho esto, se abrirá un menú en la misma sidebar en el cual el usuario ingresará la calle, y seleccionara por medio de la opción "Seleccionar tipo de falla" el/los tipo/s de falla que desea filtrar. Además, deberá seleccionar el/los estados de falla. Una vez hecho esto se solicita el filtrado por medio del botón "Buscar", luego se trazará una ruta si existiesen ese tipo de fallas sobre la calle especificada. Con la opción *Limpiar Ruta* se puede realizar un borrado de la ruta trazada.  
+* Ayuda. Idem para usuario anónimo.  
 
 
 Aplicación de captura(appCliente)
@@ -241,6 +317,19 @@ De esta manera, la aplicación cliente se compone de las siguientes clases softw
 
 Librerías empleadas en la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Python 2.7
+
+* **Kivy**:
+* XpopUp
+* requests
+* pypcd
+* Iconfonts
+* Tiny-db
+* ZODB/ZEO
+* gps
+* 
+
+
 
 
 Funcionalidad de la aplicación
