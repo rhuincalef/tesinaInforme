@@ -374,7 +374,7 @@ En el caso de que la conexión al sensor no pueda establecerse, no podrán reali
 .. TODO: VER SI EXISTE ERROR DE PROPIEDADES EN JSON AL INICIAR!!!
 
 
-Aunque el menú de selección de BD no forma parte de la funcionalidad de captura, ya que fue desarrollado previamente al desarrollo de la generación de archivos de recorridos, este módulo se conservo para conservar un registro global de las fallas y sus fechas de captura, por lo que no será explicado en detalle, sin embargo antes de comenzar la captura de fallas informadas y confirmadas, se debe seleccionar este menú y seleccionar sobre la opción *Comenzar BD nueva*. Ésto producirá una BD JSON global (para todas las fallas de todos los recorridos) y permitirá continuar con la captura de fallas y la generación de recorridos.
+Aunque el menú de selección de BD no forma parte de la funcionalidad de captura, ya que fue desarrollado previamente al desarrollo de la generación de archivos de recorridos, este módulo se conservo para conservar un registro global de las fallas y sus fechas de captura, por lo que no será explicado en detalle, sin embargo antes de comenzar la captura de fallas informadas y confirmadas, se debe seleccionar este menú y seleccionar sobre la opción *Comenzar BD nueva con la fecha actual(opción por defecto)*. Ésto producirá una BD JSON global (para todas las fallas de todos los recorridos) y permitirá continuar con la captura de fallas y la generación de recorridos.
 
 
 .. figure:: ../figs/Cap6/capturarFallaNueva1.png
@@ -466,9 +466,7 @@ La opción de *Guardar fallas capturadas* permite almacenar una o varias fallas 
  
    Menú Almacenar recorrido
 
-.. TODO: VER SI LAS FALLAS ALMACENADAS EN DISCO SON BORRADAS DE MEMORIA!!!
-
-Una vez seleccionado el directorio (dentro del mismo), se debe ingresar en la barra inferior el nombre del archivo de recorrido (obviando la extension .rec) y elegir la opción *Guardar*. Una vez realizado el almacenamiento exitoso, se mostrará un mensaje indicando la correcta finalización del guardado del mismo. 
+Una vez seleccionado el directorio (dentro del mismo), se debe ingresar en la barra inferior el nombre del archivo de recorrido (obviando la extension .rec) y elegir la opción *Guardar*. Una vez realizado el almacenamiento exitoso, las fallas informadas y confirmadas que se almacenarán en disco y se eliminarán de memoria, por lo que luego de haber realizado el guardado del recorrido, éstas no podrán subirse al servidor, debiendo ser cargadas nuevamente para este fin. 
 
 
 .. figure:: ../figs/Cap6/almacenarFalla1.png
@@ -491,24 +489,30 @@ Respecto de la opción *Cargar fallas capturadas*, esta permite cargar en memori
    Mensaje al realizar una carga exitosa de un recorrido consistente
 
 
+Por último, el menú **Subida de archivos** contiene la funcionalidad de subida de fallas a la aplicación web, y ésta solo puede ser seleccionada si existe al menos una fallas capturada en la aplicación, ya sea por algunas de las opciones de captura de fallas o por la carga de un recorrido.
+
+.. figure:: ../figs/Cap6/subirFalla1.png
+   :scale: 100%
+
+   Menú de subida de archivos
 
 
+Luego de haber seleccionado esta opción, aparecerá un listado con las fallas informadas y confirmadas junto con su información asociada, mostrando para las fallas confirmadas la latitud y longitud, el campo ID se visualizará como "No disponible" ya que este campo es exclusivo de las fallas informadas y, opcionalmente si dispone de acceso a Internet, el nombre de la calle y el rango estimado de altura en el que la misma se encuentra. Mientras que para fallas informadas, se mostrará el ID con el que la falla se encuentra registrada en la aplicación web y en lugar de latitud y longitud se mostrará la calle y altura específica con que fue notificada previamente. En esta ventana se deben seleccionar una o más fallas para enviar y luego seleccionar la opción *Enviar fallas*, lo que mostrará una barra de progreso con respecto al envío de fallas.
 
 
+.. figure:: ../figs/Cap6/subirFalla2.png
+   :scale: 100%
+
+   Selección de fallas para subir a la aplicación web
 
 
+Al finalizar el envío de fallas, se mostrará un cuadro de dialogo consultando si las capturas se conservarán en disco y en caso de seleccionarse la opción afirmativa, se conservarán los archivos de captura en disco y en memoria, en caso de que se desee aún generar un recorrido con esas fallas en particular. En caso de desear eliminar las capturas subidas, éstas se descartarán de disco y de memoria, por lo que al retornar a la pantalla anterior no podrán seleccionarse nuevamente para ser enviadas y serán eliminadas permanentemente. En caso de haber sido cargadas desde un archivo de recorrido, este quedará inutilizado debido a que las fallas se borran desde disco y el archivo de recorrido una referencia a las fallas en disco.  
 
 
+.. figure:: ../figs/Cap6/subirFalla3.png
+   :scale: 100%
 
-
-
-
-
-
-
-
-
-
+   Cuadro de diálogo
 
 
 
