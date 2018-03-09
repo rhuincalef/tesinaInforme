@@ -2,6 +2,8 @@
 Capítulo 6. Caso de aplicación
 ==============================
 
+El objetivo principal del presente capítulo será la exposición de las herramientas utilizadas y las etapas necesarias para la captura, procesamiento, clasificación y visualización de fallas. Cabe aclarar que del conjunto de tipos de falla existentes detallados anteriormente (Ver :doc:`../Cap2/Cap2`), únicamente se considerarán los tipos de falla bache y grieta sobre pavimento rígido.
+
 
 Arquitectura global del sistema de administración de fallas
 -----------------------------------------------------------
@@ -199,11 +201,7 @@ Librerías empleadas
 Funcionalidad de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. TODO: AGREGAR CONFIGURACION DE LA APLICACION!!!!
-
-.. TODO: TERMINAR LA FUNCIONALIDAD QUE FALTA!!
-
-Al ejecutar la aplicación configurada en un servidor web, se presentará en la pantalla principal un mapa interactivo de la ciudad de Trelew con todas las fallas registradas en el sistema, diferenciándose por colores las fallas con distinto estado.
+Al ejecutar la aplicación configurada en un servidor web (Ver instrucciones de configuración en archivo "Pasos de instalación - BacheoServer.txt" adjunto al código fuente), se presentará en la pantalla principal un mapa interactivo de la ciudad de Trelew con todas las fallas registradas en el sistema, diferenciándose por colores las fallas con distinto estado.
 
 
 .. figure:: ../figs/Cap6/pantalla_principal_web.png
@@ -213,24 +211,55 @@ Al ejecutar la aplicación configurada en un servidor web, se presentará en la 
 
 Esta pantalla inicial muestra las opciones ofrecidas para un tipo de usuario anónimo, y estas son:
 
-* Iniciar Sesion: Esta opción se encuentra disponible para usuarios registrados que ya posean una cuenta en el sistema, y permite el logueo de los mismos.
+* **Iniciar Sesión**: Esta opción se encuentra disponible para usuarios registrados que ya posean una cuenta en el sistema, y permite el logueo de los mismos.
 * **Baches**: Dentro de esta opción se ofrece la función *Agregar* que permite informar una falla nueva. Ver :ref:`_disenioApp`. 
-* Ayuda: Esta opción permite visualizar el el significado, con respecto al estado, de cada color de los marcadores.
+* **Ayuda**: Esta opción permite visualizar el el significado, con respecto al estado, de cada color de los marcadores.
 * Barra de búsqueda. Esta barra se encuentra en el centro del conjunto de las opciones y permite buscar y posicionarse sobre una dirección.
-  
+* **Visualización de propiedades de falla**: Esta funcionalidad es accesible al hacer click sobre una falla posicionada sobre el mapa y redirige al usuario a una ventana donde se puede observar en el banner principal el identificador de la falla, conformado por el símbolo hashtag(#), la palabra *Falla* y el número de falla registrada. Dentro de esta pantalla se puede visualizar un submenú, donde se agrupan las siguientes opciones:
+	
+	* **Especificación de la falla**: Esta pestaña muestra un minimapa con la ubicación de la falla y ofrece información relacionada con las propiedades de la misma, mostrando el tipo de falla, criticidad, dirección (calle y altura), estado y fecha de establecimiento del último estado.   
+	* **Comunidad social**: Permite a un usuario anónimo ver los comentarios hechos por otros usuarios relacionados con la falla, además de poder agregar comentarios. 
+
+
+.. figure:: ../figs/Cap6/pantallaVisualizacionPropsUserAnonimo.png
+   :scale: 100%
+
+   Pantalla de visualización de propiedades de la falla (usuario anónimo)
+
+
 Una vez autentificado un usuario este accede al siguiente conjunto de operaciones:
 
 * Baches. Este menú ofrece las opciones:
 
     - Informar falla. Ver :ref:`_disenioApp`
     - Ver fallas reparadas. Ver :ref:`_disenioApp`
+      
 * TipoFalla
 
     - Agregar. Ver :ref:`_disenioApp`
-* Barra de búsqueda. Idem para usuario anónimo.
-* Registrar Usuarios. Esta opción permite a un administrador agregar nuevos usuarios al sistema, especificando para ello nombre, apellido, teléfono, mail, usuario y contraseña. Luego debe hacer presionar sobre la opción *Registrar* para proceder con el registro de éste.  
-* Barra lateral de filtrado. Esta barra se encuentra localizada en la parte superior izquierda del menú de opciones con un botón, y al acceder se despliega un sidebar donde el usuario debe seleccionar la opción *Filtrado de fallas por calle*. Una vez hecho esto, se abrirá un menú en la misma sidebar en el cual el usuario ingresará la calle, y seleccionara por medio de la opción "Seleccionar tipo de falla" el/los tipo/s de falla que desea filtrar. Además, deberá seleccionar el/los estados de falla. Una vez hecho esto se solicita el filtrado por medio del botón "Buscar", luego se trazará una ruta si existiesen ese tipo de fallas sobre la calle especificada. Con la opción *Limpiar Ruta* se puede realizar un borrado de la ruta trazada.  
-* Ayuda. Idem para usuario anónimo.  
+      
+* **Barra de búsqueda**: Idem para usuario anónimo.
+  
+* **Registrar Usuarios**: Esta opción permite a un administrador agregar nuevos usuarios al sistema, especificando para ello nombre, apellido, teléfono, mail, usuario y contraseña. Luego debe hacer presionar sobre la opción *Registrar* para proceder con el registro de éste.
+    
+* **Barra lateral de filtrado**: Esta barra se encuentra localizada en la parte superior izquierda del menú de opciones con un botón, y al acceder se despliega un sidebar donde el usuario debe seleccionar la opción *Filtrado de fallas por calle*. Una vez hecho esto, se abrirá un menú en la misma sidebar en el cual el usuario ingresará la calle, y seleccionara por medio de la opción "Seleccionar tipo de falla" el/los tipo/s de falla que desea filtrar. Además, deberá seleccionar el/los estados de falla. Una vez hecho esto se solicita el filtrado por medio del botón "Buscar", luego se trazará una ruta si existiesen ese tipo de fallas sobre la calle especificada. Con la opción *Limpiar Ruta* se puede realizar un borrado de la ruta trazada.  
+  
+* **Ayuda**: Idem para usuario anónimo.  
+  
+* **Visualización de propiedades de falla**: Esta opción cumple el mismo objetivo que la opción de visualización para un usuario anónimo, incluyendo las mismas funcionalidades y agregando las siguientes:
+  
+	* **Estado de falla**: Esta opción permite la modificación del estado asociado a una falla, permitiendo que se cambie el estado de la falla al estado siguiente en la secuencia de estados, y sus atributos dependen del tipo de estado en el que se encuentra actualmente la falla. Una vez completados todos los campos específicos del estado, el usuario deberá seleccionar la opción *Confirmar* para proceder con el cambio de estado.
+	  
+	* **Visor de nube de puntos**: Permite la visualización de el/los archivo/s de  nube de puntos PCD asociados a una falla. Para conseguir ésto, se debe posicionar el cursor sobre uno de los thumbnails que contienen imágenes miniatura con el logo de la universidad y seleccionar la opción *Ver*. Ésto desplegará el visor y permitirá rotar por medio del mouse la imagen y acceder a los comandos del mismo a través de la opción *Ayuda visor*.
+	  
+	* *Visor de clusters*: Esta funcionalidad muestra aquellos clusters asociados a una falla que fueron aislados y clasificados, indicando para cada cluster el tipo de falla que fue predicho por la aplicación de clasificación, nombre del archivo (nombre de la falla y número de cluster), largo, ancho y profundidad en centímetros.
+	     
+
+.. figure:: ../figs/Cap6/pantallaVisualizacionPropsUserRegistrado.png
+   :scale: 100%
+
+   Pantalla de visualización de propiedades de la falla (usuario registrado)
+
 
 
 Aplicación de captura(appCliente)
@@ -323,9 +352,19 @@ Librerías empleadas en la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Python 2.7
 
-* **Kivy**:
-* XpopUp
+.. https://kivy.org/docs/philosophy.html
+.. https://kivy.org/docs/guide/basic.html
+.. https://kivy.org/docs/guide/architecture.html
+.. https://kivy.org/docs/guide/events.html
+.. 
+
+* **Kivy**: Kivy es una framework open-source en Python orientada al desarrollo rápido y sencillo de aplicaciones multiplataforma con widgets que soportan multi-touch, es decir, que proporciona soporte nativo para diferentes dispositivos táctiles que soportan la  detección de múltiples pulsaciones simultáneas. Esta librería se encuentra disponible en Android, Linux, OS X, iOS y Rasperry, por lo que permite que se desarrollen tanto aplicaciones para computadoras de escritorio como aplicaciones móviles. Kivy facilita el diseño de aplicaciones brindando interfaces gráficas escalables que no interfieran con el comportamiento de relacionado a validaciones necesarias en la aplicación, definiendo para ello un lenguaje declarativo de marcado denominado lenguaje KV (KVLang o KV languaje). Este lenguaje, permite especificar de manera declarativa una jerarquía de widgets y realizar bindeos entre distintos elementos de la GUI o, entre la aplicación y los widgets, separando el código relacionado con la construcción de interfaz gráfica del que es necesario para el funcionamiento de la aplicación web. Este lenguaje, se especifica en archivos con extensión .kv cuyo nombre es el mismo que el de la clase del widget. Este framework fue empleado para el desarrollo de la interfaz gráfica  de la aplicación de captura.
+
+
+* **XpopUp**:
+  
 * requests
+  
 * pypcd
 * Iconfonts
 * Tiny-db
