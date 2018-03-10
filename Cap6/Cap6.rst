@@ -125,7 +125,7 @@ Por otro lado, los usuarios registrados pueden realizar las siguientes operacion
 Estructura general del proyecto
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La aplicación web fue desarrollada con el lenguaje de programación PHP empleando el framework CodeIgniter, el cual emplea la arquitectura Model-View-Controller, para la funcionalidad backend, en combinación con Boostrap para las vistas del fontend. Por lo que, la arquitectura general de la aplicación web es la se conforma por los siguientes componentes:
+La aplicación web fue desarrollada con el lenguaje de programación PHP empleando el framework CodeIgniter, el cual emplea la arquitectura Model-View-Controller, para la funcionalidad back-end, en combinación con Bootstrap para las vistas del font-end. Por lo que, la arquitectura general de la aplicación web es la se conforma por los siguientes componentes:
 
 .. figure:: ../figs/Cap6/appWebFlowChart.png
 
@@ -185,14 +185,21 @@ Para el desarrollo de la funcionalidad incorporada a la aplicación web, se exte
 Librerías empleadas
 ^^^^^^^^^^^^^^^^^^^
 
-* **Three.js**:
-* **Geocoder**:
-* **Geonames**:
-* **CodeIgniter**:
-* **Boostrap**:
-* **jQuery**:
-* **GMaps**:
-* **GeoComplete**:
+* **Three.js**: Es una librería desarrollada en Javascript para el renderizado de gráficos y formas tridimensionales en un navegador a través de WebGL, SVG o la etiqueta Canvas de HTML5. Esta librería fue empleada para realizar la visualización de nubes de puntos en el navegador, adaptando el componente PCDLoader a las necesidades específicas de la aplicación.  
+   
+* **Geocoder**: Es una librería en PHP que permite la construcción de aplicaciones que utilizan información de geocoding, proveyendo una capa de abstracción respecto de las solicitudes y las respuestas realizadas a los distintos servidores. Esta librería se configuró con el proveedor para GoogleMaps y fue empleada para la computación de información de la dirección desde los servidores de Google.   
+  
+* **Geonames**: Geonames es una librería PHP para la georeferenciación inversa de direcciones y fue empleada para la obtención de información respecto de la intersección mas próxima a una par de coordenadas geográfica(latitud, longitud) a través de la API ofrecida por http://www.geonames.org/.  
+  
+* **CodeIgniter**: Es el núcleo principal de la aplicación. Ver :ref:`_disenioApp`. 
+  
+* **Bootstrap**: Es una librería font-end open-source para el desarrollo de páginas web responsivas, ofreciendo plantillas y widgets con HTML y CSS y funcionalidad en Javascript. Esta librería fue utilizada principalmente para la interfaz web que el usuario visualiza cuando usa la aplicación web. 
+  
+* **jQuery**: Librería ligera y rápida para la manipulación de elementos HTML en una página web, detección de eventos ocurridos sobre éstos y solicitudes Ajax, cuyo objetivo principal es facilitar la interacción con el DOM a través de varios navegadores.
+  
+* **GMaps**: GMaps es una api en Javascript para simplificar la manipulación e interacción con marcadores en un mapa de Google Maps. Ésta fue empleada para la administración de marcadores que representan las fallas en la aplicación.
+  
+* **GeoComplete**: Es un plugin de jQuery que encapsula la interacción con los servicios de Geocoding y Autocompletado de lugares de Google, con el fin de ofrecer la funcionalidad de autocompletado para direcciones. Fue empleado para la barra de búsqueda central de la aplicación web, que permite localizar y posicionarse sobre una dirección establecida. 
 
 
 
@@ -372,8 +379,9 @@ Esta aplicación fue desarrollada en el lenguaje de programación Python 2.7 emp
 
 * **Tiny-db**: Es una librería de poco peso desarrollada en Python para el almacenamiento de documentos que puedan ser convertidos a un formato de diccionarios en Python, pensada para el almacenamiento local sin acceso concurrente, servidores HTTP o índices en tablas. Este elemento fue empleado para desarrollar funcionalidad de debugging para el registro global de las latitudes y longitudes, archivos de captura y fecha de cada conjunto de fallas, en formato json. 
   
-* **ZODB/ZEO**:
-* **gps**:
+* **ZODB/ZEO**: ZODB es una base de datos orientada a objetos para Python 2.7, 3.4 y superiores, mientras que ZEO es una implementación cliente-servidor para compartir el acceso a la base de datos entre varios clientes. Esta implementación consiste en iniciar un proceso servidor escucha al que se conectarán varios procesos clientes a través de un protocolo RPC sobre TCP. Esta librería fue utilizada para desarrollar el almacenamiento persistente de fallas en un archivo de recorrido. 
+  
+* **gps**: Script empleado para interactuar con un dispositivo GPS. Fue empleado para la interacción con el GPS de un SmartPhone con Android a través de la interfaz USB.
 
 
 Funcionalidad de la aplicación
