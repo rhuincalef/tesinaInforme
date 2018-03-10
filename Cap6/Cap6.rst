@@ -8,8 +8,6 @@ El objetivo principal del presente capítulo será la exposición de las herrami
 Arquitectura global del sistema de administración de fallas
 -----------------------------------------------------------
 
-.. TODO: Se da una explicación de la estructura general de las 3 aplicaciones y como éstas interactúan mutuamente para conseguir el objetivo de la tesina.
-
 Antes de comenzar a detallar los diferentes componentes del sistema de administración de fallas, es necesario tener en cuenta que los tipos de fallas administrados por ésta, desde que son notificadas hasta que concluye su reparación, atraviesan por un conjunto de estados que son secuenciales, excluyentes y una vez superado un estado, la falla no puede regresar a un estado previo. Estos tipos de estado son:
 
 * **Informado**: Son aquellas fallas que fueron cargadas por usuarios desde la aplicación web.
@@ -350,27 +348,32 @@ De esta manera, la aplicación cliente se compone de las siguientes clases softw
 
 Librerías empleadas en la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Python 2.7
+Esta aplicación fue desarrollada en el lenguaje de programación Python 2.7 empleando las siguientes librerías:
 
 .. https://kivy.org/docs/philosophy.html
 .. https://kivy.org/docs/guide/basic.html
 .. https://kivy.org/docs/guide/architecture.html
-.. https://kivy.org/docs/guide/events.html
 .. 
 
-* **Kivy**: Kivy es una framework open-source en Python orientada al desarrollo rápido y sencillo de aplicaciones multiplataforma con widgets que soportan multi-touch, es decir, que proporciona soporte nativo para diferentes dispositivos táctiles que soportan la  detección de múltiples pulsaciones simultáneas. Esta librería se encuentra disponible en Android, Linux, OS X, iOS y Rasperry, por lo que permite que se desarrollen tanto aplicaciones para computadoras de escritorio como aplicaciones móviles. Kivy facilita el diseño de aplicaciones brindando interfaces gráficas escalables que no interfieran con el comportamiento de relacionado a validaciones necesarias en la aplicación, definiendo para ello un lenguaje declarativo de marcado denominado lenguaje KV (KVLang o KV languaje). Este lenguaje, permite especificar de manera declarativa una jerarquía de widgets y realizar bindeos entre distintos elementos de la GUI o, entre la aplicación y los widgets, separando el código relacionado con la construcción de interfaz gráfica del que es necesario para el funcionamiento de la aplicación web. Este lenguaje, se especifica en archivos con extensión .kv cuyo nombre es el mismo que el de la clase del widget. Este framework fue empleado para el desarrollo de la interfaz gráfica  de la aplicación de captura.
+* **Kivy**: Kivy es una framework open-source en Python orientada al desarrollo rápido y sencillo de aplicaciones multiplataforma con widgets que soportan multi-touch, es decir, que proporciona soporte nativo para diferentes dispositivos táctiles que soportan la  detección de múltiples pulsaciones simultáneas. Esta librería se encuentra disponible en Android, Linux, OS X, iOS y Rasperry, por lo que permite que se desarrollen tanto aplicaciones para computadoras de escritorio como aplicaciones móviles. Kivy facilita el diseño de aplicaciones brindando interfaces gráficas escalables que no interfieran con el comportamiento de relacionado a validaciones necesarias en la aplicación, definiendo para ello un lenguaje declarativo de marcado denominado lenguaje KV (KVLang o KV languaje). Este lenguaje, permite especificar de manera declarativa una jerarquía de widgets y realizar bindeos entre distintos elementos de la GUI o, entre la aplicación y los widgets, separando el código relacionado con la construcción de interfaz gráfica del que es necesario para el funcionamiento de la aplicación web. Este lenguaje, se especifica en archivos con extensión .kv cuyo nombre es el mismo que el de la clase del widget. Este framework fue empleado para el desarrollo de la interfaz gráfica de la aplicación de captura.
 
+.. https://kivy.org/docs/api-kivy.garden.html
+.. https://github.com/kivy-garden/garden.xpopup
 
-* **XpopUp**:
+* **XpopUp**: Este módulo es un conjunto de widgets generados a partir de la clase Popup de Kivy para el desarrollo de diálogos de pregunta, díalogos de mensaje y diálogos con barras de progreso. Es parte de la extensión Kivy-Garden, que consiste en un conjunto de herramientas desarrolladas y mantenidas por la comunidad de usuarios de Kivy. Esta extensión fue empleada en combinación con el conjunto de widgets base de Kivy.
   
-* requests
+
+* **Requests**: Es una librería en Python para realizar solicitudes HTTP de una forma sencilla, permitiendo agregar encabezados, datos de un form, archivos multi-parte con diccionarios en Python y acceder a las respuestas del servidor de la misma manera, sin necesidad de formar completamente las Query Strings de las URL o codificar los datos enviados por POST. Esta librería emplea urllib3 para mantener las conexiones con el servidor activas y realizar consultas de manera automática. Esta librería fue empleada para desarrollar la API de comunicación entre la aplicación de captura y la aplicación web.
+    
+* **Pypcd**: Es un componente empleado para el almacenamiento y lectura de nubes de puntos en disco empleadas por PCL. Fue empleada para el almacenamiento de archivos de nubes de puntos(PCD) asociados con un objeto Captura.
+   
+* **Iconfonts**: Es una de las extensiones en Kivy-Garden para incorporar la utilización de icon fonts en widgets del tipo Labes y sus derivados en aplicaciones desarrolladas con Kivy. El funcionamiento de esta librería consiste en generar un archivo *.fontd* que pueda ser usado en combinación con un archivo de fuentes personalizado *.ttf* y su archivo *.css* asociado, dentro de la aplicación. Esta librería fue empleada para incluir iconos personalizados en la aplicación tales, como los que figuran en las opciones de obtención de fallas informadas, captura de fallas informadas y confirmadas, etc.
   
-* pypcd
-* Iconfonts
-* Tiny-db
-* ZODB/ZEO
-* gps
-* 
+
+* **Tiny-db**: Es una librería de poco peso desarrollada en Python para el almacenamiento de documentos que puedan ser convertidos a un formato de diccionarios en Python, pensada para el almacenamiento local sin acceso concurrente, servidores HTTP o índices en tablas. Este elemento fue empleado para desarrollar funcionalidad de debugging para el registro global de las latitudes y longitudes, archivos de captura y fecha de cada conjunto de fallas, en formato json. 
+  
+* **ZODB/ZEO**:
+* **gps**:
 
 
 Funcionalidad de la aplicación
