@@ -387,18 +387,11 @@ Esta aplicación fue desarrollada en el lenguaje de programación Python 2.7 emp
 Funcionalidad de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _configAppCliente:
-
-Configuración de la aplicación
-""""""""""""""""""""""""""""""
-
-.. TODO: PONER LA CONFIGURACIÓN DE LA APLICACION ACA!
-
 
 Modo de uso de la aplicación
 ++++++++++++++++++++++++++++
 
-Al iniciar la aplicación, se realizará una comprobación de conexión con sensor y se comprobará que exista el archivo de configuración de propiedades en el directorio de ejecución de la aplicación (Ver sección :ref:`_configAppCliente`) y se éstas se efectúa correctamente se visualizará un conjunto de submenus que agrupan las siguientes funcionalidades:
+Luego de haber realizado la configuración de la aplicación detallada en el archivo README.md, se deberá iniciar la aplicación, lo que iniciará una comprobación de conexión con sensor, donde se verificará que exista el archivo de configuración de propiedades de fallas (generado a partir de las propiedades registradas en el servidor) en el directorio de ejecución de la aplicación y se éstas se efectúan correctamente, se visualizará un conjunto de submenus que agrupan las siguientes funcionalidades:
 
 * **Seleccionar BD**: Este menú agrupa las opciones relacionadas con el registro de coordenadas geográficas asociadas a la captura de fallas. La funcionalidad de este módulo se realizó con fines de debugging para mantener un registro de la ubicación de las fallas ya capturadas en una base de datos JSON, evitar la recaptura de éstas y facilitar la organización de las mismas, registrando las coordenadas (latitud y longitud), el nombre del archivo de captura PCD y la fecha en que dicho conjunto de fallas fue capturada.
 
@@ -421,7 +414,12 @@ En el caso de que la conexión al sensor no pueda establecerse, no podrán reali
 
    Error de conexión del sensor inicial
 
-.. TODO: VER SI EXISTE ERROR DE PROPIEDADES EN JSON AL INICIAR!!!
+En caso de que no exista un archivo de configuracion para las propiedades de la falla (definido en constantes.py por defecto como DB_CONFIRMADAS.json), ya sea porque el servidor de la aplicación web no se encuentra activo o porque la URL de la misma es incorrecta, se mostrará un mensaje de error en los tipos de falla y se cerrará la aplicación. 
+
+.. figure:: ../figs/Cap6/errorPropsConfirmadas.png
+   :scale: 100%
+
+   Error de archivo de propiedades de falla inexistente
 
 
 Aunque el menú de selección de BD no forma parte de la funcionalidad de captura, ya que fue desarrollado previamente al desarrollo de la generación de archivos de recorridos, este módulo se conservo para conservar un registro global de las fallas y sus fechas de captura, por lo que no será explicado en detalle, sin embargo antes de comenzar la captura de fallas informadas y confirmadas, se debe seleccionar este menú y seleccionar sobre la opción *Comenzar BD nueva con la fecha actual(opción por defecto)*. Ésto producirá una BD JSON global (para todas las fallas de todos los recorridos) y permitirá continuar con la captura de fallas y la generación de recorridos.
