@@ -19,7 +19,7 @@ Antes de comenzar a detallar los diferentes componentes del sistema de administr
 * **Reparado**: Son aquellas fallas que realmente han sido reparadas y que poseen un costo real de reparación y una fecha de finalización efectiva de la reparación.
   
 
-La arquitectura general del sistema de registro y administración de fallas sobre circuitos viales, se compone de tres aplicaciones independientes: Aplicación web, aplicación de captura y aplicación de clasificación, con diferentes funcionalidades, que por medio de la interacción permiten llevar a cabo el registro, clasificación y obtención de información inherente a distintos tipos de fallas. La forma en que éstas interactúan y la frecuencia de ejecución se encuentra predefinida por medio de archivos de configuración específicos de cada una y, el lugar de ejecución (cliente o servidor) se encuentra condicionada por la funcionalidad que proporcionan al sistema global de administración de fallas. Así, las interacciones definen flujos de trabajo que involucran tanto a la máquina cliente de captura de fallas como al servidor que las procesa, siendo los flujos principales los siguientes:
+La arquitectura general del sistema de registro y administración de fallas sobre circuitos viales, se compone de tres aplicaciones independientes: Aplicación web, aplicación de captura y aplicación de clasificación, con diferentes funcionalidades, que por medio de la interacción permiten llevar a cabo el registro, clasificación y obtención de información inherente a distintos tipos de fallas. La forma en que éstas interactúan y la frecuencia de ejecución, se encuentra predefinida por medio de archivos de configuración específicos de cada una y, el lugar de ejecución (cliente o servidor) se encuentra condicionada por la funcionalidad que proporcionan al sistema global de administración de fallas. Así, estas interacciones definen flujos de trabajo que involucran tanto a la máquina cliente de captura de fallas, como al servidor que las procesa, siendo los flujos principales los siguientes:
 
 * Flujo de trabajo para fallas Confirmadas
 * Flujo de trabajo para fallas Informadas
@@ -36,7 +36,7 @@ El flujo de trabajo para fallas confirmadas se describe en la siguiente figura:
 
 1. En esta etapa la aplicación de captura fue configurada previamente en una notebook/netbook/ultrabook o algún dispositivo con espacio suficiente y conexión USB para interactuar con el dispositivo Kinect y un GPS. Así, en esta etapa se realiza la  captura de fallas en algún vehículo en distintas ubicaciones y para cada falla se computan su latitud y longitud. 
 2. Una vez realizada la captura de un conjunto de fallas a lo largo de una calle completa, se las puede almacenar de manera persistente en un recorrido. Un recorrido o archivo de recorrido, es un archivo con extensión .rec que permite almacenar un conjunto de fallas en disco, registrando para cada falla la siguiente información: geolocalización, capturas asociadas a la falla, tipo de falla, nivel de criticidad y tipo de material, siendo éstos últimos tres especificados por el usuario de la aplicación al momento de posicionarse sobre la falla. 
-3. Luego de haber almacenado varios recorridos en disco y de contar con conexión a Internet, estos se cargan nuevamente desde la aplicación y se envían al servidor web, para la computación de la información faltante de la falla.   
+3. Luego de haber almacenado varios recorridos en disco y de contar con conexión a Internet, estos se cargan nuevamente desde disco a la aplicación y se envían al servidor web, para la computación de la información faltante de la falla.   
 4. Durante este paso, con la latitud y longitud obtenidas por cada falla, se realiza reverse geocoding a Google Maps con el fin de obtener los datos de la dirección principal (nombre de calle y rango de altura) y, debido a que Google Maps no provee la información respecto de los nombres de las calles que forman parte de la intersección más cercana a la ubicación, ésta se solicita a los servidores de Geonames.org que ofrece dicha funcionalidad. 
 5. De esta forma, con la información obtenida por ambos servidores, se realiza una validación de los datos obtenidos, se los adapta al formato de la base de datos del sistema y finalmente, se los registra en sistema de administración y registro de fallas.  
 6. La aplicación de clasificación o clasificador, se encuentra alojada en el mismo servidor donde reside la aplicación web, configurada como un cron job (o tarea programada) que se ejecuta con una frecuencia de 5 min., por lo que la información de clasificación de una falla puede demorar un tiempo extra y no estar disponible de manera instantánea, al contrario de lo que ocurre con la información de las fallas subidas en un recorrido. Debido a que en la práctica algunas fallas no cuentan con una único patrón que los distinga como un bache o una grieta, sino que pueden contener deformaciones de ambos tipos, el clasificador se encuentra configurado para aislar varias clases de fallas en una captura, aislando por cada clase de falla encontrada en una captura, uno o más clusters, mostrando la información de cada cluster junto con el nombre de la captura a la que pertenece.   
@@ -97,7 +97,7 @@ Requerimientos no funcionales
 Diseño de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-En primer lugar, esta aplicación consistía en la georeferenciación de fallas sobre un mapa interactivo, cuyo objetivo principal era la visualización del estado de la fallas informadas por usuarios y características que los mismos aportaban vía web. Esta aplicación fue pensada para ser utilizada por diferentes tipos de usuarios entre los que se encontraban:
+En primer lugar, esta aplicación consistía en la georeferenciación de fallas sobre un mapa interactivo, cuyo objetivo principal era la visualización del estado de la fallas informadas por usuarios y características que los mismos aportaban vía web. Esta aplicación fue pensada para ser utilizada por diferentes tipos de usuarios con diferentes privilegios, entre los que se encontraban:
 
 * Usuarios anónimos
 * Usuarios registrados (administradores)
@@ -150,7 +150,7 @@ La organización de directorios de la aplicación web se divide en dos carpetas:
 * Application
 * System
 
-La carpeta Application contiene aquellos elementos que componen la aplicación desarrollada, subdiviéndose en varias subcarpetas siéndo las principales las siguientes:
+La carpeta Application contiene aquellos elementos que componen la aplicación desarrollada, subdividiéndose en varias subcarpetas siendo las principales las siguientes:
 
 *  **Config**: Contiene todos aquellos archivos de configuración.
     
@@ -160,12 +160,12 @@ La carpeta Application contiene aquellos elementos que componen la aplicación d
    
 *  **Libraries**: Contiene archivos de librería desarrollados o incorporados para el funcionamiento de la aplicación.
    
-*  **Models**: Contiene los modelos que reflejan la lógica de la aplicación, agrupando las clases tanto del problema especifico modelado como de las que acceden a la base de datos.
+*  **Models**: Contiene los modelos que reflejan la lógica de la aplicación, agrupando las clases tanto del problema específico modelado como de las que acceden a la base de datos.
    
 *  **Views**: Esta clase contiene los archivos templates HTML que representan la pagina web final que se enviará en respuesta a una petición. 
 
 
-Por otro lado, la carpeta System contiene el código fuente propio del framework, donde se encuentran las clases nucleo del framework, los drivers para el acceso a diferentes DBMS, librerías empleadas por éstos y utilidades relacionadas con la manipulación de distintos atributos asociados a las páginas web (cookies, fechas y URL). 
+Por otro lado, la carpeta System contiene el código fuente propio del framework, donde se encuentran las clases núcleo del framework, los drivers para el acceso a diferentes DBMS, librerías empleadas por éstos y utilidades relacionadas con la manipulación de distintos atributos asociados a las páginas web (cookies, fechas y URL). 
 
 
 Clases específicas agregadas
@@ -174,11 +174,17 @@ Clases específicas agregadas
 Para el desarrollo de la funcionalidad incorporada a la aplicación web, se extendió el comportamiento de las clases preexistentes en la misma, siendo éstas las siguientes:
 
 * **Falla**: Se agregó funcionalidad para creación y registro de fallas de peticiones provenientes de la aplicación de captura para fallas confirmadas e informadas, identificar la correspondencia entre una falla y los clusters que fueron clasificados  a partir de ésta.
+  
 * **Multimedia**: Esta clase se extendió para incluir el procesamiento de archivos de tipo PCD asociados a una falla, ya que anteriormente solo se permitía subir archivos multimedia de tipo imagen.
+  
 * **Calle**: Se añadió comportamiento relacionado con la obtención de sugerencias desde la aplicación de captura, y la obtención de fallas desde ésta a partir del nombre de una calle.
+  
 * **Dirección**: Se agregó comportamiento para realizar el geocodificación inversa (reverse geocoding) en las fallas confirmadas enviadas desde la aplicación de captura, y para la obtención de la intersección más próxima a una coordenada geográfica.
+  
 * **TipoFalla**: En esta clase se incorporó funcionalidad para obtener los tipos de reparación y el tipo de material asociados a un tipo de falla y disponer de esta información en la aplicación de captura.
+  
 * **TipoMaterial**: Se agregó funcionalidad para obtener los tipos de criticidades asociadas con un tipo de material desde la aplicación de captura.
+  
 * **Pcd_upload_model**: Esta clase se encarga de gestionar la subida de archivos asociados a capturas (archivos tipo PCD) desde la aplicación de captura.
 
 
@@ -189,7 +195,7 @@ Librerías empleadas
    
 * **Geocoder**: Es una librería en PHP que permite la construcción de aplicaciones que utilizan información de geocoding, proveyendo una capa de abstracción respecto de las solicitudes y las respuestas realizadas a los distintos servidores. Esta librería se configuró con el proveedor para GoogleMaps y fue empleada para la computación de información de la dirección desde los servidores de Google.   
   
-* **Geonames**: Geonames es una librería PHP para la georeferenciación inversa de direcciones y fue empleada para la obtención de información respecto de la intersección mas próxima a una par de coordenadas geográfica(latitud, longitud) a través de la API ofrecida por http://www.geonames.org/.  
+* **Geonames**: Geonames es una librería PHP para la georeferenciación inversa de direcciones y fue empleada para la obtención de información respecto de la intersección más próxima a una par de coordenadas geográficas (latitud, longitud) a través de la API ofrecida por http://www.geonames.org/.  
   
 * **CodeIgniter**: Es el núcleo principal de la aplicación. Ver :ref:`_disenioApp`. 
   
@@ -197,7 +203,7 @@ Librerías empleadas
   
 * **jQuery**: Librería ligera y rápida para la manipulación de elementos HTML en una página web, detección de eventos ocurridos sobre éstos y solicitudes Ajax, cuyo objetivo principal es facilitar la interacción con el DOM a través de varios navegadores.
   
-* **GMaps**: GMaps es una api en Javascript para simplificar la manipulación e interacción con marcadores en un mapa de Google Maps. Ésta fue empleada para la administración de marcadores que representan las fallas en la aplicación.
+* **GMaps**: GMaps es una API en Javascript para simplificar la manipulación e interacción con marcadores en un mapa de Google Maps. Ésta fue empleada para la administración de marcadores que representan las fallas en la aplicación.
   
 * **GeoComplete**: Es un plugin de jQuery que encapsula la interacción con los servicios de Geocoding y Autocompletado de lugares de Google, con el fin de ofrecer la funcionalidad de autocompletado para direcciones. Fue empleado para la barra de búsqueda central de la aplicación web, que permite localizar y posicionarse sobre una dirección establecida. 
 
@@ -206,7 +212,7 @@ Librerías empleadas
 Funcionalidad de la aplicación
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Al ejecutar la aplicación configurada en un servidor web (Ver instrucciones de configuración en archivo "Pasos de instalación - BacheoServer.txt" adjunto al código fuente), se presentará en la pantalla principal un mapa interactivo de la ciudad de Trelew con todas las fallas registradas en el sistema, diferenciándose por colores las fallas con distinto estado.
+Al ejecutar la aplicación configurada en un servidor web (Ver instrucciones de configuración en archivo "Pasos de instalación - BacheoServer.txt" adjunto al código fuente), se presentará en la pantalla principal un mapa interactivo de la ciudad de Trelew con todas las fallas registradas en el sistema, representadas por marcadores de diferentes colores, representando cada color un tipo de estado distinto.
 
 
 .. figure:: ../figs/Cap6/pantalla_principal_web.png
@@ -217,12 +223,17 @@ Al ejecutar la aplicación configurada en un servidor web (Ver instrucciones de 
 Esta pantalla inicial muestra las opciones ofrecidas para un tipo de usuario anónimo, y estas son:
 
 * **Iniciar Sesión**: Esta opción se encuentra disponible para usuarios registrados que ya posean una cuenta en el sistema, y permite el logueo de los mismos.
+  
 * **Baches**: Dentro de esta opción se ofrece la función *Agregar* que permite informar una falla nueva. Ver :ref:`_disenioApp`. 
+  
 * **Ayuda**: Esta opción permite visualizar el el significado, con respecto al estado, de cada color de los marcadores.
-* Barra de búsqueda. Esta barra se encuentra en el centro del conjunto de las opciones y permite buscar y posicionarse sobre una dirección.
-* **Visualización de propiedades de falla**: Esta funcionalidad es accesible al hacer click sobre una falla posicionada sobre el mapa y redirige al usuario a una ventana donde se puede observar en el banner principal el identificador de la falla, conformado por el símbolo hashtag(#), la palabra *Falla* y el número de falla registrada. Dentro de esta pantalla se puede visualizar un submenú, donde se agrupan las siguientes opciones:
+  
+* **Barra de búsqueda**. Esta barra se encuentra en el centro del conjunto de las opciones y permite buscar y posicionarse sobre una dirección.
+  
+* **Visualización de propiedades de falla**: Esta funcionalidad es accesible al hacer click sobre una falla posicionada sobre el mapa y redirige al usuario a una ventana donde se puede observar en el banner principal el identificador de la falla, conformado por el símbolo hashtag (#), la palabra *Falla* y el número de falla registrada. Dentro de esta pantalla se puede visualizar un submenú, donde se agrupan las siguientes opciones:
 	
 	* **Especificación de la falla**: Esta pestaña muestra un minimapa con la ubicación de la falla y ofrece información relacionada con las propiedades de la misma, mostrando el tipo de falla, criticidad, dirección (calle y altura), estado y fecha de establecimiento del último estado.   
+	  
 	* **Comunidad social**: Permite a un usuario anónimo ver los comentarios hechos por otros usuarios relacionados con la falla, además de poder agregar comentarios. 
 
 
@@ -247,15 +258,22 @@ Una vez autentificado un usuario este accede al siguiente conjunto de operacione
   
 * **Registrar Usuarios**: Esta opción permite a un administrador agregar nuevos usuarios al sistema, especificando para ello nombre, apellido, teléfono, mail, usuario y contraseña. Luego debe hacer presionar sobre la opción *Registrar* para proceder con el registro de éste.
     
-* **Barra lateral de filtrado**: Esta barra se encuentra localizada en la parte superior izquierda del menú de opciones con un botón, y al acceder se despliega un sidebar donde el usuario debe seleccionar la opción *Filtrado de fallas por calle*. Una vez hecho esto, se abrirá un menú en la misma sidebar en el cual el usuario ingresará la calle, y seleccionara por medio de la opción "Seleccionar tipo de falla" el/los tipo/s de falla que desea filtrar. Además, deberá seleccionar el/los estados de falla. Una vez hecho esto se solicita el filtrado por medio del botón "Buscar", luego se trazará una ruta si existiesen ese tipo de fallas sobre la calle especificada. Con la opción *Limpiar Ruta* se puede realizar un borrado de la ruta trazada.  
+* **Barra lateral de filtrado**: Esta barra se encuentra localizada en la parte superior izquierda del menú de opciones representada por un botón y al acceder, se despliega un sidebar (barra o menú lateral) donde el usuario debe seleccionar la opción *Filtrado de fallas por calle*. Una vez hecho esto, se abrirá un menú en la misma sidebar en el cual el usuario ingresará la calle, y seleccionara por medio de la opción "Seleccionar tipo de falla" el/los tipo/s de falla que desea filtrar. Además, deberá seleccionar el/los estados de falla. Una vez hecho esto se solicita el filtrado por medio del botón "Buscar", luego se trazará una ruta si existiesen ese tipo de fallas sobre la calle especificada. Con la opción *Limpiar Ruta* se puede realizar un borrado de la ruta trazada.  
   
+
+.. figure:: ../figs/Cap6/filtradoBarraLateral.png
+   :scale: 100%
+   
+   Barra lateral de filtrado de fallas por calle
+
+
 * **Ayuda**: Idem para usuario anónimo.  
   
 * **Visualización de propiedades de falla**: Esta opción cumple el mismo objetivo que la opción de visualización para un usuario anónimo, incluyendo las mismas funcionalidades y agregando las siguientes:
   
 	* **Estado de falla**: Esta opción permite la modificación del estado asociado a una falla, permitiendo que se cambie el estado de la falla al estado siguiente en la secuencia de estados, y sus atributos dependen del tipo de estado en el que se encuentra actualmente la falla. Una vez completados todos los campos específicos del estado, el usuario deberá seleccionar la opción *Confirmar* para proceder con el cambio de estado.
 	  
-	* **Visor de nube de puntos**: Permite la visualización de el/los archivo/s de  nube de puntos PCD asociados a una falla. Para conseguir ésto, se debe posicionar el cursor sobre uno de los thumbnails que contienen imágenes miniatura con el logo de la universidad y seleccionar la opción *Ver*. Ésto desplegará el visor y permitirá rotar por medio del mouse la imagen y acceder a los comandos del mismo a través de la opción *Ayuda visor*.
+	* **Visor de nube de puntos**: Permite la visualización de el/los archivo/s de  nube de puntos PCD asociados a una falla. Para conseguir ésto, se debe posicionar el cursor sobre uno de los thumbnails que contienen imágenes miniatura con el logo de la universidad UNPSJB y seleccionar la opción *Ver*. Ésto desplegará el visor y permitirá rotar por medio del mouse la imagen y acceder a los comandos del mismo a través de la opción *Ayuda visor*.
 	  
 	* *Visor de clusters*: Esta funcionalidad muestra aquellos clusters asociados a una falla que fueron aislados y clasificados, indicando para cada cluster el tipo de falla que fue predicho por la aplicación de clasificación, nombre del archivo (nombre de la falla y número de cluster), largo, ancho y profundidad en centímetros.
 	     
@@ -267,7 +285,7 @@ Una vez autentificado un usuario este accede al siguiente conjunto de operacione
 
 
 
-Aplicación de captura(appCliente)
+Aplicación de captura (appCliente)
 ---------------------------------
 
 
@@ -285,7 +303,7 @@ Requerimientos funcionales
 
 Los requerimientos funcionales que fueron determinados para la aplicación de captura de fallas fueron los siguientes:
 
-* *Capturar información relativa a fallas confirmadas en la ubicación de la misma*: La aplicación debe permitir capturar fallas nuevas sin registro previo en la aplicación web(fallas confirmadas) detectadas durante una exploración, registrando información  respecto de las propiedades de la falla (tipo de falla, tipo de material, criticidad, características geométricas) y de la ubicación donde ésta se encuentra, de manera que posteriormente la aplicación web pueda computar datos de la dirección de la misma. 
+* *Capturar información relativa a fallas confirmadas en la ubicación de la misma*: La aplicación debe permitir capturar fallas nuevas sin registro previo en la aplicación web (fallas confirmadas) detectadas durante una exploración, registrando información  respecto de las propiedades de la falla (tipo de falla, tipo de material, criticidad, características geométricas) y de la ubicación donde ésta se encuentra, de manera que posteriormente la aplicación web pueda computar datos de la dirección de la misma. 
 
 * *Obtención de fallas informadas en una calle desde el servidor*: La aplicación debe permitir la obtención de fallas informadas que fueron previamente registradas desde la aplicación web, según el nombre de la calle donde éstas se encuentran. De esta forma, la aplicación de captura debe poder comunicarse con la aplicación web, que buscará la calle solicitada de entre conjunto de calles registradas y retornará los resultados, para proceder con la captura de las fallas informadas.  
   
@@ -302,8 +320,11 @@ Requerimientos no funcionales
 Por otro lado, los requerimientos no funcionales que fueron determinados para la aplicación de captura de fallas fueron los siguientes:
 
 * Respuesta rápida ante la solicitud de efectuar una captura, debido a que ésta tarea debe realizarse sobre un vehículo con tiempos de ejecución que pueden estar limitados por la fuente de alimentación del dispositivo, sobre el cual se ejecuta la aplicación.  
+  
 * Interfaz intuitiva, con terminología e iconos afines al dominio del problema, que agilicen la interacción con el usuario.
+  
 * Interacción entre aplicación de captura y aplicación web a través de un protocolo de comunicación sencillo, que permita rastrear por medio de códigos de estado posibles errores en la obtención o envío de información.
+  
 * Visualización de las fallas tanto con luz solar como en ausencia de ésta. Debido a que la luz solar interfiere con el tipo de ondas emitidas por el sensor, la aplicación debe contemplar la visualización de las fallas tanto de día, en horas previas al anochecer, como así también la captura de noche. 
 
 
@@ -314,12 +335,11 @@ La arquitectura de la aplicación cliente esta formada por los siguientes compon
 
 * **Dispositivo Kinect**: La interacción con el dispositivo Microsoft Kinect consiste únicamente en la obtención de frames de profundidad y de video, necesarios para la generación del archivo de nube de puntos. Estos frames se solicitan de manera continua y son renderizados y visualizados en tiempo real por la aplicación, en la ventana de captura. Ésta ventana se compone de dos visualizadores, uno que muestra una imagen de video a color y otro con una imagen de profundidad, con distintos colores asociados a las distancias entre el dispositivo de sensado y la falla. Ésto permite que se pueda corregir la orientación del dispositivo al momento de la captura.  
     
-* **Geofencing**: El módulo de geofencing se incluye como parte de la aplicación y tiene la finalidad de computar y retornar las coordenadas donde se encuentra ubicada una falla desde el dispositivo GPS para fallas confirmadas. Éste brinda dos modos de operación, uno donde se leen coordenadas desde el dispositivo reales ("real-gps") y otro donde se lee un conjunto de coordenadas artificiales y se iteran de manera circular ("fake-gps"). Éste último, fue realizado por motivos de debugging entre la aplicación de captura y la aplicación web, en entornos cerrados donde no se dispone de conectividad GPS.
+* **Geofencing**: El módulo de geofencing se incluye como parte de la aplicación y tiene la finalidad de computar y retornar las coordenadas donde se encuentra ubicada una falla desde el dispositivo GPS para fallas confirmadas. Éste brinda dos modos de operación, uno donde se leen coordenadas desde el dispositivo reales ("real-gps") y otro donde se lee un conjunto de coordenadas artificiales y se iteran de manera circular ("fake-gps"). Éste último, fue realizado por motivos de debugging entre la aplicación de captura y la aplicación web, en entornos cerrados donde no se disponía de conectividad GPS.
   
 * **APIClient**: Este módulo es incluido junto con la aplicación contiene la clase principal encargada del intercambio de información de fallas entre la aplicación web y aplicación de captura.  
   
-* **Aplicación cliente**: La aplicación cliente tiene como objetivo ofrecer tanto la captura, administración y envío al servidor de fallas, tanto informadas como confirmadas. Con respecto a la gestión de fallas confirmadas, la aplicación se comunica adicionalmente con el módulo GPS, para la obtención de las coordenadas de la falla, mientras que para las fallas informadas ésta interacción no es necesaria, debido a que las coordenadas de la dirección ya fueron especificadas en uno de los flujos de trabajo.    
-
+* **Aplicación cliente**: La aplicación cliente tiene como objetivo ofrecer tanto la captura, administración y envío al servidor de fallas, tanto informadas como confirmadas. Con respecto a la gestión de fallas confirmadas, la aplicación se comunica adicionalmente con el módulo GPS, para la obtención de las coordenadas de la falla, mientras que para las fallas informadas ésta interacción no es necesaria, debido a que las coordenadas de la dirección ya fueron especificadas en uno de los flujos de trabajo.
 
 
 .. figure:: ../figs/Cap6/arquitecturaAppCliente.png
@@ -330,7 +350,7 @@ La arquitectura de la aplicación cliente esta formada por los siguientes compon
 
 De esta manera, la aplicación cliente se compone de las siguientes clases software:
 
-* **Main**: Esta es la clase principal que efectúa la configuración inicial de la aplicación  y administra los capturadores asociados a fallas informadas y confirmadas.
+* **Main**: Esta es la clase principal que efectúa la configuración inicial de la aplicación y administra los capturadores asociados a fallas informadas y confirmadas.
   
 * Capturador: Esta clase representa un objeto que realiza la captura de una falla con estado Confirmada, y se ejecutar todas aquellas operaciones inherentes a la administración de una falla Confirmada como son enviar fallas a la aplicación web, descartar fallas y solicitar a GeofencingAPI la computación de la latitud y longitud asociada a una falla.      
   
@@ -338,7 +358,7 @@ De esta manera, la aplicación cliente se compone de las siguientes clases softw
   
 * ItemFalla: Esta clase representa a una falla confirmada o informada administrada por un capturador, y mantiene para cada falla el estado actual (Informada o Confirmada) y una colección de objetos Captura asociadas a ésta.
   
-* Estado: Representa el estado actual de la falla y sus atributos depende del estado concreto que la falla tenga asociado. De esta superclase extienden dos subclases que son: Confirmada e Informada. Confirmada mantiene información respecto de las propiedades asociadas a la falla (tipo de falla, tipo de material y criticidad)coordenadas de la falla (latitud y longitud) y si es posible obtenerlos, información de la dirección. Por otro lado, Informada solamente mantiene información de la dirección (calle y altura) y el identificador con el que la falla se encuentra registrada.
+* Estado: Representa el estado actual de la falla y sus atributos dependen del estado concreto que la falla tenga asociado. De esta superclase extienden dos subclases que son: Confirmada e Informada. Confirmada mantiene información respecto de las propiedades asociadas a la falla (tipo de falla, tipo de material y criticidad)coordenadas de la falla (latitud y longitud) y si es posible obtenerlos, información de la dirección. Por otro lado, Informada solamente mantiene información de la dirección (calle y altura) y el identificador con el que la falla se encuentra registrada en la aplicación web.
   
 * Captura: Esta clase contiene información propia de una captura individual para un objeto ItemFalla (nombre captura, extensión, directorio) y el comportamiento para almacenar esta persistentemente. 
   
@@ -362,21 +382,19 @@ Esta aplicación fue desarrollada en el lenguaje de programación Python 2.7 emp
 .. https://kivy.org/docs/guide/architecture.html
 .. 
 
-* **Kivy**: Kivy es una framework open-source en Python orientada al desarrollo rápido y sencillo de aplicaciones multiplataforma con widgets que soportan multi-touch, es decir, que proporciona soporte nativo para diferentes dispositivos táctiles que soportan la  detección de múltiples pulsaciones simultáneas. Esta librería se encuentra disponible en Android, Linux, OS X, iOS y Rasperry, por lo que permite que se desarrollen tanto aplicaciones para computadoras de escritorio como aplicaciones móviles. Kivy facilita el diseño de aplicaciones brindando interfaces gráficas escalables que no interfieran con el comportamiento de relacionado a validaciones necesarias en la aplicación, definiendo para ello un lenguaje declarativo de marcado denominado lenguaje KV (KVLang o KV languaje). Este lenguaje, permite especificar de manera declarativa una jerarquía de widgets y realizar bindeos entre distintos elementos de la GUI o, entre la aplicación y los widgets, separando el código relacionado con la construcción de interfaz gráfica del que es necesario para el funcionamiento de la aplicación web. Este lenguaje, se especifica en archivos con extensión .kv cuyo nombre es el mismo que el de la clase del widget. Este framework fue empleado para el desarrollo de la interfaz gráfica de la aplicación de captura.
+* **Kivy**: Kivy es una framework open-source en Python orientada al desarrollo rápido y sencillo de aplicaciones multiplataforma con widgets que soportan multi-touch, es decir, que proporciona soporte nativo para diferentes dispositivos táctiles que ofrecen la detección de múltiples pulsaciones simultáneas. Esta librería se encuentra disponible en Android, Linux, OS X, iOS y Rasperry, por lo que permite que se desarrollen tanto aplicaciones para computadoras de escritorio como aplicaciones móviles. Kivy facilita el diseño de aplicaciones brindando interfaces gráficas escalables que no interfieran con el comportamiento de relacionado a validaciones necesarias en la aplicación, definiendo para ello un lenguaje declarativo de marcado denominado lenguaje KV (KVLang o KV languaje). Este lenguaje, permite especificar de manera declarativa una jerarquía de widgets y realizar bindeos entre distintos elementos de la GUI o, entre la aplicación y los widgets, separando el código relacionado con la construcción de interfaz gráfica del que es necesario para el funcionamiento de la aplicación web. Este lenguaje, se especifica en archivos con extensión .kv cuyo nombre es el mismo que el de la clase del widget. Este framework fue empleado para el desarrollo de la interfaz gráfica de la aplicación de captura.
 
 .. https://kivy.org/docs/api-kivy.garden.html
 .. https://github.com/kivy-garden/garden.xpopup
 
-* **XpopUp**: Este módulo es un conjunto de widgets generados a partir de la clase Popup de Kivy para el desarrollo de diálogos de pregunta, díalogos de mensaje y diálogos con barras de progreso. Es parte de la extensión Kivy-Garden, que consiste en un conjunto de herramientas desarrolladas y mantenidas por la comunidad de usuarios de Kivy. Esta extensión fue empleada en combinación con el conjunto de widgets base de Kivy.
-  
+* **XpopUp**: Este módulo es un conjunto de widgets generados a partir de la clase Popup de Kivy para el desarrollo de diálogos de pregunta, diálogos de mensaje y diálogos con barras de progreso. Es parte de la extensión Kivy-Garden, que son un conjunto de herramientas desarrolladas y mantenidas por la comunidad de usuarios de Kivy. Esta extensión fue empleada en combinación con el conjunto de widgets base de Kivy.
 
 * **Requests**: Es una librería en Python para realizar solicitudes HTTP de una forma sencilla, permitiendo agregar encabezados, datos de un form, archivos multi-parte con diccionarios en Python y acceder a las respuestas del servidor de la misma manera, sin necesidad de formar completamente las Query Strings de las URL o codificar los datos enviados por POST. Esta librería emplea urllib3 para mantener las conexiones con el servidor activas y realizar consultas de manera automática. Esta librería fue empleada para desarrollar la API de comunicación entre la aplicación de captura y la aplicación web.
     
-* **Pypcd**: Es un componente empleado para el almacenamiento y lectura de nubes de puntos en disco empleadas por PCL. Fue empleada para el almacenamiento de archivos de nubes de puntos(PCD) asociados con un objeto Captura.
+* **Pypcd**: Es un componente empleado para el almacenamiento y lectura de nubes de puntos en disco empleadas por PCL. Fue empleada para el almacenamiento de archivos de nubes de puntos (PCD) asociados con un objeto Captura.
    
-* **Iconfonts**: Es una de las extensiones en Kivy-Garden para incorporar la utilización de icon fonts en widgets del tipo Labes y sus derivados en aplicaciones desarrolladas con Kivy. El funcionamiento de esta librería consiste en generar un archivo *.fontd* que pueda ser usado en combinación con un archivo de fuentes personalizado *.ttf* y su archivo *.css* asociado, dentro de la aplicación. Esta librería fue empleada para incluir iconos personalizados en la aplicación tales, como los que figuran en las opciones de obtención de fallas informadas, captura de fallas informadas y confirmadas, etc.
+* **Iconfonts**: Es una de las extensiones en Kivy-Garden para incorporar la utilización de icon fonts en widgets del tipo Label y sus derivados, en aplicaciones desarrolladas con Kivy. El funcionamiento de esta librería consiste en generar un archivo *.fontd* que pueda ser usado en combinación con un archivo de fuentes personalizado *.ttf* y su archivo *.css* asociado, dentro de la aplicación. Esta librería fue empleada para incluir iconos personalizados en la aplicación tales como los que figuran en las opciones de obtención de fallas informadas, captura de fallas informadas y confirmadas, etc.
   
-
 * **Tiny-db**: Es una librería de poco peso desarrollada en Python para el almacenamiento de documentos que puedan ser convertidos a un formato de diccionarios en Python, pensada para el almacenamiento local sin acceso concurrente, servidores HTTP o índices en tablas. Este elemento fue empleado para desarrollar funcionalidad de debugging para el registro global de las latitudes y longitudes, archivos de captura y fecha de cada conjunto de fallas, en formato json. 
   
 * **ZODB/ZEO**: ZODB es una base de datos orientada a objetos para Python 2.7, 3.4 y superiores, mientras que ZEO es una implementación cliente-servidor para compartir el acceso a la base de datos entre varios clientes. Esta implementación consiste en iniciar un proceso servidor escucha al que se conectarán varios procesos clientes a través de un protocolo RPC sobre TCP. Esta librería fue utilizada para desarrollar el almacenamiento persistente de fallas en un archivo de recorrido. 
@@ -391,7 +409,7 @@ Funcionalidad de la aplicación
 Modo de uso de la aplicación
 ++++++++++++++++++++++++++++
 
-Luego de haber realizado la configuración de la aplicación detallada en el archivo README.md, se deberá iniciar la aplicación, lo que iniciará una comprobación de conexión con sensor, donde se verificará que exista el archivo de configuración de propiedades de fallas (generado a partir de las propiedades registradas en el servidor) en el directorio de ejecución de la aplicación y se éstas se efectúan correctamente, se visualizará un conjunto de submenus que agrupan las siguientes funcionalidades:
+Luego de haber realizado la configuración de la aplicación detallada en el archivo README.md, se deberá iniciar la aplicación, lo que comenzará una comprobación de conexión con sensor, donde se verificará que exista el archivo de configuración de propiedades de fallas (generado a partir de las propiedades registradas en el servidor) en el directorio de ejecución de la aplicación y se éstas se efectúan correctamente, se visualizará un conjunto de submenús que agrupan las siguientes funcionalidades:
 
 * **Seleccionar BD**: Este menú agrupa las opciones relacionadas con el registro de coordenadas geográficas asociadas a la captura de fallas. La funcionalidad de este módulo se realizó con fines de debugging para mantener un registro de la ubicación de las fallas ya capturadas en una base de datos JSON, evitar la recaptura de éstas y facilitar la organización de las mismas, registrando las coordenadas (latitud y longitud), el nombre del archivo de captura PCD y la fecha en que dicho conjunto de fallas fue capturada.
 
@@ -414,7 +432,7 @@ En el caso de que la conexión al sensor no pueda establecerse, no podrán reali
 
    Error de conexión del sensor inicial
 
-En caso de que no exista un archivo de configuracion para las propiedades de la falla (definido en constantes.py por defecto como DB_CONFIRMADAS.json), ya sea porque el servidor de la aplicación web no se encuentra activo o porque la URL de la misma es incorrecta, se mostrará un mensaje de error en los tipos de falla y se cerrará la aplicación. 
+En caso de que no exista un archivo de configuración para las propiedades de la falla (definido en constantes.py por defecto como DB_CONFIRMADAS.json), ya sea porque el servidor de la aplicación web no se encuentra activo o porque la URL de la misma es incorrecta, se mostrará un mensaje de error en los tipos de falla y se cerrará la aplicación. 
 
 .. figure:: ../figs/Cap6/errorPropsConfirmadas.png
    :scale: 100%
@@ -422,7 +440,7 @@ En caso de que no exista un archivo de configuracion para las propiedades de la 
    Error de archivo de propiedades de falla inexistente
 
 
-Aunque el menú de selección de BD no forma parte de la funcionalidad de captura, ya que fue desarrollado previamente al desarrollo de la generación de archivos de recorridos, este módulo se conservo para conservar un registro global de las fallas y sus fechas de captura, por lo que no será explicado en detalle, sin embargo antes de comenzar la captura de fallas informadas y confirmadas, se debe seleccionar este menú y seleccionar sobre la opción *Comenzar BD nueva con la fecha actual(opción por defecto)*. Ésto producirá una BD JSON global (para todas las fallas de todos los recorridos) y permitirá continuar con la captura de fallas y la generación de recorridos.
+Aunque el menú de *Seleccionar BD* no forma parte de la funcionalidad de captura, ya que fue desarrollado previamente al desarrollo de la generación de archivos de recorridos, este módulo se conservo para conservar un registro global de las fallas y sus fechas de captura, por lo que no será explicado en detalle, sin embargo antes de comenzar la captura de fallas informadas y confirmadas, se debe ingresar a este menú y seleccionar sobre la opción *Comenzar BD nueva con la fecha actual (opción por defecto)*. Ésto producirá una BD JSON global (para todas las fallas de todos los recorridos) y permitirá continuar con la captura de fallas y la generación de recorridos.
 
 
 .. figure:: ../figs/Cap6/capturarFallaNueva1.png
@@ -437,7 +455,7 @@ Con respecto al menú de captura de fallas, si esta pestaña es seleccionada se 
 * Obtener falla informada
 * Capturar falla informada
 
-La opción de capturar falla nueva permite realizar la captura de fallas con estado confirmada, y al seleccionarse se mostrará una pantalla donde el usuario deberá seleccionar las propiedades de la falla que se está capturando siendo éstas: el tipo de falla, tipo de material de la calle donde la falla se localiza y nivel de criticidad específico para cada tipo de falla. Una vez confirmadas estas propiedades, se mostrará una vista con un explorador de archivos desde donde se podrá navegar la estructura de archivos de las carpetas locales a la ejecución de la aplicación y se podrá crear/eliminar un directorio de capturas y escribir en la barra de búsqueda un nombre de archivo para la captura. 
+La opción de capturar falla nueva permite realizar la captura de fallas con estado confirmada, y al seleccionarse se mostrará una pantalla donde el usuario deberá seleccionar las propiedades de la falla que se está capturando siendo éstas: el tipo de falla, tipo de material de la calle donde la falla se localiza y nivel de criticidad (específico para cada tipo de falla). Una vez confirmadas estas propiedades, se mostrará una vista con un explorador de archivos desde donde se podrá navegar la estructura de archivos de las carpetas locales a la ejecución de la aplicación y se podrá crear/eliminar un directorio de capturas y escribir en la barra de búsqueda un nombre de archivo para la captura. 
 
 
 .. figure:: ../figs/Cap6/capturaFallaNueva2.png
@@ -467,7 +485,7 @@ Una vez capturada una falla, se mostrará un cuadro de diálogo que permitirá v
 
    Visualización de la falla capturada
 
-Con respecto a la opción de *obtención de fallas*, ésta consiste en obtener desde el servidor fallas con estado informada en  una calle determinada y cargarlas en memoria, para su posterior captura. Al seleccionar esta opción, se una entrada de texto donde se deberá ingresar el nombre de la calle, cuyo valor será autocompletado con las calles que el servidor tiene registradas. Una vez ingresado el nombre de la calle se debe seleccionar la opción *Solicitar fallas servidor*, que enviará la petición a la aplicación web para su carga en memoria.      
+Con respecto a la opción de *Obtención de fallas*, ésta consiste en obtener desde el servidor fallas con estado informada en  una calle determinada y cargarlas en memoria, para su posterior captura. Al seleccionar esta opción, se una entrada de texto donde se deberá ingresar el nombre de la calle, cuyo valor será autocompletado con las calles que el servidor tiene registradas. Una vez ingresado el nombre de la calle se debe seleccionar la opción *Solicitar fallas servidor*, que enviará la petición a la aplicación web para su carga en memoria.      
 
 
 .. figure:: ../figs/Cap6/obtencionDireccion1.png
@@ -482,7 +500,7 @@ Una vez obtenidas las fallas informadas desde la aplicación web, se puede proce
    
    Selección de una falla informada para su captura
 
-Luego de seleccionar la falla, se mostrará el explorador de archivos para la selección de nombre  de falla y creación/eliminación de directorios de captura.
+Luego de seleccionar la falla, se mostrará el explorador de archivos para la selección de nombre de falla y creación/eliminación de directorios de captura.
 
 .. figure:: ../figs/Cap6/capturaFallaInforma2.png
    :scale: 100%
@@ -537,7 +555,7 @@ Respecto de la opción *Cargar fallas capturadas*, esta permite cargar en memori
    Mensaje al realizar una carga exitosa de un recorrido consistente
 
 
-Por último, el menú **Subida de archivos** contiene la funcionalidad de subida de fallas a la aplicación web, y ésta solo puede ser seleccionada si existe al menos una fallas capturada en la aplicación, ya sea por algunas de las opciones de captura de fallas o por la carga de un recorrido.
+Por último, el menú *Subida de archivos* contiene la funcionalidad relacionada al envío de fallas a la aplicación web, y ésta solo puede ser seleccionada si existe al menos una fallas capturada en la aplicación, ya sea por algunas de las opciones de captura de fallas o por la carga de un recorrido.
 
 .. figure:: ../figs/Cap6/subirFalla1.png
    :scale: 100%
@@ -561,9 +579,6 @@ Al finalizar el envío de fallas, se mostrará un cuadro de dialogo consultando 
    :scale: 100%
 
    Cuadro de diálogo
-
-
-
 
 Aplicación de clasificación
 ---------------------------
