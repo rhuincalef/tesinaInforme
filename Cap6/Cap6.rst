@@ -2,7 +2,7 @@
 Capítulo 6. Caso de aplicación
 ==============================
 
-El objetivo principal del presente capítulo será la exposición de las herramientas utilizadas y las etapas necesarias para la captura, procesamiento, clasificación y visualización de fallas. Cabe aclarar que del conjunto de tipos de falla existentes detallados anteriormente (Ver :doc:`../Cap2/Cap2`), únicamente se considerarán los tipos de falla bache y grieta sobre pavimento rígido.
+El objetivo principal del presente capítulo será la exposición de las herramientas utilizadas y las etapas necesarias para la captura, procesamiento, clasificación y visualización de fallas. Cabe aclarar que del conjunto de tipos de falla existentes detallados anteriormente (Ver :doc:`../Cap2/Cap2`), únicamente se considerarán los tipos de falla bache y grieta sobre pavimento rígido. Y debido a que la precisión del descriptor ESF es la mayor con respecto al resto, según las pruebas realizadas con anterioridad (Ver :doc:`../Cap4/Cap4`), éste será el descriptor final empleado para ser utilizado en el método de clasificación que se describe en el presente capítulo.
 
 
 Arquitectura global del sistema de administración de fallas

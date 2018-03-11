@@ -899,6 +899,4 @@ Finalmente, se realizó una comparación de la precisión promedio del k-folding
 
    Prueba con descriptores ESF,GRSD y FPFH vs prueba con Dummys
 
-Debido a que la precisión del descriptor ESF es la mayor con respecto al resto, será el descriptor final empleado para ser usado en el clasificador final.    
-
 
