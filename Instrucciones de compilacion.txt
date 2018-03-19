@@ -1,15 +1,23 @@
 #Procedimiento para compilar la tesina --->
 
-- Si no se reemplazo previamente, copiar latex.py.default a /usr/local/lib/python2.7/dist-packages/sphinx/writers/, reemplazar y cambiar el directorio donde se encuentra Organizacion.tex.
-- $ make latex
-- $ cd _build/latex &&  make (o lualatex Tesina-Huincalef-Urrutia.tex)
+- Realizar las siguientes modificaciones en el archivo latex.py (ver distro, ej. Ubuntu /usr/local/lib/python2.7/dist-packages/sphinx/writers/).
 
+- Agregar a la variable "BEGIN_DOC" entre %(maketitle)s y %(tableofcontents)s lo siguiente:
 
-#Procedimiento para incluir las listas de figuras/tablas al indice -->
-
-- Modificar el writer en /usr/local/lib/python2.7/dist-packages/sphinx/writers/ para incluir la siguiente linea luego de la inclusión de Organización:
-
+\input{/home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/OrganizacionContenidos/Organizacion.tex}
+\newpage
 \thispagestyle{empty}
 \listoffigures
 \listoftables
 \newpage
+
+Cambiar \input por la ruta local absoluta donde se encuentra el apartado/sección de OrganizacionContenidos/Organizacion.tex
+
+- Agregar en función "def depart_document(self, node):" luego de, "widest_label = bi[0]"
+	self.body.append(u'\n\\input{/home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/apendices/apendices.tex}\n')
+
+Cambiar \input por la ruta local absoluta donde se encuentra la sección de apendices.tex
+
+Pasos compilación
+- $ make latex
+- $ cd _build/latex &&  make (o lualatex Tesina-Huincalef-Urrutia.tex)

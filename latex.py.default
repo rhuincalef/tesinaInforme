@@ -40,6 +40,10 @@ BEGIN_DOC = r'''
 %(maketitle)s
 \input{/home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/OrganizacionContenidos/Organizacion.tex}
 \newpage
+\thispagestyle{empty}
+\listoffigures
+\listoftables
+\newpage
 %(tableofcontents)s
 '''
 
@@ -720,6 +724,7 @@ class LaTeXTranslator(nodes.NodeVisitor):
             for bi in self.bibitems:
                 if len(widest_label) < len(bi[0]):
                     widest_label = bi[0]
+            self.body.append(u'\n\\input{/home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/apendices/apendices.tex}\n')
             self.body.append(u'\n\\begin{sphinxthebibliography}{%s}\n' % widest_label)
             for bi in self.bibitems:
                 target = self.hypertarget(bi[2] + ':' + bi[3],

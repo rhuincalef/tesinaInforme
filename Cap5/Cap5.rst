@@ -65,6 +65,8 @@ siendo :math:`r_{1}` el semieje mayor y :math:`r_{2}` el menor.
    Elipsoide.
 .. http://volaya.github.io/libro-sig/chapters/Fundamentos_cartograficos.html
 
+.. list-table:: Elipsoides de uso habitual
+
 +-----------------------+------------------+
 |                                          |
 +=======================+==================+
@@ -80,8 +82,6 @@ siendo :math:`r_{1}` el semieje mayor y :math:`r_{2}` el menor.
 +-----------------------+------------------+
 |     Excentricidad     | 0.0818119190843  |
 +-----------------------+------------------+
-
-   Elipsoides de uso habitual
 
 Datum
 ^^^^^
@@ -290,7 +290,7 @@ Método por el cual obtener las coordenadas de un punto del que se ignora su pos
 
 Se trata de un método matemático que determina las posiciones relativas de objetos utilizando geometría de triángulos de forma análoga a la triangulación. Para precisar la posición relativa de un punto mediante la trilateración se utiliza las localizaciones de tres o más puntos de referencia (a mayor puntos de referencia mayor precisión), y la distancia medida entre el sujeto y cada punto de referencia.
 
-Teniendo en cuenta :num:`trilateracion`. Ubicándonos en el punto B, necesitamos conocer su posición relativa a los siguientes punntos de referencia *P1*, *P2* y *P3* en un plano bidimensional. Si se mide *r1* podemos reducir nuestra posición a una circunferencia. A continuación, si medimos *r2*, reducimos la posición a dos punto, *A* y *B*. Por último, si medimos, *r3*, podemos obtener nuestras coordenadas en el punto B. También, se puede realizar una cuarta medición para reducir y estimar el error.
+Teniendo en cuenta :numref:`trilateracion`. Ubicándonos en el punto B, necesitamos conocer su posición relativa a los siguientes punntos de referencia *P1*, *P2* y *P3* en un plano bidimensional. Si se mide *r1* podemos reducir nuestra posición a una circunferencia. A continuación, si medimos *r2*, reducimos la posición a dos punto, *A* y *B*. Por último, si medimos, *r3*, podemos obtener nuestras coordenadas en el punto B. También, se puede realizar una cuarta medición para reducir y estimar el error.
 
 .. _trilateracion:
 .. figure:: ../figs/Cap5/trilateracion.png
