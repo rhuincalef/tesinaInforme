@@ -193,6 +193,7 @@ latex_engine = 'lualatex'
 #H: Header
 #F: Footer
 latex_elements['preamble'] += r"""
+\usepackage{fancyhdr}
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
 \usepackage{parskip}
@@ -355,11 +356,15 @@ latex_elements['preamble'] += r"""
               {}
               {\hfill\contentspage}
 \usepackage{appendix}
+\renewcommand{\appendixname}{Anexos}
 \usepackage{titletoc}
 
 \usepackage[nottoc]{tocbibind}
 \renewcommand{\listfigurename}{Indice de figuras}
 \renewcommand{\listtablename}{Indice de tablas}
+\usepackage{geometry}
+\usepackage{pdflscape}
+
 \makeatother
 """
 #.. raw:: latex

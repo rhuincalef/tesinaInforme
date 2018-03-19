@@ -899,3 +899,4 @@ Finalmente, se realizó una comparación de la precisión promedio del k-folding
 
    Prueba con descriptores ESF,GRSD y FPFH vs prueba con Dummys
 
+
