@@ -65,7 +65,7 @@ siendo :math:`r_{1}` el semieje mayor y :math:`r_{2}` el menor.
    Elipsoide.
 .. http://volaya.github.io/libro-sig/chapters/Fundamentos_cartograficos.html
 
-.. list-table:: Elipsoides de uso habitual
+Elipsoides de uso habitual. Teniendo en cuenta la irregularidad de la superficie terrestre es posible utilizar distintos elipsoides según el lugar o región de ubicación.
 
 +-----------------------+------------------+
 |                                          |
@@ -92,7 +92,7 @@ Compuesto por:
 
 * los parámetros *r1* y *r2* del elipsoide.
 
-* un punto denominado fundamental. A este punto se le define sus coordenadas geográficas (latitud, longitud) y el acimut de una dirección con origen en este punto. Esta desviación se la denomina:
+* un punto denominado fundamental. A este punto se le define sus coordenadas geográficas (latitud, longitud) y el acimut (ver definición en :ref:`_acimut`) de una dirección con origen en este punto. Esta desviación se la denomina:
 
 
    * desviación de la vertical (Eta), dada por la no coincidencia de la vertical entre el geoide y el elipsoide.
@@ -140,6 +140,8 @@ Meridianos y longitud
 Los meridianos pueden definirse como las líneas de intersección con la superficie terrestre de los infinitos planos que contiene al eje de rotación.
 Longitud es la distancia angular entre el meridiano de un lugar y el de Greenwich, expresado en grados, minutos y segundos de arco y se mide de 0 a 180° hacia al Este o hacia el Oeste desde el meridiano de Greenwich.
 
+.. _acimut:
+
 Direcciones
 ^^^^^^^^^^^
 
@@ -158,12 +160,12 @@ Es el ángulo agudo que forma las direcciones Norte o Sur desde el punto de part
 .. figure:: ../figs/Cap5/rumbo-y-azimut.png
    :scale: 50%
 
-   Rumbo y Azimut.
+   Rumbo y Azimut. En esta figura se pueden ver los puntos *A,B,C,D* y sus respectivos ángulos.
 
 Sistemas de Proyección cartográfica
 -----------------------------------
 
-La proyección cartográfica es el proceso de transformar los puntos de una esfera o elipsoide en sus transformados en una superficie definida, por ejemplo, un plano. Se trata de la aplicación de una función *f* que a cada par de coordenadas geográficas (puntos de la esfera o elipsoide) le hace corresponder un par de coordenadas cartesianas (punto en la superfice de proyección definida), dado por
+La proyección cartográfica es el proceso de convertir los puntos de una esfera o elipsoide en sus transformados en una superficie definida, por ejemplo, un plano. Se trata de la aplicación de una función *f* que a cada par de coordenadas geográficas (puntos de la esfera o elipsoide) le hace corresponder un par de coordenadas cartesianas (punto en la superfice de proyección definida), dado por
 
 .. math:: x = f(\theta,\lambda) ; y = f(\theta,\lambda)
 
@@ -176,6 +178,11 @@ Otras superficies pueden ser utilizadas para definir una proyección. Las más h
 * Cónicas
 
 La superficie desarrollable que se utiliza es un cono, el cual se arrolla sobre la superficie del elipsoide y se poyecta los puntos sobre él. Se puede utilizar dos tipos de conos en contacto con la superficie definida. Cuando se utiliza un cono tangente, el eje que vincula a los polos es utilizado como vértice y se produce un paralelo llamado estándar a lo largo. Por otro lado, se puede utilizar un cono secante, para el cual se produce dos paralelos estándar.
+
+.. figure:: ../figs/Cap5/proyeccion-conica.jpg
+   :scale: 40%
+
+   En esta firgura se puede observar los paralelos estándares. A la izquierda se marca con una línea verde el paralelo producido. A la derecha se puede visualizar dos paralelos estándares, marcados con verde los puntos de contacto en ellos.
 
 En general, una proyección secante tiene menos distorsión total que una proyección tangente. Algunas de las proyecciones más conocidas de este grupo son la proyección cónica equiárea de Albers y la proyección conforme cónica de Lambert.
 
@@ -243,7 +250,7 @@ La georeferenciación es un proceso de localización geográfica, dentro de un s
 
 Este concepto puede ser aplicado a una imagen digital, a la cual aplicamos un conjunto de operaciones geométricas que permiten asignar a cada píxel de la misma un par de coordenadas *(x,y)* en un sistema de proyección. Por ejemplo, Google Earth [#e2]_ es un sistema de georreferenciación, el cual nos permite situar en un mapa puntos concretos de la geografía.
 
-La plataforma web Google Maps nos permite georeferenciar direcciones como "650, 25 de Mayo, Trelew, Chubut" convirtiéndola en coordenadas geográficas. Por ejemplo, la dirección mencionada anteriormente se puede conertir en la siguiente coordenada geográfica latitud X y longitud Y, la cual se puede utilizar para disponer marcadores en un mapa o posicionarse en dicho mapa.
+La plataforma web Google Maps nos permite georeferenciar direcciones como "650, 25 de Mayo, Trelew, Chubut" convirtiéndola en coordenadas geográficas. Por ejemplo, la dirección mencionada anteriormente se puede convertir en la siguiente coordenada geográfica latitud -43.254537 y longitud -65.315206, la cual se puede utilizar para disponer marcadores en un mapa o posicionarse en dicho mapa.
 
 .. [#e2] plataforma web que permite ver y utilizar contenido de datos de mapas y de relieves, imágenes yotros datos proporcionados por Google.
 
@@ -251,15 +258,6 @@ Geocodificación inversa
 -----------------------
 
 Es el proceso mediante el cual se convierte coordenadas geográficas en direcciones en lenguaje natural. Se puede mencionar el sistema de geocodificación inversa de Google Maps que, a través del servicio Geocoding API permite realizar este procedimiento mediante solicitudes HTTP.
-
-El ejemplo que sigue a continuación muestra la utilización del servicio de geocodificación inversa utilizando Google Maps JavaScript API:
-
-::
-
-   import math
-   print 'import done'
-
-Comentar API Google
 
 Geolocalización
 ---------------
@@ -278,10 +276,12 @@ La geolocalización por su parte tiene una característica muy específica: nos 
 GPS (Global Positioning System)
 -------------------------------
 
-Es un sistema de localización, diseñado por el Departamento de Defensa de los Estados Unidos. Se encuentra en funcionamiento desde 1995, el cual permite determinarla posición de un objeto en la Tierra (un dispositivo móvil, un vehículo) con una precisión de hasta centímetros utilizando GPS diferencial, aunque por lo general son unos pocos metros de precisión. Para poder determinar las posiciones en el globo, el sistema GPS se sirve de 24 satélites y utiliza la trilateración (Ver Trilateración Satelital).
+Es un sistema de localización, diseñado por el Departamento de Defensa de los Estados Unidos. Se encuentra en funcionamiento desde 1995, el cual permite determinarla posición de un objeto en la Tierra (un dispositivo móvil, un vehículo) con una precisión de hasta centímetros utilizando GPS diferencial, aunque por lo general son unos pocos metros de precisión. Para poder determinar las posiciones en el globo, el sistema GPS se sirve de 24 satélites y utiliza la trilateración (Ver  :ref:`trilateracion_satelital`).
 
 Funcionamiento
 ^^^^^^^^^^^^^^
+
+.. _trilateracion_satelital:
 
 Trilateración Satelital
 """""""""""""""""""""""
@@ -290,9 +290,9 @@ Método por el cual obtener las coordenadas de un punto del que se ignora su pos
 
 Se trata de un método matemático que determina las posiciones relativas de objetos utilizando geometría de triángulos de forma análoga a la triangulación. Para precisar la posición relativa de un punto mediante la trilateración se utiliza las localizaciones de tres o más puntos de referencia (a mayor puntos de referencia mayor precisión), y la distancia medida entre el sujeto y cada punto de referencia.
 
-Teniendo en cuenta :numref:`trilateracion`. Ubicándonos en el punto B, necesitamos conocer su posición relativa a los siguientes punntos de referencia *P1*, *P2* y *P3* en un plano bidimensional. Si se mide *r1* podemos reducir nuestra posición a una circunferencia. A continuación, si medimos *r2*, reducimos la posición a dos punto, *A* y *B*. Por último, si medimos, *r3*, podemos obtener nuestras coordenadas en el punto B. También, se puede realizar una cuarta medición para reducir y estimar el error.
+Teniendo en cuenta :ref:`trilateracion_img`. Ubicándonos en el punto B, necesitamos conocer su posición relativa a los siguientes punntos de referencia *P1*, *P2* y *P3* en un plano bidimensional. Si se mide *r1* podemos reducir nuestra posición a una circunferencia. A continuación, si medimos *r2*, reducimos la posición a dos punto, *A* y *B*. Por último, si medimos, *r3*, podemos obtener nuestras coordenadas en el punto B. También, se puede realizar una cuarta medición para reducir y estimar el error.
 
-.. _trilateracion:
+.. _trilateracion_img:
 .. figure:: ../figs/Cap5/trilateracion.png
    :scale: 50%
 
