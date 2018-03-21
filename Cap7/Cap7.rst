@@ -2,7 +2,7 @@
 Capítulo 7. Conclusiones y líneas futuras
 =========================================
 
-Este capítulo tiene como objetivo plantear los resultados logrados en la investagación realizada, como así también aquellos resultados obtenidos de la implementación del caso de aplicación. Además, se exponen las posibles líneas futuras de investigación que podrían llevarse a cabo y posibles funcionalidades que permitan enriquecer el comportamiento.
+Este capítulo tiene como objetivo plantear los resultados logrados en la investigación realizada, como así también aquellos resultados obtenidos de la implementación del caso de aplicación. Además, se exponen las posibles líneas futuras de investigación que podrían llevarse a cabo y funcionalidades que permitan enriquecer el comportamiento.
 
 Conclusiones
 ------------
@@ -13,7 +13,7 @@ Adicionalmente, se ha estudiado los distintos tipos de descriptores que ofrece P
 
 Por otro lado, se realizó una investigación respecto a distintos tipos de mecanismos de aprendizaje automático que pueden ser utilizados en conjunto con los descriptores de PCL, encontrando que el mecanismo que mejores resultados brinda y requiere menor cantidad de muestras para su construcción es la SVM, ya que, la obtención de las muestras presenta una considerable dificultad. Una vez hecho esto, se efectuaron varios experimentos empleando este mecanismo y distintos tipos de descriptores, para finalmente realizar una comparación de los tres mejores descriptores con respecto a la precisión y seleccionar aquel de mayor precisión.
 
-En cuanto al caso de aplicación, cabe señalar que se construyó una aplicación de captura que utiliza el sensor Kinect para el relevamiento de fallas viales utilizadas para la generación del modelo de clasificación, la cual permite interacturar con la aplicación web previamente desarrollada, tanto para el envío de fallas como para la obtención de fallas registradas a priori. Además, se agregó las posibilidad de persistir un conjunto de fallas en un formato propio de la aplicación para evitar la posibles pérdidas de las mismas (ya que al momento de su captura sólo se almacenan en memoria RAM) y brindar la comodidad de posponer el envío de dichas fallas a la aplicación web hasta que se disponga de una conectividad con un ancho de banda suficiente para esta tarea.
+En cuanto al caso de aplicación, cabe señalar que se construyó una aplicación de captura que utiliza el sensor Kinect para el relevamiento de fallas viales utilizadas para la generación del modelo de clasificación, la cual permite interactuar con la aplicación web previamente desarrollada, tanto para el envío de fallas como para la obtención de fallas registradas a priori. Además, se agregó las posibilidad de persistir un conjunto de fallas en un formato propio de la aplicación para evitar la posibles pérdidas de las mismas (ya que al momento de su captura sólo se almacenan en memoria RAM) y brindar la comodidad de posponer el envío de dichas fallas a la aplicación web hasta que se disponga de una conectividad con un ancho de banda suficiente para esta tarea.
 
 Además, se consiguió el objetivo de gestionar y visualizar el tipo de falla que fue obtenida desde la aplicación de captura en la aplicación web.
 
@@ -22,7 +22,7 @@ Finalmente, se cumplió con el objetivo de realizar la identificación y clasifi
 Líneas futuras
 --------------
 
-Con respecto a posibles líneas de investigación, se puede considerar la captura en tiempo real de muestras sin necesidad de detener por completo el vehículo, íncorporando algún tipo de mecanismo que permita mitigar el ruido de la captura y detectar posibles depresiones asociadas a baches.
+Con respecto a posibles líneas de investigación, se puede considerar la captura en tiempo real de muestras sin necesidad de detener por completo el vehículo, incorporando algún tipo de mecanismo que permita mitigar el ruido de la captura y detectar posibles depresiones asociadas a baches.
 
 Por otro lado, la aplicación de captura puede ser extendida para soportar diferentes tipos de sensores tridimensionales que empleen distintos tipos de formato, realizando para ésto una comprobación al inicio para identificar el tipo de dispositivo actualmente conectado. 
 
