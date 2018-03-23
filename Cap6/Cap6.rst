@@ -197,7 +197,7 @@ Librerías empleadas
   
 * **Geonames**: Geonames es una librería PHP para la georeferenciación inversa de direcciones y fue empleada para la obtención de información respecto de la intersección más próxima a una par de coordenadas geográficas (latitud, longitud) a través de la API ofrecida por http://www.geonames.org/.  
   
-* **CodeIgniter**: Es el núcleo principal de la aplicación. Ver :ref:`_disenioApp`. 
+* **CodeIgniter**: Es el núcleo principal de la aplicación. Ver :ref:`disenioApp`. 
   
 * **Bootstrap**: Es una librería font-end open-source para el desarrollo de páginas web responsivas, ofreciendo plantillas y widgets con HTML y CSS y funcionalidad en Javascript. Esta librería fue utilizada principalmente para la interfaz web que el usuario visualiza cuando usa la aplicación web. 
   
@@ -224,7 +224,7 @@ Esta pantalla inicial muestra las opciones ofrecidas para un tipo de usuario an�
 
 * **Iniciar Sesión**: Esta opción se encuentra disponible para usuarios registrados que ya posean una cuenta en el sistema, y permite el logueo de los mismos.
   
-* **Baches**: Dentro de esta opción se ofrece la función *Agregar* que permite informar una falla nueva. Ver :ref:`_disenioApp`. 
+* **Baches**: Dentro de esta opción se ofrece la función *Agregar* que permite informar una falla nueva. Ver :ref:`disenioApp`. 
   
 * **Ayuda**: Esta opción permite visualizar el el significado, con respecto al estado, de cada color de los marcadores.
   
@@ -247,12 +247,12 @@ Una vez autentificado un usuario este accede al siguiente conjunto de operacione
 
 * Baches. Este menú ofrece las opciones:
 
-    - Informar falla. Ver :ref:`_disenioApp`
-    - Ver fallas reparadas. Ver :ref:`_disenioApp`
+    - Informar falla. Ver :ref:`disenioApp`
+    - Ver fallas reparadas. Ver :ref:`disenioApp`
       
 * TipoFalla
 
-    - Agregar. Ver :ref:`_disenioApp`
+    - Agregar. Ver :ref:`disenioApp`
       
 * **Barra de búsqueda**: Idem para usuario anónimo.
   
