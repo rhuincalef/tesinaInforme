@@ -67,21 +67,21 @@ siendo :math:`r_{1}` el semieje mayor y :math:`r_{2}` el menor.
 
 Elipsoides de uso habitual. Teniendo en cuenta la irregularidad de la superficie terrestre es posible utilizar distintos elipsoides según el lugar o región de ubicación.
 
-+-----------------------+------------------+
-|                                          |
-+=======================+==================+
-|      Elipsoide        |      WGS84       |
-+-----------------------+------------------+
-|      Eje Mayor        |      63781       |
-+-----------------------+------------------+
-| Inverso aplastamiento |   298.2572236    |
-+-----------------------+------------------+
-|     Aplastamiento     |   0.003352811    |
-+-----------------------+------------------+
-|      Eje Menor        |  6356752.314     |
-+-----------------------+------------------+
-|     Excentricidad     | 0.0818119190843  |
-+-----------------------+------------------+
++-----------------------+------------------+------------------+
+|                                                             |
++=======================+==================+==================+
+|      Elipsoide        |      WGS84       |   Clarke 1858    |
++-----------------------+------------------+------------------+
+|      Eje Mayor        |     63781137     |   6378293.645    |
++-----------------------+------------------+------------------+
+| Inverso aplastamiento |   298.2572236    |      294.26      |
++-----------------------+------------------+------------------+
+|     Aplastamiento     |   0.003352811    |   0.003398355    |
++-----------------------+------------------+------------------+
+|      Eje Menor        |  6356752.314     |   6356617.938    |
++-----------------------+------------------+------------------+
+|     Excentricidad     | 0.0818119190843  |  0.082372092204  |
++-----------------------+------------------+------------------+
 
 Datum
 ^^^^^
@@ -144,6 +144,7 @@ Longitud es la distancia angular entre el meridiano de un lugar y el de Greenwic
 
 Direcciones
 ^^^^^^^^^^^
+.. Cartografía básica aplicada Jorge Alirio Mendieta Ocampo, Ramón Elías Valencia Céspedes Editorial Universidad de Caldas
 
 Se denomina dirección de una recta, al ángulo horizontal existente esa recta y otra que se toma como referencia.
 
@@ -151,11 +152,13 @@ Hay dos formas para definir la dirección entre dos puntos:
 
 **Azimuth o acimut**
 
-Es el ángulo formado por la línea que une el punto de partida y el Norte y la línea que une el punto de partida con el de llegada.
+Es el ángulo formado por la línea que une el punto de partida y el Norte y la línea que une el punto de partida con el de llegada. Se mide desde 0° (Norte), siguiendo el sentido horario hasta 360°.
 
 **Rumbo**
 
 Es el ángulo agudo que forma las direcciones Norte o Sur desde el punto de partida y la línea que une ambos puntos.
+
+Teniendo en cuenta lo anterior, todo punto localizado entre el sur (S) y el este (E) tendrá un rumbo entre 0° y 90° y este número correspondiente en grados se forma precediéndolo de las letras SE (sureste). De la misma manera, los puntos localizados entre el sur y el oeste tendrán un rumbo entre 0° y 90° y en este caso, el número correspondiente en grados se lo precede de las letras SW (suroeste).
 
 .. figure:: ../figs/Cap5/rumbo-y-azimut.png
    :scale: 50%
@@ -307,45 +310,71 @@ El Sistema de Posicinamiento Global se encuentra conformada por 3 componentes b�
 * Componente de control que cuenta con 10 estaciones de monitoreo encargadas de mantener en órbita los satélites y de la supervisión de su funcionamiento.
 * Componente de usuario formado por aquellas antenas receptoras situadas en la Tierra.
 
-Ubicación a través de GPS
-
-Explicar cómo se calculan las coordenadas de un objeto utilizando el GPS.
+**Ubicación a través de GPS**
 
 .. http://www.mailxmail.com/curso-introduccion-gps/como-funciona-gps-trilateracion
 Para determinar la ubicación de un receptor GPS se utiliza la trilateración satelital que tiene su base en el método matemático trilateración comentado previamente. Se denomina trilateración satelital ya que en este caso los puntos de referencia son satélites en el espacio. Para llevar a cabo este proceso, 
+
+Principio no....
 
 La base para determinar la posición de un receptor GPS es la trilateración a partir de la referencia proporcionada por los satélites en el espacio. Para llevar a cabo el proceso de trilateración, el receptor GPS calcula la distancia hasta el satélite midiendo el tiempo que tarda la señal en llegar hasta él. Para ello, el GPS necesita un sistema muy preciso para medir el tiempo. Además, es preciso conocer la posición exacta del satélite. Finalmente, la señal recibida debe corregirse para eliminar los retardos ocasionados.
 
 Una vez que el receptor GPS recibe la posición de al menos cuatro satélites y conoce su distancia hasta cada uno de ellos, puede determinar su posición superponiendo las esferas imaginarias que generan.
 Podemos comprender mejor esta explicación con un ejemplo. Imaginemos que nos encontramos a 21.000 km de un primer satélite. Esta distancia nos indica que podemos encontrarnos en cualquier punto de la superficie de una esfera imaginaria de 21.000 km de radio. Ahora, imaginemos que nos encontramos a 24.000 km de un segundo satélite. De este modo, también nos encontramos en cualquier punto de la superficie de esta segunda esfera imaginaria de 24.000 km de radio. La intersección de estas dos esferas generará un círculo que disminuirá las posibilidades de situar nuestra posición. Por otro lado, imaginemos que un tercer satélite se encuentra a 26.000 km. Ahora nuestras posibilidades de posición se reducen a dos puntos, aquellos donde se unen la tercera esfera y el círculo generado por las otras dos. Aunque uno de estos dos puntos seguramente dará un valor absurdo (lejos de la Tierra, por ejemplo) y puede ser rechazado sin más, necesitamos un cuarto satélite que determine cuál de ellos es el correcto, si bien no es necesario por la razón anteriormente mencionada. A pesar de su aparente falta de utilidad, este cuarto satélite tendrá una función crucial en la medición de nuestra posición, como se verá más adelante. 
 
+Fin Principio no....
+
 Fuentes de error
+""""""""""""""""
 
+Al tratar de obtener de la posición mediante la técnica de trilateración satelital, diferentes fuentes de error pueden presentarse entre las señales emitidas entre el aparato emisor y el satélite receptor, estos degradan la precisión de la posición obtenida en algunos metros, hasta algunas decenas de metros. Para el cálculo de posición, se debe tener en cuenta las siguientes fuentes de error:
 
-Presentar las dificultades que atraviesan las señales entre el aparato emisor y el receptor.
+.. http://detopografia.blogspot.com.ar/2012/11/principales-fuentes-de-error-en-gps-i.html
 
-Para el cálculo de su posición, se debe tener en cuenta las siguientes fuentes de error que pueden llegar a afectar a la señal en su recorrido desde el emisor al receptor.
+**Errores debido a la atmósfera**
 
-Errores debido a la atmósfera.
+Este tipo de error se produce cuando la señal emitida desde un satélite atraviesa la ionosfera [#e5]_ provocando una disminución en la velocidad de esta señal.
 
-Errores en el reloj del GPS.
+.. [#e5] capa de la atmósfera terrestre ubicada desde una altitud de 50 a 1000 Km aproximadamente, en la cual las radiaciones ultravioleta, solar y otras, ionizan una porción de las moléculas gaseosas liberando electrones.
 
-Interferencias por la reflexión de las señales (multipath effect).
+**Errores en el reloj del GPS.**
 
-Errores de orbitales
+En algunos momentos se puede presentar una pequeña variación en la velocidad de marcha de los relojes de los satélites que producen pequeños errores, afectando la precisión de la posición. Estos relojes son observados por el Departamento de Defensa de los Estados Unidos a través del componente de control y corrige cualquier deriva que se puede llegar a encontrar.
 
-Geometría de los satélites visibles
+**Interferencias por la reflexión de las señales (multipath effect).**
+
+Este tipo de error se produce, ya que la señal emitida desde el satélite puede rebotar varias veces en la superficie terrestre debido a obstrucciones locales antes de ser captada por el receptor GPS.
+
+**Errores de orbitales**
+
+Se trata de un error o variación de los parámetros orbitales del satélite consultado, muchos de estos errores son puestos a propósito por el Departamento de Defensa de los Estados Unidos y pueden ser diferentes por cada consulta que le hiciera a dicho saélite.
+
+**Geometría de los satélites visibles**
+
+En este tipo de error, es necesario tener en cuenta el pricncipio de Dilución Geométrica de la Precisión *DGDP*.
+
+Para comprender el *DGDP*, hay que tener en cuenta que suele haber más satélites disponibles que los que el recptor GPS necesita para fijar una posición, por lo que el receptor toma datos sólo de algunos e ignora el resto. Si el receptor toma datos de satélites que están muy juntos, las circunferencias de intersección que definen  la posición se cruzarán a ángulos con muy escasa diferencia entre sí, incrementando el margen de error. Por otro lado, si el receptor toma datos de satélites que se encuentran ampliamente separados, las circunferencias se intersectan a ángulos rectos, minimizando el margen de error.
+
+Por lo tanto, este tipo de error se ve incrementado cuando las diferencias de los vectores entre el receptor y los satélites. Un buen receptor GPS debería ser capaz de determinar cuales son los satélites que otorgan el menor error por *DGDP*.
 
 Uso del receptor GPS
+""""""""""""""""""""
 
+En este apartado se analizarán las categorías y formas de representación de cualquier evento en territorio, a partir del uso del receptor GPS. Se pondrá a tención sobre aquellos de civil convencional.
 
-Explicar acerca de la información obtenida desde el GPS y su clasificación.
+Se debe tener en cuenta que la clasificación que se realiza de la información geográfica es puntos, líneas y polígonos. Se hablará  a continuación de **waypoints** en vez de puntos, **track** por línea y **ruta** que consiste en una línea conformada por **waypoints** interconectados y ubicados de manera secuencial. Por lo que, una vez registrados ciertos **waypoints**, luego puedo realizar una ruta, siguiendo de manera secuencial los **waypoints**.
 
-Waypoint
+**Waypoint**
 
-Track
+Se trata de un punto de referencia con coordenadas que representa puntos concretos en la superficie terrestre. Este se debe marcar en el navegador del receptor GPS, al encontrarse inmóvil en el sitio a registrar.
 
-Ruta
+**Track**
+
+Es un conjunto de puntos de posiciones que pueden o no almacenarse automáticamente en la memoria del receptor GPS a medda que se produce un desplazamiento y, estos se unen a través de un línea.
+
+**Ruta**
+
+Como se mencionó anteriormente, una ruta se encuentra conformada por un conjunto de waypoints interconectados, los cuales pueden definir un camino unido por líneas rectas.
 
 Herramientas
 ^^^^^^^^^^^^
@@ -369,7 +398,7 @@ Para utilización de operaciones básicas de la aplicación ver :cite:`ShareGPS`
 Tipos de datos
 """"""""""""""
 
-Formato mediante el cual se comparte los datos de localización son compartidos desde el aplicativo. Los tipos de datos son los siguientes:
+Formato mediante el cual se estructuran los datos de localización que son compartidos desde el aplicativo hacia otra aplicación o dispositivo. Los tipos de datos son los siguientes:
 
 * NMEA 0183
 
@@ -380,6 +409,48 @@ Formato estándar para los datos GPS.
 .. KML refrence: https://developers.google.com/kml/documentation/kmlreference?hl=es-419
 .. A track describes how an object moves through the world over a given time period. This feature allows you to create one visible object in Google Earth (either a Point icon or a Model) that encodes multiple positions for the same object for multiple times. In Google Earth, the time slider allows the user to move the view through time, which animates the position of the object.
 
+Tipos de conexión
+"""""""""""""""""
+
+Este software ofrece una gran variedad de tipos de conexiones que se pueden realizar para el envío de información geográfica hacia diferentes aplicaciones o dispositivos. Se mencionará aquellas todas aquellas que provee haciendo énfasis sobre el tipo de conexión utilizada para el desarrollo del presente trabajo.
+
+Los distintos tipos de conexión son:
+
+* Connecting NMEA data to a Linux PC via USB (Ver :ref:`_conexion_usb`)
+
+* Connecting NMEA data to a PC via Bluetooth
+
+En este apartado se explicará cómo establecer una conexión entre un computador bajo un sistema operativo Linux y un dispositivo móvil a través de Bluetooth, para compartidor datos de localización utilizando NMEA como formato de datos.
+
+.. http://www.jillybunch.com/sharegps/nmea-bluetooth.html
+
+* TCP/IP
+
+Este tipo de conexión permite el envío de datos NMEA entre un computador y otro dispositivo que soporte este tipo de conexión. ShareGPS puede utilizarse tanto como servidor de datos así como cliente.
+
+Para más detalles ver `TCP/IP RFC <https://www.rfc-es.org/rfc/rfc1180-es.txt>`_.
+
+* SCP
+
+Permite el envío de datos KMZ desde un computador y otro dispositivo que ejecute un servidor SSH.
+
+Para más detalles ver `SSH RFC <https://www.ietf.org/rfc/rfc4251.txt>`_.
+
+* GoogleDrive, Dropbox, LocalFile
+
+Las plataformas Drive y Dropbox online que permite compartir y actualizar en tiempo real los archivos KMZ capturados.
+
+A través de LocalFile, ShareGPS permite guardar los datos KMZ a la tarjeta de memoria (SD Card) del dispositivo móvil.
+
+* SendTo
+
+Esta opción se puede utilizar para compartir datos entre aplicaciones del dispositivo móvil. Por ejemplo, si se elige Gmail [#e7]_, los datos KMZ se enviarán como un mail.
+
+.. [#e7] servicio de correo electrónico gratuito proporcionado por Google.
+
+Para más detalle acerca de los tipos de conexión, visitar el siguiente enlace `ShareGPS <http://www.jillybunch.com/sharegps/index.html>`_.
+
+.. _conexion_usb:
 Conexión vía USB
 ################
 
@@ -400,13 +471,19 @@ Android Tools
       $ sudo pacman -S android-tools
       $ sudo pacman -S android-udev
 
-Opcional, para el caso del presente trabajo, se utilizó el siguiente módulo de Python [#e5]_ para capturar los datos obtenidos desde el GPS del dispositivo móvil.
+Opcional, para el caso del presente trabajo, se utilizó el siguiente módulo de Python [#e6]_ para capturar los datos obtenidos desde el GPS del dispositivo móvil.
 
-.. [#e5] lenguaje de progamación interpretado.
+.. [#e6] lenguaje de progamación interpretado.
 
 Tercer paso, una vez instalado el software necesario, asegurarse que el dispositivo móvil al cual se conectará tenga habilitado la opción de depuración de USB. Luego, proceder a la conexiones a través del cable USB.
  
 Cuarto paso, abrir la aplicación ShareGPS en el dispositivo móvil y crear una conexión NMEA USB.
+
+
+.. figure:: ../figs/Cap5/share_gps_connection.png
+   :scale: 20%
+
+   Imagen que muestra una conexión NMEA USB creada.
 
 $ adb devices
 
@@ -422,45 +499,5 @@ $ gpsd -b tcp://localhost:20175
 Por último, el consumo de los datos se utilizó...
 
 .. http://www.jillybunch.com/sharegps/nmea-usb-linux.html
-
-
-Conexión vía BlueTooth
-######################
-
-Connecting NMEA data to a PC via Bluetooth
-
-En este apartado se explicará cómo establecer una conexión entre un computador bajo un sistema operativo Linux y un dispositivo móvil a través de Bluetooth, para compartidor datos de localización utilizando NMEA como formato de datos.
-
-.. http://www.jillybunch.com/sharegps/nmea-bluetooth.html
-
-Otros tipos de conexiones
-#########################
-
-La aplicación ShareGPS también permite otros tipos de conexiones para compartir los datos de localización diferentes a las mencionadas anteriormente. Estos tipos se van a nombrar a continuación, para más detalle visitar el siguiente enlace `ShareGPS <http://www.jillybunch.com/sharegps/index.html>`_.
-
-* TCP/IP
-
-Este tipo de conexión permite el envío de datos NMEA entre un computador y otro dispositivo que soporte este tipo de conexión. ShareGPS puede utilizarse tanto como servidor de datos así como cliente.
-
-Para más detalles ver `TCP/IP RFC <https://www.rfc-es.org/rfc/rfc1180-es.txt>`_.
-
-
-* SCP
-
-Permite el envío de datos KMZ desde un computador y otro dispositivo que ejecute un servidor SSH.
-
-Para más detalles ver `SSH RFC <https://www.ietf.org/rfc/rfc4251.txt>`_.
-
-* GoogleDrive, Dropbox, LocalFile
-
-Las plataformas Drive y Dropbox online que permite compartir y actualizar en tiempo real los archivos KMZ capturados.
-
-A través de LocalFile, ShareGPS permite guardar los datos KMZ a la tarjeta de memoria (SD Card) del dispositivo móvil.
-
-* SendTo
-
-Esta opción se puede utilizar para compartir datos entre aplicaciones del dispositivo móvil. Por ejemplo, si se elige Gmail [#e6]_, los datos KMZ se enviarán como un mail.
-
-.. [#e6] servicio de correo electrónico gratuito proporcionado por Google.
 
 .. Sistemas de Información Geográfica - Un libro de Víctor Olaya - http://volaya.github.io/libro-sig/
