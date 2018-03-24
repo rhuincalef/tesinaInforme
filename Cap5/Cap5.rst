@@ -1,5 +1,5 @@
 Capítulo 5. Herramientas GPS y Geocoding
-===============================================================
+========================================
 
 El objetivo principal del siguiente capítulo será la determinación de posiciones sobre la superficie terrestre. Para poder alcanzar este objetivo, se describirá el contexto matemático básico para expresar un punto sobre la Tierra, además, de los sistemas de coordenadas y las proyecciones cartográficas.
 
@@ -182,6 +182,8 @@ Otras superficies pueden ser utilizadas para definir una proyección. Las más h
 
 La superficie desarrollable que se utiliza es un cono, el cual se arrolla sobre la superficie del elipsoide y se poyecta los puntos sobre él. Se puede utilizar dos tipos de conos en contacto con la superficie definida. Cuando se utiliza un cono tangente, el eje que vincula a los polos es utilizado como vértice y se produce un paralelo llamado estándar a lo largo. Por otro lado, se puede utilizar un cono secante, para el cual se produce dos paralelos estándar.
 
+.. TODO: CORREGIR LA FIGURA, POR LA FIGURA EN QUE SE ENCUENTRAN MARCADAS LAS PROYECCIONES CÓNICAS CON VERDE!!!
+
 .. figure:: ../figs/Cap5/proyeccion-conica.jpg
    :scale: 40%
 
@@ -306,23 +308,48 @@ Arquitectura del sistema GPS
 
 El Sistema de Posicinamiento Global se encuentra conformada por 3 componentes básicos:
 
-* Componente espacial formada por 24 satélites que conforman la red de GPS.
+* Componente espacial formada por 24 satélites que conforman la red de GPS, con trayectorias sincronizadas para cubrir la totalidad del globo terrestre. Éstos se encuentra organizados en 6 órbitas circulares con 4 satélites cada una, alimentados por paneles solares ubicados a cada uno de los lados de los satélites, a una altitud aproximada de 20.000 km, circulando a una velocidad de 14.500 Km/h y repitiendo el mismo recorrido de manera continua, al mismo tiempo que la Tierra rota sobre su eje, por lo que en aproximadamente 24 hs, cada satélite vuelve a posicionarse sobre el mismo punto. Debido a que el tiempo es necesario para el cálculo, cada satélite posee un reloj atómico de alta precisión (mide el tiempo en nanosegundos). Este componente también es necesario en el dispositivo GPS receptor terrestre, pero debido a que el costo de éstos se incrementaría considerablemente si se añadiera dicho reloj y a que la utilización de un reloj ordinario introduciría un error, el error se corrige por medio del empleo de un satélite adicional.    
+
+  
+.. figure:: ../figs/Cap5/constelacion-satelites-gps.png
+   :scale: 50%
+
+   Constelación de satélites GPS
+
+
 * Componente de control que cuenta con 10 estaciones de monitoreo encargadas de mantener en órbita los satélites y de la supervisión de su funcionamiento.
-* Componente de usuario formado por aquellas antenas receptoras situadas en la Tierra.
+  
+* Componente de usuario formado por aquellas antenas receptoras situadas en la Tierra y los complementos GPS software y hardware, que permiten determinar la posición, velocidad y tiempo del usuario en un instante dado.
 
 **Ubicación a través de GPS**
 
 .. http://www.mailxmail.com/curso-introduccion-gps/como-funciona-gps-trilateracion
-Para determinar la ubicación de un receptor GPS se utiliza la trilateración satelital que tiene su base en el método matemático trilateración comentado previamente. Se denomina trilateración satelital ya que en este caso los puntos de referencia son satélites en el espacio. Para llevar a cabo este proceso, 
 
-Principio no....
+El objetivo del calculo del sistema GPS es proporcionar las coordenadas de un receptor GPS sobre la superficie terrestre, dando como resultado la latitud y longitud de éste. Para este fin, el sistema GPS se utiliza la trilateración satelital que tiene su base en el método matemático trilateración (comentado previamente) y se denomina trilateración satelital porque los puntos de referencia son satélites en el espacio. Para llevar a cabo este proceso, cada uno de los cuatro satélites emite una señal al receptor GPS, enviando el instante de tiempo en que estas partieron de cada satélite. El dispositivo receptor, contiene en su memoria las coordenadas respecto de las órbitas de los satélites, al llegar cada una de éstas al dispositivo GPS, éste identifica el satélite que ha emitido cada señal y calcula el tiempo que ha tardado la señal en llegar. Sabiendo que la onda electromagnética del satélite en el vacío espacial se propaga a la velocidad de la luz (300.000 km/seg), procede a aplicar la fórmula :math:`distancia = velocidad / tiempo` obteniendo la distancia que lo separa del satélite. Finalmente, con éstos datos se puede aplicar el método de trilateración satelital para obtener las coordenadas del receptor, donde el centro de las esferas empleadas en este método, es la ubicación de cada uno de los satélites que envían la señal al receptor GPS. De esta forma, cuantos más satélites se empleen para el cálculo se logrará mayor precisión.
 
-La base para determinar la posición de un receptor GPS es la trilateración a partir de la referencia proporcionada por los satélites en el espacio. Para llevar a cabo el proceso de trilateración, el receptor GPS calcula la distancia hasta el satélite midiendo el tiempo que tarda la señal en llegar hasta él. Para ello, el GPS necesita un sistema muy preciso para medir el tiempo. Además, es preciso conocer la posición exacta del satélite. Finalmente, la señal recibida debe corregirse para eliminar los retardos ocasionados.
 
-Una vez que el receptor GPS recibe la posición de al menos cuatro satélites y conoce su distancia hasta cada uno de ellos, puede determinar su posición superponiendo las esferas imaginarias que generan.
-Podemos comprender mejor esta explicación con un ejemplo. Imaginemos que nos encontramos a 21.000 km de un primer satélite. Esta distancia nos indica que podemos encontrarnos en cualquier punto de la superficie de una esfera imaginaria de 21.000 km de radio. Ahora, imaginemos que nos encontramos a 24.000 km de un segundo satélite. De este modo, también nos encontramos en cualquier punto de la superficie de esta segunda esfera imaginaria de 24.000 km de radio. La intersección de estas dos esferas generará un círculo que disminuirá las posibilidades de situar nuestra posición. Por otro lado, imaginemos que un tercer satélite se encuentra a 26.000 km. Ahora nuestras posibilidades de posición se reducen a dos puntos, aquellos donde se unen la tercera esfera y el círculo generado por las otras dos. Aunque uno de estos dos puntos seguramente dará un valor absurdo (lejos de la Tierra, por ejemplo) y puede ser rechazado sin más, necesitamos un cuarto satélite que determine cuál de ellos es el correcto, si bien no es necesario por la razón anteriormente mencionada. A pesar de su aparente falta de utilidad, este cuarto satélite tendrá una función crucial en la medición de nuestra posición, como se verá más adelante. 
+.. figure:: ../figs/Cap5/ubicacion_gps.png
+   :scale: 100%
 
-Fin Principio no....
+   Ubicación por medio de GPS. En esta imagen se pueden observar 3 satélites y sus circunferencias asociados y el punto *X* del cual se calculará su posición.
+
+
+.. figure:: ../figs/Cap5/ubicacion_gps_2.png
+   :scale: 100%
+
+   Empleo de cuatro satélites para el cálculo de la posición de un punto.
+
+
+.. Para determinar la ubicación de un receptor GPS se utiliza la trilateración satelital que tiene su base en el método matemático trilateración comentado previamente. Se denomina trilateración satelital ya que en este caso los puntos de referencia son satélites en el espacio. Para llevar a cabo este proceso, 
+
+.. Principio no....
+
+.. La base para determinar la posición de un receptor GPS es la trilateración a partir de la referencia proporcionada por los satélites en el espacio. Para llevar a cabo el proceso de trilateración, el receptor GPS calcula la distancia hasta el satélite midiendo el tiempo que tarda la señal en llegar hasta él. Para ello, el GPS necesita un sistema muy preciso para medir el tiempo. Además, es preciso conocer la posición exacta del satélite. Finalmente, la señal recibida debe corregirse para eliminar los retardos ocasionados.
+
+.. Una vez que el receptor GPS recibe la posición de al menos cuatro satélites y conoce su distancia hasta cada uno de ellos, puede determinar su posición superponiendo las esferas imaginarias que generan.
+.. Podemos comprender mejor esta explicación con un ejemplo. Imaginemos que nos encontramos a 21.000 km de un primer satélite. Esta distancia nos indica que podemos encontrarnos en cualquier punto de la superficie de una esfera imaginaria de 21.000 km de radio. Ahora, imaginemos que nos encontramos a 24.000 km de un segundo satélite. De este modo, también nos encontramos en cualquier punto de la superficie de esta segunda esfera imaginaria de 24.000 km de radio. La intersección de estas dos esferas generará un círculo que disminuirá las posibilidades de situar nuestra posición. Por otro lado, imaginemos que un tercer satélite se encuentra a 26.000 km. Ahora nuestras posibilidades de posición se reducen a dos puntos, aquellos donde se unen la tercera esfera y el círculo generado por las otras dos. Aunque uno de estos dos puntos seguramente dará un valor absurdo (lejos de la Tierra, por ejemplo) y puede ser rechazado sin más, necesitamos un cuarto satélite que determine cuál de ellos es el correcto, si bien no es necesario por la razón anteriormente mencionada. A pesar de su aparente falta de utilidad, este cuarto satélite tendrá una función crucial en la medición de nuestra posición, como se verá más adelante. 
+
+.. Fin Principio no....
 
 Fuentes de error
 """"""""""""""""
@@ -346,6 +373,8 @@ En algunos momentos se puede presentar una pequeña variación en la velocidad d
 Este tipo de error se produce, ya que la señal emitida desde el satélite puede rebotar varias veces en la superficie terrestre debido a obstrucciones locales antes de ser captada por el receptor GPS.
 
 **Errores de orbitales**
+
+.. TODO: ACLARAR POR QUE MOTIVO SE INTRODUCEN LOS ERRORES?
 
 Se trata de un error o variación de los parámetros orbitales del satélite consultado, muchos de estos errores son puestos a propósito por el Departamento de Defensa de los Estados Unidos y pueden ser diferentes por cada consulta que le hiciera a dicho saélite.
 
