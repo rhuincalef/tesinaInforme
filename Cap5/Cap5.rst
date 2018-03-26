@@ -323,13 +323,13 @@ El objetivo del calculo del sistema GPS es proporcionar las coordenadas de un re
 
 
 .. figure:: ../figs/Cap5/ubicacion_gps.png
-   :scale: 100%
+   :scale: 60%
 
    Ubicación por medio de GPS. En esta imagen se pueden observar 3 satélites y sus circunferencias asociados y el punto *X* del cual se calculará su posición.
 
 
 .. figure:: ../figs/Cap5/ubicacion_gps_2.png
-   :scale: 100%
+   :scale: 60%
 
    Empleo de cuatro satélites para el cálculo de la posición de un punto.
 
@@ -356,7 +356,7 @@ Este tipo de error se produce, ya que la señal emitida desde el satélite puede
 
 **Errores de orbitales**
 
-Se trata de un error o variación de los parámetros orbitales del satélite consultado. Esto es debido que, los satélites siguen órbitas estables fuera de la atmósfera terrestre y las fuerzas que actúan sobre ellos son demasiadas (por ejemplo, variaciones en el campo gravitatorio) que es difícil los cambios que estos pueden sufrir. Por otro lado, muchos de estos errores son puestos a propósito por el Departamento de Defensa de los Estados Unidos y pueden ser diferentes por cada consulta que le hiciera a dicho saélite.
+Se trata de un error o variación de los parámetros orbitales del satélite consultado. Esto es debido a que los satélites siguen órbitas estables fuera de la atmósfera terrestre y las fuerzas que actúan sobre ellos son demasiadas (por ejemplo, variaciones en el campo gravitatorio), por lo que es difícil predecir los cambios que estos pueden sufrir. Por otro lado, muchos de estos errores son puestos a propósito por el Departamento de Defensa de los Estados Unidos y pueden ser diferentes por cada consulta que le hiciera a dicho saélite.
 
 **Geometría de los satélites visibles**
 
@@ -388,9 +388,7 @@ Como se mencionó anteriormente, una ruta se encuentra conformada por un conjunt
 Herramientas
 ^^^^^^^^^^^^
 
-A continuación, se mencionará aquellas herramientas software utlizadas en el marco del presente trabajo.
-
-A continuación, se presenta a ShareGPS, aplicación utilizada en el marco de esta tesina como soporte de captura de datos de localización a través de un dispositvo móvil que cuente con un GPS integrado.
+En esta sección, se mencionará aquellas herramientas software utilizadas en el marco del presente trabajo para el intercambio de información geográfica.
 
 ShareGPS
 """"""""
@@ -400,7 +398,9 @@ ShareGPS
 
    ShareGPS.
 
-Aplicación para el sistema operativo Android que permite compartir datos de localización en tiempo real desde un dispositivo móvil vía Bluetooth, 3G/4G, USB y TCP/IP.
+A continuación, se presenta la aplicación utilizada en el marco de esta tesina como soporte de captura de datos de localización a través de un dispositvo móvil que cuente con un GPS integrado.
+
+ShareGPS es una aplicación para el sistema operativo Android que permite compartir datos de localización en tiempo real desde un dispositivo móvil vía Bluetooth, 3G/4G, USB y TCP/IP.
 
 Para utilización de operaciones básicas de la aplicación ver :cite:`ShareGPS`.
 
@@ -434,7 +434,7 @@ Este software ofrece una gran variedad de tipos de conexiones que se pueden real
 
 Los distintos tipos de conexión son:
 
-* Connecting NMEA data to a Linux PC via USB (Ver :ref:`_conexion_usb`)
+* Connecting NMEA data to a Linux PC via USB (Ver :ref:`conexion-usb`)
 
 * Connecting NMEA data to a PC via Bluetooth
 
@@ -468,7 +468,8 @@ Esta opción se puede utilizar para compartir datos entre aplicaciones del dispo
 
 Para más detalle acerca de los tipos de conexión, visitar el siguiente enlace `ShareGPS <http://www.jillybunch.com/sharegps/index.html>`_.
 
-.. _conexion_usb:
+.. _conexion-usb:
+
 Conexión vía USB
 ################
 
@@ -584,4 +585,79 @@ Ejemplo::
 
 .. http://www.jillybunch.com/sharegps/nmea-usb-linux.html
 
+Geocoder
+""""""""
+
+Librería PHP que nos ofrece una capa de abstracción para la manipulación de geocodificación. Uitlizada para geocodificación reversa en la aplicación web.
+
+Instalación
+###########
+
+Recomendada utilizando composer (ver https://getcomposer.org/)
+
+composer require willdurand/geocoder
+
+Uso
+###
+
+A continuación, se va a demostrar la utilización de la librería meadiante un pequeño código de ejemplo.
+
+Ejemplo para geocodificación reversa::
+
+   $adapter = new \Ivory\HttpAdapter\CurlHttpAdapter();
+   $provider = new Geocoder\Provider\GoogleMaps($adapter,null,null,API_KEY_GOOGLE_MAPS);
+
+   $addr_objects = $provider->reverse($lat, $long);
+   // Obtenemos el nombre de la calles
+   $calleObj = $addr_objects->get(0);
+   $calle = $calleObj->getStreetName();
+
+   // Rangos estimados de la calle
+   // Se toma el rango completo de GoogleMaps
+   $rangoEstimado1 = explode("-",$calleObj->getStreetNumber())[0];
+   $rangoEstimado2 = explode("-",$calleObj->getStreetNumber())[1];
+
+Para más detalle sobre la información provista por *$provider->reverse* y utilizada en la variable *$addr_objects*. Ir a http://geocoder-php.org/Geocoder/#address--addresscollection
+
+Geonames-API PHP
+""""""""""""""""
+
+Servicio web REST para el lenguaje PHP. Geonames es una base datos geográfica gratuita y accesible vía web. Además, la comunidad puede agregar, mejorar o corregir los datos existentes en esta base de datos. La coordenadas geográficas se basan en el sistema de coordenadas WGS 84 (Sistema Geodésico Mundial 1984).
+
+Para conocer más detalles acerca de Genames, ver www.geonames.org.
+
+Instalación
+###########
+
+Recomendada a través de composer.
+
+composer require spacedealer/geonames-api
+
+Uso
+###
+
+A continuación, se va a demostrar la utilización de la librería meadiante un pequeño código de ejemplo.
+
+Ejemplo::
+
+   //$client = new \spacedealer\geonames\api\Geonames('your_username');
+   $client = new \spacedealer\geonames\api\Geonames(APP_CLIENTE_ID);
+   try {
+      $response = $client->findNearestIntersectionOSM([
+                    'lat' => $lat,
+                    'lng' => $long,
+                    'username'=> APP_CLIENTE_ID]);
+      if ($response->isOk()) {
+         $calle1 = $response["street1"];
+         $calle2 = $response["street2"];
+         $distancia = $response["distance"] * 1000; #Se pasa a mts la distancia. Por default en km.
+      } else {
+         // Response error 
+         echo $response->getPath('message');
+      }
+   } catch (\RuntimeException $e) {
+       echo $e->getMessage();
+   }
+
+Para conocer más detalles acerca de la interfaz de programación para el lenguaje PHP, visitar http://pear.php.net/package/Services_GeoNames o https://github.com/spacedealer/geonames-api.
 .. Sistemas de Información Geográfica - Un libro de Víctor Olaya - http://volaya.github.io/libro-sig/
