@@ -184,7 +184,7 @@ La superficie desarrollable que se utiliza es un cono, el cual se arrolla sobre 
 
 .. TODO: CORREGIR LA FIGURA, POR LA FIGURA EN QUE SE ENCUENTRAN MARCADAS LAS PROYECCIONES CÓNICAS CON VERDE!!!
 
-.. figure:: ../figs/Cap5/proyeccion-conica.jpg
+.. figure:: ../figs/Cap5/proyeccion-conica.png
    :scale: 40%
 
    En esta firgura se puede observar los paralelos estándares. A la izquierda se marca con una línea verde el paralelo producido. A la derecha se puede visualizar dos paralelos estándares, marcados con verde los puntos de contacto en ellos.
