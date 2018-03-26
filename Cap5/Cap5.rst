@@ -12,7 +12,7 @@ Friedrich Robert Helmert (1880) define la Geodesia como "la ciencia de la medida
 
 El diccionario de la Real Academia Española define la Geodesia como "Ciencia matemática que tiene por objeto determinar la figura y magnitud del globo terrestre o de gran parte de él, y construir los mapas correspondientes".
 
-La razón de estudiar la forma de la Tierra se debe a que esta es redonda, aunque no por completo, por lo que debe estudiarse su figura realmente cómo es para obtener mapas precisos. Los mapas ayudan a comprender los tipos de información de la que disponemos.
+La razón de estudiar la forma de la Tierra se debe a que ésta es redonda, aunque no por completo, por lo que debe estudiarse su figura realmente cómo es para obtener mapas precisos. Los mapas ayudan a comprender los tipos de información de la que se dispone.
 
 En la actualidad, el ámbito de la Geodesia es mucho más amplio que la definición clásica de Helmert, dado que como se mencionó anteriormente incluye el campo gravitatorio de la Tierra y su variación en el tiempo.
 
@@ -53,7 +53,7 @@ Se trata de una superficie que no es totalmente estable debido a varios ajustes 
 Elipsoide
 ^^^^^^^^^
 
-Es el objeto regular utilizado para hacer referencia a la Tierra. Se encuentra definido por dos parámetros: el semieje mayor y el semieje menor. En el caso de la Tierra estos ejes se corresponden con el readio ecuatorial y el radio polar. La relación existente entre estas dos medidas define el grado de achatamiento del elipsoide, dado por:
+Es el objeto regular utilizado para hacer referencia a la Tierra. Se encuentra definido por dos parámetros: el semieje mayor y el semieje menor. En el caso de la Tierra estos ejes se corresponden con el radio ecuatorial y el radio polar. La relación existente entre estas dos medidas define el grado de achatamiento del elipsoide, dado por:
 
 .. math:: f = \frac {r_{1} - r_{2}} {r_{1}}
 
@@ -92,7 +92,7 @@ Compuesto por:
 
 * los parámetros *r1* y *r2* del elipsoide.
 
-* un punto denominado fundamental. A este punto se le define sus coordenadas geográficas (latitud, longitud) y el acimut (ver definición en :ref:`_acimut`) de una dirección con origen en este punto. Esta desviación se la denomina:
+* un punto denominado fundamental. A este punto se le define sus coordenadas geográficas (latitud, longitud) y el acimut (ver definición en :ref:`acimut`) de una dirección con origen en este punto. Esta desviación se la denomina:
 
 
    * desviación de la vertical (Eta), dada por la no coincidencia de la vertical entre el geoide y el elipsoide.
@@ -180,14 +180,13 @@ Otras superficies pueden ser utilizadas para definir una proyección. Las más h
 
 * Cónicas
 
-La superficie desarrollable que se utiliza es un cono, el cual se arrolla sobre la superficie del elipsoide y se poyecta los puntos sobre él. Se puede utilizar dos tipos de conos en contacto con la superficie definida. Cuando se utiliza un cono tangente, el eje que vincula a los polos es utilizado como vértice y se produce un paralelo llamado estándar a lo largo. Por otro lado, se puede utilizar un cono secante, para el cual se produce dos paralelos estándar.
+La superficie desarrollable que se utiliza es un cono, el cual se arrolla sobre la superficie del elipsoide y se proyecta los puntos sobre él. Se puede utilizar dos tipos de conos en contacto con la superficie definida. Cuando se utiliza un cono tangente, el eje que vincula a los polos es utilizado como vértice y se produce un paralelo llamado estándar a lo largo. Por otro lado, se puede utilizar un cono secante, para el cual se producen dos paralelos estándar.
 
-.. TODO: CORREGIR LA FIGURA, POR LA FIGURA EN QUE SE ENCUENTRAN MARCADAS LAS PROYECCIONES CÓNICAS CON VERDE!!!
 
 .. figure:: ../figs/Cap5/proyeccion-conica.png
    :scale: 40%
 
-   En esta firgura se puede observar los paralelos estándares. A la izquierda se marca con una línea verde el paralelo producido. A la derecha se puede visualizar dos paralelos estándares, marcados con verde los puntos de contacto en ellos.
+   En esta figura se puede observar los paralelos estándares. A la izquierda se marca con una línea verde el paralelo producido. A la derecha se puede visualizar dos paralelos estándares, marcados con verde los puntos de contacto en ellos.
 
 En general, una proyección secante tiene menos distorsión total que una proyección tangente. Algunas de las proyecciones más conocidas de este grupo son la proyección cónica equiárea de Albers y la proyección conforme cónica de Lambert.
 
@@ -257,7 +256,7 @@ Este concepto puede ser aplicado a una imagen digital, a la cual aplicamos un co
 
 La plataforma web Google Maps nos permite georeferenciar direcciones como "650, 25 de Mayo, Trelew, Chubut" convirtiéndola en coordenadas geográficas. Por ejemplo, la dirección mencionada anteriormente se puede convertir en la siguiente coordenada geográfica latitud -43.254537 y longitud -65.315206, la cual se puede utilizar para disponer marcadores en un mapa o posicionarse en dicho mapa.
 
-.. [#e2] plataforma web que permite ver y utilizar contenido de datos de mapas y de relieves, imágenes yotros datos proporcionados por Google.
+.. [#e2] plataforma web que permite ver y utilizar contenido de datos de mapas y de relieves, imágenes y otros datos proporcionados por Google.
 
 Geocodificación inversa
 -----------------------
@@ -267,7 +266,7 @@ Es el proceso mediante el cual se convierte coordenadas geográficas en direccio
 Geolocalización
 ---------------
 
-Se define como la identificación de la ubicación geográfica de cualquier tipo de objeto, por ejemplo un radar, teléfono móvil o cualquier aparato tecnológico conectado a internet. Está relacionada con los sistemas de detección de posición, pero añade datos como información de la zona, calles, locales, etc.
+Se define como la identificación de la ubicación geográfica de cualquier tipo de objeto, por ejemplo un radar, teléfono móvil o cualquier aparato tecnológico conectado a Internet. Está relacionada con los sistemas de detección de posición, pero añade datos como información de la zona, calles, locales, etc.
 
 La geolocalización por su parte tiene una característica muy específica: nos permite localizar un dispositivo en el mapa en tiempo real. Por ejemplo, lo que hace Google Maps [#e3]_ es geolocalizar nuestro dispositivo, es decir, acceder a nuestra ubicación exacta y ofrecernos las diferentes funciones de la aplicación a partir de esto.
 
@@ -281,7 +280,7 @@ La geolocalización por su parte tiene una característica muy específica: nos 
 GPS (Global Positioning System)
 -------------------------------
 
-Es un sistema de localización, diseñado por el Departamento de Defensa de los Estados Unidos. Se encuentra en funcionamiento desde 1995, el cual permite determinarla posición de un objeto en la Tierra (un dispositivo móvil, un vehículo) con una precisión de hasta centímetros utilizando GPS diferencial, aunque por lo general son unos pocos metros de precisión. Para poder determinar las posiciones en el globo, el sistema GPS se sirve de 24 satélites y utiliza la trilateración (Ver  ).
+Es un sistema de localización, diseñado por el Departamento de Defensa de los Estados Unidos. Se encuentra en funcionamiento desde 1995, el cual permite determinar la posición de un objeto en la Tierra (un dispositivo móvil, un vehículo) con una precisión de hasta centímetros utilizando GPS diferencial, aunque por lo general son unos pocos metros de precisión. Para poder determinar las posiciones en el globo, el sistema GPS se sirve de 24 satélites y utiliza la trilateración (Ver :ref:`trilateracion_satelital`).
 
 Funcionamiento
 ^^^^^^^^^^^^^^
@@ -306,7 +305,7 @@ Teniendo en cuenta :ref:`trilateracion_img`. Ubicándonos en el punto B, necesit
 Arquitectura del sistema GPS
 """"""""""""""""""""""""""""
 
-El Sistema de Posicinamiento Global se encuentra conformada por 3 componentes básicos:
+El Sistema de Posicionamiento Global se encuentra conformada por 3 componentes básicos:
 
 * Componente espacial formada por 24 satélites que conforman la red de GPS, con trayectorias sincronizadas para cubrir la totalidad del globo terrestre. Éstos se encuentra organizados en 6 órbitas circulares con 4 satélites cada una, alimentados por paneles solares ubicados a cada uno de los lados de los satélites, a una altitud aproximada de 20.000 km, circulando a una velocidad de 14.500 Km/h y repitiendo el mismo recorrido de manera continua, al mismo tiempo que la Tierra rota sobre su eje, por lo que en aproximadamente 24 hs, cada satélite vuelve a posicionarse sobre el mismo punto. Debido a que el tiempo es necesario para el cálculo, cada satélite posee un reloj atómico de alta precisión (mide el tiempo en nanosegundos). Este componente también es necesario en el dispositivo GPS receptor terrestre, pero debido a que el costo de éstos se incrementaría considerablemente si se añadiera dicho reloj y a que la utilización de un reloj ordinario introduciría un error, el error se corrige por medio del empleo de un satélite adicional.
 
@@ -323,13 +322,13 @@ El objetivo del calculo del sistema GPS es proporcionar las coordenadas de un re
 
 
 .. figure:: ../figs/Cap5/ubicacion_gps.png
-   :scale: 60%
+   :scale: 80%
 
    Ubicación por medio de GPS. En esta imagen se pueden observar 3 satélites y sus circunferencias asociados y el punto *X* del cual se calculará su posición.
 
 
 .. figure:: ../figs/Cap5/ubicacion_gps_2.png
-   :scale: 60%
+   :scale: 40%
 
    Empleo de cuatro satélites para el cálculo de la posición de un punto.
 
@@ -356,20 +355,20 @@ Este tipo de error se produce, ya que la señal emitida desde el satélite puede
 
 **Errores de orbitales**
 
-Se trata de un error o variación de los parámetros orbitales del satélite consultado. Esto es debido a que los satélites siguen órbitas estables fuera de la atmósfera terrestre y las fuerzas que actúan sobre ellos son demasiadas (por ejemplo, variaciones en el campo gravitatorio), por lo que es difícil predecir los cambios que estos pueden sufrir. Por otro lado, muchos de estos errores son puestos a propósito por el Departamento de Defensa de los Estados Unidos y pueden ser diferentes por cada consulta que le hiciera a dicho saélite.
+Se trata de un error o variación de los parámetros orbitales del satélite consultado. Esto es debido a que los satélites siguen órbitas estables fuera de la atmósfera terrestre y las fuerzas que actúan sobre ellos son demasiadas (por ejemplo, variaciones en el campo gravitatorio), por lo que es difícil predecir los cambios que estos pueden sufrir. Por otro lado, muchos de estos errores son puestos a propósito por el Departamento de Defensa de los Estados Unidos y pueden ser diferentes por cada consulta que le hiciera a dicho satélite.
 
 **Geometría de los satélites visibles**
 
-En este tipo de error, es necesario tener en cuenta el pricncipio de Dilución Geométrica de la Precisión *DGDP*.
+En este tipo de error, es necesario tener en cuenta el principio de Dilución Geométrica de la Precisión *DGDP*.
 
-Para comprender el *DGDP*, hay que tener en cuenta que suele haber más satélites disponibles que los que el recptor GPS necesita para fijar una posición, por lo que el receptor toma datos sólo de algunos e ignora el resto. Si el receptor toma datos de satélites que están muy juntos, las circunferencias de intersección que definen  la posición se cruzarán a ángulos con muy escasa diferencia entre sí, incrementando el margen de error. Por otro lado, si el receptor toma datos de satélites que se encuentran ampliamente separados, las circunferencias se intersectan a ángulos rectos, minimizando el margen de error.
+Para comprender el *DGDP*, hay que tener en cuenta que suele haber más satélites disponibles que los que el receptor GPS necesita para fijar una posición, por lo que el receptor toma datos sólo de algunos e ignora el resto. Si el receptor toma datos de satélites que están muy juntos, las circunferencias de intersección que definen  la posición se cruzarán a ángulos con muy escasa diferencia entre sí, incrementando el margen de error. Por otro lado, si el receptor toma datos de satélites que se encuentran ampliamente separados, las circunferencias se intersectan a ángulos rectos, minimizando el margen de error.
 
 Por lo tanto, este tipo de error se ve incrementado cuando las diferencias de los vectores entre el receptor y los satélites. Un buen receptor GPS debería ser capaz de determinar cuales son los satélites que otorgan el menor error por *DGDP*.
 
 Uso del receptor GPS
 """"""""""""""""""""
 
-En este apartado se analizarán las categorías y formas de representación de cualquier evento en territorio, a partir del uso del receptor GPS. Se pondrá a tención sobre aquellos de civil convencional.
+En este apartado se analizarán las categorías y formas de representación de cualquier evento en territorio, a partir del uso del receptor GPS. Se pondrá atención sobre aquellos de civil convencional.
 
 Se debe tener en cuenta que la clasificación que se realiza de la información geográfica es puntos, líneas y polígonos. Se hablará  a continuación de **waypoints** en vez de puntos, **track** por línea y **ruta** que consiste en una línea conformada por **waypoints** interconectados y ubicados de manera secuencial. Por lo que, una vez registrados ciertos **waypoints**, luego puedo realizar una ruta, siguiendo de manera secuencial los **waypoints**.
 
@@ -379,7 +378,7 @@ Se trata de un punto de referencia con coordenadas que representa puntos concret
 
 **Track**
 
-Es un conjunto de puntos de posiciones que pueden o no almacenarse automáticamente en la memoria del receptor GPS a medda que se produce un desplazamiento y, estos se unen a través de un línea.
+Es un conjunto de puntos de posiciones que pueden o no almacenarse automáticamente en la memoria del receptor GPS a medida que se produce un desplazamiento y, éstos se unen a través de un línea.
 
 **Ruta**
 
@@ -388,7 +387,7 @@ Como se mencionó anteriormente, una ruta se encuentra conformada por un conjunt
 Herramientas
 ^^^^^^^^^^^^
 
-En esta sección, se mencionará aquellas herramientas software utilizadas en el marco del presente trabajo para el intercambio de información geográfica.
+En esta sección, se mencionarán aquellas herramientas software utilizadas en el marco del presente trabajo para el intercambio de información geográfica.
 
 ShareGPS
 """"""""
@@ -398,11 +397,14 @@ ShareGPS
 
    ShareGPS.
 
-A continuación, se presenta la aplicación utilizada en el marco de esta tesina como soporte de captura de datos de localización a través de un dispositvo móvil que cuente con un GPS integrado.
+A continuación, se presenta la aplicación utilizada en el marco de esta tesina como soporte de captura de datos de localización a través de un dispositivo móvil que cuente con un GPS integrado.
 
 ShareGPS es una aplicación para el sistema operativo Android que permite compartir datos de localización en tiempo real desde un dispositivo móvil vía Bluetooth, 3G/4G, USB y TCP/IP.
 
-Para utilización de operaciones básicas de la aplicación ver :cite:`ShareGPS`.
+.. Para utilización de operaciones básicas de la aplicación ver :cite:`ShareGPS`.
+
+Para utilización de operaciones básicas de la aplicación ver :numref:`sharegps1`.
+
 
 Tipos de datos
 """"""""""""""
@@ -420,7 +422,7 @@ Para conocer más detalles acerca de NMEA 0183 ver http://www.gpsinformation.org
 
 * OGC KML (Keyhole Markup Language)
 
-Estándar que permite compartir datos de información geográfica, enfocándose en la visualizaciones de estos. La estructura de KML consta de etiquetas con atributos y elementos anidados y está basdo en XML.
+Estándar que permite compartir datos de información geográfica, enfocándose en la visualizaciones de estos. La estructura de KML consta de etiquetas con atributos y elementos anidados y está basado en XML.
 
 .. http://kml4earth.appspot.com/kmlErrata.html
 .. http://www.opengeospatial.org/standards/kml/
@@ -438,7 +440,7 @@ Los distintos tipos de conexión son:
 
 * Connecting NMEA data to a PC via Bluetooth
 
-En este apartado se explicará cómo establecer una conexión entre un computador bajo un sistema operativo Linux y un dispositivo móvil a través de Bluetooth, para compartidor datos de localización utilizando NMEA como formato de datos.
+En este apartado se explicará cómo establecer una conexión entre un computador bajo un sistema operativo Linux y un dispositivo móvil a través de Bluetooth, para compartir datos de localización utilizando NMEA como formato de datos.
 
 .. http://www.jillybunch.com/sharegps/nmea-bluetooth.html
 
@@ -450,7 +452,7 @@ Para más detalles ver `TCP/IP RFC <https://www.rfc-es.org/rfc/rfc1180-es.txt>`_
 
 * SCP
 
-Permite el envío de datos KMZ desde un computador y otro dispositivo que ejecute un servidor SSH.
+Permite el envío de datos en formato KMZ desde un computador y otro dispositivo que ejecute un servidor SSH.
 
 Para más detalles ver `SSH RFC <https://www.ietf.org/rfc/rfc4251.txt>`_.
 
@@ -477,7 +479,7 @@ Connecting NMEA data to a Linux PC via USB
 
 En este apartado se explicará cómo establecer una conexión entre un computador bajo un sistema operativo Linux y un dispositivo móvil a través de cableado USB, para compartidor datos de localización utilizando NMEA como formato de datos.
 
-Como primer paso, es necesario instalar el software ShareGPS en el dispositvo móvil a utilizar a través de alguna plataforma de distribución digital de aplicaciones como por ejemplo, Google Play Store, Uptodown, Aptoide.
+Como primer paso, es necesario instalar el software ShareGPS en el dispositivo móvil a utilizar a través de alguna plataforma de distribución digital de aplicaciones como por ejemplo, Google Play Store, Uptodown, Aptoide.
 
 Segundo paso, es necesario los siguientes paquetes de software en el dispositivo receptor (Linux PC en este caso):
 
@@ -492,7 +494,7 @@ Android Tools
 
 Opcional, para el caso del presente trabajo, se utilizó el siguiente módulo de Python [#e6]_ para capturar los datos obtenidos desde el GPS del dispositivo móvil.
 
-.. [#e6] lenguaje de progamación interpretado.
+.. [#e6] lenguaje de programación interpretado.
 
 Tercer paso, una vez instalado el software necesario, asegurarse que el dispositivo móvil al cual se conectará tenga habilitado la opción de depuración de USB. Luego, proceder a la conexiones a través del cable USB.
  
@@ -502,7 +504,7 @@ Cuarto paso, abrir la aplicación ShareGPS en el dispositivo móvil y crear una 
 .. figure:: ../figs/Cap5/share_gps(1).png
    :scale: 40%
 
-   Pasos para agregar conexión a ShareGPS, primera parte. (1) Comenzar agregando una conexión, click ADD. (2) Seleccionar el tipo de conexión (GPS using NMEA). (3) Muestra el tipo de conexión seleccionada. Si no es la conexión que desea utilizar, click en Activity para vovler a cambiar.
+   Pasos para agregar conexión a ShareGPS, primera parte. (1) Comenzar agregando una conexión, click ADD. (2) Seleccionar el tipo de conexión (GPS using NMEA). (3) Muestra el tipo de conexión seleccionada. Si no es la conexión que desea utilizar, click en Activity para volver a cambiar.
 
 .. .. figure:: ../figs/Cap5/share_gps(1).png
 
@@ -510,13 +512,14 @@ Cuarto paso, abrir la aplicación ShareGPS en el dispositivo móvil y crear una 
 .. figure:: ../figs/Cap5/share_gps(2).png
    :scale: 40%
 
-   Pasos para agregar conexión a ShareGPS, segunda parte. (4) Después, de hacer click en Conection Method seleccionamos USB. (5) Luego, de seleccionar el métod de conexión, en el caso de USB, pedirá la asignación de un número de Port. (6) Por último, le asignamos un nombre a la conexión haciendo click en Name. Click en Next y tendremos una conexión configurada. 
+   Pasos para agregar conexión a ShareGPS, segunda parte. (4) Después, de hacer click en Conection Method seleccionamos USB. (5) Luego, de seleccionar el método de conexión, en el caso de USB, pedirá la asignación de un número de Port. (6) Por último, le asignamos un nombre a la conexión haciendo click en Name. Click en Next y tendremos una conexión configurada. 
 
 $ adb devices
 
 $ adb forward tcp:20175 tcp:50000
 
 Utilizando netcat para verificar si se están compartiendo datos entre Linux PC y el dispositivo móvil.
+
 $ nc localhost 20175
 
 $ gpsd -D5 -N -n -b tcp://localhost:20175
@@ -590,7 +593,7 @@ Ejemplo::
 Geocoder
 """"""""
 
-Librería PHP que nos ofrece una capa de abstracción para la manipulación de geocodificación. Uitlizada para geocodificación reversa en la aplicación web.
+Librería PHP que nos ofrece una capa de abstracción para la manipulación de geocodificación. Utilizada para geocodificación reversa en la aplicación web.
 
 Instalación
 ###########
@@ -602,7 +605,7 @@ composer require willdurand/geocoder
 Uso
 ###
 
-A continuación, se va a demostrar la utilización de la librería meadiante un pequeño código de ejemplo.
+A continuación, se va a demostrar la utilización de la librería mediante un pequeño código de ejemplo.
 
 Ejemplo para geocodificación reversa::
 
@@ -610,6 +613,7 @@ Ejemplo para geocodificación reversa::
    $provider = new Geocoder\Provider\GoogleMaps($adapter,null,null,API_KEY_GOOGLE_MAPS);
 
    $addr_objects = $provider->reverse($lat, $long);
+
    // Obtenemos el nombre de la calles
    $calleObj = $addr_objects->get(0);
    $calle = $calleObj->getStreetName();
@@ -638,7 +642,7 @@ composer require spacedealer/geonames-api
 Uso
 ###
 
-A continuación, se va a demostrar la utilización de la librería meadiante un pequeño código de ejemplo.
+A continuación, se va a demostrar la utilización de la librería mediante un pequeño código de ejemplo.
 
 Ejemplo::
 

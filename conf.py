@@ -415,6 +415,7 @@ latex_additional_files += [mystyle + '.sty']
 extensions = ['sphinxcontrib.bibtex','sphinx.ext.imgmath','sphinx.ext.numfig']
 #extensions = ['sphinxcontrib.bibtex','sphinx.ext.imgmath']
 
+numfig = True
 numfig_number_figures = True
 numfig_figure_caption_prefix = "Fig."
 
