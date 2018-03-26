@@ -281,7 +281,7 @@ La geolocalización por su parte tiene una característica muy específica: nos 
 GPS (Global Positioning System)
 -------------------------------
 
-Es un sistema de localización, diseñado por el Departamento de Defensa de los Estados Unidos. Se encuentra en funcionamiento desde 1995, el cual permite determinarla posición de un objeto en la Tierra (un dispositivo móvil, un vehículo) con una precisión de hasta centímetros utilizando GPS diferencial, aunque por lo general son unos pocos metros de precisión. Para poder determinar las posiciones en el globo, el sistema GPS se sirve de 24 satélites y utiliza la trilateración (Ver  :ref:`trilateracion_satelital`).
+Es un sistema de localización, diseñado por el Departamento de Defensa de los Estados Unidos. Se encuentra en funcionamiento desde 1995, el cual permite determinarla posición de un objeto en la Tierra (un dispositivo móvil, un vehículo) con una precisión de hasta centímetros utilizando GPS diferencial, aunque por lo general son unos pocos metros de precisión. Para poder determinar las posiciones en el globo, el sistema GPS se sirve de 24 satélites y utiliza la trilateración (Ver  ).
 
 Funcionamiento
 ^^^^^^^^^^^^^^
@@ -308,13 +308,7 @@ Arquitectura del sistema GPS
 
 El Sistema de Posicinamiento Global se encuentra conformada por 3 componentes básicos:
 
-* Componente espacial formada por 24 satélites que conforman la red de GPS, con trayectorias sincronizadas para cubrir la totalidad del globo terrestre. Éstos se encuentra organizados en 6 órbitas circulares con 4 satélites cada una, alimentados por paneles solares ubicados a cada uno de los lados de los satélites, a una altitud aproximada de 20.000 km, circulando a una velocidad de 14.500 Km/h y repitiendo el mismo recorrido de manera continua, al mismo tiempo que la Tierra rota sobre su eje, por lo que en aproximadamente 24 hs, cada satélite vuelve a posicionarse sobre el mismo punto. Debido a que el tiempo es necesario para el cálculo, cada satélite posee un reloj atómico de alta precisión (mide el tiempo en nanosegundos). Este componente también es necesario en el dispositivo GPS receptor terrestre, pero debido a que el costo de éstos se incrementaría considerablemente si se añadiera dicho reloj y a que la utilización de un reloj ordinario introduciría un error, el error se corrige por medio del empleo de un satélite adicional.    
-
-  
-.. figure:: ../figs/Cap5/constelacion-satelites-gps.png
-   :scale: 50%
-
-   Constelación de satélites GPS
+* Componente espacial formada por 24 satélites que conforman la red de GPS, con trayectorias sincronizadas para cubrir la totalidad del globo terrestre. Éstos se encuentra organizados en 6 órbitas circulares con 4 satélites cada una, alimentados por paneles solares ubicados a cada uno de los lados de los satélites, a una altitud aproximada de 20.000 km, circulando a una velocidad de 14.500 Km/h y repitiendo el mismo recorrido de manera continua, al mismo tiempo que la Tierra rota sobre su eje, por lo que en aproximadamente 24 hs, cada satélite vuelve a posicionarse sobre el mismo punto. Debido a que el tiempo es necesario para el cálculo, cada satélite posee un reloj atómico de alta precisión (mide el tiempo en nanosegundos). Este componente también es necesario en el dispositivo GPS receptor terrestre, pero debido a que el costo de éstos se incrementaría considerablemente si se añadiera dicho reloj y a que la utilización de un reloj ordinario introduciría un error, el error se corrige por medio del empleo de un satélite adicional.
 
 
 * Componente de control que cuenta con 10 estaciones de monitoreo encargadas de mantener en órbita los satélites y de la supervisión de su funcionamiento.
@@ -339,18 +333,6 @@ El objetivo del calculo del sistema GPS es proporcionar las coordenadas de un re
 
    Empleo de cuatro satélites para el cálculo de la posición de un punto.
 
-
-.. Para determinar la ubicación de un receptor GPS se utiliza la trilateración satelital que tiene su base en el método matemático trilateración comentado previamente. Se denomina trilateración satelital ya que en este caso los puntos de referencia son satélites en el espacio. Para llevar a cabo este proceso, 
-
-.. Principio no....
-
-.. La base para determinar la posición de un receptor GPS es la trilateración a partir de la referencia proporcionada por los satélites en el espacio. Para llevar a cabo el proceso de trilateración, el receptor GPS calcula la distancia hasta el satélite midiendo el tiempo que tarda la señal en llegar hasta él. Para ello, el GPS necesita un sistema muy preciso para medir el tiempo. Además, es preciso conocer la posición exacta del satélite. Finalmente, la señal recibida debe corregirse para eliminar los retardos ocasionados.
-
-.. Una vez que el receptor GPS recibe la posición de al menos cuatro satélites y conoce su distancia hasta cada uno de ellos, puede determinar su posición superponiendo las esferas imaginarias que generan.
-.. Podemos comprender mejor esta explicación con un ejemplo. Imaginemos que nos encontramos a 21.000 km de un primer satélite. Esta distancia nos indica que podemos encontrarnos en cualquier punto de la superficie de una esfera imaginaria de 21.000 km de radio. Ahora, imaginemos que nos encontramos a 24.000 km de un segundo satélite. De este modo, también nos encontramos en cualquier punto de la superficie de esta segunda esfera imaginaria de 24.000 km de radio. La intersección de estas dos esferas generará un círculo que disminuirá las posibilidades de situar nuestra posición. Por otro lado, imaginemos que un tercer satélite se encuentra a 26.000 km. Ahora nuestras posibilidades de posición se reducen a dos puntos, aquellos donde se unen la tercera esfera y el círculo generado por las otras dos. Aunque uno de estos dos puntos seguramente dará un valor absurdo (lejos de la Tierra, por ejemplo) y puede ser rechazado sin más, necesitamos un cuarto satélite que determine cuál de ellos es el correcto, si bien no es necesario por la razón anteriormente mencionada. A pesar de su aparente falta de utilidad, este cuarto satélite tendrá una función crucial en la medición de nuestra posición, como se verá más adelante. 
-
-.. Fin Principio no....
-
 Fuentes de error
 """"""""""""""""
 
@@ -374,9 +356,7 @@ Este tipo de error se produce, ya que la señal emitida desde el satélite puede
 
 **Errores de orbitales**
 
-.. TODO: ACLARAR POR QUE MOTIVO SE INTRODUCEN LOS ERRORES?
-
-Se trata de un error o variación de los parámetros orbitales del satélite consultado, muchos de estos errores son puestos a propósito por el Departamento de Defensa de los Estados Unidos y pueden ser diferentes por cada consulta que le hiciera a dicho saélite.
+Se trata de un error o variación de los parámetros orbitales del satélite consultado. Esto es debido que, los satélites siguen órbitas estables fuera de la atmósfera terrestre y las fuerzas que actúan sobre ellos son demasiadas (por ejemplo, variaciones en el campo gravitatorio) que es difícil los cambios que estos pueden sufrir. Por otro lado, muchos de estos errores son puestos a propósito por el Departamento de Defensa de los Estados Unidos y pueden ser diferentes por cada consulta que le hiciera a dicho saélite.
 
 **Geometría de los satélites visibles**
 
@@ -431,12 +411,21 @@ Formato mediante el cual se estructuran los datos de localización que son compa
 
 * NMEA 0183
 
-Formato estándar para los datos GPS.
+Estándar de interfaz que define los requisitos de señal eléctrica, tiempo y protocolo de transmisión de datos y el formato de las sentencias de caracteres ASCII transmitidos a través de un bus de datos en serie.
 
-* KML PlaceMark (Keyhole Markup Language)
+Cada una de las sentencias transmitida comienza con el carácter "$" y termina "<CR><LF>" (CR: Carriage Return, LF: Line Feed). Los dos primeros caracteres identifican al equipo (por ejemplo "GP" utilizado para  identificar los datos GPS) y los siguientes tres caracteres se utilizan para identificar el tipo de sentencia enviada.
 
+Para conocer más detalles acerca de NMEA 0183 ver http://www.gpsinformation.org/dale/nmea.htm.
+
+
+* OGC KML (Keyhole Markup Language)
+
+Estándar que permite compartir datos de información geográfica, enfocándose en la visualizaciones de estos. La estructura de KML consta de etiquetas con atributos y elementos anidados y está basdo en XML.
+
+.. http://kml4earth.appspot.com/kmlErrata.html
+.. http://www.opengeospatial.org/standards/kml/
+.. https://earthdata.nasa.gov/user-resources/standards-and-references/ogc-kml
 .. KML refrence: https://developers.google.com/kml/documentation/kmlreference?hl=es-419
-.. A track describes how an object moves through the world over a given time period. This feature allows you to create one visible object in Google Earth (either a Point icon or a Model) that encodes multiple positions for the same object for multiple times. In Google Earth, the time slider allows the user to move the view through time, which animates the position of the object.
 
 Tipos de conexión
 """""""""""""""""
@@ -506,13 +495,19 @@ Opcional, para el caso del presente trabajo, se utilizó el siguiente módulo de
 
 Tercer paso, una vez instalado el software necesario, asegurarse que el dispositivo móvil al cual se conectará tenga habilitado la opción de depuración de USB. Luego, proceder a la conexiones a través del cable USB.
  
-Cuarto paso, abrir la aplicación ShareGPS en el dispositivo móvil y crear una conexión NMEA USB.
+Cuarto paso, abrir la aplicación ShareGPS en el dispositivo móvil y crear una conexión NMEA USB (ver :num:`Fig. #sharegps1` y :num:`Fig. #sharegps2`).
 
+.. _sharegps1:
+.. figure:: ../figs/Cap5/share_gps(1).png
+   :scale: 40%
 
-.. figure:: ../figs/Cap5/share_gps_connection.png
-   :scale: 20%
+   Pasos para agregar conexión a ShareGPS, primera parte. (1) Comenzar agregando una conexión, click ADD. (2) Seleccionar el tipo de conexión (GPS using NMEA). (3) Muestra el tipo de conexión seleccionada. Si no es la conexión que desea utilizar, click en Activity para vovler a cambiar.
 
-   Imagen que muestra una conexión NMEA USB creada.
+.. _sharegps2:
+.. figure:: ../figs/Cap5/share_gps(1).png
+   :scale: 40%
+
+   Pasos para agregar conexión a ShareGPS, segunda parte. (4) Después, de hacer click en Conection Method seleccionamos USB. (5) Luego, de seleccionar el métod de conexión, en el caso de USB, pedirá la asignación de un número de Port. (6) Por último, le asignamos un nombre a la conexión haciendo click en Name. Click en Next y tendremos una conexión configurada. 
 
 $ adb devices
 
@@ -525,7 +520,67 @@ $ gpsd -D5 -N -n -b tcp://localhost:20175
 
 $ gpsd -b tcp://localhost:20175
 
-Por último, el consumo de los datos se utilizó...
+Por último, el consumo de los datos se utilizó como base el siguiente script escrito en lenguaje de programación Python:
+
+Ejemplo::
+
+   #!/usr/bin/env python
+   # -*- coding: utf-8 -*-
+   import time
+   import gps
+   import sys
+
+   # python gpsd.py ./gps.kml 
+   def main(gpsd_report):
+       '''http://code.google.com/apis/kml/documentation/kmlreference.html
+          for official kml document'''
+
+       if len (sys.argv) < 2:
+            print "Usage: gpsd.py [kml-file]"
+            sys.exit();
+
+       print gpsd_report
+       if not 'lat' in gpsd_report.keys():
+           return
+       kml_file = sys.argv[1]
+       latitude =  gpsd_report['lat']
+       longitude = gpsd_report['lon']
+
+           output = """<?xml version="1.0" encoding="UTF-8"?>
+       <kml xmlns="http://earth.google.com/kml/2.0">
+       <Placemark>
+           <description>Realtime GPS feeding</description>
+           <LookAt>
+               <longitude>%s</longitude>
+               <latitude>%s</latitude>
+           </LookAt>
+           <Point>
+               <coordinates>%s,%s</coordinates>
+           </Point>
+       </Placemark>
+       </kml>""" % (longitude,latitude,longitude,latitude)
+
+           #status_line = '<{0}> Speed: {1:.2f} Km/h, Heading: {2:.0f}'.format(time_str,
+           #                                                      speed, heading)
+           #print status_line
+           f = open(kml_file, 'w')
+           f.write(output)
+           f.close()
+
+       if __name__ == "__main__":
+           session = gps.gps()
+           session.stream(gps.WATCH_ENABLE|gps.WATCH_NEWSTYLE)
+
+           try:
+               while True:
+                   report = session.next()
+                   print report
+                   if report['class'] == 'TPV':
+                       main(report)
+           except StopIteration:
+               print 'GPSD has terminated'
+
+
 
 .. http://www.jillybunch.com/sharegps/nmea-usb-linux.html
 
