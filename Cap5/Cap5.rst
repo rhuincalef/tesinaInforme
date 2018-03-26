@@ -504,8 +504,10 @@ Cuarto paso, abrir la aplicación ShareGPS en el dispositivo móvil y crear una 
 
    Pasos para agregar conexión a ShareGPS, primera parte. (1) Comenzar agregando una conexión, click ADD. (2) Seleccionar el tipo de conexión (GPS using NMEA). (3) Muestra el tipo de conexión seleccionada. Si no es la conexión que desea utilizar, click en Activity para vovler a cambiar.
 
+.. .. figure:: ../figs/Cap5/share_gps(1).png
+
 .. _sharegps2:
-.. figure:: ../figs/Cap5/share_gps(1).png
+.. figure:: ../figs/Cap5/share_gps(2).png
    :scale: 40%
 
    Pasos para agregar conexión a ShareGPS, segunda parte. (4) Después, de hacer click en Conection Method seleccionamos USB. (5) Luego, de seleccionar el métod de conexión, en el caso de USB, pedirá la asignación de un número de Port. (6) Por último, le asignamos un nombre a la conexión haciendo click en Name. Click en Next y tendremos una conexión configurada. 
