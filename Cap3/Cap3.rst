@@ -16,102 +16,105 @@ Sensores 3D
 .. https://es.wikipedia.org/wiki/Esc%C3%A1ner_3D
 
 
-Los scanners o sensores 3D, son elementos de medición que se emplean con el fin de analizar objetos o entornos del mundo real y obtener información respecto a sus características físicas, tales como colores y/o forma, que posteriormente pueden emplearse para genera modelos 3D digitales de éstos. Estos modelos se representan por medio de una nube de puntos (Point Cloud), que es una estructura de puntos definidos  en algún sistema de coordenadas, siendo la definición más empleada las coordenadas tridimensionales (X,Y,Z). Estas representaciones pueden ser directamente renderizadas e inspeccionadas, sin embargo, para su uso en aplicaciones comerciales de edición o modelado deben ser convertidas en mallas poligonales o modelos triangulados, modelos NURBS (modelo matemático empleado para la representación de superficies y curvaturas) o modelos compatibles con el diseño asistido por computadora (CAD). Estos sensores son similares a las cámaras digitales, ya que cuentan con un campo de visión cónico y solamente pueden recolectar información respecto del entorno en lugares que cuentan con suficiente iluminación. Sin embargo, a diferencia de éstas  que unicamente capturan información respecto de los colores de la superficie, los scanners 3D son capaces de recolectar información acerca de la distancia de cada punto en la imagen  dentro de su rango de visión, por lo que la coordenada de cada punto puede ser precisada. Aunque la imagen proporcionada por un scanner 3D incluya información de posicionamiento de los puntos que componen una imagen, una única captura del objeto no bastará para brindar un modelo tridimensional completo de las características de éste, por lo que si se desea obtener éste resultado, se deben realizar varias capturas desde distintos puntos de vista del mismo objeto y luego realizar la unión final de todas estas capturas en una captura final.
+Los scanners o sensores 3D, son elementos de medición que se emplean con el fin de analizar objetos o entornos del mundo real y obtener información respecto a sus características físicas, tales como colores y/o forma, que posteriormente pueden emplearse para generar modelos 3D digitales de éstos. Estos modelos se representan por medio de una nube de puntos (Point Cloud), que es una estructura de puntos definidos  en algún sistema de coordenadas, siendo la definición más empleada las coordenadas tridimensionales (X,Y,Z). Estas representaciones pueden ser directamente renderizadas e inspeccionadas, sin embargo, para su uso en aplicaciones comerciales de edición o modelado deben ser convertidas en mallas poligonales o modelos triangulados, modelos NURBS (modelo matemático empleado para la representación de superficies y curvaturas) o modelos compatibles con el diseño asistido por computadora (CAD). Estos sensores son similares a las cámaras digitales, ya que cuentan con un campo de visión cónico y solamente pueden recolectar información respecto del entorno en lugares que cuentan con suficiente iluminación. Sin embargo, a diferencia de éstas  que unicamente capturan información respecto de los colores de la superficie, los scanners 3D son capaces de recolectar información acerca de la distancia de cada punto en la imagen  dentro de su rango de visión, por lo que la coordenada de cada punto puede ser precisada. Aunque la imagen proporcionada por un scanner 3D incluya información de posicionamiento de los puntos que componen una imagen, una única captura del objeto no bastará para brindar un modelo tridimensional completo de las características de éste, por lo que si se desea obtener éste resultado, se deben realizar varias capturas desde distintos puntos de vista del mismo objeto y luego realizar la unión final de todas estas capturas en una captura final.
 
-Existen diferentes tipos de sensores 3D que emplean distintas técnicas para la obtención del objeto 3D, aunque de manera general se clasifican en: Técnicas de contacto, donde las características del objeto se obtienen por medio del contacto físico, sosteniéndolo por medio un brazo robótico que puede ser manipulado para escanear la superficie completa de un objeto o, manteniéndolo apoyado sobre una plataforma fija; Y técnicas sin contacto, donde se detecta radiación no visible (rayos infraroja o X) o radiación visible (luz solar) sobre el objeto con el propósito de adquirir información de éste. Dentro de los tipos de sensores sin contacto, éstos se pueden subdividir en activos y pasivos.
+.. NOTA AL PIE -->
+.. [#renderizar_pie] Renderizar es un término relativo para la generación de una imagen a partir de un modelo tridimensional o bidimensional.
 
-Los sensores activos sin contacto, son aquellos que emiten algún tipo de radiación o luz sobre un objeto y absorben su reflexión con el fin de inspeccionar el objeto y, aproximaciones existentes para medir esta radiación se encuentran las siguientes: 
+Existen diferentes tipos de sensores 3D que emplean distintas técnicas para la obtención del objeto 3D, aunque de manera general se clasifican en: Técnicas de contacto, donde las características del objeto se obtienen por medio del contacto físico, sosteniéndolo por medio de un brazo robótico que puede ser manipulado para escanear la superficie completa de un objeto o, manteniéndolo apoyado sobre una plataforma fija; y técnicas sin contacto, donde se detecta radiación no visible (rayos infrarojos o X) o radiación visible (luz solar) sobre el objeto con el propósito de adquirir información de éste. Dentro de los tipos de sensores sin contacto, éstos se pueden subdividir en activos y pasivos.
 
-* Time of Flight(ToF)
-* Diferencia de fase (Phase Shift)
-* Triangulación por láser
-* Luz estructurada
-* Luz Modulada
+Los sensores activos sin contacto, son aquellos que emiten algún tipo de radiación o luz sobre un objeto y absorben su reflexión con el fin de inspeccionar el mismo. Actualmente, existen varias aproximaciones para medir esta radiación, entre las cuales se encuentran: 
 
+* Time of Flight(ToF). Los tipos de láser ToF emiten varios impulsos láser hacia un
+  objeto y miden el tiempo que requiere alcanzar el objeto y ser reflejado de vuelta al sensor emisor y por medio de la siguiente fórmula computan la distancia:
 
-Los tipos de láser ToF emiten varios impulsos láser hacia un objeto y miden el tiempo que requiere alcanzar el objeto y ser reflejado de vuelta al sensor emisor y por medio de la siguiente fórmula computan la distancia:
-
-.. math:: D = c * t/ 2
-   :label: ecuacionDistanciaToF
+  .. math:: D = c * t/ 2
+     :label: ecuacionDistanciaToF
 
 
-Dado que la velocidad de la luz en la atmósfera *c* es una constante que se conoce, solamente se debe calcular el tiempo de viaje y de retorno *t*, por lo que la precisión con la que un láser ToF detecta un objeto, depende en gran medida de la precisión respecto de la medición del tiempo. Por lo tanto, la detección de este tipo de dispositivos consiste en realizar un escaneo por medio de la emisión de un láser sobre un objeto y en base a este resultado, computar las distancias y las coordenadas de los puntos asociados a éstas, que componen el objeto.
+  Dado que la velocidad de la luz en la atmósfera *c* es una constante que se conoce, solamente se debe calcular el tiempo de viaje y de retorno *t*, por lo que la precisión con la que un láser ToF detecta un objeto, depende en gran medida de la precisión respecto de la medición del tiempo. Por lo tanto, la detección de este tipo de dispositivos consiste en realizar un escaneo por medio de la emisión de un láser sobre un objeto y en base a este resultado, computar las distancias y las coordenadas de los puntos asociados a éstas, que componen el objeto.
 
-Existen diferentes métodos para el escaneo del objeto por medio de lasers, entre ellas las aproximaciones más comunes son las que emplean los sensores Lidar y las Cámaras ToF. El sensor Lidar (Light Detection And Ranging) emplea un pulso láser para medir la distancia a un objeto variando rápidamente su dirección por medio de un sistema de espejos rotativos, modificando los ángulos horizontales y verticales, de manera que se puedan captar las distancias de todos puntos del objeto que se encuentra en el campo de visión. Una vez obtenidas las distancias y conociendo los ángulos horizontales y verticales, se pueden computar la posiciones (X,Y,Z) para cada uno de los puntos. Así, partiendo de la diferencia entre los tiempos de retorno de los rayos y, adicionalmente, empleando diferencias entre longitudes de onda (emitidas y recibidas), se genera un modelo tridimensional del objetivo. Estos dispositivos se empelan principalmente en satélites para la generación de mapas terrestres de alta resolución, topografía, documentación histórica de objetos antiguos y en la detección de objetos en vehículos autónomos.             
+  Existen diferentes métodos para el escaneo del objeto por medio de lasers, entre ellas las aproximaciones más comunes son las que emplean los sensores Lidar y las Cámaras ToF. El sensor Lidar (Light Detection And Ranging) emplea un pulso láser para medir la distancia a un objeto variando rápidamente su dirección por medio de un sistema de espejos rotativos, modificando los ángulos horizontales y verticales, de manera que se puedan captar las distancias de todos los puntos del objeto que se encuentran en el campo de visión. Una vez obtenidas las distancias y conociendo los ángulos horizontales y verticales, se pueden computar la posiciones (X,Y,Z) para cada uno de los puntos. Así, partiendo de la diferencia entre los tiempos de retorno de los rayos y, adicionalmente, empleando diferencias entre longitudes de onda (emitidas y recibidas), se genera un modelo tridimensional del objetivo. Estos dispositivos se empelan principalmente en satélites para la generación de mapas terrestres de alta resolución, topografía, documentación histórica de objetos antiguos y en la detección de objetos en vehículos autónomos.             
 
-.. figure:: ../figs/Cap3/sensor_lidar_esquema.png
-   :scale: 50%
+  .. figure:: ../figs/Cap3/sensor_lidar_esquema.png
+     :scale: 30%
 
-   Ejemplo de láser tipo Lidar. En la figura superior, se puede observar el rayo proyectado (línea roja) que es desplazado para escanear una escena entera por medio de un espejo rotativo. En la figura central se denota con azul el láser, con una círculo verde un objeto esférico y un rectángulo verde que constituye las paredes del entorno en el que se ubica el dispositivo. Finalmente, en la figura inferior se muestra el sensor representado como un punto negro, y los puntos azules simbolizan cada uno de los puntos capturados por el dispositivo durante el escaneo.
+     Ejemplo de láser tipo Lidar. En la figura superior, se puede observar el rayo proyectado (línea roja) que es desplazado para escanear una escena entera por medio de un espejo rotativo. En la figura central se denota con azul el láser, con una círculo verde un objeto esférico y un rectángulo verde que constituye las paredes del entorno en el que se ubica el dispositivo. Finalmente, en la figura inferior se muestra el sensor representado como un punto negro, y los puntos azules simbolizan cada uno de los puntos capturados por el dispositivo durante el escaneo.
 
 
-.. figure:: ../figs/Cap3/robot_lidar.jpg
-   :scale: 20%
+  .. figure:: ../figs/Cap3/robot_lidar.jpg
+     :scale: 20%
    
-   Robot móvil con un láser Lidar SICK Laser Rangefield.
+     Robot móvil con un láser Lidar SICK Laser Rangefield.
 
-Por otro lado, la cámara ToF no escanea individualmente cada uno de los puntos en el campo de visión, sino que emite varios pulsos de radiación simultáneamente, capturando la escena completa por cada emisión. Luego una cámara sensible a la radiación captura la imagen producida por la reflexión del conjunto de pulsos (cuyas características variarán dependiendo de la distancia entre el sensor y el objeto),  se filtra la radiación de interés, cuya longitud de onda coincide con la del tipo que fue emitida, se calcula las coordenadas de los puntos y se genera la imagen de salida. Estos dispositivos se emplean en: Aplicaciones automovilísticas para detección de peatones y prevención de colisiones, interfaces humanas donde se captura la interacción con el usuario, tales como televisores y videojuegos, donde se emplea el dispositivo para capturar movimientos y gestos que son utilizados como gamepads ( como la segunda generación del sensor Kinect Version 2), en robótica en robots que se desplazan en un entorno donde deben esquivar obstáculos o seguir una persona, o en visión por computadora en entornos industriales para tareas automatizadas de medición, o detección de objetos que serán empleados por un robot para realizar una tarea.
-
-
-.. figure:: ../figs/Cap3/sensor_kinect_v2_cam_tof.png
-   :scale: 20%
-
-   Kinect V2 con cámara ToF desarrollada por Microsoft. 
+  Por otro lado, la cámara ToF no escanea individualmente cada uno de los puntos en el campo de visión, sino que emite varios pulsos de radiación simultáneamente, capturando la escena completa por cada emisión. Luego una cámara sensible a la radiación captura la imagen producida por la reflexión del conjunto de pulsos (cuyas características variarán dependiendo de la distancia entre el sensor y el objeto),  se filtra la radiación de interés, cuya longitud de onda coincide con la del tipo que fue emitida, se calcula las coordenadas de los puntos y se genera la imagen de salida. Estos dispositivos se emplean en: aplicaciones automovilísticas para detección de peatones y prevención de colisiones, interfaces humanas donde se captura la interacción con el usuario, tales como televisores y videojuegos, donde se emplea el dispositivo para capturar movimientos y gestos que son utilizados como gamepads ( como la segunda generación del sensor Kinect Version 2), en robótica, en robots que se desplazan en un entorno donde deben esquivar obstáculos o seguir una persona, o en visión por computadora en entornos industriales para tareas automatizadas de medición, o detección de objetos que serán empleados por un robot para realizar una tarea.
 
 
-Este tipo de sensores, tienen la ventaja de ser rápidos para el muestreo, de alta precisión, aptos para trabajos de medición en monumentos o elementos de construcción, con una alta densidad de puntos por captura, una velocidad de captura entre 10.000 y 100.000 puntos por segundo y un rango de medición alto entre 200 y 300 m. Sin embargo, estos dispositivos no cuentan con una resolución de profundidad alta, la precisión del modelo generado es aproximadamente 1 cm y no se cuenta con información de color.  
+  .. figure:: ../figs/Cap3/sensor_kinect_v2_cam_tof.png
+     :scale: 20%
+
+     Kinect V2 con cámara ToF desarrollada por Microsoft. 
+
+
+  Este tipo de sensores, tienen la ventaja de ser rápidos para el muestreo, de alta precisión, aptos para trabajos de medición en monumentos o elementos de construcción, con una alta densidad de puntos por captura, una velocidad de captura entre 10.000 y 100.000 puntos por segundo y un rango de medición alto entre 200 y 300 m. Sin embargo, estos dispositivos no cuentan con una resolución de profundidad alta, la precisión del modelo generado es aproximadamente 1 cm y no se cuenta con información de color.  
 
 .. http://floridalaserscanning.com/3d-laser-scanning/how-does-laser-scanning-work/
 .. http://www.cs.virginia.edu/~mjh7v/bib/Chen08.pdf
 .. https://en.wikipedia.org/wiki/Phase_(waves)
 
-Los lásers de diferencia de fase (Phase Shift) funcionan emitiendo un haz de luz constante que sigue un patrón de onda sinusoidal, con una longitud de onda específica, el cual es almacenado en el sensor y emitido hacia el objeto. Luego, el reflejo de este rayo es capturado por el sensor y es comparado contra el patrón original almacenado en el sensor, con el fin de obtener la diferencia de fase entre ambas señales y así computar las distancias.
+
+* Diferencia de fase (Phase Shift). Los lásers de diferencia de fase (Phase Shift)
+  funcionan emitiendo un haz de luz constante que sigue un patrón de onda sinusoidal, con una longitud de onda específica, el cual es almacenado en el sensor y emitido hacia el objeto. Luego, el reflejo de este rayo es capturado por el sensor y es comparado contra el patrón original almacenado en el sensor, con el fin de obtener la diferencia de fase entre ambas señales y así computar las distancias.
 
 
-.. figure:: ../figs/Cap3/diferencia_fase_sinusoidal.png
-   :scale: 25%
+  .. figure:: ../figs/Cap3/diferencia_fase_sinusoidal.png
+     :scale: 25%
    
-   Representación gráfica de la diferencia de fase entre dos ondas sinusoidales.
+     Representación gráfica de la diferencia de fase entre dos ondas sinusoidales.
 
 
-Este proceso es similar a la técnica de tiempo de vuelo, excepto que la fase del láser reflejado refina la precisión respecto de la detección de la distancia. El alcance de este tipo de sensores se encuentra limitado por las características de la señal emitida, ya que la precisión de la medición es inversamente proporcional a la frecuencia empleada, por lo que medir con una alta frecuencia brinda mayor precisión en la distancia, pero menor rango de medición. Este tipo de dispositivo cuenta con una velocidad de adquisición alta (ubicándose ésta entre 100.000 y 1.000.000 de puntos por segundo) y un alcance de captura intermedio entre 70-100 m. Sin embargo, aunque la velocidad de captura es considerablemente superior a los scanners ToF, las nubes de puntos generadas por el método de diferencia de fase suelen contener más ruido. 
+  Este proceso es similar a la técnica de tiempo de vuelo, excepto que la fase del láser reflejado refina la precisión respecto de la detección de la distancia. El alcance de este tipo de sensores se encuentra limitado por las características de la señal emitida, ya que la precisión de la medición es inversamente proporcional a la frecuencia empleada, por lo que medir con una alta frecuencia brinda mayor precisión en la distancia, pero menor rango de medición. Este tipo de dispositivo cuenta con una velocidad de adquisición alta (ubicándose ésta entre 100.000 y 1.000.000 de puntos por segundo) y un alcance de captura intermedio entre 70-100 m. Sin embargo, aunque la velocidad de captura es considerablemente superior a los scanners ToF, las nubes de puntos generadas por el método de diferencia de fase suelen contener más ruido. 
 
 
-.. figure:: ../figs/Cap3/ejemplo_phase_shift.jpg
-   :scale: 40%
+  .. figure:: ../figs/Cap3/ejemplo_phase_shift.jpg
+     :scale: 40%
    
-   Comparación gráfica de laser ToF y Phase Shift 
+     Comparación gráfica de laser ToF y Phase Shift 
 
 
 .. https://www.researchgate.net/figure/General-Configuration-of-a-Laser-Triangulation-System_fig1_283108894
 .. http://sensors-actuators-info.blogspot.com.ar/2009/08/laser-triangulation-sensor.html
 
-Los escaners 3D de triangulación, se componen por un láser y una cámara que captura los rayos emitidos por el éste a través de una lente, la cual permite enfocar la posición de cada punto abarcado por el rayo en el campo de visión del sensor. De esta forma, la captura de un objeto consiste en emitir un rayo sobre el objeto y capturar el reflejo de éste sobre el mismo en la lente de la cámara y, dependiendo de la posición que adopte el reflejo del rayo en el lente se puede computar el ángulo :math:`{\alpha}` para cada punto. Finalmente, con este valor, la distancia entre la cámara y el láser y el punto del objeto donde rebota el rayo se forma un triangulo, a partir del cual es posible calcular por triangulación la distancia entre la cámara y un punto. Así, dependiendo de que tan lejano el objeto se encuentre el punto, aparecerá en distintas posiciones del campo de visión de la cámara.
+
+* Triangulación por láser. Los escaners 3D de triangulación, se componen por un láser 
+  y una cámara que captura los rayos emitidos por éste a través de una lente, la cual permite enfocar la posición de cada punto abarcado por el rayo en el campo de visión del sensor. De esta forma, la captura de un objeto consiste en emitir un rayo sobre el objeto y capturar el reflejo de éste en la lente de la cámara y, dependiendo de la posición que adopte el reflejo del rayo en el lente se puede computar el ángulo :math:`{\alpha}` para cada punto. Finalmente, con este valor, la distancia entre la cámara y el láser y el punto del objeto donde rebota el rayo se forma un triangulo, a partir del cual es posible calcular por triangulación la distancia entre la cámara y un punto. Así, dependiendo de que tan lejano el objeto se encuentre, el punto aparecerá en distintas posiciones del campo de visión de la cámara.
 
 .. .. figure:: ../figs/Cap3/ejemplo_triangulacion.jpg
 
-.. figure:: ../figs/Cap3/ejemplo_triangulacion_2.png
-   :scale: 35%
-   
-   Esquema gráfico de scanners de triangulación.
+  .. figure:: ../figs/Cap3/ejemplo_triangulacion_2.png
+     :scale: 25%
+      
+     Esquema gráfico de scanners de triangulación.
 
 
 .. Los sensores de Holografía Conoscópica (Conoscopic Holography), consisten en proyectar un rayo láser en una superficie y luego emplear la reflexión del mismo, haciendo que éste atraviese un cristal con forma cónica y genere un patrón de luz que se proyecta en una cámara y posteriormente es analizado para medir la distancia.
 
-Los sensores de luz estructurada 3D (Structured Light 3D), proyectan un patrón de luz sobre un objeto o superficie, pudiendo ser éste de unidimensional (una línea de luz) o bidimensional (una grilla o patrón de lineas). Un sensor que se encuentra desplazado del emisor de luz, se emplea para captar la deformación del rayo original y a partir de esta calcular la distancia. Este tipo de dispositivos se caracterizan por ser veloces, ya que en lugar de escanear un punto a la vez, los sensores escanean múltiples puntos en el campo de visión con una sola emisión, lo que elimina la posibilidad de distorsión por movimiento. La resolución y velocidad de estos sensores es similar a la de las cámaras VGA, y su precisión es similar a las ToF (aproximadamente 1 cm), contando con un alcance máximo entre 3 m y 6 m, sin embargo estos dispositivos tienen dificultades para captar objetos pequeños menores a 1 cm.   
+* Luz estructurada. Los sensores de luz estructurada 3D (Structured Light 3D),
+  proyectan un patrón de luz sobre un objeto o superficie, pudiendo ser éste  unidimensional (una línea de luz) o bidimensional (una grilla o patrón de lineas). Un sensor que se encuentra desplazado del emisor de luz, se emplea para captar la deformación del rayo original y a partir de esta calcular la distancia. Este tipo de dispositivos se caracterizan por ser veloces, ya que en lugar de escanear un punto a la vez, los sensores escanean múltiples puntos en el campo de visión con una sola emisión, lo que elimina la posibilidad de distorsión por movimiento. La resolución y velocidad de estos sensores es similar a la de las cámaras VGA, y su precisión es similar a las ToF (aproximadamente 1 cm), contando con un alcance máximo entre 3 m y 6 m, sin embargo estos dispositivos tienen dificultades para captar objetos pequeños menores a 1 cm.   
 
-.. figure:: ../figs/Cap3/ejemplo_luz_estructurada.jpg
-   :scale: 50%
+  .. figure:: ../figs/Cap3/ejemplo_luz_estructurada.jpg
+     :scale: 50%
 
-   Ejemplo de sensor ASUS Xion Pro con luz estructurada.
+     Ejemplo de sensor ASUS Xion Pro con luz estructurada.
 
   
 .. En los scanners de luz modulada (Moduled Light), la luz emitida por el emisor se modifica variando la amplitud de la radiación emitida en base a un patrón establecido (generalmente una onda sinusoidal) y una cámara detecta la diferencia entre la amplitud del patrón y la diferencia de radiación reflejada, empleándose ésta para detectar la distancia del objeto y computar las posiciones. 
 
-En los escáner de luz modulada (Moduled Light), la radiación emitida por el láser es una luz que varía continuamente en base a un patrón establecido, siendo generalmente  una onda sinusoidal de la que se repiten varios ciclos, hacia el objeto que se desea escanear. Así, una cámara detecta la diferencia entre la onda de la radiación emitida y la radiación reflejada por el objeto, y dependiendo de la diferencia entre éstas se computan las distancias. 
+* Luz Modulada. En los escáner de luz modulada (Moduled Light), la radiación 
+  emitida por el láser es una luz que varía continuamente en base a un patrón establecido, siendo generalmente  una onda sinusoidal de la que se repiten varios ciclos, hacia el objeto que se desea escanear. Así, una cámara detecta la diferencia entre la onda de la radiación emitida y la radiación reflejada por el objeto, y dependiendo de la diferencia entre éstas se computan las distancias. 
 
 
-Por otro lado, la técnica de escáner sin contacto pasivos, no emiten ningún tipo de radiación sino que su funcionamiento se basa en capturar la radiación reflejada del ambiente, como la luz solar o la luz infraroja. Estos tipos de escáner se caracterizan por ser económicos, ya que no requieren de hardware  especializado para la emisión de un tipo de radiación. Dentro de esta categoría de dispositivos, se encuentran los siguientes:
+Por otro lado, la técnica de escáner pasivo sin contacto, no emite ningún tipo de radiación sino que su funcionamiento se basa en capturar la radiación reflejada del ambiente, como la luz solar o la luz infraroja. Estos tipos de escáner se caracterizan por ser económicos, ya que no requieren de hardware  especializado para la emisión de un tipo de radiación. Dentro de esta categoría de dispositivos, se encuentran los siguientes:
 
 * Escáner estereoscópicos (Stereoscopic Scanners): Estos dispositivos emplean dos cámaras de video en posiciones diferentes (desplazadas algunos centímetros) enfocadas hacia el mismo objeto, que captarán imágenes distintas del mismo y, por medio del análisis de estas diferencias, se puede calcular la distancia de cada punto punto en las imágenes. Un ejemplo de este tipo de dispositivos son las cámaras estéreo, que cuentan con la ventaja de ser económicas, sin embargo requieren una perfecta calibración de ambas cámaras de video y son sensibles a las malas condiciones de iluminación. 
  
@@ -184,12 +187,12 @@ El sensor Kinect es un dispositivo de juego compatible con las plataformas Xbox 
 .. https://kotaku.com/5576002/here-are-kinects-technical-specs
 .. http://www.cs.upc.edu/~virtual/RVA/CourseSlides/Kinect.pdf
 
-La versión Kinect V1 (empleada para la captura de muestras de la presente tesina) se basa en la técnica de proyección de luz estructurada 3D con luz infraroja(IR) constituyéndose por: Un emisor IR, una cámara IR o sensor de profundidad IR, una cámara de video color RGB, un conjunto de micrófonos en la parte inferior para la captura de comandos de voz(array de micrófonos), un acelerómetro y un motor de inclinación. Para realizar el sensado de objetos en el campo de visión, el sensor recolecta constantemente varias imágenes o frames por segundo(fps) paralelamente, correspondientes a las cámaras IR y de video. La cámara IR funciona a 30 fps y admite resoluciones de 320x240 (con 16 bits de profundidad) y 640x480 pixeles (32 bits con color), mientras que la cámara de video funciona a 30 fps en una resolución de 640x480 pixeles y a 12 fps con una resolución de 1280x960 pixeles.
+La versión Kinect V1 (empleada para la captura de muestras de la presente tesina) se basa en la técnica de proyección de luz estructurada 3D con luz infraroja(IR) constituyéndose por: un emisor IR, una cámara IR o sensor de profundidad IR, una cámara de video color RGB, un conjunto de micrófonos en la parte inferior para la captura de comandos de voz(array de micrófonos), un acelerómetro y un motor de inclinación. Para realizar el sensado de objetos en el campo de visión, el sensor recolecta constantemente varias imágenes o frames por segundo(fps) paralelamente, correspondientes a las cámaras IR y de video. La cámara IR funciona a 30 fps y admite resoluciones de 320x240 (con 16 bits de profundidad) y 640x480 pixeles (32 bits con color), mientras que la cámara de video funciona a 30 fps en una resolución de 640x480 pixeles y a 12 fps con una resolución de 1280x960 pixeles.
 Así, en cada frame el emisor IR emite un patrón de puntos con distintas intensidades en 830nm, que son capturados por la cámara IR la cual se encarga de filtrar únicamente las señales IR, evitando que otros tipos de señales del entorno (tales como las señales de control remoto o luces propias de la iluminación interior), interfieran con el funcionamiento del sensor. De esta forma, la cámara IR captura la señal IR, que se representa como una imagen en escala de grises, donde cada pixel contiene la distancia Cartesiana en milímetros hacia la coordenada de ese pixel desde el dispositivo de captura. El sensado de objetos se encuentra delimitado por un rango de distancia entre 0.8 m y 0.4 m por defecto para la versión de Xbox 360, mientras que para la versión de Windows se incluye además un rango cercano de 0.4m y 3 m. 
 
 
 .. figure:: ../figs/Cap3/funcionamineto_stream_profundidad.png
-   :scale: 30%
+   :scale: 60%
 
    Funcionamiento del stream de profundidad
 
@@ -197,7 +200,7 @@ Así, en cada frame el emisor IR emite un patrón de puntos con distintas intens
 .. .. figure:: ../figs/Cap3/ejemplo_patron_puntos.jpg
 
 .. figure:: ../figs/Cap3/ejemplo_patron_puntos_2.png
-   :scale: 60%
+   :scale: 50%
 
    Patrón de puntos proyectados sobre una superficie
 
@@ -207,7 +210,7 @@ Luego, el chip de procesamiento interno del sensor analiza las diferencias entre
 .. .. figure:: ../figs/Cap3/esquema_general_kinect.gif
 
 .. figure:: ../figs/Cap3/esquema_general_kinect_v2.png
-   :scale: 30%
+   :scale: 60%
 
    Esquema general de funcionamiento del Kinect V1
 
@@ -315,7 +318,7 @@ Entre los módulos principales de la librería se encuentran los siguientes:
 * Kinect Interaction.
 * Face Tracking.
   
-El módulo NUI es el módulo principal del SDK y permite acceder a información de sonido, imágenes a color y profundidad capturada directamente desde el dispositivo, como así también ofrece funcionalidades que procesan esta información, tales como son: Un pipeline que permite reconocer y rastrear el cuerpo humano, el cual convierte la información de profundidad en uniones, que en conjunto representan esqueleto del cuerpo humano, integración con la API Microsoft Speech para proporcionar un motor de procesamiento de comandos hablados que permita agregar comandos de voz a la aplicación, y la integración con la SDK Face Tracking para reconocimiento de expresiones faciales. De esta forma, para que las aplicaciones interactúen con el sensor kinect, el módulo define una clase principal KinectSensor que representa el sensor y que agrupa cada conjunto de frames de video, profundidad y skeletons en streams, que obtienen de manera continua información del dispositivo, y que deben ser habilitados y configurados por el desarrollador de manera explícita para comenzar con el sensado. Así, el flujo de trabajo para la obtención de información con la librería consiste en:
+El módulo NUI es el módulo principal del SDK y permite acceder a información de sonido, imágenes a color y profundidad capturada directamente desde el dispositivo, como así también ofrece funcionalidades que procesan esta información, tales como son: un pipeline que permite reconocer y rastrear el cuerpo humano, el cual convierte la información de profundidad en uniones, que en conjunto representan el esqueleto del cuerpo humano, integración con la API Microsoft Speech para proporcionar un motor de procesamiento de comandos hablados que permita agregar comandos de voz a la aplicación, y la integración con la SDK Face Tracking para reconocimiento de expresiones faciales. De esta forma, para que las aplicaciones interactúen con el sensor kinect, el módulo define una clase principal KinectSensor que representa el sensor y que agrupa cada conjunto de frames de video, profundidad y skeletons en streams, que obtienen de manera continua información del dispositivo, y que deben ser habilitados y configurados por el desarrollador de manera explícita para comenzar con el sensado. Así, el flujo de trabajo para la obtención de información con la librería consiste en:
 
 1. Seleccionar un dispositivo Kinect. Esto se realiza por medio de iteración de la colección Kinect.KinectSensors que agrupa todos los dispositivos conectados y permite obtener el nombre y el estado del dispositivo(si se encuentra conectado funcionando correctamente).
 2. Luego de seleccionar el dispositivo, se deben habilitar los streams de los que se desee obtener información, invocando para ésto al método enable() de cada stream, que recibe la configuración que especifica el formato de los datos de imagen, la tasa de frames y la resolución de los pixeles de datos, definida como un tipo enumerado en las clases de formato para cada stream. Los streams para frames de imágenes a color, profundidad skeleton se encuentran definidos en las clases ColorStream, DepthStream y SkeletonStream, respectivamente.
@@ -453,7 +456,7 @@ Freneect (Libfreenect) es un driver multiplataforma, de código abierto para el 
 * Common Lisp
 * Actionscript
 
-Adicionalmente, libfreenect brinda las utilidades de prueba Record y Fakenect: La primera permite grabar una secuencia de frames del dispositivo en disco volcando las lecturas de los streams de video, profundidad y acelerómetro, mientras que la segunda se enfoca en permitir leer las grabaciones hechas por Record, de manera que se no sea necesario contar con un sensor conectado para realizar pruebas.  
+Adicionalmente, libfreenect brinda las utilidades de prueba Record y Fakenect: la primera permite grabar una secuencia de frames del dispositivo en disco volcando las lecturas de los streams de video, profundidad y acelerómetro, mientras que la segunda se enfoca en permitir leer las grabaciones hechas por Record, de manera que no sea necesario contar con un sensor conectado para realizar pruebas.  
 
 .. http://https.www.pointclouds.org/news/2012/05/29/pcl-goes-mobile-with-ves-and-kiwi/
 
@@ -590,7 +593,7 @@ Con respecto a la escritura de nubes, esta consiste en definir la nube de salida
 Visualización de nubes de puntos
 ++++++++++++++++++++++++++++++++
 
-PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualización de nubes de puntos, que cuenta con la capacidad de abrir varias nubes simultáneamente superponiéndolas de manera ordenada y obtener y visualizar características relevantes ésta, tales como mostrar los ejes Cartesianos (X,Y,Z), obtención manual de coordenadas a partir de una selección, rotación de nube de puntos, modificación de los puntos que representa ésta, visualización de curvaturas principales y de normales. Esta herramienta emplea la clase pcl::visualization::PCLVisualizer del módulo *visualization* y puede ser utilizada para implementar un visualizador propio. Adicionalmente, se puede emplear la clase CloudViewer para crear un visualizador con menos funciones, pero más sencillo de configurar y que proporciona una ventana y herramientas de zoom y rotación.
+PCL ofrece la herramienta de línea de comandos *pcl_viewer* para la visualización de nubes de puntos, que cuenta con la capacidad de abrir varias nubes simultáneamente superponiéndolas de manera ordenada y obtener y visualizar características relevantes, tales como mostrar los ejes Cartesianos (X,Y,Z), obtención manual de coordenadas a partir de una selección, rotación de nube de puntos, modificación de los puntos que representa ésta, visualización de curvaturas principales y de normales. Esta herramienta emplea la clase pcl::visualization::PCLVisualizer del módulo *visualization* y puede ser utilizada para implementar un visualizador propio. Adicionalmente, se puede emplear la clase CloudViewer para crear un visualizador con menos funciones, pero más sencillo de configurar y que proporciona una ventana y herramientas de zoom y rotación.
 
 .. figure:: ../figs/Cap3/ejemplo_pcl_viewer_1.png
    :scale: 40%
@@ -734,7 +737,7 @@ Descomposición de nubes: KD-Tree y Octree
 
 .. La descomposición de nubes de puntos consiste en organizar la nube de puntos en una estructura de manera que el filtrado y análisis del entorno de los mismos (búsqueda de vecinos mas cercanos, búsqueda de vecinos en un radio determinado o, el punto más cercano) sea mas eficiente. Para conseguir esto, PCL ofrece dos tipos de estructura: Kd-Tree y Octree. La estructura Kd-Tree es un árbol binario en el que cada nodo es un punto k-dimensional, y donde en cada nivel del árbol se dividen los puntos en una dimensión establecida. Así, en un espacio tridimensional la división comienza por crear el nodo raíz del árbol que divide los puntos en base al eje X en base a un criterio (típicamente la raíz de cada subárbol es el punto medio del conjunto de coordenadas en ese eje), creando un nodo izquierdo que representa a los puntos cuyo valor de X sea menor y un nodo derecho para los valores mayores; Posteriormente, se realiza la división de puntos en el espacio Y para los nodos hijos del nodo raíz empelando el mismo procedimiento y para el espacio Z con los hijos de la división en Y. Al llegar al eje Z, se repite nuevamente todo el proceso para continuar subdividiéndo el espacio hasta que no existan puntos para continuar la división.
 
-La descomposición de nubes de puntos consiste en organizar la nube de puntos en una estructura de manera que el filtrado y análisis del entorno de los mismos (búsqueda de vecinos mas cercanos, búsqueda de vecinos en un radio determinado o, el punto más cercano, etc.) sea mas eficiente. Para conseguir esto, PCL ofrece dos tipos de estructuras: Kd-Tree y Octree. La estructura Kd-Tree es un árbol binario que organiza un conjunto de puntos en un espacio K-dimensional, estando determinada la cantidad de dimensiones por los ejes utilizados para definir las coordenadas de cada punto en la nube. De esta forma, si se emplean nubes de puntos tridimensionales, el árbol kd-tree organizará los puntos por medio de divisiones en los ejes X,Y,Z. En esta estructura, cada nodo representa un punto de la nube y cada nivel del árbol es una separación de puntos en alguna de las dimensiones. Así, en un espacio tridimensional la división comienza por crear el nodo raíz del árbol que divide los puntos respecto al eje X en base a un criterio (típicamente la raíz de cada subárbol es el punto medio del conjunto de coordenadas en ese eje), creando un nodo izquierdo que representa al subárbol de los puntos cuyo valor de X sea menor y un nodo derecho para el subárbol de los valores mayores; Posteriormente, se realiza la división de puntos en el espacio Y para los nodos hijos del nodo raíz empelando el mismo procedimiento y para el espacio Z con los hijos de la división en Y. Al llegar al eje Z, se repite nuevamente todo el proceso para continuar subdividiendo el espacio hasta que no existan puntos para continuar la división.
+La descomposición de nubes de puntos consiste en organizar la nube de puntos en una estructura de manera que el filtrado y análisis del entorno de los mismos (búsqueda de vecinos mas cercanos, búsqueda de vecinos en un radio determinado o, el punto más cercano, etc.) sea mas eficiente. Para conseguir esto, PCL ofrece dos tipos de estructuras: Kd-Tree y Octree. La estructura Kd-Tree es un árbol binario que organiza un conjunto de puntos en un espacio K-dimensional, estando determinada la cantidad de dimensiones por los ejes utilizados para definir las coordenadas de cada punto en la nube. De esta forma, si se emplean nubes de puntos tridimensionales, el árbol kd-tree organizará los puntos por medio de divisiones en los ejes X,Y,Z. En esta estructura, cada nodo representa un punto de la nube y cada nivel del árbol es una separación de puntos en alguna de las dimensiones. Así, en un espacio tridimensional la división comienza por crear el nodo raíz del árbol que divide los puntos respecto al eje X en base a un criterio (típicamente la raíz de cada subárbol es el punto medio del conjunto de coordenadas en ese eje), creando un nodo izquierdo que representa al subárbol de los puntos cuyo valor de X sea menor y un nodo derecho para el subárbol de los valores mayores; Posteriormente, se realiza la división de puntos en el espacio Y para los nodos hijos del nodo raíz empleando el mismo procedimiento y para el espacio Z con los hijos de la división en Y. Al llegar al eje Z, se repite nuevamente todo el proceso para continuar subdividiendo el espacio hasta que no existan puntos para continuar la división.
 
 
 .. figure:: ../figs/Cap3/ejemplo_kd_tree_division.png
@@ -805,7 +808,7 @@ Estimación de normales
 Para diferenciar un punto de otro en una nube de puntos, no basta únicamente con su posición, sino que es necesario computar una característica 3D que sea similar para puntos que se encuentran en superficies similares. Para conseguir ésto, PCL ofrece la computación de normales, donde un vector normal *n* de un punto, se define como el vector perpendicular al plano tangente que contiene a ése punto. Estos vectores se emplean para diversas tareas entre las que se destacan:
 
 * La generación de gráficos por computadora tridimensionales, en la detección de la orientación de una fuente de luz y mejorar los efectos visuales en una escena.
-* Composición digital, donde se renderizan modelos o imágenes 3D por computadora superponiendo varias imágenes. Las capas renderizadas generadas, contienen información de normales pueden ser modificadas para cambiar la textura de un objeto según la fuente de iluminación.
+* Composición digital, donde se renderizan modelos o imágenes 3D por computadora superponiendo varias imágenes. Las capas renderizadas generadas, contienen información de normales que pueden ser modificadas para cambiar la textura de un objeto según la fuente de iluminación.
 
 
 .. .. figure:: ../figs/Cap3/ejemplo_vector_normal.gif
@@ -818,8 +821,8 @@ Para diferenciar un punto de otro en una nube de puntos, no basta únicamente co
 .. http://pointclouds.org/documentation/tutorials/normal_estimation.php
 .. http://pointclouds.org/documentation/tutorials/how_features_work.php#id2
 
-Debido a las nubes de puntos proporcionan coordenadas de los puntos que componen la superficie de un objeto, la computación de las normales de éstos, se calcula por medio de la generación de una matriz de vectores y valores propios de cada punto *Pi* (vectores que son invariables a cambios de escala o transformaciones), que es calculada empleando los k vecinos de éste y el centroide de éstos. Los valores de esta matriz se emplean en la técnica de análisis de componentes principales(PCA), que permite obtener las componentes principales con mayor variación, en este caso se obtiene el vector que es más representativo para el punto según sus vecinos más cercanos (vector normal).    
-Una vez realizado este cálculo y teniendo los vectores de cada punto, aún es necesario calcular la orientación de las normales, para ésto se utiliza el punto de visión *Vp* para orientar las normales *ni* de todos los puntos, haciendo cumplir siguiente ecuación: 
+Debido a que las nubes de puntos proporcionan coordenadas de los puntos que componen la superficie de un objeto, la computación de las normales de éstos, se calcula por medio de la generación de una matriz de vectores y valores propios de cada punto *Pi* (vectores que son invariables a cambios de escala o transformaciones), que es calculada empleando los k vecinos de éste y el centroide de éstos. Los valores de esta matriz se emplean en la técnica de análisis de componentes principales(PCA), que permite obtener las componentes principales con mayor variación, en este caso se obtiene el vector que es más representativo para el punto según sus vecinos más cercanos (vector normal).    
+Una vez realizado este cálculo y teniendo los vectores de cada punto, aún es necesario calcular la orientación de las normales, para ésto se utiliza el punto de visión *Vp* para orientar las normales *ni* de todos los puntos, haciendo cumplir la  siguiente ecuación: 
 
 
 .. figure:: ../figs/Cap3/equivalencia_orientacion_normales.png
@@ -827,7 +830,7 @@ Una vez realizado este cálculo y teniendo los vectores de cada punto, aún es n
 
    Fórmula de equivalencia normales
 
-La precisión con que se estimen las normales para una superficie en PCL depende en gran medida de la escala que se utilice para el cálculo, que se establece por medio del radio de búsqueda (pcl::Feature::setRadiusSearch) o de la cantidad de vecinos empleados para la computación de la normal (pcl::Feature::setKSearch). Si se emplea un rango razonablemente bajo, se considerarán menos vecinos para cada punto provocando que exista mayor similitud entre normales de la misma superficie y diferencia entre normales de distintas superficies y, en consecuencia, exista un mayor nivel de detalle las zonas con bordes de los objetos. Por el contrario, si se emplea una escala muy alta, se considerarán más vecinos para la computación de las normales de puntos, provocando que en las regiones límites entre distintas superficies se abarque un mayor rango de vecinos de la zona adyacente, provocando que las normales muestren menor diferencia entre superficies diferentes.
+La precisión con que se estimen las normales para una superficie en PCL depende en gran medida de la escala que se utilice para el cálculo, que se establece por medio del radio de búsqueda (pcl::Feature::setRadiusSearch) o de la cantidad de vecinos empleados para la computación de la normal (pcl::Feature::setKSearch). Si se emplea un rango razonablemente bajo, se considerarán menos vecinos para cada punto provocando que exista mayor similitud entre normales de la misma superficie y diferencia entre normales de distintas superficies y, en consecuencia, exista un mayor nivel de detalle de las zonas con bordes de los objetos. Por el contrario, si se emplea una escala muy alta, se considerarán más vecinos para la computación de las normales de puntos, provocando que en las regiones límites entre distintas superficies se abarque un mayor rango de vecinos de la zona adyacente, provocando que las normales muestren menor diferencia entre superficies diferentes.
 
 En PCL el cálculo de normales se realiza por medio de la clase pcl::NormalEstimation, que acepta un tipo de punto coordenada y un tipo de punto normal, y puede realizarse para toda la nube completa o, para un subconjunto de puntos, por medio de la utilización de índices. Si se desea realizar la estimación para toda la nube, basta con especificar a la clase de estimación de normales la nube de entrada, el método de búsqueda y el radio de búsqueda o la cantidad de vecinos. A continuación, se muestra un ejemplo de código fuente que realiza la computación de normales:
 
@@ -901,7 +904,7 @@ Filtrado de ruido de la nube
 
 .. http://pointclouds.org/documentation/tutorials/passthrough.php
 
-Debido a que una captura puede contener valores espurios, debido a baja precisión del sensor, medidas erróneas u falta de puntos en determinadas partes de una nube de puntos, o simplemente es necesario reducir la cantidad de puntos para disminuir el tiempo de computación. Para solucionar ésto, PCL ofrece varios algoritmos de filtrado de nubes de puntos entre los que se encuentran:
+Debido a que una captura puede contener valores espurios, debido a la baja precisión del sensor, medidas erróneas o falta de puntos en determinadas partes de una nube de puntos, o simplemente es necesario reducir la cantidad de puntos para disminuir el tiempo de computación. Para solucionar ésto, PCL ofrece varios algoritmos de filtrado de nubes de puntos entre los que se encuentran:
 
 * Passthrough Filter
 * Conditional Removal
@@ -930,7 +933,7 @@ El algoritmo de Passthrough Filter consiste en remover de la nube aquellos eleme
 
 .. http://pointclouds.org/documentation/tutorials/remove_outliers.php
 
-El algoritmo Conditional Removal consiste en crear una o mas condiciones que verifican los valores de los atributos de un punto (tales como las coordenadas sobre un eje) y mantener solo aquellos puntos que cumplen ésta. Para ello, PCL representa las condiciones por clases siendo las condiciones disponibles AND (pcl::ConditionAnd) y OR (pcl::ConditionOr), que por medio del método addComparison() permiten especificar el tipo atributo, el operador de comparación (<,<=,==,>,>=) y el valor de la condición. Finalmente para realizar el filtrado, se crea una instancia de pcl::ConditionalRemoval que recibe las condiciones especificadas y genera la nube de salida. En el siguiente ejemplo se realiza el mismo filtrado que en Passthrough Filter empleando el Conditional Removal:
+El algoritmo Conditional Removal consiste en crear una o mas condiciones que verifican los valores de los atributos de un punto (tales como las coordenadas sobre un eje) y mantener solo aquellos puntos que cumplen ésta. Para ello, PCL representa las condiciones por clases siendo las condiciones disponibles AND (pcl::ConditionAnd) y OR (pcl::ConditionOr), que por medio del método addComparison() permiten especificar el tipo de atributo, el operador de comparación (<,<=,==,>,>=) y el valor de la condición. Finalmente para realizar el filtrado, se crea una instancia de pcl::ConditionalRemoval que recibe las condiciones especificadas y genera la nube de salida. En el siguiente ejemplo se realiza el mismo filtrado que en Passthrough Filter empleando el Conditional Removal:
 
 .. code-block:: c
 
@@ -948,7 +951,7 @@ El algoritmo Conditional Removal consiste en crear una o mas condiciones que ver
    filter.filter(*filteredCloud);
 
 
-Con respecto al algoritmo Outlier Removal, existen dos variantes: Basado en radio y Estadístico. En el método basado en radio se especifica un radio de búsqueda y la cantidad mínima de vecinos que punto debe poseer para no ser considerado como outlier. De esta manera el algoritmo iterará todos los puntos en la nube y  por cada punto verificará que dentro del radio especificado existan al menos la cantidad mínima requerida de vecinos. Este comportamiento se realiza por medio de la clase pcl::RadiusOutlierRemoval.
+Con respecto al algoritmo Outlier Removal, existen dos variantes: basado en radio y estadístico. En el método basado en radio se especifica un radio de búsqueda y la cantidad mínima de vecinos que un punto debe poseer para no ser considerado como outlier. De esta manera, el algoritmo iterará todos los puntos en la nube y  por cada punto verificará que dentro del radio especificado existan al menos la cantidad mínima requerida de vecinos. Este comportamiento se realiza por medio de la clase pcl::RadiusOutlierRemoval.
 
 Por otro lado, el Statistical Outlier Removal itera cada punto en la nube y calcula la distancia media entre el punto y sus vecinos, la cual es comparada con la distancia de una distribución normal Gaussiana con media :math:`{\mu}` y desvío estándar :math:`{\sigma}`, eliminado aquellos puntos que caen fuera del rango de la distribución. Este método se implementa por medio de la clase pcl::StatisticalOutlierRemoval que acepta la nube, la media y el desvío estándar de la distribución de probabilidad. 
 
@@ -1034,7 +1037,7 @@ Finalmente, luego de configurar el grafo se realiza la búsqueda del mínimo cor
 
 Finalmente, RANSAC (Random Sample Consensus) es un algoritmo de muestreo aleatorio que para un conjunto de datos de entrada con ruido, estima los parámetros que permiten ajustar éstos a un modelo preestablecido. Este algoritmo considera que en la nube de puntos de entrada existen puntos que pueden ser ajustados a un modelo preestablecido con un margen de error especificado  (inliers), y puntos que no se ajustan al modelo de RANSAC(outliers). El funcionamiento de este algoritmo consiste en especificar un tipo de modelo y realizar N iteraciones, donde en cada una:  
    
-    1. Se toma un subconjunto de puntos mínimos aleatorios de la nube de entrada ( considerado suficiente para estimar los parámetros del modelo) y, empleando el tipo de modelo especificado, se entrena un modelo para este subconjunto de puntos y se computan los parámetros asociados éste.
+    1. Se toma un subconjunto de puntos mínimos aleatorios de la nube de entrada ( considerado suficiente para estimar los parámetros del modelo) y, empleando el tipo de modelo especificado, se entrena un modelo para este subconjunto de puntos y se computan los parámetros asociados a éste.
     2. A continuación, el algoritmo verifica cuales puntos de la nube de entrada completa son consistentes con el modelo y sus parámetros estimados previamente, empleando una función de costo o función de pérdida específica del modelo (loss function). Los puntos que no se ajusten al modelo instanciado con un margen de error, se consideran outliers, mientras que el resto de puntos que se ajustan al modelo se consideran inliers hipotéticos y forman parte del conjunto de consenso (consensus set).
     3. Se repite de nuevo el paso 1. 
 
@@ -1061,7 +1064,7 @@ Con respecto a la generación de descriptores, PCL ofrece dos tipos de descripto
 
 Por otro lado, PCL ofrece descriptores globales que describen la geometría de un cluster de puntos que representa un objeto, por lo que para emplear estos descriptores se requiere pre-procesar una nube de puntos, con el fin de aislar el objeto. Estos descriptores se aplican para el reconocimiento de objetos y clasificación, estimación de posición y análisis de geometría (tipo de objeto, forma, etc.). Los descriptores locales que emplean un radio de búsqueda, mayormente pueden ser usados como globales, si se computa un solo punto en el cluster y se modifica el  radio de puntos que se consideran vecinos, para abarcar todos los puntos que componen el objeto. 
 
-Existen varios tipos de descriptores en PCL, cada uno empleando su propia técnica, ya sea empleando los ángulos de las normales o las distancias Euclidianas entre puntos. Sin embargo, con el fin de reducir el tamaño de cada descriptor, todos se organizan en histogramas cuyos rangos de escala se corresponden con la característica que es parte el descriptor (por ejemplo, distancia entre puntos), asociándose cada una de las características del descriptor a un histograma, donde éstos se encuentran divididos en k subdivisiones y, en cada rango del histograma, se representan las ocurrencias de puntos dentro de ese rango. De esta forma, cada algoritmo para la generación de descriptores realiza su propia subdivisión del histograma, dependiendo del rango de valores que sea más representativo en la variable, por lo que éstas se generan dinámicamente y se producen en mayor medida para los valores donde existen mayor cantidad de puntos con esa característica.
+Existen varios tipos de descriptores en PCL, cada uno empleando su propia técnica, ya sea empleando los ángulos de las normales o las distancias Euclidianas entre puntos. Sin embargo, con el fin de reducir el tamaño de cada descriptor, todos se organizan en histogramas cuyos rangos de escala se corresponden con la característica que es parte del descriptor (por ejemplo, distancia entre puntos), asociándose cada una de las características del descriptor a un histograma, donde éstos se encuentran divididos en k subdivisiones y, en cada rango del histograma, se representan las ocurrencias de puntos dentro de ese rango. De esta forma, cada algoritmo para la generación de descriptores realiza su propia subdivisión del histograma, dependiendo del rango de valores que sea más representativo en la variable, por lo que éstas se generan dinámicamente y se producen en mayor medida para los valores donde existen mayor cantidad de puntos con esa característica.
 
 .. Ejemplo histograma -->
 
