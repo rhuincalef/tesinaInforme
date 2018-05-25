@@ -657,20 +657,12 @@ Debido a que las imágenes se representan como matrices de números, pueden apli
      
    Ejemplo de promediado de imágenes. La imagen de la izquierda es una imagen individual con ruido. La imagen del centro es un promedio de 4 imágenes. La imagen de la derecha es un promedio de 16 imágenes.
 
-.. raw:: latex
-
-   \newpage
-     
 * Resta: M(x,y) = f(x,y) - g(x,y). La diferencia de imágenes es una técnica que se emplea para detectar cambios en imágenes tomadas sobre la misma escena en diferentes momentos, esto permite que se le pueda aplicar para el rastreo de objetos, reconocer el movimiento de objetos, para computar información 3-D del movimiento 2D, en cámaras de vigilancia y, campos de la astronomía donde los bajos niveles de frecuencia introducen ruido en el dispositivo de sensado. De esta forma, para detectar si existe un cambio de imagen significativo se realiza la sustracción de las mismas, y se analiza el histograma de imagen: Si los niveles de intensidad del histograma en el nivel *n* no son significativos, significa que no existe una diferencia considerable entre ambas; Por el contrario, si los valores en un intervalo de niveles *n* o en un nivel *n* es significativa, se podrá percibir que el histograma tendrá un nivel de intensidad (más brillo) en ese punto. A continuación, se puede observar el histograma luego de realizar la resta entre dos imágenes:
   
 .. figure:: ../figs/Cap2/diferenciaHistograma.png
    :scale: 40%
 
    Las figuras (a) y (b) son las imágenes originales, la figura (c) es la imagen resultante de la diferencia y la figura (d) es su histograma asociado.
-
-.. raw:: latex
-
-   \newpage
 
 * Multiplicación: M(x,y)=f(x,y) * g(x,y). Este tipo de operación se emplea con el uso de una máscara para aislar regiones de interés (ROI) en la imagen final. Este proceso consiste en multiplicar una imagen por una máscara de imagen que tiene unos en la región de interés y cero en cualquier otra coordenada. Pueden existir más de una ROI en la máscara de imagen, con una forma arbitraria, aunque las formas rectangulares son usadas frecuentemente por la facilidad de implementación. En la siguiente imagen se puede observar el proceso de enmascarado de muelas en una imagen de rayos X:
   
@@ -858,10 +850,6 @@ El suavizado de imagen, aplicado en técnicas de pre-procesamiento de imagen (co
 
    Efecto de suavizado. La imagen original se sitúa en la parte superior izquierda. La imagen superior derecha tiene un filtro rectangular con una máscara de *m = 3*. La imagen inferior izquierda con un filtro rectangular con *m = 5*. La imagen inferior derecha tiene un filtro rectangular con *m = 9*.
 
-.. raw:: latex
-
-   \newpage
-
 Alternativamente, se pueden emplear filtros no lineales estadísticos para el suavizado de imagen, cuya respuesta se basa en ordenar los píxeles contenidos en el área de la imagen abarcada por el filtro, y reemplazar el valor del píxel del centro con el valor determinado por el resultado del ordenamiento. Existen varios tipos de filtros para suavizado que se basan en distintos valores (máximo, mínimo), no obstante el ejemplo más relevante es el filtro que emplea la mediana (valor del conjunto para el cual la mitad de los valores son mayores o iguales a la misma y el resto son menores) de los valores de intensidad en el píxel (incluyendo el valor del píxel en el cálculo), donde se lo obtiene y luego se asigna este valor como el valor de intensidad del píxel de salida. Este tipo de filtro es empleado debido a que produce excelentes resultados para la reducción de ruido aleatorio, con respecto filtros lineales del mismo tamaño. A continuación, se destaca el efecto del suavizado de imagen empleando un filtro de mediana y un filtro de promediado lineal:
 
 
@@ -889,10 +877,6 @@ Las operaciones que se ejecutan sobre el dominio de las transformaciones hacen u
 
    Esquema del dominio de las transformaciones.
 
-.. raw:: latex
-
-   \newpage
-
 Debido a que para representar una imagen digital se debe trabajar con valores discretos, la transformada de Fourier se debe definir de manera discreta ( *DFT* Discrete Fourier Transform), donde ésta se define como una función F(u,v) sobre los valores (u,v) que representan las frecuencias con que se representará la imagen, definiendo *u* como la frecuencia de oscilación a lo largo del eje *X* y *v* la frecuencia de oscilación a lo largo del eje *Y* (expresadas en ciclos por píxel) que se emplearan para representar la imagen definida en el dominio dominio espacial sobre éste dominio: 
 
 
@@ -917,11 +901,7 @@ Esta fórmula cuenta con distintas propiedades entre las que se destacan:
 .. figure:: ../figs/Cap2/formulaEspectro.png
    :scale: 50%
 
-   Fórmula para el calculo del espectro.
-
-.. raw:: latex
-   
-   \newpage
+   Fórmula para el cálculo del espectro.
 
 De manera que se obtenga una matriz de magnitud de frecuencias de la imagen del mismo tamaño de la imagen digital *M x N* (con la amplitud de las mismas), donde los vectores se representan con números complejos *C = R + jI*, correspondiendo *R* a la parte real del mismo y, siendo *I* la parte imaginaria (donde *j* es la raíz cuadrada de -1) y donde el conjunto de números reales se representan como números complejos con *I = 0*.
 Los componentes del espectro de la DFT determinan las amplitudes de las sinusoidales que componen la imagen, almacenando información acerca de las intensidades en la imagen, por lo que en cualquier frecuencia dada de una imagen, una gran amplitud implica una mayor relevancia de la onda sinusoidal para esa frecuencia; Mientras que si se cuenta con una pequeña amplitud, implica en menor medida la presencia de una onda sinusoidal en esa frecuencia.
@@ -936,15 +916,12 @@ Los componentes del espectro de la DFT determinan las amplitudes de las sinusoid
 
 El ángulo de fase o fase, es una medida del desplazamiento de varias ondas sinusoidales con respecto al origen, por lo que este arreglo contiene los ángulos que contienen información respecto de donde los objetos se encuentran localizados en la imagen.
 
-
-
 * Espectro potencia. El espectro potencia se calcula para cada elemento de la imagen con la siguiente fórmula:
   
 .. figure:: ../figs/Cap2/formulaPotencia.png
    :scale: 50%
 
    Fórmula para el espectro potencia.
-
 
 * Simetría. La simetría con respecto a la transformada de Fourier discreta, enuncia que la magnitud del espectro es simétrica par respecto del punto central por lo que se cumple la siguiente igualdad:
   
@@ -953,18 +930,12 @@ El ángulo de fase o fase, es una medida del desplazamiento de varias ondas sinu
 
    Fórmula simétrica par en el espectro de magnitud.
 
-.. raw:: latex
-
-   \newpage
-
 Mientras que el ángulo de fase es simétrica impar con respecto al origen, lo que significa que se cumple la siguiente igualdad:
-
 
 .. figure:: ../figs/Cap2/formulaAsimetrica.png
    :scale: 50%
 
    Fórmula asimétrica par en la fase.
-
 
 * Traslación. La propiedad de traslación implica que al multiplicar la imagen f(x,y) por la parte exponencial de la transformada de Fourier en coordenadas (u0,v0), provoca un desplazamiento de la transformada al punto (u0,v0), y en consecuencia, multiplicar F(u,v) por el negativo de esa exponencial cambia el origen de f(x,y) hacia (x0,y0).
   
@@ -1050,10 +1021,6 @@ Las imágenes binarias surgen de una variedad de fuentes, generalmente son cread
 .. figure:: ../figs/Cap2/imagenBinaria.png
 
    Imagen binaria.
-
-.. raw:: latex
-
-   \newpage
 
 
 Imágenes a color
@@ -1269,12 +1236,7 @@ Las técnicas que se emplean en conjunto con la extracción de características 
    .. figure:: ../figs/Cap2/formulaClosing.png
       :scale: 50%
 
-      Fórmula de closing.
-
-   .. raw:: latex
-
-      \newpage
-   
+      Fórmula de closing.   
     
    * Thinning. Esta técnica consiste en eliminar elementos de una imagen A por medio de la aplicación de la operación de shape detection, aplicando una secuencia de *n* elementos de estructurado que se encuentran en diferentes ángulos. De esta forma, el resultado final es una imagen donde los elementos que pertenecen a ésta han reducido su grosor y se ha ampliado la cantidad de píxeles que representan el fondo de ésta. 
  
@@ -1337,10 +1299,6 @@ Las técnicas que se emplean en conjunto con la extracción de características 
 
       Ilustración de los complementos de cada color.
 
-   .. raw:: latex
-
-      \newpage
-
    .. http://slideplayer.com/slide/6875110/
    .. https://www.slideshare.net/RevanthChimmani1/color-image-processing-presentation
 
@@ -1376,21 +1334,13 @@ Las técnicas que se emplean en conjunto con la extracción de características 
 Con respecto a la descripción de una textura, existen 3 aproximaciones para esta tárea: 
    
    * La aproximación estadística. La aproximación estadística consiste en emplear medidas cuantitativas estadísticas (media aritmética, varianza, desvío estándar y otras) respecto a la distribución de los niveles de intensidad a una imagen, asociando distintas combinaciones de estos valores a características a tales como la suavidad, la aspereza, la granularidad, etc.; Y descriptores que, en base una operación que define relaciones entre píxeles y las frecuencias de esas relaciones entre píxeles en la imagen, organizados en forma de matriz de N x N siendo N los niveles de intensidad (matriz de co-ocurrencias), permiten encontrar y describir patrones tales como la uniformidad, homogeneidad, contraste y correlación.
-     
+
    .. figure:: ../figs/Cap2/ejemploMatrizCoOcurrencias.png
       :scale: 50%
      
       Ejemplo de matriz de co-ocurrencias (derecha) de una imagen (izquierda), para 8 niveles de intensidad, definiendo la relación entre píxeles como aquel píxel que se encuentra inmediatamente a la derecha.
-     
-   .. raw:: latex
-
-      \newpage
-
-   * La aproximación estructural. Esta técnica consiste en describir una textura por medio de un conjunto de reglas (o primitivas) que representan el patrón de la misma, que se repite de manera constante.
    
-   .. raw:: latex
-
-      \newpage
+   * La aproximación estructural. Esta técnica consiste en describir una textura por medio de un conjunto de reglas (o primitivas) que representan el patrón de la misma, que se repite de manera constante.
 
    * La aproximación espectral. Esta aproximación se basa en las propiedades de la transformada de Fourier, y son usadas primariamente para detectar periodicidad en la totalidad de la imagen a través de picos en el espectro de las frecuencias de la imagen. 
 
@@ -1398,7 +1348,6 @@ Con respecto a la descripción de una textura, existen 3 aproximaciones para est
       :scale: 60%
 
       Ejemplos de texturas artificiales (a-b) y texturas naturales (c-e).
-
    
 Estudios relativos a la detección de fallas
 """""""""""""""""""""""""""""""""""""""""""
