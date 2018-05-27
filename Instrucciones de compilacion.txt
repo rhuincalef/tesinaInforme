@@ -4,12 +4,13 @@
 
 - Agregar a la variable "BEGIN_DOC" entre %(maketitle)s y %(tableofcontents)s lo siguiente:
 
-\input{/home/rodrigo/TESINA-2016-KINECT/DOCUMENTO_TESINA_FORMAL/tesinaInforme/OrganizacionContenidos/Organizacion.tex}
-\newpage
-\thispagestyle{empty}
+\input{/PATH_A_TESINA_INFORME/tesinaInforme/OrganizacionContenidos/Organizacion.tex}
+%(tableofcontents)s
+\pagebreak
 \listoffigures
-\listoftables
-\newpage
+\pagebreak
+\input{/PATH_A_TESINA_INFORME/tesinaInforme/Abstract/Abstract.tex}
+\pagebreak
 
 Cambiar \input por la ruta local absoluta donde se encuentra el apartado/sección de OrganizacionContenidos/Organizacion.tex
 
