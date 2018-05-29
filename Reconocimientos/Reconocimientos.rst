@@ -1,8 +1,8 @@
 Reconocimientos
-=====
+===============
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et augue vel nibh pharetra cursus et vel mauris. Integer a ante in leo fermentum tincidunt quis vitae mauris. In vitae bibendum lectus. Curabitur porttitor, sapien et tincidunt suscipit, nisl ligula euismod nisi, ut suscipit dui metus vel eros. Nullam consectetur erat quam, in sollicitudin lacus lobortis eget. Proin felis diam, pellentesque eu finibus dapibus, congue a ligula. Donec gravida quam ante, ac rutrum mauris pharetra ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur malesuada metus nec gravida sollicitudin. Morbi a semper ex. Sed sollicitudin lobortis dolor quis mattis. Sed vel feugiat erat.
+Reconocimientos
+---------------
 
-Quisque dignissim ligula ligula, id fermentum dui imperdiet ac. Quisque pellentesque lectus dolor, id ultrices nisi porttitor sed. Maecenas quam neque, vestibulum in libero nec, vestibulum venenatis mauris. Aliquam nec orci dictum, efficitur tortor id, lacinia arcu. Phasellus tincidunt tristique dui, pretium convallis est luctus nec. Integer molestie euismod dui, vel pharetra purus egestas vitae. Nullam eu leo est. Integer euismod sodales feugiat. Ut ac scelerisque est.
+Queremos dedicar este trabajo a nuestros familiares, amigos y profesores que nos apoyaron y nos motivaron antes y durante el desarrollo de todas las etapas de la tesina y nos brindaron la posibilidad de convertirnos en profesionales. Destacamos a nuestro tutor Gabriel Ingravallo, en compañía de Diego Martínez, quienes nos brindaron la posibilidad de formar parte de un proyecto de investigación que posteriormente evolucionó en nuestro trabajo. Agradecemos especialmente a Marisel, madre de Rodrigo, por el acompañamiento y el apoyo al facilitarnos su vehículo para movilizarnos y lograr capturar las 1000 muestras necesarias para arribar a la conclusión de la tesina, en distintas ocasiones y diferentes horarios. Por último, agradecemos también al jurado por el tiempo dedicado para la finalización de esta tesina.
 
-Fusce auctor ex ut tellus sollicitudin, vel placerat purus auctor. Cras ut dolor iaculis, lobortis felis dignissim, vehicula elit. Ut malesuada lectus ligula, quis sagittis erat consectetur vel. Etiam tempor tellus sit amet varius tempor. Mauris lacinia mi et eros bibendum lacinia. Ut blandit porttitor dictum. Sed pellentesque diam ut tortor faucibus, vel vestibulum metus congue. Sed sed purus sem. Sed sagittis maximus enim, id consequat mi convallis ut.

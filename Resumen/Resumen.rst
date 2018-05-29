@@ -2,7 +2,7 @@ Resumen
 =======
 
 Resumen
-------------
+-------
 
 .. El objetivo de la presente tesina consiste en estudiar el software disponible para registro de distintos tipos de fallas sobre senderos viales, dispositivos hardware y herramientas de software asociadas al sensado de las mismas, y técnicas para el reconocimiento y clasificación de las muestras de fallas capturadas.
 
