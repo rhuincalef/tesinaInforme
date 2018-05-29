@@ -1,7 +1,7 @@
 .. _capitulo3:
 
-Capítulo 3.Sensor Kinect y herramientas software implicadas el sensado de fallas
-================================================================================
+Capítulo 3. Sensor Kinect y herramientas software implicadas el sensado de fallas
+=================================================================================
 
 
 Sensores 3D

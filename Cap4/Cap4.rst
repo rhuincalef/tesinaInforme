@@ -1,5 +1,5 @@
-Capítulo 4.Técnicas de reconocimiento y procesamiento de fallas
-===============================================================
+Capítulo 4. Técnicas de reconocimiento y procesamiento de fallas
+================================================================
 
 
 .. Header H3 -->
