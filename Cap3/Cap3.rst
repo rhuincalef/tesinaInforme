@@ -192,7 +192,7 @@ Así, en cada frame el emisor IR emite un patrón de puntos con distintas intens
 
 
 .. figure:: ../figs/Cap3/funcionamineto_stream_profundidad.png
-   :scale: 60%
+   :scale: 90%
 
    Funcionamiento del stream de profundidad
 
