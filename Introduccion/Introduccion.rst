@@ -1,5 +1,5 @@
-Introducción
-============
+Capítulo 1. Introducción
+========================
 
 Objetivo general
 ----------------
