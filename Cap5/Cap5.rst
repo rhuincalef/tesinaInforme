@@ -29,7 +29,7 @@ Determina la figura terrestre a través de mediciones en su aspecto geométrico,
 Constituida por métodos astronómicos, los cuales permiten la determinación de coordenadas geográficas sobre la superficie terrestre a partir de mediciones de los astros (se tiene en cuenta una serie de puntos fundamentales a partir de los cuales se arman redes geodésicas, se mencionarán más adelante).
 
 * Geodesia Espacial
-Determina de coordenadas geográficas mediante mediciones tomadas a través de satélites artificiales, objetos naturales o artificiales exteriores a la Tierra.
+Determinación de coordenadas geográficas mediante mediciones tomadas a través de satélites artificiales, objetos naturales o artificiales exteriores a la Tierra.
 
 Las superficies de referencia de la Tierra utilizadas por la geodesia clásica son la elipsoide y geoide.
 
@@ -147,7 +147,7 @@ Direcciones
 ^^^^^^^^^^^
 .. Cartografía básica aplicada Jorge Alirio Mendieta Ocampo, Ramón Elías Valencia Céspedes Editorial Universidad de Caldas
 
-Se denomina dirección de una recta, al ángulo horizontal existente esa recta y otra que se toma como referencia.
+Se denomina dirección de una recta, al ángulo horizontal existente entre esa recta y otra que se toma como referencia.
 
 Hay dos formas para definir la dirección entre dos puntos:
 
@@ -295,7 +295,7 @@ Método por el cual obtener las coordenadas de un punto del que se ignora su pos
 
 Se trata de un método matemático que determina las posiciones relativas de objetos utilizando geometría de triángulos de forma análoga a la triangulación. Para precisar la posición relativa de un punto mediante la trilateración se utiliza las localizaciones de tres o más puntos de referencia (a mayor puntos de referencia mayor precisión), y la distancia medida entre el sujeto y cada punto de referencia.
 
-Teniendo en cuenta :ref:`trilateracion_img`. Ubicándonos en el punto B, necesitamos conocer su posición relativa a los siguientes punntos de referencia *P1*, *P2* y *P3* en un plano bidimensional. Si se mide *r1* podemos reducir nuestra posición a una circunferencia. A continuación, si medimos *r2*, reducimos la posición a dos punto, *A* y *B*. Por último, si medimos, *r3*, podemos obtener nuestras coordenadas en el punto B. También, se puede realizar una cuarta medición para reducir y estimar el error.
+Teniendo en cuenta :ref:`trilateracion_img` Ubicándonos en el punto B, necesitamos conocer su posición relativa a los siguientes puntos de referencia *P1*, *P2* y *P3* en un plano bidimensional. Si se mide *r1* podemos reducir nuestra posición a una circunferencia. A continuación, si medimos *r2*, reducimos la posición a dos punto, *A* y *B*. Por último, si medimos, *r3*, podemos obtener nuestras coordenadas en el punto B. También, se puede realizar una cuarta medición para reducir y estimar el error.
 
 .. _trilateracion_img:
 .. figure:: ../figs/Cap5/trilateracion.png
@@ -308,7 +308,7 @@ Arquitectura del sistema GPS
 
 El Sistema de Posicionamiento Global se encuentra conformada por 3 componentes básicos:
 
-* Componente espacial formada por 24 satélites que conforman la red de GPS, con trayectorias sincronizadas para cubrir la totalidad del globo terrestre. Éstos se encuentra organizados en 6 órbitas circulares con 4 satélites cada una, alimentados por paneles solares ubicados a cada uno de los lados de los satélites, a una altitud aproximada de 20.000 km, circulando a una velocidad de 14.500 Km/h y repitiendo el mismo recorrido de manera continua, al mismo tiempo que la Tierra rota sobre su eje, por lo que en aproximadamente 24 hs, cada satélite vuelve a posicionarse sobre el mismo punto. Debido a que el tiempo es necesario para el cálculo, cada satélite posee un reloj atómico de alta precisión (mide el tiempo en nanosegundos). Este componente también es necesario en el dispositivo GPS receptor terrestre, pero debido a que el costo de éstos se incrementaría considerablemente si se añadiera dicho reloj y a que la utilización de un reloj ordinario introduciría un error, el error se corrige por medio del empleo de un satélite adicional.
+* Componente espacial formada por 24 satélites que conforman la red de GPS, con trayectorias sincronizadas para cubrir la totalidad del globo terrestre. Éstos se encuentran organizados en 6 órbitas circulares con 4 satélites cada una, alimentados por paneles solares ubicados a cada uno de los lados de los satélites, a una altitud aproximada de 20.000 km, circulando a una velocidad de 14.500 Km/h y repitiendo el mismo recorrido de manera continua, al mismo tiempo que la Tierra rota sobre su eje, por lo que en aproximadamente 24 hs, cada satélite vuelve a posicionarse sobre el mismo punto. Debido a que el tiempo es necesario para el cálculo, cada satélite posee un reloj atómico de alta precisión (mide el tiempo en nanosegundos). Este componente también es necesario en el dispositivo GPS receptor terrestre, pero debido a que el costo de éstos se incrementaría considerablemente si se añadiera dicho reloj y a que la utilización de un reloj ordinario introduciría un error, el error se corrige por medio del empleo de un satélite adicional.
 
 
 * Componente de control que cuenta con 10 estaciones de monitoreo encargadas de mantener en órbita los satélites y de la supervisión de su funcionamiento.
@@ -319,7 +319,7 @@ El Sistema de Posicionamiento Global se encuentra conformada por 3 componentes b
 
 .. http://www.mailxmail.com/curso-introduccion-gps/como-funciona-gps-trilateracion
 
-El objetivo del calculo del sistema GPS es proporcionar las coordenadas de un receptor GPS sobre la superficie terrestre, dando como resultado la latitud y longitud de éste. Para este fin, el sistema GPS se utiliza la trilateración satelital que tiene su base en el método matemático trilateración (comentado previamente) y se denomina trilateración satelital porque los puntos de referencia son satélites en el espacio. Para llevar a cabo este proceso, cada uno de los cuatro satélites emite una señal al receptor GPS, enviando el instante de tiempo en que estas partieron de cada satélite. El dispositivo receptor, contiene en su memoria las coordenadas respecto de las órbitas de los satélites, al llegar cada una de éstas al dispositivo GPS, éste identifica el satélite que ha emitido cada señal y calcula el tiempo que ha tardado la señal en llegar. Sabiendo que la onda electromagnética del satélite en el vacío espacial se propaga a la velocidad de la luz (300.000 km/seg), procede a aplicar la fórmula :math:`distancia = velocidad / tiempo` obteniendo la distancia que lo separa del satélite. Finalmente, con éstos datos se puede aplicar el método de trilateración satelital para obtener las coordenadas del receptor, donde el centro de las esferas empleadas en este método, es la ubicación de cada uno de los satélites que envían la señal al receptor GPS. De esta forma, cuantos más satélites se empleen para el cálculo se logrará mayor precisión.
+El objetivo del calculo del sistema GPS es proporcionar las coordenadas de un receptor GPS sobre la superficie terrestre, dando como resultado la latitud y longitud de éste. Para este fin, el sistema GPS utiliza la trilateración satelital que tiene su base en el método matemático trilateración (comentado previamente) y se denomina trilateración satelital porque los puntos de referencia son satélites en el espacio. Para llevar a cabo este proceso, cada uno de los cuatro satélites emite una señal al receptor GPS, enviando el instante de tiempo en que estas partieron de cada satélite. El dispositivo receptor, contiene en su memoria las coordenadas respecto de las órbitas de los satélites, al llegar cada una de éstas al dispositivo GPS, éste identifica el satélite que ha emitido cada señal y calcula el tiempo que ha tardado la señal en llegar. Sabiendo que la onda electromagnética del satélite en el vacío espacial se propaga a la velocidad de la luz (300.000 km/seg), procede a aplicar la fórmula :math:`distancia = velocidad / tiempo` obteniendo la distancia que lo separa del satélite. Finalmente, con éstos datos se puede aplicar el método de trilateración satelital para obtener las coordenadas del receptor, donde el centro de las esferas empleadas en este método, es la ubicación de cada uno de los satélites que envían la señal al receptor GPS. De esta forma, cuantos más satélites se empleen para el cálculo se logrará mayor precisión.
 
 
 .. figure:: ../figs/Cap5/ubicacion_gps.png
@@ -336,7 +336,7 @@ El objetivo del calculo del sistema GPS es proporcionar las coordenadas de un re
 Fuentes de error
 """"""""""""""""
 
-Al tratar de obtener de la posición mediante la técnica de trilateración satelital, diferentes fuentes de error pueden presentarse entre las señales emitidas entre el aparato emisor y el satélite receptor, estos degradan la precisión de la posición obtenida en algunos metros, hasta algunas decenas de metros. Para el cálculo de posición, se debe tener en cuenta las siguientes fuentes de error:
+Al tratar de obtener la posición mediante la técnica de trilateración satelital, diferentes fuentes de error pueden presentarse entre las señales emitidas entre el aparato emisor y el satélite receptor, estos degradan la precisión de la posición obtenida en algunos metros, hasta algunas decenas de metros. Para el cálculo de posición, se debe tener en cuenta las siguientes fuentes de error:
 
 .. http://detopografia.blogspot.com.ar/2012/11/principales-fuentes-de-error-en-gps-i.html
 
@@ -369,7 +369,7 @@ Por lo tanto, este tipo de error se ve incrementado cuando las diferencias de lo
 Uso del receptor GPS
 """"""""""""""""""""
 
-En este apartado se analizarán las categorías y formas de representación de cualquier evento en territorio, a partir del uso del receptor GPS. Se pondrá atención sobre aquellos de civil convencional.
+En este apartado se analizarán las categorías y formas de representación de cualquier evento sobre un territorio, a partir del uso del receptor GPS. Se pondrá atención sobre aquellos dispositivos de utilización civil.
 
 Se debe tener en cuenta que la clasificación que se realiza de la información geográfica es puntos, líneas y polígonos. Se hablará  a continuación de **waypoints** en vez de puntos, **track** por línea y **ruta** que consiste en una línea conformada por **waypoints** interconectados y ubicados de manera secuencial. Por lo que, una vez registrados ciertos **waypoints**, luego puedo realizar una ruta, siguiendo de manera secuencial los **waypoints**.
 
@@ -404,7 +404,7 @@ ShareGPS es una aplicación para el sistema operativo Android que permite compar
 
 .. Para utilización de operaciones básicas de la aplicación ver :cite:`ShareGPS`.
 
-Para utilización de operaciones básicas de la aplicación ver :numref:`sharegps1`.
+Para la utilización de operaciones básicas de la aplicación ver :numref:`sharegps1`.
 
 
 Tipos de datos
@@ -423,7 +423,7 @@ Para conocer más detalles acerca de NMEA 0183 ver http://www.gpsinformation.org
 
 * OGC KML (Keyhole Markup Language)
 
-Estándar que permite compartir datos de información geográfica, enfocándose en la visualizaciones de estos. La estructura de KML consta de etiquetas con atributos y elementos anidados y está basado en XML.
+Estándar que permite compartir datos de información geográfica, enfocándose en la visualización de estos. La estructura de KML consta de etiquetas con atributos y elementos anidados y está basado en XML.
 
 .. http://kml4earth.appspot.com/kmlErrata.html
 .. http://www.opengeospatial.org/standards/kml/
@@ -433,7 +433,7 @@ Estándar que permite compartir datos de información geográfica, enfocándose 
 Tipos de conexión
 """""""""""""""""
 
-Este software ofrece una gran variedad de tipos de conexiones que se pueden realizar para el envío de información geográfica hacia diferentes aplicaciones o dispositivos. Se mencionará aquellas todas aquellas que provee haciendo énfasis sobre el tipo de conexión utilizada para el desarrollo del presente trabajo.
+Este software ofrece una gran variedad de tipos de conexiones que se pueden realizar para el envío de información geográfica hacia diferentes aplicaciones o dispositivos. Se mencionará todas aquellas que provee haciendo énfasis sobre el tipo de conexión utilizada para el desarrollo del presente trabajo.
 
 Los distintos tipos de conexión son:
 
@@ -459,7 +459,7 @@ Para más detalles ver `SSH RFC <https://www.ietf.org/rfc/rfc4251.txt>`_.
 
 * GoogleDrive, Dropbox, LocalFile
 
-Las plataformas Drive y Dropbox online que permite compartir y actualizar en tiempo real los archivos KMZ capturados.
+Las plataformas Drive y Dropbox online que permiten compartir y actualizar en tiempo real los archivos KMZ capturados.
 
 A través de LocalFile, ShareGPS permite guardar los datos KMZ a la tarjeta de memoria (SD Card) del dispositivo móvil.
 
@@ -478,7 +478,7 @@ Conexión vía USB
 
 Connecting NMEA data to a Linux PC via USB
 
-En este apartado se explicará cómo establecer una conexión entre un computador bajo un sistema operativo Linux y un dispositivo móvil a través de cableado USB, para compartidor datos de localización utilizando NMEA como formato de datos.
+En este apartado se explicará cómo establecer una conexión entre un computador bajo un sistema operativo Linux y un dispositivo móvil a través de cableado USB, para compartir datos de localización utilizando NMEA como formato de datos.
 
 Como primer paso, es necesario instalar el software ShareGPS en el dispositivo móvil a utilizar a través de alguna plataforma de distribución digital de aplicaciones como por ejemplo, Google Play Store, Uptodown, Aptoide.
 
@@ -527,7 +527,7 @@ $ gpsd -D5 -N -n -b tcp://localhost:20175
 
 $ gpsd -b tcp://localhost:20175
 
-Por último, el consumo de los datos se utilizó como base el siguiente script escrito en lenguaje de programación Python:
+Por último, para el consumo de los datos se utilizó como base el siguiente script escrito en lenguaje de programación Python:
 
 Ejemplo::
 
