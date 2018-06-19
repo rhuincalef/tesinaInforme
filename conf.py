@@ -146,8 +146,7 @@ latex_elements = {
     #                extra parameters or packages included.
     #                \\end{organizacion} 
     #                ''',
-    'atendofbody': '''First document. This is a simple example, with no 
-                        extra parameters or packages included. ''',
+    'atendofbody': '''''',
     
     # Latex figure (float) alignment
     #
@@ -224,7 +223,6 @@ latex_elements['preamble'] += r"""
 %que no cuentan como capitulos enumerables en al tesis
 %NOTA:Este valor se decrementa al valor \thechapter para comenzar
 %numerando los contenidos de la tesina desde 1
-%\def\cantCapitulosSinContenido{4}
 \def\cantCapitulosSinContenido{3}
 
 
@@ -286,13 +284,13 @@ latex_elements['preamble'] += r"""
 \def\capAbstract{1}
 \def\capReconocimientos{2}
 \def\capResumen{3}
-%\def\capOrganizacion{4}
-\def\capBibliografia{8}
+%\def\capBibliografia{8}
+\def\capBibliografia{11}
 
 
 %A partir de la introduccion se comienzan a numerar los capitulos que son exclusivos
 % de contenido de la tesina
-\def\capIntroduccion{5}
+%\def\capIntroduccion{5}
 %\pgfmathsetmacro{\var}{20 + 4}
 %\message{Restando con PG : \var}  
 
@@ -319,7 +317,6 @@ latex_elements['preamble'] += r"""
             }
 
 % Removiendo el numero de capitulo del inicio de c/u
-%\message{ Captiulos de contenido general: \capitulosgenerales  +++ }
 \message{ Captiulos de contenido general: \cantCapitulosSinContenido  +++ }
 \message{Antes del ifnum}
 \titleformat{\chapter}[display]
@@ -329,6 +326,7 @@ latex_elements['preamble'] += r"""
       \message{Imprimiendo el nombre del capitulo \chaptertitlename : \thechapter : \value{chapter}--- }
       %Si el capitulo no es contenido general se lo imprime con el numero al inicio
       \ifthenelse{\thechapter=\capAbstract \OR \thechapter=\capReconocimientos \OR \thechapter=\capResumen \OR \thechapter=\capBibliografia}{ \message{No es capitulo contenido} }{\imprimirCapitulo}
+      %\imprimirCapitulo
   \end{tikzpicture}%
   }
 {10pt}
