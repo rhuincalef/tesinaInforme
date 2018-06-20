@@ -6,7 +6,7 @@
 
    Reconocimientos/*
    Resumen/*
-   Cap1/*
+   Introduccion/*
    Cap2/*
    Cap3/*
    Cap4/*

@@ -114,7 +114,7 @@ Para un mismo elipsoide pueden utilizarse distintos puntos fundamentales, que da
 | Norte América 1927 |  Norte América   | 39 13 26.686 S | 98 32 30.506 W |  Clarke 1866  |
 +--------------------+------------------+----------------+----------------+---------------+
 
-   Datums de uso habitual
+   Datums de uso habitual.
 
 Coordenadas geográficas
 -----------------------
