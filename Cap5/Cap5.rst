@@ -362,9 +362,14 @@ Se trata de un error o variación de los parámetros orbitales del satélite con
 
 En este tipo de error, es necesario tener en cuenta el principio de Dilución Geométrica de la Precisión *DGDP*.
 
-Para comprender el *DGDP*, hay que tener en cuenta que suele haber más satélites disponibles que los que el receptor GPS necesita para fijar una posición, por lo que el receptor toma datos sólo de algunos e ignora el resto. Si el receptor toma datos de satélites que están muy juntos, las circunferencias de intersección que definen  la posición se cruzarán a ángulos con muy escasa diferencia entre sí, incrementando el margen de error. Por otro lado, si el receptor toma datos de satélites que se encuentran ampliamente separados, las circunferencias se intersectan a ángulos rectos, minimizando el margen de error.
+Para comprender el *DGDP*, hay que tener en cuenta que suele haber más satélites disponibles que los que el receptor GPS necesita para fijar una posición, por lo que el receptor toma datos sólo de algunos e ignora el resto. Si el receptor toma datos de satélites que están muy juntos, las circunferencias de intersección que definen  la posición se cruzarán a ángulos con muy escasa diferencia entre sí, incrementando el margen de error. Por otro lado, si el receptor toma datos de satélites que se encuentran ampliamente separados, las circunferencias se intersectan a ángulos rectos, minimizando el margen de error. Por lo que, el error se va incrementado por las diferencias entre los vectores del receptor y los satélites. Un buen receptor GPS debería ser capaz de determinar cuales son los satélites que otorgan el menor error por *DGDP*.
 
-Por lo tanto, este tipo de error se ve incrementado cuando las diferencias de los vectores entre el receptor y los satélites. Un buen receptor GPS debería ser capaz de determinar cuales son los satélites que otorgan el menor error por *DGDP*.
+.. figure:: ../figs/Cap5/dop.png
+   :scale: 20%
+
+   DGDP. La geometría presentada en el ejemplo a) proporciona una mayor precisión en el cálculo de la posición del receptor que la proporcinada en el ejemplo b).
+
+.. http://volaya.github.io/libro-sig/chapters/Fuentes_datos.html#mjx-eqn-FigDOP
 
 Uso del receptor GPS
 """"""""""""""""""""
