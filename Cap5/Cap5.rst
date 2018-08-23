@@ -68,21 +68,9 @@ siendo :math:`r_{1}` el semieje mayor y :math:`r_{2}` el menor.
 
 Elipsoides de uso habitual. Teniendo en cuenta la irregularidad de la superficie terrestre es posible utilizar distintos elipsoides según el lugar o región de ubicación.
 
-+-----------------------+------------------+------------------+
-|                                                             |
-+=======================+==================+==================+
-|      Elipsoide        |      WGS84       |   Clarke 1858    |
-+-----------------------+------------------+------------------+
-|      Eje Mayor        |     63781137     |   6378293.645    |
-+-----------------------+------------------+------------------+
-| Inverso aplastamiento |   298.2572236    |      294.26      |
-+-----------------------+------------------+------------------+
-|     Aplastamiento     |   0.003352811    |   0.003398355    |
-+-----------------------+------------------+------------------+
-|      Eje Menor        |  6356752.314     |   6356617.938    |
-+-----------------------+------------------+------------------+
-|     Excentricidad     | 0.0818119190843  |  0.082372092204  |
-+-----------------------+------------------+------------------+
+.. figure:: ../figs/Cap5/elipsoides_tabla.png
+
+   Elipsoides de uso habitual.
 
 Datum
 ^^^^^
@@ -102,15 +90,7 @@ La altura geoidal en el punto fundamental es, como cabe esperar, igual a cero. M
 Como se ha mencionado, la superficie terrestre no es esférica, por lo que dicha irregularidad, hace que cada país o región, escoja un modelo de cuerpo (definible matemáticamente) ajustado a la figura de la Tierra en su territorio.
 Para un mismo elipsoide pueden utilizarse distintos puntos fundamentales, que darán lugar a distintos datum y a distintas coordenadas para un mismo punto.
 
-+--------------------+------------------+----------------+----------------+---------------+
-|      Datum         |      Area        |    Latitud     |    Longitud    |   Elipsoide   |
-+====================+==================+================+================+===============+
-|   Campo Inchauspe  |    Argentina     | 30 58 16.56 S  | 62 10 12.03 W  | Internacional |
-+--------------------+------------------+----------------+----------------+---------------+
-|   Corrego Alegre   |     Brasil       | 19 50 15.14 S  | 48 57 42.75 W  | Internacional |
-+--------------------+------------------+----------------+----------------+---------------+
-| Norte América 1927 |  Norte América   | 39 13 26.686 S | 98 32 30.506 W |  Clarke 1866  |
-+--------------------+------------------+----------------+----------------+---------------+
+.. figure:: ../figs/Cap5/datums_tabla.png
 
    Datums de uso habitual.
 
