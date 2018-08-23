@@ -266,7 +266,7 @@ Por otro lado, con respecto a clustering la métrica de información mutua (Mutu
 
 .. http://scikit-learn.org/stable/modules/clustering.html#homogeneity-completeness
 
-El score de homogeneidad requiere, al igual que la métrica anterior, el conocimiento de las clases reales de las muestras por adelantado y, cuanto más próximo a uno sea, significará que ese cluster contiene únicamente puntos de datos que son miembros de la misma clase. Mientras que el score de completitud, permite establecer si todos los miembros de una clase son asignados al mismo cluster. Estas métricas son independientes a las permutaciones en los clusters y se calculan por medio de las siguientes fórmulas donde: *H(C|K)* es la entropía condicional de las clases dadas las asignaciones de los clusters, *H(C)* es la entropía de las clases, :math:`n_c` y :math:`n_k` son las muestras que pertenecen a la clase *C* y al cluster *K* y :math:`N_{c_k}` es el número de muestras de una clase *c* asignada al cluster *k*:
+El score de homogeneidad requiere, al igual que la métrica anterior, el conocimiento de las clases reales de las muestras por adelantado y, cuanto más próximo a uno sea, significará que ese cluster contiene únicamente puntos de datos que son miembros de la misma clase. Mientras que el score de completitud, permite establecer si todos los miembros de una clase son asignados al mismo cluster. Estas métricas son independientes a las permutaciones en los clusters y se calculan por medio de las siguientes fórmulas donde: *H(C|K)* es la entropía condicional de las clases dadas las asignaciones de los clusters, *H(C)* es la entropía de las clases, :math:`n_c` y :math:`n_k` son las muestras que pertenecen a la clase *C* y al cluster *K* y :math:`N_{ck}` es el número de muestras de una clase *c* asignada al cluster *k*:
 
 .. figure:: ../figs/Cap4/formula_homogeneidad_clustering.png
    :scale: 70%
@@ -396,9 +396,9 @@ Mecanismos para Machine Learning(ML)
 .. https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/
 .. http://www.saedsayad.com/decision_tree.htm
 
-Los árboles de decisión (Classification And Regression Tree, CART) son un mecanismo de ML de aprendizaje supervisado que permite generar un modelo que realiza predicciones en base a un conjunto de reglas inferidas de los datos de entrenamiento, las cuales pueden ser representadas por un diagrama de árbol. Los árboles de decisión clasifican instancias ordenándolas desde un nodo raíz hasta llegar a nodos hoja, lo que en última instancia proporciona la predicción de una muestra, de esta manera cada nodo en el árbol especifica alguna prueba de algún atributo de la muestra de entrada y, cada rama que desciende de ese nodo corresponde a uno de los posibles valores para este atributo. De esta forma, el conjunto de reglas desde la raíz a una hoja del árbol representan las reglas de clasificación. Entonces, la clasificación de una instancia comienza en el nodo raíz del árbol evaluando el atributo especificado por este nodo, y luego desplazándose por la rama del árbol correspondiente al valor del atributo en el el ejemplo dado y, este proceso se repite nuevamente para el nodo actual, hasta llegar a un nodo hoja del árbol. 
+Los árboles de decisión (Classification And Regression Tree, CART) son un mecanismo de ML de aprendizaje supervisado que permite generar un modelo que realiza predicciones en base a un conjunto de reglas inferidas de los datos de entrenamiento, las cuales pueden ser representadas por un diagrama de árbol. Los árboles de decisión clasifican instancias ordenándolas desde un nodo raíz hasta llegar a los nodos hoja, lo que en última instancia proporciona la predicción de una muestra, de esta manera cada nodo en el árbol especifica alguna prueba de algún atributo de la muestra de entrada y, cada rama que desciende de ese nodo corresponde a uno de los posibles valores para este atributo. De esta forma, el conjunto de reglas desde la raíz a una hoja del árbol representan las reglas de clasificación. Entonces, la clasificación de una instancia comienza en el nodo raíz del árbol evaluando el atributo especificado por este nodo y luego, desplazándose por la rama del árbol correspondiente al valor del atributo en el el ejemplo dado y, este proceso se repite nuevamente para el nodo actual, hasta llegar a un nodo hoja del árbol. 
 
-La construcción del árbol se puede realizar por medio de distintos algoritmos, aunque la mayoría se basa en un algoritmo base top-down de búsqueda ambiciosa, que consiste en probar cada una de las features individualmente, para determinar cual de todas éstas clasifica de manera más eficiente las muestras de entrenamiento, computando para esto una métrica denominada ganancia de la información (information gain), que mide que tan eficazmente un atributo separa las muestras del dataset de entrenamiento según sus labels. De esta forma, el atributo con la mejor división es seleccionado y establecido como la raíz del árbol. Luego, un nodo hijo del nodo raíz es creado para cada posible valor del nodo raíz y, las muestras de entrenamiento se ordenan de acuerdo al nodo hijo al que pertenecen. Este proceso se repite para cada una de las muestras de entrenamiento asociadas a cada nodo hijo, con el fin de seleccionar el mejor atributo posible para realizar la prueba en ese punto en el árbol. Este proceso continúa hasta que la creación de ramas en el árbol no produce una mejora de predicción significativa, o hasta que la cantidad de muestras en cada uno de los nodos hoja del árbol es menor que un valor mínimo previamente establecido.
+La construcción del árbol se puede realizar por medio de distintos algoritmos, aunque la mayoría se basa en un algoritmo base top-down de búsqueda ambiciosa, que consiste en probar cada una de las features individualmente, para determinar cual de todas éstas clasifica de manera más eficiente las muestras de entrenamiento, computando para esto una métrica denominada ganancia de la información (information gain), que mide que tan eficazmente un atributo separa las muestras del dataset de entrenamiento según sus labels. De esta forma, el atributo con la mejor división es seleccionado y establecido como la raíz del árbol. Luego, un nodo hijo del nodo raíz es creado para cada posible valor del nodo raíz y, las muestras de entrenamiento se ordenan de acuerdo al nodo hijo al que pertenecen. Este proceso se repite para cada una de las muestras de entrenamiento asociadas a cada nodo hijo, con el fin de seleccionar el mejor atributo posible para realizar la prueba en ese punto en el árbol. Este proceso continúa hasta que la creación de ramas en el árbol no produce una mejora de predicción significativa o hasta que la cantidad de muestras en cada uno de los nodos hoja del árbol, es menor que un valor mínimo previamente establecido.
 Este proceso es un método de búsqueda ambicioso en el cual el algoritmo nunca retrocede sobre divisiones realizadas anteriormente en el árbol, para reconsiderar otras alternativas.
 
 .. figure:: ../figs/Cap4/ejemplo_decision_tree.png
@@ -406,12 +406,12 @@ Este proceso es un método de búsqueda ambicioso en el cual el algoritmo nunca 
 
    Ejemplo gráfico de la organización de un árbol de decisión.
 
-Los árboles de decision también pueden sufrir de overfitting, ya que estos pueden ser creados con estructuras complejas de división que no generalicen de manera eficiente nuevos datos de prueba, por lo que existen varias aproximaciones para evitarlo denominadas poda o pruning, donde se eliminan ramas del árbol con el fin eliminar relaciones redundantes. Dependiendo del momento en que se realiza la poda, estas se clasifican en dos clases principales:
+Los árboles de decisión también pueden sufrir de overfitting, ya que estos pueden ser creados con estructuras complejas de división que no generalicen de manera eficiente nuevos datos de prueba, por lo que existen varias aproximaciones para evitarlo denominadas poda o pruning, donde se eliminan ramas del árbol con el fin eliminar relaciones redundantes. Dependiendo del momento en que se realiza la poda, éstas se clasifican en dos clases principales:
 
-* Poda temprana (early pruning), donde el crecimiento del árbol se detiene, antes de que alcance el punto donde memoriza el ruido y los datos de entrenamiento. Una de las aproximaciones de este tipo denominada reduced-error pruning consiste en dividir el dataset en subconjuntos complementarios de training y testing. Luego, se considera cada uno de los nodos en el árbol como un candidato a ser podado, donde podar un nodo implica remover el subárbol que se encuentra debajo de este, convertirlo en un nodo hoja y asignarle los resultados de clasificación asociados al subárbol de ese nodo. Así, los nodos se remueven si el árbol luego de la poda de un nodo tiene un desempeño de predicción menor que el árbol original sobre el dataset de testing. Esto tiene el efecto de que cualquier nodo hoja agregado debido a regularidades coincidentes en el dataset de training es probable que sea podado, ya que es improbable que estas coincidencias también estén presentes en el dataset de testing. De esta forma se podan los nodos de manera iterativa, siempre seleccionando aquellos que incrementen el rendimiento del árbol sobre el dataset de testing, hasta que la poda de nodos produzca un decremento de la precisión del modelo.  
+* Poda temprana (early pruning), donde el crecimiento del árbol se detiene, antes de que alcance el punto donde memoriza el ruido y los datos de entrenamiento. Una de las aproximaciones de este tipo denominada reduced-error pruning consiste en dividir el dataset en subconjuntos complementarios de training y testing. Luego, se considera cada uno de los nodos en el árbol como un candidato a ser podado, donde podar un nodo implica remover el subárbol que se encuentra debajo de éste, convertirlo en un nodo hoja y asignarle los resultados de clasificación asociados al subárbol de ese nodo. Así, los nodos se remueven si el árbol luego de la poda de un nodo tiene un desempeño de predicción menor que el árbol original sobre el dataset de testing. Esto tiene el efecto de que cualquier nodo hoja agregado debido a regularidades coincidentes en el dataset de training es probable que sea podado, ya que es improbable que estas coincidencias también estén presentes en el dataset de testing. De esta forma se podan los nodos de manera iterativa, siempre seleccionando aquellos que incrementen el rendimiento del árbol sobre el dataset de testing, hasta que la poda de nodos produzca un decremento de la precisión del modelo.  
 
   
-* Poda tardía (post pruning) que permiten que el árbol se construya con overfitting y luego se realiza la poda para eliminar esta característica. Estos métodos, luego de que se entrenó con el dataset de training permitiendo el overfitting, se convierte el árbol en un conjunto de reglas construyendo una regla por cada camino desde la raíz del árbol hasta un nodo hoja. A continuación, se poda cada regla, removiendo cualquier otra precondición (secuencia de tests de atributos de la raíz al nodo hoja) que produzcan una mejora del precisión de la misma, dejando intactas las reglas empeoran esta métrica. Finalmente, se ordenan las reglas podadas por su accuracy estimada, y se las considera en esta secuencia cuando se clasifican posteriores muestras.
+* Poda tardía (post pruning) que permiten que el árbol se construya con overfitting y luego se realiza la poda para eliminar esta característica. En este método, luego de que se entrenó con el dataset de training permitiendo el overfitting, se convierte el árbol en un conjunto de reglas construyendo una regla por cada camino desde la raíz del árbol hasta un nodo hoja. A continuación, se poda cada regla, removiendo cualquier otra precondición (secuencia de tests de atributos de la raíz al nodo hoja) que produzcan una mejora del precisión de la misma, dejando intactas las reglas empeoran esta métrica. Finalmente, se ordenan las reglas podadas por su accuracy estimada y se las considera en esta secuencia cuando se clasifican posteriores muestras.
 
 
 
@@ -425,15 +425,14 @@ Redes Neuronales(ANN)
 .. Tom Mitchell - Machine Learning. pag. 98
 
 
-Las redes neuronales artificiales (Artificial Neural Network, ANN) son modelos inspirados en los sistemas neuronales de los cerebros animales, que se encuentran constituidos por neuronas interconectadas, que forman una red, comunicada a través de impulsos eléctricos. Análogamente, las redes neuronales artificiales se componen de neuronas artificiales, que aceptan un conjunto de valores de entrada reales, regulados por un conjunto de pesos *wi* que determinan la relevancia de la contribución de cada una de las entradas y que se ajustan automáticamente, durante la etapa de aprendizaje de la red. Estas neuronas computan una función en base a los valores de entrada y los pesos, y dependiendo de la relevancia de estos valores con respecto al problema, esta se activa retornando un valor 1 si el valor computado supera cierto límite (threshold) y -1 en caso contrario.
-
+Las redes neuronales artificiales (Artificial Neural Network, ANN) son modelos inspirados en los sistemas neuronales de los cerebros animales, que se encuentran constituidos por neuronas interconectadas, que forman una red, comunicada a través de impulsos eléctricos. Análogamente, las redes neuronales artificiales se componen de neuronas artificiales, que aceptan un conjunto de valores de entrada reales, regulados por un conjunto de pesos :math:`w_i` que determinan la relevancia de la contribución de cada una de las entradas y que se ajustan automáticamente, durante la etapa de aprendizaje de la red. Estas neuronas computan una función en base a los valores de entrada y los pesos y dependiendo de la relevancia de estos valores con respecto al problema, ésta se activa retornando un valor 1 si el valor computado supera cierto límite (threshold) y -1 en caso contrario.
 
 .. figure:: ../figs/Cap4/ejemplo_neurona_artificial.png
    :scale: 80%
 
    Ejemplo de neurona artificial.
 
-Por lo general, las redes neuronales se organizan en capas, donde cada una de las capas se compone de un conjunto de neuronas artificiales interconectadas con neuronas de la capa anterior y la siguiente, con el fin de recibir solamente información desde la capa de procesamiento anterior y sólo enviar información a la capa de procesamiento siguiente. Entre estas capas se distinguen la capa de entrada (input layer) donde se ubican las neuronas que reciben los datos de las muestras que la red procesará, la capa de salida (output layer) que contiene las neuronas que brindan el resultado final y las capas ocultas o intermedias (hidden layers) que solamente contienen información intermedia empleada durante el procesamiento. Las redes neuronales pueden contar con varias capas ocultas, dependiendo de que tan complejo sean las relaciones del problema que se busca resolver.
+Por lo general, las redes neuronales se organizan en capas, donde cada una de las capas se compone de un conjunto de neuronas artificiales interconectadas con neuronas de la capa anterior y la siguiente, con el fin de recibir solamente información desde la capa de procesamiento anterior y sólo enviar información a la capa de procesamiento siguiente. Entre estas capas se distinguen la capa de entrada (input layer) donde se ubican las neuronas que reciben los datos de las muestras que la red procesará, la capa de salida (output layer) que contiene las neuronas que brindan el resultado final y las capas ocultas o intermedias (hidden layers) que solamente contienen información intermedia empleada durante el procesamiento. Las redes neuronales pueden contar con varias capas ocultas, dependiendo de que tan complejas sean las relaciones del problema que se busca resolver.
 
 
 .. figure:: ../figs/Cap4/ejemplo_capas_ann.jpg
@@ -443,7 +442,7 @@ Por lo general, las redes neuronales se organizan en capas, donde cada una de la
 
 
 
-Maquinas de soporte de Vectores (SVM)
+Máquinas de soporte de Vectores (SVM)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. Introduction to statistical learning.James Witten. pag 351.
 .. https://en.wikipedia.org/wiki/Support_vector_machine
@@ -452,7 +451,7 @@ Maquinas de soporte de Vectores (SVM)
 
 Las máquinas de soporte de vectores (Support Vector Machines, SVM) son un mecanismo empleado durante el aprendizaje supervisado para resolver problemas de clasificación y regresión, basadas en la utilización de hiperplanos. En esta técnica las *p* features asociadas a una cantidad *n* de muestras de entrenamiento, se organizan en un espacio *p-dimensional* (siendo cada muestra considerada como un vector de dimensión *p*) donde cada una de las features representa la coordenada de una muestra en particular. De esta forma, SVM consiste en realizar una separación de los datos en el espacio *p-dimensional* por medio de hiperplanos, donde un hiperplano para un espacio de dimensión *p* es un subespacio de dimensión *p-1* que es capaz de separar los datos de entrenamiento en diferentes clases (para clasificación) o, encontrar la función que define la distribución de las muestras (en regresión), según las features especificadas para las muestras. 
 
-Así, la generación de un modelo de SVM consiste en computar y evaluar varios hiperplanos separadores de los datos de entrada y seleccionar de entre estos, un hiperplano óptimo (o hiperplano de margen máximo) cuya distancia hacia las muestras más cercanas, sea la mayor. Por lo tanto, para obtener el valor de este se calcula la distancia perpendicular entre el hiperplano divisor y las muestras de todas las clases y se consideran las muestras de ambas clases, cuya distancia al hiperplano sea menor. Estas distancias se conocen como margen (margin). 
+Así, la generación de un modelo de SVM consiste en computar y evaluar varios hiperplanos separadores de los datos de entrada y seleccionar de entre éstos, un hiperplano óptimo (o hiperplano de margen máximo) cuya distancia hacia las muestras más cercanas, sea la mayor. Por lo tanto, para obtener el valor de éste se calcula la distancia perpendicular entre el hiperplano divisor y las muestras de todas las clases y se consideran las muestras de ambas clases, cuya distancia al hiperplano sea menor. Estas distancias se conocen como margen (margin). 
 Así el hiperplano óptimo, es el hiperplano separador cuyo margen entre las muestras a menor distancia es el mayor, por lo que mantiene una distancia mayor a las muestras de entrenamiento mas cercanas de ambas clases, y establece la mayor distancia de separación entre ambas clases. De esta forma, las coordenadas de las muestras más cercanas al hiperplano conforman los vectores de soporte en el espacio *p*-dimensional y, soportan el hiperplano óptimo ya que si estos puntos fueran movidos levemente, entonces el hiperplano óptimo también se movería para mantener este margen, por lo que este hiperplano depende de los vectores de soporte. Mientras que, si las coordenadas de cualquier otra muestra se modifican, desplazándose en el *p*-espacio no afectaría el margen del hiperplano óptimo, siempre y cuando no se modifique la clase a la que fue asignada.
 
 
@@ -461,14 +460,14 @@ Así el hiperplano óptimo, es el hiperplano separador cuyo margen entre las mue
 .. figure:: ../figs/Cap4/ejemplo_vectores_sporte_svm.png
    :scale: 65%
 
-   Ejemplo de hiperplano separador. La línea negra es el hiperplano que divide las muestras de entrenamiento, y las coordenadas de las tres muestras que son atravesadas por la línea punteada constituyen los vectores de soporte para ese hiperplano.
+   Ejemplo de hiperplano separador. La línea negra es el hiperplano que divide las muestras de entrenamiento y las coordenadas de las tres muestras que son atravesadas por la línea punteada constituyen los vectores de soporte para ese hiperplano.
 
 .. https://en.wikipedia.org/wiki/Kernel_method
 .. https://en.wikipedia.org/wiki/Support_vector_machine
 .. http://www.cogsys.wiai.uni-bamberg.de/teaching/ss06/hs_svm/slides/SVM_Seminarbericht_Hofmann.pdf
 .. http://crsouza.com/2010/03/17/kernel-functions-for-machine-learning-applications/#linear
 
-De esta forma, las SVMs permiten realizar la clasificación con hiperplanos en conjuntos de datos que se encuentran separados linealmente, sin embargo existen situaciones donde estos no se pueden dividir linealmente,  por lo que el desempeño de un clasificador lineal sería considerablemente bajo en estas cirunstancias. Para solucionar este problema, las SVM emplean funciones de kernel que convierten el espacio de las features de entrada a un espacio de mayores dimensiones, siendo estos cuadráticos, cúbicos, polinomiales o de orden superior, con el fin de lograr encontrar un hiperplano en este nuevo espacio, que separe las muestras con una mejor precisión. Existen diferentes tipos de kernels que se emplean para lograr ésto, entre los que se encuentran:
+De esta forma, las SVMs permiten realizar la clasificación con hiperplanos en conjuntos de datos que se encuentran separados linealmente, sin embargo existen situaciones donde éstos no se pueden dividir linealmente, por lo que el desempeño de un clasificador lineal sería considerablemente bajo en estas circunstancias. Para solucionar este problema, las SVM emplean funciones de kernel que convierten el espacio de las features de entrada a un espacio de mayores dimensiones, siendo estos cuadráticos, cúbicos, polinomiales o de orden superior, con el fin de lograr encontrar un hiperplano en este nuevo espacio, que separe las muestras con una mejor precisión. Existen diferentes tipos de kernels que se emplean para lograr esto, entre los que se encuentran:
 
 .. https://en.wikipedia.org/wiki/Radial_basis_function_kernel
 .. https://en.wikipedia.org/wiki/Polynomial_kernel
@@ -492,18 +491,17 @@ De esta forma, las SVMs permiten realizar la clasificación con hiperplanos en c
 .. https://en.wikipedia.org/wiki/Multiclass_classification
 .. Introduction to statistical learning. pag. 370
 
-Debido a que SVM es solamente una algoritmo de clasificación binario, se han desarrollado estrategias para la clasificación multiclase (o multilabel), con el fin de discriminar entre más de dos clases, entre las que se encuentran las siguientes:
+Debido a que SVM es solamente un algoritmo de clasificación binario, se han desarrollado estrategias para la clasificación multiclase (o multilabel), con el fin de discriminar entre más de dos clases, entre las que se encuentran las siguientes:
   
-* Uno contra uno (One-vs-One, OvO): en esta aproximación, dadas *N* clases se deben entrenar N(N-1)/2 clasificadores binarios, generando uno por cada posible combinación de clases y posteriormente, entrenarlos con datos de entrenamiento asociados a las clases que deben predecir. Luego, durante la etapa de predicción se emplea un esquema de votación, donde todos los clasificadores predicen la misma muestra de testing y, la clase que tenga mayor cantidad de votos positivos es la clase a la que pertenece la muestra.
+* Uno contra uno (One-vs-One, OvO): en esta aproximación, dadas *N* clases se deben entrenar :math:`N(N-1)/2` clasificadores binarios, generando uno por cada posible combinación de clases y posteriormente, entrenarlos con datos de entrenamiento asociados a las clases que deben predecir. Luego, durante la etapa de predicción se emplea un esquema de votación, donde todos los clasificadores predicen la misma muestra de testing y, la clase que tenga mayor cantidad de votos positivos es la clase a la que pertenece la muestra.
   
-* Uno contra el Resto (One-vs-Rest, OvR, OvA): esta técnica consiste en para un problema con *N* clases, entrenar *N* clasificadores que emplean todas las muestras del dataset de training, clasificando como positivas aquellas que pertenecen a la clase que el clasificador tiene asignada y negativa si pertenece a cualquier otra clase. Así, al recibir una muestra de entrada, cada uno de los clasificadores genera un valor real, que es un score de confianza que indica la probabilidad de que esa muestra pertenezca a esa clase, y la clase para la que la muestra de testing genera el score más alto, es la clase en la que ésta se asigna.
-
+* Uno contra el Resto (One-vs-Rest, OvR, OvA): esta técnica consiste en dado un problema con *N* clases, entrenar *N* clasificadores que emplean todas las muestras del dataset de training, clasificando como positivas aquellas que pertenecen a la clase que el clasificador tiene asignada y negativas si pertenecen a cualquier otra clase. Así, al recibir una muestra de entrada, cada uno de los clasificadores genera un valor real, que es un score de confianza que indica la probabilidad de que esa muestra pertenezca a esa clase, y la clase para la que la muestra de testing genera el score más alto, es la clase en la que ésta se asigna.
 
 
 Selección de features para ML en PCL
 ------------------------------------
 
-Con respecto a la elección de features para ML, debido a que únicamente algunas grietas podían ser aisladas aplicando la metodología de cropeado de muestras (Ver :ref:`pipeline_cropeado`), ya que durante la recolección de muestras se observó que en la práctica existían grietas que no poseían profundidad significativa para ser detectadas por el sensor, sino solamente grosor y largo suficiente para ser apreciadas como grietas, se optó por clasificar sólo aquellos tipos de fallas que poseen una profundidad necesaria para ser aisladas por descriptores que computan información geométrica relacionada con los ángulos entre las normales de la superficie. Debido a esto, se seleccionó un subconjunto del rango completo de descriptores locales y globales que PCL ofrece, acorde a las capacidades de computo disponibles y a las propiedades de las normales que estos computan, siendo los descriptores evaluados los siguientes: 
+Con respecto a la elección de features para ML, debido a que únicamente algunas grietas podían ser aisladas aplicando la metodología de cropeado de muestras (Ver :ref:`pipeline_cropeado`), ya que durante la recolección de muestras se observó que en la práctica existían grietas que no poseían profundidad significativa para ser detectadas por el sensor, sino solamente grosor y largo suficiente para ser apreciadas como grietas, se optó por clasificar sólo aquellos tipos de fallas que poseen una profundidad necesaria para ser aisladas por descriptores que computan información geométrica relacionada con los ángulos entre las normales de la superficie. Debido a esto, se seleccionó un subconjunto del rango completo de descriptores locales y globales que PCL ofrece, acorde a las capacidades de cómputo disponibles y a las propiedades de las normales que éstos computan, siendo los descriptores evaluados los siguientes: 
 
 * Fast Point Feature Histogram (FPFH)
 * ViewPoint Feature Histogram (VFH)
@@ -514,11 +512,11 @@ Con respecto a la elección de features para ML, debido a que únicamente alguna
 PFH-FPFH
 ^^^^^^^^
 
-Los puntos orientados, compuestos por el vector de coordenadas y el vector normal del punto, son computacionalmente eficientes y rápidos de generar, sin embargo, no son capaces de capturar  información geométrica significativa alrededor de un punto, por lo que se necesita un descriptor que sea capaz de capturar información geométrica respecto de la curvatura, en base a los vecinos de un punto. Para ello se diseño Point Feature Histogram (PFH), que permite generalizar la curvatura media en base a los *k*-vecinos de un punto, empleando histograma de múltiples valores, que se caracteriza por ser invariante a la posición que adopta la superficie, robusto ante ruido y diferentes tipos de densidades en las muestras, e invariante a las rotaciones y traslaciones 3D. La implementación de este descriptor en PCL, se basa en el trabajo en :cite:`FPFH1` donde se define formalmente la metodología para computar las características locales geométricas partiendo desde una malla de triángulos.
+Los puntos orientados, compuestos por el vector de coordenadas y el vector normal del punto, son computacionalmente eficientes y rápidos de generar, sin embargo, no son capaces de capturar información geométrica significativa alrededor de un punto, por lo que se necesita un descriptor que sea capaz de capturar información geométrica respecto de la curvatura, en base a los vecinos de un punto. Para ello se diseño Point Feature Histogram (PFH), que permite generalizar la curvatura media en base a los *k*-vecinos de un punto, empleando un histograma de múltiples valores, que se caracteriza por ser invariante a la posición que adopta la superficie, robusto ante ruido y a diferentes tipos de densidades en las muestras, e invariante a las rotaciones y traslaciones 3D. La implementación de este descriptor en PCL, se basa en el trabajo en :cite:`FPFH1` donde se define formalmente la metodología para computar las características locales geométricas partiendo desde una malla de triángulos.
 
 El funcionamiento de PFH consiste en representar las relaciones entre puntos en un k-vecindario dados los puntos y sus normales estimadas, de manera que se capture con la mayor precisión posible las variaciones en la superficie, tomando en consideración todas las interacciones entre las direcciones de las normales estimadas. De esta forma, las features de un punto dependen en gran parte de las estimaciones de las normales para los puntos. Formalmente, PFH para cada punto *p*, perteneciente a una nube de puntos realiza los siguientes pasos:
 
-* Primero, considera aquellos *k* vecinos que se encuentran a una distancia menor a un radio *r* para el procesamiento, ubicándose en el centro de la esfera el punto de entrada *p*, y produciendo un conjunto de puntos *P = {pj1, pj2, ..., pjn}*, y un conjunto de normales asociadas a cada punto *N = {Nj1 ,Nj2 ,..., Njn}*:
+* Primero, considera aquellos *k* vecinos que se encuentran a una distancia menor a un radio *r* para el procesamiento, ubicándose en el centro de la esfera el punto de entrada *p* y produciendo un conjunto de puntos :math:`P = {p_{j1}, p_{j2}, ..., p_{jn}}*` y un conjunto de normales asociadas a cada punto :math:`N = {N_{j1} ,N_{j2} ,..., N_{jn}}`:
 
 
 .. figure:: ../figs/Cap4/pfh_k_vecinos.png
@@ -527,7 +525,7 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
    Ejemplo de los pk-vecinos considerados como entrada al algoritmo.
 
 
-* Luego, para cada par de puntos en el conjunto *P* de vecinos e incluyendo el punto central *p*, *pj1* y *pj2*, y sus normales estimadas, se selecciona un punto *ps* como origen  y un punto *pt* como objetivo, siendo el punto origen el que tiene el menor ángulo entre la normal de ese punto y un vector imaginario que conecta *ps* y *pt*; matemáticamente hablando, se debe cumplir la siguiente ecuación: :math:`|| n1 \bm{\cdot} (p2 - p1) || <= || n2 \bm{\cdot} (p2 - p1) ||`. Posteriormente, para computar las diferencias entre los puntos y sus normales, se procede a definir tres vectores base *u*, *v* y *w* alrededor del punto origen, siendo *u* el vector normal *ns* asociado al punto origen y definiéndose estos vectores por medio de las siguientes fórmulas, donde *x* es el producto cruz entre dos vectores y :math:`|| pt-ps ||` es la norma Euclidiana del vector formado por *ps* y *pt*:
+* Luego, para cada par de puntos en el conjunto *P* de vecinos e incluyendo el punto central *p*, :math:`p_{j1}` y :math:`p_{j2}` y sus normales estimadas, se selecciona un punto *ps* como origen  y un punto *pt* como objetivo, siendo el punto origen el que tiene el menor ángulo entre la normal de ese punto y un vector imaginario que conecta *ps* y *pt*; matemáticamente hablando, se debe cumplir la siguiente ecuación: :math:`|| n1 \bm{\cdot} (p2 - p1) || <= || n2 \bm{\cdot} (p2 - p1) ||`. Posteriormente, para computar las diferencias entre los puntos y sus normales, se procede a definir tres vectores base *u*, *v* y *w* alrededor del punto origen, siendo *U* el vector normal *ns* asociado al punto origen y definiéndose estos vectores por medio de las siguientes fórmulas, donde *x* es el producto cruz entre dos vectores y :math:`|| pt-ps ||` es la norma Euclidiana del vector formado por *ps* y *pt*:
   
 
 .. math:: U = ns
@@ -546,7 +544,7 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
 
    Asignación de ejes al punto origen.
 
-* A continuación, empleando los vectores *u v w* y las coordenadas y normales de los puntos, se puede calcular la diferencia entre las dos normales de la siguiente manera, siendo :math:`{\bm{\cdot}}`  el producto escalar entre dos vectores y *d* la distancia Euclidiana entre ps y pt, *d* = || ps - pt ||:
+* A continuación, empleando los vectores *u v w* y las coordenadas y normales de los puntos, se puede calcular la diferencia entre las dos normales de la siguiente manera, siendo :math:`{\bm{\cdot}}` el producto escalar entre dos vectores y *d* la distancia Euclidiana entre *ps* y *pt*, :math:`d = || ps - pt ||`:
 
 .. math:: {\alpha} = v \bm{\cdot} nt
    :label: ecuacionesFeatures1
@@ -563,14 +561,12 @@ El funcionamiento de PFH consiste en representar las relaciones entre puntos en 
 
    Ángulos y sus correspondencias con las normales.
 
-
-* Finalmente, las frecuencias de las tuplas (o features) del descriptor (:math:`{\alpha}`, :math:`{\phi}` , :math:`{\theta}` ,*d*) por cada punto se organizan en un histograma, y se divide el espectro de valores que puede adoptar cada feature en *b* subdivisiones y se cuentan las frecuencias de valores en cada subdivisión. Así, el número de subdivisiones por cada feature del histograma, que se pueden formar utilizando *n* cantidad de features es *d^n*, en este ejemplo es la cantidad de divisiones *div^4* ya que se emplean 4 valores en cada feature. La implementación PFH de PCL, emplea 5 subdivisiones de histograma por feature y no incluye las distancias, lo que resulta en 5^3 = 125 valores float de features. Este descriptor se define en la clase que define el tipo de punto pcl::PFHSignature125.
+* Finalmente, las frecuencias de las tuplas (o features) del descriptor (:math:`{\alpha}`, :math:`{\phi}`, :math:`{\theta}` ,*d*) por cada punto se organizan en un histograma y se divide el espectro de valores que puede adoptar cada feature en *b* subdivisiones y se cuentan las frecuencias de valores en cada subdivisión. Así, el número de subdivisiones por cada feature del histograma, que se pueden formar utilizando *n* cantidad de features es :math:`d^n`, en este ejemplo es la cantidad de divisiones :math:`div^4` ya que se emplean 4 valores en cada feature. La implementación PFH de PCL, emplea 5 subdivisiones de histograma por feature y no incluye las distancias, lo que resulta en :math:`5^3 = 125` valores float de features. Este descriptor se define en la clase que define el tipo de punto pcl::PFHSignature125.
 
 .. * Finalmente, las frecuencias de las tuplas (:math:`{\alpha}`,:math:`{\phi}`,:math:`{\theta}`,*d*) por cada punto se organizan en un histograma, y se divide cada una de los rangos de las características en *b* subdivisiones y se cuentan las frecuencias de valores en cada subdivisión. Así, el número de subdivisiones por cada feature del histograma, que se pueden formar utilizando las 4 features es *d^⁴*. La implementación PFH de PCL, emplea 5 subdivisiones de histograma por feature (cada uno de los 4 valores de features empleará estos 5 valores como rangos de intervalo) y no incluye las distancias, lo que resulta en 5^3 = 125 valores float de features.
 
 
-Debido a que la complejidad computacional de PFH es del orden O(n), esto puede resultar en cuellos de botella de procesamiento para aplicaciones en tiempo real o con considerable cantidad de muestras, por lo que para solventar este inconveniente se puede emplear FPFH. FPFH consiste en calcular para cada punto *p* de la nube, los valores de (:math:`{\alpha}`, :math:`{\phi}`, :math:`{\theta}`) análogamente a como se realiza con PFH, solo que este cálculo se realiza solamente entre el punto *p* y los k-vecinos de este, denominando este valor como SPFH(p). A continuación, el valor SPFH(p) es ponderado calculando los features para los puntos vecinos :math:`p_k`, SPFH(:math:`p_k`), y utilizando las distancias :math:`w_k` entre cada punto :math:`p_k` y el punto *p*, empleando la siguiente fórmula:
-
+Debido a que la complejidad computacional de PFH es del orden *O(n)*, esto puede resultar en cuellos de botella de procesamiento para aplicaciones en tiempo real o con considerable cantidad de muestras, por lo que para solventar este inconveniente se puede emplear FPFH. FPFH consiste en calcular para cada punto *p* de la nube, los valores de (:math:`{\alpha}`, :math:`{\phi}`, :math:`{\theta}`) análogamente a como se realiza con PFH, sólo que este cálculo se realiza entre el punto *p* y los k-vecinos de éste, denominando este valor como SPFH(p). A continuación, el valor SPFH(p) es ponderado calculando los features para los puntos vecinos :math:`p_k`, SPFH(:math:`p_k`) y utilizando las distancias :math:`w_k` entre cada punto :math:`p_k` y el punto *p*, empleando la siguiente fórmula:
 
 .. figure:: ../figs/Cap4/fpfh_formula_ponderacion.png
 
@@ -581,7 +577,6 @@ Debido a que la complejidad computacional de PFH es del orden O(n), esto puede r
    :scale: 90%
 
    Esquema de relaciones que se consideran para calcular las features de FPFH. El punto central *p* o :math:`p_q` se encuentra en el centro, las relaciones entre *p* y sus k-vecinos empleados para computar SPFH(p) se encuentran resaltados en rojo y las relaciones entre los k-vecinos empleadas para ponderación se encuentran remarcadas en negro.
-
 
 
 VFH
@@ -620,16 +615,16 @@ Este descriptor global emplea el descriptor local Radious-based Surface Descript
    Representación gráfica del ángulo, el radio y la esfera.
 
 
-Por lo tanto, para un punto *p* dado y cada uno de sus puntos vecinos, se calcula la diferencia entre normales, por medio del cálculo del ángulo :math:`{\alpha}`, la distancia entre las normales *d* y, con estos valores, se obtiene el radio *r* de la esfera que engloba tanto a *p*  y su normal, como a uno de sus puntos vecinos y la normal de éste. Este proceso, genera un conjunto de radios que describe cada una de las esferas que contiene a *p* con uno de sus vecinos, y de todas estas únicamente se agregan al descriptor de ese punto los radios máximo y mínimo.
+Por lo tanto, para un punto *p* dado y cada uno de sus puntos vecinos, se calcula la diferencia entre normales por medio del cálculo del ángulo :math:`{\alpha}`, la distancia entre las normales *d* y, con estos valores, se obtiene el radio *r* de la esfera que engloba tanto a *p* y su normal, como a uno de sus puntos vecinos y la normal de éste. Este proceso, genera un conjunto de radios que describe cada una de las esferas que contiene a *p* con uno de sus vecinos y de todas estas, únicamente se agregan al descriptor de ese punto los radios máximo y mínimo.
 
 .. figure:: ../figs/Cap4/diagrama_densidad_grsd.png
    :scale: 50%
 
-   En el gráfico de densidad, se muestra un gráfico de número /densidad de puntos en un rango de 1 centímetro para diferentes objetos, ejemplificando la delimitación del tipo de superficie (plano, esfera, cilindro, ruido) según el rango de radios mínimo y máximo.
+   En el gráfico de densidad, se muestra un gráfico de número/densidad de puntos en un rango de 1 centímetro para diferentes objetos, ejemplificando la delimitación del tipo de superficie (plano, esfera, cilindro, ruido) según el rango de radios mínimo y máximo.
 
-Este método cuenta con la ventaja de ser fácil de computar y aún así mantener su capacidad de descripción, y se emplea principalmente para la detección de puntos que pertenecen a distintas superficies.
+Este método cuenta con la ventaja de ser fácil de computar y aún así mantener su capacidad de descripción y se emplea principalmente para la detección de puntos que pertenecen a distintas superficies.
 
-GRSD consiste en generar agrupamiento de puntos (o voxels) en lugar de puntos individuales, donde cada voxel tiene un ancho de 2.5 cm, y se procede a computar los radios máximos y mínimos entre *p* y un conjunto de vecinos y a etiquetar cada uno de los voxels según su valor de radio, siendo un plano si el radio_minimo > 0.1, una superficie cilíndrica si no es un plano y radio_máximo > 0.175, un borde/esquina o ruido, si no es cilíndrico y radio_mínimo < 0.015, esférico si no es un borde y radio_maximo - radio_minimo < 0.05 y otra superficie si no es ninguna de las anteriores. Una vez etiquetados todos los voxels, se computa un histograma global que describe las relaciones entre los clusters, en base a las intersecciones de cada superficie con el resto.
+GRSD consiste en generar agrupamientos de puntos (o voxels) en lugar de puntos individuales, donde cada voxel tiene un ancho de 2.5 cm y, se procede a computar los radios máximos y mínimos entre *p* y un conjunto de vecinos y a etiquetar cada uno de los voxels según su valor de radio, siendo: un plano si el radio_minimo > 0.1, una superficie cilíndrica si no es un plano y radio_máximo > 0.175, un borde/esquina o ruido si no es cilíndrico y radio_mínimo < 0.015, esférico si no es un borde y radio_maximo - radio_minimo < 0.05 y otra superficie si no es ninguna de las anteriores. Una vez etiquetados todos los voxels, se computa un histograma global que describe las relaciones entre los clusters, en base a las intersecciones de cada superficie con el resto.
 
 
 ESF
@@ -637,7 +632,7 @@ ESF
 
 Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, sino que inicialmente emplea un conjunto de voxeles de la superficie (voxel grid). Este algoritmo consiste en iterar a través de cada uno de los puntos de la nube y, de cada punto seleccionado, se eligen 3 puntos aleatorios y se computan las funciones de forma: D2, proporción D2 (D2 ratio), D3 y A3, donde cada función genera histogramas que describen la relación geométrica entre puntos de la figura, produciendo un total de 10 sub-histogramas cada uno de 64 divisiones, por lo que el tamaño del histograma final es de 640. A continuación, se detallan las funciones de forma:
 
-* La función D2, computa las distancias entre los 3 puntos elegidos, formando 3 pares distintos, y para cada par verifica si la línea que conecta ambos puntos yacen completamente dentro de la superficie, enteramente afuera de la figura (no formando parte del objeto) o, abarcando una porción del objeto y una porción del espacio libre. Dependiendo de esta condición, se asigna el valor de distancia a un histograma IN, OUT o MIXED respectivamente.
+* La función D2, computa las distancias entre los 3 puntos elegidos, formando 3 pares distintos y para cada par verifica si la línea que conecta ambos puntos yace completamente dentro de la superficie, enteramente afuera de la figura (no formando parte del objeto) o abarcando una porción del objeto y una porción del espacio libre. Dependiendo de esta condición, se asigna el valor de distancia a un histograma IN, OUT o MIXED respectivamente.
   
 
 .. figure:: ../figs/Cap4/Funcion_D2.png
@@ -646,9 +641,9 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
    Representación gráfica de la función D2.
 
 
-* La proporción D2, consiste en generar un histograma que represente la proporción entre partes de la línea dentro de la superficie y fuera de esta, donde el valor será cero si la línea está completamente afuera, uno si está completamente adentro, y un valor intermedio si se encuentra tanto dentro como fuera.
+* La proporción D2, consiste en generar un histograma que represente la proporción entre partes de la línea dentro de la superficie y fuera de ésta, donde el valor será cero si la línea está completamente afuera, uno si está completamente adentro y un valor intermedio, si se encuentra tanto dentro como fuera.
 
-* La función D3, computa la raíz cuadrada del área del triángulo formada por los 3 puntos, y es agrupado, al igual que D2, en 3 histogramas IN, OUT y MIXED independientes de los que emplea D2.
+* La función D3, computa la raíz cuadrada del área del triángulo formada por los 3 puntos y es agrupado, al igual que D2, en 3 histogramas IN, OUT y MIXED independientes de los que emplea D2.
   
 
 .. figure:: ../figs/Cap4/Funcion_D3.png
@@ -656,7 +651,7 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
 
    Representación gráfica de la función D3.
 
-* Finalmente, la función A3 computa el ángulo formado por los puntos del triángulo, y luego este valor es asignado a un histograma IN, OUT o MIXED, dependiendo de que superficie abarca la línea que se encuentra opuesta al ángulo calculado. Estos 3 histogramas son independientes de los que se emplean en D2 y D3.
+* Finalmente, la función A3 computa el ángulo formado por los puntos del triángulo y luego este valor es asignado a un histograma IN, OUT o MIXED, dependiendo de que superficie abarca la línea que se encuentra opuesta al ángulo calculado. Estos 3 histogramas son independientes de los que se emplean en D2 y D3.
 
 
 .. figure:: ../figs/Cap4/Funcion_A3.png
@@ -665,25 +660,24 @@ Este descriptor no emplea ningún tipo de pre-procesamiento, como las normales, 
    Representación gráfica de la función A3.
 
 
-
 .. _pipeline_cropeado:
 
 Metodología de pre-procesado de muestras (Pipeline de Cropeado)
 ---------------------------------------------------------------
 
-Debido a la cantidad numerosa de puntos que se encuentran en una captura realizada por el sensor (aproximadamente 300.000 puntos) y, a que se deseaba abstraer sólo aquellas características propias de cada tipo de falla, se procedió a aplicar una serie de algoritmos como parte del pre-procesado de datos en machine learning o Pipeline de Cropeado, con el fin de reducir la cantidad de puntos de cada muestra y de sólo calcular el descriptor con los puntos principales de una falla. Este pipleline de cropeado, se compone de los siguientes pasos:
+Debido a la cantidad numerosa de puntos que se encuentran en una captura realizada por el sensor (aproximadamente 300.000 puntos) y, a que se deseaba abstraer sólo aquellas características propias de cada tipo de falla, se procedió a aplicar una serie de algoritmos como parte del pre-procesado de datos en machine learning o Pipeline de Cropeado, con el fin de reducir la cantidad de puntos de cada muestra y de sólo calcular el descriptor con los puntos principales de una falla. Este Pipleline de Cropeado, se compone de los siguientes pasos:
 
-1 - Eliminación de ruido con Statistical Removal: Debido a que la densidad de puntos de una captura puede variar, bajo diversas condiciones tales como: la cantidad de luz solar presente o la posición del sensor con respecto al pavimento, es necesario eliminar para cada captura aquellos valores extremos (o outliers), que pueden interferir con la computación de las features de la muestra. Para ello, PCL ofrece un algoritmo de filtrado denominado Statistical Outlier Removal, el cual para cada punto en la nube de entrada computa la distancia media de éste hacia todos sus vecinos, y asumiendo que las distancias siguen una distribución estadística Gaussiana con una media y desvío estándar, elimina de la nube aquellos puntos cuyas distancias estén fuera del intervalo definido por la media y el desvío estándar de la distribución.
+1 - Eliminación de ruido con Statistical Removal: debido a que la densidad de puntos de una captura puede variar, bajo diversas condiciones tales como: la cantidad de luz solar presente o la posición del sensor con respecto al pavimento, es necesario eliminar para cada captura aquellos valores extremos (o outliers), que pueden interferir con la computación de las features de la muestra. Para ello, PCL ofrece un algoritmo de filtrado denominado Statistical Outlier Removal, el cual para cada punto en la nube de entrada computa la distancia media de éste hacia todos sus vecinos y asumiendo que las distancias siguen una distribución estadística Gaussiana con una media y desvío estándar, elimina de la nube aquellos puntos cuyas distancias estén fuera del intervalo definido por la media y el desvío estándar de la distribución.
 
 .. figure:: ../figs/Cap4/statistical_removal_ejemplo.jpg
    :scale:	70 %
 
    Izquierda: Ejemplo de nube de puntos sin el filtro Statistical Outlier Removal. Derecha: Ejemplo de nube de puntos con el filtro de Statistical Outlier Removal.
 
-2 - Downsampling con Voxel Grid (Extracción de Keypoints): se conoce con el nombre de voxel a un conjunto de puntos que forman una mínima unidad cubica (grilla en 3D) de un objeto tridimensional, de la misma forma que un píxel es la mínima unidad en una imagen en 2D. El algoritmo de Voxel Grid en PCL, permite reducir la cantidad de elementos de una nube, realizando una división de una nube de puntos en voxels, y computando en base a estos el centroide (centro del voxel grid) que se tomará como el punto que representa al resto de los puntos en el voxel grid. Estos puntos se denominan keypoints o puntos de interés y son aquellos puntos principales que aportan mayor información respecto de la estructura del pavimento a la SVM. Estos se caracterizan por ser:
+2 - Downsampling con Voxel Grid (Extracción de Keypoints): se conoce con el nombre de voxel a un conjunto de puntos que forman una mínima unidad cubica (grilla en 3D) de un objeto tridimensional, de la misma forma que un píxel es la mínima unidad en una imagen en 2D. El algoritmo de Voxel Grid en PCL, permite reducir la cantidad de elementos de una nube, realizando una división de una nube de puntos en voxels y computando en base a estos el centroide (centro del voxel grid) que se tomará como el punto que representa al resto de los puntos en el voxel grid. Estos puntos se denominan keypoints o puntos de interés y son aquellos puntos principales que aportan mayor información respecto de la estructura del pavimento a la SVM. Éstos se caracterizan por ser:
 
 * Estables con respecto a interferencias locales y globales en el dominio de la imagen, como variaciones de iluminación y brillo.
-* Distintivos para la caracterización efectiva de una superficie, y ricos en contenido en términos de color y textura.
+* Distintivos para la caracterización efectiva de una superficie y ricos en contenido en términos de color y textura.
 * Tienen una posición claramente definida y se pueden obtener repetidamente con respecto a ruido y variaciones en el punto de visión.
 * No es afectado por variaciones de escala, por lo que son ideales para procesamiento en tiempo real como también procesamiento en distintas escalas. 
 
@@ -696,14 +690,14 @@ Debido a la cantidad numerosa de puntos que se encuentran en una captura realiza
 3 - Segmentación con algoritmo de Planar Segmentation: el algoritmo empleado para la segmentación en PCL fue RANSAC (Random Sample Consensus) configurado para el modelo de plano (PLANE), ya que se deseaba aislar los planos asociados a las depresiones que representan a los tipos de fallas seleccionadas (baches y grietas profundos).
 
 
-4 - Cálculo de curvaturas principales (Principal Curvatures Estimation): una vez realizada la segmentación, se realiza el cálculo de curvaturas promedio para cada uno de los clusters aislados, de manera que se filtren sólo aquellos que se ubican en un valor dentro del rango de las fallas, siendo estos valores establecidos a partir del análisis de valores de curvaturas para baches y grietas. PCL ofrece un algoritmo denominado Principal Curvatures Estimation (PCE) para calcular curvaturas principales mínimas y máximas de cada punto, empleando eigenvectores y eigenvalores asociados, en base a un conjunto de puntos y sus normales asociadas. Los eigenvectores (o vectores propios), son un concepto relacionado con el álgebra lineal, y son aquellos vectores no nulos tales que al ser transformados por un operador lineal, no modifican su escala o producen un vector múltiplo de si mismo, manteniendo su dirección; siendo el escalar que los multiplica :math:`{\lambda}` el eigenvector asociado con este valor. Matemáticamente, dada una matriz *A* n dimensional, se dice que  un vector *v* es un eigenvector y :math:`{\lambda}` es un eigenvalor asociado al eigenvector, si se cumple la siguiente equivalencia:
+4 - Cálculo de curvaturas principales (Principal Curvatures Estimation): una vez realizada la segmentación, se realiza el cálculo de curvaturas promedio para cada uno de los clusters aislados, de manera que se filtren sólo aquellos que se ubican en un valor dentro del rango de las fallas, siendo estos valores establecidos a partir del análisis de valores de curvaturas para baches y grietas. PCL ofrece un algoritmo denominado Principal Curvatures Estimation (PCE) para calcular curvaturas principales mínimas y máximas de cada punto, empleando eigenvectores y eigenvalores asociados, en base a un conjunto de puntos y sus normales asociadas. Los eigenvectores (o vectores propios), son un concepto relacionado con el álgebra lineal, y son aquellos vectores no nulos tales que al ser transformados por un operador lineal, no modifican su escala o producen un vector múltiplo de si mismo, manteniendo su dirección; siendo el escalar que los multiplica :math:`{\lambda}` el eigenvector asociado con este valor. Matemáticamente, dada una matriz *A* *n-dimensional*, se dice que  un vector *v* es un eigenvector y :math:`{\lambda}` es un eigenvalor asociado al eigenvector, si se cumple la siguiente equivalencia:
 
 
 .. math:: A*v = {\lambda}*v
    :label: ecuacionEigenVector
 
 
-Así, las curvaturas principales se calculan como los eigenvalores para un eigenvector en un punto dado y permiten indicar el grado de depresión en una superficie para un punto establecido. Gráficamente, las curvaturas principales se pueden visualizar como: para un punto *p* sobre una superficie dada y un vector unidad normal asociado, este contendrá un plano tangente entre el punto y el vector normal unidad y, existirán diversos planos que contendrán al vector normal unidad y que cortarán a la superficie de manera distinta, lo que generará diversas curvas con distintos valores por plano. De esta forma, los valores de curvatura seleccionados serán aquellos máximos y mínimos que representen mayor grado de variación de ese conjunto.
+Así, las curvaturas principales se calculan como los eigenvalores para un eigenvector en un punto dado y permiten indicar el grado de depresión en una superficie para un punto establecido. Gráficamente, las curvaturas principales se pueden visualizar como: para un punto *p* sobre una superficie dada y un vector unidad normal asociado, éste contendrá un plano tangente entre el punto y el vector normal unidad y, existirán diversos planos que contendrán al vector normal unidad y que cortarán a la superficie de manera distinta, lo que generará diversas curvas con distintos valores por plano. De esta forma, los valores de curvatura seleccionados serán aquellos máximos y mínimos que representen mayor grado de variación de ese conjunto.
 
 
 .. figure:: ../figs/Cap4/curvaturas-principales.png
@@ -712,7 +706,7 @@ Así, las curvaturas principales se calculan como los eigenvalores para un eigen
    Representación gráfica de las curvaturas principales.
 
 
-Por lo tanto, el algoritmo de PCE en PCL para el plano tangente a la normal de un punto dado, aplica PCA sobre las normales de los puntos en un área dada (tomando k-vecinos del punto), siendo primero estas normales trasladadas al plano tangente, y finalmente retorna la curvatura principal (eigenvector del máximo eigenvalor), junto con los valores de curvatura mínimos y máximos (eigenvalores).
+Por lo tanto, el algoritmo de PCE en PCL para el plano tangente a la normal de un punto dado, aplica PCA sobre las normales de los puntos en un área dada (tomando k-vecinos del punto), siendo primero estas normales trasladadas al plano tangente y finalmente retorna la curvatura principal (eigenvector del máximo eigenvalor), junto con los valores de curvatura mínimos y máximos (eigenvalores).
 
 
 .. 4 - Filtrado de puntos con Statistical Removal luego de segmentación: Debido a que la segmentación puede producir en la práctica valores espurios, se aplica nuevamente Statistical Outliers Removal con el fin de eliminar valores extremos que puedan haber permanecido en la muestra.
@@ -721,33 +715,32 @@ Por lo tanto, el algoritmo de PCE en PCL para el plano tangente a la normal de u
 Metodología para el procesamiento de muestras con ML
 ----------------------------------------------------
 
-Dado que PCL ofrece facilidades para emplear el mecanismo de SVM a través de la librería libsvm (implementada en C y con bindings a Python y compatibilidad con Scikit Learn), se optó por seleccionar este mecanismo en combinación con los descriptores producidos por los algoritmos de ML seleccionados, para las pruebas de clasificación de fallas (detalladas en la sección bitácora de pruebas). La metodología de trabajo para el procesamiento de muestras se dividió en dos fases:
+Dado que PCL ofrece facilidades para emplear el mecanismo de SVM a través de la librería libsvm (implementada en C y con bindings para Python y compatibilidad con Scikit Learn), se optó por seleccionar este mecanismo en combinación con los descriptores producidos por los algoritmos de ML seleccionados, para las pruebas de clasificación de fallas (detalladas en la sección bitácora de pruebas). La metodología de trabajo para el procesamiento de muestras se dividió en dos fases:
 
-* La fase de preparación del modelo, donde se debió realizar la conversión del descriptor de PCL y las características de la falla a un formato compatible con libsvm, el entrenamiento del modelo con dichos datos y el almacenamiento de este para su posterior uso en la clasificación. Durante esta etapa, se realiza el entrenamiento de un modelo por cada tipo de descriptor probado. 
-* La fase de clasificación de muestras, donde se realiza el aislamiento de la muestra empleando el pipeline de cropeado y se emplea el modelo entrenado previamente para un descriptor para clasificar la muestra aislada previamente.        
+* La fase de preparación del modelo, donde se debió realizar la conversión del descriptor de PCL y las características de la falla a un formato compatible con libsvm, el entrenamiento del modelo con dichos datos y el almacenamiento de éste para su posterior uso en la clasificación. Durante esta etapa, se realiza el entrenamiento de un modelo por cada tipo de descriptor probado. 
+* La fase de clasificación de muestras, donde se realiza el aislamiento de la muestra empleando el Pipeline de Cropeado y se emplea el modelo entrenado previamente para un descriptor para clasificar la muestra aislada previamente.        
 
 Con respecto a la fase de preparación del modelo, los pasos específicos para generar cada modelo en base a un descriptor consistieron en los siguientes: 
 
-1. Aplicar el pipeline de cropeado para cada muestra.
+1. Aplicar el Pipeline de Cropeado para cada muestra.
 2. Computación de descriptor (ESF | FPFH | VFH | GRSD | RIFT).
 3. Extracción de features (valores del histograma) del descriptor seleccionado.
 4. Almacenamiento de las features en formato svmlight en archivo de training.
 5. Entrenamiento y almacenamiento del modelo entrenado con archivo de training.
 
-
-Luego de aplicar el pipeline de cropeado y computarse los descriptores de las muestras, se procede a realizar la conversión de las muestras a formato svmlight. Para la clasificación de muestras con svmlight, el formato consiste en especificar cada muestra como una combinación de un número que especifica la clase a la que pertenece la misma separado por un espacio en blanco <SPACE> de sus features <FEATURE_N> con sus respectivos valores <VALOR> y, separada de otras muestras por caracteres de nueva línea <NEW_LINE>:
+Luego de aplicar el Pipeline de Cropeado y computarse los descriptores de las muestras, se procede a realizar la conversión de las muestras a formato svmlight. Para la clasificación de muestras con svmlight, el formato consiste en especificar cada muestra como una combinación de un número que especifica la clase a la que pertenece la misma, separado por un espacio en blanco <SPACE> de sus features <FEATURE_N> con sus respectivos valores <VALOR> y, separada de otras muestras por caracteres de nueva línea <NEW_LINE>:
 
 <LABEL> <FEATURE_1>:<VALOR> <FEATURE_2>:<VALOR> ... <FEATURE_N>:<VALOR><NEW_LINE>
 <LABEL> <FEATURE_1>:<VALOR> <FEATURE_2>:<VALOR> ... <FEATURE_N>:<VALOR><NEW_LINE>
 "..."
 
-Para el modo de clasificación, la clase a la que la muestra pertenece se especifica como un valor positivo (1) si la muestra pertenece a la clase del tipo de elementos que se busca clasificar o, negativo (-1) si esta no pertenece a la clase del tipo de elementos que se desean clasificar. Los features se especifican como una sucesión de valores numéricos que representan las características propias de cada muestra, y que varía según el tamaño del histograma del descriptor que se emplee. Con el fin de realizar la conversión, se empleo un script de generación de muestras que por medio de un archivo de configuración (.cfg), genera los descriptores para cada muestra y los almacena en un archivo de testing o training según se haya especificado.
+Para el modo de clasificación, la clase a la que la muestra pertenece se especifica como un valor positivo (1) si la muestra pertenece a la clase del tipo de elementos que se busca clasificar o negativo (-1), si ésta no pertenece a la clase del tipo de elementos que se desean clasificar. Los features se especifican como una sucesión de valores numéricos que representan las características propias de cada muestra y que varía según el tamaño del histograma del descriptor que se emplee. Con el fin de realizar la conversión, se empleó un script de generación de muestras que por medio de un archivo de configuración (.cfg), que genera los descriptores para cada muestra y los almacena en un archivo de testing o training según se haya especificado.
 
-Una vez generados ambos archivos de training y testing, se procede a entrenar el modelo empleando el archivo de training, utilizando una de las utilidades provistas por svm-light (svm-train), que permite generar un modelo de salida para distintos tipos de kernel y distintos tipos de SVM según la tarea para la que se emplee la misma (regresión o clasificación). Debido a que se debe realizar una división de muestras entre clases preestablecidas, se empleó una SVM para clasificación de muestras (SVC) y debido a que el kernel que mejor precisión brindo fue Linear, este fue empleado para generar el modelo, en combinación con distintos descriptores.         
+Una vez generados ambos archivos de training y testing, se procede a entrenar el modelo empleando el archivo de training, utilizando una de las utilidades provistas por svm-light (svm-train), que permite generar un modelo de salida para distintos tipos de kernel y distintos tipos de SVM según la tarea para la que se emplee la misma (regresión o clasificación). Debido a que se debe realizar una división de muestras entre clases preestablecidas, se empleó una SVM para clasificación de muestras (SVC) y debido a que el kernel que mejor precisión brindó fue Linear, este fue empleado para generar el modelo, en combinación con distintos descriptores.
 
 Con respecto a la etapa de clasificación, los pasos a seguir fueron los siguientes:
 
-1. Aplicación del pipeline de cropeado a una muestra individual.
+1. Aplicación del Pipeline de Cropeado a una muestra individual.
 2. Lectura del modelo entrenado desde disco.
 3. Computación de las dimensiones de la falla.
 4. Generación del descriptor final, combinando el descriptor PCL y las dimensiones de la falla.
@@ -757,31 +750,31 @@ Con respecto a la etapa de clasificación, los pasos a seguir fueron los siguien
 8. Lectura y muestra de las propiedades obtenidas desde la aplicación web.
 
 
-.. Luego de obtener los clusters válidos desde el pipeline de cropeado, se procede generar el descriptor final computando el descriptor seleccionado en PCL y, a calcular las dimensiones (alto-ancho y profundidad para baches y largo-grosor y profundidad para las grietas) en los ejes X,Y y Z por medio de la OBB mínima que contiene a la falla. De esta forma, el descriptor final para cada cluster se compone del descriptor de PCL sumado a la diferencia entre alto y ancho y, posteriormente se adapta al formato que es utilizado por la SVC. 
+.. Luego de obtener los clusters válidos desde el Pipeline de Cropeado, se procede generar el descriptor final computando el descriptor seleccionado en PCL y, a calcular las dimensiones (alto-ancho y profundidad para baches y largo-grosor y profundidad para las grietas) en los ejes X,Y y Z por medio de la OBB mínima que contiene a la falla. De esta forma, el descriptor final para cada cluster se compone del descriptor de PCL sumado a la diferencia entre alto y ancho y, posteriormente se adapta al formato que es utilizado por la SVC. 
 
-Luego de obtener los clusters válidos desde el pipeline de cropeado, se procede generar el descriptor final computando el descriptor seleccionado en PCL y, a calcular las dimensiones (alto-ancho y profundidad para baches y largo-grosor y profundidad para las grietas) en los ejes X, Y y Z por medio de la resta de las coordenadas mínimas y máximas en cada eje, obtenidas de la computación de una OBB que contiene a la falla. De esta forma, el descriptor final para cada cluster se compone del descriptor de PCL sumado a la diferencia entre alto y ancho y, posteriormente se adapta al formato que es utilizado por la SVC. 
+Luego de obtener los clusters válidos desde el Pipeline de Cropeado, se procede generar el descriptor final computando el descriptor seleccionado en PCL y, a calcular las dimensiones (alto-ancho y profundidad para baches y largo-grosor y profundidad para las grietas) en los ejes X, Y, Z por medio de la resta de las coordenadas mínimas y máximas en cada eje, obtenidas de la computación de una OBB que contiene a la falla. De esta forma, el descriptor final para cada cluster se compone del descriptor de PCL sumado a la diferencia entre alto y ancho y posteriormente, se adapta al formato que es utilizado por la SVC. 
 
-Una vez obtenida la muestra, se levanta el modelo entrenado desde disco, y se le asigna la muestra para su clasificación, obteniendo el tipo de ésta, el cual, se almacena junto con las dimensiones de la falla según corresponda y el nombre del cluster (generado en base al nombre de la muestra) en formato json. Este, posteriormente es leído por la aplicación web, que mostrará dicha información en una sección a parte, donde se visualizan las propiedades de la falla. 
+Una vez obtenida la muestra, se levanta el modelo entrenado desde disco y se le asigna la muestra para su clasificación, obteniendo el tipo de ésta, el cual, se almacena junto con las dimensiones de la falla según corresponda y el nombre del cluster (generado en base al nombre de la muestra) en formato json. Éste posteriormente, es leído por la aplicación web que mostrará dicha información en una sección aparte, donde se visualizan las propiedades de la falla. 
 
 
 Bitácora de pruebas para clasificación
 --------------------------------------
 
-Como primera medida, se  procedió a realizar el cálculo de la cantidad de muestras que se dedicarán para training y testing del total de las muestras que se capturaron, siendo este de 1000 muestras entre baches y grietas. Se decidió seleccionar un 76,75% de las muestras para training (766) y el 33% para testing (234). Una vez realizada la división, se decidió que se aplicaría un Pipeline de Cropeado que consistirá de varios pasos que abarcan desde la limpieza y aislamiento de la muestra hasta la clasificación, con el fin de disgregar el tipo de falla del plano en el que ésta se encuentra y obtener sólo features inherentes a la falla.
+Como primera medida, se procedió a realizar el cálculo de la cantidad de muestras que se dedicarán para training y testing del total de las muestras que se capturaron, siendo éste de 1000 muestras entre baches y grietas. Se decidió seleccionar un 76,75% de las muestras para training (766) y el 33% para testing (234). Una vez realizada la división, se optó por aplicar un Pipeline de Cropeado que consistirá de varios pasos que abarcan desde la limpieza y aislamiento de la muestra hasta la clasificación, con el fin de disgregar el tipo de falla del plano en el que ésta se encuentra y obtener sólo features inherentes a la falla.
 
-Con respecto a la computación de features de baches y grietas, se optó por investigar cuales de los descriptores de PCL se enfocaban en capturar las diferencias entre distintos tipos/formas en superficies semejantes a planos, y debido al tamaño promedio de las nubes de puntos capturadas por el sensor, se seleccionaron aquellos que se definían por un histograma cuyas dimensiones no eran de una magnitud que prolongue el tiempo de procesamiento de manera excesiva.
+Con respecto a la computación de features de baches y grietas, se optó por investigar cuales de los descriptores de PCL se enfocaban en capturar las diferencias entre distintos tipos/formas en superficies semejantes a planos y debido al tamaño promedio de las nubes de puntos capturadas por el sensor, se seleccionaron aquellos que se definían por un histograma cuyas dimensiones no eran de una magnitud que prolongue el tiempo de procesamiento de manera excesiva.
 
-Una vez aisladas todas las muestras de training, se comenzó con las pruebas de clasificación que consisten en generar los descriptores FPFH del conjunto de training que emplea la SVM, tomando para este conjunto, como muestras positivas los baches y como muestras negativas las grietas, con el fin de intentar clasificar sólo entre baches y grietas. Una vez entrenada, la SVM se probó con diversos conjuntos de entrenamiento: un conejo, un bache, una grieta y un conjunto de muestras mixto (que consistía de 7 baches y 28 elementos que no son baches). El resultado de esta prueba fue negativo, debido a que la muestra de bache no fue reconocida como tal, la del conejo resultó positiva y la del conjunto de training mixto proporcionó resultados positivos para muestras que no eran baches. Posteriormente, se aplicó la misma prueba para el descriptor VFH y GRSD, obteniéndose resultados positivos para muestras que no eran baches y negativos para baches, logrando un accuracy considerablemente inferior al esperado. Luego, se evaluó escalando los valores de las features con el mismo dataset, la misma SVM y no se consiguió un aumento de precisión, para los 3 descriptores que emplean normales (FPFH, GRSD, VFH).
+Una vez aisladas todas las muestras de training, se comenzó con las pruebas de clasificación que consisten en generar los descriptores FPFH del conjunto de training que emplea la SVM, tomando para este conjunto, como muestras positivas los baches y como muestras negativas las grietas, con el fin de intentar clasificar sólo entre baches y grietas. Una vez entrenada la SVM, se probó con diversos conjuntos de entrenamiento: un conejo, un bache, una grieta y un conjunto de muestras mixto (que consistía de 7 baches y 28 elementos que no eran baches). El resultado de esta prueba fue negativo, debido a que la muestra de bache no fue reconocida como tal, la del conejo resultó positiva y la del conjunto de training mixto proporcionó resultados positivos para muestras que no eran baches. Posteriormente, se aplicó la misma prueba para el descriptor VFH y GRSD, obteniéndose resultados positivos para muestras que no eran baches y negativos para baches, logrando un accuracy considerablemente inferior al esperado. Luego, se evaluó escalando los valores de las features con el mismo dataset, la SVM y no se consiguió un aumento de precisión, para los 3 descriptores que emplean normales (FPFH, GRSD, VFH).
 
 Dado que las diferencias entre los descriptores de los distintos tipos de muestra no eran significativas, se realizó una comparación gráfica de los descriptores pertenecientes al mismo conjunto de muestras, observando que el descriptor GRSD contenía mayor diferencia entre distintos tipos de muestra, por lo que se continuó experimentando solamente con este descriptor y se procedió a cambiar el enfoque, distinguiendo baches de planos y por otro lado, grietas y planos, necesitando clasificadores independientes. Con esta aproximación, la precisión aumentó considerablemente. 
 
-Debido a la necesidad de utilizar dos clasificadores diferentes por cada clase de muestra, se hizo un análisis de los valores de las curvaturas (por medio del algoritmo de PCL Principal Curvatures Estimation) máximos y mínimos promedio por cada muestra, con el objetivo de encontrar un parámetro que, sumado al descriptor GRSD, permitiera la diferenciación entre ambos tipos de muestra empleando un único clasificador, y se pudo observar que el rango de curvatura promedio de las grietas estaba contenida dentro del rango de los baches, por lo que los baches contenían valores de curvatura mayores en general. Por esta razón, se decidió emplear el valor de curvatura para mejorar el segmentador y aislar sólo aquellas capturas cuya curvatura promedio se aproxime a la de un bache/grieta.
+Debido a la necesidad de utilizar dos clasificadores diferentes por cada clase de muestra, se hizo un análisis de los valores de las curvaturas (por medio del algoritmo de PCL Principal Curvatures Estimation) máximos y mínimos promedio por cada muestra, con el objetivo de encontrar un parámetro que, sumado al descriptor GRSD, permitiera la diferenciación entre ambos tipos de muestra empleando un único clasificador y se pudo observar que el rango de curvatura promedio de las grietas estaba contenida dentro del rango de los baches, por lo que los baches contenían valores de curvatura mayores, en general. Por esta razón, se decidió emplear el valor de curvatura para mejorar el segmentador y aislar sólo aquellas capturas cuya curvatura promedio se aproxime a la de un bache/grieta.
 
-Luego, se agregaron las features de curvatura máxima y mínima promedio de cada muestra al descriptor GRSD, y se entrenó una SVM con capacidad para multiclase (multi-labels), dividiendo las muestras utilizadas entre 3 diferentes clases: Baches, Grietas y Planos (utilizados solamente para este experimento). Se confeccionó el conjunto de training final con baches con histogramas GRSD similares, grietas y planos cropeados, (empleando como parámetros para un kernel RBF gamma -g 0.0008 y un costo -c 1) obteniendo una precisión del 55% con un subconjunto de muestras del set de testing, aisladas con el segmentador mejorado, por lo que se observó que muchos de los baches se clasificaron como grietas, distinguiéndose así estos de los planos, pero no de las grietas. Como la precisión obtenida con GRSD resultó ser muy baja, adicionalmente se probó con el descriptor local FPFH que calcula un histograma por punto, agregando los valores de curvatura y, al probarlo con las muestras de testing anteriores, se logró una precisión del 56,47%, observando que el descriptor en combinación con la curvatura, no mejoraba satisfactoriamente la precisión.
+Luego, se agregaron las features de curvatura máxima y mínima promedio de cada muestra al descriptor GRSD y se entrenó una SVM con capacidad para multiclase (multi-labels), dividiendo las muestras utilizadas entre 3 diferentes clases: Baches, Grietas y Planos (utilizados solamente para este experimento). Se confeccionó el conjunto de training final con baches con histogramas GRSD similares, grietas y planos cropeados, (empleando como parámetros para un kernel RBF gamma -g 0.0008 y un costo -c 1) obteniendo una precisión del 55% con un subconjunto de muestras del set de testing, aisladas con el segmentador mejorado, por lo que se observó que muchos de los baches se clasificaron como grietas, distinguiéndose así éstos de los planos, pero no de las grietas. Como la precisión obtenida con GRSD resultó ser muy baja, adicionalmente se probó con el descriptor local FPFH que calcula un histograma por punto, agregando los valores de curvatura y, al probarlo con las muestras de testing anteriores, se logró una precisión del 56,47%, observando que el descriptor en combinación con la curvatura, no mejoraba satisfactoriamente la precisión.
 
 Debido a los resultados obtenido con el descriptor FPFH, se decidió utilizar otro descriptor global conocido como Ensemble Shape of Functions (ESF) en una SVM multiclase, alcanzándose una precisión del 54.4444% empleando el mismo set de testing, pudiendo conseguir que el clasificador distinguiera las grietas y baches de los planos, pero sin diferenciar baches de grietas, clasificando el resto de las muestras como grietas cuando en realidad eran baches.
 
-Otra prueba realizada, consistió en computar y analizar el área y volumen de cada muestra de training, ya que si bien estos valores mostraban una diferencia inferior al feature de curvaturas, no era lo suficientemente ínfima para no lograr diferenciar baches y grietas.  Al agregar estas características al descriptor GRSD, con SVM con kernel Linear se obtuvo una precisión del 52.94% con el set de testing de baches y grietas, sin incluir planos. Además, se incluyeron aquellos atributos que son referentes a las dimensiones de las grietas y baches de training: ancho, alto, profundidad y volumen, y con éstos se realizó una comparación con el fin de obtener valores que permitieran diferenciar entre baches y grietas. Así, se optó por emplear el descriptor GRSD con la diferencia en valor absoluto de ancho y alto de las fallas, clasificando por este límite a los baches que tienen diferencia | alto - ancho | > 40 como grietas y, los que tienen menor diferencia como baches. De esta forma, se reclasificaron las muestras según este valor y se realizaron las siguientes pruebas con el subconjunto de testing seleccionado obteniendo como resultado:
+Otra prueba realizada, consistió en computar y analizar el área y volumen de cada muestra de training, ya que si bien estos valores mostraban una diferencia inferior al feature de curvaturas, no era lo suficientemente ínfima para no lograr diferenciar baches y grietas. Al agregar estas características al descriptor GRSD, con SVM con kernel Linear se obtuvo una precisión del 52.94% con el set de testing de baches y grietas, sin incluir planos. Además, se incluyeron aquellos atributos que son referentes a las dimensiones de las grietas y baches de training: ancho, alto, profundidad y volumen y con éstos se realizó una comparación con el fin de obtener valores que permitieran diferenciar entre baches y grietas. Así, se optó por emplear el descriptor GRSD con la diferencia en valor absoluto de ancho y alto de las fallas, clasificando por este límite a los baches que tienen diferencia | alto - ancho | > 40 como grietas y, los que tienen menor diferencia como baches. De esta forma, se reclasificaron las muestras según este valor y se realizaron las siguientes pruebas con el subconjunto de testing seleccionado obteniendo los siguientes resultados:
 
 - Al agregar los valores de alto, profundidad y ancho, con el descriptor GRSD se obtuvo un accuracy de 79.8%.
 
@@ -792,61 +785,32 @@ Otra prueba realizada, consistió en computar y analizar el área y volumen de c
 - Al agregar al GRSD la diferencia entre ancho y alto y testeando únicamente con el descriptor GRSD, se logró un accuracy de 75% kernel Linear y 87.5 con kernel RBF (con costo -c 2 y gamma -g 0.00000002).
 
 
+Ya que al analizar la diferencia entre alto-ancho en el dataset de training de baches y grietas, ésta era similar entre el mismo tipo de muestra y existían muestras (baches y grietas) que poseían una relación similar entre alto-ancho, se realizó una reclasificación de baches y grietas según dicha característica. Luego al probar nuevamente la SVM entrenada con el subconjunto de testing incluyendo solamente los valores del descriptor GRSD y la diferencia entre alto-ancho, se consiguió una precisión del 87.5% con kernel RBF y un 100% con kernel Linear.
 
-Ya que al analizar la diferencia entre alto-ancho en el dataset de training de baches y grietas esta era similar entre el mismo tipo de muestra, por lo que existían muestras (baches y grietas) que poseían una relación similar entre alto-ancho, se realizó una reclasificación de baches y grietas según esta característica. Luego al probar nuevamente la SVM entrenada con el subconjunto de testing incluyendo solamente los valores del descriptor GRSD y la diferencia entre alto-ancho, se consiguió una precisión del 87.5% con kernel RBF y un 100% con kernel Linear.
-
-
-Al observar que la precisión incrementó reclasificando el dataset de training, se aplicó el mismo procedimiento para el dataset de testing completo y debido a que el ancho y alto calculados se basan en valores máximos y mínimos que son brindados por el mecanismo Oriented Bounding Box de PCL en los ejes X-Y, el cual se ajusta y se orienta al tamaño de la muestra, se eliminaron aquellas muestras que contenían outliers que introducían ruido en el cálculo de esta diferencia, filtrando con estos parámetros de un total de 1000 muestras, 806 muestras (753 para training y 53 para testing). Al analizar las estadísticas de dimensiones del dataset de fallas de training, se seleccionó un límite de diferencia entre alto y ancho para dividirlas según el tipo (grieta o bache) de 0.49, ya que las grietas contenían una longitud considerablemente mayor al grosor, situación que no ocurría en baches. Al ejecutar nuevamente las pruebas con dataset de training y testing divididos por este límite, se obtuvo 89%  de accuracy con kernel Linear y 71% con kernel RBF (con gamma 0.0000002 y costo C 1500) empleando un cross validation de 5 iteraciones con GRSD. Nuevamente se procedió a experimentar con la diferencia alto-ancho, cambiando únicamente el descriptor con ESF y FPFH, obteniendo para los mismos parámetros y la misma cantidad de iteraciones los siguientes resultados:
+Al observar que la precisión incrementó reclasificando el dataset de training, se aplicó el mismo procedimiento para el dataset de testing completo y debido a que el ancho y alto calculados se basan en valores máximos y mínimos que son brindados por el mecanismo Oriented Bounding Box de PCL en los ejes X-Y, el cual se ajusta y se orienta al tamaño de la muestra, se eliminaron aquellas muestras que contenían outliers que introducían ruido en el cálculo de esta diferencia, filtrando con estos parámetros de un total de 1000 muestras, 806 muestras (753 para training y 53 para testing). Al analizar las estadísticas de dimensiones del dataset de fallas de training, se seleccionó un límite de diferencia entre alto y ancho para dividirlas según el tipo (grieta o bache) de 0.49, ya que las grietas contenían una longitud considerablemente mayor al grosor, situación que no ocurría en baches. Al ejecutar nuevamente las pruebas con dataset de training y testing divididos por este límite, se obtuvo 89% de accuracy con kernel Linear y 71% con kernel RBF (con gamma 0.0000002 y costo C 1500) empleando un cross validation de 5 iteraciones con GRSD. Nuevamente se procedió a experimentar con la diferencia alto-ancho, cambiando únicamente el descriptor con ESF y FPFH, obteniendo para los mismos parámetros y la misma cantidad de iteraciones los siguientes resultados:
 
 * Con FPFH 63% para un kernel Linear y 60% para un kernel RBF.
 * Con ESF 98% para un kernel Linear y 54% para un kernel RBF.
- 
 
-Finalmente, se realizó una comparación de las métricas de clasificación respecto de los distintos descriptores para la división original de muestras (53 en total), con el fin de contrastar la efectividad de clasificación de estos y comprobar la superioridad de ESF respecto al resto. Para ello, se calcularon los valores de F1-Score y Recall para ambas clases y la matriz de confusión para exponer la cantidad de elementos efectivamente asignados a cada clase. Los valores de F1-Score y Recall para la partición del dataset inicial, con los kernels linear y RBF, se puede observar a continuación: 
+Finalmente, se realizó una comparación de las métricas de clasificación respecto de los distintos descriptores para la división original de muestras (53 en total), con el fin de contrastar la efectividad de clasificación de éstos y comprobar la superioridad de ESF respecto al resto. Para ello, se calcularon los valores de F1-Score y Recall para ambas clases y la matriz de confusión para exponer la cantidad de elementos efectivamente asignados a cada clase. Los valores de F1-Score y Recall para la partición del dataset inicial, con los kernels linear y RBF, se puede observar a continuación: 
 
 
-+------------------+----------------------------------------+------------------------------------+
-|                  |              Kernel Linear             |             Kernel RBF             |
-+------------------+-------------+---------+----------------+-------------+---------+------------+
-| Tipo de muestra  | Precision   | Recall  |  F1-Score      | Precision   | Recall  |  F1-Score  |
-+==================+=============+=========+================+=============+=========+============+
-| Baches           |  1.0        | 1.0     |  1.0           |     0.0     |   0.0   |     0.0    |
-+------------------+-------------+---------+----------------+-------------+---------+------------+
-| Grietas          |  1.0        | 1.0     |  1.0           |     0.17    |   1.0   |     0.29   |
-+------------------+-------------+---------+----------------+-------------+---------+------------+
-| avg/total        |  1.0        | 1.0     |  1.0           |     0.03    |   0.17  |     0.05   |
-+------------------+-------------+---------+----------------+-------------+---------+------------+ 
+.. figure:: ../figs/Cap4/metricas_esf_kernel_linear_rbf.png
+   :scale: 70%
 
    Métricas para descriptor ESF con Kernel Linear-RBF.
 
 
-+------------------+----------------------------------------+------------------------------------+
-|                  |              Kernel Linear             |             Kernel RBF             |
-+------------------+-------------+---------+----------------+-------------+---------+------------+ 
-| Tipo de muestra  | Precision   | Recall  |  F1-Score      | Precision   | Recall  |  F1-Score  |
-+==================+=============+=========+================+=============+=========+============+ 
-| Baches           |  0.83       | 1       |  0.91          |     0.00    |   0.00  |    0.00    |
-+------------------+-------------+---------+----------------+-------------+---------+------------+   
-| Grietas          |  0.23       | 0.78    |  0.36          |     0.17    |   1.00  |    0.29    |
-+------------------+-------------+---------+----------------+-------------+---------+------------+ 
-| avg/total        |  0.80       | 0.53    |  0.58          |     0.03    |   0.17  |    0.05    |
-+------------------+-------------+---------+----------------+-------------+---------+------------+  
+.. figure:: ../figs/Cap4/metricas_grsd_kernel_linear_rbf.png 
+   :scale: 70%
 
    Métricas para descriptor GRSD con Kernel Linear-RBF.
 
-+------------------+----------------------------------------+------------------------------------+
-|                  |              Kernel Linear             |             Kernel RBF             |
-+------------------+-------------+---------+----------------+-------------+---------+------------+ 
-| Tipo de muestra  | Precision   | Recall  |  F1-Score      | Precision   | Recall  |  F1-Score  |
-+==================+=============+=========+================+=============+=========+============+ 
-| Baches           |  0.91       | 0.48    |  0.63          |      1.00   |   0.09  |  0.17      |
-+------------------+-------------+---------+----------------+-------------+---------+------------+  
-| Grietas          |  0.23       | 0.78    |  0.36          |      0.18   |   1.00  |  0.31      |
-+------------------+-------------+---------+----------------+-------------+---------+------------+  
-| avg/total        |  0.80       | 0.53    |  0.58          |      0.86   |   0.25  |  0.19      |
-+------------------+-------------+---------+----------------+-------------+---------+------------+  
 
-Métricas para descriptor FPFH con Kernel Linear-RBF.
+.. figure:: ../figs/Cap4/metricas_fpfh_kernel_linear_rbf.png 
+   :scale: 70%
+
+   Métricas para descriptor FPFH con Kernel Linear-RBF.
 
 
 La matriz de confusión para cada uno de los descriptores empleados, con la partición de datos inicial, fue la siguiente:
@@ -870,17 +834,10 @@ La matriz de confusión para cada uno de los descriptores empleados, con la part
    Matriz de confusión de SVM con descriptor FPFH.
 
 
-Finalmente, se realizó una comparación de la precisión promedio del k-folding de cada uno de los métodos con la precisión brindada por un clasificador Dummy, comprobando  realmente que la eficiencia de clasificación del clasificador (con kernel linear) sobrepasa la de un clasificador aleatorio:
+Finalmente, se realizó una comparación de la precisión promedio del k-folding de cada uno de los métodos con la precisión brindada por un clasificador Dummy, comprobando realmente que la eficiencia de clasificación del clasificador (con kernel linear) sobrepasa la de un clasificador aleatorio:
 
 
-+--------------------+-----------------+---------------------+-------------------+ 
-| Tipo de descriptor |         ESF     |         GRSD        |         FPFH      |
-+--------------------+-----------------+---------------------+-------------------+ 
-| Tipo clasificador  | ESF  | DummyESF | GRSD |   DummyGRSD  | FPFH | DummyFPFH  |
-+====================+======+==========+======+==============+======+============+
-| **Precision**      | 0.98 | 0.45     | 0.89 |    0.516     | 0.63 |   0.494    |
-+--------------------+------+----------+------+--------------+------+------------+
+.. figure:: ../figs/Cap4/prueba_descriptores_esf_grsd_fpfh_vs_dummy.png 
+   :scale: 70%
 
    Prueba con descriptores ESF, GRSD y FPFH vs prueba con Dummys.
-
-
