@@ -307,12 +307,12 @@ Relaciones entre píxeles
 
 Los píxeles :math:`P_k` en la coordenada *(i, j)*, con *k* siendo la cantidad total de píxeles con los índices *i=1,2,...,n* y *j=1,2,...,m*, que componen una imagen digital cuentan con distintas propiedades entre las que se encuentran las siguientes:
 
-* píxeles conectados: un píxel en un punto :math:`P_0` en *(:math:`i_0`, :math:`j_0`)* se conecta a otro píxel :math:`P_n` en *(:math:`i_n`, :math:`j_n`)* si y sólo si existe un camino desde :math:`P_0` hasta :math:`P_n`, que es una secuencia de puntos (:math:`i_0`, :math:`j_0`),(:math:`i_1`,:math:`j_1`)...(:math:`i_n`,:math:`j_n`) tal que el píxel (:math:`i_k`,:math:`j_k`) es un vecino del píxel en (:math:`i_k+1`,:math:`j_k+1`) y :math:`P_k= P_k+1` para todos los *k*, *0 < k < n-1*. La secuencia de píxeles distintos de un píxel a otro también se denomina camino digital (digital path) y, si el primer píxel del camino se encuentra conectado con el primer píxel, se denomina un camino cerrado.
+* píxeles conectados: un píxel en un punto :math:`P_0` en ( :math:`i_0`, :math:`j_0` ) se conecta a otro píxel :math:`P_n` en ( :math:`i_n`, :math:`j_n` ) si y sólo si existe un camino desde :math:`P_0` hasta :math:`P_n`, que es una secuencia de puntos ( :math:`i_0`, :math:`j_0` ),( :math:`i_1`, :math:`j_1` )...( :math:`i_n`, :math:`j_n` ) tal que el píxel ( :math:`i_k`, :math:`j_k` ) es un vecino del píxel en ( :math:`i_{k+1}`, :math:`j_{k+1}` ) y :math:`P_k= P_{k+1}` para todos los *k*, *0 < k < n-1*. La secuencia de píxeles distintos de un píxel a otro también se denomina camino digital (digital path) y, si el primer píxel del camino se encuentra conectado con el primer píxel, se denomina un camino cerrado.
   
 * 4-vecinos (4-connected pixel): cuando un píxel *P* en la ubicación *(i,j)* tiene cuatro vecinos en las coordenadas *(i+1,j)*, *(i-1,j)*, *(i,j+1)* e *(i,j-1)* se conocen como 4-vecinos. Es decir, que cada píxel está a una unidad de distancia de *(i,j)* y algunas de las ubicaciones de *P* yacen fuera de la imagen digital en el borde la imagen.
 
 
-* 8-vecinos (8-connected pixel): se dice que un píxel *P* ubicado en *(i,j)* tiene una conexión diagonal de 4 píxeles, cuando tiene píxeles en las coordenadas *(i+1,j+1)*,*(i+1,j-1)*,*(i-1,j+1)* e *(i-1,j-1)*. Si además este píxel tiene 4-vecinos, se dice que estos píxeles son 8-vecinos de *P*. 
+* 8-vecinos (8-connected pixel): se dice que un píxel *P* ubicado en *(i,j)* tiene una conexión diagonal de 4 píxeles, cuando tiene píxeles en las coordenadas *(i+1,j+1)*, *(i+1,j-1)*, *(i-1,j+1)* e *(i-1,j-1)*. Si además este píxel tiene 4-vecinos, se dice que estos píxeles son 8-vecinos de *P*. 
 
 
 Otra propiedad de los píxeles es la adyacencia que se define en términos de los niveles de intensidad, siendo *V* el conjunto de valores de intensidad que un píxel puede adoptar, con *V* = {1} en imágenes binarias (considerándose adayacentes dos píxeles que tienen intensidad 1) y *V* siendo un subconjunto de todos los niveles de la imagen (para el caso de imágenes por escala de grises) y considerándose adyacentes dos píxeles cuyos valores de intensidad están en ese subconjunto, existen 3 tipos de adyacencia:
@@ -1238,26 +1238,23 @@ Las técnicas que se emplean en conjunto con la extracción de características 
 
          Fórmula de distancia Euclidiana.
 
-   * Representación y descripción: este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los píxeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores. Estas técnicas, consisten en transformar los píxeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: representar la región en términos de sus características externas (su límite o boundary, por ejemplo), describiéndose el límite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite; o representarla según sus características internas, es decir, los píxeles que comprenden la región. En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente igual o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región. Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o en la distribución estadística de los elementos del patrón.
-
-
-Con respecto a la descripción de una textura, existen 3 aproximaciones para esta tarea: 
+   * Representación y descripción: este proceso mayormente se emplea a continuación del proceso de segmentación, ya que ésta produce datos relacionados con los píxeles contenidos en el límite o en la región y es preferible emplear esquemas que compacten la información segmentada para mejorar el procesamiento de descriptores. Estas técnicas, consisten en transformar los píxeles que forman una región en una representación conveniente para su procesamiento. La representación de una región proporciona dos alternativas: representar la región en términos de sus características externas (su límite o boundary, por ejemplo), describiéndose el límite por sus características como su longitud, la orientación de la línea recta que conecta sus puntos extremos, y el número de concavidades en el límite; o representarla según sus características internas, es decir, los píxeles que comprenden la región. En este caso, se emplean características propias de la región tales como el color y la textura. La característica principal de la textura, es que consiste en la repetición de un patrón o conjunto de patrones sobre una región. Éste puede ser repetido exactamente igual o con pequeñas variaciones de posición y, ciertas características como: forma, tamaño, color y orientación de los elementos que forman el patrón pueden variar sobre la región. Algunas veces, la diferencia entre texturas se obtiene por medio del grado de variación de los mismos o en la distribución estadística de los elementos del patrón.Con respecto a la descripción de una textura, existen 3 aproximaciones para esta tarea: 
    
-   * La aproximación estadística: esta consiste en emplear medidas cuantitativas estadísticas (media aritmética, varianza, desvío estándar y otras) respecto a la distribución de los niveles de intensidad a una imagen, asociando distintas combinaciones de estos valores a características tales como la suavidad, la aspereza, la granularidad, etc.; y descriptores que, en base a una operación que define relaciones entre píxeles y las frecuencias de esas relaciones entre píxeles en la imagen, organizados en forma de matriz de *N x N* siendo *N* los niveles de intensidad (matriz de co-ocurrencias), permiten encontrar y describir patrones tales como la uniformidad, homogeneidad, contraste y correlación.
+      * La aproximación estadística: esta consiste en emplear medidas cuantitativas estadísticas (media aritmética, varianza, desvío estándar y otras) respecto a la distribución de los niveles de intensidad a una imagen, asociando distintas combinaciones de estos valores a características tales como la suavidad, la aspereza, la granularidad, etc.; y descriptores que, en base a una operación que define relaciones entre píxeles y las frecuencias de esas relaciones entre píxeles en la imagen, organizados en forma de matriz de *N x N* siendo *N* los niveles de intensidad (matriz de co-ocurrencias), permiten encontrar y describir patrones tales como la uniformidad, homogeneidad, contraste y correlación.
 
-   .. figure:: ../figs/Cap2/ejemploMatrizCoOcurrencias.png
-      :scale: 50%
-     
-      Ejemplo de matriz de co-ocurrencias (derecha) de una imagen (izquierda), para 8 niveles de intensidad, definiendo la relación entre píxeles como aquel píxel que se encuentra inmediatamente a la derecha.
+      .. figure:: ../figs/Cap2/ejemploMatrizCoOcurrencias.png
+         :scale: 50%
+        
+         Ejemplo de matriz de co-ocurrencias (derecha) de una imagen (izquierda), para 8 niveles de intensidad, definiendo la relación entre píxeles como aquel píxel que se encuentra inmediatamente a la derecha.
    
-   * La aproximación estructural: esta técnica consiste en describir una textura por medio de un conjunto de reglas (o primitivas) que representan el patrón de la misma, que se repite de manera constante.
+      * La aproximación estructural: esta técnica consiste en describir una textura por medio de un conjunto de reglas (o primitivas) que representan el patrón de la misma, que se repite de manera constante.
 
-   * La aproximación espectral: esta aproximación se basa en las propiedades de la transformada de Fourier y, son usadas primariamente para detectar periodicidad en la totalidad de la imagen a través de picos en el espectro de las frecuencias de la imagen. 
+      * La aproximación espectral: esta aproximación se basa en las propiedades de la transformada de Fourier y, son usadas primariamente para detectar periodicidad en la totalidad de la imagen a través de picos en el espectro de las frecuencias de la imagen. 
 
-   .. figure:: ../figs/Cap2/ejemplosTexturas.png
-      :scale: 60%
+      .. figure:: ../figs/Cap2/ejemplosTexturas.png
+         :scale: 60%
 
-      Ejemplos de texturas artificiales (a-b) y texturas naturales (c-e).
+         Ejemplos de texturas artificiales (a-b) y texturas naturales (c-e).
    
 Estudios relativos a la detección de fallas
 """""""""""""""""""""""""""""""""""""""""""
